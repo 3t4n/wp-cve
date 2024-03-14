@@ -1,0 +1,1 @@
+<div class="notice notice-success is-dismissible"><p><?= __('Konfiguracja została zapisana.', 'cashbill-payment-method'); ?></p></div>

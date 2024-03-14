@@ -1,0 +1,1 @@
+<div class="notice notice-error is-dismissible"><p><?= __('Wystąpił błąd przy sprawdzaniu poprawności konfiguracji. Sprawdź poprawność wpisanych danych. Jeśli punkt płatności nie został zweryfikowany możesz włączyć jedynie tryb testowy.', 'cashbill-payment-method'); ?></p></div>
