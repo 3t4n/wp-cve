@@ -1,0 +1,409 @@
+/**
+ * BxSlider v4.1.2 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2014
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+
+
+/** RESET AND LAYOUT
+===================================*/
+
+.bx-wrapper- {
+	position: relative;
+	margin: 0 auto 60px;
+	padding: 0;
+	*zoom: 1;
+
+}
+
+.bx-wrapper- img {
+	max-width: 100%;
+	display: block;
+
+}
+
+/** THEME
+===================================*/
+
+.bx-wrapper- .bx-viewport {
+    /*
+	box-shadow: 0 0 5px #ccc;
+        border:  1px solid #ccc;
+        border-radius: 5px;
+        */
+        
+}
+
+.bx-wrapper- .bx-pager,
+.bx-wrapper- .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%;
+}
+
+/* LOADER */
+
+.bx-wrapper- .bx-loading {
+	min-height: 50px;
+	background: url(../images/bx_loader.gif) center center no-repeat #fff;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+/* PAGER */
+
+.bx-wrapper- .bx-pager {
+	text-align: center;
+	font-size: 13px;
+	font-family: Arial;
+	font-weight: bold;
+	color: #666;
+	padding-top: 20px;
+}
+
+.bx-wrapper- .bx-pager .bx-pager-item,
+.bx-wrapper- .bx-controls-auto .bx-controls-auto-item {
+	display: inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+
+.bx-wrapper- .bx-pager.bx-default-pager a {
+	background: #666;
+	text-indent: -9999px;
+	display: block;
+	width: 10px;
+	height: 10px;
+	margin: 0 5px;
+	outline: 0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.bx-wrapper- .bx-pager.bx-default-pager a:hover,
+.bx-wrapper- .bx-pager.bx-default-pager a.active {
+	background: #000;
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.bx-wrapper- .bx-prev {
+	/*left: 10px;*/
+	background: url(../images/controls.png) no-repeat 0 -32px;
+}
+
+.bx-wrapper- .bx-next {
+	/*right: 10px;*/
+	background: url(../images/controls.png) no-repeat -43px -32px;
+}
+
+.bx-wrapper- .bx-prev:hover {
+	background-position: 0 0;
+}
+
+.bx-wrapper- .bx-next:hover {
+	background-position: -43px 0;
+}
+
+.bx-wrapper- .bx-controls-direction a {
+	position: absolute;
+	top: 50%;
+	margin-top: -16px;
+	outline: 0;
+	width: 32px;
+	height: 32px;
+	text-indent: -9999px;
+	z-index: 9999;
+}
+
+.bx-wrapper- .bx-controls-direction a.disabled {
+	display: none;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+
+.bx-wrapper- .bx-controls-auto {
+	text-align: center;
+}
+
+.bx-wrapper- .bx-controls-auto .bx-start {
+	display: block;
+	text-indent: -9999px;
+	width: 10px;
+	height: 11px;
+	outline: 0;
+	background: url(../images/controls.png) -86px -11px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper- .bx-controls-auto .bx-start:hover,
+.bx-wrapper- .bx-controls-auto .bx-start.active {
+	background-position: -86px 0;
+}
+
+.bx-wrapper- .bx-controls-auto .bx-stop {
+	display: block;
+	text-indent: -9999px;
+	width: 9px;
+	height: 11px;
+	outline: 0;
+	background: url(../images/controls.png) -86px -44px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper- .bx-controls-auto .bx-stop:hover,
+.bx-wrapper- .bx-controls-auto .bx-stop.active {
+	background-position: -86px -33px;
+}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.bx-wrapper- .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	text-align: left;
+	width: 80%;
+}
+
+.bx-wrapper- .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+	right: 0;
+	width: 35px;
+}
+
+/* IMAGE CAPTIONS */
+
+
+
+.bx-wrapper- .bx-caption-vertical {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+        right:0;
+	background: #666\9;
+	background: rgba(80, 80, 80, 0.75);
+	/*width: 100%;*/
+        overflow:hidden;
+}
+
+
+
+.bx-wrapper- .bx-caption span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: 13px;
+	padding: 10px;
+        margin-right:8px;
+        overflow:hidden;
+}
+
+.bx-wrapper- .bx-caption-vertical span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: 13px;
+	padding: 10px;
+        margin-right:8px;
+        overflow:hidden;
+}
+
+
+.v-wrap-vertical{
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+    border:1px solid #ccc;
+    display:grid;
+    border-radius:5px;
+    box-shadow:0 0 5px #ccc;
+    padding:5px;
+    
+}
+
+.v-wrap-vertical_{
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+    border:1px solid #ccc;
+    display:grid;
+    border-radius:5px;
+    box-shadow:0 0 5px #ccc;
+    padding:5px;
+    
+}
+
+.v-wrap-vertical:before{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    /* adjust for white space between pseudo element and next sibling */
+    margin-right: -.25em;
+    /* stretch line height */
+    height: 100%; 
+}
+.v-box-vertical{
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+}
+.objFit-vertical{
+    margin:0px auto;
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    padding:5px;
+    
+    
+    
+}
+
+
+.bxv .bx-wrapper- .bx-controls-direction a {
+
+                position: absolute;
+
+                margin-top: -16px;
+
+                outline: 0;
+
+                width: 49px;
+
+                height: 49px;
+
+                text-indent: -9999px;
+
+                z-index: 1;
+
+                top: auto;
+
+            }
+
+            .bxv .bx-wrapper- .bx-prev {
+                
+                position: fixed;
+
+
+                top: -31px !important;
+
+                left: 50% !important;
+               /*transform: translate(-50%);*/
+                
+               /* margin-left:-24px;*/
+               transform: translate(-50%);
+                
+                background: url(../images/up.png) no-repeat;
+
+            }
+
+            .bxv .bx-wrapper- .bx-next {            
+
+                bottom: -47px !important;
+               /* margin-left:-24px;*/
+                
+                left: 50% ;
+                /*transform: translate(-50%);*/
+                transform: translate(-50%);
+
+                background: url(../images/down.png) no-repeat;
+
+            }
+
+            .bxv .bx-wrapper- .bx-next:hover{
+
+                background:url(../images/down.png) no-repeat;
+
+            }
+            
+             .bxv .bx-wrapper- .bx-prev:hover{
+
+                background:url(../images/up.png) no-repeat;
+
+            }
+            /*
+
+            .bxv .bx-wrapper- .bx-viewport,#bxslider-horizontal .bx-wrapper- .bx-viewport{
+
+                -moz-box-shadow: none;
+
+                -webkit-box-shadow: none;
+
+                box-shadow: none;
+
+                border: 1px solid gray;
+
+                border-radius: 5px;
+
+                left: 0px!important;
+
+                padding: 5px;
+
+                background: transparent;
+
+                -webkit-transform: translatez(0);
+
+                -moz-transform: translatez(0);
+
+                -ms-transform: translatez(0);
+
+                -o-transform: translatez(0);
+
+                transform: translatez(0);
+
+            }*/
+
+.bxv{margin-top:35px;}
+/*
+  .sliderimgLiVerticalres img {
+    background: white none repeat scroll 0 0;
+    border: 1px solid #cccccc ;
+    border-radius: 4px ;
+    
+}*/
+
+
+.bx-wrapper- .bx-caption-vertical {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    background: #666\9;
+    background: rgba(80, 80, 80, 0.75);
+    width: 100%;
+    /* border-radius: 0 0 5px 5px; */
+    width: calc(100% - 11px);
+    left: 6px;
+    overflow-wrap: unset;
+    max-height: 38px;
+    overflow: hidden;
+}
+
+.bx-wrapper- .bx-caption-vertical span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: 12px;
+	padding: 5px;
+        margin-right:8px;
+        overflow:hidden;
+}
+
+.sliderimgLiVerticalres{
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+    border: 1px solid #ccc;
+    display: grid;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 5px;
+    
+}
