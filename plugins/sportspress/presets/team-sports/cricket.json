@@ -1,0 +1,66 @@
+{
+	"name":				"Cricket",
+	"positions": [
+						{ "name" : "Batsman", "sections" : [ 0 ] },
+						{ "name" : "Bowler", "sections" : [ 0, 1 ] }
+	],
+	"outcomes": [
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						"Draw",
+						{ "name" : "Tie", "condition" : "=" },
+						"No Result"
+	],
+	"results": [
+						{ "name" : "Runs", "equation" : "$runs", "description" : "Runs", "primary" : 1 },
+						{ "name" : "Wickets Lost", "description" : "Wickets lost" },
+						{ "name" : "Overs", "equation" : "$o", "description" : "Overs" },
+						{ "name" : "BP", "description" : "Bonus points"}
+	],
+	"performance": [
+						{ "name" : "&nbsp;", "id" : "notes", "section" : 0, "format" : "text", "description" : "Notes" },
+						{ "name" : "R", "id" : "runs", "section" : 0, "description" : "Runs" },
+						{ "name" : "B", "section" : 0, "description" : "Balls" },
+						{ "name" : "4s", "section" : 0, "description" : "Fours" },
+						{ "name" : "6s", "section" : 0, "description" : "Sixes" },
+						{ "name" : "O", "section" : 1, "description" : "Overs bowled" },
+						{ "name" : "M", "section" : 1, "description" : "Maidens" },
+						{ "name" : "R", "section" : 1, "description" : "Runs" },
+						{ "name" : "W", "section" : 1, "description" : "Wickets taken" }
+	],
+	"columns": [
+						{ "name" : "P", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "W", "equation" : "$win", "priority" : 2, "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "D", "equation" : "$draw", "description" : "Draws" },
+						{ "name" : "T", "equation" : "$tie", "description" : "Ties" },
+						{ "name" : "NR", "equation" : "$noresult", "description" : "No results" },
+						{ "name" : "BP", "equation" : "$bpfor", "description" : "Bonus points" },
+						{ "name" : "Points", "equation" : "$win * 2 + $draw", "priority" : 1, "description" : "Total points" },
+						{ "name" : "NRR", "equation" : "( $runsfor / $oversfor ) - ( $runsagainst / $oversagainst )", "priority" : 3, "precision" : 3, "description" : "Net run rate" }
+	],
+	"metrics": [
+						"Height",
+						"Weight",
+						"Bat Brand"
+	],
+	"statistics": [
+						{ "name" : "Mat", "equation" : "$eventsplayed", "description" : "Matches played" },
+						{ "name" : "SR", "equation" : "( $runs / $b ) * 100", "precision" : 2, "type" : "average", "description" : "Strike Rate" }
+	],
+	"options": {
+						"mode" : "team",
+						"event_teams" : "2",
+						"event_logos_show_team_names" : "no",
+						"event_logos_show_results" : "yes",
+						"event_reverse_teams" : "no",
+						"event_show_outcome" : "yes",
+						"event_show_players" : "yes",
+						"event_show_total" : "yes",
+						"event_performance_mode" : "values",
+						"event_show_player_numbers" : "no",
+						"event_show_position" : "no",
+						"event_total_performance" : "primary",
+						"event_performance_sections" : 0
+	}
+}

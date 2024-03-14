@@ -1,0 +1,75 @@
+{
+	"name":				"Basketball",
+	"positions": [
+						"Guard",
+						"Forward-Guard",
+						"Forward",
+						"Forward-Center",
+						"Center"
+	],
+	"outcomes": [
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" }
+	],
+	"results": [
+						{ "name" : "1", "description" : "1st quarter points" },
+						{ "name" : "2", "description" : "2nd quarter points" },
+						{ "name" : "3", "description" : "3rd quarter points" },
+						{ "name" : "4", "description" : "4th quarter points" },
+						{ "name" : "OT", "id" : "ot", "description" : "Overtime points" },
+						{ "name" : "T", "id" : "points", "description" : "Total points", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "PTS", "description" : "Points" },
+						{ "name" : "REB", "format" : "equation", "equation" : "$off + $def", "description" : "Rebounds" },
+						{ "name" : "AST", "description" : "Assists" },
+						{ "name" : "STL", "description" : "Steals" },
+						{ "name" : "BLK", "description" : "Blocks" },
+						{ "name" : "FGM", "description" : "Field goals made" },
+						{ "name" : "FGA", "description" : "Field goals attempted" },
+						{ "name" : "FG%", "format" : "equation", "precision" : 1, "equation" : "( $fgm / $fga ) * 100", "description" : "Field goal percentage" },
+						{ "name" : "3PM", "description" : "3-pointers made" },
+						{ "name" : "3PA", "description" : "3-pointers attempted" },
+						{ "name" : "3P%", "format" : "equation", "precision" : 1, "equation" : "( $threepm / $threepa ) * 100", "description" : "3-pointer percentage" },
+						{ "name" : "FTM", "description" : "Free throws made" },
+						{ "name" : "FTA", "description" : "Free throws attempted" },
+						{ "name" : "FT%", "format" : "equation", "precision" : 1, "equation" : "( $ftm / $fta ) * 100", "description" : "Free throw percentage" },
+						{ "name" : "OFF", "description" : "Offensive rebounds" },
+						{ "name" : "DEF", "description" : "Defensive rebounds" },
+						{ "name" : "TO", "description" : "Turnovers" },
+						{ "name" : "PF", "description" : "Personal fouls" }
+	],
+	"columns": [
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "PCT", "equation" : "$win / $eventsplayed", "precision" : 3, "priority" : 1, "description" : "Win percentage" },
+						{ "name" : "GB", "equation" : "$gamesback", "precision" : 1, "description" : "Games back" },
+						{ "name" : "Home", "equation" : "$homerecord", "description" : "Home record" },
+						{ "name" : "Road", "equation" : "$awayrecord", "description" : "Road record" },
+						{ "name" : "L10", "equation" : "$last10", "description" : "Last 10 games" },
+						{ "name" : "STRK", "equation" : "$streak", "description" : "Current streak" },
+						{ "name" : "PF", "equation" : "$pointsfor / $eventsplayed", "priority" : 3, "description" : "Average points for" },
+						{ "name" : "PA", "equation" : "$pointsagainst / $eventsplayed", "description" : "Average points against" },
+						{ "name" : "DIFF", "equation" : "( $pointsfor - $pointsagainst ) / $eventsplayed", "priority" : 2, "description" : "Average point differential" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "G", "equation" : "$eventsattended", "description" : "Games played" },
+						{ "name" : "GS", "equation" : "$eventsstarted", "description" : "Games started" },
+						{ "name" : "FG%", "equation" : "( $fgm / $fga ) * 100", "precision" : 3, "type" : "average", "description" : "Field goal percentage" },
+						{ "name" : "FT%", "equation" : "( $ftm / $fta ) * 100", "precision" : 3, "type" : "average", "description" : "Free throw percentage" },
+						{ "name" : "3P%", "equation" : "( $threepm / $threepa ) * 100", "precision" : 3, "type" : "average", "description" : "3-pointer percentage" },
+						{ "name" : "RPG", "equation" : "( $off + $def ) / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Rebounds per game" },
+						{ "name" : "APG", "equation" : "$ast / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Assists per game" },
+						{ "name" : "SPG", "equation" : "$stl / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Steals per game" },
+						{ "name" : "BPG", "equation" : "$blk / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Blocks per game" },
+						{ "name" : "PPG", "equation" : "$pts / $eventsplayed", "precision" : 1, "type" : "average", "description" : "Points per game" },
+						{ "name" : "EFF", "equation" : "$pts + $off + $def + $ast + $stl + $blk - $fga + $fgm - $fta + $ftm - $to", "type" : "average", "description" : "Efficiency rating" }
+	],
+	"options": {
+						"mode" : "team"
+	}
+}

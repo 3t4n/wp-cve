@@ -1,0 +1,93 @@
+{
+	"name":				"Baseball",
+	"positions": [
+						{ "name" : "Pitcher", "sections" : [ 0, 1 ] },
+						{ "name" : "Catcher", "sections" : [ 0 ] },
+						{ "name" : "First base", "sections" : [ 0 ] },
+						{ "name" : "Second base", "sections" : [ 0 ] },
+						{ "name" : "Third base", "sections" : [ 0 ] },
+						{ "name" : "Shortstop", "sections" : [ 0 ] },
+						{ "name" : "Left field", "sections" : [ 0 ] },
+						{ "name" : "Center field", "sections" : [ 0 ] },
+						{ "name" : "Right field", "sections" : [ 0 ] }
+	],
+	"outcomes": [
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Tie", "condition" : "=" }
+	],
+	"results": [
+						{ "name" : "1", "description" : "1st inning runs" },
+						{ "name" : "2", "description" : "2nd inning runs" },
+						{ "name" : "3", "description" : "3rd inning runs" },
+						{ "name" : "4", "description" : "4th inning runs" },
+						{ "name" : "5", "description" : "5th inning runs" },
+						{ "name" : "6", "description" : "6th inning runs" },
+						{ "name" : "7", "description" : "7th inning runs" },
+						{ "name" : "8", "description" : "8th inning runs" },
+						{ "name" : "9", "description" : "9th inning runs" },
+						{ "name" : "10", "description" : "10th inning runs" },
+						{ "name" : "R", "description" : "Total runs", "primary" : 1 },
+						{ "name" : "H", "description" : "Hits" },
+						{ "name" : "E", "description" : "Errors" }
+	],
+	"performance": [
+						{ "name" : "AB", "section" : 0, "description" : "At bat" },
+						{ "name" : "R", "section" : 0, "description" : "Runs" },
+						{ "name" : "H", "section" : 0, "description" : "Hits" },
+						{ "name" : "RBI", "section" : 0, "description" : "Runs batted in" },
+						{ "name" : "2B", "id" : "doubles", "section" : 0, "description" : "Doubles" },
+						{ "name" : "3B", "id" : "triples", "section" : 0, "description" : "Triples" },
+						{ "name" : "HR", "section" : 0, "description" : "Home runs" },
+						{ "name" : "SB", "section" : 0, "description" : "Stolen bases" },
+						{ "name" : "BB", "section" : 0, "description" : "Base on balls" },
+						{ "name" : "SO", "section" : 0, "description" : "Strike outs" },
+						{ "name" : "LOB", "section" : 0, "description" : "Left on base" },
+						{ "name" : "IP", "id" : "pitcher_ip", "section" : 1, "description" : "Innings pitched" },
+						{ "name" : "H", "id" : "pitcher_h", "section" : 1, "description" : "Hits allowed" },
+						{ "name" : "R", "id" : "pitcher_r", "section" : 1, "description" : "Runs allowed" },
+						{ "name" : "ER", "id" : "pitcher_er", "section" : 1, "description" : "Earned runs allowed" },
+						{ "name" : "BB", "id" : "pitcher_bb", "section" : 1, "description" : "Base on balls allowed" },
+						{ "name" : "SO", "id" : "pitcher_so", "section" : 1, "description" : "Strike outs pitched" },
+						{ "name" : "HR", "id" : "pitcher_hr", "section" : 1, "description" : "Home runs allowed" }
+	],
+	"columns": [
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "Pct", "equation" : "$win / $eventsplayed", "precision" : 3, "priority" : 1, "description" : "Win percentage" },
+						{ "name" : "GB", "equation" : "$gamesback", "precision" : 1, "description" : "Games back" },
+						{ "name" : "RS", "equation" : "$rfor", "description" : "Runs scored" },
+						{ "name" : "RA", "equation" : "$ragainst", "description" : "Runs allowed" },
+						{ "name" : "Diff", "equation" : "$rfor - $ragainst", "description" : "Run differential" },
+						{ "name" : "Home", "equation" : "$homerecord", "description" : "Home record" },
+						{ "name" : "Road", "equation" : "$awayrecord", "description" : "Road record" },
+						{ "name" : "L10", "equation" : "$last10", "description" : "Last 10 games" },
+						{ "name" : "Strk", "equation" : "$streak", "description" : "Current streak" }
+	],
+	"metrics": [
+						{ "name" : "B/T", "description": "Bats / Throws" },
+						{ "name" : "Ht", "description": "Height" },
+						{ "name" : "Wt", "description": "Weight" }
+	],
+	"statistics": [
+						{ "name" : "G", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "AVG", "equation" : "$h / $ab", "precision" : 3, "type" : "average", "description" : "Batting average" }
+	],
+	"options": {
+						"mode" : "team",
+						"event_teams" : "2",
+						"event_hide_child_positions" : "yes",
+						"event_show_players" : "yes",
+						"event_show_total" : "yes",
+						"event_reverse_teams" : "yes",
+						"event_performance_mode" : "values",
+						"event_show_player_numbers" : "yes",
+						"event_show_position" : "no",
+						"event_split_players_by_team" : "yes",
+						"event_split_players_by_position" : "yes",
+						"event_total_performance" : "all",
+						"event_performance_sections" : 0,
+						"player_performance_sections" : 0,
+						"player_show_total" : "yes"
+	}
+}

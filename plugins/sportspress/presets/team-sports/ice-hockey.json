@@ -1,0 +1,70 @@
+{
+	"name":				"Ice Hockey",
+	"positions": [
+						{ "name" : "Skater", "sections" : [ 0 ] },
+						{ "name" : "Goalie", "sections" : [ 0, 1 ] }
+	],
+	"outcomes": [
+						{ "name" : "Win", "condition" : ">" },
+						{ "name" : "Loss", "condition" : "<" },
+						{ "name" : "Overtime loss", "abbreviation" : "OT" }
+	],
+	"results": [
+						{ "name" : "1st", "description" : "1st period goals" },
+						{ "name" : "2nd", "description" : "2nd period goals" },
+						{ "name" : "3rd", "description" : "3rd period goals" },
+						{ "name" : "OT", "description" : "Overtime goals" },
+						{ "name" : "PPG", "description" : "Power play goals" },
+						{ "name" : "PPO", "description" : "Power play opportunities" },
+						{ "name" : "T", "id" : "goals", "description" : "Total goals", "primary" : 1 }
+	],
+	"performance": [
+						{ "name" : "G", "position" : "Skater", "description" : "Goals" },
+						{ "name" : "A", "position" : "Skater", "description" : "Assists" },
+						{ "name" : "H", "position" : "Skater", "description" : "Hits" },
+						{ "name" : "SOG", "position" : "Skater", "id" : "s", "description" : "Shots on goal" },
+						{ "name" : "PIM", "position" : "Skater", "description" : "Penalty in minutes" },
+						{ "name" : "SA", "position" : "Goalie", "description" : "Shots against" },
+						{ "name" : "GA", "position" : "Goalie", "description" : "Goals against" },
+						{ "name" : "SV", "position" : "Goalie", "description" : "Saves" }
+	],
+	"columns": [
+						{ "name" : "GP", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "W", "equation" : "$win", "description" : "Wins" },
+						{ "name" : "L", "equation" : "$loss", "description" : "Losses" },
+						{ "name" : "OT", "equation" : "$overtimeloss", "description" : "Overtime Losses" },
+						{ "name" : "PTS", "equation" : "$win * 2 + $overtimeloss", "priority" : 1, "description" : "Points" },
+						{ "name" : "GF", "equation" : "$goalsfor", "priority" : 3, "description" : "Goals for" },
+						{ "name" : "GA", "equation" : "$goalsagainst", "description" : "Goals against" },
+						{ "name" : "Diff", "equation" : "$goalsfor - $goalsagainst", "priority" : 2, "description" : "Goal differential" },
+						{ "name" : "PPG", "equation" : "$ppgfor", "description" : "Power play goals" },
+						{ "name" : "PPO", "equation" : "$ppofor", "description" : "Power play opportunities" },
+						{ "name" : "PP%", "equation" : "$ppgfor / $ppofor * 100", "precision" : 1, "description" : "Power play percentage" },
+						{ "name" : "PPGA", "equation" : "$ppgagainst", "description" : "Power play goals against" },
+						{ "name" : "PPOA", "equation" : "$ppoagainst", "description" : "Power play opportunities against" },
+						{ "name" : "PK%", "equation" : "( $ppoagainst - $ppgagainst ) / $ppoagainst * 100", "precision" : 1, "description" : "Penalty kill percentage" },
+						{ "name" : "L10", "equation" : "$last10", "description" : "Last 10" },
+						{ "name" : "Strk", "equation" : "$streak", "description" : "Current streak" }
+	],
+	"metrics": [
+						"Height",
+						"Weight"
+	],
+	"statistics": [
+						{ "name" : "GP", "equation" : "$eventsplayed", "description" : "Games played" },
+						{ "name" : "P", "equation" : "$g + $assists", "description" : "Points" },
+						{ "name" : "S%", "equation" : "$g / $s * 100", "precision" : 2, "type" : "average", "description" : "Shot percentage" },
+						{ "name" : "SV%", "equation" : "$sv / $sa * 100", "precision" : 2, "type" : "average", "description" : "Save percentage" }
+	],
+	"options": {
+						"mode" : "team",
+						"event_teams" : "2",
+						"event_show_players" : "yes",
+						"event_show_total" : "yes",
+						"event_performance_mode" : "values",
+						"event_show_player_numbers" : "yes",
+						"event_split_players_by_team" : "yes",
+						"event_split_players_by_position" : "yes",
+						"event_total_performance" : "all"
+	}
+}
