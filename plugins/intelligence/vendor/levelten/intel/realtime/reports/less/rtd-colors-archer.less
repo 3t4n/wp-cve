@@ -1,0 +1,431 @@
+//== Colors
+
+@base-1: #21B0EE;
+@base-1b: darken(@base-1, 0%);
+@base-2: #27B772;
+@base-2b: darken(@base-2, 0%);
+@base-3: #F66929;
+@base-3: #FF9618;
+@base-3b: darken(@base-3, 0%);
+@base-4: #EC663C;
+@base-4b: darken(@base-4, 0%);
+@base-5: #9C4274;
+@base-5b: darken(@base-5, 0%);
+@base-6: #E8E00F;
+@base-6b: darken(@base-6, 0%);
+
+@background:            #000000;
+@pane:                  #2a2a2a;
+@table-header-bg:       #222222;
+@row:                   #2a2a2a;
+@row-even:              #333333;
+@key-metric-label-bg:	#222222;
+
+@text:                  #FFFFFF;
+
+@chart-series-1:		@base-1;
+@chart-series-2:		@base-2;
+@chart-series-3:		@base-3;
+@chart-series-4:		@base-4;
+@event-hit:				lighten(@chart-series-1, 20%);
+@event-valued:			lighten(@chart-series-2, 20%);
+@event-goal: 			lighten(@chart-series-3, 20%);
+@event-subtract:		#880000;
+
+body {
+  background-color: @background;
+  color: @text;
+}
+
+i {
+  color: darken(@text, 30%);  
+}
+
+.pane {
+  background-color: @pane;
+}
+
+.google-visualization-table-table {
+    background: @pane;
+	.table-header-row {
+		background-color: @table-header-bg;
+		color: @text;		
+		td, .td {
+			border-bottom-color: #AAA;
+		}
+	}
+	.google-visualization-table-seq {
+		color: #FFF;
+	}
+	.table-row {
+		background-color: #333;
+		color: #FFF;
+	}
+	.table-row-even {
+		background-color: #3b3b3b;
+	}
+	.table-cell {
+		border-bottom-color: #222;
+		border-left-color: #000;
+		border-bottom: none;
+		border-left: none;
+	}
+}
+
+#active-visitors-table {
+    .table-row-odd {
+       background-color: lighten(@pane, 4%);
+    }
+	.table-row-selected {
+		td {
+			&:nth-child(2) {
+				border-right-color: @chart-series-1;
+			}
+			&:nth-child(3) {
+				border-right-color: @chart-series-1;
+			}
+			&:nth-child(8) {
+				border-right-color: @chart-series-1;
+			}
+		}
+	}
+}
+
+.chart-series-1 {
+  background-color: @chart-series-1;
+}
+.chart-series-2 {
+  background-color: @chart-series-2;
+}
+.chart-series-3 {
+  background-color: @chart-series-3;
+}
+.chart-series-4 {
+  background-color: @chart-series-4;
+}
+.event-hit {
+  background-color: @event-hit;
+}
+.event-valued {
+  background-color: @event-valued;
+}
+.event-goal {
+  background-color: @event-goal;
+}
+.event-subtract {
+  background-color: @event-subtract;
+}
+
+#site-stats-table .key-metric-container .key-metric-label {
+	background-color: @key-metric-label-bg;
+}
+
+#site-stats-table {
+	.key-metric-container {
+		.key-metric-label {
+
+		}
+		.key-metric-value-active {
+
+		}
+		.key-metric-container-sub {
+			font-color: #888;
+			div {
+
+			}
+		}
+	}
+}
+
+#visitor-details-report {
+  .visitor-details-container {
+    background-color: #000;
+  }
+  .visitor-details-pane {
+    background-color: @pane;
+  }
+  .visitor-details-value-container {
+  }
+  .visitor-details-value-pane {
+    ul, ol {
+      li {
+      }
+    }
+  }
+}
+
+#visitor-timeline {
+    .vco-timeline {
+        background-color: #222;
+    }
+    .vco-storyjs {
+      border: none;
+      .vco-toolbar {
+
+      }
+
+      .vco-feature {
+        .text {
+          font-color: #DDD;
+          h1, h2, h3, h4, h5, h6 {
+            color: #FFF;
+          }
+          p {
+            font-color: #DDD;
+          }
+        }
+      }
+      .vco-slider {
+        background-color: #222;
+        .nav-previous, .nav-next {
+          font-color: #CCC;
+        }
+        .slider-item .content .content-container .media .media-wrapper .media-container .caption {
+          font-color: #CCC;
+        }
+      }
+      .vco-navigation {
+          .timenav {
+          }
+          .time-interval div {
+            color: #AAA;
+          }
+          .time-interval-major div {
+            color: #888;
+          }
+          .timenav-background {
+              background-color: #333;
+              .timenav-line {
+                background-color: #333;
+                width: 2px;
+                z-index: 0;
+              }
+              .timenav-interval-background {
+                  background-color: #444;
+              }
+              .timenav-tag {
+                  background-color: #333;
+                  border-color: #222;
+                  div {
+                      h3 {
+                          color: #CCC;
+                      }
+                  }
+              }
+          }
+          .marker {
+              &.entrance {
+                  .flag {
+                    border-left-color: @base-2;
+                  }
+                  .dot {
+                    background-color: @base-2;
+                  }
+
+              }
+              &.pageview {
+                  .flag {
+                    border-left-color: @base-1;
+                  }
+                  .dot {
+                    background-color: @base-1;
+                  }
+              }
+              &.event {
+                .flag {
+                  border-left-color: @base-1;
+                }
+                .dot {
+                  background-color: @base-1;
+                }
+              }
+              &.valuedevent {
+                .flag {
+                  border-left-color: @base-3;
+                }
+                .dot {
+                  background-color: @base-3;
+                }
+              }
+              &.goal {
+                .flag {
+                  border-left-color: @base-4;
+                }
+                .dot {
+                  background-color: @base-4;
+                }
+              }
+          }
+      }
+    }
+}
+
+
+
+#ts-table-container .pane {
+	background-color: @base-2;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-2, 30%);
+		}
+	}
+  	.table-row {
+		background-color: @base-2;
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-2, 4%);
+	}
+}
+
+#ts-details-table-container .pane {
+	background-color: @base-2b;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-2b, 30%);
+		}
+	}
+  	.table-row {
+		background-color: @base-2b;
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-2b, 4%);
+	}
+}
+
+#pages-table-container .pane {
+	background-color: @base-1;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-1, 30%);
+		}
+	}
+  	.table-row {
+		background-color: @base-1;
+		i {
+			color: lighten(@base-1, 30%);  
+		}
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-1, 4%);
+	}
+
+}
+
+#page-attrs-table-container .pane {
+	background-color: @base-1b;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-1b, 30%);
+		}
+	}
+	.table-row {
+		background-color: @base-1b;
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-1b, 4%);
+	}
+}
+
+#events-table-container .pane {
+	background-color: @base-3;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-3, 30%);
+		}
+	}
+  	.table-row {
+		background-color: @base-3;
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-3, 4%);
+	}
+}
+
+#event-details-table-container .pane {
+	background-color: @base-3b;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-3b, 30%);
+		}
+	}
+  	.table-row {
+		background-color: @base-3b;
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-3b, 4%);
+	}
+}
+
+#ctas-table-container .pane {
+	background-color: @base-4;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-4, 30%);
+		}
+	}
+  	.table-row {
+		background-color: @base-4;
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-4, 4%);
+	}
+}
+
+#landingpages-table-container .pane {
+	background-color: @base-4b;
+	.table-header-row {
+		background-color: @table-header-bg;
+		td {
+			border-bottom-color: lighten(@base-4b, 30%);
+		}
+	}
+  	.table-row {
+		background-color: @base-4b;
+	}
+	.table-row-odd {
+		  background-color: lighten(@base-4b, 4%);
+	}
+}
+
+
+#site-stats-table {
+	#site-stats-entrances .key-metric-pane {
+		background-color: @base-2;
+		.table-header-row .td {
+			border-bottom-color: lighten(@base-2, 30%);
+		}		
+	}
+	#site-stats-pageviews .key-metric-pane {
+		background-color: @base-1;
+      .table-header-row .td {
+			border-bottom-color: lighten(@base-1, 30%);
+		}	
+	}
+	#site-stats-valued-events .key-metric-pane {
+		background-color: @base-3;
+      .table-header-row .td {
+			border-bottom-color: lighten(@base-3, 30%);
+		}	
+	}
+	#site-stats-goals .key-metric-pane {
+		background-color: @base-4;
+      .table-header-row .td {
+			border-bottom-color: lighten(@base-4, 30%);
+		}	
+	}
+	#site-stats-value .key-metric-pane {
+		background-color: @base-5;
+      .table-header-row .td {
+			border-bottom-color: lighten(@base-5, 30%);
+		}	
+	}
+}
+
+

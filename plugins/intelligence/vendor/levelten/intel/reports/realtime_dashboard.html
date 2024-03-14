@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Page title</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="../../../TimelineJS/compiled/js/storyjs-embed.js"></script>
+    <script>
+        jQuery(document).ready(function(){
+            doResize();
+        });
+        function doResize() {
+            var winHeight = $( window ).height();
+            var paneHeight = Math.floor(winHeight / 2);
+            var panePadding = 2 * (parseInt($('.pane').css('margin')) + parseInt($('.pane').css('border-width')));
+            var winWidth = $( window ).width();
+            var paneMargin = parseInt($('.pane').css('margin'));
+            $('.pane-container').css('height', paneHeight);
+            $('.pane').css('height', paneHeight - panePadding);
+            $('.pane-container.row-md-6').css('height', paneHeight/2);
+            $('.pane-container.row-md-6 .pane').css('height', (paneHeight/2) - panePadding);
+            buildTimeline();
+        }
+        jQuery(window).resize(doResize);
+
+        function buildTimeline() {
+            var timelineObj = {
+                "timeline": {
+                    "headline":"The Main Timeline Headline Goes here",
+                    "type":"default",
+                    "text":"<p>Intro body text goes here, some HTML is ok</p>",
+                    "asset": {
+                        "media":"http://yourdomain_or_socialmedialink_goes_here.jpg",
+                        "credit":"Credit Name Goes Here",
+                        "caption":"Caption text goes here"
+                    },
+                    "date": [
+                        {
+                            "startDate":"2011,12,10",
+                            "endDate":"2011,12,11",
+                            "headline":"Headline Goes Here",
+                            "text":"<p>Body text goes here, some HTML is OK</p>",
+                            "tag":"This is Optional",
+                            "classname":"optionaluniqueclassnamecanbeaddedhere",
+                            "asset": {
+                                "media":"http://twitter.com/ArjunaSoriano/status/164181156147900416",
+                                "thumbnail":"optional-32x32px.jpg",
+                                "credit":"Credit Name Goes Here",
+                                "caption":"Caption text goes here"
+                            }
+                        }
+                    ],
+                    "era": [
+                        {
+                            "startDate":"2011,12,10",
+                            "endDate":"2011,12,11",
+                            "headline":"Headline Goes Here",
+                            "text":"<p>Body text goes here, some HTML is OK</p>",
+                            "tag":"This is Optional"
+                        }
+
+                    ]
+                }
+            };
+            createStoryJS({
+                type:       'timeline',
+                width:      $('#timeline-report .pane').width() + 2,
+                height:     $('#timeline-report .pane').height() + 16,
+                source:     timelineObj,
+                embed_id:   'timeline'
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="../../../TimelineJS/compiled/css/timeline.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Dancing+Script|Antic+Slab' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+          background-color: #000;
+          color: #FFF;
+          font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+        }
+        div {
+          margin: 0;
+          padding: 0;
+        }
+        #dashboard {
+
+        }
+        .pane-container {
+          margin: 0;
+          padding: 0;
+          float: left;
+        }
+        .pane {
+          /* border: #666 solid 1px; */
+          background-color: #333;
+          margin: 5px;
+        }
+        .row {
+          clear: both;
+        }
+        .col-md-12 {
+          float: left;
+          width: 100%;
+        }
+        .col-md-6 {
+          float: left;
+          width: 50%;
+        }
+        .col-md-3 {
+          float: left;
+          width: 25%;
+        }
+        #event-report {
+          width: 50%;
+        }
+        #event-report {
+          width: 50%;
+        }
+        #timeline {
+          border: none;
+        }
+        #timeline.storyjs-embed.sized-embed {
+          padding: 0;
+          border-radius: 0px;
+        }
+        #timeline .vco-timeline {
+          background-color: #222;
+        }
+        #timeline .timenav-background {
+            background-color: #444;
+        }
+        #timeline .timenav-interval-background {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+<div id="dashboard">
+  <div id="row-top" class="row">
+    <div id="timeline-report" class="pane-container col-md-6">
+      <div class="pane">
+        <div id="timeline"></div>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div id="pages-report" class="pane-container col-md-12 row-md-6">
+            <div class="pane">
+                pages
+            </div>
+        </div>
+        <div id="attraction-pages-report" class="pane-container col-md-12 row-md-6">
+            <div class="pane">
+                attraction pages
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div id="terms-report" class="pane-container col-md-12 row-md-6">
+        <div class="pane">
+             terms
+        </div>
+      </div>
+      <div id="authors-report" class="pane-container col-md-12 row-md-6">
+        <div class="pane">
+          authors
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="row-bottom" class="row">
+      <div id="visitors-report" class="pane-container col-md-6">
+          <div class="pane">
+              visitors
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div id="pages-report" class="pane-container col-md-12 row-md-6">
+              <div class="pane">
+                  CTAs
+              </div>
+          </div>
+          <div id="attraction-pages-report" class="pane-container col-md-12 row-md-6">
+              <div class="pane">
+                  landing pages
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div id="terms-report" class="pane-container col-md-12 row-md-6">
+              <div class="pane">
+                  valued events
+              </div>
+          </div>
+          <div id="authors-report" class="pane-container col-md-12 row-md-6">
+              <div class="pane">
+                  goals
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</body>
+</html>
