@@ -1,0 +1,1 @@
+TxtProcessor is based on the MPDF implementation https://github.com/mpdf/mpdf
