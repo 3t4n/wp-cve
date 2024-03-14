@@ -1,0 +1,86 @@
+table.dls-sus-tasks,
+table.dls-sus-sheets,
+.fdsus-user-sign-ups-table {
+    border-collapse: collapse;
+
+    td, th {
+        border-bottom: 1px solid #ccc;
+        padding: .2em .6em;
+        text-align: left;
+        vertical-align: top;
+    }
+}
+
+table.dls-sus-sheets {
+    width: 100%;
+
+    tr.filled {
+        background: var(--fdsus-filled--background);
+        color: var(--fdsus-filled--color);
+    }
+
+    .column-open_spots {
+        text-align: center;
+    }
+
+    .column-open_spots {
+        text-align: center;
+    }
+
+    .column-view_link {
+        a::after {
+            display: inline-block;
+            margin-left: .2em;
+
+            @supports (content: "x" / "y") {
+                content: "\00BB" / ""; // alt text
+            }
+
+            @supports not (content: "x" / "y") {
+                content: "\00BB"; // alt text
+                alt: ""; // alt text for Safari
+            }
+        }
+
+        @media (min-width: 400px) {
+            white-space: nowrap;
+        }
+    }
+}
+
+table.dls-sus-tasks {
+    border-bottom: 1px solid #ccc;
+
+    td, th {
+        border-bottom: 0;
+    }
+
+    tbody th {
+        font-weight: normal;
+    }
+
+    .fdsus-task-first-row {
+        th, td {
+            border-top: 1px solid #ccc;
+        }
+    }
+
+    tfoot {
+        display: none;
+    }
+
+    .dls-sus-task-expired {
+        th, td {
+            background: #f2f2f2;
+            color: #000;
+        }
+    }
+
+    .fdsus-name {
+        font-style: italic;
+    }
+}
+
+.fdsus-signup-availability {
+    font-size: 0.8em;
+}

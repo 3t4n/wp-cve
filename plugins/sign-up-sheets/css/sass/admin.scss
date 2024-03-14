@@ -1,0 +1,203 @@
+@import "../font/fdsus/style";
+@import "admin/sheet-grid";
+@import "admin/sheet-edit";
+@import "admin/manage";
+@import "admin/settings-page";
+@import "admin/signup-edit";
+
+.dls_sus {
+    .sr-only:not(:focus):not(:active) {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    .dashicons-trash:before {
+        color: #e22f2e;
+    }
+
+    a:hover,
+    a:focus {
+        .dashicons-trash:before {
+            color: #ff5348;
+        }
+    }
+}
+
+.dls_sus .fixed .column-task_num,
+.dls_sus .fixed .column-spot_num,
+.dls_sus .fixed .column-filled_spot_num {
+    width: 10%;
+}
+.dls_sus .fixed .column-id {
+    width: 5%;
+}
+.dls_sus .tasks {
+    margin-bottom: 3em;
+}
+.dls_sus .tasks LI {
+    background: transparent url("../images/icon-drag-y.png") no-repeat scroll left center;
+    padding-left: 16px;
+    min-height: 20px;
+}
+.dls_sus .tasks LI:hover {
+    cursor: move;
+}
+.dls_sus .tasks LI.ui-sortable-helper{
+    cursor: move;
+}
+.dls_sus .tasks .add-task-after,
+.dls_sus .tasks .remove-task {
+    display: inline-block;
+    border: 2px solid #fff;
+    color: #fff;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.4em;
+    text-align: center;
+    text-decoration: none;
+    -webkit-border-radius: 999em;
+    -moz-border-radius: 999em;
+    border-radius: 999em;
+}
+.dls_sus .tasks .add-task-after {
+    background-color: #6f9f44;
+}
+.dls_sus .tasks .remove-task {
+    background-color: #bf212e;
+}
+
+.dls_sus .dls-sus-tasks tfoot .fdsus-col-clear * {
+    display: none;
+}
+
+.dls_sus .dls-sus-tasks .fdsus-col-clear input[type=checkbox] {
+   margin-left: 0;
+}
+
+.dls-sus-tasks {
+    tbody th {
+        vertical-align: top;
+    }
+}
+
+.dls-sus-pro {
+    background-color: #47c9af;
+    color: #fff;
+    font-size: .4em;
+    font-weight: bold;
+    padding: .2em .6em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}
+
+.dls-sus-repeater {
+    td {
+        vertical-align: top;
+    }
+
+    textarea {
+        height: 60px;
+    }
+}
+
+.js .dls_sus .postbox H3 {
+    cursor: pointer;
+}
+
+.dls_sus .postbox H3.hndle {
+    padding: 8px 12px;
+    margin: 0;
+}
+.dls_sus form.dls-sus-settings {
+    margin-top: 1em;
+}
+.dls-sus-system-info,
+.dls-sus-system-info[readonly="readonly"] {
+    width: 100%;
+    overflow: auto;
+    background: #222;
+    color: #bbb;
+    padding: 1em;
+    white-space: pre;
+    font-family: Menlo, Monaco, monospace;
+}
+
+@import 'admin/metaboxes';
+
+.dlssus-email-test {
+    fieldset {
+        background-color: #e2e2e2;
+        padding: 2em;
+        max-width: 40em;
+
+        input[type='email'],
+        textarea {
+            width: 100%;
+        }
+
+        p:first-child {
+            margin-right: 2%;
+        }
+
+        p:first-child,
+        p:nth-child(2) {
+            margin-top: 0;
+            width: 49%;
+            float: left;
+        }
+
+        p:nth-child(2) {
+            margin-top: 0;
+        }
+
+        p:nth-child(3) {
+            clear: both;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.fdsus-footer {
+    text-align: center;
+
+    hr {
+        margin: 2em 0 1em;
+    }
+}
+
+.fdsus-footer-getpro {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+
+    &::before {
+        font-family: $icomoon-font-family;
+        content: $fdsus-icon-sus;
+        vertical-align: middle;
+        margin: 0 .5em;
+        font-size: 1.4em;
+    }
+
+    span {
+        text-decoration: underline;
+    }
+}
+
+.post-type-dlssus_sheet #wpbody-content,
+.post-type-dlssus_task #wpbody-content,
+.post-type-dlssus_signup #wpbody-content {
+    padding-bottom: 7rem;
+}
+
+#dashboard_right_now li.dlssus_sheet-count a:before {
+    content: $fdsus-icon-sus;
+    font-family: $icomoon-font-family;
+}
