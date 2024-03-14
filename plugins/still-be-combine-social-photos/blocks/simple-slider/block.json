@@ -1,0 +1,215 @@
+{
+
+	"apiVersion"  : 2,
+	"name"        : "combine-social-photos/simple-slider",
+	"title"       : "Instagram - Simple Slider",
+	"category"    : "still-be",
+	"description" : "Embed Instagram posts in a carousel slider.",
+	"keywords"    : [ "stillbe", "still-be", "instagram", "ig", "feed", "slider", "carousel" ],
+	"textdomain"  : "still-be-combine-social-photos",
+
+	"editorScript": "combine-social-photos-simple-slider-editor",
+	"script"      : "combine-social-photos-common-class",
+	"viewScript"  : "combine-social-photos-common-front",
+	"editorStyle" : [ "combine-social-photos-simple-slider-style", "combine-social-photos-simple-slider-editor" ],
+	"style"       : [ "combine-social-photos-simple-slider-style", "combine-social-photos-common-front" ],
+
+	"attributes": {
+
+		"id" : {
+			"type"    : "number",
+			"default" : 0
+		},
+
+		"gettingType" : {
+			"type"    : "string",
+			"enum"    : [ "own", "business_discovery", "hashtag_recent", "hashtag_top" ],
+			"default" : "own"
+		},
+		"businessDiscovery" : {
+			"type"    : "string",
+			"default" : ""
+		},
+		"hashtag" : {
+			"type"    : "string",
+			"default" : ""
+		},
+		"hashtagId" : {
+			"type"    : "string",
+			"default" : ""
+		},
+
+		"displayingVideo" : {
+			"type"    : "string",
+			"enum"    : [ "thumbnail", "ignore", "autoplay" ],
+			"default" : "thumbnail"
+		},
+
+		"baseWidth" : {
+			"type"    : "number",
+			"default" : 300
+		},
+		"minWidth" : {
+			"type"    : "number",
+			"default" : 200
+		},
+
+		"minCols" : {
+			"type"    : "number",
+			"default" : 2
+		},
+		"columns" : {
+			"type"    : "number",
+			"default" : 10
+		},
+		"rows" : {
+			"type"    : "number",
+			"default" : 1
+		},
+
+		"aspect" : {
+			"type"    : "number",
+			"default" : 1.0
+		},
+
+		"gapColumns" : {
+			"type"    : "string",
+			"default" : "2.0em"
+		},
+		"gapRows" : {
+			"type"    : "string",
+			"default" : "4.0em"
+		},
+
+		"linkTarget" : {
+			"type"    : "string",
+			"default" : "_blank"
+		},
+
+		"isFitToContainer" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+
+		"isShowCaption" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+		"captionRows" : {
+			"type"    : "number",
+			"default" : 4
+		},
+		"captionPosition" : {
+			"type"    : "string",
+			"enum"    : [ "in", "out" ],
+			"default" : "out"
+		},
+
+		"isShowImpressions" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+		"impressionsPosition" : {
+			"type"    : "string",
+			"enum"    : [ "in", "out" ],
+			"default" : "out"
+		},
+
+		"isShowAuthor" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+		"authorPosition" : {
+			"type"    : "string",
+			"enum"    : [ "in", "out" ],
+			"default" : "out"
+		},
+
+		"isShowTime" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+		"timePosition" : {
+			"type"    : "string",
+			"enum"    : [ "in", "out" ],
+			"default" : "out"
+		},
+
+		"isShowFooter" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+		"footerPosition" : {
+			"type"    : "string",
+			"default" : "right"
+		},
+
+		"hoverEffectBlur" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+		"hoverEffectTilt" : {
+			"type"    : "boolean",
+			"default" : true
+		},
+
+		"scrollDurationTime" : {
+			"type"    : "number",
+			"default" : 300
+		},
+		"scrollEasingFunction" : {
+			"type"    : "string",
+			"default" : "3"
+		},
+
+		"cubicBezierX1" : {
+			"type"    : "number",
+			"default" : 0.46
+		},
+		"cubicBezierY1" : {
+			"type"    : "number",
+			"default" : 0
+		},
+		"cubicBezierX2" : {
+			"type"    : "number",
+			"default" : 0.36
+		},
+		"cubicBezierY2" : {
+			"type"    : "number",
+			"default" : 1.44
+		},
+
+		"excludeNavigations" : {
+			"type"    : "boolean",
+			"default" : false
+		}
+
+	},
+
+	"supports" : {
+		"anchor" : true,
+		"align"  : true
+	},
+
+	"styles" : [
+		{
+			"name"      : "default",
+			"label"     : "Default",
+			"isDefault" : true
+		},
+		{
+			"name"      : "simple",
+			"label"     : "Simple",
+			"isDefault" : false
+		}
+	],
+
+	"example" : {
+		"attributes" : {
+			"id"            : 1,
+			"columns"       : 4,
+			"rows"          : 1
+		}
+	}
+
+}
