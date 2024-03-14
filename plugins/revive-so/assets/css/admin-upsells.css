@@ -1,0 +1,105 @@
+/* Upsells */
+.reviveso-settings-tab-upsell {
+    padding: 20px;
+    background: #fff;
+    color: #3c434a;
+}
+/* End Upsells */
+
+/* Upsells Modal */
+@keyframes reviveso-modal__fade-in-animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes reviveso-modal__appear-animation {
+    from {
+        margin-top: 32px;
+    }
+    to {
+        margin-top: 0;
+    }
+}
+
+.reviveso-modal__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 100000;
+    animation: reviveso-modal__fade-in-animation 0.2s ease-out 0s;
+    animation-fill-mode: forwards;
+}
+
+.reviveso-modal__frame {
+    position: relative;
+    box-sizing: border-box;
+    background: #fff;
+    width: 550px;
+    max-height: 90vh;
+    overflow: auto;
+    animation: reviveso-modal__appear-animation 0.1s ease-out;
+    animation-fill-mode: forwards;
+    box-shadow: 0 3px 30px rgb(0 0 0 / 20%);
+}
+
+@media screen and (max-width: 800px) {
+    .reviveso-modal__frame {
+        width: auto;
+        margin: 20px;
+    }
+}
+
+.reviveso-modal__header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.reviveso-modal__dismiss {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    justify-content: center;
+    height: 36px;
+    min-width: 36px;
+    margin: 8px;
+    padding: 6px;
+    border: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: none;
+    transition: box-shadow 0.1s linear;
+    border-radius: 2px;
+}
+
+.reviveso-modal__dismiss:focus {
+    box-shadow: 0 0 0 2px #007cba;
+    outline: 3px solid transparent;
+}
+
+.reviveso-modal__dismiss:hover svg {
+    fill: #2271b1;
+}
+
+.reviveso-modal__body {
+    padding: 40px 25px 40px;
+}
+
+@media screen and (max-width: 800px) {
+    .reviveso-modal__body {
+        padding: 30px 30px 40px;
+    }
+}
+/* END Upsells Modal */
