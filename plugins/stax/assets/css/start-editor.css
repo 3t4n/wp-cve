@@ -1,0 +1,268 @@
+.sq-opener {
+    position: fixed;
+    z-index: 99999999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #2196f3;
+    bottom: 200px;
+    right: 30px;
+    line-height: 69px;
+    text-align: center;
+    box-shadow: 0 1px 3px 0 rgba(31, 45, 61, 0.2);
+}
+
+.sq-opener .svgIcon {
+    height: 50px;
+}
+
+.fill-white {
+    fill: #fff;
+}
+
+/* Tooltip */
+/* START TOOLTIP STYLES */
+[tooltip] {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* Applies to all tooltips */
+[tooltip]::before,
+[tooltip]::after {
+    text-transform: none;
+    font-size: 12px;
+    line-height: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    display: none;
+    opacity: 0;
+    letter-spacing: 0.07em;
+}
+
+[tooltip]::before {
+    content: '';
+    border: 5px solid transparent;
+    z-index: 1001;
+}
+
+[tooltip]::after {
+    content: attr(tooltip);
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+
+    /*
+      Let the content set the size of the tooltips
+      but this will also keep them from being obnoxious
+      */
+    min-width: 3em;
+    max-width: 21em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px;
+    border-radius: 3px;
+    z-index: 1000;
+
+    box-shadow: 0 0 5px 0 rgba(156, 164, 183, 0.36);
+    background: #ffffff;
+    color: #112031;
+    font-weight: 600;
+}
+
+/* Make the tooltips respond to hover */
+[tooltip]:hover::before,
+[tooltip]:hover::after {
+    display: block;
+}
+
+/* don't show empty tooltips */
+[tooltip='']::before,
+[tooltip='']::after {
+    display: none !important;
+}
+
+/* FLOW: UP */
+[tooltip]:not([flow])::before,
+[tooltip][flow^="up"]::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #e5e9f2;
+}
+
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::after {
+    bottom: calc(100% + 5px);
+}
+
+[tooltip]:not([flow])::before,
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::before,
+[tooltip][flow^="up"]::after {
+    left: 50%;
+    -webkit-transform: translate(-50%, -.5em);
+    transform: translate(-50%, -.5em);
+}
+
+/* FLOW: DOWN */
+[tooltip][flow^="down"]::before {
+    top: 100%;
+    border-top-width: 0;
+    border-bottom-color: #e5e9f2;
+}
+
+[tooltip][flow^="down"]::after {
+    top: calc(100% + 5px);
+}
+
+[tooltip][flow^="down"]::before,
+[tooltip][flow^="down"]::after {
+    left: 50%;
+    -webkit-transform: translate(-50%, .5em);
+    transform: translate(-50%, .5em);
+}
+
+/* FLOW: LEFT */
+[tooltip][flow^="left"]::before {
+    top: 50%;
+    border-right-width: 0;
+    border-left-color: #e5e9f2;
+    left: calc(0em - 5px);
+    -webkit-transform: translate(-.5em, -50%);
+    transform: translate(-.5em, -50%);
+}
+
+[tooltip][flow^="left"]::after {
+    top: 50%;
+    right: calc(100% + 5px);
+    -webkit-transform: translate(-.5em, -50%);
+    transform: translate(-.5em, -50%);
+}
+
+/* FLOW: RIGHT */
+[tooltip][flow^="right"]::before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: #e5e9f2;
+    right: calc(0em - 5px);
+    -webkit-transform: translate(.5em, -50%);
+    transform: translate(.5em, -50%);
+}
+
+[tooltip][flow^="right"]::after {
+    top: 50%;
+    left: calc(100% + 5px);
+    -webkit-transform: translate(.5em, -50%);
+    transform: translate(.5em, -50%);
+}
+
+/* KEYFRAMES */
+@-webkit-keyframes tooltips-vert {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes tooltips-vert {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
+}
+
+@-webkit-keyframes tooltips-horz {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+    }
+}
+
+@keyframes tooltips-horz {
+    to {
+        opacity: .9;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+    }
+}
+
+/* FX All The Things */
+[tooltip]:not([flow]):hover::before,
+[tooltip]:not([flow]):hover::after,
+[tooltip][flow^="up"]:hover::before,
+[tooltip][flow^="up"]:hover::after,
+[tooltip][flow^="down"]:hover::before,
+[tooltip][flow^="down"]:hover::after {
+    -webkit-animation: tooltips-vert 300ms ease-out forwards;
+    animation: tooltips-vert 300ms ease-out forwards;
+}
+
+[tooltip][flow^="left"]:hover::before,
+[tooltip][flow^="left"]:hover::after,
+[tooltip][flow^="right"]:hover::before,
+[tooltip][flow^="right"]:hover::after {
+    -webkit-animation: tooltips-horz 300ms ease-out forwards;
+    animation: tooltips-horz 300ms ease-out forwards;
+}
+
+/* Elements selecting */
+.sq-element-selecting .sq-el-hover {
+    -webkit-box-shadow: inset 0 0 0 2px rgba(255, 0, 72, 1);
+    -moz-box-shadow: inset 0 0 0 2px rgba(255, 0, 72, 1);
+    box-shadow: inset 0 0 0 2px rgba(255, 0, 72, 1);
+}
+
+.sq-element-selecting .selected-el {
+    -webkit-box-shadow: inset 0 0 0 2px rgba(255, 0, 72, 1);
+    -moz-box-shadow: inset 0 0 0 2px rgba(255, 0, 72, 1);
+    box-shadow: inset 0 0 0 2px rgba(255, 0, 72, 1);
+}
+
+.sq-element-selecting .selected-el img {
+    opacity: 0.4;
+}
+
+/* Existing zone */
+
+.before-zone-exist,
+.after-zone-exist {
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.before-zone-exist .mdi,
+.after-zone-exist .mdi {
+    color: #c0c0c0;
+    transition: color 0.3s;
+}
+
+.before-zone-exist .mdi:hover,
+.after-zone-exist .mdi:hover {
+    color: #777;
+    cursor: pointer;
+}
+
+.zone-exist-wrap {
+    text-align: center;
+    border: 1px dashed #d5dadf;
+    height: 80px;
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c0c0c0;
+}
