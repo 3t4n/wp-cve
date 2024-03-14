@@ -1,0 +1,78 @@
+{
+  "name": "mczr/mycustomizer-woocommerce-connector",
+  "authors": [
+    {
+      "name": "Florian Gendrot",
+      "email": "florian@mycustomizer.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "vendor"
+    ],
+    "psr-4": {
+      "MyCustomizer\\WooCommerce\\Connector\\": "src/",
+      "MyCustomizer\\WooCommerce\\Connector\\Console\\": "bin/"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "7.2.5"
+    }
+  },
+  "require": {
+    "php": "7.2.5",
+    "symfony/config": "^4",
+    "symfony/validator": "4.0.*",
+    "symfony/translation": "4.0.*",
+    "twig/twig": "^3.0.4",
+    "symfony/http-foundation": "^4.0",
+    "symfony/yaml": "^4.0"
+  },
+  "require-dev": {
+    "symfony/filesystem": "^3.4",
+    "symfony/var-dumper": "^2.7",
+    "symfony/console": "^4",
+    "symfony/process": "^3.0"
+  },
+  "scripts": {
+    "post-install-cmd": [
+        "[ $COMPOSER_DEV_MODE -eq 1 ] || php bin/strauss.phar"
+    ],
+    "post-update-cmd": [
+      "[ $COMPOSER_DEV_MODE -eq 1 ] || php bin/strauss.phar"
+    ]
+  },
+  "extra": {
+    "strauss": {
+        "target_directory": "vendor",
+        "namespace_prefix": "MyCustomizer\\WooCommerce\\Connector\\",
+        "classmap_prefix": "MyCustomizer_WooCommerce_Connector_",
+        "packages": [
+        ],
+        "override_autoload": {
+        },
+        "exclude_from_copy": {
+            "packages": [
+            ],
+            "namespaces": [
+            ],
+            "file_patterns": [
+            ]
+        },
+        "exclude_from_prefix": {
+            "packages": [
+            ],
+            "namespaces": [
+            ],
+            "file_patterns": [
+                "/^psr.*$/"
+            ]
+        },
+        "namespace_replacement_patterns" : {
+        },
+        "delete_vendor_packages": false,
+        "delete_vendor_files": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<h3>MyCustomizer Informations</h3>
+<hr/>
+<img class="mczrImg" src="{{props.image}}" alt="" width="200px"/>
+<div class="mczrContent">
+    <h4>{{props.title}}</h4>
+    <ul class="mczrCartPropertiesList">
+        {% for sum in props.summary_v2 %}
+            <li class="mczrPropsListItem">
+                <strong>{{ sum.key }}</strong> : {{ (sum.value is iterable) ? sum.value|join(", ") : sum.value }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<style>
+    .mczrImg{
+        float:left;
+        margin:0 10px 10px 0;
+    }
+</style>

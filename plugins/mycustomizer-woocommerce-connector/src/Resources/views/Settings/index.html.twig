@@ -1,0 +1,109 @@
+<div class="wrap">
+  <h1>
+    <a href="{{ form.mczrDashboardLinkHref }}" target="_blank">{{ form.mczrDashboardLinkTitle }} <img src="https://cdnv2.mycustomizer.com/test-maxime/61424a1710c87500110aaeda.png"/></a>
+  </h1>
+  <hr>
+  <h1>{{ form.title }}</h1>
+  <hr>
+  <form name="form" method="post">
+    <fieldset>
+      <h3>Customizer Product Page Layout</h3>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 form-control-label" for="form_iframeWidth">Customizer Iframe width</label>
+        <div class="col-sm-10">
+          <input type="text" id="form_iframeWidth" name="iframeWidth" class="form-control" value="{{ form.iframeWidth }}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 form-control-label" for="form_iframeHeight">Customizer Iframe height</label>
+        <div class="col-sm-10">
+          <input type="text" id="form_iframeHeight" name="iframeHeight" class="form-control" value="{{ form.iframeHeight }}">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 form-control-label required" for="form_iframeHook">Customizer Iframe hook <a href="https://help.mycustomizer.com/en/articles/5607869-woocommerce-setting-the-customizer-iframe-location" target="_blank">?</a></label>
+        <div class="col-sm-10">
+          <input type="text" id="form_iframeHook" name="iframeHook" required="required" placeholder="woocommerce_after_single_product_summary" class="form-control" value="{{ form.iframeHook }}">
+          <br>
+          <small class="form-text text-muted">Change this value if your customizer does not show up</small>
+        </div>
+        <label class="col-form-label col-sm-2 form-control-label required" for="form_iframeHookPriority">Customizer Iframe hook priority</label>
+        <div class="col-sm-10">
+          <input type="text" id="form_iframeHookPriority" name="iframeHookPriority" required="required" placeholder="0" class="form-control" value="{{ form.iframeHookPriority }}">
+          <br>
+          <small class="form-text text-muted">Change this value to move your customizer before or after the hook</small>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 form-control-label" for="form_productCss">Customizer Product Page extra CSS</label>
+        <div class="col-sm-10">
+          <textarea id="form_productCss" name="productCss" help="Custom CSS added on the customizer product page, i.e.: #mczrMainIframe" class="form-control" rows="4" cols="40">{{ form.productCss }}</textarea>
+          <br>
+          <small class="form-text text-muted">Custom CSS added on the customizer product page, i.e.: iframe#mczrMainIframe { height: 90vh; }</small>
+        </div>
+      </div>
+    </fieldset>
+    <br>
+    <fieldset>
+      <div class="form-group row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-10">
+          <button type="submit" id="form_submit" name="submit" class="btn-secondary btn">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+    <hr>
+    <fieldset>
+      <h3>Linking</h3>
+      <small class="form-text text-muted">This section should be filled automatically when you register a MyCustomizer account. If it is not, please use the Open MyCustomizer Dashboard link above to start your free trial or reconnect your account.</small>
+      <hr>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 form-control-label required" for="form_brand">Brand</label>
+        <div class="col-sm-10">
+          <input type="text" id="form_brand" name="brand" required="required" readonly="readonly" help="This is your alias and sub-domain name on mycustomizer.com. This input will be filled automatically." class="form-control" value="{{form.brand}}">
+          <small class="form-text text-muted">This is your alias and sub-domain name on mycustomizer.com. This input will be filled automatically.</small>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 form-control-label required" for="form_shopId">Shop id</label>
+        <div class="col-sm-10">
+          <input type="text" id="form_shopId" name="shopId" required="required" readonly="readonly" help="This value is a reference to your store in MyCustomizer system. This input will be filled automatically." class="form-control"  value="{{ form.shopId }}">
+          <small class="form-text text-muted">This value is a reference to your store in MyCustomizer system. This input will be filled automatically.</small>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <input type="hidden" id="form_apiToken" name="apiToken" readonly="readonly" value="{{ form.apiToken }}">
+      </div>
+      <hr>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 form-control-label required" for="form_shopId">Sync code</label>
+        <div class="col-sm-10">
+          <input type="text" id="form_syncCode" name="syncCode" help="This value is a reference to your store in MyCustomizer system. This input will be filled automatically." class="form-control">
+          <button type="submit" id="form_submit" name="submit" class="btn-secondary btn">Sync</button>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <input type="checkbox" id="form_unlinkBrand" name="unlinkBrand" value="true">
+          <label for="form_unlinkBrand"> Unlink brand. Use the Open MyCustomizer Dashboard link above to start your free trial or reconnect your account.</label>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-10">
+          <button type="submit" id="form_submit" name="submit" class="btn-secondary btn">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      {{ form.token | raw }}
+    </fieldset>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+<div id="{{ mczrStartingPoint.typeKey }}_data" class='panel woocommerce_options_panel'>
+    <div class='options_group'>  
+        <p class="form-field _sale_price_field ">
+            <label for="mczrStartingPoint">Starting Point</label>
+            <input id="mczrStartingPoint" 
+                   class=""
+                   name="mczrStartingPoint"  
+                   value="{{mczrStartingPoint.value}}" 
+                   placeholder="MyCustomizer Starting point identifier or sync code" 
+                   type="text">
+        </p>
+        <hr/>
+        <p class="form-field">
+            <label for="mczrQuantityStart">Beginning quantity</label>
+            <input id="mczrQuantityStart" 
+                   class=""
+                   name="mczrQuantityStart"  
+                   value="{{mczrQuantityStart.value}}" 
+                   placeholder="How many element must be added to cart when product is added for first time" 
+                   type="number">
+        </p>
+        <p class="form-field">
+            <label for="">Minimum Quantity</label>
+            <input id="mczrQuantityMin" 
+                   class=""
+                   name="mczrQuantityMin"  
+                   value="{{mczrQuantityMin.value}}" 
+                   placeholder="Minimum quantity when adding" 
+                   type="number">
+        </p>
+        <p class="form-field">
+            <label for="mczrQuantityMax">Maximum Quantity</label>
+            <input id="mczrQuantityMaximum" 
+                   class=""
+                   name="mczrQuantityMax"  
+                   value="{{mczrQuantityMax.value}}" 
+                   placeholder="Maximum quantity when adding to cart; leave empty for no limit" 
+                   type="number">
+        </p>
+        <p class="form-field">
+            <label for="mczrQuantityStep">Incrementation step quantity</label>
+            <input id="mczrQuantityStep" 
+                   class=""
+                   name="mczrQuantityStep"  
+                   value="{{mczrQuantityStep.value}}" 
+                   placeholder="How many element must be incremented at a time" 
+                   type="number">
+        </p>
+    </div>
+</div>
+<script>
+// Select by default mczr tab
+    $(document).ready(function () {
+        if ($('#product-type').val() !== "mczr") {
+            return;
+        }
+        $('.mczr_options a').trigger("click");
+    });
+</script>
