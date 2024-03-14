@@ -1,0 +1,594 @@
+$primary-color: #201CFE;
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
+        url('../fonts/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.woff2') format('woff2'),
+        url('../fonts/Roboto-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Bold.woff2') format('woff2'),
+        url('../fonts/Roboto-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@media (min-width: 1200px) {
+    .wpvr-container-1350 {
+        max-width: 1020px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .wpvr-container-1350 {
+        max-width: 1380px;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+}
+
+
+
+.primary-color {
+    color: $primary-color;
+}
+
+.wpvr-welcome {
+    margin-left: -20px;
+
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    div, 
+    span, 
+    section, 
+    p {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .wpvr-container-1350 {
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+
+    .vr-welcome-btn {
+        background: $primary-color;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.16;
+        letter-spacing: -0.3px;
+        color: #FFFFFF;
+        display: inline-block;
+        text-decoration: none;
+        padding: 20px 27px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .section-title {
+        max-width: 685px;
+        width: 100%;
+        margin: 0 auto 60px;
+        text-align: center;
+
+        h2 {
+            font-weight: 700;
+            font-size: 44px;
+            line-height: 1.22;
+            letter-spacing: -0.88px;
+            color: #011F3F;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #011F3F;
+        }
+    }
+
+    .wpvr-welcome-hero {
+        background: #fff;
+        padding: 20px 0;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            background: #F2F4F7;
+            position: absolute;
+            left: -80px;
+            top: -90px;
+            width: 322px;
+            height: 322px;
+            border-radius: 0 0 270px 0;
+            border: 1px solid #dddddd96;
+            z-index: 0;
+        }
+
+        .hero-content-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            width: 40%;
+
+            .backto-dashboard {
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 1.2;
+                letter-spacing: -0.5px;
+                color: #011F3F;
+                text-decoration: none;
+                margin-bottom: 46px;
+                display: inline-block;
+    
+                &:hover {
+                    text-decoration: underline;
+                }
+    
+                img {
+                    width: 16px;
+                    margin-right: 4px;
+                }
+            }
+    
+            .hero-title {
+                font-weight: 900;
+                font-size: 56px;
+                line-height: 1.1;
+                letter-spacing: -1px;
+                color: #011F3F;
+    
+                span {
+                    color: #00B7FF;
+                }
+            }
+    
+            p {
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 1.4;
+                color: #011F3F;
+                width: 100%;
+                max-width: 350px;
+                margin-top: 13px;
+                margin-bottom: 54px;
+            }
+        }
+
+        .hero-video {
+            width: 60%;
+            position: relative;
+
+            .hero-video-shape {
+                max-width: 750px;
+                width: 100%;
+            }
+
+            .box-video {
+                width: 100%;
+                max-width: 665px;
+                cursor: pointer;
+                overflow: hidden;
+                position: absolute;
+                top: 70px;
+                right: 80px;
+            }
+
+            .box-video .bg-video {
+                background-image: url('../icon/vr-video-poster.png');
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100% 100%;
+                z-index: 2;
+                background-color: #fff;
+                border-radius: 30px;
+
+                .bt-play {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    cursor: pointer;
+                    z-index: 2;
+                    -webkit-transition: all 0.3s ease-out;
+                    transition: all 0.3s ease-out;
+
+                    img {
+                        width: 50px;
+                    }
+                }
+            }
+            .box-video.open .bg-video {
+                visibility: hidden;
+                opacity: 0;
+                transition: all 0.6s ease;
+            }
+
+            .video-container {
+                position: relative;
+                width: 100%;
+                height: 0;
+                margin: 0;
+                z-index: 1;
+                padding-bottom: 74.27198%;
+
+                iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 32px;
+                }
+            }
+        }
+
+    }
+
+    .wpvr-features {
+        background: #F2F4F7;
+        padding: 110px 0 120px;
+
+        .features-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            margin-left: -30px;
+        }
+
+        .single-feature {
+            background: #FFFFFF;
+            box-shadow: 0px 20px 20px #e7eaeebc;
+            border-radius: 10px;
+            padding: 30px 40px;
+            width: calc(100% / 5 - 30px);
+            margin-left: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+
+            .title {
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 1.16;
+                text-align: center;
+                letter-spacing: -0.6px;
+                color: #011F3F;
+                margin: 34px 0;
+            }
+
+            .see-example {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 1.4;
+                text-align: center;
+                letter-spacing: -0.4px;
+                color: #201CFE;
+                text-decoration: underline;
+                display: inline-block;
+
+                img {
+                    margin-left: 5px;
+                    transition: all 0.3s ease;
+                }
+
+                &:hover {
+                    text-decoration: none;
+                }
+                
+            }
+
+            &:hover .see-example img {
+                margin-left: 10px;
+            }
+
+            &:nth-child(even) {
+                transform: translateY(55px);
+            }
+        }
+
+        .features-cta {
+            background: #201CFE url(../icon/feature-cta-bg.jpg) no-repeat center right / cover;
+            border-radius: 20px;
+            margin-top: 105px;
+            padding: 60px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .cta-title {
+                font-weight: 700;
+                font-size: 38px;
+                line-height: 1.4;
+                color: #FFFFFF;
+                width: calc(100% - 290px);
+            }
+
+            .cta-btn {
+                background: #FFFFFF;
+                color: $primary-color;
+            }
+        }
+    }
+
+    .wpvr-feature-settings {
+        background: #071835;
+        padding-top: 110px;
+
+        .section-title {
+            max-width: 725px;
+
+            h2 {
+                color: #fff;
+            }
+            p {
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .features-settings-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            margin-left: -50px;
+        }
+
+        .single-settings {
+            text-align: center;
+            width: calc(100% / 8 - 50px);
+            margin-left: 50px;
+            margin-bottom: 50px;
+
+            .icon {
+                background: #0E244B;
+                border-radius: 20px;
+                width: 120px;
+                height: 110px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                margin: 0 auto 13px;
+            }
+
+            .title {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 1.3;
+                color: #FFFFFF;
+            }
+        }
+
+        .setting-cta-btn {
+            text-align: center;
+
+            .vr-welcome-btn {
+                background: #FFFFFF;
+                color: $primary-color;
+            }
+        }
+
+        .feature-settings-cta {
+            background: #FFFFFF url('../icon/feature-settings-cta-bg.jpg') no-repeat center right / cover;
+            border-radius: 20px;
+            padding: 60px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 70px;
+
+            .cta-content {
+                width: calc(100% - 290px);
+
+                h2 {
+                    font-size: 38px;
+                    color: #011F3F;
+                    font-weight: 700;
+                    line-height: 1.4;
+                }
+
+                p{
+                    font-weight: 400;
+                    font-size: 24px;
+                    line-height: 1.4;
+                    color: #011F3F;
+                    margin-top: 3px;
+
+                    span {
+                        color: #00B7FF;
+                    }
+                }
+            }
+
+        }
+
+        .welcome-page-footer {
+            padding: 54px 0;
+
+            .footer-menu {
+                display: flex;
+
+                li {
+                    margin-left: 30px;
+                    
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        margin-left: auto;
+                    }
+
+                    a {
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 1;
+                        color: #FFFFFF;
+                        text-decoration: none;
+                        outline: none;
+                        box-shadow: none;
+
+                        &:hover {
+                            color: #00B7FF;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+
+@media (max-width: 1399px) {
+    .wpvr-welcome .vr-welcome-btn {
+        font-weight: 500;
+        font-size: 15px;
+        padding: 16px 27px;
+    }
+    .wpvr-welcome .wpvr-welcome-hero .hero-video .box-video {
+        max-width: 535px;
+        right: 30px;
+        top: 60px;
+    }
+
+    .wpvr-welcome .wpvr-welcome-hero .hero-content .backto-dashboard {
+        font-size: 16px;
+        margin-bottom: 36px;
+    }
+
+    .wpvr-welcome .wpvr-welcome-hero .hero-content .hero-title {
+        font-size: 44px;
+    }
+    .wpvr-welcome .wpvr-welcome-hero .hero-content p {
+        font-size: 18px;
+        margin-bottom: 34px;
+    }
+
+    .wpvr-welcome .section-title h2 {
+        font-size: 34px;
+    }
+
+    .wpvr-welcome .wpvr-features .single-feature .title {
+        font-size: 18px;
+        margin: 14px 0;
+    }
+
+    .wpvr-welcome .wpvr-features .single-feature {
+        padding: 30px 20px;
+    }
+    .wpvr-welcome .wpvr-features .single-feature .title {
+        font-size: 18px;
+    }
+    .wpvr-welcome .wpvr-features .single-feature .see-example {
+        font-size: 14px;
+    }
+
+    .wpvr-welcome .wpvr-features .features-cta .cta-title {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .wpvr-welcome .wpvr-feature-settings .single-settings {
+        width: calc(100% / 4 - 50px);
+    }
+
+    .wpvr-welcome .wpvr-feature-settings .feature-settings-cta .cta-content h2 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    .wpvr-welcome .wpvr-feature-settings .feature-settings-cta .cta-content p {
+        font-size: 20px;
+    }
+
+    .wpvr-welcome .wpvr-feature-settings .welcome-page-footer .footer-menu li a {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 1199px) {
+    .wpvr-welcome .wpvr-welcome-hero .hero-video .box-video {
+        max-width: 435px;
+    }
+    .wpvr-welcome .wpvr-welcome-hero .hero-content .hero-title {
+        font-size: 36px;
+    }
+    .wpvr-welcome .wpvr-welcome-hero .hero-video .box-video .bg-video {
+        border-radius: 20px;
+    }
+    .wpvr-welcome .wpvr-welcome-hero .hero-video .video-container iframe {
+        border-radius: 24px;
+    }
+
+    .wpvr-welcome .wpvr-features {
+        padding: 80px 0 90px;
+    }
+    .wpvr-welcome .wpvr-features .single-feature {
+        width: calc(100% / 4 - 30px);
+    }
+
+    .wpvr-welcome .wpvr-features .features-cta {
+        margin-top: 35px;
+        padding: 50px;
+    }
+
+    .wpvr-welcome .wpvr-feature-settings {
+        padding-top: 80px;
+    }
+
+    .wpvr-welcome .wpvr-feature-settings .feature-settings-cta {
+        padding: 50px 50px;
+    }
+    .wpvr-welcome .wpvr-feature-settings .feature-settings-cta .cta-content p {
+        font-size: 18px;
+    }
+
+}
+
+@media (max-width: 991px) {
+    .wpvr-welcome .wpvr-welcome-hero .hero-video .box-video {
+        max-width: 415px;
+        top: 40px;
+    }
+    .wpvr-welcome .wpvr-welcome-hero .hero-content {
+        padding-right: 20px;
+    }
+    .wpvr-welcome .wpvr-features .single-feature {
+        padding: 30px 16px;
+    }
+
+}
+
+@media (max-width: 782px) {
+    .wpvr-welcome {
+        margin-left: -10px;
+    }
+
+}

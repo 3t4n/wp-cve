@@ -1,0 +1,1687 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+*/
+
+.vr-pointer-container {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.center-pointer {
+    height: 10px;
+    width: 10px;
+    text-align: center;
+    background: #fff;
+    display: block;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.explainer {
+    position: absolute;
+    bottom: 40px;
+    right: 15px;
+    z-index: 9;
+    text-align: center;
+    width: 47%;
+    height: 40%;
+}
+
+.generic_form_button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 9;
+    text-align: center;
+}
+
+.close-generic-form {
+    position: absolute;
+    right: -7px;
+    top: -11px;
+    background: #fff;
+    line-height: 1;
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9;
+    font-size: 14px;
+}
+
+.wpvr-generic-form {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: 9;
+    width: 80%;
+    height: 80%;
+    background: #fff;
+}
+
+.generic-form-container {
+    padding-left: 30px;
+    padding-right: 20px;
+    overflow: auto;
+    height: 100%;
+}
+
+.et-db #et-boc .wpvr-floor-map,
+.wpvr-floor-map {
+    position: absolute;
+    bottom: 40px;
+    right: 15px;
+    z-index: 999;
+    text-align: center;
+    width: auto;
+    max-width: 50%;
+    height: 55%;
+    transition: all 0.4s linear;
+    transform-origin: right bottom;
+}
+
+
+.et-db #et-boc .wpvr-floor-map.fullwindow,
+.wpvr-floor-map.fullwindow {
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    width: 80%!important;
+    height: 80%!important;
+    z-index: 100;
+}
+.et-db #et-boc .wpvr-floor-map .floor-plan-pointer,
+.wpvr-floor-map .floor-plan-pointer {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #cca92c;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 3px 0 rgb(0 0 0 / 20%);
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.et-db #et-boc .wpvr-floor-map .floor-plan-pointer.add-pulse,
+.wpvr-floor-map .floor-plan-pointer.add-pulse{
+    animation: pulse 1s infinite;
+}
+.wpvr-floor-map .floor-plan-pointer.add-pulse:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-1deg);
+    width: 17px;
+    height: 17px;
+    background: transparent;
+    border-radius: 100%;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    display: none;
+}
+
+.wpvr-floor-map .floor-pointer-circle {
+    position: relative;
+    z-index: 1;
+}
+.wpvr-floor-map .floor-pointer-flash {
+    position: absolute;
+    width: 22px;
+    top: -22px;
+    left: -2px;
+    z-index: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+.wpvr-floor-map .add-pulse .floor-pointer-flash {
+    visibility: visible;
+    opacity: 1;
+}
+
+.et-db #et-boc .wpvr-floor-map img,
+.elementor .wpvr-floor-map img,
+.wpvr-floor-map img{
+    width: auto;
+    display: block;
+    margin-left: auto;
+    height: 100%;
+    border-radius: 5px;
+}
+.et-db #et-boc .wpvr-floor-map img{
+    border-radius: 5px!important;
+}
+
+#et-boc .et-l .explainer>iframe,
+.explainer>iframe {
+    border-radius: 10px;
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+#et-boc .et-l .explainer_button,
+.explainer_button {
+    position: absolute;
+    bottom: 15px;
+    right: 45px;
+    z-index: 9999;
+    text-align: center;
+    width: 50px;
+}
+.floor_map_button {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    z-index: 9999;
+    text-align: center;
+    width: 50px;
+}
+
+.et-db #et-boc .wpvr-floor-map .close-floor-map-plan,
+.wpvr-floor-map .close-floor-map-plan,
+#et-boc .et-l .explainer .close-explainer-video,
+.explainer .close-explainer-video {
+    position: absolute;
+    right: -7px;
+    top: -11px;
+    background: #fff;
+    line-height: 1;
+    width: 22px;
+    height: 22px;
+    border-radius: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 575px) {
+    .explainer {
+        width: 60%;
+        height: 60%;
+    }
+
+    .floor_map_button {
+        width: auto;
+        padding: 10px 10px 0;
+    }
+
+    .et-db #et-boc .wpvr-floor-map .close-floor-map-plan,
+    .wpvr-floor-map .close-floor-map-plan,
+    #et-boc .et-l .explainer .close-explainer-video,
+    .explainer .close-explainer-video {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.wpvr-navbar-container {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    list-style: none;
+    color: #fff;
+    justify-content: flex-end;
+    z-index: 9;
+    right: 0;
+}
+
+.wpvr-navbar-container>li {
+    margin: 10px;
+
+}
+
+.wpvr-navbar-container>li>a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.wpvr-navbar-dropdown {
+    list-style: none;
+    display: none;
+    position: absolute;
+}
+
+.wpvr-navbar-container>li:hover .wpvr-navbar-dropdown {
+    display: block;
+    margin-left: -50px;
+}
+
+.wpvr-navbar-dropdown>li>a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.wpvr-home-content {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.wpvr-home-content * {
+    box-sizing: border-box;
+}
+
+.wpvr-home-title {
+    font-size: calc(24px + (60 - 24) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.wpvr-home-subtitle {
+    font-size: calc(18px + (28 - 18) * ((100vw - 320px) / (1920 - 320)));
+    line-height: 1.2;
+}
+
+@media only screen and (min-width: 1921px) {
+    .wpvr-home-title {
+        font-size: 60px;
+    }
+
+    .wpvr-home-subtitle {
+        font-size: 18px;
+    }
+}
+
+.wpvr-topnav {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 3px;
+}
+
+.wpvr-mobile-notice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #004efa;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    display: none;
+    z-index: 9;
+}
+
+.wpvr-mobile-notice p {
+    color: #fff;
+    margin: 0;
+    font-size: 13px;
+    margin-right: 17px;
+    width: calc(100% - 20px);
+}
+
+.wpvr-mobile-notice .notice-close {
+    font-size: 11px;
+    border: 1px solid;
+    color: #fff;
+    display: inline-block;
+    line-height: 18px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+#cp-logo-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.wpvr-social-share-bg-box * {
+    box-sizing: border-box;
+}
+.wpvr-social-share-bg-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    text-align: center;
+    box-sizing: border-box;
+    display: block;
+}
+.wpvr-social-share-bg-box .share-btn-svg {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 100%;
+    background: #fff;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.16);
+    transition: all 0.3s ease;
+}
+
+.wpvr-social-share-bg-box .wpvr-share-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease 0.3s;
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+}
+.wpvr-social-share-bg-box:hover .share-btn-svg {
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: 0.1s;
+}
+.wpvr-social-share-bg-box:hover .wpvr-share-nav {
+    /* opacity: 1;
+    visibility: visible; */
+}
+
+.wpvr-social-share-bg-box .wpvr-share-nav >  a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    transition: all 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.wpvr-social-share-bg-box:hover .wpvr-share-nav >  a {
+    opacity: 1;
+    visibility: visible;
+}
+
+.wpvr-social-share-bg-box .wpvr-share-nav > a img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+}
+.wpvr-social-share-bg-box a.wpvr-facebook-icon {background: #3B5998;}
+.wpvr-social-share-bg-box a.wpvr-twitter-icon { background: #ffffff; }
+.wpvr-social-share-bg-box a.wpvr-linkedin-icon { background: #0077B5; }
+.wpvr-social-share-bg-box a.wpvr-reddit-icon { background: #FF5700; }
+.wpvr-social-share-bg-box a.wpvr-email-icon { background: #000000; }
+
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-reddit-icon,
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-twitter-icon,
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-linkedin-icon {
+    transform: translateY(-45px);
+}
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-reddit-icon,
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-twitter-icon,
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-email-icon,
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-linkedin-icon {
+    transform: translateY(0);
+}
+
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-facebook-icon {
+    transition-delay: 0.8s;
+}
+
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-linkedin-icon {
+    transition-delay: 0.7s;
+}
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-twitter-icon {
+    transition-delay: 0.6s;
+}
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-email-icon {
+    transition-delay: 0.3s;
+}
+.wpvr-social-share-bg-box .wpvr-share-nav > a.wpvr-reddit-icon {
+    transition-delay: 0.1s;
+}
+
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-facebook-icon,
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-linkedin-icon {
+    transition-delay: 0.1s;
+}
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-twitter-icon {
+    transition-delay: 0.3s;
+}
+.wpvr-social-share-bg-box:hover .wpvr-share-nav > a.wpvr-reddit-icon {
+    transition-delay: 0.5s;
+}
+
+.cp-logo-ctrl {
+    height: auto;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+
+.cp-logo-ctrl img {
+    max-width: 100px !important;
+    margin-left: auto;
+    display: block;
+}
+#et-boc .et-l .cp-logo-ctrl img {
+    max-width: 100px !important;
+    margin-left: auto!important;
+    display: block!important;
+}
+
+.adcontrol {
+    position: absolute;
+    bottom: 15px;
+    z-index: 5;
+}
+
+.audio_control {
+    background: none !important;
+    padding: unset;
+    border: none;
+}
+
+#cp-logo-controls .cp-logo-ctrl .cp-info {
+    font-size: 15px;
+    position: relative;
+    background: #fff;
+    max-width: 350px;
+    width: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+#cp-logo-controls .cp-logo-ctrl.show .cp-info {
+    display: block;
+}
+
+#et-boc .et-l .zoom-in-out-controls,
+.zoom-in-out-controls {
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    background: rgba(255, 255, 255, 0.27);
+    border-radius: 3px;
+}
+
+.zoom-in-out-controls .ctrl {
+    padding: 2px 0;
+}
+
+#et-boc .et-l .pnlm-container .controls,
+.pnlm-container .controls {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    z-index: 2;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.27);
+    border-radius: 100%;
+}
+
+.pnlm-load-button p {
+    color: #fff !important;
+}
+
+.ctrl {
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.ctrl i {
+    font-size: 18px;
+}
+
+.ctrl:hover {
+    background: none;
+}
+
+.controls .ctrl {
+    position: absolute;
+}
+
+.pan-up {
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.pan-down {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pan-left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.pan-right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ctrl.fullscreen {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div.pnlm-hotspot-base.fas:before,
+div.pnlm-hotspot-base.fab:before,
+div.pnlm-hotspot-base.far:before,
+div.pnlm-hotspot-base.fa-solid:before {
+    font-size: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.vrbounce {
+    display: inline-block;
+    position: relative;
+    -moz-animation: vrbounce 0.5s infinite linear;
+    -o-animation: vrbounce 0.5s infinite linear;
+    -webkit-animation: vrbounce 0.5s infinite linear;
+    animation: vrbounce 0.5s infinite linear;
+    color: 000;
+}
+
+
+.wpvr-pluse-effect {
+    animation: icon-pulse-pointer 1.5s infinite cubic-bezier(.25, 0, 0, 1);
+}
+@keyframes icon-pulse-pointer {
+    0% {
+        box-shadow: 0 0 0 0px #ffffff;
+    }
+
+    100% {
+        box-shadow: 0 0 0 10px #ffffff00;
+    }
+}
+
+
+@-webkit-keyframes vrbounce {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -0.2em;
+    }
+
+    70% {
+        top: -0.3em;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@-moz-keyframes vrbounce {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -0.2em;
+    }
+
+    70% {
+        top: -0.3em;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@-o-keyframes vrbounce {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -0.2em;
+    }
+
+    70% {
+        top: -0.3em;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@-ms-keyframes vrbounce {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -0.2em;
+    }
+
+    70% {
+        top: -0.3em;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes vrbounce {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -0.2em;
+    }
+
+    70% {
+        top: -0.3em;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+#et-boc .et-l .vrgcontrols,
+.vrgcontrols {
+    position: absolute;
+    z-index: 3;
+    width: 20px;
+    bottom: 0;
+    height: 30px;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    ;
+}
+
+#et-boc .et-l .wpvr_slider_nav,
+.wpvr_slider_nav {
+    position: absolute;
+    z-index: 3;
+    bottom: 15px;
+    height: 30px;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.wpvr_slider_nav .wpvr_owl_prev,
+.wpvr_slider_nav .wpvr_owl_next {
+    position: absolute;
+    border-radius: 4px;
+    bottom: 27px;
+    font-size: 16px;
+    padding: 0px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none !important;
+    background: #28303d !important;
+    color: #fff !important;
+    transition: all 0.3s ease;
+}
+
+.wpvr_slider_nav .wpvr_owl_prev:hover,
+.wpvr_slider_nav .wpvr_owl_next:hover {
+    background: #004efa !important;
+}
+
+.wpvr_slider_nav .wpvr_owl_prev {
+    left: 5px;
+}
+
+.wpvr_slider_nav .wpvr_owl_next {
+    right: 5px;
+}
+
+#et-boc .et-l .vrbounce,
+.vrbounce {
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+    padding-top: 10px;
+}
+#et-boc .et-l .vrbounce.vrg-icon-size-large i,
+.vrbounce.vrg-icon-size-large i {
+    font-size: 25px;
+}
+
+.scene-gallery ul {
+    margin: 0;
+    padding: 0;
+}
+
+.scene-gallery ul li {
+    list-style: none;
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.scene-gallery ul li img {
+    margin-top: 3px !important;
+}
+.et-db #et-boc .scene-gallery .owl-stage {
+    margin: 0 auto;
+}
+
+#et-boc .et-l .scene-gallery,
+.scene-gallery {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: #fff;
+}
+
+.scctrl {
+    border-radius: 5px !important;
+    width: 100px;
+    height: 100px !important;
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.scctrl:hover {
+    background: rgba(200, 200, 200, 1);
+}
+
+#master-container .vrfullwidth {
+    width: 98vw !important;
+    position: relative;
+    margin-left: -49vw !important;
+    left: 50% !important;
+    max-width: 100vw !important;
+}
+
+/* .vrCustomWidth {
+
+    position: relative;
+    margin-left: -49vw !important;
+    left: 50% !important;
+    max-width: 100vw !important;
+} */
+
+
+.vrembed {
+    width: 100% !important;
+    height: 100% !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+.cardboard-vrembed {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    background: #222;
+}
+
+.pnlm-container iframe {
+    max-width: inherit;
+    margin-bottom: 0;
+}
+
+.pnlm-hotspot-base.custom-icon {
+    width: 30px;
+    height: 30px;
+    display: block;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.pnlm-hotspot-base.custom-icon:hover {
+    z-index: 9;
+}
+
+.pnlm-panorama-info {
+    left: 0;
+    bottom: 0;
+}
+
+#et-boc .et-l div.custom-tooltip span,
+div.custom-tooltip span {
+    visibility: hidden;
+    position: absolute;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 10px;
+    cursor: default;
+    margin: 0 !important;
+    bottom: 40px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 300px;
+    font-weight: 400;
+}
+
+#et-boc .et-l div.custom-tooltip span p,
+div.custom-tooltip span p {
+    max-height: 250px;
+    overflow: auto;
+}
+
+#et-boc .et-l div.custom-tooltip span a,
+div.custom-tooltip span a {
+    transition: inherit;
+}
+
+#et-boc .et-l div.custom-tooltip span img,
+div.custom-tooltip span img {
+    max-width: inherit;
+    height: 225px;
+    width: 400px;
+}
+
+#et-boc .et-l div.pnlm-tooltip span,
+div.pnlm-tooltip span {
+    display: none;
+}
+
+#et-boc .et-l div.custom-tooltip:hover span,
+div.custom-tooltip:hover span {
+    visibility: visible;
+}
+
+.custom-tooltip:hover {
+    z-index: 2;
+}
+
+#et-boc .et-l div.custom-tooltip span.vr-mode-title:after,
+#et-boc .et-l div.custom-tooltip:hover span:after,
+div.custom-tooltip span.vr-mode-title:after,
+div.custom-tooltip:hover span:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+    bottom: -20px;
+    left: -10px;
+    margin: 0 50%;
+}
+
+#et-boc .et-l .custom-ifram-wrapper,
+.custom-ifram-wrapper {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+    width: 80%;
+    max-width: 980px;
+}
+#et-boc .et-l div.custom-tooltip span.vr-mode-title:after,
+div.custom-tooltip span.vr-mode-title:after{
+    bottom: -18px;
+}
+
+#et-boc .et-l .custom-tooltip span.vr-mode-title,
+.custom-tooltip span.vr-mode-title {
+    visibility: visible;
+    min-width: 80px;
+    line-height: 1;
+    left: 50%;
+}
+
+
+#et-boc .et-l .custom-ifram-flex,
+.custom-ifram-flex {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 5px;
+}
+
+#et-boc .et-l div.custom-ifram,
+div.custom-ifram {
+    width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.pano-wrap:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s linear;
+}
+
+.pano-wrap.show-modal:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.pano-wrap .cross {
+    background: #fff;
+    width: 24px;
+    height: 24px;
+    color: red;
+    line-height: 26px;
+    position: absolute;
+    top: -13px;
+    right: -10px;
+    text-align: center;
+    z-index: 99;
+    font-size: 13px;
+    border-radius: 100%;
+    padding-left: 0px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.pano-wrap.show-modal .cross {
+    opacity: 1;
+    visibility: visible;
+}
+
+#et-boc .et-l .custom-ifram p,
+#et-boc .et-l .custom-tooltip p,
+.custom-ifram p,
+.custom-tooltip p {
+    background-color: #fff;
+    padding: 10px 0;
+    margin: auto!important;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+#et-boc .et-l .custom-ifram p,
+.custom-ifram p {
+    padding: 10px;
+}
+
+#et-boc .et-l .custom-ifram video,
+.custom-ifram video {
+    margin: 0 auto;
+}
+
+#et-boc .et-l .custom-ifram img,
+.custom-ifram img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+#et-boc .et-l .custom-ifram iframe,
+.custom-ifram iframe {
+    max-width: 100%;
+    margin: 0 auto !important;
+    display: block;
+    width: auto !important;
+}
+
+/*-------load box----------*/
+.pnlm-load-box {
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.pnlm-load-box>p {
+    display: none;
+}
+
+.pnlm-load-box .pnlm-lbar {
+    width: 100%;
+    border: none;
+    height: 8px;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+}
+
+.pnlm-load-box .pnlm-lbar .pnlm-lbar-fill {
+    background: #4775f6;
+}
+
+.oxy-wp-vr-tour {
+    width: 100%;
+}
+
+/* ---------woocomerce product hotspot style--------- */
+.wpvr-product-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.wpvr-product-container .wpvr-pr-left-block {
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.wpvr-product-container .wpvr-pr-left-block .woocommerce-product-gallery__image img {
+    margin: 0;
+    max-width: 95%;
+    width: 100%;
+    height: auto;
+}
+
+.wpvr-product-container .wpvr-pr-right-block {
+    max-width: 50%;
+    padding-left: 15px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.wpvr-product-container .wpvr-pr-right-block a {
+    text-decoration: none !important;
+    display: inline-block;
+}
+
+.wpvr-product-container .wpvr-pr-right-block a h2 {
+    font-size: 18px;
+    line-height: 1.4;
+    margin: 0 0 15px 0;
+    text-align: left;
+}
+
+.wpvr-product-container .wpvr-pr-right-block a h2:before {
+    display: none;
+}
+
+.wpvr-product-container .wpvr-pr-right-block .add_to_cart_inline {
+    border: none !important;
+    padding: 0 !important;
+    text-align: left;
+    border-radius: 0;
+}
+
+.wpvr-product-container .wpvr-pr-right-block .add_to_cart_inline .amount {
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+.wpvr-product-container .wpvr-pr-right-block .add_to_cart_inline del .amount {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.wpvr-product-container .wpvr-pr-right-block .add_to_cart_inline .wpvr-cart-wrap {
+    display: block;
+}
+
+.wpvr-product-container .wpvr-pr-right-block .add_to_cart_inline a.button {
+    font-size: 16px;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/*-------streetview--------*/
+.vr-streetview iframe {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/*-------wpvr cardboard style--------*/
+.wpvr-cardboard {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+}
+
+.wpvr-cardboard .pano-wrap {
+    direction:ltr;
+    height: 100%!important;
+}
+
+
+.wpvr-cardboard .fullscreen-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: none;
+    z-index: 1000;
+    font-size: 25px;
+    padding: 9px 13px;
+}
+.cardboard-half {
+    width: 49%!important;
+}
+.wpvr-cardboard .fullscreen-button .compress {
+    display: none;
+}
+
+.wpvr-cardboard .pano-left {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/*------cardboard switcher design--------*/
+.wpvr-cardboard .wpvr-cardboard-switcher {
+    position: absolute;
+    bottom: 10px;
+    right: 6px;
+    z-index: 9;
+    cursor: pointer;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher.vr-embade-mode {
+    position: fixed;
+    z-index: 1000;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher input[type="checkbox"] {
+    display: none;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher .switcher-box {
+    width: 60px;
+    height: 35px;
+    border: 2px solid #216DF0;
+    border-radius: 100px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: #FFFFFF;
+    justify-content: center;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher .switcher-box svg {
+    width: 35px;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher input[type="checkbox"]:checked + .switcher-box {
+    background-color: #216DF0;
+    border-color: #216DF0;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher input[type="checkbox"]:checked + .switcher-box svg path {
+    fill: #FFFFFF;
+}
+
+.wpvr-cardboard .wpvr-cardboard-switcher .switcher-box .cardbord-mode-tooltip,
+.wpvr-cardboard .wpvr-cardboard-switcher .switcher-box .normal-mode-tooltip {
+    width: 155px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    display: block;
+    padding: 11px 7px;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1;
+    color: #000000;
+    display: none;
+}
+
+.wpvr-cardboard .wpvr-cardboard-switcher .switcher-box:hover .normal-mode-tooltip {
+    display: block;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher input[type="checkbox"]:checked + .switcher-box:hover .normal-mode-tooltip {
+    display: none;
+}
+.wpvr-cardboard .wpvr-cardboard-switcher input[type="checkbox"]:checked + .switcher-box:hover .cardbord-mode-tooltip {
+    display: block;
+}
+
+.wpvr-cardboard .wpvr-cardboard-switcher .switcher-box .cardbord-mode-tooltip:before,
+.wpvr-cardboard .wpvr-cardboard-switcher .switcher-box .normal-mode-tooltip:before {
+    content: "";
+    position: absolute;
+    right: 26px;
+    bottom: -5px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    transform: rotate(45deg);
+    border-radius: 3px;
+}
+.cardboard-vrfullwidth.vrfullwidth {
+    display: flex;
+    flex-flow: row wrap;
+    height: 100%;
+    justify-content: space-between;
+}
+/* -landscape mode- */
+.wpvr-landscape{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.wpvr-cardboard-disable-event  {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ---------responsive style--------- */
+@media only screen and (min-width: 1921px) {
+    .wpvr-home-title {
+        font-size: 70px;
+    }
+
+    .wpvr-home-subtitle {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .pnlm-container {
+        width: 100% !important;
+        height: 500px !important;
+    }
+
+    .pnlm-container.vrembed {
+        height: 100% !important;
+    }
+    .pnlm-container.cardboard-half {
+        width: 49% !important;
+    }
+    .custom-ifram iframe {
+        height: 300px;
+    }
+
+    div.custom-ifram {
+        width: 100%;
+    }
+
+    .custom-tooltip p {
+        width: 430px;
+    }
+
+    /*-------streetview--------*/
+    .vr-streetview {
+        width: 100% !important;
+        height: 500px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    div.custom-tooltip span img {
+        height: 195px;
+        width: 340px;
+    }
+
+    .custom-ifram iframe {
+        height: 194px;
+        width: 350px;
+    }
+
+    .custom-tooltip p {
+        width: 330px;
+    }
+
+    .wpvr-product-container .wpvr-pr-right-block .add_to_cart_inline a.button {
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    div.custom-tooltip span img {
+        height: 240px;
+        width: 420px;
+    }
+
+    .custom-ifram iframe {
+        height: 320px;
+        width: 100%;
+    }
+    .pnlm-container.cardboard-half {
+        width: 49% !important;
+    }
+    .custom-tooltip p {
+        width: 430px;
+    }
+    .wpvr-cardboard .pnlm-compass {
+        right: 7px;
+    }
+    .wpvr-cardboard.enable-cardboard .pnlm-compass {
+        right: 74px!important;
+    }
+
+    .et-db #et-boc .wpvr-floor-map,
+    .wpvr-floor-map {
+        /*max-width: 60%;*/
+        max-width: 300px;
+        height: 213px;
+        bottom: 50px;
+    }
+
+}
+
+@media (max-width: 575px) {
+    .wpvr-mobile-notice {
+        display: flex;
+    }
+
+    .wpvr-mobile-notice p {
+        width: calc(100% - 46px);
+    }
+
+    .scene-gallery ul {
+        width: 100px !important;
+    }
+
+    .scene-gallery {
+        padding: 18px 10px;
+    }
+
+    .scctrl {
+        height: 50px !important;
+    }
+
+    .pnlm-container {
+        width: 100% !important;
+        height: 300px !important;
+    }
+    .pnlm-container.cardboard-half {
+        width: 49% !important;
+    }
+
+    .pnlm-container.vrembed {
+        height: 100% !important;
+    }
+
+    div.custom-tooltip span img {
+        height: 150px;
+        width: 220px;
+    }
+
+    .custom-ifram iframe {
+        height: 250px;
+        width: 100%;
+    }
+
+    .custom-tooltip p {
+        width: 200px;
+    }
+
+    #cp-logo-controls .cp-logo-ctrl .cp-info {
+        width: 280px;
+    }
+
+    div.pnlm-hotspot-base.fas,
+    div.pnlm-hotspot-base.fab,
+    div.pnlm-hotspot-base.fa,
+    div.pnlm-hotspot-base.fa-solid,
+    div.pnlm-hotspot-base.far {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    div.pnlm-hotspot-base:before,
+    div.pnlm-hotspot-base:before,
+    div.pnlm-hotspot-base:before {
+        font-size: 11px !important;
+    }
+
+    /*-------streetview--------*/
+    .vr-streetview {
+        width: 100% !important;
+        height: 300px !important;
+    }
+
+
+    /* ----woocommerce product---- */
+    .wpvr-product-container {
+        display: block;
+    }
+
+    .wpvr-product-container .wpvr-pr-left-block {
+        width: 100%;
+        max-width: 100px;
+        margin: 0 auto 5px;
+    }
+
+    .wpvr-product-container .wpvr-pr-right-block {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+    }
+
+    .wpvr-product-container .wpvr-pr-right-block a h2 {
+        text-align: center;
+        margin: 0 0 10px 0;
+    }
+
+    .wpvr-product-container .wpvr-pr-right-block .add_to_cart_inline {
+        text-align: center;
+    }
+
+}
+
+.vrowl-carousel .owl-stage {
+    margin: 0 auto;
+}
+
+.vrowl-carousel .owl-item img {
+    margin: 0;
+}
+
+/* --------hamburger menu style--------- */
+/*.et-db #et-boc,*/
+ #master-container .custom-scene-navigation {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 4;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.27)!important;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.16);
+    width: 30px;
+    height: 28px;
+    cursor: pointer;
+    padding-left: 1px;
+    box-sizing: border-box;
+}
+/*.et-db #et-boc,*/
+#master-container .custom-scene-navigation .hamburger-menu {
+    display: block;
+    line-height: 1;
+}
+/*.et-db #et-boc,*/
+ #master-container .custom-scene-navigation .hamburger-menu svg {
+    display: block;
+}
+
+
+/*!* --------hamburger menu dropdown style--------- *!*/
+/*.et-db #et-boc,*/
+ #master-container .custom-scene-navigation-nav {
+    max-height: calc(100% - 20px);
+    left: 43px;
+    top: 4px;
+    color: #8E44AD;
+    width: 176px;
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    border-radius: 6px;
+    background: #FFF!important;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.16);
+    padding: 8px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+/*.et-db #et-boc,*/
+#master-container .custom-scene-navigation-nav::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+/*.et-db #et-boc,*/
+#master-container .custom-scene-navigation-nav::-webkit-scrollbar-track {
+    background: #f2f5f8;
+}
+/*.et-db #et-boc,*/
+ #master-container .custom-scene-navigation-nav::-webkit-scrollbar-thumb {
+    background-color: #396CE9;
+    border-radius: 20px;
+}
+/*.et-db #et-boc,*/
+/*.et-db #et-boc .et-l,*/
+#master-container .custom-scene-navigation-nav.visible {
+    opacity: 1;
+    visibility: visible;
+}
+/*.et-db #et-boc,*/
+#master-container .custom-scene-navigation-nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+/*.et-db #et-boc,*/
+#master-container .custom-scene-navigation-nav ul .scene-navigation-list {
+    color: #292C2F;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+/*.et-db #et-boc,*/
+#master-container .custom-scene-navigation-nav ul .scene-navigation-list.active,
+#master-container .custom-scene-navigation-nav ul .scene-navigation-list:hover {
+    background: #EDEDED;
+}
+
+
+/* ------------call to action button sytle----------- */
+.wpvr-call-to-action-button * {
+    box-sizing: border-box;
+}
+
+.wpvr-call-to-action-button {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.wpvr-call-to-action-button.position-left {
+    text-align: left;
+}
+
+.wpvr-call-to-action-button.position-center {
+    text-align: center;
+}
+
+.wpvr-call-to-action-button.position-right {
+    text-align: right;
+}
+
+.wpvr-call-to-action-button.position-justified a {
+    width: 100%;
+}
+
+
+@media (max-width: 424px) {
+    /*.et-db #et-boc .wpvr-floor-map, */
+    /*.wpvr-floor-map {*/
+    /*    height: 45%;*/
+    /*}*/
+
+    .et-db #et-boc .wpvr-floor-map img,
+    .elementor .wpvr-floor-map img,
+    .wpvr-floor-map img {
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+    }
+
+}
