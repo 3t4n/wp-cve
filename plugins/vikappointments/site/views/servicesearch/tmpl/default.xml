@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_VIKAPPOINTMENTS_SERVICESEARCH_VIEW_DEFAULT_TITLE">
+		<message>COM_VIKAPPOINTMENTS_SERVICESEARCH_VIEW_DEFAULT_DESC</message>
+	</layout>
+	<view title="Service Search" >
+		<message><![CDATA[VikAppointments]]></message>
+	</view>
+	<state>
+		<name>Service Search</name>
+		<description>VikAppointments</description>
+	</state>
+	<fields name="request">
+		<fieldset name="request">
+
+			<field
+				name="id_service"
+				type="sql"
+				required="true"
+				label="COM_VIKAPPOINTMENTS_SERVICESEARCH_FIELD_SELECT_TITLE"
+				description="COM_VIKAPPOINTMENTS_SERVICESEARCH_FIELD_SELECT_TITLE_DESC"
+				query="SELECT `s`.`id`, `s`.`name`
+				FROM `#__vikappointments_service` AS `s`
+				ORDER BY `s`.`name` ASC"
+				key_field="id"
+				value_field="name"
+			>
+				<option>JGLOBAL_SELECT_AN_OPTION</option>
+			</field>
+
+		</fieldset>
+	</fields>
+</metadata>

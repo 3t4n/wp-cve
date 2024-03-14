@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_VIKAPPOINTMENTS_SERVICESLIST_VIEW_DEFAULT_TITLE">
+		<message>COM_VIKAPPOINTMENTS_SERVICESLIST_VIEW_DEFAULT_DESC</message>
+	</layout>
+	<view title="Services List" >
+		<message><![CDATA[VikAppointments]]></message>
+	</view>
+	<state>
+		<name>Services List</name>
+		<description>VikAppointments</description>
+	</state>
+	<fields name="request">
+		<fieldset name="request">
+
+			<field
+				name="service_group"
+				type="sql"
+				required="false"
+				label="COM_VIKAPPOINTMENTS_SERVICESLIST_FIELD_SELECT_TITLE"
+				description="COM_VIKAPPOINTMENTS_SERVICESLIST_FIELD_SELECT_TITLE_DESC"
+				query="SELECT `g`.`id`, `g`.`name`
+				FROM `#__vikappointments_group` AS `g`
+				ORDER BY `g`.`ordering` ASC"
+				key_field="id"
+				value_field="name"
+			>
+				<option>JALL</option>
+			</field>
+
+		</fieldset>
+	</fields>
+</metadata>

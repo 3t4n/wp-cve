@@ -1,0 +1,236 @@
+/* inspector sidebar */
+
+.record-inspector-overlay {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: #20202090;
+	z-index: 999;
+	display: none;
+}
+.record-inspector {
+	background: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	min-width: 500px;
+	max-width: 500px;
+	/*padding: 30px 16px;*/
+	padding: 30px 0;
+
+	transition: 0.3s ease-in all;
+	-moz-transition: 0.3s ease-in all;
+	-webkit-transition: 0.3s ease-in all;
+}
+.record-inspector.right-side {
+	right: 0;
+	transform: translateX(100%);
+}
+.record-inspector.left-side {
+	left: 0;
+	transform: translateX(-100%);
+}
+.record-inspector.right-side.slide-in,
+.record-inspector.left-side.slide-in {
+	transform: translateX(0%);
+}
+.record-inspector.blank-template {
+	padding: 0;
+}
+.record-inspector.blank-template .inspector-footer {
+	bottom: 0;
+}
+.record-inspector .inspector-head {
+	display: inline-block;
+	width: calc(100% - 24px);
+	padding: 14px 12px;
+}
+.record-inspector .inspector-head:not(.empty) {
+	border-bottom: 1px solid #e8e8e8;
+}
+.record-inspector .inspector-head > h3 {
+	width: calc(100% - 30px);
+	float: left;
+	margin: 0;
+	line-height: 24px;
+}
+.record-inspector .inspector-head > a.dismiss {
+	float: right;
+	font-size: 24px;
+	color: #ccc;
+	cursor: pointer;
+}
+.record-inspector .inspector-head > a.dismiss:hover {
+	color: #888;
+}
+.record-inspector .inspector-body {
+	height: calc(100% - 108px);
+	overflow-y: scroll;
+	padding: 0 12px;
+}
+.record-inspector .inspector-body > .inspectory-body-loading {
+	min-height: 100%;
+	background-image: url(./images/loading.gif);
+	background-repeat: no-repeat;
+	background-position: 50%;
+}
+.record-inspector .inspector-body .inspector-form input,
+.record-inspector .inspector-body .inspector-form select,
+.record-inspector .inspector-body .inspector-form textarea {
+	width: calc(100% - 14px) !important;
+	/*margin: 0 0 10px 0;*/
+	margin: 0;
+}
+.record-inspector .inspector-body .inspector-form .select2-container input {
+	margin: 0;
+}
+.record-inspector .inspector-body .inspector-form textarea {
+	height: 120px;
+}
+.record-inspector .inspector-body .inspector-form .select2-container {
+	width: 100% !important;
+	/*margin: 0 0 10px 0;*/
+	margin: 0;
+}
+.record-inspector .inspector-body .inspector-form .control-group {
+	/*margin-bottom: 9px;*/
+	margin-bottom: 15px;
+}
+.record-inspector .inspector-body .inspector-form .controls {
+	margin: 0;
+}
+.record-inspector .inspector-body .inspector-form .control-label,
+.record-inspector .inspector-body .inspector-form .controls .field-calendar {
+	max-width: 100%;
+	width: 100%;
+}
+.record-inspector .inspector-body .inspector-form .controls > .input-append,
+.record-inspector .inspector-body .inspector-form .controls > .input-prepend,
+.record-inspector .inspector-body .inspector-form .controls .field-calendar .input-append {
+	width: 100%;
+	display: flex;
+}
+.record-inspector .inspector-body .inspector-form .controls > .input-append,
+.record-inspector .inspector-body .inspector-form .controls > .input-prepend {
+	margin-bottom: 18px;
+}
+.record-inspector .inspector-body .inspector-form .input-append input,
+.record-inspector .inspector-body .inspector-form .input-prepend input,
+.record-inspector .inspector-body .inspector-form .controls .field-calendar .input-append {
+	margin-bottom: 0;
+}
+
+.record-inspector .inspector-body .inspector-form .inspector-repeatable {
+	margin-bottom: 10px;
+}
+.record-inspector .inspector-body .inspector-form .inspector-repeatable .inspector-repeatable-head {
+	padding: 10px;
+	background: #efefef;
+	border: 1px solid #ddd;
+	border-bottom-width: 0;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.record-inspector .inspector-body .inspector-form .inspector-repeatable .inspector-repeatable-body {
+	padding: 10px 10px 0 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background: #fff;
+}
+.record-inspector .inspector-body .inspector-form .inspector-repeatable .inspector-repeatable-head + .inspector-repeatable-body {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.record-inspector .inspector-body .inspector-form .inspector-repeatable.collapsed .inspector-repeatable-head {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-width: 1px; 
+}
+.record-inspector .inspector-body .inspector-form .inspector-repeatable.collapsed .inspector-repeatable-body {
+	display: none;
+}
+
+.record-inspector .inspector-body .inspector-form select.time {
+	/* use "auto" width for select within datepicker */
+	width: auto !important;
+}
+
+@media screen and (max-width: 767px) {
+	.record-inspector .inspector-body .inspector-form .vap-quest-popover {
+		display: none;
+	}
+}
+
+.record-inspector .inspector-footer {
+	position: absolute;
+	bottom: 28px;
+	left: 0;
+	right: 0;
+	padding: 12px;
+	background: #f3f3f3;
+}
+.record-inspector.left-side .inspector-footer {
+	text-align: right;
+}
+
+.record-inspector .inspector-body .inspector-form .inspector-selection-table {
+	width: 100%;
+	position: relative;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table thead th {
+	padding: 5px;
+	background-color: #f2f3f5; 
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table td {
+	padding: 8px 0 8px 5px;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table tbody tr:first-child td {
+	padding-top: 16px;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table tbody tr:last-child td {
+	padding-bottom: 16px;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table label {
+	display: inline-block;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table .currency-field {
+	width: 100%;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table .currency-field input {
+	width: calc(100% - 48px) !important;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table input[type="checkbox"] {
+	width: 14px !important;
+	height: 14px !important;
+	margin-top: -2px;
+}
+.record-inspector .inspector-body .inspector-form .inspector-selection-table input,
+.record-inspector .inspector-body .inspector-form .inspector-selection-table .input-append,
+.record-inspector .inspector-body .inspector-form .inspector-selection-table .input-prepend {
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+	.record-inspector {
+		padding-top: 0px;
+	}
+	.record-inspector .inspector-body {
+		height: calc(100% - 80px);
+	}
+	.record-inspector .inspector-footer {
+		bottom: 0;
+	}
+}
+@media screen and (max-width: 600px) {
+	.record-inspector {
+		    width: 100% !important;
+		min-width: 100% !important;
+		max-width: 100% !important;
+	}
+}

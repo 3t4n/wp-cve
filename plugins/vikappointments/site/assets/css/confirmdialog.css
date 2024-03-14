@@ -1,0 +1,72 @@
+/* custom confirmation dialog */
+
+.vik-confirm-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.40);
+	z-index: 10001;
+}
+.vik-confirm-dialog {
+	position: absolute;
+	top: 44%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px 0;
+	background: #fff;
+	width: 440px;
+	border-radius: 6px;
+	box-shadow: 4px 4px 5px 0 #848484;
+	font-size: 14px;
+}
+.vik-confirm-message {
+	padding: 10px 25px 20px 25px;
+	border-bottom: 1px solid #e6e6e6;
+	max-height: 80vh;
+}
+.vik-confirm-buttons {
+	padding: 10px 25px;
+}
+.vik-confirm-buttons a:first-child {
+	font-weight: bold;
+	margin-right: 0;
+}
+.vik-confirm-buttons > a {
+	float: right;
+	margin: 0 8px;
+	cursor: pointer;
+	color: #2c74fa;
+}
+.vik-confirm-buttons > a:hover {
+	text-decoration: none;
+	color: #2c74fa;
+}
+@media screen and (max-width: 520px) {
+	.vik-confirm-dialog {
+		width: 90%;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.vik-confirm-dialog {
+		background: #1f1c1c;
+		-webkit-box-shadow: 0px 0px 6px 1px rgba(100,100,100,1);
+		-moz-box-shadow: 0px 0px 6px 1px rgba(100,100,100,1);
+		box-shadow: 0px 0px 6px 1px rgba(100,100,100,1);
+		color: #fff;
+	}
+
+	.vik-confirm-message {
+		border-bottom-color: #3b3b3b;
+	}
+
+	.vik-confirm-buttons > a {
+		color: #fff;
+	}
+	.vik-confirm-buttons > a:hover {
+		color: #fff;
+	}
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_VIKAPPOINTMENTS_EMPLOYEESEARCH_VIEW_DEFAULT_TITLE">
+		<message>COM_VIKAPPOINTMENTS_EMPLOYEESEARCH_VIEW_DEFAULT_DESC</message>
+	</layout>
+	<view title="Employee Search" >
+		<message><![CDATA[VikAppointments]]></message>
+	</view>
+	<state>
+		<name>Employee Search</name>
+		<description>VikAppointments</description>
+	</state>
+	<fields name="request">
+		<fieldset name="request">
+
+			<field
+				name="id_employee"
+				type="sql"
+				required="true"
+				label="COM_VIKAPPOINTMENTS_EMPLOYEESEARCH_FIELD_SELECT_TITLE"
+				description="COM_VIKAPPOINTMENTS_EMPLOYEESEARCH_FIELD_SELECT_TITLE_DESC"
+				query="SELECT `e`.`id`, CONCAT_WS(' ', `e`.`lastname`, `e`.`firstname`) AS `text`
+				FROM `#__vikappointments_employee` AS `e`
+				ORDER BY `e`.`lastname` ASC, `e`.`firstname` ASC"
+				key_field="id"
+				value_field="text"
+			>
+				<option>JGLOBAL_SELECT_AN_OPTION</option>
+			</field>
+
+		</fieldset>
+	</fields>
+</metadata>

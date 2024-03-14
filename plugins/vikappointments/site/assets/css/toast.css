@@ -1,0 +1,284 @@
+/* toast common */
+
+.vap-toast-wrapper {
+	position: fixed;
+	width: 400px;
+	z-index: 100000;
+}
+.vap-toast-wrapper.ready {
+	transition: 0.4s ease all;
+	-moz-transition: 0.4s ease all;
+	-webkit-transition: 0.4s ease all;
+}
+.vap-toast-wrapper.clickable {
+	cursor: pointer;
+}
+.vap-toast-wrapper .toast-message {
+	background: none repeat scroll 0 0 #fff;
+}
+.vap-toast-wrapper .toast-message-content {
+	padding: 20px 25px;
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+	border: 1px solid #333;
+	border-radius: 1px;
+	color: #333;
+	background-color: rgba(64, 64, 64, 0.15);
+}
+.vap-toast-wrapper .toast-message-content.error {
+	border: 1px solid #990000;
+	background-color: rgba(153, 0, 0, 0.20)
+}
+.vap-toast-wrapper .toast-message-content.success {
+	border: 1px solid #59a27b;
+	background-color: rgba(112, 204, 135, 0.40);
+}
+.vap-toast-wrapper .toast-message-content.warning {
+	border: 1px solid #e08950;
+	background-color: rgba(224, 137, 80, 0.35);
+}
+.vap-toast-wrapper .toast-message-content.notice {
+	border: 1px solid #36add7;
+	background-color: rgba(54, 173, 215, 0.20);
+}
+
+/* toast hidden positions */
+.vap-toast-wrapper.top-left,
+.vap-toast-wrapper.top-center,
+.vap-toast-wrapper.top-right {
+	/*
+	Use a higher margin to avoid seeing the toast on
+	browsers (like Safari) that lets the user to scroll
+	even if the page reached the end.
+	Same thing for the bottom position.
+	*/
+	top: -100px;
+	transform: translateY(-100%);
+}
+.vap-toast-wrapper.top-left,
+.vap-toast-wrapper.bottom-left {
+	left: 10px;
+}
+.vap-toast-wrapper.top-right,
+.vap-toast-wrapper.bottom-right {
+	right: 10px;
+}
+.vap-toast-wrapper.top-center {
+	left: 50%;
+	transform: translate(-50%, -100%);
+}
+
+.vap-toast-wrapper.bottom-left,
+.vap-toast-wrapper.bottom-center,
+.vap-toast-wrapper.bottom-right {
+	bottom: -100px;
+	transform: translateY(100%);
+}
+.vap-toast-wrapper.bottom-center {
+	left: 50%;
+	transform: translate(-50%, 100%);
+}
+
+/* toast slide-in positions */
+
+.vap-toast-wrapper.top-left.toast-slide-in,
+.vap-toast-wrapper.top-center.toast-slide-in,
+.vap-toast-wrapper.top-right.toast-slide-in {
+	transform: translateY(0%);
+	top: 10px;
+}
+.vap-toast-wrapper.bottom-left.toast-slide-in,
+.vap-toast-wrapper.bottom-center.toast-slide-in,
+.vap-toast-wrapper.bottom-right.toast-slide-in {
+	transform: translateY(0%);
+	bottom: 15px;
+}
+
+.vap-toast-wrapper.top-center.toast-slide-in,
+.vap-toast-wrapper.bottom-center.toast-slide-in {
+	transform: translate(-50%, 0%);
+}
+
+/* shake effect */
+
+.vap-toast-wrapper.do-shake {
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+.vap-toast-wrapper.top-center.do-shake,
+.vap-toast-wrapper.bottom-center.do-shake {
+	animation: shake-animation-center 0.82s cubic-bezier(.36, .07, .19, .97) both;
+	transform: translate3d(-50%, 0, 0) !important;
+}
+@keyframes shake-animation-center {
+	10%, 90% {
+		transform: translate3d(-50.5%, 0, 0);
+	}
+
+	20%, 80% {
+		transform: translate3d(-49%, 0, 0);
+	}
+
+	30%, 50%, 70% {
+		transform: translate3d(-52%, 0, 0);
+	}
+
+	40%, 60% {
+		transform: translate3d(-48%, 0, 0);
+	}
+}
+
+.vap-toast-wrapper.top-left.do-shake,
+.vap-toast-wrapper.top-right.do-shake,
+.vap-toast-wrapper.bottom-left.do-shake,
+.vap-toast-wrapper.bottom-right.do-shake {
+	animation: shake-animation-side 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+@keyframes shake-animation-side {
+	10%, 90% {
+		transform: translate3d(-0.5%, 0, 0);
+	}
+
+	20%, 80% {
+		transform: translate3d(1%, 0, 0);
+	}
+
+	30%, 50%, 70% {
+		transform: translate3d(-2%, 0, 0);
+	}
+
+	40%, 60% {
+		transform: translate3d(2%, 0, 0);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.vap-toast-wrapper {
+		right: 10px !important;
+		width: calc(100% - 20px) !important;
+	}	
+}
+
+/* toast message template */
+
+.vap-pushnotif-wrapper {
+	display: flex;
+	align-items: center;
+}
+.vap-pushnotif-wrapper .push-notif-icon {
+	margin-right: 10px;
+}
+.vap-pushnotif-wrapper .push-notif-icon i {
+	font-size: 32px;
+	font-weight: bold;
+}
+.vap-pushnotif-wrapper .push-notif-icon img {
+	max-width: 48px;
+	max-height: 48px;
+}
+.vap-pushnotif-wrapper .push-notif-text {
+	flex: 1;
+	max-width: 100%;
+}
+.vap-pushnotif-wrapper .push-notif-text .push-notif-title {
+	font-size: larger;
+	font-weight: bold;
+}
+.vap-pushnotif-wrapper .push-notif-text .push-notif-body {
+	font-weight: 500;
+}
+.vap-pushnotif-wrapper .push-notif-text .push-notif-title + .push-notif-body {
+	margin-top: 5px;
+}
+
+/* push notification template */
+
+.vap-toast-wrapper.push-notif .toast-message {
+	background: transparent;
+	/* disable selection  */
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+		 -moz-user-select: none; /* Old versions of Firefox */
+		  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+								  supported by Chrome, Edge, Opera and Firefox */
+}
+.vap-toast-wrapper.push-notif .toast-message-content {
+	overflow: hidden;
+	font-size: .875rem;
+	font-weight: normal;
+	background-color: rgba(255,255,255,.90);
+	background-clip: padding-box;
+	border: 1px solid rgba(0,0,0,.1);
+	box-shadow: 0 .25rem .75rem rgba(0,0,0,.1);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	border-radius: .25rem;
+	padding: 0;
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header {
+	display: flex;
+	align-items: center;
+	padding: .5rem .75rem;
+	background-color: rgba(255,255,255,.90);
+	background-clip: padding-box;
+	border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header .push-notif-icon {
+	display: flex;
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header .push-notif-icon i {
+	font-size: 20px;
+	color: #007aff;
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header .push-notif-icon img {
+	max-width: 20px;
+	max-height: 20px;
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header .push-notif-title {
+	color: #6c757d;
+	font-size: 0.95rem;
+	font-weight: 500;
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header small {
+	color: #6c757d;
+	font-size: .75rem;
+	margin-left: 5px;
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-body {
+	padding: .75rem;
+	margin: 0;
+	font-weight: normal;
+}
+.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-body .push-notif-body-inner {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+@media (prefers-color-scheme: dark) {
+	.vap-toast-wrapper.push-notif .toast-message-content {
+		background-color: rgba(32,28,37,.90);
+		border-color: rgba(32,28,37,.90);
+		box-shadow: 0 .25rem .75rem rgba(0,0,0,1);
+	}
+	.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header {
+		background-color: rgba(32,28,37,.90);
+		border-bottom: 1px solid rgba(255,255,255,.05);
+	}
+	.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-header .push-notif-title {
+		color: #a9a5af;
+	}
+	.vap-toast-wrapper.push-notif .vap-pushnotif-wrapper .push-notif-body {
+		color: #e2e2e3;
+	}
+}

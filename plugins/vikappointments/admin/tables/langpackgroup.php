@@ -1,0 +1,34 @@
+<?php
+/** 
+ * @package     VikAppointments
+ * @subpackage  core
+ * @author      E4J s.r.l.
+ * @copyright   Copyright (C) 2021 E4J s.r.l. All Rights Reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @link        https://vikwp.com
+ */
+
+// No direct access
+defined('ABSPATH') or die('No script kiddies please!');
+
+/**
+ * VikAppointments language packages group table.
+ *
+ * @since 1.7
+ */
+class VAPTableLangpackgroup extends JTableVAP
+{
+	/**
+	 * Class constructor.
+	 *
+	 * @param 	object 	$db  The database driver instance.
+	 */
+	public function __construct($db)
+	{
+		parent::__construct('#__vikappointments_lang_package_group', 'id', $db);
+
+		// register required fields
+		$this->_requiredFields[] = 'id_package_group';
+		$this->_requiredFields[] = 'tag';
+	}
+}

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0.0" client="site" method="upgrade">
+	<name>VikAppointments Services</name>
+	<author>Extensionsforjoomla.com</author>
+	<creationDate>December 7, 2023</creationDate>
+	<copyright>Copyright (C) 2023 Extensionsforjoomla.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>dev@extensionsforjoomla.com</authorEmail>
+	<authorUrl>https://extensionsforjoomla.com</authorUrl>
+	<version>1.4.4</version>
+	<description>This module shows a sliding list of services for VikAppointments 1.7.2 or newer.</description>
+
+	<files>
+		<filename module="mod_vikappointments_services">mod_vikappointments_services.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_vikappointments_services.xml</filename>
+		<filename>mod_vikappointments_services.css</filename>
+		<folder>libraries</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">languages/en-GB.mod_vikappointments_services.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+
+			<fieldset name="basic">	
+
+				<field
+					name="itemid"
+					type="menuitem"
+					default="0"
+					label="VAP_SERVICES_MENU_ITEM"
+					description="VAP_SERVICES_MENU_ITEM_DESC"
+				>
+					<option value="">COM_MODULES_OPTION_SELECT_MENU_ITEM</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="items">
+
+				<field
+					name="groupfilter"
+					type="sql"
+					default=""
+					label="VAGROUPFILTER"
+					description="VAGROUPFILTERDESC"
+					query="SELECT `g`.`id`, `g`.`name` FROM `#__vikappointments_group` AS `g` ORDER BY `g`.`ordering` ASC;" 
+					key_field="id"
+					value_field="name"
+					multiple="true"
+					layout="joomla.form.field.list-fancy-select"
+				/>
+
+				<field
+					name="servicefilter"
+					type="sql"
+					default=""
+					label="VASERVICEFILTER"
+					description="VASERVICEFILTERDESC"
+					query="SELECT `s`.`id`, `s`.`name` FROM `#__vikappointments_service` AS `s` ORDER BY `s`.`ordering` ASC;" 
+					key_field="id"
+					value_field="name"
+					multiple="true"
+					layout="joomla.form.field.list-fancy-select"
+				/>
+
+				<field 
+					name="numb_roomrow" 
+					type="number" 
+					default="4" 
+					min="0" 
+					max="10" 
+					step="1" 
+					label="VASERVICESNUMBROW" 
+					description="VASERVICESNUMBROWDESC" 
+					size="5" 
+					filter="integer"
+				/>
+
+				<field
+					name="showimg"
+					type="radio"
+					default="1"
+					label="VASERVICESIMAGE"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="showdesc"
+					type="radio"
+					default="0"
+					label="VASERVICESDESC"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="showduration"
+					type="radio"
+					default="0"
+					label="VASERVICESDURATION"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="showprice"
+					type="radio"
+					default="1"
+					label="VASERVICESPRICE"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="showpricelabel"
+					type="radio"
+					default="0"
+					label="VASERVICESPRICELABEL"
+					description="VASERVICESPRICELABELDESC"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="showbutton"
+					type="radio"
+					default="0"
+					label="VASERVICESBUTTON"
+					description="VASERVICESBUTTONDESC"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="slide">
+
+				<field
+					name="pagination"
+					type="radio"
+					default="1"
+					label="VASERVICESDOTNAV"
+					description="VASERVICESDOTNAVDESC"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="navigation"
+					type="radio"
+					default="0"
+					label="VASERVICESARROWS"
+					description="VASERVICESARROWSDESC"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="autoplay"
+					type="radio"
+					default="1"
+					label="VASERVICESAUTOPLAY"
+					description="VASERVICESAUTOPLAYDESC"
+					class="btn-group btn-group-yesno"	
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="autoplaytime"
+					type="text"
+					default="5000"
+					label="VASERVICESTIMESCROLL"
+					description="VASERVICESTIMESCROLLDESC"
+				/>
+
+			</fieldset>
+
+			<fieldset name="advanced">
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+					class="form-select"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					default=""
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+				/>
+
+			</fieldset>
+
+		</fields>
+	</config>
+
+	<updateservers>
+		<server type="extension" name="VikAppointments Modules Update Site" priority="1">https://extensionsforjoomla.com/vikapi/?task=joomla.updateserver&amp;sku=vap-ser</server>
+	</updateservers>
+
+</extension>

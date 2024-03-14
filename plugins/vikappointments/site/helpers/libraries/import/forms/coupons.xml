@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<importable>
+
+	<table name="#__vikappointments_coupon" id="coupon">
+
+		<column 
+			name="code" 
+			label="VAPMANAGECOUPON2"
+			required="1"
+			filter="alnum"
+		/>
+		
+		<column
+			name="type"
+			label="VAPMANAGECOUPON3"
+			required="0"
+			default="1"
+			filter="uint"
+		>
+			<option value="1">VAPCOUPONTYPEOPTION1</option>
+			<option value="2">VAPCOUPONTYPEOPTION2</option>
+		</column>
+
+		<column
+			name="percentot"
+			label="VAPMANAGECOUPON4"
+			required="0"
+			default="2"
+			filter="uint"
+		>
+			<option value="1">VAPCOUPONVALUETYPE1</option>
+			<option value="2">VAPCOUPONVALUETYPE2</option>
+		</column>
+
+		<column
+			name="value"
+			label="VAPMANAGECOUPON5"
+			required="0"
+			filter="float"
+		/>
+
+		<column
+			name="mincost"
+			label="VAPMANAGECOUPON6"
+			required="0"
+			filter="float"
+			type="currency"
+		/>
+
+		<column
+			name="dstart"
+			label="VAPMANAGECOUPON7"
+			required="0"
+			default="-1"
+			filter="string"
+			type="date"
+		>
+			<option value="-1">/</option>
+		</column>
+
+		<column
+			name="dend"
+			label="VAPMANAGECOUPON8"
+			required="0"
+			default="-1"
+			filter="string"
+			type="date"
+		>
+			<option value="-1">/</option>
+		</column>
+
+	</table>
+
+	<cancel task="coupon.cancel" />
+
+</importable>

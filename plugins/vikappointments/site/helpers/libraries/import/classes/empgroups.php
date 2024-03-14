@@ -1,0 +1,42 @@
+<?php
+/** 
+ * @package     VikAppointments
+ * @subpackage  core
+ * @author      E4J s.r.l.
+ * @copyright   Copyright (C) 2021 E4J s.r.l. All Rights Reserved.
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+ * @link        https://vikwp.com
+ */
+
+// No direct access
+defined('ABSPATH') or die('No script kiddies please!');
+
+VAPLoader::import('libraries.import.classes.groups');
+
+/**
+ * Class used to handle an import event for the GROUPS.
+ *
+ * @see   ImportObject
+ * @since 1.7.3
+ */
+class ImportObjectEmpgroups extends ImportObjectGroups
+{
+	/**
+	 * Returns the file containing the sample data to import this type of object.
+	 *
+	 * @return 	mixed 	The file path if exists, otherwise false.
+	 */
+	public function getSampleFile()
+	{
+		// store current sample type
+		$tmp = $this->type;
+		// temporarily overwrite type
+		$this->type = 'groups';
+		// get sample file of parent class
+		$sample = parent::getSampleFile();
+		// restore previous type
+		$this->type = $tmp;
+
+		return $sample;
+	}
+}

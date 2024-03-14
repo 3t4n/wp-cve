@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<extension type="module" version="3.0.0" client="site" method="upgrade">
+	<name>VikAppointments One-page Booking</name>
+	<author>Extensionsforjoomla.com</author>
+	<creationDate>December 7, 2023</creationDate>
+	<copyright>Copyright (C) 2023 Extensionsforjoomla.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>dev@extensionsforjoomla.com</authorEmail>
+	<authorUrl>https://extensionsforjoomla.com</authorUrl>
+	<version>1.0.7</version>
+	<description>Module used to display a one-page booking form for VikAppointments 1.7.3 or newer.</description>
+ 
+	<files>
+		<filename module="mod_vikappointments_onepage_booking">mod_vikappointments_onepage_booking.php</filename>
+		<filename>mod_vikappointments_onepage_booking.css</filename>
+		<filename>mod_vikappointments_onepage_booking.js</filename>
+		<filename>index.html</filename>
+		<folder>libraries</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">languages/en-GB.mod_vikappointments_onepage_booking.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+
+			<fieldset name="basic">
+
+				<field
+					name="hide_unavailable"
+					type="radio"
+					default="0"
+					label="VAP_ONEPAGE_BOOKING_HIDE_UNAVAILABLE"
+					description="VAP_ONEPAGE_BOOKING_HIDE_UNAVAILABLE_DESC"
+					class="btn-group btn-group-yesno"
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="price_per_person"
+					type="radio"
+					default="1"
+					label="VAP_ONEPAGE_BOOKING_PRICE_PER_PERSON"
+					description="VAP_ONEPAGE_BOOKING_PRICE_PER_PERSON_DESC"
+					class="btn-group btn-group-yesno"
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="itemid"
+					type="menuitem"
+					default="0"
+					label="VAP_ONEPAGE_BOOKING_MENU_ITEM"
+					description="VAP_ONEPAGE_BOOKING_MENU_ITEM_DESC"
+				>
+					<option value="">COM_MODULES_OPTION_SELECT_MENU_ITEM</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="layout">
+
+				<field
+					name="max_width"
+					type="text"
+					default="500px"
+					label="VAP_ONEPAGE_BOOKING_MAX_WIDTH"
+					description="VAP_ONEPAGE_BOOKING_MAX_WIDTH_DESC"
+				/>
+
+				<field
+					name="scrollable_timeline"
+					type="radio"
+					default="0"
+					label="VAP_ONEPAGE_BOOKING_SCROLLABLE_TIMELINE"
+					description="VAP_ONEPAGE_BOOKING_SCROLLABLE_TIMELINE_DESC"
+					class="btn-group btn-group-yesno"
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="loading_animation"
+					type="radio"
+					default="1"
+					label="VAP_ONEPAGE_BOOKING_LOADING_ANIMATION"
+					description="VAP_ONEPAGE_BOOKING_LOADING_ANIMATION_DESC"
+					class="btn-group btn-group-yesno"
+					layout="joomla.form.field.radio.switcher"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="animation_duration"
+					type="number"
+					default="1500"
+					min="0"
+					max="10000"
+					step="50"
+					label="VAP_ONEPAGE_BOOKING_ANIMATION_DURATION"
+					description="VAP_ONEPAGE_BOOKING_ANIMATION_DURATION_DESC"
+					showon="loading_animation:1"
+				/>
+
+			</fieldset>
+
+			<fieldset name="advanced">
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+					class="form-select"
+				/>
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					default=""
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+				/>
+
+			</fieldset>
+
+		</fields>
+	</config>
+
+	<updateservers>
+		<server type="extension" name="VikAppointments Modules Update Site" priority="1">https://extensionsforjoomla.com/vikapi/?task=joomla.updateserver&amp;sku=vap-opb</server>
+	</updateservers>
+
+</extension>
