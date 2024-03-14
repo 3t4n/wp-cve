@@ -1,0 +1,880 @@
+/* checkboxstyles.css */
+.can-toggle {
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+
+.can-toggle *,
+.can-toggle *:before,
+.can-toggle *:after {
+  box-sizing: border-box;
+}
+
+.can-toggle input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.can-toggle input[type="checkbox"][disabled]~label {
+  pointer-events: none;
+}
+
+.can-toggle input[type="checkbox"][disabled]~label .can-toggle__switch {
+  opacity: 0.4;
+}
+
+.can-toggle input[type="checkbox"]:checked~label .can-toggle__switch:before {
+  content: attr(data-unchecked);
+  left: 0px;
+}
+
+.can-toggle input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  content: attr(data-checked);
+}
+
+.can-toggle label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.can-toggle label .can-toggle__label-text {
+  flex: 1;
+  padding-left: 32px;
+}
+
+.can-toggle label .can-toggle__switch {
+  position: relative;
+}
+
+.can-toggle label .can-toggle__switch:before {
+  content: attr(data-checked);
+  position: absolute;
+  top: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.can-toggle label .can-toggle__switch:after {
+  content: attr(data-unchecked);
+  position: absolute;
+  z-index: 5;
+  text-transform: uppercase;
+  text-align: center;
+  background: white;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.can-toggle input[type="checkbox"][disabled]~label {
+  color: rgba(119, 119, 119, 0.5);
+}
+
+.can-toggle input[type="checkbox"]:focus~label .can-toggle__switch,
+.can-toggle input[type="checkbox"]:hover~label .can-toggle__switch {
+  background-color: #777;
+}
+
+.can-toggle input[type="checkbox"]:focus~label .can-toggle__switch:after,
+.can-toggle input[type="checkbox"]:hover~label .can-toggle__switch:after {
+  color: #000;
+}
+
+.can-toggle input[type="checkbox"]:hover~label {
+  /* color: #000; */
+}
+
+.can-toggle input[type="checkbox"]:checked~label:hover {
+  /* color: #000; */
+}
+
+.can-toggle input[type="checkbox"]:checked~label .can-toggle__switch {}
+
+.can-toggle input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  color: #000;
+}
+
+.can-toggle input[type="checkbox"]:checked:focus~label .can-toggle__switch,
+.can-toggle input[type="checkbox"]:checked:hover~label .can-toggle__switch {
+  background-color: #000;
+}
+
+.can-toggle input[type="checkbox"]:checked:focus~label .can-toggle__switch:after,
+.can-toggle input[type="checkbox"]:checked:hover~label .can-toggle__switch:after {
+  color: #000;
+}
+
+.can-toggle label .can-toggle__label-text {
+  flex: 1;
+}
+
+.can-toggle label .can-toggle__switch {
+  transition: background-color 0.3s cubic-bezier(0, 1, 0.5, 1);
+}
+
+.can-toggle label .can-toggle__switch:before {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.can-toggle label .can-toggle__switch:after {
+  transition: -webkit-transform 0.3s cubic-bezier(0, 1, 0.5, 1);
+  transition: transform 0.3s cubic-bezier(0, 1, 0.5, 1);
+  transition: transform 0.3s cubic-bezier(0, 1, 0.5, 1), -webkit-transform 0.3s cubic-bezier(0, 1, 0.5, 1);
+  color: #777;
+}
+
+.can-toggle input[type="checkbox"]:focus~label .can-toggle__switch:after,
+.can-toggle input[type="checkbox"]:hover~label .can-toggle__switch:after {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  -webkit-transform: translate3d(46px, 0, 0);
+  transform: translate3d(46px, 0, 0);
+}
+
+.can-toggle input[type="checkbox"]:checked:focus~label .can-toggle__switch:after,
+.can-toggle input[type="checkbox"]:checked:hover~label .can-toggle__switch:after {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle label {
+  /* font-size: 14px; */
+}
+
+.can-toggle label .can-toggle__switch {
+  height: 35px;
+  flex: 0 0 100px;
+  border-radius: 4px;
+}
+
+.can-toggle label .can-toggle__switch:before {
+  left: 49px;
+  font-size: 11px;
+  line-height: 34px;
+  width: 50px;
+  padding: 0 12px;
+}
+
+.can-toggle label .can-toggle__switch:after {
+  top: 2px;
+  left: 4px;
+  border-radius: 2px;
+  width: 44px;
+  line-height: 29px;
+  font-size: 12px;
+}
+
+.can-toggle label .can-toggle__switch:hover:after {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.can-toggle--size-small input[type="checkbox"]:focus~label .can-toggle__switch:after,
+.can-toggle.can-toggle--size-small input[type="checkbox"]:hover~label .can-toggle__switch:after {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.can-toggle--size-small input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  -webkit-transform: translate3d(44px, 0, 0);
+  transform: translate3d(44px, 0, 0);
+}
+
+.can-toggle.can-toggle--size-small input[type="checkbox"]:checked:focus~label .can-toggle__switch:after,
+.can-toggle.can-toggle--size-small input[type="checkbox"]:checked:hover~label .can-toggle__switch:after {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.can-toggle--size-small label {
+  font-size: 13px;
+}
+
+.can-toggle.can-toggle--size-small label .can-toggle__switch {
+  height: 28px;
+  flex: 0 0 90px;
+  border-radius: 2px;
+}
+
+.can-toggle.can-toggle--size-small label .can-toggle__switch:before {
+  left: 45px;
+  font-size: 10px;
+  line-height: 28px;
+  width: 45px;
+  padding: 0 12px;
+}
+
+.can-toggle.can-toggle--size-small label .can-toggle__switch:after {
+  top: 1px;
+  left: 1px;
+  border-radius: 1px;
+  width: 44px;
+  line-height: 26px;
+  font-size: 10px;
+}
+
+.can-toggle.can-toggle--size-small label .can-toggle__switch:hover:after {
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.can-toggle--size-large input[type="checkbox"]:focus~label .can-toggle__switch:after,
+.can-toggle.can-toggle--size-large input[type="checkbox"]:hover~label .can-toggle__switch:after {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.can-toggle--size-large input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  -webkit-transform: translate3d(78px, 0, 0);
+  transform: translate3d(78px, 0, 0);
+}
+
+.can-toggle.can-toggle--size-large input[type="checkbox"]:checked:focus~label .can-toggle__switch:after,
+.can-toggle.can-toggle--size-large input[type="checkbox"]:checked:hover~label .can-toggle__switch:after {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.can-toggle--size-large label {
+  font-size: 14px;
+}
+
+.can-toggle.can-toggle--size-large label .can-toggle__switch {
+  height: 50px;
+  flex: 0 0 160px;
+  border-radius: 4px;
+}
+
+.can-toggle.can-toggle--size-large label .can-toggle__switch:before {
+  left: 80px;
+  font-size: 14px;
+  line-height: 50px;
+  width: 80px;
+  padding: 0 12px;
+}
+
+.can-toggle.can-toggle--size-large label .can-toggle__switch:after {
+  top: 2px;
+  left: 2px;
+  border-radius: 2px;
+  width: 78px;
+  line-height: 46px;
+  font-size: 12px;
+}
+
+.can-toggle.can-toggle--size-large label .can-toggle__switch:hover:after {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"][disabled]~label {
+  color: rgba(181, 62, 116, 0.5);
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:focus~label .can-toggle__switch,
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:hover~label .can-toggle__switch {
+  background-color: #b53e74;
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:focus~label .can-toggle__switch:after,
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:hover~label .can-toggle__switch:after {
+  color: #8f315c;
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:hover~label {
+  color: #a23768;
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:checked~label:hover {
+  color: #39916a;
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:checked~label .can-toggle__switch {
+  background-color: #44ae7f;
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  color: #368a65;
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:focus~label .can-toggle__switch,
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:hover~label .can-toggle__switch {
+  background-color: #3d9c72;
+}
+
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:focus~label .can-toggle__switch:after,
+.can-toggle.demo-rebrand-1 input[type="checkbox"]:checked:hover~label .can-toggle__switch:after {
+  color: #2f7757;
+}
+
+.can-toggle.demo-rebrand-1 label .can-toggle__label-text {
+  flex: 1;
+}
+
+.can-toggle.demo-rebrand-1 label .can-toggle__switch {
+  transition: background-color 0.3s ease-in-out;
+  background: #c14b81;
+}
+
+.can-toggle.demo-rebrand-1 label .can-toggle__switch:before {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.can-toggle.demo-rebrand-1 label .can-toggle__switch:after {
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  color: #b53e74;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"][disabled]~label {
+  color: rgba(68, 68, 68, 0.5);
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:focus~label .can-toggle__switch,
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:hover~label .can-toggle__switch {
+  background-color: #444;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:focus~label .can-toggle__switch:after,
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:hover~label .can-toggle__switch:after {
+  color: #2b2b2b;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:hover~label {
+  color: #373737;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked~label:hover {
+  color: #000;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked~label .can-toggle__switch {
+  /* background-color: #75d32d; */
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  color: #000;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:focus~label .can-toggle__switch,
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:hover~label .can-toggle__switch {
+  background-color: #000;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:focus~label .can-toggle__switch:after,
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:hover~label .can-toggle__switch:after {
+  /*color: #52941f;*/
+  color: #000;
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__label-text {
+  flex: 1;
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__switch {
+  transition: background-color 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__switch:before {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__switch:after {
+  transition: -webkit-transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1), -webkit-transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+  color: #444;
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:focus~label .can-toggle__switch:after,
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:hover~label .can-toggle__switch:after {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked~label .can-toggle__switch:after {
+  -webkit-transform: translate3d(28px, 0, 0);
+  transform: translate3d(28px, 0, 0);
+}
+
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:focus~label .can-toggle__switch:after,
+.can-toggle.demo-rebrand-2 input[type="checkbox"]:checked:hover~label .can-toggle__switch:after {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.can-toggle.demo-rebrand-2 label {
+  font-size: 13px;
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__switch {
+  height: 37px;
+  flex: 0 0 70px;
+  border-radius: 60px;
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__switch:before {
+  left: 35px;
+  font-size: 12px;
+  line-height: 35px;
+  width: 47px;
+  padding: 0 12px;
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__switch:after {
+  top: 2px;
+  /* Fixed 04-22-2020 */
+  left: 4px;
+  /* Fixed 06-23-2020 */
+  font-weight: 500;
+  border-radius: 30px;
+  width: 34px;
+  /* Fixed 06-23-2020 */
+  line-height: 31px;
+  font-size: 11px;
+}
+
+.can-toggle.demo-rebrand-2 label .can-toggle__switch:hover:after {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+/*
+        radio button animated start
+  */
+.btn-radio {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.btn-radio:not(:first-child) {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .btn-radio {
+    display: block;
+    float: none;
+  }
+
+  .btn-radio:not(:first-child) {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+}
+
+.btn-radio svg {
+  fill: none;
+  vertical-align: middle;
+}
+
+.btn-radio svg circle {
+  stroke-width: 2;
+  stroke: #E8E8E8;
+}
+
+.btn-radio svg path.inner {
+  stroke-width: 6;
+  stroke-dasharray: 19;
+  stroke-dashoffset: 19;
+}
+
+.btn-radio svg path.outer {
+  stroke-width: 2;
+  stroke-dasharray: 57;
+  stroke-dashoffset: 57;
+}
+
+.btn-radio input {
+  display: none;
+}
+
+.btn-radio input:checked+svg path {
+  transition: all 0.4s ease;
+}
+
+.btn-radio input:checked+svg path.inner {
+  stroke-dashoffset: 38;
+  transition-delay: 0.3s;
+}
+
+.btn-radio input:checked+svg path.outer {
+  stroke-dashoffset: 0;
+}
+
+.btn-radio span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*
+        radio button animated end
+  */
+
+
+/*
+        checkbox normal start
+  */
+.label-cbx {
+  user-select: none;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.label-cbx input:checked+.checkbox svg polyline {
+  stroke-dashoffset: 0;
+}
+
+.label-cbx:hover .checkbox svg path {
+  stroke-dashoffset: 0;
+}
+
+.label-cbx .checkbox {
+  position: relative;
+  top: -2px;
+  float: left;
+  margin-right: 10px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E8E8E8;
+  border-radius: 3px;
+}
+
+.label-cbx .checkbox svg {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  height: inherit;
+  max-width: unset;
+}
+
+.label-cbx .checkbox svg polyline {
+  fill: none;
+  stroke: #FFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 18px;
+  stroke-dashoffset: 18px;
+  transition: all 0.3s ease;
+}
+
+.label-cbx>span {
+  pointer-events: none;
+  vertical-align: middle;
+}
+
+.invisible {
+  display: none !important;
+}
+
+/*
+        checkbox normal end
+  */
+
+
+/*
+        radio button normal start
+  */
+
+.itemCreated input[type="radio"] {
+  display: none;
+}
+
+.itemCreated input[type="radio"]+label {
+  position: relative;
+  display: inline-block;
+  padding-left: 24px;
+  margin-right: 32px;
+  cursor: pointer;
+  line-height: 16px;
+  transition: all .2s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.itemCreated input[type="radio"]+label:before,
+.itemCreated input[type="radio"]+label:after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+  color: #f5f5f5;
+  font-family: Times;
+  border-radius: 50%;
+  transition: all .3s ease;
+}
+
+.itemCreated input[type="radio"]:checked+label:hover {
+  color: #333333;
+  cursor: default;
+}
+
+
+/*
+        radio button normal end
+  */
+
+/*  customcheckbox.css  */
+
+/* Customize the label (the container) */
+.container_scccheck {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 0px solid rgba(0, 0, 0, .125);
+}
+
+/* Hide the browser's default checkbox */
+.container_scccheck input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 200;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border: 1px solid rgba(0, 0, 0, .125);
+}
+
+/* On mouse-over, add a grey background color */
+.container_scccheck:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container_scccheck input:checked~.checkmark {
+  background-color: #314af3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container_scccheck input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container_scccheck .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 6px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+}
+
+/* customradio.css */
+
+/* Customize the label (the container) */
+.container_sccradio {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container_sccradio input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 23px;
+  width: 23px;
+  background-color: #eee;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .125);
+}
+
+/* On mouse-over, add a grey background color */
+.container_sccradio:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container_sccradio input:checked~.checkmark {
+  background-color: #314af3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container_sccradio input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container_sccradio .checkmark:after {
+  top: 7px;
+  left: 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* radiobutton-custom.css */
+
+/* changed for checkbox all .scc_customradio */
+.scc_customradio input[type="checkbox"] {
+  display: none;
+}
+
+.scc_customradio input[type="checkbox"]+label {
+  position: relative;
+  display: inline-block;
+  padding-left: 15px;
+  /* margin-right: 32px; Who added this? */
+  cursor: pointer;
+  line-height: 16px;
+  transition: all .2s ease-in-out;
+  margin-bottom: 10px;
+}
+
+.scc_customradio input[type="checkbox"]+label:before,
+.scc_customradio input[type="checkbox"]+label:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  color: #f5f5f5;
+  font-family: Times;
+  border-radius: 50%;
+  transition: all .3s ease;
+}
+
+.scc_customradio input[type="checkbox"]:checked+label:hover {
+  color: #333333;
+  cursor: default;
+}
+
+/*  UpdateCheckBoxStyle1.css  */
+
+
+.onoffswitch {
+  position: relative;
+  width: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #1F1C1C;
+  border-radius: 20px;
+}
+
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 18px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  background-color: #34C247;
+  color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: #EEEEEE;
+  color: #999999;
+  text-align: right;
+}
+
+.onoffswitch-switch {
+  display: block;
+  width: 19px;
+  margin: 5.5px;
+  background: #191F1F;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 56px;
+  border: 2px solid #1F1C1C;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
