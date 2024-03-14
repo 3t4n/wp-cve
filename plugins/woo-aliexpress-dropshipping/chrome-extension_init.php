@@ -1,0 +1,6 @@
+<?php
+
+function ChromeExtensionInit($file)
+{
+
+}
