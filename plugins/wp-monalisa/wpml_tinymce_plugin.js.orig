@@ -1,0 +1,47 @@
+(function() {
+	function wpml_get_smilies() {
+		var resmilies = _wpml_richedit_smilies;
+        var colcount = 7;
+        var smhtml="";
+		var i=0;
+		
+        for (var j = 0; j < resmilies.length; j++) {
+			var cs=resmilies[j];
+            smhtml = smhtml + '<img class="wpml_ico_rich" id="wpmlre' + j + '" src="' + cs[2] + '" />';
+            
+            if (i % colcount == colcount-1) smhtml += '<br/>';
+			i=i+1;
+        }
+        return smhtml;
+    }
+	
+    tinymce.PluginManager.add( 'wpml_smiley', function( editor, url ) {
+        // Add Button to Visual Editor Toolbar
+        editor.addButton('wpml_smiley', {
+            title: 'Insert Smiley',
+            tooltip: "wp-Monalisa Smilies",
+            image: url + '/smiley.png',
+            cmd: 'wpml_smiley',
+            type: 'panelbutton',
+            panel: {
+				classes: 'wpml_richedit_button',
+				role: 'application',
+				autohide: true,
+				html: wpml_get_smilies,
+				onclick: function(e) { 
+					var eid = e.target.id;
+                    var it = jQuery('#'+eid).attr('src'); 
+                    if (it) { 
+                        editor.insertContent('<img style="vertical-align:bottom" class="wpml_ico" src="' + it + '" />');
+                    }
+                    this.hide();
+                }
+			}
+        }); 
+  
+        // Add Command when Button Clicked
+		//editor.addCommand('wpml_smiley', function() {
+		//	alert('Button clicked!');
+		//});
+    });
+})();
