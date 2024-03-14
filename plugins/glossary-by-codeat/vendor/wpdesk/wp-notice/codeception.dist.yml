@@ -1,0 +1,31 @@
+paths:
+    tests: tests/codeception/tests
+    output: tests/codeception/tests/_output
+    data: tests/codeception/tests/_data
+    support: tests/codeception/tests/_support
+    envs: tests/codeception/tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+#        - Codeception\Extension\Recorder:
+#              module: WPWebDriver
+#              delete_successful: false # keep screenshots of successful tests
+    commands:
+        - Codeception\Command\GenerateWPUnit
+        - Codeception\Command\GenerateWPRestApi
+        - Codeception\Command\GenerateWPRestController
+        - Codeception\Command\GenerateWPRestPostTypeController
+        - Codeception\Command\GenerateWPAjax
+        - Codeception\Command\GenerateWPCanonical
+        - Codeception\Command\GenerateWPXMLRPC
+        - WPDesk\Codeception\Command\GeneratePluginActivation
+        - WPDesk\Codeception\Command\GenerateWooCommerce
+        - tad\Codeception\Command\Steppify
+params:
+    - .env.testing
+coverage:
+    remote: false
+    include:
+        - classes
+        - src

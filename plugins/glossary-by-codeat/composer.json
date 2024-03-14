@@ -1,0 +1,168 @@
+{
+    "name": "codeat\/glossary",
+    "description": "A simple WordPress plugin to help create glossary in order to improve SEO and time spent on website.",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Codeat",
+            "email": "support@codeat.co",
+            "homepage": "https:\/\/codeat.co"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "cmb2\/cmb2": "~2.10.0",
+        "composer\/installers": "1.x",
+        "devaloka\/network-wp-query": "^0.2.0",
+        "freemius\/wordpress-sdk": "~2.6.0",
+        "johnbillion\/extended-cpts": "^4.5.2",
+        "julien731\/wp-review-me": "dev-develop",
+        "micropackage\/requirements": "^1.1",
+        "mte90\/cmb2-field-ajax-search": "dev-master",
+        "mte90\/wp-super-duper": "dev-fork",
+        "orhanerday\/open-ai": "^4.7",
+        "wpbp\/cronplus": "~1.0.0",
+        "wpbp\/i18n-notice": "dev-main",
+        "wpbp\/page-madness-detector": "1.0.x",
+        "wpbp\/widgets-helper": "~1.0.0",
+        "wpdesk\/wp-builder": "^1.0 || ^2.0",
+        "wpdesk\/wp-notice": "^3.2"
+    },
+    "require-dev": {
+        "ampproject\/amp-wp": "2.5.0",
+        "codeatcode\/codeatcs": "^1.0",
+        "codeception\/codeception": "~4.1.0",
+        "codeception\/module-asserts": "^1.0",
+        "codeception\/module-cli": "^1.0",
+        "codeception\/module-db": "^1.0",
+        "codeception\/module-filesystem": "^1.0",
+        "codeception\/module-phpbrowser": "^1.0",
+        "codeception\/module-rest": "^1.2",
+        "codeception\/module-webdriver": "^1.0",
+        "dealerdirect\/phpcodesniffer-composer-installer": "^0.7",
+        "ergebnis\/composer-normalize": "^2.6",
+        "lucatume\/function-mocker": "^1.0",
+        "lucatume\/wp-browser": "^3.0",
+        "pcov\/clobber": "^2.0",
+        "php-stubs\/acf-pro-stubs": "^5.0",
+        "php-stubs\/genesis-stubs": "^3.3",
+        "phpro\/grumphp": "^1.12",
+        "phpunit\/php-code-coverage": "^9.2",
+        "szepeviktor\/phpstan-wordpress": "^1.1.6"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "ampproject\/amp-wp",
+                "version": "2.5.0",
+                "source": {
+                    "type": "git",
+                    "url": "https:\/\/github.com\/ampproject\/amp-wp.git",
+                    "reference": "develop"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "julien731\/wp-dismissible-notices-handler",
+                "version": "1.2.2",
+                "autoload": {
+                    "files": [
+                        "handler.php",
+                        "includes\/helper-functions.php"
+                    ]
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https:\/\/github.com\/mte90\/WP-Dismissible-Notices-Handler.git",
+                    "reference": "patch-1"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "wpdesk\/wp-notice",
+                "version": "3.2.4",
+                "autoload": {
+                    "psr-4": {
+                        "WPDesk\\Notice\\": "src\/WPDesk\/Notice\/"
+                    },
+                    "files": [
+                        "src\/WPDesk\/notice-functions.php"
+                    ]
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https:\/\/gitlab.com\/mte90\/wp-notice.git",
+                    "reference": "Mte90-master-patch-09742"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mte90\/cmb2-field-ajax-search",
+                "version": "dev-master",
+                "autoload": {
+                    "files": [
+                        "cmb2-field-ajax-search.php"
+                    ]
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https:\/\/github.com\/mte90\/cmb2-field-ajax-search.git",
+                    "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mte90\/wp-super-duper",
+                "version": "dev-fork",
+                "autoload": {
+                    "files": [
+                        "wp-super-duper.php"
+                    ]
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https:\/\/github.com\/mte90\/wp-super-duper.git",
+                    "reference": "fork"
+                }
+            }
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Glossary\\Backend\\": "backend",
+            "Glossary\\Cli\\": "cli",
+            "Glossary\\Engine\\": "engine",
+            "Glossary\\Frontend\\": "frontend",
+            "Glossary\\Integrations\\": "integrations",
+            "Glossary\\Internals\\": "internals",
+            "Glossary\\Rest\\": "rest"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer\/installers": true,
+            "dealerdirect\/phpcodesniffer-composer-installer": true,
+            "ergebnis\/composer-normalize": true,
+            "phpro\/grumphp": true
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor\/{$name}\/": [
+                "cmb2\/cmb2",
+                "devaloka\/network-wp-query"
+            ]
+        }
+    }
+}

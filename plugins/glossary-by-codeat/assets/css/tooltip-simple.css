@@ -1,0 +1,111 @@
+.glossary-tooltip {
+	display: inline;
+	position: relative;
+	z-index: 9999;
+}
+
+.glossary-tooltip a,
+.glossary-content-footnote {
+	color: #f52e62;
+}
+
+.glossary-tooltip a.glossary-external-link::after {
+	content: "";
+	display: inline-block;
+	margin-left: 5px;
+	width: 14px;
+	height: 16px;
+	background-size: 14px 16px;
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg%20height%3D%221024%22%20width%3D%22768%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M640%20768H128V257.90599999999995L256%20256V128H0v768h768V576H640V768zM384%20128l128%20128L320%20448l128%20128%20192-192%20128%20128V128H384z%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+	mask-image: url("data:image/svg+xml,%3Csvg%20height%3D%221024%22%20width%3D%22768%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M640%20768H128V257.90599999999995L256%20256V128H0v768h768V576H640V768zM384%20128l128%20128L320%20448l128%20128%20192-192%20128%20128V128H384z%22%20%2F%3E%0A%3C%2Fsvg%3E%0A");
+	-webkit-mask-size: cover;
+	mask-size: cover;
+	background: black;
+}
+
+/* Tooltip */
+
+.glossary-tooltip-content {
+	position: absolute;
+	z-index: 9999;
+	left: 50%;
+	bottom: 50%;
+	line-height: 1.4;
+	text-align: center;
+	font-weight: 400;
+	color: #000;
+	background: transparent;
+	opacity: 0;
+	margin: 0 0 20px -150px;
+	cursor: default;
+	pointer-events: none;
+	-webkit-font-smoothing: antialiased;
+	-webkit-transition: opacity 0.3s 0.3s;
+	transition: opacity 0.3s 0.3s;
+	width: 300px;
+	display: none;
+}
+
+.glossary-tooltip:hover .glossary-tooltip-content,
+.glossary-tooltip:focus .glossary-tooltip-content,
+.glossary-tooltip:active .glossary-tooltip-content {
+	opacity: 1;
+	position: absolute;
+	display: block !important;
+	visibility: visible !important;
+	top: unset;
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.glossary-tooltip-content span {
+	display: block;
+}
+
+.glossary-tooltip-text {
+	border: 1px solid #c9e0ef;
+	border-radius: 3px;
+	background-color: #fff;
+	overflow: hidden;
+	-webkit-transform: translate3d(0, 100%, 0);
+	transform: translate3d(0, 100%, 0);
+	-webkit-transition: -webkit-transform 0.3s 0.3s;
+	transition: transform 0.3s;
+	padding: 20px 40px;
+}
+
+.glossary-tooltip:hover .glossary-tooltip-text,
+.glossary-tooltip:focus .glossary-tooltip-text,
+.glossary-tooltip:active .glossary-tooltip-text {
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+	-webkit-transform: scale3d(1, 1, 1);
+	transform: scale3d(1, 1, 1);
+}
+
+/* Arrow */
+
+.glossary-tooltip-content::after {
+	content: "";
+	bottom: 0;
+	left: 50%;
+	position: absolute;
+	pointer-events: none;
+	margin-left: -10px;
+	pointer-events: auto;
+	-webkit-transform: translate(-50%, 50%) rotate(45deg);
+	transform: translate(-50%, 50%) rotate(45deg);
+	border: solid #c9e0ef;
+	border-width: 0 1px 1px 0;
+	width: 8px;
+	height: 8px;
+	background: #fff;
+}
+
+.glossary-underline {
+	text-decoration: underline;
+}
+
+.rtl .glossary-tooltip-content {
+	text-align: right;
+}
