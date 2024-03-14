@@ -1,0 +1,157 @@
+.coupon-templates-page {
+  .coupon-templates-list {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 25px 20px;
+    justify-content: baseline;
+
+    .coupon-template-card {
+      transition: all 0.3s ease-in-out;
+      width: calc(33.3333333333% - 15px);
+      box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      border-radius: 5px;
+      overflow: hidden;
+
+      .close-icon {
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        position: absolute;
+        top: 0.5em;
+        right: 0.5em;
+        font-size: 0.9em;
+        color: #fff;
+        background-color: #00000028;
+        padding: 0.2em 0.5em;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0000005c;
+        }
+      }
+
+      &:hover {
+        .close-icon {
+          opacity: 1;
+        }
+      }
+
+      .template-image {
+        position: relative;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        background-color: #f4f4f4;
+
+        .image-svg {
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+
+          svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .premium-badge {
+          position: absolute;
+          display: inline-block;
+          bottom: 0.8em;
+          right: 0.6em;
+          padding: 0.3em 0.7em;
+          background: #3ea380;
+          color: #fff;
+          border-radius: 5px;
+          font-size: 0.8em;
+        }
+      }
+
+      .template-content {
+        padding: 10px;
+
+        h3 {
+          font-weight: bold;
+          margin: 0;
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 4px 4px 0px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .ant-skeleton {
+      ul.ant-skeleton-paragraph {
+        margin: 0.5em 0 0;
+
+        li {
+          margin: 0.5em 0 0;
+          height: 13px;
+        }
+      }
+    }
+  }
+
+  .templates-list-pagination {
+    margin-top: 2em;
+    text-align: center;
+  }
+
+  .coupon-templates-sidebar {
+    background-color: #fafafa;
+    border: 1px solid #d5d5d5;
+    padding: 1em 1.3em;
+
+    .categories-list {
+      margin: 0 -0.5em;
+
+      li {
+        margin: 0;
+        border-bottom: 1px dotted #d5d5d5;
+        cursor: pointer;
+
+        span {
+          display: block;
+          padding: 0.7em 0.5em;
+          border-radius: 5px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:hover span {
+          color: #1393a6;
+        }
+
+        &.current span {
+          background-color: #1393a6;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// fix CSS conflict with WP.
+.ant-checkbox-disabled .ant-checkbox-input {
+  opacity: 0 !important;
+}
+
+.coupon-templates-premium-modal {
+  .ant-modal-content {
+    width: 600px;
+    padding: 3em 2em;
+    text-align: center;
+
+    .acfw-logo-div {
+      margin-bottom: 1em;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 2em;
+    }
+  }
+}

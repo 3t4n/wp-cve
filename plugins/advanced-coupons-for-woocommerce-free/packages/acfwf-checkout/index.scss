@@ -1,0 +1,91 @@
+.acfw-checkout-ui-block {
+  margin-bottom: 2.5em;
+
+  .acfw-accordion {
+    border-bottom: 1px solid #ebebeb;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    h3 {
+      padding: 0.7em 1.2em;
+      margin: 0;
+      background: #f5f5f5;
+      font-size: 1em;
+      font-weight: normal;
+      cursor: pointer;
+
+      .caret {
+        position: relative;
+        top: -2px;
+        margin-left: 5px;
+
+        img {
+          display: inline-block;
+          transition: transform 0.5s ease;
+          transform: rotate(-90deg);
+        }
+      }
+    }
+
+    .acfw-accordion-inner {
+      overflow: hidden;
+      background: #fcfcfc;
+      max-height: 0;
+      transition: max-height 0.5s ease;
+
+      .acfw-accordion-content {
+        padding: 1em 1.2em;
+      }
+    }
+
+    &.show {
+      h3 .caret img {
+        transform: rotate(0deg);
+      }
+    }
+
+    .acfw-accordion-content {
+      font-size: 0.9em;
+
+      p {
+        margin-bottom: 0.5em;
+
+        &.acfw-store-credit-instructions {
+          margin-bottom: 0.2em;
+        }
+      }
+    }
+  }
+}
+
+.acfw-checkout-form-button-field {
+  margin: 0;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .form-row-last {
+    label {
+      display: none;
+    }
+
+    .button {
+      width: 100%;
+    }
+  }
+}
+
+body #wfacp-e-form .wfacp_main_form.woocommerce .wfacp-form-control-wrapper.acfw-store-credits-redeem-form-field {
+  .woocommerce-info {
+    padding-bottom: 0 !important;
+  }
+
+  .acfw-checkout-form-button-field {
+    padding-top: 1em;
+  }
+}
