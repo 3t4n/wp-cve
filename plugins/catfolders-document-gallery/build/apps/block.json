@@ -1,0 +1,113 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "catfolders/document-gallery",
+  "version": "0.1.0",
+  "title": "CatFolders Document Gallery",
+  "category": "media",
+  "icon": "images-alt2",
+  "description": "Display folders item in a document gallery.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "folders": {
+      "type": "array",
+      "default": []
+    },
+    "libraryIcon": {
+      "type": "object",
+      "default": {
+        "altText": "icon-folders",
+        "display": true
+      }
+    },
+    "title": {
+      "type": "string",
+      "default": "CatFolders"
+    },
+    "displayTitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "p"
+    },
+    "layout": {
+      "type": "string",
+      "default": "list"
+    },
+    "gridColumn": {
+      "type": "number",
+      "default": 3
+    },
+    "searchBarPlacement": {
+      "type": "string",
+      "default": "top"
+    },
+    "layoutIconPlacement": {
+      "type": "string",
+      "default": "top"
+    },
+    "paginationPlacement": {
+      "type": "string",
+      "default": "bottom"
+    },
+    "displayColumns": {
+      "type": "object",
+      "default": {
+        "image": false,
+        "title": true,
+        "type": true,
+        "size": true,
+        "updated": true,
+        "link": true
+      }
+    },
+    "linkTo": {
+      "type": "string",
+      "default": ""
+    },
+    "popupWidth": {
+      "type": "number",
+      "default": 600
+    },
+    "popupHeight": {
+      "type": "number",
+      "default": 600
+    },
+    "limit": {
+      "type": "number",
+      "default": 10
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "title"
+    },
+    "orderType": {
+      "type": "string",
+      "default": "ASC"
+    },
+    "documentIcons": {
+      "type": "object",
+      "default": {
+        "display": true
+      }
+    }
+  },
+  "textdomain": "catfolders-document-gallery",
+  "editorScript": [
+    "file:./index.js",
+    "catf-dg-datatables",
+    "catf-dg-datatables-natural",
+    "catf-dg-datatables-responsive"
+  ],
+  "editorStyle": [
+    "file:./index.css",
+    "catf-dg-datatables",
+    "catf-dg-frontend",
+    "catf-dg-datatables-responsive"
+  ],
+  "viewScript": "file:./view.js"
+}
