@@ -1,0 +1,1 @@
+<?php if ( apply_filters( 'houzez_property_feed_pro_active', false ) !== true ) { ?><span class="pro-label"><a href="https://houzezpropertyfeed.com/#pricing" target="_blank">PRO</a></span><?php } ?>
