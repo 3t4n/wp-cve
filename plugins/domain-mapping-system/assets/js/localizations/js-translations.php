@@ -1,0 +1,27 @@
+<?php
+return array(
+	'Are you sure to change these settings?'                                                                                                                                              => __( 'Are you sure to change these settings?',
+		'domain-mapping-system' ),
+	'The choice is yours.'                                                                                                                                                                => __( 'The choice is yours.',
+		'domain-mapping-system' ),
+	'Select the domain [+path] to serve for all unmapped pages:'                                                                                                                          => __( 'Select the domain [+path] to serve for all unmapped pages:',
+		'domain-mapping-system' ),
+	'Select domain'                                                                                                                                                                       => __( 'Select domain',
+		'domain-mapping-system' ),
+	'Warning! You will be logged out, and you will need to login again using the new domain. Be sure you know your login details. It may take up to 3 minutes for the change to process.' => __( 'Warning! You will be logged out, and you will need to login again using the new domain. Be sure you know your login details. It may take up to 3 minutes for the change to process.',
+		'domain-mapping-system' ),
+	'Upload Image'                                                                                                                                                                        => __( 'Upload Image',
+		'domain-mapping-system' ),
+	'Select and Crop'                                                                                                                                                                     => __( 'Select and Crop',
+		'domain-mapping-system' ),
+	'Delete'                                                                                                                                                                              => __( 'Delete',
+		'domain-mapping-system' ),
+	'Are you sure you would like to avoid importing mappings form Multiple Domain Mapping?'                                                                                               => __( 'Are you sure you would like to avoid importing mappings form Multiple Domain Mapping?',
+		'domain-mapping-system' ),
+	'Are you sure you would like to import mappings from Multiple Domain Mapping? Warning: Ensure you have a backup available, as errors may occur.'                                      => __( 'Are you sure you would like to import mappings from Multiple Domain Mapping? Warning: Ensure you have a backup available, as errors may occur.',
+		'domain-mapping-system' ),
+	'Select image'                                                                                                                                                                        => __( 'Select image',
+		'domain-mapping-system' ),
+	'Replace image'                                                                                                                                                                       => __( 'Replace image',
+		'domain-mapping-system' )
+);
