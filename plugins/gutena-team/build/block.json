@@ -1,0 +1,209 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "gutena/team",
+  "title": "Team",
+  "category": "gutena",
+  "description": "Team Block by Gutena",
+  "keywords": [
+    "Team Slider",
+    "Team Member",
+    "Team",
+    "Team Grid",
+    "Team Block"
+  ],
+  "textdomain": "gutena-team",
+  "supports": {
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "ariaLabel": true,
+    "html": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
+    "__experimentalSettings": true
+  },
+  "attributes": {
+    "align": {
+      "type": "string",
+      "default": "wide"
+    },
+    "uniqueId": {
+      "type": "string"
+    },
+    "displayType": {
+      "type": "string",
+      "default": "slider"
+    },
+    "sliderPadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "20px",
+          "right": "20px",
+          "bottom": "20px",
+          "left": "20px"
+        }
+      }
+    },
+    "sliderContainerPadding": {
+      "type": "object",
+      "default": {
+        "top": "25px",
+        "right": "25px",
+        "bottom": "25px",
+        "left": "25px"
+      }
+    },
+    "sliderBoxShadow": {
+      "type": "object",
+      "default": {
+        "normal": {
+          "onBoxShadow": true,
+          "blurRadius": "30px",
+          "inset": false,
+          "offsetX": "0px",
+          "offsetY": "10px",
+          "spreadRadius": "0px",
+          "color": "#00000017"
+        },
+        "hover": {
+          "onBoxShadow": false,
+          "blurRadius": "30px",
+          "inset": false,
+          "offsetX": "0px",
+          "offsetY": "10px",
+          "spreadRadius": "0px",
+          "color": "#00000012"
+        }
+      }
+    },
+    "sliderMinHeight": {
+      "type": "object"
+    },
+    "sliderEnable": {
+      "type": "boolean",
+      "default": true
+    },
+    "sliderCount": {
+      "type": "number",
+      "default": 3
+    },
+    "sliderToShow": {
+      "type": "object",
+      "default": {
+        "desktop": 3,
+        "tablet": 2,
+        "mobile": 1
+      }
+    },
+    "sliderGutterWidth": {
+      "type": "object",
+      "default": {
+        "desktop": 40,
+        "tablet": 10,
+        "mobile": 0
+      }
+    },
+    "sliderAutoPlay": {
+      "type": "boolean",
+      "default": false
+    },
+    "sliderAutoPlayInterval": {
+      "type": "integer",
+      "default": 5000
+    },
+    "sliderPlayDirection": {
+      "type": "string",
+      "default": "forward"
+    },
+    "sliderImagePosition": {
+      "type": "string",
+      "default": "top"
+    },
+    "sliderImageSize": {
+      "type": "number",
+      "default": 50
+    },
+    "sliderSpaceBeforeDetails": {
+      "type": "number",
+      "default": 10
+    },
+    "sliderNavDot": {
+      "type": "boolean",
+      "default": false
+    },
+    "sliderNavDotSize": {
+      "type": "integer",
+      "default": 10
+    },
+    "sliderNavDotGap": {
+      "type": "integer",
+      "default": 12
+    },
+    "sliderNavDotSpace": {
+      "type": "integer",
+      "default": 15
+    },
+    "sliderNavDotColors": {
+      "type": "object",
+      "default": {
+        "normal": "#b9caf5",
+        "active": "#3F6DE4"
+      }
+    },
+    "sliderNavArrow": {
+      "type": "boolean",
+      "default": true
+    },
+    "sliderNavArrowSize": {
+      "type": "integer",
+      "default": 10
+    },
+    "sliderNavArrowSpace": {
+      "type": "integer",
+      "default": 30
+    },
+    "sliderNavArrowPosition": {
+      "type": "integer",
+      "default": 0
+    },
+    "sliderNavArrowColors": {
+      "type": "object",
+      "default": {
+        "normal": "#000",
+        "hover": "#000"
+      }
+    },
+    "sliderHoverColors": {
+      "type": "object",
+      "default": {
+        "cardBg": "#E2E9F9"
+      }
+    },
+    "sliderSettings": {
+      "type": "object"
+    },
+    "blockStyles": {
+      "type": "object"
+    }
+  },
+  "providesContext": {
+    "gutenaTeamCardCount": "sliderCount",
+    "gutenaTeamSliderEnabled": "sliderEnable"
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
