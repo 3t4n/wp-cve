@@ -1,0 +1,81 @@
+/*the container must be positioned relative:*/
+.iwp-admin-container .iwp-custom-select {
+    position: relative;
+    font-family: var(--iwp-font-family-regular);
+    width: 100%;
+}
+
+.iwp-admin-container .iwp-custom-select select {
+    display: none; /*hide original SELECT element:*/
+}
+
+.iwp-admin-container .iwp-select-selected {
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid var(--iwp-color-blue);
+}
+
+/*style the arrow inside the select element:*/
+.iwp-admin-container .iwp-select-selected:after {
+    content: url('../../images/chevron-down.svg');
+    position: absolute;
+    right: 10px;
+    height: 16px;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.iwp-admin-container .iwp-select-selected.iwp-select-arrow-active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.iwp-admin-container .iwp-select-selected.iwp-select-arrow-active:after {
+    content: url('../../images/chevron-up.svg');
+}
+
+/*style the items (options), including the selected item:*/
+.iwp-admin-container .iwp-select-items div,
+.iwp-admin-container .iwp-select-selected {
+    color: var(--iwp-color-blue);
+    cursor: pointer;
+    user-select: none;
+    padding: 12px 45px 12px 20px;
+    line-height: 17px;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*style items (options):*/
+.iwp-admin-container .iwp-select-items {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border: 1px solid var(--iwp-color-blue);
+    border-radius: 0 0 4px 4px;
+    border-top-width: 0;
+}
+
+/*hide the items when the select box is closed:*/
+.iwp-admin-container .iwp-select-hide {
+    display: none;
+}
+
+.iwp-admin-container .iwp-select-items > div.iwp-same-as-selected {
+    color: var(--iwp-color-blue);
+    background-color: rgba(137, 218, 62, 0.5);
+}
+
+.iwp-admin-container .iwp-select-items > div:hover {
+    background-color: rgba(15, 59, 122, 0.1);
+}
+.iwp-admin-container .iwp-select-items div.iwp-select-search-box {
+    padding: 12px;
+}
+.iwp-admin-container .iwp-select-items div.iwp-select-search-box input.iwp-select-search-box-input {
+    padding: 5px 10px;
+    margin: 0;
+}

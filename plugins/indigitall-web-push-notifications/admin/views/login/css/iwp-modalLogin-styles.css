@@ -1,0 +1,248 @@
+.iwp-admin-container .iwp-admin-modalLogin-container {
+    position: absolute;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100,100,100,0.7);
+    z-index: 11;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--iwp-color-blue);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms ease-out, visibility 300ms ease-in-out;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-modalLogin-content {
+    max-width: 540px;
+    width: 100%;
+    /*height: 400px;*/
+    background-color: white;
+    box-shadow: 0 5px 7px -2px rgba(0,0,0,0.43);
+    border: 1px solid var(--iwp-color-light-grey);
+    border-radius: 4px;
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    flex-direction: column;
+    transition: opacity 300ms ease-out, visibility 300ms ease-in-out;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container.iwp-show-modal,
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-show-modal {
+    opacity: 1;
+    visibility: visible;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-login-container {
+    display: flex;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-default-box {
+    padding: 20px;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    top: 50px;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 300ms ease-out, visibility 300ms ease-in-out;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-error-box {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+.iwp-admin-container .iwp-admin-info-box {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+.iwp-admin-container .iwp-admin-warning-box {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+#iwp-admin-login-reconnect-box {
+    position: relative;
+    top: 0;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-default-box:empty {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute !important;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-default-box:not(:empty):after {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    content: '×';
+    font-size: 24px;
+    cursor: pointer;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-modalLogin-header {
+    position: relative;
+    background-color: var(--iwp-color-red-grey);
+    color: var(--iwp-color-blue);
+    font-family: var(--iwp-font-family-bold);
+    font-size: var(--iwp-font-size-high);
+    line-height: var(--iwp-font-size-high);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 50px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-modalLogin-header .iwp-close-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    line-height: 0;
+    cursor: pointer;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-modalLogin-body {
+    padding: 20px 50px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-modalLogin-footer {
+    padding: 20px 50px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    position: relative;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group label {
+    margin-bottom: 5px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group input {
+    border-radius: 4px;
+    border: 1px solid var(--iwp-color-grey);
+    background-color: var(--iwp-color-white);
+    font-family: var(--iwp-font-family-regular);
+    color: var(--iwp-color-blue);
+    margin: 0;
+    width: 100%;
+    padding: 12px 45px 12px 20px;
+    line-height: 17px;
+    font-size: 14px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-show-password-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-show-password-container .iwp-show-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-show-password-container.iwp-password-is-hide .iwp-show-password:before {
+    content: url('../../../images/eye-icon.svg');
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-show-password-container:not(.iwp-password-is-hide) .iwp-show-password:before {
+    content: url('../../../images/no-eye-icon.svg');
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-checkbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 24px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-checkbox-container input[type="checkbox"] {
+    display: none;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-checkbox-container i.iwp-checkbox {
+    margin-right: 5px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-signUp-checkbox {
+    margin-bottom: 10px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-signUp-checkbox .iwp-signUp-checkbox-label {
+    font-size: 0.8rem;
+    line-height: 1;
+    color: var(--iwp-color-grey);
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-signUp-checkbox .iwp-signUp-checkbox-label a {
+    color: var(--iwp-color-grey);
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group.iwp-domain-tip-container {
+    justify-content: center;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group.iwp-domain-tip-container .iwp-domain-tip-content {
+    position: absolute;
+    right: 35px;
+    margin: 0;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group.iwp-domain-tip-container .iwp-question-icon {
+    position: absolute;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group.iwp-domain-tip-container input {
+    padding-right: 210px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-btn-signup {
+    text-decoration: none !important;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-btn-signup > div {
+    text-decoration: underline;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-btn-signup > div.iwp-no-credit-card {
+    text-decoration: none;
+    font-size: 11px;
+    color: grey;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-modal-body-subtitle {
+    font-size: 18px;
+    line-height: 18px;
+    color: var(--iwp-color-grey);
+    margin-bottom: 30px;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-modal-body-tiny-tip {
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--iwp-color-blue);
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-modal-body-tiny-tip > span {
+    font-family: var(--iwp-font-family-bold);
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-admin-form-group-buttons.iwp-select-service-button {
+    justify-content: flex-end;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-vertical-end-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.iwp-admin-container .iwp-admin-modalLogin-container .iwp-btn-recover-pass {
+    padding: 0;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
