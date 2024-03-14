@@ -1,0 +1,63 @@
+.afkw-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.afkw-toggle input {
+    display:none;
+}
+.afkw-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ddd;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.afkw-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 5px;
+    bottom: 5px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .afkw-toggle-slider {
+    background-color: rgba(53,220,155,1);
+}
+input:focus + .afkw-toggle-slider {
+    box-shadow: 0 0 1px rgba(53,220,155,1);
+}
+input:checked + .afkw-toggle-slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.afkw-item .afkw-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 21px;
+}
+.afkw-item .afkw-toggle-slider:before {
+    height: 13px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+}
+.afkw-item .afkw-toggle-slider.afkw-toggle-round,
+.afkw-item .afkw-toggle-slider.afkw-toggle-round:before {
+    border-radius: 0;
+}
+.afkw-label {
+    display: inline-block;
+    font-weight: 700;
+    margin-right: 3px;
+}
