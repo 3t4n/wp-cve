@@ -1,0 +1,1 @@
+(function(t,a,y,o,r,i){r=a.createElement(y),i=a.getElementsByTagName(y)[0];r.type='text/javascript';r.async=1;r.src='//tayori.com/form/e280abc373be1acc3d8b0f7c1e15c3a4abf88f01/tag.js';r.id='tayori-tag';i.parentNode.insertBefore(r,i)})(window,document,'script');
