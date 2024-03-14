@@ -1,0 +1,314 @@
+/******** button-switch ********/
+.darkluplite-mode-switcher {
+  position: fixed;
+  z-index: 100000000000;
+}
+.darkluplite-mode-switcher.top_right {
+  top: 38px;
+  right: 20px;
+}
+.darkluplite-mode-switcher.top_left {
+  top: 38px;
+  left: 20px;
+}
+.darkluplite-mode-switcher.bottom_right {
+  bottom: 20px;
+  right: 20px;
+}
+.darkluplite-mode-switcher.bottom_left {
+  bottom: 10px;
+  left: 20px;
+}
+.darkluplite-mode-switcher .mode-switcher-inner {
+  cursor: pointer;
+}
+
+:root {
+  --darkluplite-btn-width: 100px;
+  --darkluplite-btn-height: 40px;
+  --darkluplite-btn-icon-width: calc(
+    calc(30 * var(--darkluplite-btn-width)) / 100
+  );
+  --darkluplite-btn-icon-height: calc(
+    calc(30 * var(--darkluplite-btn-width)) / 100
+  );
+}
+
+.darkluplite-switch-container {
+  width: var(--darkluplite-btn-width);
+  height: var(--darkluplite-btn-height);
+}
+
+.darkluplite-square-switch-container {
+  width: calc(var(--darkluplite-btn-icon-width) + 20px);
+  height: calc(var(--darkluplite-btn-icon-height) + 20px);
+}
+
+.darkluplite-accessibility-switch-container {
+  width: calc(calc(225 * var(--darkluplite-btn-icon-width)) / 100);
+  height: calc(calc(400 * var(--darkluplite-btn-icon-width)) / 100);
+}
+
+.darkluplite-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: var(--darkluplite-btn-width);
+  height: var(--darkluplite-btn-height);
+}
+
+.darkluplite-square-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: calc(var(--darkluplite-btn-icon-width) + 20px);
+  height: calc(var(--darkluplite-btn-icon-height) + 20px);
+}
+
+.darkluplite-accessibility-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: calc(calc(200 * var(--darkluplite-btn-icon-width)) / 100);
+  height: calc(calc(133 * var(--darkluplite-btn-icon-width)) / 100);
+}
+
+.darkluplite-switch input,
+.darkluplite-square-switch input,
+.darkluplite-accessibility-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* ----- Style 1 ------ */
+
+.darkluplite-switch.style1 {
+  background: #3700b3;
+  border-radius: calc(calc(150 * var(--darkluplite-btn-height)) / 100);
+  cursor: pointer;
+}
+
+.darkluplite-switch.style1 .toggle-btn {
+  position: absolute;
+  height: var(--darkluplite-btn-icon-height);
+  width: var(--darkluplite-btn-icon-width);
+  left: 8px;
+  transition: left 0.4s;
+}
+
+.darkluplite-switch.style1 .toggle-btn svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
+}
+
+.darkluplite-switch.style1 .toggle-btn svg #style-1-light {
+  fill: #ffffff;
+}
+
+.darkluplite-switch.style1 .toggle-btn svg:nth-child(1) {
+  opacity: 1;
+}
+
+.darkluplite-switch.style1 .toggle-btn svg:nth-child(2) {
+  opacity: 0;
+}
+
+.darkluplite-switch.style1 .toggle-checkbox:checked + .toggle-btn {
+  left: calc(
+    calc(var(--darkluplite-btn-width) - var(--darkluplite-btn-icon-width)) - 8px
+  );
+}
+
+.darkluplite-switch.style1
+  .toggle-checkbox:checked
+  + .toggle-btn
+  svg:nth-child(1) {
+  opacity: 0;
+}
+
+.darkluplite-switch.style1
+  .toggle-checkbox:checked
+  + .toggle-btn
+  svg:nth-child(2) {
+  opacity: 1;
+}
+
+/* ----- Style 2 ------ */
+
+.darkluplite-switch.style2 {
+  background: #03dac5;
+  border-radius: 60px;
+  height: calc(calc(35 * var(--darkluplite-btn-height)) / 100);
+  cursor: pointer;
+}
+
+.darkluplite-switch.style2 .toggle-btn {
+  position: absolute;
+  width: calc(var(--darkluplite-btn-icon-width) + 5px);
+  height: calc(var(--darkluplite-btn-icon-height) + 5px);
+  left: 8px;
+  transition: left 0.4s;
+}
+
+.darkluplite-switch.style2 .toggle-btn .plate {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+  background: #3700b3;
+}
+
+.darkluplite-switch.style2 .toggle-btn svg {
+  position: absolute;
+  padding: 6px;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
+}
+
+.darkluplite-switch.style2 .toggle-btn svg #style-2-light {
+  fill: #ffffff;
+}
+
+.darkluplite-switch.style2 .toggle-btn svg:nth-child(1) {
+  opacity: 1;
+}
+
+.darkluplite-switch.style2 .toggle-btn svg:nth-child(2) {
+  opacity: 0;
+}
+
+.darkluplite-switch.style2 .toggle-checkbox:checked + .toggle-btn {
+  left: calc(
+    calc(var(--darkluplite-btn-width) - var(--darkluplite-btn-icon-width)) -
+      13px
+  );
+}
+
+.darkluplite-switch.style2
+  .toggle-checkbox:checked
+  + .toggle-btn
+  svg:nth-child(1) {
+  opacity: 0;
+}
+
+.darkluplite-switch.style2
+  .toggle-checkbox:checked
+  + .toggle-btn
+  svg:nth-child(2) {
+  opacity: 1;
+}
+
+/* ----- Style 8 ------ */
+
+.darkluplite-square-switch.style8 {
+  background: #3700b3;
+  border-radius: var(--darkluplite-btn-icon-height);
+  cursor: pointer;
+}
+
+.darkluplite-square-switch.style8 .toggle-btn {
+  position: absolute;
+  height: var(--darkluplite-btn-icon-height);
+  width: var(--darkluplite-btn-icon-width);
+  left: 10px;
+  transition: left 0.4s;
+}
+
+.darkluplite-square-switch.style8 .toggle-btn svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s;
+  padding: calc(calc(5 * var(--darkluplite-btn-icon-width)) / 100);
+}
+
+.darkluplite-square-switch.style8 .toggle-btn svg #style-8-light {
+  fill: #ffffff;
+}
+
+.darkluplite-square-switch.style8 .toggle-btn svg:nth-child(1) {
+  opacity: 1;
+}
+
+.darkluplite-square-switch.style8 .toggle-btn svg:nth-child(2) {
+  opacity: 0;
+}
+
+.darkluplite-square-switch.style8
+  .toggle-checkbox:checked
+  + .toggle-btn
+  svg:nth-child(1) {
+  opacity: 0;
+}
+
+.darkluplite-square-switch.style8
+  .toggle-checkbox:checked
+  + .toggle-btn
+  svg:nth-child(2) {
+  opacity: 1;
+}
+
+/* ----- Style 15 ------ */
+
+.darkluplite-switch.style15 {
+  background: #1a1a1a;
+  border-radius: var(--darkluplite-btn-height);
+  height: var(--darkluplite-btn-height);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.darkluplite-switch.style15 input {
+  display: none;
+}
+
+.darkluplite-switch.style15 .toggle-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.darkluplite-switch.style15 .toggle-btn::after,
+.darkluplite-switch.style15 .toggle-btn::before {
+  display: block;
+  position: absolute;
+  content: "";
+  height: var(--darkluplite-btn-icon-height);
+  width: var(--darkluplite-btn-icon-width);
+  border-radius: 50%;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  transition: 0.9s ease;
+}
+
+.darkluplite-switch.style15 .toggle-btn:before {
+  background: #ffa41b;
+}
+
+.darkluplite-switch.style15 .toggle-checkbox:checked + .toggle-btn::before {
+  background: #fff;
+  left: calc(100% - calc(var(--darkluplite-btn-icon-width) + 10px));
+}
+
+.darkluplite-switch.style15 .toggle-btn::after {
+  background: #1a1a1a;
+  left: -45%;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.darkluplite-switch.style15 .toggle-checkbox:checked + .toggle-btn::after {
+  opacity: 1;
+  left: calc(
+    var(--darkluplite-btn-width) -
+      calc(calc(90 * var(--darkluplite-btn-icon-width)) / 100)
+  );
+}
