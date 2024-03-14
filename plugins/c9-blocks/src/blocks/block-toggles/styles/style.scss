@@ -1,0 +1,159 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.c9-toggles .fab,
+.c9-toggles .fas {
+	font-family: fontawesome, sans-serif;
+}
+
+.c9-toggles {
+	.c9-toggles-item-collapse {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 30px;
+		cursor: pointer;
+		background: none;
+		border: none;
+		outline: none;
+		transition: 0.15s transform;
+		will-change: transform;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		>svg {
+			height: 100%;
+		}
+
+		.fa-angle-right {
+			color: #4a4a4a;
+		}
+	}
+
+	.c9-toggles-item-heading {
+		position: relative;
+		transition: opacity .4s;
+		cursor: pointer;
+		font-size: 10px;
+	}
+}
+
+.c9-toggles .c9-toggles-toggle.toggle-collapse-ready:hover .c9-toggles-item-heading {
+	opacity: .8;
+}
+
+.c9-toggles-item-heading:hover {
+	cursor: pointer;
+
+}
+
+.c9-toggles .c9-toggles-item-heading:not([data-toggle="collapse"]) .c9-toggles-item-collapse .fa-angle-right,
+.c9-toggles .c9-toggles-item-heading[aria-expanded="true"] .c9-toggles-item-collapse .fa-angle-right {
+	transform: rotate(90deg);
+}
+
+.c9-toggles-item-content {
+	>div {
+		padding: 25px 30px;
+	}
+}
+
+.c9-toggles .c9-toggles-toggle {
+	padding: 15px 0px;
+	border-top: 1px solid #979797;
+}
+
+.entry-content .c9-toggles .c9-toggles-toggle:last-child {
+	border-bottom: 1px solid #979797;
+}
+
+.c9-toggles .c9-toggles-item-heading .c9-toggles-toggle-label {
+	font-size: 3em;
+	text-align: left;
+	line-height: 1.1;
+}
+
+/* small style toggle */
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle {
+	padding: 15px 0px;
+	border: none;
+	line-height: 1.1;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle:last-child {
+	border: none;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .mb-0 {
+	position: relative;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-heading {
+	padding-left: 50px;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-heading .c9-toggles-toggle-label {
+	font-size: 2.4em;
+	letter-spacing: 0.001em;
+	text-align: left;
+	line-height: 1.2;
+	text-transform: none;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-collapse {
+	position: absolute;
+	left: -50px;
+	top: 50%;
+	transform: translateY(-50%);
+	right: auto;
+	line-height: 1;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-collapse .fas,
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-heading:not([data-toggle="collapse"]) .c9-toggles-item-collapse .fa-angle-right,
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-heading[aria-expanded="true"] .c9-toggles-item-collapse .fa-angle-right {
+	transform: none;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-collapse {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2.8px solid #000000;
+	padding: 3px;
+	border-radius: 50%;
+	height: 27px;
+	width: 27px;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .fa-angle-right:before {
+	content: '\f067';
+	font-size: 16px;
+	display: block;
+}
+
+.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-heading[aria-expanded="true"] .fa-angle-right:before {
+	content: '\f068';
+}
+
+@media only screen and (max-width: 667px) {
+	.c9-toggles.is-style-toggles-small .c9-toggles-toggle .fa-angle-right:before {
+		padding-top: 2px;
+	}
+}
+
+@media only screen and (max-width: 568px) {
+	.c9-toggles .c9-toggles-item-heading .c9-toggles-toggle-label {
+		font-size: 2.4em;
+	}
+
+	.c9-toggles.is-style-toggles-small .c9-toggles-toggle .c9-toggles-item-heading .c9-toggles-toggle-label {
+		font-size: 1.8em;
+	}
+
+
+}

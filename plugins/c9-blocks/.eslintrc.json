@@ -1,0 +1,46 @@
+{
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"jest": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:prettier/recommended",
+		"plugin:jsx-a11y/recommended"
+	],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly",
+		"wp": "readonly",
+		"c9_blocks_params": "readonly",
+		"c9_blocks_assets": "readonly"
+	},
+	"parser": "@babel/eslint-parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2018,
+		"sourceType": "module",
+		"requireConfigFile": false,
+		"babelOptions": {
+			"presets": ["@babel/preset-react"]
+		}
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"plugins": ["react", "jsx-a11y"],
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/display-name": "off",
+		"react/prop-types": "off",
+		"prettier/prettier": ["error", { "singleQuote": true }]
+	},
+	"ignorePatterns": ["node_modules/**/*.js", "dist/*.js", "**/templates/*.js"]
+}
