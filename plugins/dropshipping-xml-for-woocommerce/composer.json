@@ -1,0 +1,71 @@
+{
+  "name": "wpdesk/dropshipping-xml-for-woocommerce",
+  "authors": [
+    {
+      "name": "Marcin",
+      "email": "marcin@wpdesk.net"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WPDesk\\DropshippingXmlFree\\": "src/Plugin"
+    },
+    "classmap": ["vendor_prefixed"]
+  },
+  "autoload-dev": {
+    "classmap": ["tests/unit", "tests/integration"]
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "7.2"
+    },
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "wpdesk/wp-wpdesk-composer": true,
+      "kylekatarnls/update-helper": true,
+      "wpdesk/wp-codeception": true,
+      "cweagans/composer-patches": true
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.2",
+    "psr/container": "^1.0",
+    "psr/log": "^1.0.1",
+    "wpdesk/wp-wpdesk-helper-override": "^1.1.0"
+  },
+  "require-dev": {
+    "10up/wp_mock": "*",
+    "wpdesk/wp-plugin-flow": "^3",
+    "phpunit/phpunit": "<7",
+    "wpdesk/wp-wpdesk-composer": "^2",
+    "wpdesk/wp-codeception": "^2",
+    "wpdesk/wp-forms": "^2",
+    "wpdesk/wp-persistence": "2.1.4",
+    "wpdesk/wp-view": "^2",
+    "wpdesk/wp-helpscout-beacon": "^1.2",
+    "wpdesk/woocommerce-dropshipping-xml-core": "^1.7",
+    "wpdesk/ltv-dashboard-widget": "^1"
+  },
+  "extra": {
+    "text-domain": "dropshipping-xml-for-woocommerce",
+    "translations-folder": "lang",
+    "translation-file-headers": {
+      "Project-Id-Version": "Dropshipping XML for WooCommerce",
+      "Last-Translator": "Marcin Kolanko <marcin@wpdesk.net>",
+      "X-Poedit-WPHeader": "dropshipping-xml-for-woocommerce.php"
+    },
+    "po-files": {
+      "pl_PL": "pl_PL.po"
+    }
+  },
+  "scripts": {
+    "test": "echo composer is alive",
+    "phpcs": "phpcs",
+    "phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+    "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+    "docs": "apigen generate"
+  }
+}

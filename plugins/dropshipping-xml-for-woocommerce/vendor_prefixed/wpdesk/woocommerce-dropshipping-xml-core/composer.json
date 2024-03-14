@@ -1,0 +1,72 @@
+{
+    "name": "wpdesk\/woocommerce-dropshipping-xml-core",
+    "description": "WooCommerce Dropshipping XML Core",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcin",
+            "email": "marcin@wpdesk.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DropshippingXmlFreeVendor\\WPDesk\\Library\\DropshippingXmlCore\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests\/unit",
+            "tests\/integration"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.0.19"
+        },
+        "allow-plugins": {
+            "dealerdirect\/phpcodesniffer-composer-installer": true,
+            "wpdesk\/wp-wpdesk-composer": true,
+            "kylekatarnls\/update-helper": true,
+            "wpdesk\/wp-codeception": true,
+            "cweagans\/composer-patches": true
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.0",
+        "psr\/container": "^1.0",
+        "psr\/log": "^1.0.1",
+        "wpdesk\/wp-forms": "^2",
+        "wpdesk\/wp-persistence": "2.1.4",
+        "wpdesk\/wp-wpdesk-marketing": "^1",
+        "wpdesk\/wp-view": "^2",
+        "wpdesk\/wp-wpdesk-helper-override": "^1.1.0",
+        "wpdesk\/wp-helpscout-beacon": "^1",
+        "monolog\/monolog": "*",
+        "wpdesk\/wp-logs": "*",
+        "wpdesk\/wp-wpdesk-deactivation-modal": "^1.0"
+    },
+    "require-dev": {
+        "10up\/wp_mock": "*",
+        "mockery\/mockery": "*",
+        "phpunit\/phpunit": "<7",
+        "wp-cli\/wp-cli": "2.4.1",
+        "wp-cli\/wp-cli-bundle": "2.4.0",
+        "wpdesk\/wp-code-sniffer": "^1.2.3"
+    },
+    "extra": {
+        "text-domain": "woocommerce-dropshipping-xml-core",
+        "translations-folder": "lang",
+        "po-files": {
+            "pl_PL": "pl_PL.po"
+        }
+    },
+    "scripts": {
+        "phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+        "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
+        "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+        "phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage"
+    }
+}
