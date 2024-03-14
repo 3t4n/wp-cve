@@ -1,0 +1,1 @@
+jQuery(window).load(function(){if(jQuery("#goodrds #goodrds_shelves .book")){var a=function(){var a=jQuery("#goodrds #goodrds_shelves .book");a.height(1.55*a.width()+"px")};jQuery(window).resize(a);a()}});
