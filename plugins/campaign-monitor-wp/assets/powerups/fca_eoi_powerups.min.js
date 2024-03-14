@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){e(".header_power_up_eoi_items").click(function(){var i=e(this);e('input[name="eoi_power_ups_settings['+i.attr("id")+']"]').click()}),e('input[name*="send_test_mail"]').hide()});
