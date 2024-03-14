@@ -1,0 +1,1781 @@
+/* ==========================================================================
+   CSS for Customizer Custom Controls
+   ========================================================================== */
+.lpc-import-file {
+	background: #eeeeee;
+	width: 100%;
+	margin: 10px 0;
+	padding: 10px;
+	font-size: 12px;
+}
+
+.lpc-uploading {
+	background: #eeeeee;
+	display: none;
+	margin: 10px 0;
+	padding: 10px;
+	font-size: 12px;
+}
+
+.simple-notice-custom-control {
+	display: list-item;
+	/* margin-left: -12px;
+	margin-right: -12px; */
+	margin: 20px -12px 0 -12px;
+	padding: 7px 15px;
+	background: #FFF;
+	border-left: 4px solid #0073aa;
+
+}
+
+/* ==========================================================================
+   Standard Selection
+   ========================================================================== */
+.customize-control select,
+.select2-container--default .selection .select2-selection--single {
+	border: none;
+	background-color: #fcfcff;
+	position: relative;
+	border-radius: 0;
+	height: 27px;
+	line-height: 27px;
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.wp-customizer .select2-container--default .selection .select2-selection--multiple {
+	border: none;
+	background-color: #fcfcff;
+	border-radius: 0;
+	height: auto;
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.wp-customizer .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+	width: 95%;
+}
+
+.wp-customizer .select2-container--default .select2-selection--multiple .select2-selection__clear {
+	position: absolute;
+	right: 0;
+}
+
+.wp-customizer .select2-container .select2-dropdown {
+	z-index: 900000;
+}
+
+.customize-control select:active,
+.customize-control select:focus {
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+/* ==========================================================================
+   Standard Input
+   ========================================================================== */
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="email"],
+input[type="date"] {
+	background-color: #fcfcff;
+	position: relative;
+	border-radius: 0;
+	border: 1px solid #eee;
+	height: 27px;
+	line-height: 27px;
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+input[type="text"]:active,
+input[type="text"]:focus,
+input[type="number"]:active,
+input[type="number"]:focus {
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+/* ==========================================================================
+   Simple Notice
+   ========================================================================== */
+
+.simple-notice-custom-control .customize-control-description {
+	line-height: 1.6
+}
+
+.simple-notice-custom-control code {
+	font-size: 90%;
+	padding: 2px 4px;
+}
+
+/* ==========================================================================
+   Textarea/TinyMCE
+   ========================================================================== */
+.tinymce-control textarea {
+	width: 100%;
+	padding: 10px;
+}
+
+/* ==========================================================================
+   Text Radio Buttons
+   ========================================================================== */
+.text_radio_button_control:after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+.text_radio_button_control .radio-buttons {
+	display: inline-block;
+	border: 1px solid #f9f9fe;
+}
+
+.text_radio_button_control .radio-button-label {
+	cursor: pointer;
+	float: left;
+}
+
+.text_radio_button_control .radio-button-label>input {
+	display: none;
+}
+
+.text_radio_button_control .radio-button-label span {
+	cursor: pointer;
+	font-weight: 500;
+	border: 2px solid #f9f9fe;
+	margin: 0;
+	background-color: #eee;
+	padding: 5px 15px;
+	display: inline-block;
+}
+
+.text_radio_button_control .radio-button-label span:hover {
+	background-color: rgba(255, 255, 255, .2);
+	color: #2885bb;
+}
+
+.text_radio_button_control .radio-button-label>input:checked+span {
+	background-color: #2084bd;
+	color: #fff;
+}
+
+.text_radio_button_control .radio-button-label>input:checked+span:hover {
+	color: #fff;
+}
+
+/* ==========================================================================
+   Image Radio Buttons
+   ========================================================================== */
+.image_radio_button_control .radio-button-label>input {
+	display: none;
+}
+
+.image_radio_button_control .radio-button-label>img {
+	cursor: pointer;
+	border: 3px solid #ddd;
+}
+
+.image_radio_button_control .radio-button-label>input:checked+img {
+	border: 3px solid #2885bb;
+}
+
+/* #customize-controls .image_radio_button_control .radio-button-label > img {
+	max-width: 150px;
+} */
+#customize-controls .image_radio_button_control .radio-button-label>img:hover {
+	border: 3px solid #2885bb;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	/* this will create 3 columns */
+	gap: 3px 7px;
+	/* gap between grid items */
+}
+
+.radio-button-label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+/* ==========================================================================
+   Image Checkboxes
+   ========================================================================== */
+.image_checkbox_control .checkbox-label>input {
+	display: none;
+}
+
+.image_checkbox_control .checkbox-label>img {
+	cursor: pointer;
+	border: 3px solid #ddd;
+}
+
+.image_checkbox_control .checkbox-label>input:checked+img {
+	border: 3px solid #2885bb;
+}
+
+#customize-controls .image_checkbox_control .checkbox-label>img {
+	max-width: 70px;
+}
+
+/* ==========================================================================
+   Pill Checkboxes
+   ========================================================================== */
+.pill_checkbox_control .checkbox-label>input {
+	display: none;
+}
+
+.pill_checkbox_control .checkbox-label>.sortable-pill-title {
+	box-sizing: border-box;
+	cursor: pointer;
+	background-color: #ddd;
+	padding: 5px 15px;
+	border-radius: 20px;
+	font-size: 1rem;
+	display: inline-block;
+	margin-bottom: 5px
+}
+
+.pill_checkbox_control .sortable .checkbox-label>.sortable-pill-title {
+	cursor: move;
+}
+
+.pill_checkbox_control .sortable.fullwidth_pills .checkbox-label>.sortable-pill-title {
+	cursor: pointer;
+}
+
+.pill_checkbox_control .checkbox-label>input:checked+.sortable-pill-title {
+	background-color: #2084bd;
+	color: #fff;
+}
+
+.pill_checkbox_control .checkbox-label>input:checked+.sortable-pill-title:before {
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	font-family: dashicons;
+	font-weight: normal;
+	font-size: 24px;
+	content: "\f147";
+	margin-left: -10px;
+	vertical-align: bottom;
+}
+
+.pill_checkbox_control .fullwidth_pills .checkbox-label>.sortable-pill-title {
+	width: 100%;
+	border-radius: 0;
+}
+
+.pill_checkbox_control .sortable.fullwidth_pills .checkbox-label>.sortable-pill-title {
+	width: 90%;
+}
+
+.pill-ui-state-highlight {
+	display: inline-block;
+	padding: 5px 15px;
+	border-radius: 20px;
+	font-size: 1rem;
+	border: 1px dotted #2084bd;
+	margin-bottom: 5px;
+	height: 16px;
+}
+
+.pill_checkbox_control .sortable_pills .pill-ui-state-highlight {
+	width: 50px;
+	border-radius: 20px;
+}
+
+.pill_checkbox_control .sortable_pills.fullwidth_pills .pill-ui-state-highlight {
+	width: 90%;
+	border-radius: 0;
+}
+
+.pill_checkbox_control .dashicons-sort {
+	margin: 5px 0 0 1px;
+	color: #d4d4d4;
+	cursor: move;
+}
+
+.pill_checkbox_control .dashicons-sort:hover {
+	color: #a7a7a7;
+}
+
+.pill_checkbox_control .sortable_pills.fullwidth_pills .ui-sortable-helper {
+	width: calc(100% - 25px) !important;
+}
+
+/* ==========================================================================
+   Slider
+   ========================================================================== */
+.slider-custom-control {
+	margin-bottom: 30px;
+}
+
+.slider-custom-control input[type=number]::-webkit-inner-spin-button,
+.slider-custom-control input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.slider-custom-control input[type=number] {
+	-moz-appearance: textfield;
+}
+
+.slider-custom-control .customize-control-title {
+	display: inline-block;
+}
+
+.slider-custom-control input[type=number] {
+	text-align: right;
+	width: 50px;
+	float: right;
+}
+
+.slider-custom-control .slider {
+	width: 85%;
+	float: left;
+	margin: 20px 0 10px;
+}
+
+.slider-custom-control .slider-reset {
+	float: right;
+	cursor: pointer;
+}
+
+.slider-custom-control .slider-value {
+	border: none;
+	text-align: right;
+	width: 50px;
+	margin-right: 5px;
+}
+
+.slider-custom-control .slider-value,
+.slider-custom-control .slider-unit {
+	float: right;
+}
+
+.slider-custom-control .ui-widget.ui-widget-content {
+	border: 1px solid #f4f4f4;
+}
+
+.slider-custom-control .ui-corner-all,
+.slider-custom-control .ui-corner-bottom,
+.slider-custom-control .ui-corner-right,
+.slider-custom-control .ui-corner-br {
+	border-bottom-right-radius: 3px;
+}
+
+.slider-custom-control .ui-corner-all,
+.slider-custom-control .ui-corner-bottom,
+.slider-custom-control .ui-corner-left,
+.slider-custom-control .ui-corner-bl {
+	border-bottom-left-radius: 3px;
+}
+
+.slider-custom-control .ui-corner-all,
+.slider-custom-control .ui-corner-top,
+.slider-custom-control .ui-corner-right,
+.slider-custom-control .ui-corner-tr {
+	border-top-right-radius: 3px;
+}
+
+.slider-custom-control .ui-corner-all,
+.slider-custom-control .ui-corner-top,
+.slider-custom-control .ui-corner-left,
+.slider-custom-control .ui-corner-tl {
+	border-top-left-radius: 3px;
+}
+
+.slider-custom-control .ui-widget-content {
+	background: #fff none repeat scroll 0 0;
+	color: #333;
+}
+
+.slider-custom-control .ui-slider-horizontal {
+	height: 3px;
+}
+
+.slider-custom-control .ui-slider {
+	position: relative;
+	text-align: left;
+}
+
+.slider-custom-control .ui-state-default,
+.slider-custom-control .ui-widget-content .ui-state-default,
+.slider-custom-control .ui-widget-header .ui-state-default,
+.slider-custom-control .ui-button,
+.slider-custom-control .ui-button.ui-state-disabled:hover,
+.slider-custom-control .ui-button.ui-state-disabled:active {
+	background: #2885bb none repeat scroll 0 0;
+	border: 1px solid #2885bb;
+	color: #454545;
+	font-weight: normal;
+}
+
+.slider-custom-control .ui-slider-horizontal .ui-slider-handle {
+	margin-left: -7px;
+	top: -7px;
+	border-radius: 50%;
+}
+
+.slider-custom-control .ui-slider .ui-slider-handle {
+	cursor: pointer;
+	height: 14px;
+	position: absolute;
+	width: 14px;
+	z-index: 2;
+}
+
+.slider-custom-control .dashicons-image-rotate {
+	margin-top: 10px;
+	color: #d4d4d4;
+	size: 16px;
+}
+
+.slider-custom-control .dashicons-image-rotate:hover {
+	color: #2885bb;
+}
+
+/* ==========================================================================
+   Toggle Switch
+   ========================================================================== */
+.toggle-switch-control .customize-control-title {
+	display: inline-block;
+}
+
+.toggle-switch {
+	position: relative;
+	width: 64px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	float: right;
+}
+
+.toggle-switch .toggle-switch-checkbox {
+	display: none;
+}
+
+.toggle-switch .toggle-switch-label {
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border: 2px solid #ddd;
+	border-radius: 20px;
+	padding: 0;
+	margin: 0;
+}
+
+.toggle-switch-inner {
+	display: block;
+	width: 200%;
+	margin-left: -100%;
+	transition: margin 0.3s ease-in 0s;
+}
+
+.toggle-switch-inner:before,
+.toggle-switch-inner:after {
+	display: block;
+	float: left;
+	width: 50%;
+	height: 22px;
+	padding: 0;
+	line-height: 22px;
+	font-size: 20px;
+	color: white;
+	font-family: dashicons;
+	font-weight: bold;
+	box-sizing: border-box;
+}
+
+.toggle-switch-inner:before {
+	content: "\f147";
+	padding-left: 8px;
+	background-color: #2885bb;
+	color: #fff;
+}
+
+.toggle-switch-inner:after {
+	content: "\f158";
+	padding-right: 8px;
+	background-color: #eee;
+	color: #999;
+	text-align: right;
+}
+
+.toggle-switch-switch {
+	display: block;
+	width: 16px;
+	margin: 3px;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 38px;
+	border: 2px solid #ddd;
+	border-radius: 20px;
+	transition: all 0.3s ease-in 0s;
+}
+
+.toggle-switch-checkbox:checked+.toggle-switch-label .toggle-switch-inner {
+	margin-left: 0;
+}
+
+.toggle-switch-checkbox:checked+.toggle-switch-label .toggle-switch-switch {
+	right: 0px;
+}
+
+/* ==========================================================================
+   Sortable Repeater
+   ========================================================================== */
+.sortable {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.sortable input[type="text"] {
+	margin: 5px 5px 5px 0;
+	width: 80%;
+}
+
+.sortable div {
+	cursor: move;
+}
+
+.customize-control-sortable-repeater-delete {
+	color: #d4d4d4;
+}
+
+.customize-control-sortable-repeater-delete:hover {
+	color: #f00;
+}
+
+.customize-control-sortable-repeater-delete .dashicons-no-alt {
+	text-decoration: none;
+	margin: 8px 0 0 0;
+	font-weight: 600;
+}
+
+.customize-control-sortable-repeater-delete:active,
+.customize-control-sortable-repeater-delete:focus {
+	outline: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.repeater .dashicons-sort {
+	margin: 8px 5px 0 5px;
+	color: #d4d4d4;
+}
+
+.repeater .dashicons-sort:hover {
+	color: #a7a7a7;
+}
+
+/* ==========================================================================
+   Single Accordion
+   ========================================================================== */
+.single-accordion-toggle {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 24px;
+	padding: 10px 5px 5px 0;
+	cursor: pointer;
+}
+
+.accordion-icon-toggle {
+	font-size: 18px;
+	margin-left: 5px;
+	margin-top: 5px;
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	-moz-transition: -moz-transform 0.3s ease-in-out;
+	-o-transition: -o-transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+}
+
+.single-accordion-toggle-rotate .accordion-icon-toggle {
+	filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=-0.5);
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	display: inline-block;
+}
+
+.single-accordion {
+	display: none;
+}
+
+.single-accordion ul {
+	margin: 0;
+	padding: 0;
+}
+
+.single-accordion li {
+	background-color: #e4e4e4;
+	color: #888;
+	width: 115px;
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+	text-align: center;
+}
+
+.single-accordion li i {
+	margin-left: 5px;
+}
+
+/* ==========================================================================
+   Alpha Color Picker
+   ========================================================================== */
+.customize-control-alpha-color .wp-picker-container .iris-picker {
+	border-bottom: none;
+}
+
+.customize-control-alpha-color .wp-picker-container {
+	max-width: 257px;
+}
+
+.customize-control-alpha-color .wp-picker-open+.wp-picker-input-wrap {
+	width: 100%;
+}
+
+.customize-control-alpha-color .wp-picker-input-wrap input[type="text"].wp-color-picker.alpha-color-control {
+	float: left;
+	width: 195px;
+}
+
+.customize-control-alpha-color .wp-picker-input-wrap .button {
+	margin-left: 0;
+	float: right;
+}
+
+.wp-picker-container .wp-picker-open~.wp-picker-holder .alpha-color-picker-container {
+	display: block;
+}
+
+.alpha-color-picker-container {
+	border: 1px solid #dfdfdf;
+	border-top: none;
+	display: none;
+	background-color: #fff;
+	padding: 0 11px 10px;
+	position: relative;
+}
+
+.alpha-color-picker-container .ui-widget-content,
+.alpha-color-picker-container .ui-widget-header,
+.alpha-color-picker-wrap .ui-state-focus {
+	background: transparent;
+	border: none;
+}
+
+.alpha-color-picker-wrap a.iris-square-value:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.alpha-color-picker-container .ui-slider {
+	position: relative;
+	z-index: 1;
+	height: 24px;
+	text-align: center;
+	margin: 0 auto;
+	width: 88%;
+	width: calc(100% - 28px);
+}
+
+.alpha-color-picker-container .ui-slider-handle,
+.alpha-color-picker-container .ui-widget-content .ui-state-default {
+	color: #777;
+	background-color: #fff;
+	text-shadow: 0 1px 0 #fff;
+	text-decoration: none;
+	position: absolute;
+	z-index: 2;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	border: 1px solid #aaa;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-top: -2px;
+	top: 0;
+	height: 26px;
+	width: 26px;
+	cursor: ew-resize;
+	font-size: 0;
+	padding: 0;
+	line-height: 27px;
+	margin-left: -14px;
+}
+
+.alpha-color-picker-container .ui-slider-handle.show-opacity {
+	font-size: 12px;
+}
+
+.alpha-color-picker-container .click-zone {
+	width: 14px;
+	height: 24px;
+	display: block;
+	position: absolute;
+	left: 10px;
+}
+
+.alpha-color-picker-container .max-click-zone {
+	right: 10px;
+	left: auto;
+}
+
+.alpha-color-picker-container .transparency {
+	height: 24px;
+	width: 100%;
+	background-color: #fff;
+	background-image: url(../images/color-picker-transparency-grid.png);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 0;
+	margin-top: -24px;
+}
+
+@media only screen and (max-width: 782px) {
+	.customize-control-alpha-color .wp-picker-input-wrap input[type="text"].wp-color-picker.alpha-color-control {
+		width: 184px;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.customize-control-alpha-color .wp-picker-input-wrap input[type="text"].wp-color-picker.alpha-color-control {
+		width: 172px;
+		height: 33px;
+	}
+}
+
+/* ==========================================================================
+   Alpha Color Picker & Standard Color Picker
+   ========================================================================== */
+.customize-control-color .wp-color-result,
+.customize-control-alpha-color .wp-color-result {
+	box-shadow: none;
+}
+
+.customize-control-color .wp-color-result .wp-color-result-text,
+.customize-control-alpha-color .wp-color-result .wp-color-result-text {
+	border-left: none;
+}
+
+.wp-picker-holder .iris-picker .iris-palette {
+	box-shadow: none;
+}
+
+.wp-picker-container .iris-picker,
+.wp-picker-container .alpha-color-picker-container {
+	border-radius: 0;
+	border: none;
+}
+
+.wp-picker-container .alpha-color-picker-container {
+	width: 233px;
+}
+
+/* ==========================================================================
+   WPColorPicker Alpha Color Picker
+   ========================================================================== */
+.customize-control-wpcolorpicker-alpha-color .wp-color-result {
+	box-shadow: none;
+}
+
+.customize-control-wpcolorpicker-alpha-color .wp-picker-input-wrap input[type="text"].wp-color-picker {
+	float: left;
+	width: 195px !important;
+}
+
+.customize-control-wpcolorpicker-alpha-color .wp-color-result .wp-color-result-text {
+	border-left: none;
+}
+
+.customize-control-wpcolorpicker-alpha-color .iris-picker-inner .iris-slider,
+.customize-control-wpcolorpicker-alpha-color .iris-picker-inner .iris-alpha-slider,
+.customize-control-two-color-gradient .iris-picker-inner .iris-alpha-slider {
+	width: 17.6px !important;
+}
+
+/* ==========================================================================
+   Google Fonts Select
+   ========================================================================== */
+.google_fonts_select_control .google-fonts,
+.google_fonts_select_control .weight-style {
+	margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   Upsell Section
+   ========================================================================== */
+#customize-theme-controls #accordion-section-upsell_section {
+	display: block !important;
+}
+
+#customize-theme-controls .upsell-section-title {
+	font-size: 14px;
+	border-bottom: 1px solid #ddd;
+	border-left: 4px solid #fff;
+	transition: 0s color ease-in-out, 0s background-color ease-in-out, 0s border-color ease-in-out;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#customize-theme-controls .upsell-section-title::after {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	z-index: 1;
+	content: "\f345";
+	font: normal 20px/1 dashicons;
+	speak: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none !important;
+}
+
+#customize-theme-controls .upsell-section-title a {
+	display: block;
+	padding: 12px 15px 15px;
+	line-height: 21px;
+	text-decoration: none;
+}
+
+/* ==========================================================================
+   Control Limit
+   ========================================================================== */
+/* presets */
+#customize-control-lpc_preset_select_control .grid-container label.radio-button-label:not(#default) {
+	position: relative;
+}
+
+#customize-control-lpc_preset_select_control .grid-container label.radio-button-label:not(#default)::after {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#customize-control-lpc_preset_select_control .grid-container label.radio-button-label:not(#default):hover::after {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_preset_select_control .grid-container label.radio-button-label:not(#default) .lpc-pro-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* logo pos */
+#customize-control-lpc_opts-lpc-logo-position-x-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-logo-position-x-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-logo-position-x-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-logo-position-x-control .slider,
+#customize-control-lpc_opts-lpc-logo-position-x-control input[type="number"] {
+	pointer-events: none;
+}
+
+/* Gradients */
+/* gcolor */
+#customize-control-lpc_opts-lpc-background-gcolor1-control,
+#customize-control-lpc_opts-lpc-background-gcolor2-control,
+#customize-control-lpc_opts-lpc-background-gcol1percent-control,
+#customize-control-lpc_opts-lpc-background-gcol2percent-control,
+#customize-control-lpc_opts-lpc-background-gangle-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-background-gcolor1-control::before,
+#customize-control-lpc_opts-lpc-background-gcolor2-control::before,
+#customize-control-lpc_opts-lpc-background-gcol1percent-control::before,
+#customize-control-lpc_opts-lpc-background-gcol2percent-control::before,
+#customize-control-lpc_opts-lpc-background-gangle-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-background-gcolor1-control:hover::before,
+#customize-control-lpc_opts-lpc-background-gcolor2-control:hover::before,
+#customize-control-lpc_opts-lpc-background-gcol1percent-control:hover::before,
+#customize-control-lpc_opts-lpc-background-gcol2percent-control:hover::before,
+#customize-control-lpc_opts-lpc-background-gangle-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-background-gcolor1-control .wp-picker-container,
+#customize-control-lpc_opts-lpc-background-gcolor2-control .wp-picker-container {
+	pointer-events: none;
+}
+
+#customize-control-lpc_opts-lpc-background-gcol1percent-control .slider,
+#customize-control-lpc_opts-lpc-background-gcol1percent-control input[type="number"],
+#customize-control-lpc_opts-lpc-background-gcol2percent-control .slider,
+#customize-control-lpc_opts-lpc-background-gcol2percent-control input[type="number"],
+#customize-control-lpc_opts-lpc-background-gangle-control .slider,
+#customize-control-lpc_opts-lpc-background-gangle-control input[type="number"] {
+	pointer-events: none;
+}
+
+/* bg img */
+#customize-control-lpc_opts-lpc-bg-image-repeat-control,
+#customize-control-lpc_opts-lpc-bg-image-position-control,
+#customize-control-lpc_opts-lpc-bg-image-size-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-bg-image-repeat-control::before,
+#customize-control-lpc_opts-lpc-bg-image-position-control::before,
+#customize-control-lpc_opts-lpc-bg-image-size-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-bg-image-repeat-control:hover::before,
+#customize-control-lpc_opts-lpc-bg-image-position-control:hover::before,
+#customize-control-lpc_opts-lpc-bg-image-size-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-bg-image-repeat-control select,
+#customize-control-lpc_opts-lpc-bg-image-position-control select,
+#customize-control-lpc_opts-lpc-bg-image-size-control select {
+	pointer-events: none;
+}
+
+/* bg video */
+#customize-control-lpc_opts-lpc-background-video-control,
+#customize-control-lpc_opts-lpc-bg-video-loop-control,
+#customize-control-lpc_opts-lpc-bg-video-mute-control,
+#customize-control-lpc_opts-lpc-bg-video-size-control,
+#customize-control-lpc_opts-lpc-bg-video-position-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-background-video-control::before,
+#customize-control-lpc_opts-lpc-bg-video-loop-control::before,
+#customize-control-lpc_opts-lpc-bg-video-mute-control::before,
+#customize-control-lpc_opts-lpc-bg-video-size-control::before,
+#customize-control-lpc_opts-lpc-bg-video-position-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-background-video-control:hover::before,
+#customize-control-lpc_opts-lpc-bg-video-loop-control:hover::before,
+#customize-control-lpc_opts-lpc-bg-video-mute-control:hover::before,
+#customize-control-lpc_opts-lpc-bg-video-size-control:hover::before,
+#customize-control-lpc_opts-lpc-bg-video-position-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-background-video-control .attachment-media-view,
+#customize-control-lpc_opts-lpc-bg-video-loop-control .customize-inside-control-row,
+#customize-control-lpc_opts-lpc-bg-video-mute-control .customize-inside-control-row,
+#customize-control-lpc_opts-lpc-bg-video-size-control select,
+#customize-control-lpc_opts-lpc-bg-video-position-control input {
+	pointer-events: none;
+}
+
+/* Outer form */
+#customize-control-lpc_opts-lpc-form-box-shadow-control,
+#customize-control-lpc_opts-lpc-form-border-radius-control,
+#customize-control-lpc_opts-lpc-form-position-left-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-form-box-shadow-control::before,
+#customize-control-lpc_opts-lpc-form-border-radius-control::before,
+#customize-control-lpc_opts-lpc-form-position-left-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-form-box-shadow-control:hover::before,
+#customize-control-lpc_opts-lpc-form-border-radius-control:hover::before,
+#customize-control-lpc_opts-lpc-form-position-left-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-form-box-shadow-control input,
+#customize-control-lpc_opts-lpc-form-position-left-control .slider,
+#customize-control-lpc_opts-lpc-form-position-left-control input[type="number"],
+#customize-control-lpc_opts-lpc-form-border-radius-control .slider,
+#customize-control-lpc_opts-lpc-form-border-radius-control input[type="number"] {
+	pointer-events: none;
+}
+
+/* Outer form bg img */
+#customize-control-lpc_opts-lpc-form-bg-image-control,
+#customize-control-lpc_opts-lpc-form-bg-image-repeat-control,
+#customize-control-lpc_opts-lpc-form-bg-image-position-control,
+#customize-control-lpc_opts-lpc-form-bg-image-size-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-form-bg-image-control::before,
+#customize-control-lpc_opts-lpc-form-bg-image-repeat-control::before,
+#customize-control-lpc_opts-lpc-form-bg-image-position-control::before,
+#customize-control-lpc_opts-lpc-form-bg-image-size-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-form-bg-image-control:hover::before,
+#customize-control-lpc_opts-lpc-form-bg-image-repeat-control:hover::before,
+#customize-control-lpc_opts-lpc-form-bg-image-position-control:hover::before,
+#customize-control-lpc_opts-lpc-form-bg-image-size-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-form-bg-image-control select,
+#customize-control-lpc_opts-lpc-form-bg-image-repeat-control select,
+#customize-control-lpc_opts-lpc-form-bg-image-position-control select,
+#customize-control-lpc_opts-lpc-form-bg-image-size-control select {
+	pointer-events: none;
+}
+
+/* Inner Form */
+#customize-control-lpc_opts-lpc-inner-form-bg-image-control,
+#customize-control-lpc_opts-lpc-inner-form-border-radius-control,
+#customize-control-lpc_opts-lpc-inner-form-box-shadow-control,
+#customize-control-lpc_opts-lpc-inner-form-position-top-control,
+#customize-control-lpc_opts-lpc-inner-form-position-left-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-inner-form-bg-image-control::before,
+#customize-control-lpc_opts-lpc-inner-form-border-radius-control::before,
+#customize-control-lpc_opts-lpc-inner-form-box-shadow-control::before,
+#customize-control-lpc_opts-lpc-inner-form-position-top-control::before,
+#customize-control-lpc_opts-lpc-inner-form-position-left-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-inner-form-bg-image-control:hover::before,
+#customize-control-lpc_opts-lpc-inner-form-border-radius-control:hover::before,
+#customize-control-lpc_opts-lpc-inner-form-box-shadow-control:hover::before,
+#customize-control-lpc_opts-lpc-inner-form-position-top-control:hover::before,
+#customize-control-lpc_opts-lpc-inner-form-position-left-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+
+#customize-control-lpc_opts-lpc-inner-form-bg-image-control select,
+#customize-control-lpc_opts-lpc-inner-form-border-radius-control .slider,
+#customize-control-lpc_opts-lpc-inner-form-border-radius-control input[type="number"],
+#customize-control-lpc_opts-lpc-inner-form-position-top-control .slider,
+#customize-control-lpc_opts-lpc-inner-form-position-top-control input[type="number"],
+#customize-control-lpc_opts-lpc-inner-form-position-left-control .slider,
+#customize-control-lpc_opts-lpc-inner-form-position-left-control input[type="number"],
+#customize-control-lpc_opts-lpc-inner-form-box-shadow-control input {
+	pointer-events: none;
+}
+
+/* Inputs */
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-right-control,
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-top-control,
+#customize-control-lpc_opts-lpc-form-inputs-remember-align-control,
+#customize-control-lpc_opts-lpc-form-inputs-font-control,
+#customize-control-lpc_opts-lpc-form-inputs-labels-align-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-right-control::before,
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-top-control::before,
+#customize-control-lpc_opts-lpc-form-inputs-remember-align-control::before,
+#customize-control-lpc_opts-lpc-form-inputs-font-control::before,
+#customize-control-lpc_opts-lpc-form-inputs-labels-align-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-right-control:hover::before,
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-top-control:hover::before,
+#customize-control-lpc_opts-lpc-form-inputs-remember-align-control:hover::before,
+#customize-control-lpc_opts-lpc-form-inputs-font-control:hover::before,
+#customize-control-lpc_opts-lpc-form-inputs-labels-align-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-right-control .slider,
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-right-control input[type="number"],
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-top-control .slider,
+#customize-control-lpc_opts-lpc-form-inputs-eye-position-top-control input[type="number"],
+#customize-control-lpc_opts-lpc-form-inputs-remember-align-control .text_radio_button_control,
+#customize-control-lpc_opts-lpc-form-inputs-font-control .select2,
+#customize-control-lpc_opts-lpc-form-inputs-labels-align-control .text_radio_button_control {
+	pointer-events: none;
+}
+
+/* Inputs Labels */
+#customize-control-lpc_opts-lpc-form-Username-label-control,
+#customize-control-lpc_opts-lpc-form-Password-label-control,
+#customize-control-lpc_opts-lpc-form-rememberme-text-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-form-Username-label-control::before,
+#customize-control-lpc_opts-lpc-form-Password-label-control::before,
+#customize-control-lpc_opts-lpc-form-rememberme-text-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-form-rememberme-text-control:hover::before,
+#customize-control-lpc_opts-lpc-form-Password-label-control:hover::before,
+#customize-control-lpc_opts-lpc-form-Username-label-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-form-Username-label-control label,
+#customize-control-lpc_opts-lpc-form-Username-label-control input[type="text"],
+#customize-control-lpc_opts-lpc-form-rememberme-text-control label,
+#customize-control-lpc_opts-lpc-form-rememberme-text-control input[type="text"],
+#customize-control-lpc_opts-lpc-form-Password-label-control label,
+#customize-control-lpc_opts-lpc-form-Password-label-control input[type="text"] {
+	pointer-events: none;
+}
+
+/* Button */
+#customize-control-lpc_opts-lpc-form-button-text-control,
+#customize-control-lpc_opts-lpc-form-button-align-control,
+#customize-control-lpc_opts-lpc-form-button-border-radius-control,
+#customize-control-lpc_opts-lpc-form-button-box-shadow-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-form-button-text-control::before,
+#customize-control-lpc_opts-lpc-form-button-align-control::before,
+#customize-control-lpc_opts-lpc-form-button-border-radius-control::before,
+#customize-control-lpc_opts-lpc-form-button-box-shadow-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-form-button-text-control:hover:before,
+#customize-control-lpc_opts-lpc-form-button-align-control:hover:before,
+#customize-control-lpc_opts-lpc-form-button-border-radius-control:hover:before,
+#customize-control-lpc_opts-lpc-form-button-box-shadow-control:hover:before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-form-button-text-control label,
+#customize-control-lpc_opts-lpc-form-button-text-control input[type="text"],
+#customize-control-lpc_opts-lpc-form-button-align-control .text_radio_button_control,
+#customize-control-lpc_opts-lpc-form-button-border-radius-control .slider,
+#customize-control-lpc_opts-lpc-form-button-border-radius-control input[type="number"],
+#customize-control-lpc_opts-lpc-form-button-box-shadow-control label,
+#customize-control-lpc_opts-lpc-form-button-box-shadow-control input[type="text"] {
+	pointer-events: none;
+}
+
+/* Forget form */
+#customize-control-lpc_opts-lpc-form-lostpass-text-control,
+#customize-control-lpc_opts-lpc-form-lostpass-box-label-control,
+#customize-control-lpc_opts-lpc-form-lostpass-text-align-control,
+#customize-control-lpc_opts-lpc-form-lostpass-position-x-control,
+#customize-control-lpc_opts-lpc-form-lostpass-label-align-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-form-lostpass-text-control::before,
+#customize-control-lpc_opts-lpc-form-lostpass-box-label-control::before,
+#customize-control-lpc_opts-lpc-form-lostpass-text-align-control::before,
+#customize-control-lpc_opts-lpc-form-lostpass-position-x-control::before,
+#customize-control-lpc_opts-lpc-form-lostpass-label-align-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-form-lostpass-text-control:hover::before,
+#customize-control-lpc_opts-lpc-form-lostpass-box-label-control:hover::before,
+#customize-control-lpc_opts-lpc-form-lostpass-text-align-control:hover::before,
+#customize-control-lpc_opts-lpc-form-lostpass-position-x-control:hover::before,
+#customize-control-lpc_opts-lpc-form-lostpass-label-align-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-form-lostpass-text-control label,
+#customize-control-lpc_opts-lpc-form-lostpass-text-control input[type="text"],
+#customize-control-lpc_opts-lpc-form-lostpass-box-label-control label,
+#customize-control-lpc_opts-lpc-form-lostpass-box-label-control input[type="text"],
+#customize-control-lpc_opts-lpc-form-lostpass-text-align-control .text_radio_button_control,
+#customize-control-lpc_opts-lpc-form-lostpass-position-x-control .slider,
+#customize-control-lpc_opts-lpc-form-lostpass-position-x-control input[type="number"],
+#customize-control-lpc_opts-lpc-form-lostpass-label-align-control .text_radio_button_control {
+	pointer-events: none;
+}
+
+/* Back to */
+#customize-control-lpc_opts-lpc-backtolink-text-align-control,
+#customize-control-lpc_opts-lpc-backtolink-position-x-control {
+	position: relative;
+}
+
+#customize-control-lpc_opts-lpc-backtolink-text-align-control::before,
+#customize-control-lpc_opts-lpc-backtolink-position-x-control::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#customize-control-lpc_opts-lpc-backtolink-text-align-control:hover::before,
+#customize-control-lpc_opts-lpc-backtolink-position-x-control:hover::before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+#customize-control-lpc_opts-lpc-backtolink-text-align-control .text_radio_button_control,
+#customize-control-lpc_opts-lpc-backtolink-position-x-control .slider,
+#customize-control-lpc_opts-lpc-backtolink-position-x-control input[type="number"] {
+	pointer-events: none;
+}
+
+/* Msg Modify */
+#sub-accordion-section-lpc-section-messages > li:not(.customize-section-description-container):not(#customize-control-lpc-messages-heading-control) {
+    position: relative;
+}
+
+#sub-accordion-section-lpc-section-messages > li:not(.customize-section-description-container):not(#customize-control-lpc-messages-heading-control)::before {
+    content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#sub-accordion-section-lpc-section-messages > li:not(.customize-section-description-container):not(#customize-control-lpc-messages-heading-control):hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#sub-accordion-section-lpc-section-messages > li:not(.customize-section-description-container):not(#customize-control-lpc-messages-heading-control) > label {
+    pointer-events: none;
+}
+/* Msg Link */
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control) {
+    position: relative;
+}
+
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control)::before {
+    content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control):hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control) > label,
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control) > .wp-picker-container,
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control) .slider,
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control) > .text_radio_button_control,
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control) > input[type="text"],
+#sub-accordion-section-lpc-section-msg-style > li:not(.customize-section-description-container):not(#customize-control-lpc-msg-style-heading-control) input[type="number"] {
+    pointer-events: none;
+}
+
+/* Modify Errors */
+
+#sub-accordion-section-lpc-section-errors > li:not(.customize-section-description-container):not(#customize-control-lpc-login-errors-heading-control):not(#customize-control-lpc-errors-lost-heading-control):not(#customize-control-lpc-register-errors-heading-control) {
+    position: relative;
+}
+
+#sub-accordion-section-lpc-section-errors > li:not(.customize-section-description-container):not(#customize-control-lpc-login-errors-heading-control):not(#customize-control-lpc-errors-lost-heading-control):not(#customize-control-lpc-register-errors-heading-control)::before {
+    content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#sub-accordion-section-lpc-section-errors > li:not(.customize-section-description-container):not(#customize-control-lpc-login-errors-heading-control):not(#customize-control-lpc-errors-lost-heading-control):not(#customize-control-lpc-register-errors-heading-control):hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#sub-accordion-section-lpc-section-errors > li:not(.customize-section-description-container):not(#customize-control-lpc-login-errors-heading-control):not(#customize-control-lpc-errors-lost-heading-control):not(#customize-control-lpc-register-errors-heading-control) > label {
+    pointer-events: none;
+}
+/* error Link */
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control) {
+    position: relative;
+}
+
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control)::before {
+    content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control):hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control) > label,
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control) > .wp-picker-container,
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control) .slider,
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control) > .text_radio_button_control,
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control) > input[type="text"],
+#sub-accordion-section-lpc-section-error-style > li:not(.customize-section-description-container):not(#customize-control-lpc-error-style-heading-control) input[type="number"] {
+    pointer-events: none;
+}
+/* Custom css/js */
+#sub-accordion-section-lpc-section-customcssjs > li:not(.customize-section-description-container):not(#customize-control-lpc-customcssjs-heading-control) {
+	position:relative;
+}
+#sub-accordion-section-lpc-section-customcssjs > li:not(.customize-section-description-container):not(#customize-control-lpc-customcssjs-heading-control)::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+#sub-accordion-section-lpc-section-customcssjs > li:not(.customize-section-description-container):not(#customize-control-lpc-customcssjs-heading-control):hover::before {
+	opacity: 1;
+    transform: scale(1);
+}
+
+#sub-accordion-section-lpc-section-customcssjs > li:not(.customize-section-description-container):not(#customize-control-lpc-customcssjs-heading-control) label {
+	pointer-events: none;
+}
+
+/* Export Import */
+#sub-accordion-section-lpc-section-exportimport > li:not(.customize-section-description-container):not(#customize-control-lpc-exportimport-heading-control) {
+	position:relative;
+}
+#sub-accordion-section-lpc-section-exportimport > li:not(.customize-section-description-container):not(#customize-control-lpc-exportimport-heading-control)::before {
+	content: "Upgrade to Pro";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.75);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transform: scale(0.95);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	z-index: 3;
+}
+#sub-accordion-section-lpc-section-exportimport > li:not(.customize-section-description-container):not(#customize-control-lpc-exportimport-heading-control):hover::before {
+	opacity: 1;
+    transform: scale(1);
+}
+#sub-accordion-section-lpc-section-exportimport > li:not(.customize-section-description-container):not(#customize-control-lpc-exportimport-heading-control) input {
+	pointer-events: none;
+}
+/* end */
