@@ -1,0 +1,101 @@
+<?php
+
+/**
+ * List of cities for: Ghana
+ * Source: https://en.wikipedia.org/wiki/List_of_cities_in_Ghana
+ * Version: 1.0
+ * Author: Condless
+ * Author URI: https://www.condless.com/
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/**
+ * Exit if accessed directly
+ */
+defined( 'ABSPATH' ) || exit;
+
+$country_cities = [
+	'GHACCRA' => 'Accra',
+	'GHKUMASI' => 'Kumasi',
+	'GHTAMALE' => 'Tamale',
+	'GHSEKONDI-TAKORADI' => 'Sekondi-Takoradi',
+	'GHASHAIMAN' => 'Ashaiman',
+	'GHSUNYANI' => 'Sunyani',
+	'GHCAPE_COAST' => 'Cape Coast',
+	'GHOBUASI' => 'Obuasi',
+	'GHTESHIE' => 'Teshie',
+	'GHTEMA' => 'Tema',
+	'GHMADINA' => 'Madina',
+	'GHKOFORIDUA' => 'Koforidua',
+	'GHWA' => 'Wa',
+	'GHTECHIMAN' => 'Techiman',
+	'GHHO' => 'Ho',
+	'GHNUNGUA' => 'Nungua',
+	'GHLASHIBI' => 'Lashibi',
+	'GHDOME' => 'Dome',
+	'GHTEMA_NEW_TOWN' => 'Tema New Town',
+	'GHGBAWE' => 'Gbawe',
+	'GHODUPONKPEHE' => 'Oduponkpehe',
+	'GHEJURA' => 'Ejura',
+	'GHTAIFA' => 'Taifa',
+	'GHBAWKU' => 'Bawku',
+	'GHAFLAO' => 'Aflao',
+	'GHAGONA_SWEDRU' => 'Agona Swedru',
+	'GHBOLGATANGA' => 'Bolgatanga',
+	'GHTAFO' => 'Tafo',
+	'GHBEREKUM' => 'Berekum',
+	'GHNKAWKAW' => 'Nkawkaw',
+	'GHAKIM_ODA' => 'Akim Oda',
+	'GHWINNEBA' => 'Winneba',
+	'GHHOHOE' => 'Hohoe',
+	'GHYENDI' => 'Yendi',
+	'GHSUHUM' => 'Suhum',
+	'GHKINTAMPO' => 'Kintampo',
+	'GHADENTA_EAST' => 'Adenta East',
+	'GHNSAWAM' => 'Nsawam',
+	'GHMAMPONG' => 'Mampong',
+	'GHKONONGO' => 'Konongo',
+	'GHASAMANKESE' => 'Asamankese',
+	'GHWENCHI' => 'Wenchi',
+	'GHSAVELUGU' => 'Savelugu',
+	'GHAGOGO' => 'Agogo',
+	'GHANLOGA' => 'Anloga',
+	'GHPRESTEA' => 'Prestea',
+	'GHEFFIAKUMA' => 'Effiakuma',
+	'GHTARKWA' => 'Tarkwa',
+	'GHELMINA' => 'Elmina',
+	'GHDUNKWA-ON-OFFIN' => 'Dunkwa-on-Offin',
+	'GHBEGORO' => 'Begoro',
+	'GHKPANDU' => 'Kpandu',
+	'GHKINTAMPO' => 'Kintampo',
+	'GHNAVRONGO' => 'Navrongo',
+	'GHAXIM' => 'Axim',
+	'GHAPAM' => 'Apam',
+	'GHSALAGA' => 'Salaga',
+	'GHSALTPOND' => 'Saltpond',
+	'GHAKWATIA' => 'Akwatia',
+	'GHSHAMA' => 'Shama',
+	'GHKETA' => 'Keta',
+	'GHNYAKROM' => 'Nyakrom',
+	'GHBIBIANI' => 'Bibiani',
+	'GHSOMANYA' => 'Somanya',
+	'GHFOSO' => 'Foso',
+	'GHNYANKPALA' => 'Nyankpala',
+	'GHABURI' => 'Aburi',
+	'GHMUMFORD' => 'Mumford',
+	'GHBECHEM' => 'Bechem',
+	'GHDUAYAW_NKWANTA' => 'Duayaw Nkwanta',
+	'GHKADE' => 'Kade',
+	'GHANOMABU' => 'Anomabu',
+	'GHAKROPONG' => 'Akropong',
+	'GHKETE-KRACHI' => 'Kete-Krachi',
+	'GHKIBI' => 'Kibi',
+	'GHKPANDAE' => 'Kpandae',
+	'GHMPRAESO' => 'Mpraeso',
+	'GHAKIM_SWEDRU' => 'Akim Swedru',
+	'GHABOSO' => 'Aboso',
+	'GHBEKWAI' => 'Bekwai',
+	'GHDROBO' => 'Drobo',
+	'GHBANDA_AHENKRO' => 'Banda Ahenkro',
+];
