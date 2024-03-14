@@ -1,0 +1,470 @@
+/**
+ * 01. Base
+ */
+.kianfr {
+  position: relative;
+
+  label {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+  }
+}
+
+.kianfr-ab-icon {
+  top: 2px;
+}
+
+#screen-meta-links + .kianfr-options {
+  margin-top: 40px;
+}
+
+.kianfr-options {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+/**
+ * 01. 01. Header
+ */
+.kianfr-header {
+  position: relative;
+}
+
+.kianfr-header-inner {
+  padding: 25px;
+  transition: box-shadow .3s ease;
+
+  h1 {
+    float: left;
+    font-size: 1.5em;
+    line-height: 26px;
+    font-weight: 400;
+    margin: 0;
+
+    small {
+      font-size: 11px;
+      font-weight: 500;
+    }
+  }
+}
+
+/**
+ * 01. 02. Sticky
+ */
+.kianfr-sticky {
+
+  .kianfr-header-inner {
+    position: fixed;
+    z-index: 99;
+    top: 32px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/**
+ * 01. 03. Header Buttons
+ */
+.kianfr-buttons {
+  float: right;
+
+  .button {
+    margin: 0 2px;
+    line-height: 26px;
+
+    &:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .kianfr-save {
+    min-width: 72px;
+  }
+}
+
+.kianfr-header-left {
+  float: left;
+}
+
+.kianfr-header-right {
+  float: right;
+}
+
+/**
+ * 01. 04. Navigation
+ */
+.kianfr-nav {
+  display: block;
+  position: relative;
+  z-index: 10;
+  float: left;
+
+  ul {
+    clear: left;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+      margin-bottom: 0;
+
+      a {
+        font-size: 13px;
+        position: relative;
+        display: block;
+        padding: 14px 12px;
+        text-decoration: none;
+        transition-property: color, background;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+
+      .kianfr-arrow:after {
+        content: "\f054";
+        display: inline-block;
+        font-family: "Font Awesome 5 Pro", "Font Awesome 5 Free", "FontAwesome";
+        font-weight: 900;
+        font-size: 9px;
+        line-height: 1;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -4px;
+      }
+
+      &.kianfr-tab-expanded {
+
+        .kianfr-arrow:after {
+          transform: rotate(90deg);
+        }
+
+        ul {
+          display: block;
+        }
+      }
+    }
+
+    ul {
+      display: none;
+      position: relative;
+
+      li {
+
+        a {
+          font-size: 12px;
+          padding: 12px 14px 12px 24px;
+        }
+      }
+    }
+  }
+
+  .kianfr-tab-icon {
+    width: 20px;
+    margin-right: 5px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .kianfr-label-error {
+    margin-left: 4px;
+    vertical-align: top;
+  }
+}
+
+.kianfr-nav-normal {
+  width: 225px;
+
+  + .kianfr-content {
+    margin-left: 225px;
+  }
+}
+
+.kianfr-nav-inline {
+  width: 100%;
+
+  ul {
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+
+.kianfr-nav-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  width: 225px;
+}
+
+/**
+ * 01. 05. Wrapper
+ */
+.kianfr-wrapper {
+  position: relative;
+}
+
+/**
+ * 01. 06. Content
+ */
+.kianfr-content {
+  position: relative;
+  background-color: #fff;
+}
+
+/**
+ * 01. 07. Section
+ */
+.kianfr-sections {
+  float: left;
+  width: 100%;
+}
+
+.kianfr-section-title {
+  display: none;
+  padding: 20px 30px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .kianfr-section-icon {
+    margin-right: 5px;
+  }
+}
+
+/**
+ * 01. 08. Footer
+ */
+.kianfr-footer {
+  padding: 20px;
+  font-size: 11px;
+}
+
+/**
+ * 01. 09. Copyright
+ */
+.kianfr-copyright {
+  float: left;
+  margin-top: 5px;
+}
+
+/**
+ * 01. 10. Show All Settings
+ */
+.kianfr-search-all,
+.kianfr-show-all {
+  .kianfr-nav-background,
+  .kianfr-nav {
+    display: none;
+  }
+
+  .kianfr-content {
+    margin-left: 0;
+  }
+
+  .kianfr-section-title,
+  .kianfr-section {
+    display: block !important;
+  }
+}
+
+.kianfr-search-all {
+  .kianfr-section-title {
+    display: none !important;
+  }
+}
+
+//
+// Expand
+//
+.kianfr-expand-all {
+  float: left;
+  padding: 0 8px;
+  margin-right: 4px;
+  z-index: 1;
+  font-size: 13px;
+  line-height: 30px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 2px;
+  transition: all .2s;
+
+  span {
+    font-size: 11px;
+    vertical-align: middle;
+  }
+}
+
+/**
+ * 01. 11. Search Input
+ */
+.kianfr-search {
+  float: left;
+
+  input {
+    margin: 0 2px 0 0;
+    border: none;
+    font-size: 12px;
+    line-height: 30px;
+    min-height: 30px;
+    text-align: inherit;
+    padding: 0 10px;
+    border-radius: 2px;
+    box-shadow: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.kianfr-saving {
+
+  .kianfr-buttons,
+  .kianfr-content {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+/**
+ * 01. 12. Metabox
+ */
+.kianfr-metabox {
+  margin: -6px -12px -12px -12px;
+
+  .kianfr-field {
+    padding: 20px;
+  }
+
+  .kianfr-section-title {
+    padding: 20px;
+  }
+}
+
+.block-editor-page {
+
+  .kianfr-metabox {
+    margin: -6px -14px -14px -14px;
+  }
+}
+
+.block-editor-editor-skeleton__content {
+
+  .kianfr-metabox {
+    border-left: 1px solid #e2e4e7;
+    border-right: 1px solid #e2e4e7;
+  }
+}
+
+.kianfr-sections-reset {
+  float: left;
+  width: 100%;
+  text-align: right;
+  border-top: 1px solid #eee;
+
+  .kianfr-button-cancel,
+  input {
+    display: none;
+  }
+
+  label {
+    padding: 10px;
+  }
+
+  span {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+
+  input:checked ~ .kianfr-button-reset {
+    display: none;
+  }
+
+  input:checked ~ .kianfr-button-cancel {
+    display: inline-block;
+  }
+
+}
+
+#side-sortables {
+
+  .kianfr-section-title {
+    padding: 12px;
+  }
+
+  .kianfr-field {
+    padding: 10px 15px;
+
+    .kianfr-title {
+      float: none;
+      width: 100%;
+      margin-bottom: 6px;
+    }
+
+    .kianfr-fieldset {
+      float: none;
+      width: 100%;
+    }
+  }
+
+  .kianfr-field-text input {
+    width: 100%;
+  }
+
+  .kianfr-notice {
+    padding: 10px 15px;
+  }
+}
+
+/**
+ * 01. 13. Comment Metabox
+ */
+.kianfr-comment-metabox {
+  margin: -6px -12px -12px -12px;
+
+  .kianfr-field {
+    padding: 20px;
+  }
+
+  .kianfr-section-title {
+    padding: 20px;
+  }
+}
+
+
+/**
+ * 01. 14. Help Tooltip
+ */
+.kianfr-tooltip {
+  position: absolute;
+  z-index: 5000001;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  padding: 6px 12px;
+  max-width: 200px;
+  color: #fff;
+  background-color: #000;
+  background-color: rgba(black, 0.85);
+  border-radius: 4px;
+}
