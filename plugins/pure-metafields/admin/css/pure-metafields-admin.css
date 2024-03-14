@@ -1,0 +1,63 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ /* User metabox */
+.tp-image-box {
+    width: 7.1%;
+    position: relative;
+}
+
+.tp-image-box img {
+    max-width: 100%;
+}
+
+.tp-user-image{
+    width: 50%;
+}
+
+.tp-user-image img {
+    max-width: 100%;
+}
+
+.tp-del-img{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.tp-del-img svg{
+    fill: #fff;
+}
+
+.tp-image-box::after{ 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: #000;
+    opacity: 0.3;
+    visibility: hidden;
+    transition: 0.3s;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.tp-image-box:hover::after{ 
+    visibility: visible;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.tp-image-box:hover .tp-del-img{
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s;
+}
