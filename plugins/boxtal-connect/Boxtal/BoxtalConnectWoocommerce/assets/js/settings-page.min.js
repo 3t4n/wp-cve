@@ -1,0 +1,1 @@
+"use strict";!function(){var e={};e.ratesTable={branding:"bw",trigger:"#order-delivered",init:function(){null!==document.querySelector(this.trigger)&&this.initSelect("select")},initSelect:function(t){tail.select(t,{locale:bwData[e.ratesTable.branding].locale})}},document.addEventListener("DOMContentLoaded",function(){e.ratesTable.init()})}();
