@@ -1,0 +1,1 @@
+<p>Choose from a list of your WooCommerce product categories to exclude from your generated ShareASale datafeed. Press ctrl (Windows) or command (Mac) + click to select multiple.</p>

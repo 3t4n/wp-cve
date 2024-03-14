@@ -1,0 +1,1 @@
+<p>Insert your required ShareASale Merchant ID and optional AWIN ID number.</p>
