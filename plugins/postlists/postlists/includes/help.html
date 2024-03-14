@@ -1,0 +1,44 @@
+<!--
+  this file will be displayed as help in the postlists admin menu
+  this file belongs to postlists version 2.0
+-->
+<h3>There are multiple ways of using your PostLists...</h3><br>
+First of all, you have to define the lists you like to use. 
+You can do this on this page: 
+  Select "New List" under "PostLists Lists" and click the "Select" button. 
+  Then type in a special word in the first field to use as placeholder. 
+  For example you could use "MYPOSTLISTSEXAMPLE". 
+  Use a word that does not occur anywhere else in your posts. 
+  Continue configuring the list as you like, via the other fields. 
+  Finally save this list configuration. 
+  Now you can use this list:
+<ul>
+  <li><h4>Use it on pages or in posts: </h4>
+    If you like to insert a list in a page or a post, 
+    just type in the placeholder in the content of you post/page exactly the same way you defined it (case sensitive). 
+    For the example you would have to type in "MYPOSTLISTSEXAMPLE". 
+    This placeholder will get replaced to the list, if you view the page/post after saving it. 
+    Please note: If there are no posts in your list and you have not defined the string to display if there are now matching posts, 
+    the empty list will not get displayed and the placeholder only gets removed from the output.
+  </li>
+  <li><h4>Use it as a sidebar widget: </h4>
+    Add a new text-widget to your sidebar. 
+    Open the configuration of the new text-widget to edit the text. 
+    Now type in your placeholder as text, the same way as it is explained for the usage in posts.
+  </li>
+  <li><h4>Use it in template files: </h4>
+    To add the list to a template file, you just have to call the function <i>pl_postlist( $placeholder )</i> and pass the defined placeholder of your list as a string. 
+    For the example you would have to add this code anywhere in your template file: 
+    <br><i>
+    &lt;?php
+    <br>
+    &nbsp;&nbsp;if( function_exists("pl_postlist") )
+    <br>  
+    &nbsp;&nbsp;&nbsp;&nbsp;pl_postlist("MYPOSTLISTSEXAMPLE");
+    <br>
+    ?&gt;
+    </i><br>
+    The list will be displayed exactly at the position you added the code.
+  </li>
+</ul>  
+For further help, you can visit the plugin page. You will also find this help with screenshots in german language there.
