@@ -1,0 +1,800 @@
+/*
+CSS File for Team Rosters Plugin
+Theme URI: http://shoalsummitsolutions.com
+Author: Mark O'Donnell
+Author URI: http://shoalsummitsolutions.com
+Description: Styles required for the Team Rosters Plugin.
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+/*---------------------------------------------------------------------------
+ *	MSTW Wordpress Plugins (http://shoalsummitsolutions.com)
+ *	Copyright 2014-22 Mark O'Donnell (mark@shoalsummitsolutions.com)
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *	GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License
+ *	along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+ .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+ 
+/*-------------------------------------------------------	
+ *	Styles for new roster table 2 (flex)
+ *------------------------------------------------------*/ 
+
+.MSTW-uppercase {
+	text-transform : uppercase;
+
+}
+
+.MSTW-flex-row {
+	display        : flex;
+	flex-direction : row;
+	flex-wrap      : wrap;
+	align-items    : center;
+}
+
+div.mstw-tr-roster-table-container {
+	display       : block;
+	font-family   : "Open Sans", sans-serif;
+	font-size     : 16px;
+	line-height   : 22.4px;
+	overflow-wrap : break-word;
+}
+
+div.mstw-tr-roster-table-container div.roster-sort-controls {
+	margin : 0 0 10px 0;
+}
+
+form#tr-sort-controls {
+	justify-content : flex-end;
+	margin-left     : auto;
+}
+
+div.tr-sort-menu {
+	margin-right : 10px;
+}
+
+select[name="tr-sort-menu"] {
+	font-size    : 14px;
+	border-width : 2px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	padding-right: 25px;
+	padding-left : 10px;
+	padding-top : 2px;
+	padding-bottom : 2px;
+}
+
+div.mstw-tr-roster-players ul.mstw-tr-roster-player-list {
+	list-style-type  : none;
+	list-style-image : none;
+	padding          : 0;
+	margin           : 0;
+}
+
+li.mstw-tr-roster-player {
+	background : #fff;
+	display    : flex;
+	width      : 100%;
+}
+
+li.mstw-tr-roster-player:nth-child(odd) { 
+	background: #f2f2f2; 
+}
+ 
+div.mstw-tr-roster-player-container {
+	box-sizing : border-box;
+	color : #333; /*rgb(51, 51, 51);*/
+	flex-grow : 1;
+	font-family : "Open Sans", sans-serif;
+	font-size : 16px;
+	line-height : 22.4px;
+	margin : 0px;
+	max-width : 1416px;
+	overflow-wrap : break-word;
+	padding : 12px 0px;
+	text-align : left;
+	overflow: hidden;
+}
+
+div.mstw-tr-roster-player-details {
+	display        : flex;
+	flex-direction : row;
+	flex-wrap      : wrap;
+	width          : 50%;
+	align-items    : center;
+}
+
+div.mstw-tr-roster-player-image img {
+	max-height : 125px;
+	margin     : 0 12px;
+}
+
+div.mstw-tr-roster-player-pertinents {
+	padding-top    : 10px;
+	padding-bottom : 0px;
+}
+
+div.mstw-tr-roster-player-number-name {
+	display        : flex;
+	flex-direction : row;
+	flex-wrap      : nowrap;
+	margin         : 8px 0;
+	font-family    : "Open Sans", sans-serif;
+	font-size      : 24px;
+	line-height    : 40px;
+	vertical-align : middle;
+}
+
+div.mstw-tr-roster-player-number-name h3.player-name {
+    font-size    : 24px;
+		font-family  : "Open Sans", sans-serif;
+		font-variant : all-small-caps;
+    padding      : 8px;
+		font-weight  : bold;
+		line-height  : 40px;
+}
+
+div.mstw-tr-roster-player-number-name h3.player-name a {
+	color           : #000;
+	text-decoration : none;
+}
+
+.mstw-tr-roster-player-number-name.mstw-uppercase {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+div.mstw-tr-roster-player-number-name span.jersey {
+    background  : #a9a9a9; /*darkgray*/
+    color       : #fff;
+    font-size   : 36px;
+		font-family : "Open Sans", sans-serif;
+    padding     : 0; /*0px 10px;*/
+		font-weight : bold;
+		vertical-align : middle;
+		line-height : 2em;
+		width       : 2em;
+		text-align  : center;
+}
+
+div.mstw-tr-roster-player-other {
+	/*width       : 50%;*/
+	font-family : "Open Sans", sans-serif;
+}
+
+div.mstw-tr-roster-player-other-data {
+	font-style  : italic;
+}
+
+span.mstw-tr-player-data-1:after,
+span.mstw-tr-player-data-2:after {
+    content: " | ";
+}​
+
+div.mstw-tr-roster-player-bio {
+	font-style : normal; 
+}
+
+div.mstw-tr-roster-player-bio a {
+	color           : #000;
+	text-decoration : none;
+}
+
+ /*-------------------------------------------------------	
+ *	General styles for controls
+ *------------------------------------------------------*/
+ /* Container for the controls */
+ div.mstw-ms-controls {
+	margin-bottom : 10px;
+	margin-top    : 10px;
+	font-size     : 14px;
+	height        : 28px;
+	display       : inline-flex;
+ }
+ 
+ .ms-control {
+	 padding-right : 10px;
+ }
+ 
+ .ms-title {
+	 padding-right : 5px;
+ }
+ 
+ .ms-control select {
+  padding     : 2px;
+  line-height : 28px;
+  height      : 28px;
+	font-size   : 100%;
+}
+
+ .ms-control.button {
+	 padding : 0;
+ }
+
+ .ms-control input[type=submit] {
+		padding           : 6px 10px;
+    padding           : 0.428571429rem 0.714285714rem;
+    font-size         : 11px;
+    font-size         : 90%; /*0.785714286rem; */
+    line-height       : 110%; /*1.428571429; */
+    font-weight       : normal;
+    color             : #7c7c7c;
+    background-color  : #e6e6e6;
+    background-repeat : repeat-x;
+    background-image  : -moz-linear-gradient(top, #f4f4f4, #e6e6e6);
+    background-image  : -ms-linear-gradient(top, #f4f4f4, #e6e6e6);
+    background-image  : -webkit-linear-gradient(top, #f4f4f4, #e6e6e6);
+    background-image  : -o-linear-gradient(top, #f4f4f4, #e6e6e6);
+    background-image  : linear-gradient(top, #f4f4f4, #e6e6e6);
+    border            : 1px solid #d2d2d2;
+    border-radius     : 3px;
+    box-shadow        : 0 1px 2px rgba(64, 64, 64, 0.1);
+	vertical-align      : middle;
+}
+
+
+/*-------------------------------------------------------	
+ *	PLAYER PROFILE (CPT "player" single page template) 
+ *------------------------------------------------------*/
+#test-content {
+	max-width : 1000px;
+	background : lavendar;
+	border : brown 2px solid;
+}
+
+ .flex-container {
+	 width : 100%;
+ }
+ 
+ .player-head-1 {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid silver;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+	flex-direction : row;
+	background : tomato;
+}
+
+.nowrap  { 
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+.MSTW-wrap    { 
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}  
+
+.player-photo-1 {
+  background: gold;
+}
+
+.player-name-nbr-1 {
+  background: navy;
+}
+
+.player-info-1 {
+  background: gray;
+}
+
+.team-logo-1 {
+  background: skyblue;
+}
+
+.MSTW-flex-item {
+ /* background: tomato; */
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
+
+/* 
+ * top level container to set the size of content & controls 
+ */
+
+.mstw-tr-player-profile-container {
+	max-width : 1000px;
+	margin    : auto;
+}
+ 
+/* this is a patch for the 2012 theme */ 
+.nav-previous_single-player {
+	margin-bottom: 12px;
+	margin-bottom: 1.0rem;
+	}
+	
+/* a patch for the dev.sss theme */
+.singular .tr-single-player#content {
+    margin: 0;
+    position: relative;
+    width: auto;
+}
+
+/* title and player selection controls */
+.tr-header-controls {
+	min-height : 20px;
+	flex-grow  : 1;
+}
+
+h1.player-head-title {
+	/*float         : left;*/
+	color         : #000;
+	font-size     : 24px;
+	font-weight   : bold;
+	margin-bottom : 12px;
+	margin-bottom : 1.0rem;
+   
+	}
+	
+/* select-option dropdown of team's players */
+.player-select-controls {
+	margin-bottom : 10px;
+	/*min-height:60px;*/
+	margin-left : auto;  /* aligns right in the flexbox world */
+}
+
+div.player-select-list,
+div.player-select-button {
+	/*float         : left;*/
+	margin-left   : 5px;
+	margin-right  : 5px;
+}
+
+select#player-select {
+	width : 200px;
+}
+
+select#player-select {
+	font-size   : 14px;
+	line-height : 20px;
+}
+
+/* player-header contains all the player photo and information */
+.player-header {
+	flex-grow        : 1;
+	background-color : #f2f2f2; /* light gray #dce6f1; /* light blue */
+	color            : #000;
+	padding          : 10px 0;
+	width            : 100%;
+}
+
+
+/* player-photo is coming from the featured image */
+#player-photo {
+	/*float: left;*/
+	padding-left: 20px;
+	/*line-height: 0;*/
+	}
+
+#player-photo img {
+	border: 1px solid #bbb;
+	padding: 5px;
+	background-color: #eee;
+	width: 150px;
+	height: 150px;
+	}
+	
+#player-name-nbr {
+	/*float: left;*/
+	padding: 18px 0 20px 20px;
+	display: flex;
+	color: #000;
+	}
+
+.player-header #player-name-nbr #number {
+	float: left;
+	font-size: 72px;
+	line-height: 1em;
+	display: inline;
+	}
+
+.player-header #player-name-nbr #player-name {
+	float: left;
+	font-size: 24px;
+	line-height: 36px;
+	padding-left: 10px;
+	display: inline;
+	margin-right: 20px;
+	}
+	
+.player-info {
+	margin-top    : 10px;
+	margin-bottom : 10px;
+}
+			
+#player-info-table {
+	/*float: left;*/
+	display : flex;
+	font-size: 14px;
+	line-height: 16px;
+	border-left: 2px solid #fff;
+	}
+
+#player-info-table p {
+	margin-bottom: 0px;
+	}
+
+table#player-info-table {
+	width: auto;
+	font-size: 16px;
+	color: #111;
+	margin : 0;
+	border : none;
+	/*padding-left: 10px;*/
+	/*margin-left: 20px;*/
+	}
+
+table#player-info-table td {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border: 0;
+	}
+
+table#player-info-table td.lf-col {
+	text-align: right;
+	font-weight: bold; 
+	padding-left: 10px;
+	}
+	
+table#player-info-table td.rt-col {
+	text-align: left;
+	padding-left: 6px;
+	}
+
+div #team-logo {
+	padding-left  : 20px;
+	padding-right : 20px;
+	margin-left   : auto;
+	}
+
+div#team-logo img {
+	border: 1px solid #bbb;
+	padding: 5px;
+	background-color: #eee;
+	width: 150px;
+	height: 150px;
+	}
+
+/* 	
+ *	player-bio contains whatever is in the post content 
+ *	bio, stats, etc.
+ */	
+body.single-mstw_tr_player #content.site-content {
+	/*width  : 1000px;
+	margin : auto;*/
+}
+	
+.player-bio {
+	clear            : both;
+	border-style     : solid;
+	border-width     : 2px;
+	color            : #000; 
+	background-color : #fff; 
+	border-color     : #a9a9a9; /*#1982d1; 	/*Twentyeleven Default - lt blue */
+	}
+
+.player-bio h1, .player-bio h2, .player-bio h3 {
+	margin-bottom: 12px;
+	margin-bottom: 1.0rem;
+	margin-top: 6px;
+	margin-top: 1.0rem;
+	margin-left: 15px;
+	margin-left: 1.5rem;
+	font-size: 18px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #000; /*#1982d1;			/*Twentyeleven Default - lt blue */
+	}
+
+.player-bio h2 {
+	font-size: 15px;
+	font-size: 1.25rem;
+	}
+
+.player-bio h3 {
+	font-size: 13px;
+	font-size: 1.0rem;
+	text-transform: uppercase;
+	}
+
+.player-bio p {
+	padding: 0 15px;
+	padding: 0 1.5rem;
+	font-size: 12px;
+	font-size: 1.0rem;
+	margin-bottom: 12px;
+	margin-bottom: 1.0rem;
+	line-height: 18px;
+	line-height: 1.5em;
+	}
+	
+/*
+ *   New bio card with flexbox
+ */
+.tr-bio-contaner {
+	display :   flex;
+	flex-flow : row wrap;
+	background-color : blue;
+	justify-content : space-between;
+	gap : 10px;
+}
+
+.tr-bio-container > div {
+            background-color: gold;
+						color : navyblue;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+        }
+				
+#flex-player-info {
+	display : flex;
+	flex-flow : column wrap;
+}
+
+/*-------------------------------------------------------	
+ *	ROSTER TABLE
+ *------------------------------------------------------*/
+ 
+ /* 
+  * This wrapper is an attempt to make the roster tables
+  * more responsive on small screens. Remark it out or
+  * modify it to suit your application.
+  */
+ .mstw-tr-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.mstw-tr-roster-title,
+.mstw_tr_roster_title {
+	color         : inherit;
+	font-size     : 24px;
+	margin-top    : 24px;
+	margin-bottom : 12px;
+	font-weight   : bold;
+	}
+	
+.roster-sort-controls h1.mstw-tr-roster-title	{
+	margin-top    : 0;
+	margin-bottom : 0;
+	}
+	
+.mstw-tr-table {
+	table-layout: auto;
+	}
+ 
+.mstw-tr-table thead tr  th {
+	background-color : #a9a9a9;   /* #4e81db;		/*MS default */
+	color            : #fff; 	 /*MS default */
+	vertical-align   : middle;
+	padding-left     : 5px;
+	text-align       : left;
+	/* border won't show, just makes table body & header line up */
+	border-top     : #a9a9a9 solid 1px;
+	border-bottom  : #a9a9a9 solid 1px;
+	border-left    : #a9a9a9 solid 1px;
+	border-right   : #a9a9a9 solid 1px;
+
+	}
+
+.mstw-tr-table tbody tr:nth-child(odd) {
+	background-color : #f2f2f2;  /*#dce6f1;		/*MS default */
+	color            : #000;		 /*MS default */
+	vertical-align   : middle;
+	}
+
+.mstw-tr-table tbody tr:nth-child(even) {
+	vertical-align   : middle;
+	background-color : #fff; 			/*MS default */
+	color            : #000; 			/*MS default */
+	}
+	
+.mstw-tr-table tbody tr td  {
+	padding-left   : 5px;
+	/* this is needed down this low in the stack to override twentyeleven defaults */
+	border-top     : #a9a9a9 solid 1px;  		/* #95b3d7 MS default */
+	border-bottom  : #a9a9a9 solid 1px;  		/* #95b3d7 MS default */
+	border-left    : #a9a9a9 solid 1px;  	/* #95b3d7 MS default */
+	border-right   : #a9a9a9 solid 1px;  		/* #95b3d7 MS default */
+	vertical-align : middle;
+	text-align     : left;
+	}
+
+.mstw-tr-table tbody tr td a:link, .mstw-tr-table tbody tr td a:visited {	
+	/* you have finer control here than you do with the admin settings */
+	color           : #black; /*#1982d1;*/ 		
+	vertical-align  : middle;
+	text-decoration : none;
+	}
+	
+.mstw-tr-table tbody tr td a:hover {	
+	text-decoration : underline;
+	}
+
+.mstw-tr-table tbody tr td a:active {	
+	color : #1982d1;
+	}
+
+.mstw-tr-table tbody tr td img {
+	border: 1px solid #BBB;
+	padding: 5px;
+	background-color: #EEE;
+	margin-left: 0; /*10px;*/
+	/* height: 64px; removed to improve responsiveness*/
+	width: 64px;
+	}
+ 
+/*-------------------------------------------------------	
+ *	PLAYER GALLERY (Teams/team-slug" taxonomy page)
+ *------------------------------------------------------*/
+ 
+ #content-player-gallery {
+	margin: 0 7.6% 0 7.6%;
+	width: 84.8%;
+	}
+	
+#content-player-gallery header.page-header {
+	margin-bottom: 0;
+	}
+
+h1.team-head-title {
+	font-size: 28px;
+	color: #5899E6;
+	}
+
+.player-tile {
+	float            : left;
+	margin           : 0 15px 15px 15px;
+	width            : 230px;
+	color            : #000;
+	background-color : #f2f2f2; /*light gray */
+	border-radius    : 15px;
+	}
+ 
+.player-tile img {
+	border:           1px solid #bbb;
+	padding:          5px;
+	background-color: #eee;
+	margin-top:       10px;
+	margin-left:      10px;
+	width:            125px;
+	height:           125px;
+	}
+	
+.player-info-container {
+	padding-bottom: 10px;
+	}
+ 
+.player-name-number {
+	font-size:   16px;
+	font-weight: bold;
+	color:       #000;
+	}
+	
+ .player-name-number {
+	padding: 0 0 5px 10px;
+	}
+
+.player-name, .player-number {
+	display: inline;
+	}
+	
+.player-number {
+	margin-right: 10px;
+	}
+
+.player-name-number .player-name a:link, .player-name-number .player-name a:visited {
+	color:           #000;
+	text-decoration: underline;
+	}
+	
+.player-name-number .player-name a:hover, .player-name-number .player-name a:active {
+	text-decoration: none;
+	}
+ 
+.player-info-container table.player-info {
+	padding: 0 5px 5px 10px;
+	margin: 0;
+	width: 100%;
+	font-size: 12px;
+	line-height: 16px;
+	/*font-size: 1.0rem;*/
+	border: 0 solid #fff;
+	color: #333;
+	/*line-height: 1.0rem;*/
+	}
+
+table.player-info tr td {
+	border: 0 solid blue;
+	padding: 0px 5px 5px 10px;
+	}	
+	
+/*-------------------------------------------------------	
+ *	Roster table sortable column header
+ *------------------------------------------------------*/
+
+.sorting-indicator {
+	display        : inline-block;
+	visibility     : hidden;
+	width          : 10px;
+	height         : 4px;
+	/*margin-top   : 8px;*/
+	margin-left    : 3px;
+	vertical-align : middle;
+}
+
+.sorting-indicator:before {
+	content: "\f142";
+	font: normal 20px/1 dashicons;
+	/*speak: none;*/
+	display: inline-block;
+	padding: 0;
+	top: -4px;
+	left: -8px;
+	color: #fff;
+	line-height: 0.5;
+	position: relative;
+	vertical-align: top;
+	/*-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;*/
+	text-decoration: none !important;
+	color: #fff;
+}
+
+.column-comments .sorting-indicator:before {
+	top: 0;
+	left: -10px;
+}
+
+th.sorted.asc .sorting-indicator:before,
+th.desc:hover span.sorting-indicator:before,
+th.desc a:focus span.sorting-indicator:before {
+	content: "\f142";
+}
+
+th.sorted.desc .sorting-indicator:before,
+th.asc:hover span.sorting-indicator:before,
+th.asc a:focus span.sorting-indicator:before {
+	content: "\f140";
+}
+
+th.sorted .sorting-indicator,
+th.desc:hover span.sorting-indicator,
+th.desc a:focus span.sorting-indicator,
+th.asc:hover span.sorting-indicator,
+th.asc a:focus span.sorting-indicator {
+	visibility: visible;
+}
