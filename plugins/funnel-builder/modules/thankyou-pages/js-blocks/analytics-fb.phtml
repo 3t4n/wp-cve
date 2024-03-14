@@ -1,0 +1,110 @@
+<?php $get_hash = $this->get_localstorage_hash(); ?>
+var wffnFBHash = '<?php echo $get_hash; ?>';
+var wffnFBResult = false;
+try {
+
+if ('1' === localStorage.getItem("wffnH_" + wffnFBHash)) {
+wffnFBResult = true;
+}
+
+} catch (exception) {
+
+}
+
+if(false === wffnFBResult) {
+<?php
+if ( $this->do_track_fb_synced_purchase() && is_array( $data ) && isset( $data['fb'] ) ) {
+	$event_id = $this->get_event_id( 'Purchase' );
+	?>
+    var wffnfbDataPurchaseTrackSynced = {
+    contents: <?php echo wp_json_encode( array_values( $data['fb']['products'] ) ); ?>,
+    content_type: 'product',
+    content_ids: <?php echo wp_json_encode( $data['fb']['content_ids'] ); ?>,
+    value: <?php echo esc_js( $data['fb']['total'] ); ?>,
+    currency: '<?php echo esc_js( $data['fb']['currency'] ); ?>',
+    content_name: <?php echo wp_json_encode( implode( ',', $data['fb']['content_name'] ) ); ?>,
+    category_name: <?php echo wp_json_encode( implode( ',', $data['fb']['category_name'] ) ); ?>,
+    num_items: <?php echo esc_js( $data['fb']['num_qty'] ); ?>,
+    transaction_id: '<?php echo esc_js( $data['fb']['transaction_id'] ); ?>'
+    };
+
+	<?php if ( isset( $data['fb']['additional']['town'] ) && ! empty( $data['fb']['additional']['town'] ) ) { ?>
+        wffnfbDataPurchaseTrackSynced.town = '<?php echo esc_js( $data['fb']['additional']['town'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['country'] ) && ! empty( $data['fb']['additional']['country'] ) ) { ?>
+        wffnfbDataPurchaseTrackSynced.country = '<?php echo esc_js( $data['fb']['additional']['country'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['state'] ) && ! empty( $data['fb']['additional']['state'] ) ) { ?>
+        wffnfbDataPurchaseTrackSynced.state = '<?php echo esc_js( $data['fb']['additional']['state'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['payment'] ) && ! empty( $data['fb']['additional']['payment'] ) ) { ?>
+        wffnfbDataPurchaseTrackSynced.payment = '<?php echo esc_js( $data['fb']['additional']['payment'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['shipping'] ) && ! empty( $data['fb']['additional']['shipping'] ) ) { ?>
+        wffnfbDataPurchaseTrackSynced.shipping = '<?php echo esc_js( $data['fb']['additional']['shipping'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['coupon_name'] ) && ! empty( $data['fb']['additional']['coupon_name'] ) ) { ?>
+        wffnfbDataPurchaseTrackSynced.coupon_name = '<?php echo esc_js( $data['fb']['additional']['coupon_name'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['coupon_used'] ) && ! empty( $data['fb']['additional']['coupon_used'] ) ) { ?>
+        wffnfbDataPurchaseTrackSynced.coupon_used = '<?php echo esc_js( $data['fb']['additional']['coupon_used'] ); ?>';
+	<?php } ?>
+
+    wffnfbDataPurchaseTrackSynced = (typeof wffnAddTrafficParamsToEvent !== "undefined") ? wffnAddTrafficParamsToEvent(wffnfbDataPurchaseTrackSynced ) :wffnfbDataPurchaseTrackSynced;
+    fbq('track', 'Purchase', wffnfbDataPurchaseTrackSynced,{'eventID': '<?php echo esc_attr( $event_id ); ?>'});
+
+	<?php
+	if ( $this->is_conversion_api() ) {
+		$this->api_events[] = array( 'event' => 'Purchase', 'event_id' => $event_id );
+	}
+}
+
+if ( false === $this->do_track_fb_synced_purchase() && $this->do_track_fb_purchase_event() && is_array( $data ) && isset( $data['fb'] ) ) {
+	$event_id = $this->get_event_id( 'Purchase' );
+	?>
+    var wffnfbDataPurchaseTrack = {
+    'value': '<?php echo esc_js( $data['fb']['total'] ); ?>',
+    'currency': '<?php echo esc_js( $data['fb']['currency'] ); ?>',
+    'content_name': <?php echo wp_json_encode( implode( ',', $data['fb']['content_name'] ) ); ?>,
+    'category_name': <?php echo wp_json_encode( implode( ',', $data['fb']['category_name'] ) ); ?>,
+    'num_items': <?php echo esc_js( $data['fb']['num_qty'] ); ?>,
+    'transaction_id': '<?php echo esc_js( $data['fb']['transaction_id'] ); ?>'
+    };
+
+    wffnfbDataPurchaseTrack = (typeof wffnAddTrafficParamsToEvent !== "undefined")?wffnAddTrafficParamsToEvent(wffnfbDataPurchaseTrack ):wffnfbDataPurchaseTrack;
+	<?php if ( isset( $data['fb']['additional']['town'] ) && ! empty( $data['fb']['additional']['town'] ) ) { ?>
+        wffnfbDataPurchaseTrack.town = '<?php echo esc_js( $data['fb']['additional']['town'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['country'] ) && ! empty( $data['fb']['additional']['country'] ) ) { ?>
+        wffnfbDataPurchaseTrack.country = '<?php echo esc_js( $data['fb']['additional']['country'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['state'] ) && ! empty( $data['fb']['additional']['state'] ) ) { ?>
+        wffnfbDataPurchaseTrack.state = '<?php echo esc_js( $data['fb']['additional']['state'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['payment'] ) && ! empty( $data['fb']['additional']['payment'] ) ) { ?>
+        wffnfbDataPurchaseTrack.payment = '<?php echo esc_js( $data['fb']['additional']['payment'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['shipping'] ) && ! empty( $data['fb']['additional']['shipping'] ) ) { ?>
+        wffnfbDataPurchaseTrack.shipping = '<?php echo esc_js( $data['fb']['additional']['shipping'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['coupon_name'] ) && ! empty( $data['fb']['additional']['coupon_name'] ) ) { ?>
+        wffnfbDataPurchaseTrack.coupon_name = '<?php echo esc_js( $data['fb']['additional']['coupon_name'] ); ?>';
+	<?php } ?>
+	<?php if ( isset( $data['fb']['additional']['coupon_used'] ) && ! empty( $data['fb']['additional']['coupon_used'] ) ) { ?>
+        wffnfbDataPurchaseTrack.coupon_used = '<?php echo esc_js( $data['fb']['additional']['coupon_used'] ); ?>';
+	<?php } ?>
+
+    fbq('track', 'Purchase', wffnfbDataPurchaseTrack,{'eventID': '<?php echo esc_attr( $event_id ); ?>'});
+	<?php
+	if ( $this->is_conversion_api() ) {
+		$this->api_events[] = array( 'event' => 'Purchase', 'event_id' => $event_id );
+	}
+} ?>
+try {
+
+localStorage.setItem("wffnH_" + wffnFBHash, "1");
+
+} catch (exception) {
+
+}
+}

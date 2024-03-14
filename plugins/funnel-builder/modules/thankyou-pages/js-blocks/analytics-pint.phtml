@@ -1,0 +1,42 @@
+<?php $get_hash = $this->get_localstorage_hash( 'pint' ); ?>
+var wffnPINTHash = '<?php echo $get_hash; ?>';
+var wffnPINTResult = false;
+try {
+
+if ('1' === localStorage.getItem("wffnH_" + wffnPINTHash)) {
+wffnPINTResult = true;
+}
+
+} catch (exception) {
+
+}
+
+if(false === wffnPINTResult) {
+<?php
+
+if ( is_array( $data ) && isset( $data['pint'] ) ) {
+	?>
+
+    var wffnPintPurchaseData = {
+    order_quantity: 1,
+    order_id: '<?php echo esc_js( $data['pint']['order_id'] ); ?>',
+    currency: '<?php echo esc_js( $data['pint']['currency'] ); ?>',
+    value: <?php echo esc_js( $data['pint']['total'] ); ?>,
+    line_items: <?php echo wp_json_encode( array_values( $data['pint']['products'] ) ); ?>,
+    };
+
+    wffnPintPurchaseData = (typeof wffnAddTrafficParamsToEvent !== "undefined")?wffnAddTrafficParamsToEvent(wffnPintPurchaseData):wffnPintPurchaseData;
+
+    pintrk('track', 'checkout',wffnPintPurchaseData);
+	<?php
+}
+
+?>
+try {
+
+localStorage.setItem("wffnH_" + wffnPINTHash, "1");
+
+} catch (exception) {
+
+}
+}

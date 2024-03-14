@@ -1,0 +1,63 @@
+<?php $get_hash = $this->get_localstorage_hash( 'gtag' ); ?>
+var wffngadHash = '<?php echo $get_hash . "$k"; ?>';
+var wffngadResult = false;
+try {
+
+if ('1' === localStorage.getItem("wffnH_" + wffngadHash)) {
+wffngadResult = false;
+}
+
+} catch (exception) {
+
+}
+if (false === wffngadResult) {
+
+
+<?php if ( true === $is_gads ) { ?>
+    var wffnvarGadPurchaseData = <?php echo wp_json_encode( $data['gad'] ); ?>;
+    wffnvarGadPurchaseData = (typeof wffnAddTrafficParamsToEvent !== "undefined")?wffnAddTrafficParamsToEvent(wffnvarGadPurchaseData):wffnvarGadPurchaseData;
+
+    wffnvarGadPurchaseData.send_to = '<?php echo esc_js( $code ); ?>';
+    gtag('event', 'purchase', wffnvarGadPurchaseData);
+
+
+	<?php if ( false !== $label ) { ?>
+        var wffnvarGadPurchaseDataClone = JSON.parse(JSON.stringify(wffnvarGadPurchaseData));
+
+
+        wffnvarGadPurchaseDataClone.send_to = '<?php echo esc_js( $code ); ?>/<?php echo esc_js( $label ) ?>';
+        delete wffnvarGadPurchaseDataClone.items;
+        delete wffnvarGadPurchaseDataClone.ecomm_pagetype;
+        delete wffnvarGadPurchaseDataClone.ecomm_prodid;
+        delete wffnvarGadPurchaseDataClone.ecomm_totalvalue;
+        gtag('event', 'conversion', wffnvarGadPurchaseDataClone);
+		<?php
+
+	}
+
+} else { ?>
+
+    var wffnvarGaPurchaseData = <?php echo wp_json_encode( $data['ga'] ); ?>;
+    wffnvarGaPurchaseData = (typeof wffnAddTrafficParamsToEvent !== "undefined")?wffnAddTrafficParamsToEvent(wffnvarGaPurchaseData):wffnvarGaPurchaseData;
+	<?php if ( $this->is_ga4_tracking() ) { ?>
+        if( ( typeof wffnvarGaPurchaseData !== "undefined" ) && wffnvarGaPurchaseData !== null && ( typeof wffnvarGaPurchaseData.traffic_source !== "undefined" )) {
+        delete wffnvarGaPurchaseData.traffic_source;
+        }
+	<?php } ?>
+
+
+    wffnvarGaPurchaseData.non_interaction = false;
+    wffnvarGaPurchaseData.send_to = '<?php echo esc_js( $code ); ?>';
+    gtag('event', 'purchase', wffnvarGaPurchaseData);
+<?php } ?>
+
+
+try {
+
+localStorage.setItem("wffnH_" + wffngadHash, "1");
+
+} catch (exception) {
+
+}
+
+}

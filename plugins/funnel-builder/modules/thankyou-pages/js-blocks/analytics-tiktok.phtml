@@ -1,0 +1,46 @@
+<?php $get_hash = $this->get_localstorage_hash( 'tiktok' ); ?>
+var wffnTIKTOKHash = '<?php echo $get_hash; ?>';
+var wffnTIKTOKResult = false;
+try {
+
+if ('1' === localStorage.getItem("wffnH_" + wffnTIKTOKHash)) {
+wffnTIKTOKResult = true;
+}
+
+} catch (exception) {
+
+}
+
+if(false === wffnTIKTOKResult) {
+<?php
+if ( is_array( $data ) && isset( $data['tiktok'] ) && ( true === $purchase || true === $complete_payment ) ) {
+	if ( isset( $data['tiktok']['advanced'] ) ) {
+		unset( $data['tiktok']['advanced'] );
+	}
+	?>
+    var wffnTikTokPurchaseData = JSON.parse('<?php echo wp_json_encode( $data['tiktok'] ); ?>');
+
+    wffnTikTokPurchaseData = (typeof wffnAddTrafficParamsToEvent !== "undefined")?wffnAddTrafficParamsToEvent(wffnTikTokPurchaseData):wffnTikTokPurchaseData;
+	<?php if ( true === $purchase ) { ?>
+        ttq.instance('<?php echo $id; ?>').track('PlaceAnOrder',wffnTikTokPurchaseData);
+	<?php } ?>
+
+	<?php if ( true === $complete_payment ) { ?>
+        wffnTikTokPurchaseData.content_type = 'product';
+        setTimeout(function () {
+        ttq.instance('<?php echo $id; ?>').track('CompletePayment',wffnTikTokPurchaseData);
+        }, 1500);
+	<?php } ?>
+
+	<?php
+}
+
+?>
+try {
+
+localStorage.setItem("wffnH_" + wffnTIKTOKHash, "1");
+
+} catch (exception) {
+
+}
+}
