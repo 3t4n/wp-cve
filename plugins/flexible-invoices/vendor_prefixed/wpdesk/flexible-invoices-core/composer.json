@@ -1,0 +1,82 @@
+{
+    "name": "wpdesk\/flexible-invoices-core",
+    "description": "Flexible Invoices Core",
+    "license": "MIT",
+    "keywords": [
+        "wordpress",
+        "woocommerce",
+        "woocommerce invoices",
+        "invoices",
+        "wordpress invoices"
+    ],
+    "homepage": "https:\/\/gitlab.com\/wpdesk\/flexible-invoices-core",
+    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "piotr.potrebka",
+            "email": "piotr.potrebka@wpdesk.net"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.0"
+        },
+        "allow-plugins": {
+            "cweagans\/composer-patches": true,
+            "dealerdirect\/phpcodesniffer-composer-installer": true,
+            "wpdesk\/wp-wpdesk-composer": true
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "psr\/log": "^1.1.3",
+        "psr\/container": "^1",
+        "wpdesk\/flexible-invoices-abstracts": "^1.3",
+        "wpdesk\/wp-view": "^2",
+        "wpdesk\/wp-forms": "^2",
+        "wpdesk\/wp-mutex": "^1.1",
+        "wpdesk\/wp-notice": "^3.1",
+        "wpdesk\/wp-helpscout-beacon": "^1.2",
+        "wpdesk\/wp-persistence": "^3",
+        "wpdesk\/wc-order-abstract": "*",
+        "mpdf\/mpdf": "8.0.11",
+        "ext-json": "*",
+        "ext-zip": "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "psr\/log": "^1.1.3",
+        "psr\/container": "^1",
+        "10up\/wp_mock": "*",
+        "mockery\/mockery": "*",
+        "phpunit\/phpunit": "<7",
+        "wp-cli\/wp-cli": "2.4.1",
+        "wp-cli\/wp-cli-bundle": "2.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "WPDeskFIVendor\\WPDesk\\Library\\FlexibleInvoicesCore\\": "src\/Invoices"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WPDeskFIVendor\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "text-domain": "flexible-invoices-core",
+        "translations-folder": "lang",
+        "po-files": {
+            "pl_PL": "pl_PL.po"
+        }
+    },
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+        "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
+        "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+        "phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage"
+    }
+}

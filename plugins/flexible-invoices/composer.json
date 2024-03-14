@@ -1,0 +1,87 @@
+{
+	"name": "wpdesk/flexible-invoices",
+	"description": "Invoices for WordPress & WooCommerce",
+	"authors": [
+		{
+			"name": "Piotr",
+			"email": "piotr.potrebka@wpdesk.pl"
+		}
+	],
+	"prefer-stable": true,
+	"minimum-stability": "stable",
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "7.2"
+		},
+		"allow-plugins": {
+			"cweagans/composer-patches": true,
+			"kylekatarnls/update-helper": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"wpdesk/wp-codeception": true,
+			"wpdesk/wp-wpdesk-composer": true
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"WPDesk\\FlexibleInvoices\\": "src/"
+		},
+		"classmap": [
+			"vendor_prefixed"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/"
+		]
+	},
+	"require": {
+		"php": ">=7.2",
+		"wpdesk/wp-wpdesk-helper-override": "^1.1",
+		"ext-zip": "*",
+		"ext-json": "*",
+		"ext-simplexml": "*"
+	},
+	"require-dev": {
+		"psr/container": "^1",
+		"psr/log": "^1.1.4",
+		"ext-json": "*",
+		"10up/wp_mock": "*",
+		"codeception/module-asserts": "^1.3",
+		"mockery/mockery": "*",
+		"phpunit/phpunit": "<7",
+		"wpdesk/flexible-invoices-core": "^3.7",
+		"wpdesk/wp-logs": "^1.7",
+		"wpdesk/wp-codeception": "^2",
+		"wpdesk/wp-notice": "^3.1",
+		"wpdesk/wp-persistence": "^3",
+		"wpdesk/wp-plugin-flow-free": "^1",
+		"wpdesk/wp-show-decision": "^1.0",
+		"wpdesk/wp-wpdesk-composer": "^2",
+		"wpdesk/wp-wpdesk-marketing": "^1.1",
+		"wpdesk/ltv-dashboard-widget": "^1"
+	},
+	"scripts": {
+		"test": "echo composer is alive",
+		"phpcs": "phpcs",
+		"phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+		"phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
+		"phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+		"phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage",
+		"docs": "apigen generate"
+	},
+	"extra": {
+		"text-domain": "flexible-invoices",
+		"translations-folder": "lang",
+		"translation-file-headers": {
+			"Project-Id-Version": "Flexible Invoices for WooCommerce",
+			"Last-Translator": "Piotr Potrebka <piotr.potrebka@wpdesk.pl>",
+			"X-Poedit-WPHeader": "flexible-invoices.php"
+		},
+		"po-files": {
+			"pl_PL": "pl_PL.po",
+			"nl_NL": "nl_NL.po"
+		},
+		"prefix_psr": true
+	}
+}
