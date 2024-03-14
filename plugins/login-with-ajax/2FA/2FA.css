@@ -1,0 +1,537 @@
+#lwa-2FA {
+  --icon-check: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23359247" stroke="%23359247" viewBox="0 0 256 256"><path d="M174.89307 101.2384a3.99936 3.99936 0 0 1-.13184 5.65528l-58.666 56a3.99989 3.99989 0 0 1-5.52343 0l-29.334-28a4 4 0 0 1 5.52344-5.78711l26.57227 25.36377 55.90429-53.36377a3.99936 3.99936 0 0 1 5.65527.13183Zm53.10644 26.76172a100 100 0 1 1-100-100 100.113 100.113 0 0 1 100 100Zm-8 0a92 92 0 1 0-92 92 92.10447 92.10447 0 0 0 92-92Z"/></svg>');
+  --icon-waiting: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill:%23e08b35;"><path fill="orange" d="M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1Zm0 20a9 9 0 1 1 9-9 9 9 0 0 1-9 9Z"/><rect width="2" height="7" x="11" y="6" fill="orange" rx="1"><animateTransform attributeName="transform" dur="9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="orange" rx="1"><animateTransform attributeName="transform" dur="1.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>');
+  --icon-error: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="%23953737" fill-rule="evenodd" d="M16 30C8.268 30 2 23.73 2 16S8.268 2 16 2s14 6.27 14 14-6.268 14-14 14Zm0-30C7.163 0 0 7.16 0 16s7.163 16 16 16 16-7.16 16-16S24.837 0 16 0Zm5.717 10.28c-.394-.39-1.031-.39-1.425 0l-4.298 4.3-4.236-4.24c-.391-.39-1.025-.39-1.414 0-.391.39-.391 1.03 0 1.42l4.236 4.23-4.266 4.27c-.393.39-.393 1.03 0 1.43.394.39 1.032.39 1.426 0l4.266-4.27 4.236 4.24c.391.39 1.025.39 1.415 0 .391-.39.391-1.03 0-1.42l-4.237-4.23 4.297-4.3c.393-.4.393-1.03 0-1.43Z"/></svg>');
+  --chevron-right-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"/></svg>');
+}
+#lwa-2FA .lwa-status {
+  margin: 0 15px;
+}
+#lwa-2FA .site-icon {
+  padding: 0;
+  max-width: 128px;
+  text-align: center;
+  margin: 15px auto 40px;
+}
+#lwa-2FA .site-icon img {
+  max-width: 128px;
+}
+#lwa-2FA h3 {
+  text-align: center;
+  margin-bottom: 30px !important;
+}
+#lwa-2FA .hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+#lwa-2FA span.lwa-status {
+  background-color: transparent !important;
+  text-align: center;
+}
+#lwa-2FA span.lwa-status.lwa-status-confirm {
+  border-color: #0f5132 !important;
+}
+#lwa-2FA span.lwa-status.lwa-status-invalid {
+  border-color: #842029 !important;
+}
+#lwa-2FA button.inactive {
+  opacity: 0.5;
+  cursor: wait;
+  pointer-events: none;
+}
+#lwa-2FA .lwa-2FA-footer-links {
+  text-align: center;
+  margin: 10px;
+}
+#lwa-2FA .lwa-2FA-footer-links a {
+  color: #aaa !important;
+  text-decoration: none;
+}
+#lwa-2FA .lwa-2FA-footer-links a:hover {
+  text-decoration: underline;
+}
+#lwa-2FA.single-method .lwa-2FA-select-method, #lwa-2FA.single-method .lwa-2FA-method-selection {
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-method-selection > p {
+  text-align: center;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-method-request {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  grid-gap: 30px;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-methods {
+  margin: 30px 20px !important;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-method {
+  position: relative;
+  display: none !important;
+  visibility: hidden !important;
+  line-height: 20px !important;
+  padding: 15px 30px 15px 60px !important;
+  margin: 15px 0 !important;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: 15px 20px;
+  min-height: 30px;
+  width: 100% !important;
+  background-image: var(--2FA-icon);
+  color: var(--text-color-softer) !important;
+  letter-spacing: 1px !important;
+  text-decoration: none !important;
+  background-color: transparent !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--border-color) !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-method input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-method.available {
+  display: block !important;
+  visibility: visible !important;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-method .lwa-2FA-method-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-method .lwa-2FA-method-desc {
+  font-size: 14px;
+  font-weight: normal;
+  overflow-wrap: break-word;
+}
+#lwa-2FA .lwa-2FA-method-selection .lwa-2FA-method:after {
+  display: inline-flex !important;
+  content: "";
+  position: absolute;
+  border: 0 !important;
+  background-image: var(--chevron-right-icon);
+  background-size: 20px 20px;
+  height: 20px;
+  width: 20px;
+  right: 8px;
+  top: calc(50% - 10px);
+}
+#lwa-2FA .lwa-2FA-method-selection button {
+  display: block !important;
+  margin: auto;
+}
+@media only screen and (max-width: 39.99rem) {
+  #lwa-2FA .lwa-2FA-method-selection .lwa-2FA-methods {
+    margin-right: 0;
+  }
+}
+#lwa-2FA .lwa-2FA-method-forms {
+  margin-bottom: 40px;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method {
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method.active {
+  display: block;
+  visibility: visible;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method > .lwa-2FA-message {
+  text-align: center;
+  line-height: 22px !important;
+  margin-bottom: 30px;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method .lwa-2FA-code-input-wrap {
+  max-width: 350px;
+  margin: 20px auto;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method .lwa-2FA-code-input-wrap > * {
+  margin-bottom: 10px !important;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method .lwa-2FA-code-input-wrap > * > :last-child {
+  margin-bottom: 0 !important;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method .lwa-2FA-code-input-wrap .hint {
+  text-align: center;
+  font-size: 14px;
+  color: #999;
+  margin: 0 0 10px;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method .lwa-2FA-code-input {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr min-content;
+  align-items: center;
+  justify-content: center;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method .lwa-2FA-code-input > * {
+  margin-bottom: 0 !important;
+}
+#lwa-2FA .lwa-2FA-method-forms .lwa-2FA-method .lwa-2FA-verify-expires {
+  margin: 20px 0 !important;
+  text-align: center;
+  opacity: 80%;
+}
+#lwa-2FA .lwa-2FA-setup {
+  max-width: 800px;
+}
+#lwa-2FA .lwa-2FA-setup h3 {
+  font-size: 32px !important;
+}
+#lwa-2FA .lwa-2FA-setup h4 {
+  margin-top: 25px !important;
+  font-size: 20px !important;
+  text-align: left !important;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method {
+  display: block;
+  box-sizing: border-box;
+  margin: 12px 0;
+  width: 100%;
+  padding: 15px 10px;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  /** Method Setup Status */
+  /**
+   * Mobile styling for popups
+   */
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method:last-child {
+  margin-bottom: 20px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method:not(.enabled) {
+  cursor: pointer;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method:not(.enabled) .lwa-2FA-method-content {
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method header {
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-image: var(--2FA-icon);
+  padding-left: 40px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method header .lwa-2FA-method-title {
+  display: grid;
+  width: calc(100% - 5px);
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 20px;
+  align-items: start;
+  min-height: 30px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method header .lwa-2FA-method-title > div:first-child {
+  font-size: 16px;
+  font-weight: bold;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method header .lwa-2FA-method-title .lwa-switch {
+  justify-self: end;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content {
+  margin: 25px 5px 0 40px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .lwa-2FA-method-setup {
+  margin: 15px 0 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .lwa-2FA-method-setup .setup-verify-form {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  grid-gap: 10px;
+  justify-content: end;
+  align-items: start;
+  margin: 10px 0 10px 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .lwa-2FA-method-setup .setup-verify-form > *, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .lwa-2FA-method-setup .setup-verify-form input[type=text] {
+  margin: 0 !important;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .lwa-2FA-method-setup .setup-verify-form .setup-verify-hint {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .lwa-2FA-method-setup .setup-verify-form .setup-verify-submit {
+  justify-self: end;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .lwa-2FA-method-setup mark.error {
+  color: #653225;
+  background-color: transparent;
+  display: block;
+  margin-bottom: 15px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+  grid-gap: 20px;
+  width: 100%;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions .setup-totp-secret {
+  max-width: 200px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions .setup-totp-secret .totp-qr-code {
+  text-align: center;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions .setup-totp-secret .totp-qr-code svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 200px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions .setup-totp-secret .totp-secret {
+  color: #e01e5a;
+  background: #f8f8f8;
+  padding: 5px;
+  border: 2px dotted #ccc;
+  margin: 10px 0;
+  text-align: center;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions ol {
+  list-style: decimal outside !important;
+  margin-left: 15px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions ol li {
+  padding-left: 10px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content .setup-totp-instructions .setup-totp-cancel {
+  width: 100%;
+  margin: 10px 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content #lwa-2FA-method-backup-codes {
+  padding: 20px;
+  border: 1px solid #aaa;
+  background-color: #efefef;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-content #lwa-2FA-method-backup-codes div {
+  font-family: Monospace, sans-serif !important;
+  font-size: 15px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-status {
+  margin: 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-status mark {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 24px;
+  padding-left: 30px;
+  min-height: 25px;
+  display: none;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-setup-reset {
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-verification .transport-verify-recipient-code {
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-verification .transport-verify-recipient-code * {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=complete] .lwa-2FA-method-content, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-authorize] .lwa-2FA-method-content, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-content {
+  margin-top: 15px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=complete] .lwa-2FA-method-status, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-authorize] .lwa-2FA-method-status, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-status {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto min-content;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=complete] .lwa-2FA-method-status mark, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-authorize] .lwa-2FA-method-status mark, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-status mark {
+  color: #287638;
+  background-image: var(--icon-check);
+  display: block;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=complete] .lwa-2FA-method-setup {
+  opacity: 0;
+  display: none;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=complete] .lwa-2FA-method-setup-reset {
+  display: block;
+  visibility: visible;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=complete] .lwa-2FA-method-verification .lwa-2FA-method-setup-reset {
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=complete] .lwa-2FA-method-status mark {
+  color: #287638;
+  background-image: var(--icon-check);
+  display: block;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-authorize] .lwa-2FA-method-status {
+  margin: 0 0 10px 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-authorize] .lwa-2FA-method-status mark {
+  color: #e08b35;
+  background-image: var(--icon-waiting);
+  padding-left: 40px;
+  display: block;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-authorize] .lwa-2FA-method-setup-reset {
+  display: block;
+  visibility: visible;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-authorize] .lwa-2FA-method-verification .transport-verify-recipient {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-previous-status=waiting-authorize] .lwa-2FA-method-verification .lwa-2FA-method-setup-reset, #lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-previous-status=complete] .lwa-2FA-method-verification .lwa-2FA-method-setup-reset {
+  display: block;
+  visibility: visible;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-status {
+  margin: 0 0 10px 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-status button {
+  display: none !important;
+  visibility: hidden !important;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-status mark {
+  color: #e08b35;
+  background: none;
+  display: block;
+  padding-left: 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-content .lwa-2FA-method-setup .lwa-2FA-method-verification .transport-verify-recipient {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-content .lwa-2FA-method-setup .lwa-2FA-method-verification .transport-verify-recipient-code {
+  display: grid;
+  /* further up for config */
+  visibility: visible;
+  margin-bottom: 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-content .lwa-2FA-method-setup .lwa-2FA-method-verification .transport-verify-recipient-code * {
+  opacity: 1;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-content .lwa-2FA-method-setup .lwa-2FA-method-verification .transport-verify-recipient-code .transport-verify-recipient-code-verify {
+  margin-bottom: 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method[data-status=waiting-code] .lwa-2FA-method-content .lwa-2FA-method-setup .lwa-2FA-method-verification .transport-verify-recipient-code .transport-verify-recipient-code-resend {
+  display: block;
+  text-align: right;
+  width: 100%;
+  margin-top: 0;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method:not([data-status=complete]):not([data-status=not-started][data-needs-setup="0"]) label.lwa-switch input:checked + .lwa-switch-slider {
+  background-color: #e08b35;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method.setup-error .lwa-2FA-method-status {
+  margin: 10px 0 10px 25px;
+}
+#lwa-2FA .lwa-2FA-setup .lwa-2FA-method.setup-error .lwa-2FA-method-status mark {
+  padding-left: 35px;
+  color: #653225;
+  background-image: var(--icon-error);
+  display: block;
+}
+@media only screen and (max-width: 39.99rem) {
+  #lwa-2FA .lwa-2FA-setup .lwa-2FA-method .setup-totp-instructions {
+    display: block;
+    margin: 10px 0;
+  }
+  #lwa-2FA .lwa-2FA-setup .lwa-2FA-method .lwa-2FA-method-status[data-status=complete] {
+    display: block;
+  }
+}
+#lwa-2FA label.lwa-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  justify-self: end;
+  margin: 0 !important;
+}
+#lwa-2FA label.lwa-switch > span.label {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+#lwa-2FA label.lwa-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#lwa-2FA label.lwa-switch input:checked + .lwa-switch-slider {
+  background-color: #2196F3;
+}
+#lwa-2FA label.lwa-switch input:checked + .lwa-switch-slider::before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+#lwa-2FA label.lwa-switch input:focus + .lwa-switch-slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+#lwa-2FA label.lwa-switch .lwa-switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+#lwa-2FA label.lwa-switch .lwa-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.lwa-2FA-modal .lwa-modal-popup {
+  padding: 10px 20px !important;
+  max-width: 840px !important;
+}
+.lwa-2FA-modal .lwa-2FA-setup-success p, .lwa-2FA-modal .lwa-2FA-setup-intro p {
+  text-align: center;
+  margin-bottom: 20px !important;
+}
+@media only screen and (max-width: 39.99rem) {
+  .lwa-2FA-modal .lwa-modal-popup {
+    padding: 10px !important;
+  }
+}
+
+.bp-wrap .lwa-bones .pixelbones.lwa-2FA, .woocommerce .lwa-bones .pixelbones.lwa-2FA {
+  font-family: inherit !important;
+  margin-top: 20px;
+}
+.bp-wrap .lwa-bones .pixelbones.lwa-2FA .lwa-2FA-setup, .woocommerce .lwa-bones .pixelbones.lwa-2FA .lwa-2FA-setup {
+  margin-bottom: 30px;
+}
+
+#lwa-2FA-modal #lwa-2FA .lwa-2FA-setup {
+  width: 100%;
+}
+
+/*# sourceMappingURL=2FA.css.map */
