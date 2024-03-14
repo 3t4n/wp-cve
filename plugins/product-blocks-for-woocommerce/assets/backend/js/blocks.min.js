@@ -1,0 +1,1 @@
+"use strict";!function(o){var t=o.getCategories();t.unshift({slug:"product_blocks",title:"Product Blocks for WooCommerce"}),o.setCategories(t)}(window.wp.blocks);
