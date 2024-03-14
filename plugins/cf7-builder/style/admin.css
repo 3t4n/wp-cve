@@ -1,0 +1,294 @@
+#visual-panel {
+  position: relative;
+}
+
+#cf7b-content {
+  display: flex;
+  position: relative;
+}
+
+.cf7b-section {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  background-color: #fff;
+  min-width: 100px;
+}
+
+.cf7b-col {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  min-height: 20px;
+  flex: 1;
+}
+
+.cf7b-unvisible {
+  visibility: hidden;
+}
+
+.cf7b-row {
+  width: 100%;
+  display: block;
+  padding: 25px 20px 5px 20px;
+  margin: 5px auto;
+  border: 1px solid transparent;
+  position: relative;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.cf7b-row:hover {
+  border: 1px dashed #0085ba;
+  cursor: move;
+  background-color: #F8F8F8;
+}
+
+.cf7b-row:hover .cf7b-actions {
+  display: block;
+}
+
+.cf7b-actions {
+  position: absolute;
+  right: 20px;
+  top: 2px;
+  display: none;
+}
+
+.cf7b-actions .dashicons {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+#visual-panel a.button {
+  font-size: 12px;
+  height: 26px;
+  line-height: 24px;
+  margin: 2px;
+  padding: 0 8px 1px;
+}
+
+#visual-panel .cf7b-row input,
+#visual-panel .cf7b-row textarea,
+#visual-panel .cf7b-row select {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  background-color: #f6f6f6;
+}
+
+#visual-panel .cf7b-row input:hover,
+#visual-panel .cf7b-row textarea:hover,
+#visual-panel .cf7b-row select:hover {
+  cursor: move;
+}
+
+#visual-panel .cf7b-row input[type=radio],
+#visual-panel .cf7b-row input[type=checkbox] {
+  width: auto;
+}
+
+.cf7b-addColumn {
+  margin: 10px 0 0 5px;
+  width: 50px;
+  height: inherit;
+  border: 1px solid #CCCCCC;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  min-width: 50px;
+}
+
+.cf7b-addColumn span {
+  cursor: pointer;
+}
+
+.cf7b-addColumn span:before {
+  font-size: 40px;
+  color: #E5E5E5;
+  font-weight: 600;
+}
+
+.cf7b-addColumn span:hover:before {
+  color: #00669b;
+}
+
+.cf7b-section-title {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  height: 25px;
+}
+
+.cf7b-section-title .dashicons-trash {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+
+.cf7b-section-title .dashicons-trash:before {
+  font-size: 17px;
+}
+
+.cf7b-row textarea {
+  height: 150px;
+}
+
+.cf7b-row span[class^="cf7b-label"] {
+  z-index: 99999999;
+  position: absolute;
+  top: 0;
+  font-weight: 600;
+  width: 200px;
+  max-width: 50%;
+  min-height: 20px;
+  background-color: #fffbfb;
+  padding: 0px 5px;
+  cursor: pointer;
+}
+
+.cf7b-row span[class^="cf7b-label-"]:empty:not(:focus):before {
+  content: "Click to add Label";
+  color:#FFF5CB;
+}
+
+#visual-panel .cf7b-row input.cf7b-editable-label-text {
+  width: 200px;
+  min-height: 10px;
+  margin: 0;
+  padding: 1px 3px;
+  position: absolute;
+  top: 2px;
+  height: 20px;
+  cursor:pointer;
+}
+
+#TB_ajaxContent .tag-generator-panel .insert-box {
+  padding: 8px 15px;
+}
+
+#cf7b-title-row {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: block;
+  background-color: #fff;
+  margin: 10px 2px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+#cf7b-title-row h1 {
+  padding-top: 5px;
+}
+
+#cf7b_revision {
+  position: absolute;
+  right: 10px;
+  top:10px
+}
+
+#cf7b_preview {
+  position: absolute;
+  right: 100px;
+  top: 10px;
+}
+
+.cf7b-popup-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #000000b3;
+  z-index: 9;
+  top: 0;
+  left: 0;
+}
+
+#cf7b-revision-popup {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  top: calc(50% - 250px);
+  left: calc(50% - 250px);
+  z-index: 10;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+
+}
+
+
+.cf7b-hidden {
+  display: none!important;
+}
+
+.cf7b-revision-popup-header {
+  display: flex;
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.cf7b-revision-popup-header h2 {
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.cf7b-popup-close {
+  cursor: pointer;
+}
+
+.cf7b-revision-popup-content {
+  overflow: auto;
+  max-height: 400px;
+}
+
+.cf7b-revision-popup-row {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 15px;
+  height: 30px;
+  align-items: center;
+}
+
+.cf7b-revision-ind {
+  width: 50px;
+}
+.cf7b-revision-date {
+  width: 150px;
+}
+.cf7b-revision-time{
+  width: 150px;
+}
+.cf7b-revision-but{
+  width: 170px;
+  text-align: center;
+}
+
+#cf7b_loading{
+  margin-top: 20px;
+  background: transparent;
+  text-align: center;
+}
+
+#cf7b_loading img {
+  width: auto;
+  height: 30px;
+}
+
+
+.cf7b-highlight{
+  border: 1px dashed #141414 !important;
+  min-height: 80px;
+  visibility: visible !important;
+  height: 80px !important;
+  width: 100% !important;
+  display:inline-block ;
+  background:transparent;
+  position: relative;
+}
+
