@@ -1,0 +1,25 @@
+I tried to make translation of this plugin as easy as possible for everyone.
+Simply go to locales directory and make a copy of any existing translation file. Rename it to code of the language you will translate to. Refer to http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes (639-1 column) for code you should use for your language.
+Now open this new file in your favourite text editor and translate strings.
+
+First, there is $spr_locale_language="some_language_here"; You should replace some_language_here with name of your language in that language. This will show up as name of localization on settings page.
+
+Current values should give you an idea of where that string is ussed.
+Please, don't touch anything which looks like key_here in $spr_localization['key_here']. It's the thing that allows plugin to find needed translation for a string so if you change that, plugin will not be able to find needed key and default value will be used.
+What you want to translate are strings in "" after $spr_localization['key_here']="Some string which you want to translate"
+
+Keymap:
+Strings which have keys starting with settings_ belong to the settings page of plugin
+Strings which have keys starting with widgets_ belong to widgets and meta boxes
+Strings which have keys starting with errors_ belong to error messages
+Strings which have keys starting with vote_counter_ belong to vote counter
+
+Basically, if you just want to translate things that can be seen by users and guests, you only need to translate strings with keys which start with vote_counter_ and errors_ and can leave everything else as it is (Please, do not delete any of strings in the file)
+
+As of now, there are 2 special cases to singular/plurar forms of vote counter:
+First applies to numbers ending with 2,3 or 4 but not 12,13,14. Examples: 22, 153, 1004.
+Second applies to numbers ending with 1 but not 11. Examples: 51, 121, 1001.
+Do NOT delete them even if they're not special cases in your language. Simply translate them with fitting singular/plural form.
+Likewise, if your language got special cases in which different form should be used, please let me know and I will update plugin to properly handle them. 
+
+Important: If things broke after you selected your translation in settings (there are various reasons for this, like missing " or ; etc), there is no need to panic. Simply rename your translation file to something else. This way, plugin will use default values (English) which will "un-break" things, allowing you to fix your translation file. When you're done with fixing, simply rename file back to the old name.
