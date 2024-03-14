@@ -1,0 +1,170 @@
+<script id="eddmp_feedback_html<?php print esc_attr($plugin_slug); ?>" type="text/template">
+	<div title="QUICK FEEDBACK">
+		<div style="padding:10px;">
+			<style type="text/css">
+				.cp-feedback-reason-block { margin-top:8px; }
+			</style>
+      		<h3><strong>If you have a moment, please let us know why you are deactivating:</strong></h3>
+			<form id="eddmp_feedback_form{{plugin_slug}}">
+				<?php wp_nonce_field( 'edd-music-player-feedback', '_wpnonce' ); ?>
+				<div class="cp-feedback-reason-block">
+					<label>
+						<input type="radio" name="answer" value="The player is not displayed.">
+						The player does not appear on product pages.<br />
+					</label>
+					<div id="eddmp_feedback_no_display_issue" style="margin-left:25px;padding:10px;border:1px dotted gray;">
+						<p>There are different reasons why audio players do not load on product pages.</p>
+						<p>Please try the following recommendations before deactivating the plugin.</p>
+						<ol>
+							<li>
+								<p><b>The downloads don't have associated audio files.</b></p>
+								<p><b>Solution:</b> Visit the download settings and select at least one audio file.</p>
+								<p style="border:1px dotted gray"><img src="<?php print esc_attr( EDDMP_PLUGIN_URL . '/feedback/screenshots/screen1.png' ); ?>" style="max-width:100%;" /></p>
+							</li>
+							<li>
+								<p><b>The downloads have audio files associated, but the players are not loaded.</b></p>
+								<p><b>Solution:</b></p>
+								<ul>
+									<li>
+										<p>Make sure the player is enabled. Go to the download settings and tick the <b>"Include music player"</b> checkbox.</p>
+										<p style="border:1px dotted gray"><img src="<?php print esc_attr( EDDMP_PLUGIN_URL . '/feedback/screenshots/screen2.png' ); ?>" style="max-width:100%;" /></p>
+									</li>
+									<li>
+										<p>If the player is loaded by the downloads' pages but not by the store page or vice versa. Tick the <b>"all pages"</b> option in the download settings.</p>
+									</li>
+									<li>
+										<p>The player is configured correctly on the downloads but it still won't load.</p>
+										<p>Go to the plugin settings page via the <i>"Settings > Music Player for Easy Digital Downloads"</i> menu option, and enter the hooks used by your theme through the <b>"Easy Digital Downloads hook used to display the players in the shop pages"</b> and <b>"Easy Digital Downloads hook used to display the players on the download pages"</b>. The <a href="https://easydigitaldownloads.com/categories/docs/actions/" target="_blank">EDD HOOKS</a> page describes the actions triggered by the Easy Digital Downloads plugin.</p>
+										<p style="border:1px dotted gray"><img src="<?php print esc_attr( EDDMP_PLUGIN_URL . '/feedback/screenshots/screen3.png' ); ?>" style="max-width:100%;" /></p>
+										<p>If you have designed the downloads with Elementor templates, you can insert the playlist shortcode without the <i>"downloads_ids"</i> attribute: <b>[eddmp-playlist]</b></p>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<p>The player was enabled in the plugin settings page, but not applied to existing downloads.</p>
+								<p>On the plugin settings page, accessible through the <i>"Settings > Music Player for Easy Digital Downloads"</i> menu option, tick the <b>"Include the music player on all downloads"</b> option, and very important, tick the <b>"Apply the above settings to all downloads pages of the website"</b> checkbox before pressing the <b>"Save settings"</b> button.</p>
+								<p style="border:1px dotted gray"><img src="<?php print esc_attr( EDDMP_PLUGIN_URL . '/feedback/screenshots/screen4.png' ); ?>" style="max-width:100%;" /></p>
+							</li>
+						</ol>
+						<p><b>Please note</b>: To load players on downloads with no audio files associated, you must install the Professional version of our plugin, and select the audio files via the <b>"Select my own demo files"</b> section on the downloads settings.</p>
+					</div>
+				</div>
+				<div class="cp-feedback-reason-block">
+					<label>
+						<input type="radio" name="answer" value="temporary-deactivation"> It's a temporary deactivation. I'm just upgrading to the Professional version or debugging an issue.<br />
+					</label>
+				</div>
+				<div id="eddmp_feedback_anonymous" style="display:none;margin-top:30px;text-align:right">
+					<input type="checkbox" name="eddmp_feedback_anonymous" value="yes"> Anonymous feedback
+				</div>
+			</form>
+		</div>
+	</div>
+</script>
+<script type="text/javascript">
+	jQuery(window).on(
+		'load',
+		function()
+		{
+			var $ = jQuery,
+				plugin_slug = '<?php print esc_js($plugin_slug); ?>',
+				support_link = '<?php print esc_js($support_link); ?>',
+				full_support_link = '<?php print esc_js($full_support_link); ?>';
+			$('[data-slug="'+plugin_slug+'"] .deactivate a').
+			on(
+				'click',
+				function(evt)
+				{
+					evt.preventDefault()
+					evt.stopPropagation();
+					// Define events
+					$(document).on(
+						'change',
+						'[id="eddmp_feedback_form'+plugin_slug+'"] [name="answer"]',
+						function()
+						{
+							var field = $(this),
+								value = field.val(),
+								form  = field.closest('form');
+							$("#eddmp_feedback_deactivatebtn:visible").val('Submit & Deactivate');
+							$("#eddmp_feedback_deactivatebtn:visible").html('<span class="ui-button-text">Submit &amp; Deactivate</span>');
+							form.find("#eddmp_feedback_anonymous").show();
+						}
+					);
+					var url_redirect = $('[data-slug="'+plugin_slug+'"] .deactivate a').attr('href'),
+						html = $('[id="eddmp_feedback_html'+plugin_slug+'"]').html();
+					html = html.replace(/\{\{plugin_slug\}\}/g, plugin_slug)
+							.replace(/\{\{support_link\}\}/g, full_support_link)
+							.replace(/\{\{support_link_text\}\}/g, support_link);
+					$(html).dialog(
+						{
+							width:'600',
+							dialogClass: 'wp-dialog',
+							modal: true,
+							close: function(event, ui)
+								{
+									$(this).dialog("close");
+									$(this).remove();
+								},
+							closeOnEscape: true,
+							buttons: [
+								{
+									id: 'eddmp_feedback_deactivatebtn',
+									text: "Skip & Deactivate",
+									click: function()
+									{
+										var form = $('[id="eddmp_feedback_form'+plugin_slug+'"]'),
+											answer = form.find("input[name='answer']:checked").val(),
+											submitFeedback = function(){
+												var data = {
+													'action': 'eddmp_feedback',
+													'feedback_plugin': plugin_slug
+												};
+												$.each(form.serializeArray(), function(i,v){data[v['name']] = v['value'];});
+												if(ajaxurl) // WordPress global variable with the AJAX URL
+												{
+													$.post(
+														ajaxurl,
+														data,
+														function(response)
+														{
+															window.location.href = url_redirect;
+														}
+													);
+												}
+											};
+
+										if (answer == undefined || answer == '')
+										{
+											window.location.href = url_redirect;
+										}
+										else
+										{
+											submitFeedback();
+										}
+									}
+								},
+								{
+									text: "We can help: Support Service",
+									click: function()
+									{
+										window.open(support_link);
+										$(this).dialog("close");
+									}
+								},
+								{
+									text: "Cancel",
+									"class": 'button button-primary button-close',
+									click: function()
+									{
+										$(this).dialog("close");
+									}
+								}
+							]
+						}
+					); // End dialog
+				}
+			); // End onclick deactivate btn
+		}
+	); // End onload window
+</script>
