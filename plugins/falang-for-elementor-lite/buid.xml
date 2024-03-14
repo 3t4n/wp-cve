@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Falang for Elementor Lite" default="all" basedir=".">
+
+	<!-- faire un ant all to build -->
+	<property name="licence" value="free"/>
+	<!-- set in falang.php manually -->
+	<property name="version" value="1.0"/>
+	<property name="date" value="2020/10/15"/>
+	
+	<import file="common.xml"/>
+
+	<target name="clean">
+		<phingcall  target="_clean">
+		</phingcall >
+	</target>
+
+	<target name="all" depends="clean,build">
+	</target>
+	
+	<target name="build" depends="buildplugin1">
+		<copy todir="${builddir}/" overwrite="true" verbose="${verbose}" haltonerror="false">
+			<fileset dir="${source}">
+				<include name="changelog.txt"/>
+			</fileset>
+		</copy>
+	</target>
+
+	
+	<target name="buildplugin1">
+		<phingcall  target="_buildplugin">
+			<param name="NAME" value="falang-elementor-lite"/>
+			<param name="VERSION" value="${version}"/>
+		</phingcall >
+	</target>
+
+</project>

@@ -1,0 +1,212 @@
+<project name="commonp">
+
+	<property environment="env"/>
+	<property name="source"		value="."/>
+	<property name="release" 	value="../../../../src/bin"/>
+	<property name="builddir" 	value="../../../../src/build"/>
+	<property name="verbose" 	value="true"/>
+	<property name="dev" 		value="../www"/>
+	
+
+	<tstamp>
+		<format property="NOW" pattern="yyyyMMdd"/>
+	</tstamp>
+
+	<available file=".git" type="dir" property="git.present"/>
+
+	<target name="dist.revision" description="Store git revision in ${repository.version}" if="git.present">
+		<echo message="basedir = ${basedir}"/>
+		<exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
+			<arg value="describe"/>
+			<arg value="--tags"/>
+			<arg value="--always"/>
+			<arg value="HEAD"/>
+		</exec>
+		<condition property="repository.version" value="${git.revision}" else="unknown">
+			<and>
+				<isset property="git.revision"/>
+				<length string="${git.revision}" trim="yes" length="0" when="greater"/>
+			</and>
+		</condition>
+	</target>
+	
+
+	
+	<!--
+	<condition property="version" value="${NOW}_r${dist.revision}" else="${NOW}">
+		<isset property="dist.revision"/>
+	</condition>
+	-->
+	<target name="_clean">
+        <echo message="Clean ${builddir}"/>
+		<delete dir="${builddir}/" verbose="${verbose}"/>
+		<delete dir="${release}/" verbose="${verbose}"/>
+	</target>
+	
+	<target name="_buildplugin" depends="_clean">
+        <!-- Create the build directory -->
+        <mkdir dir="${builddir}" />
+		<mkdir dir="${release}" />
+
+		<copy todir="${builddir}/${NAME}/" verbose="${verbose}" haltonerror="false">
+			<fileset dir="${source}">
+				<include name="**/**" />
+				<exclude name="**/*.xml" />
+				<exclude name="**/*.yml" />
+				<exclude name=".gitignore" />
+			</fileset>
+		</copy>
+
+		<zip destfile="${release}/${NAME}-${VERSION}.zip">
+			<fileset dir="${builddir}">
+			</fileset>
+		</zip>
+<!--
+		<zip destfile="${builddir}/${NAME}-${VERSION}.zip">
+			<fileset dir="${source}">
+				<include name="**/**" />
+				<exclude name="**/*.xml" />
+				<exclude name=".gitignore" />
+			</fileset>
+		</zip>
+-->
+	</target>
+	
+
+	<target name="_sync" depends="_syncmodule,_synccomponent">
+	</target>
+	
+	<target name="_syncmodule">
+		<echo message="Module Sync"/>
+		<copy todir="${NAME}" includeemptydirs="true" verbose="${verbose}">
+			<fileset dir="${dev}/modules/${NAME}"/>
+			<preserveintarget>
+				<include name="**/.git/**"/>
+			</preserveintarget>
+		</copy>
+		<copy todir="${NAME}/language/" verbose="${verbose}" haltonerror="false">
+			<fileset dir="${dev}/language">
+				<exclude name="overrides/*"/>
+				<exclude name="pdf_fonts/*"/>
+				<include name="**/*${NAME}*.ini"/>
+			</fileset>
+		</copy>
+		<copy todir="${NAME}/media/" includeemptydirs="true" verbose="${verbose}">
+			<fileset dir="${dev}/media/${NAME}"/>
+            <!--
+			<preserveintarget>
+				<include name="**/.git/**"/>
+			</preserveintarget>
+			-->
+		</copy>
+	</target>	
+
+	<target name="_syncplugin">
+		<echo message="Plugin Sync ${NAME} "/>
+		<copy todir="plg_${NAME}" includeemptydirs="true" verbose="${verbose}">
+			<fileset dir="${dev}/plugins/${TYPE}/${NAME}"/>
+            <!--
+			<preserveintarget>
+				<include name="**/.git/**"/>
+			</preserveintarget>
+			-->
+		</copy>
+		<echo message="Get plugin language plg_${TYPE}_${NAME}*.ini"/>
+		<copy todir="plg_${NAME}/language" verbose="${verbose}" haltonerror="false">
+			<fileset dir="${dev}/administrator/language">
+				<exclude name="overrides/*"/>
+				<exclude name="pdf_fonts/*"/>
+				<include name="**/*plg_${TYPE}_${NAME}*.ini"/>
+			</fileset>
+		</copy>
+	</target>	
+
+	<target name="_synccomponent">
+		<echo message="Copy Component site"/>
+		<copy todir="${NAME}/site"
+              includeemptydirs="true"
+              verbose="${verbose}"
+              haltonerror="false"
+              overwrite="true">
+            <fileset dir="${dev}/components/${NAME}"/>
+        </copy>
+
+        <echo message="Copy Component admin"/>
+		<copy todir="${NAME}/admin"
+              includeemptydirs="true"
+              verbose="${verbose}"
+              haltonerror="false"
+              overwrite="true">
+			<fileset dir="${dev}/administrator/components/${NAME}"/>
+		</copy>
+
+        <echo message="Copy Component language admin"/>
+		<copy todir="${NAME}/admin/language"
+              verbose="${verbose}"
+              haltonerror="false">
+			<fileset dir="${dev}/administrator/language">
+				<exclude name="overrides/*"/>
+				<exclude name="pdf_fonts/*"/>
+				<include name="**/*${NAME}*.ini"/>
+			</fileset>
+		</copy>
+
+        <echo message="Copy Component language site"/>
+		<copy todir="${NAME}/site/language"
+              verbose="${verbose}"
+              haltonerror="false">
+			<fileset dir="${dev}/language">
+				<exclude name="overrides/*"/>
+				<exclude name="pdf_fonts/*"/>
+				<include name="**/*${NAME}*.ini"/>
+			</fileset>
+		</copy>
+	    <move file="${NAME}/admin/${XML_FILE}" tofile="${NAME}/${XML_FILE}" overwrite="true"/>
+	    <move file="${NAME}/admin/${INSTALL_FILE}" tofile="${NAME}/${INSTALL_FILE}" overwrite="true"/>
+	</target>	
+		
+	<target name="_package">
+	    <copy todir="${builddir}">
+			<fileset dir="${source}/${NAME}" />
+		</copy>
+	    <move todir="${builddir}/packages" includeEmptyDirs="false">
+			<fileset dir="${builddir}">
+				<exclude name="**/*.xml"/>
+			</fileset>
+		</move>
+	
+         <echo message="Replace XML file value"/>
+        <reflexive>
+            <fileset dir="${builddir}/">
+                <include pattern="${NAME}.xml" />
+            </fileset>
+            <filterchain>
+                <replacetokens begintoken="@@" endtoken="@@">
+                    <token key="VERSION" value="${version}" />
+                    <token key="COMPONENT" value="${NAME_COMPONENT}_${version.component}.zip" />
+                    <token key="PLUGIN_UUREDIRECT" value="${NAME_PLUGIN1}_${version.plugin}.zip" />
+                    <token key="PLUGIN_ULTIMATEUSER" value="${NAME_PLUGIN2}_${version.plugin}.zip" />
+					<token key="NAME_UPDATESERVER_NAME" value="${NAME_UPDATESERVER_NAME}" />
+					<token key="NAME_UPDATESERVER_URL" value="${NAME_UPDATESERVER_URL}" />
+                </replacetokens>
+            </filterchain>
+        </reflexive>
+
+		 <zip destfile="${release}/${NAME}_${version.package}_${licence}.zip"
+		   basedir="${builddir}" 
+		/>
+		 
+	</target>
+
+
+	<target name="_buildmodule" depends="_clean">
+        <!-- Create the build directory -->
+        <mkdir dir="${builddir}" />
+
+        <zip destfile="${builddir}/${NAME}_${version.module}.zip"
+		   basedir="${source}/${NAME}" excludes=".gitignore"
+		/>
+	</target>
+
+	
+</project>
