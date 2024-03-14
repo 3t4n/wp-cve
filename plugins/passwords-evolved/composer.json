@@ -1,0 +1,46 @@
+{
+  "name": "carlalexander/passwords-evolded",
+  "description": "WordPress password authentication for the modern era",
+  "keywords" : [ "wordpress", "passwords", "security", "authentication", "password enforcement", "hibp", "have i been pwned" ],
+  "type" : "wordpress-plugin",
+  "authors" : [
+    {
+      "name": "Carl Alexander",
+      "email": "contact@carlalexander.ca",
+      "homepage": "https://carlalexander.ca"
+    }
+  ],
+  "license": "GPL-3.0+",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "php-mock/php-mock-phpunit": "^2.6",
+    "php-parallel-lint/php-parallel-lint": "^1.2",
+    "phpmd/phpmd": "^2.8",
+    "phpro/grumphp": "^1.0",
+    "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+    "sebastian/phpcpd": "^4.1 || ^5.0 || ^6.0"
+  },
+  "autoload": {
+    "classmap": ["features/"],
+    "psr-4": {
+      "PasswordsEvolved\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PasswordsEvolved\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "phpro/grumphp": true,
+      "wp-cli/autoload-splitter": false,
+      "ocramius/package-versions": false
+    }
+  }
+}
