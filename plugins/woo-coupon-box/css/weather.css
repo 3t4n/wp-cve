@@ -1,0 +1,90 @@
+/*
+ *       ___      ___       ___  __    __   __   __  
+ * |  | |__   /\   |  |__| |__  |__)  /  ` /__` /__` 
+ * |/\| |___ /~~\  |  |  | |___ |  \ .\__, .__/ .__/ 
+ *
+ * Minecraft wcb-weather effects with pure CSS
+ * © Copyright 2014 Moritz Marquardt
+ *
+ * https://github.com/moqmar/wcb-weather.css
+ *
+ * Licensed under MIT License (http://opensource.org/licenses/MIT)
+ */
+.wcb-weather{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+/* pseudo elements: positioning and setup */
+.wcb-weather:before, .wcb-weather:after {
+    content: "";
+    position: absolute; left: -50%; top: -50%; right: -50%; bottom: -50%;
+    z-index: 1;
+    pointer-events: none;
+    
+    background: transparent repeat;
+    background-size: 256px 1024px;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: pixelated;
+    opacity: 0.7;
+    
+    -webkit-transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    transform: rotate(10deg);
+    
+    -webkit-animation-name: wcb-weather;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: wcb-weather;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.wcb-weather:after {
+    opacity: 0.8;
+    -webkit-animation-name: wcb-weather2;
+    animation-name: wcb-weather2;
+}
+/* wcb-weather-rain (fast, wcb-weather-rain.png) */
+.wcb-weather.wcb-weather-rain:before, .wcb-weather.wcb-weather-rain:after {
+    background-image: url(../images/wcb-rain.png);
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+.wcb-weather.wcb-weather-rain:after {
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+/* wcb-weather-snow (slow, wcb-weather-snow.png) */
+.wcb-weather.wcb-weather-snow:before, .wcb-weather.wcb-weather-snow:after {
+    background-image: url(../images/wcb-snow.png);
+    -webkit-animation-duration: 6s;
+    animation-duration: 6s;
+}
+.wcb-weather.wcb-weather-snow:after {
+    -webkit-animation-duration: 4.5s;
+    animation-duration: 4.5s;
+}
+/* animation keyframes */
+@-webkit-keyframes wcb-weather {
+    from { background-position: 0 0; }
+    to { background-position: 0 1024px; }
+}
+@keyframes wcb-weather {
+    from { background-position: 0 0; }
+    to { background-position: 0 1024px; }
+}
+@-webkit-keyframes wcb-weather2 {
+    from { background-position: 64px 64px; }
+    to { background-position: 64px 1088px; }
+}
+@keyframes wcb-weather2 {
+    from { background-position: 64px 64px; }
+    to { background-position: 64px 1088px; }
+}
