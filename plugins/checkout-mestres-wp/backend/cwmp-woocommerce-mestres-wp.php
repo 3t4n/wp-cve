@@ -1,0 +1,31 @@
+<?php
+define('CWMP_PLUGIN_ADMIN_URL', plugin_dir_url(__FILE__));
+include('core/base/forms.php');
+include('core/base/functions.php');
+include('core/base/lists.php');
+include('core/base/buttons.php');
+include('core/base/ajax.php');
+include('core/cwmp-admin-fields.php');
+include('core/cwmp-admin-licenses.php');
+include('core/cwmp-create-database.php');
+include('core/cwmp-create-cron.php');
+include('core/cwmp-admin-menu.php');
+include('core/cwmp-admin-notices.php');
+include('core/cwmp-admin-scripts.php');
+include('core/cwmp-activate.php');
+include('core/cwmp-reset.php');
+include('includes/admin.licensas.php');
+include('includes/admin.checkout.php');
+if(get_option('cwmp_license_cwmwp_active')==true){
+	include('includes/admin.comunicacao.php');
+	include('includes/admin.entrega.php');
+	include('includes/admin.pagamentos.php');
+	include('includes/admin.vendas.php');
+	//include('core/shipping.php');
+	include('core/cwmp-widget-elementor.php');
+	include('core/cwmp-admin-custom-field-order.php');
+	include('core/cwmp-admin-table-products.php');
+	include('core/cwmp-admin-statuses.php');
+	include('core/cwmp-admin-cron.php');
+}
+
