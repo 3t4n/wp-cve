@@ -1,0 +1,1 @@
+jQuery(document).ready(function(i){function o(){i(this).closest(".fca_eoi_review_div").hide(),i.ajax({url:fcaEoiDismiss.ajax_url,type:"POST",data:{nonce:fcaEoiDismiss.nonce,action:"fca_eoi_dismiss",option:i(this).data("option")}}).done(function(i){console.log(i)})}i("#fca-eoi-dismiss-review-btn").click(o)});

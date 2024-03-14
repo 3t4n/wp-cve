@@ -1,0 +1,191 @@
+$content_large_padding: 20px;
+$content_small_padding_vertical: round( $content_large_padding / 2.5 );
+$content_small_padding_horizontal: round( $content_large_padding / 1.5 );
+$content_small_breakpoint: 450px;
+$content_tiny_breakpoint: 320px;
+
+@mixin fca_eoi_layout_inputs_wrapper( $withDelimiter ) {
+	@if $withDelimiter {
+		border-top: 1px solid #DBDBDB;
+		border-bottom: 1px solid #DBDBDB;
+		padding: $content_large_padding 0;
+
+		@media ( min-width: 1px ) and ( max-width: $content_small_breakpoint ),
+		       ( min-height: 1px ) and ( max-height: $content_small_breakpoint ) {
+			padding: $content_small_padding_vertical 0;
+		}
+
+		@media ( min-width: 1px ) and ( max-width: $content_tiny_breakpoint ),
+		       ( min-height: 1px ) and ( max-height: $content_tiny_breakpoint ) {
+			padding: 0;
+			border: none;
+		}
+	}
+
+	margin: $content_large_padding 0;
+
+	@media ( min-width: 1px ) and ( max-width: $content_small_breakpoint ),
+	       ( min-height: 1px ) and ( max-height: $content_small_breakpoint ) {
+		margin: $content_small_padding_vertical 0;
+	}
+}
+
+& {
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+&.fca_eoi_layout_widget div.fca_eoi_layout_field_wrapper {
+	width: 100%;
+}
+
+.fca_eoi_progress {
+	margin-left: 32px;
+	margin-right: 32px;
+	height: 24px;
+	position: relative;
+	background: #d8d8d8;
+	border-radius: 3px;
+	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5);
+	margin-bottom: 32px;
+}
+
+.fca_eoi_progress span {
+	text-align: right;
+	width: 55%;
+	display: block;
+	height: 100%;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	background-color: #eab868;
+	background-image: linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+
+	position: relative;
+	overflow: hidden;
+}
+
+.fca_eoi_progress span:before {
+	content: '';
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;	
+	background-image: linear-gradient(
+		-45deg, 
+		rgba(255, 255, 255, .2) 25%, 
+		transparent 25%, 
+		transparent 50%, 
+		rgba(255, 255, 255, .2) 50%, 
+		rgba(255, 255, 255, .2) 75%, 
+		transparent 75%, 
+		transparent
+	);
+	z-index: 1;
+	background-size: 50px 50px;
+	animation: move 2s linear infinite;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	overflow: hidden;
+}
+
+.fca_eoi_progress span:after {
+	content: '50%';
+	vertical-align: top;
+	position: relative;
+	top: 5px;
+	color: white;
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+img.fca_eoi_image {
+	max-width: 100%;
+}
+
+div.fca_eoi_image_wrapper.placeholder {
+	text-align: center;
+	white-space: pre;
+	border: 1px dashed #979797;
+	font-size: 12px;
+	line-height: 14px;
+	color: #979797;
+}
+	
+div.fca_eoi_layout_content_wrapper {
+	margin: $content_large_padding;
+}
+
+div.fca_eoi_layout_field_wrapper {
+	border: solid 1px transparent;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+div.fca_eoi_layout_name_field_wrapper,
+div.fca_eoi_layout_email_field_wrapper {
+	width: 100%;
+	display: inline-block;
+}
+
+
+div.fca_eoi_layout_field_wrapper input,
+div.fca_eoi_layout_field_wrapper input:focus {
+	border: none !important;
+	width: 100%;
+	height: auto;
+	font-size: 16px;
+	line-height: 1.2em;
+	padding: 7px 0;
+	outline: none;
+	background: none !important;
+	box-shadow: none;
+}
+
+div.fca_eoi_layout_submit_button_wrapper {
+	clear: both;
+	transition: background 350ms linear, border-color 350ms linear;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.fca_eoi_layout_fatcatapps_link_wrapper a {
+	display: block;
+	margin: round( $content_large_padding / 2 ) 0 0;
+	font-size: 12px;
+}
+
+div.fca_eoi_form_text_element ul {
+	list-style: inside;
+	padding: 0;
+	margin: 14px 0;
+}
+
+@media ( min-width: 1px ) and ( max-width: $content_small_breakpoint ),
+       ( min-height: 1px ) and ( max-height: $content_small_breakpoint ) {
+	div.fca_eoi_layout_content_wrapper {
+		margin: $content_small_padding_vertical $content_small_padding_horizontal;
+	}
+
+	div.fca_eoi_layout_fatcatapps_link_wrapper a {
+		margin: 0;
+	}
+
+	div.fca_eoi_form_text_element.fca_eoi_layout_headline_copy_wrapper {
+		margin-bottom: 5px;
+	}
+}
+
+@media ( min-width: 1px ) and ( max-width: 768px ) {
+	div.fca_eoi_layout_field_wrapper {
+		width: 100%;
+	}
+}
