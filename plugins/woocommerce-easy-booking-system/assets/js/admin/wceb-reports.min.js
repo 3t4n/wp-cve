@@ -1,0 +1,1 @@
+(function(a){a(document).ready(function(){a(".wceb_datepicker").pickadate({formatSubmit:"yyyy-mm-dd",hiddenName:!0}).pickadate("picker")})})(jQuery);

@@ -1,0 +1,376 @@
+/* 
+==========================================================================
+Reset styles to prevent conflict with themes
+==========================================================================
+*/
+
+input[readonly] {
+    cursor: pointer !important;
+}
+
+table.picker_table th, table.picker__table tr, table.picker__table td {
+  background: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  font-size: 16px !important;
+}
+
+.picker, .picker > * {
+  outline: none;
+}
+
+/*
+==========================================================================
+$BASE-PICKER
+==========================================================================
+*/
+
+/**
+ * Note: the root picker element should __NOT__ be styled
+ * more than what’s here. Style the `.picker__holder` instead.
+ */
+
+.picker {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 16px !important;
+  text-align: left;
+  line-height: 1.2;
+  color: #000000;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  outline: none;
+}
+
+/*
+ * Default mobile-first, responsive styling for pickadate.js
+ * Demo: http://amsul.github.io/pickadate.js
+ */
+
+/**
+ * The holder is the base of the picker.
+ * The holder is the only “scrollable” top-level container element.
+ */
+
+.picker__holder {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 968px;
+  overflow-y: auto;
+  background: #FFFFFF;
+  border: 1px solid #e5e5e5;
+}
+
+/**
+ * The frame and wrap work together to ensure that
+ * clicks within the picker don’t reach the holder.
+ */
+
+.picker__frame {
+  padding: 1px;
+}
+
+.picker__wrap {
+  margin: -1px;
+}
+
+/*
+==========================================================================
+$BASE-DATE-PICKER
+==========================================================================
+*/
+
+/**
+ * The picker box.
+ */
+
+.picker__box {
+  padding: 1em;
+}
+
+/**
+ * The header containing the month and year stuff.
+ */
+
+.picker__header {
+  text-align: center;
+  position: relative;
+  margin-top: .75em;
+}
+
+/**
+ * The month and year labels.
+ */
+
+.picker__month,
+.picker__year {
+  font-weight: 500;
+  display: inline-block;
+  margin-left: .25em;
+  margin-right: .25em;
+}
+
+.picker__year {
+  color: #000000;
+  font-size: .8em;
+  font-style: italic;
+}
+
+/**
+ * The month and year selectors.
+ */
+
+.picker select.picker__select--month,
+.picker select.picker__select--year {
+  border: 1px solid #e5e5e5;
+  height: 2em;
+  margin-left: .25em;
+  margin-right: .25em;
+}
+
+@media (min-width: 24.5em) {
+  .picker select.picker__select--month,
+  .picker select.picker__select--year {
+    margin-top: -0.5em;
+  }
+}
+
+.picker select.picker__select--month {
+  width: 35%;
+}
+
+.picker select.picker__select--year {
+  width: 22.5%;
+}
+
+.picker select.picker__select--month:focus,
+.picker select.picker__select--year:focus {
+  border-color: var(--wp-admin-theme-color);
+}
+
+/**
+ * The month navigation buttons.
+ */
+
+.picker__nav--prev,
+.picker__nav--next {
+  position: absolute;
+  padding: .5em 1.25em;
+  width: 1em;
+  height: 1em;
+  box-sizing: content-box;
+  top: -0.25em;
+}
+
+@media (min-width: 24.5em) {
+  .picker__nav--prev,
+  .picker__nav--next {
+    top: -0.33em;
+  }
+}
+
+.picker__nav--prev {
+  left: -1em;
+  padding-right: 1.25em;
+}
+
+@media (min-width: 24.5em) {
+  .picker__nav--prev {
+    padding-right: 1.5em;
+  }
+}
+
+.picker__nav--next {
+  right: -1em;
+  padding-left: 1.25em;
+}
+
+@media (min-width: 24.5em) {
+  .picker__nav--next {
+    padding-left: 1.5em;
+  }
+}
+
+.picker__nav--prev:before,
+.picker__nav--next:before {
+  content: " ";
+  border-top: .5em solid transparent;
+  border-bottom: .5em solid transparent;
+  border-right: 0.75em solid #000000;
+  width: 0;
+  height: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.picker__nav--next:before {
+  border-right: 0;
+  border-left: 0.75em solid #000000;
+}
+
+.picker__nav--prev:hover,
+.picker__nav--next:hover {
+  cursor: pointer;
+  color: #000000;
+  background: var(--wp-admin-theme-color-darker-10);
+}
+
+.picker__nav--disabled,
+.picker__nav--disabled:hover,
+.picker__nav--disabled:before,
+.picker__nav--disabled:before:hover {
+  cursor: default;
+  background: none;
+  border-right-color: #e5e5e5;
+  border-left-color: #e5e5e5;
+}
+
+/**
+ * The calendar table of dates
+ */
+
+.picker__table {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: inherit;
+  width: 100%;
+  margin-top: .75em;
+  margin-bottom: .5em;
+}
+@media (min-height: 33.875em) {
+  .picker__table {
+    margin-bottom: .75em;
+  }
+}
+
+.picker__table tbody {
+  border-top: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+}
+
+.picker__table td {
+  position: relative;
+  height: 175px;
+  margin: 0;
+  padding: 0;
+}
+
+.picker_table th, .picker__table tr, .picker__table td {
+  background: none;
+  border: none;
+}
+
+/**
+ * The weekday labels
+ */
+
+.picker__weekday {
+  width: 14.285714286%;
+  font-size: .75em;
+  padding-bottom: 1em;
+  color: #000000;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (min-height: 33.875em) {
+  .picker__weekday {
+    padding-bottom: .5em;
+  }
+}
+
+/**
+ * The days on the calendar
+ */
+
+.picker__day {
+  height: 100%;
+  padding: 0.5em 25px 0.5em 0.5em;
+  font-weight: 200;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: right;
+  pointer-events: none;
+}
+.picker__day--today {
+  position: relative;
+}
+.picker__day--today:before {
+  content: " ";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid var(--wp-admin-theme-color-darker-20);
+  border-left: .5em solid transparent;
+}
+.picker__day--outfocus {
+  color: #e5e5e5;
+}
+.picker__day--disabled {
+  background: #e5e5e5;
+  color: #bfbfbf;
+}
+
+/* 
+==========================================================================
+Bookings
+==========================================================================
+*/
+
+.bookings-container {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0; right: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.booking {
+  box-sizing: border-box;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 5px;
+  background: var(--wp-admin-theme-color);
+  font-size: 12px;
+  text-align: left;
+  color: #FFFFFF;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.picker-days .booking.start {
+  width: 95%;
+  left: 5%;
+}
+
+.picker-days .booking.end {
+  width: 95%;
+}
+
+.picker-nights .booking.start {
+  width: 50%;
+  left: 50%;
+}
+
+.picker-nights .booking.end {
+  width: 50%;
+}
+
+.booking.end.start {
+  width: 90%;
+  left: 5%;
+}
