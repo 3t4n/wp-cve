@@ -1,0 +1,230 @@
+<?php
+	wp_reset_query();
+	global $post;
+	$options = (get_option('sb_bar_options') ? get_option('sb_bar_options') : false);
+	$enable_options = (get_option('sb_bar_enable_options') ? get_option('sb_bar_enable_options') : false);
+
+	$post_id = get_queried_object_id();
+	$author_id = get_post_field( 'post_author', $post_id );
+	$author_name = get_the_author_meta( 'display_name', $author_id );
+	$comment_count = get_post_field( 'comment_count', $post_id );
+	$content = get_post_field( 'post_content', $post_id );
+	$category = get_the_category($post_id);
+	$word_count = str_word_count( strip_tags( $content ) );
+	$post_type = get_post_type_object( get_post_type($post_id) ); //Needed for custom post types
+	$adjacent = false; //show prev/next post items
+	$tag_or_cat = "category"; // prev/next cat or tag
+	$disable_share_count = isset($enable_options["disable-share-count"]) ? true : false;
+	$old_style = isset($enable_options["old-share-style"]) ? true : false;
+	$posttype = array();
+	if(!isset($enable_options["disable-share"]) && !$disable_share_count) {
+		$social = new sb_bar_Social($post_id);
+		$social_shares = $social->get_shares_all();
+	}
+
+
+	//Post Type
+	if(isset($options["post-type"]) && $options["post-type"] != '') {
+		$posttype = $options["post-type"];
+	}
+
+	//Post Type
+	if(isset($options["custom-color"]) && $options["custom-color"] != '') {
+		$color = $options["custom-color"];
+	} else {
+		$color = "default";
+	}
+
+	//TTR
+	if(isset($options["wpm-text"]) && $options["wpm-text"] != '') {
+		$ttr = round($word_count / $options["wpm-text"]);
+	} else {
+		$ttr = round($word_count / 250);
+	}
+	if($ttr == 0) {
+		$ttr = '<1';
+	}
+
+	//comments ID
+	if(isset($options["comment-box-id"]) && $options["comment-box-id"] != '') {
+		$commentsID = $options["comment-box-id"];
+	} else {
+		$commentsID = "comments";
+	}
+
+	//twitter via@
+	if(isset($options["twitter-via"]) && $options["twitter-via"] != '') {
+		$via = $options["twitter-via"];
+	} else {
+		$via = "";
+	}
+
+	// Time to read text
+	if(isset($options["ttr-text"]) && $options["ttr-text"] != '') {
+		$ttr_text = $options["ttr-text"];
+	} else {
+		$ttr_text = "time to read:";
+	}
+
+	// Word by
+	if(isset($options["by-text"]) && $options["by-text"] != '') {
+		$by_text = $options["by-text"];
+	} else {
+		$by_text = "by";
+	}
+
+	//New posts or from category
+	if(isset($options["prev-next-posts"])) {
+		if($options["prev-next-posts"] == 'cat') {
+			$adjacent = true;
+			$tag_or_cat = "category";
+		} else if ($options["prev-next-posts"] == 'tags') {
+			$adjacent = true;
+			$tag_or_cat = "post_tag";
+		}
+	}
+
+
+	// Just fire on chosen post types, or if just installed and not setup, then on single posts.
+	if((is_singular() && in_array(get_post_type( $post_id ), $posttype)) || ($options == false && is_single())) {
+	?>
+	<!-- Swifty Bar by WPGens www.wpgens.com -->
+	<div id="sb_super_bar" class="<?php echo $color; ?>">
+
+		
+		<div class="sbprogress-container"><span class="sbprogress-bar"></span></div>
+		
+
+		<div id="sb_main_bar">
+
+			<div class="sb_text-size">
+				<?php if(is_singular( 'post' )) { ?>
+					<a href="<?php echo get_category_link($category[0]->cat_ID); ?>"><?php echo $category[0]->cat_name; ?></a>
+				<?php } else { ?>
+					<span><?php echo $post_type->label; ?></span>
+				<?php } ?>
+			</div>
+
+			<div class="sb_post-data">
+				<h2>
+					<?php if(!isset($options["custom-title"]) || $options["custom-title"] == '') {
+							echo get_the_title();
+						} else {
+							$title = substr(get_the_title(),0,$options["custom-title"]);
+							echo $title;
+							if (strlen($title) >($options["custom-title"] - 2)){
+								echo '…';
+							}
+						}
+					?>
+				</h2>
+				<?php if(!isset($enable_options["disable-author"])) { ?>
+					<span class="sb_author"><?php echo $by_text; ?> <?php echo $author_name; ?></span>
+				<?php } ?>
+				<?php if(!isset($enable_options["disable-ttr"])) { ?>
+				<span class="sb_ttr"><?php echo $ttr_text; ?> <?php echo $ttr; ?> min</span>
+				<?php } ?>
+			</div>
+
+			<div class="sb_prev-next-posts">
+				<?php $next_post = get_adjacent_post( $adjacent, '', false, $tag_or_cat ); ?>
+				<?php if ( is_a( $next_post, 'WP_Post' ) ) { ?>
+					<a href="<?php echo get_permalink( $next_post->ID ); ?>"><i class="sbicn-right-open-1"></i></a>
+					<div class="sb_next_post">
+						<div class="sb_next_post_image">
+							<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id($next_post->ID), 'sb_image_size' ); ?>
+							<?php if ($image != '') { ?> <img src="<?php echo $image[0]; ?>" alt=""> <?php } ?>
+						</div>
+						<div class="sb_next_post_info">
+							<span class="sb_title">
+								<span class="sb_category">
+									<?php if(is_singular( 'post' )) {
+											$category = get_the_category($next_post->ID); echo $category[0]->cat_name;
+										} ?>
+								</span>
+								<span class="sb_tcategory">
+									<?php
+										$post_title = substr(get_the_title( $next_post->ID ),0,50);
+										echo $post_title;
+										if (strlen($post_title) >48){
+											echo '…';
+										}
+									?>
+								</span>
+							</span>
+						</div>
+					</div>
+				<?php } ?>
+				<?php $prev_post = get_adjacent_post( $adjacent, '', true, $tag_or_cat ); ?>
+				<?php if ( is_a( $prev_post, 'WP_Post' ) ) { ?>
+					<a href="<?php echo get_permalink( $prev_post->ID ); ?>"><i class="sbicn-left-open-1"></i></a>
+					<div class="sb_next_post">
+						<div class="sb_next_post_image">
+							<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id($prev_post->ID), 'sb_image_size' ); ?>
+							<?php if ($image != '') { ?> <img src="<?php echo $image[0]; ?>" alt=""> <?php } ?>
+						</div>
+						<div class="sb_next_post_info">
+							<span class="sb_title">
+								<span class="sb_category">
+									<?php if(is_singular( 'post' )) {
+											$category = get_the_category($prev_post->ID); echo $category[0]->cat_name;
+										} ?>
+								</span>
+								<span class="sb_tcategory">
+									<?php
+										$post_title = substr(get_the_title( $prev_post->ID ),0,50);
+										echo $post_title;
+										if (strlen($post_title) >48){
+											echo '…';
+										}
+									?>
+								</span>
+							</span>
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+
+			<?php if(!isset($enable_options["disable-share"])) { ?>
+			<ul class="sb_share <?php echo ($old_style == true) ? 'old' : '' ?>">
+				<?php if(!isset($enable_options["disable-facebook"])) { ?>
+			    <li class="sbfacebook">
+			    	<a href="#" title="Share on Facebook" class="sbsoc-fb" target="_blank"><i class="sbicn-facebook"></i>
+			    		<?php echo ($disable_share_count == false) ? "<span>".$social_shares['facebook']."</span>" : "" ?>
+			    	</a>
+			    </li>
+			    <?php } if(!isset($enable_options["disable-twitter"])) { ?>
+			    <li class="sbtwitter">
+			    	<a href="#" data-via="<?php echo $via; ?>" data-title="<?php the_title(); ?>" title="Share on Twitter" class="sbsoc-tw" target="_blank" ><i class="sbicn-twitter"></i>
+			  
+					</a>
+				</li>
+			    <?php } if(!isset($enable_options["disable-linkedin"])) { ?>
+			    <li class="sblinkedin">
+			    	<a href="#" title="Share on Linkedin" class="sbsoc-linked" target="_blank"><i class="sbicn-linkedin"></i>
+			    		<?php echo ($disable_share_count == false) ? "<span>".$social_shares['linkedin']."</span>" : "" ?>
+					</a>
+				</li>
+    			<?php } if(!isset($enable_options["disable-pinterest"])) { ?>
+    			<li class="sbpinterest">
+    				<a href="#" title="Share on Pinterest" class="sbsoc-pint" target="_blank"><i class="sbicn-pinterest"></i>
+    					<?php echo ($disable_share_count == false) ? "<span>".$social_shares['pinterest']."</span>" : "" ?>
+    				</a>
+    			</li>
+				<?php } ?>
+			</ul>
+			<?php } ?>
+
+			<?php if(!isset($enable_options["disable-comments"])) { ?>
+			<div class="sb_actions">
+				<a class="sb_comment" href="#<?php echo $commentsID; ?>"><?php echo $comment_count; ?><i class="sbicn-comment"></i></a>
+			</div>
+			<?php } ?>
+
+		</div>
+
+	</div>
+	<!-- Swifty Bar by WPGens www.wpgens.com -->
+
+<?php }
+?>
