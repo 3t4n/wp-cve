@@ -1,0 +1,330 @@
+@import '_settings.scss';
+@import '_metabox.scss';
+@import '_modals.scss';
+
+//Inline error message
+span.wc-szamlazz-settings-error {
+  display: block;
+  margin: 0 0 10px 0;
+  font-style: normal;
+  color: #F56E28;
+
+	span {
+	  color: #F56E28;
+	}
+}
+
+//Email loading indicator
+#woocommerce_wc_szamlazz_section_emails ~ table select.multiselect ~ .blockUI {
+	max-width: 400px;
+}
+
+//PRO label
+.wc_szamlazz_pro_label {
+	display: none;
+}
+
+th .wc_szamlazz_pro_label,
+.wc-settings-sub-title .wc_szamlazz_pro_label {
+	display: inline-block;
+	font-style: normal;
+	background: #FF6767;
+	border-radius: 3px;
+	margin-left: 5px;
+	vertical-align: middle;
+	color: #fff;
+	font-weight: normal;
+	font-size: 12px;
+	padding: 2px 5px;
+	margin-top: -3px;
+}
+
+.wc_szamlazz_receipt_templates_preview_image {
+	width: 250px;
+	height: 210px;
+	background: url(../images/receipt-templates.png) no-repeat center;
+}
+
+.wc_szamlazz_tiptip_wider {
+	max-width: 250px !important;
+}
+
+.notice.wc-szamlazz-notice {
+	position: relative;
+
+	.wc-szamlazz-wait {
+		cursor: wait;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(255, 255, 255, 0.5);
+		z-index: 1000;
+		top: 0;
+		left: 0;
+	}
+}
+
+.widefat a.button.wc-szamlazz-button {
+  position: relative;
+  width: 2em;
+  height: 2em;
+  border-color: #FF6630;
+  background: #FFF7F4;
+
+  &:focus {
+    box-shadow: 0 0 0 1px #FF6630;
+  }
+
+	img {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin: 0;
+		transform: translate(-50%, -50%);
+		object-fit: contain;
+		width: 16px;
+		height: 16px;
+		display: block;
+	}
+}
+
+.wc-szamlazz-print {
+	position: relative;
+
+	p {
+		padding-left: 24px !important;
+	}
+
+	p svg {
+		position: absolute;
+		width: 24px;
+		height: 24px;
+		left: 10px;
+		top: 8px;
+	}
+}
+
+.wc-szamlazz-mark-paid-button {
+	width: 30px;
+	height: 30px;
+	background: url(../images/icon-mark-paid.svg) no-repeat center;
+	display: block;
+	margin-left: 5px;
+	cursor: pointer;
+	flex-shrink: 0;
+	flex-grow: 0;
+	outline: none;
+	border-radius: 50%;
+
+	&:focus, &:active {
+		outline: none;
+	}
+
+	&.paid {
+		background: url(../images/icon-paid.svg) no-repeat center;
+
+		&.tips {
+			cursor: default;
+		}
+	}
+
+	&.pending {
+		background: url(../images/icon-paid-pending.svg) no-repeat center;
+		opacity: 0.1;
+
+		&.tips {
+			cursor: default;
+		}
+	}
+
+	&.tips {
+		cursor: pointer;
+	}
+}
+
+.wc-szamlazz-mark-paid-item {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	span.tips {
+		white-space: nowrap;
+	}
+
+	&+span {
+		display: none;
+	}
+}
+
+.wc-szamlazz-modal-mark-paid {
+	display: flex;
+	align-items: center;
+
+	label {
+		margin-right: 10px;
+	}
+}
+
+//VAT number metabox
+#wc_szamlazz_vat_number_metabox {
+	table {
+		width: 100%;
+		border-spacing: 0;
+
+		td, th {
+			padding: 5px 0;
+		}
+
+		th {
+			text-align: left;
+		 padding-right: 10px;
+	 }
+
+	 .dashicons-warning {
+		 color: #F56E28;
+	 }
+
+	 .dashicons-yes {
+		 color: #46B450;
+	 }
+
+	 small {
+		 display: block;
+		 color: #999;
+	 }
+	}
+}
+
+//Background generate loading indicator
+#wpadminbar ul li#wp-admin-bar-wc-szamlazz-bg-generate-loading {
+	> .ab-empty-item {
+		display: block;
+
+		.loading,
+		.finished {
+			display: flex;
+			align-items: center;
+		}
+
+		.loading em {
+			background: url(../images/icon-sync.svg) no-repeat center;
+			width: 24px;
+			height: 24px;
+			margin-right: 5px;
+			background-size: 24px;
+			animation: wc_szamlazz_spin 1s linear 0s infinite;
+		}
+
+		.finished em {
+			background: url(../images/icon-yes.svg) no-repeat center;
+			width: 24px;
+			height: 24px;
+			margin-right: 5px;
+			background-size: 24px;
+		}
+
+		.finished {
+			display: none;
+		}
+	}
+
+	.admin-color-light & {
+		.ab-empty-item .loading em {
+			background-image: url(../images/icon-sync-dark.svg);
+			opacity: 0.5;
+		}
+
+		.ab-empty-item .finished em {
+			background-image: url(../images/icon-yes-dark.svg);
+			opacity: 0.5;
+		}
+	}
+
+	&-msg .ab-item.ab-empty-item {
+		height: auto;
+		line-height: 18px;
+
+		.loading,
+		.finished {
+			display: block;
+		}
+
+		span {
+			display: block;
+			width: 180px;
+			margin: 0 0 0px 0;
+			white-space: normal;
+			line-height: 18px;
+		}
+
+		a {
+			text-decoration: underline;
+			padding: 0;
+		}
+
+		.finished {
+			display: none;
+		}
+	}
+
+	&.finished {
+		> .ab-empty-item .loading {
+			display: none;
+		}
+
+		> .ab-empty-item .finished {
+			display: flex;
+		}
+
+		#wp-admin-bar-wc-szamlazz-bg-generate-loading-msg {
+			.loading {display: none;}
+			.finished {display: block;}
+		}
+	}
+
+	&.stopped {
+		display: none !important;
+	}
+}
+
+@keyframes wc_szamlazz_spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wc_szamlazz_shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.wc-szamlazz-product-options-checkbox {
+	display: flex;
+	align-items: center;
+
+	.checkbox {
+		order: 1
+	}
+
+	.woocommerce-help-tip {
+		order: 3;
+	}
+
+	label {
+		order: 2;
+		padding-left: 5px;
+	}
+}
