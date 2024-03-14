@@ -1,0 +1,42 @@
+<?php
+
+namespace Modular\ConnectorDependencies\Illuminate\Console\Events;
+
+use Modular\ConnectorDependencies\Symfony\Component\Console\Input\InputInterface;
+use Modular\ConnectorDependencies\Symfony\Component\Console\Output\OutputInterface;
+/** @internal */
+class CommandStarting
+{
+    /**
+     * The command name.
+     *
+     * @var string
+     */
+    public $command;
+    /**
+     * The console input implementation.
+     *
+     * @var \Symfony\Component\Console\Input\InputInterface|null
+     */
+    public $input;
+    /**
+     * The command output implementation.
+     *
+     * @var \Symfony\Component\Console\Output\OutputInterface|null
+     */
+    public $output;
+    /**
+     * Create a new event instance.
+     *
+     * @param  string  $command
+     * @param  \Symfony\Component\Console\Input\InputInterface  $input
+     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
+     * @return void
+     */
+    public function __construct($command, InputInterface $input, OutputInterface $output)
+    {
+        $this->input = $input;
+        $this->output = $output;
+        $this->command = $command;
+    }
+}
