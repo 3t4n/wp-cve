@@ -1,0 +1,312 @@
+body.post-new-php #titlewrap, body.post-php #titlewrap {
+	margin-right: 40px;
+}
+
+.conwr-title-exp-pre {
+	font-family: dashicons;
+    position: absolute;
+    left: 0px;
+    border-left: 1px solid #dfdfdf;
+    height: 40px;
+    border-right: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    width: 21px;
+    line-height: 40px;
+    cursor: pointer;
+    padding-left: 3px;
+	padding-top: 1px;
+    font-size: 1.4em;
+	opacity: 0.5;
+	color: darkgreen;
+	input {
+		display: none;
+	}
+	&:before {
+		// content: "\f177"; // eye
+		content: "\f147"; //check
+	}
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+label.conwr-title-label {
+	left: 17px;
+	color: #bbb;
+	position: absolute;
+	font-size: 1.7em;
+	padding: 8px 10px;
+}
+
+#conwr-edit-slug-box {
+	line-height: 24px;
+	min-height: 25px;
+	margin-top: 5px;
+	padding: 0 10px;
+	color: #666;
+}
+#edit-slug-box {
+	min-height: 0;
+}
+
+#conwr-title-add, #conwr-title-reset, #conwr-stat-selector {
+	display: inline;
+	margin-right: 10px;
+	white-space: nowrap;
+}
+
+#conwr-title-reset {
+	display: none;
+	float: right;
+	margin: 0;
+	margin-right: 10px;
+}
+
+#conwr-stat-selector {
+	display: none;
+	float: right;
+	margin: 0;
+	position: relative;
+	right: -10px;
+	top: -10px;
+	span {
+		cursor: pointer;
+		font-size: 1.25em;
+		margin: 0 2px;
+		opacity: 0.5;
+		&.active {
+			opacity: 1;
+		}
+	}
+}
+
+
+.conwr-title-exp-pre.disabled {
+	font-size: 1.2em;
+    padding-left: 5px;
+	&:before {
+		content: "\f530"; //eye crossed
+		// content: "\f158"; // x
+		color: darkred;
+	}
+}
+
+.conwr-title-exp:focus {
+	border-color: #dfdfdf !important;
+}
+
+.conwr-title-exp {
+	width: 100% !important;
+	border-left: none !important;
+	border-right: none !important;
+	float: left;
+	font-size: 1.7em;
+	margin-left: 0px !important;
+	padding-left: 27px !important;
+	line-height: 100%;
+	border-radius: 0px !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+}
+
+.conwr-title-exp-addon {
+	position: absolute;
+	right: 40px;
+	height: 36px;
+	margin-left: -4px;
+	border-left: 0px;
+	padding-right: 5px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	width: 125px;
+	line-height: 40px;
+	background: transparent;
+	.conwr-status {
+		float: right;
+		width: 16px;
+		height: 100%;
+		background-repeat: no-repeat;
+		background-size: 16px;
+		margin-left: 5px;
+		background-position-y: 11px;
+		cursor: pointer;
+	}
+
+	.conwr-status.conwr-unknown {
+		background-image: url(../images/unknown.png);
+	}
+	.conwr-status.conwr-winner {
+		background-image: url(../images/winner.png);
+	}
+	.conwr-status.conwr-loser {
+		background-image: url(../images/loser.png);
+	}
+
+	.conwr-stats {
+		float: right;
+		cursor: pointer;
+		margin-right: 25px;
+	}
+
+	.conwr-sl {
+		width: 38px;
+		height: 24px;
+		margin-top: 11px;
+		margin-right: 10px;
+		float: right;
+	}
+	.conwr-prob {
+		position: absolute;
+		top: 0;
+		right: -45px;
+		font-size: 1em;
+		cursor: pointer;
+		ul {
+			margin: 0; padding: 0;
+			li {
+				list-style-type: none;
+				display: none;
+				&.conwr-positive {
+					color: darkgreen;
+				}
+				&.conwr-negative {
+					color: darkred;
+				}
+			}
+			&[showing="0"] {
+				li:first-child {
+					display: block;
+				}
+			}
+			&[showing="1"] {
+				li:last-child {
+					display: block;
+				}
+			}
+		}
+	}
+	.conwr-del {
+		cursor: pointer;
+	    width: 20px;
+	    height: 20px;
+	    position: absolute;
+	    top: 12px;
+	    right: 3px;
+	    opacity: .4;
+	    font-size: 1.25em;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.cf {
+	clear: both;
+}
+
+#conwr-titles {
+	tr {
+		border-bottom: 1px solid #CCC;
+		td:nth-child(1) {
+			input {
+				margin-top: 4px;
+			}
+		}
+		td:nth-child(2) {
+			font-weight: normal;
+			width: auto;
+			input {
+				width: 100%;
+			}
+		}
+		td {
+			width: 1px;
+			text-align: center;
+			font-weight: bold;
+			padding-bottom: 6px;
+		}
+		td:last-child {
+			width: 50px;
+		}
+	}
+}
+
+#conwr-titles-row {
+	display: none;
+}
+#conwr-meta-box {
+	display: none;
+}
+
+.updated.nag {
+	border-left-color: red;
+}
+
+th#conwr_titles {
+	width: 1.5em;
+}
+td.conwr_titles {
+	text-align: center;
+	padding-top: 14px !important;
+	display: table-cell !important;;
+    width: 35px !important;;
+}
+
+
+// TABS
+.stcon-tabs-menu {
+    height: 35px;
+    float: left;
+    clear: both;
+}
+
+.stconv-tabs-menu li {
+    height: 35px;
+    line-height: 35px;
+    float: left;
+    border-right: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    font-size: 16px;
+    width: 160px;
+    text-align: center;
+}
+
+.stcon-tabs-menu li.current {
+    position: relative;
+    background-color: #2781D1;
+    z-index: 5;
+}
+
+.stcon-tabs-menu li a {
+    padding: 10px;
+    color: #000;
+    text-decoration: none; 
+    outline: none !important;
+}
+
+.stcon-tabs-menu .current a {
+    color: #fff;
+    outline: none !important;
+    font-weight: bold;
+}
+
+.stcon-tab {
+    width: 1000px;
+    border: 1px solid #d4d4d1;
+    background-color: #fff;
+    //float: left;
+    margin-bottom: 20px;
+}
+
+.stcon-tab-content {
+    padding: 20px;
+    padding-top: 40px;
+    display: none;
+    background-color: #FAF8F8;
+    //border: 1px solid #e1e1e1;
+}
+
+#titles {
+    display: block;   
+}
