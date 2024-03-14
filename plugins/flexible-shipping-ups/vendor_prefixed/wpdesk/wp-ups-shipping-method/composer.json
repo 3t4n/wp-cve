@@ -1,0 +1,67 @@
+{
+    "name": "wpdesk\/wp-ups-shipping-method",
+    "description": "UPS Shipping Method",
+    "license": "MIT",
+    "keywords": [
+        "wordpress",
+        "woocommerce",
+        "shipping",
+        "ups"
+    ],
+    "homepage": "https:\/\/gitlab.com\/wpdesk\/wp-ups-shipping-method",
+    "authors": [
+        {
+            "name": "grola",
+            "email": "grola@wpdesk.net"
+        }
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4",
+        "psr\/log": "^1.1",
+        "octolize\/wp-ups-oauth": "^1.0",
+        "wpdesk\/ups-shipping-service": "^3.1",
+        "wpdesk\/abstract-shipping": "^2.11",
+        "wpdesk\/wp-woocommerce-shipping": "^3.7.9"
+    },
+    "require-dev": {
+        "phpunit\/phpunit": "<7",
+        "wp-coding-standards\/wpcs": "^0.14.1",
+        "squizlabs\/php_codesniffer": "^3.0.2",
+        "mockery\/mockery": "*",
+        "10up\/wp_mock": "*",
+        "phpcompatibility\/php-compatibility": "^9.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "UpsFreeVendor\\WPDesk\\WooCommerceShipping\\Ups\\": "src\/WooCommerceShipping\/Ups"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests\/unit"
+        ]
+    },
+    "extra": {
+        "text-domain": "wp-ups-shipping-method",
+        "translations-folder": "lang",
+        "po-files": {
+            "pl_PL": "pl_PL.po",
+            "de_DE": "de_DE.po"
+        }
+    },
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+        "phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
+        "phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+        "phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage"
+    },
+    "repositories": {
+        "wpdesk": {
+            "type": "composer",
+            "url": "https:\/\/gitlab.wpdesk.dev\/api\/v4\/group\/wpdesk\/-\/packages\/composer\/"
+        }
+    }
+}

@@ -1,0 +1,284 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url("../../fonts/Poppins-Regular.woff2") format("woff2");
+    src: url("../../fonts/Poppins-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Bogart Alt";
+    font-weight: normal;
+    src: url("../../fonts/Bogart-Alt-Regular.woff2") format("woff2");
+    src: url("../../fonts/Bogart-Alt-Regular.woff") format("woff");
+}
+
+body.woocommerce_page_octolize-shipping-extensions {
+    #wpcontent {
+        padding: 0;
+
+        #wpbody-content {
+            .notice {
+                display: none;
+            }
+        }
+    }
+
+    .oct-shipping-extensions {
+        *, & {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .oct-shipping-extensions-header {
+            background: #FFFFFF;
+            margin-bottom: 38px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            height: 60px;
+
+            .oct-shipping-extensions-header-title {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 19px;
+            }
+        }
+
+        .oct-shipping-extension-content-wrapper {
+            max-width: 1200px;
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            .oct-shipping-extensions-top {
+                padding: 10px 25px;
+                background-color: #fff;
+                background-image: url(../../img/bg-header.jpg);
+                background-position: 100% 100%;
+                background-repeat: no-repeat;
+                border-radius: 15px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+
+                &:after {
+                    content: "";
+                    background: url(../../img/sp-bg-image.svg) no-repeat;
+                    height: 204px;
+                    width: 317px;
+                    position: absolute;
+                    bottom: -21px;
+                    right: 0;
+
+                    @media screen and (max-width: 940px) {
+                        display: none;
+                    }
+                }
+
+                h1 {
+                    margin: 0;
+                    vertical-align: middle;
+                    font-family: 'Bogart Alt', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 25px;
+                    display: flex;
+                    align-items: center;
+                    color: #002333;
+                    flex: none;
+                    order: 0;
+                    flex-grow: 0;
+                    line-height: 25px;
+
+                    @media screen and (max-width: 940px) {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                }
+
+                p {
+                    font-family: "Poppins", sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 24px;
+                    display: flex;
+                    align-items: center;
+                    font-feature-settings: 'ss02' on;
+                    color: #333333;
+                    flex: none;
+                    order: 1;
+                    max-width: 60%;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+
+                    @media screen and (max-width: 940px) {
+                        max-width: 100%;
+                    }
+                }
+            }
+
+            .oct-shipping-extensions-notice-list-hide {
+                display: none;
+            }
+
+            .oct-plugins-filter {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                @media screen and (max-width: 800px) {
+                    flex-direction: column;
+                }
+
+                ul {
+                    display: flex;
+                    gap: 10px;
+
+                    @media screen and (max-width: 800px) {
+                        flex-direction: column;
+                    }
+
+                    li {
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            .oct-shipping-extensions-plugins {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+
+                @media screen and (max-width: 1200px) {
+                    flex-direction: column;
+                }
+
+                .oct-shipping-extensions-plugin {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 25px 20px;
+                    background: #F8F8F8;
+                    border: 1px solid #F8F8F8;
+                    border-radius: 15px;
+                    max-width: calc(50% - 20px);
+                    gap: 15px;
+                    transition: 0.3s;
+
+                    @media screen and (max-width: 1200px) {
+                        max-width: none;
+                    }
+
+                    &:hover {
+                        background: #fff;
+                        border-color: #00E3C0;
+                    }
+
+                    .oct-plugin-info {
+                        display: flex;
+                        gap: 15px;
+                        align-items: flex-start;
+
+                        @media screen and (max-width: 1200px) {
+                            flex-direction: column;
+                            justify-content: center;
+                            text-align: center;
+                        }
+
+                        .oct-plugin-icon {
+                            max-width: 128px;
+                            height: auto;
+                            margin: 0 auto;
+                        }
+
+                        .oct-plugin-info-content {
+
+                            display: flex;
+                            flex-direction: column;
+                            gap: 5px;
+
+                            .oct-plugin-name {
+                                margin: 0;
+                                font-family: 'Bogart Alt', sans-serif;
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 18px;
+                                line-height: 133%;
+                            }
+
+                            .oct-plugin-desc {
+                                font-family: "Poppins", sans-serif;
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 12px;
+                                line-height: 16px;
+                                margin: 0 0 7px;
+                                max-width: 80%;
+
+                                @media screen and (max-width: 1200px) {
+                                    max-width: 100%;
+                                }
+                            }
+                        }
+                    }
+
+                    .oct-plugin-actions {
+                        display: flex;
+                        justify-content: right;
+                        width: 100%;
+                        gap: 20px;
+                        align-items: center;
+
+                        @media screen and (max-width: 1200px) {
+                            justify-content: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        .oct-btn {
+            border: 1px solid #0A2C3B;
+            border-radius: 15px;
+            display: inline-block;
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18px;
+            color: #002333;
+            text-decoration: none;
+            padding: 8px 24px;
+            position: relative;
+            transition: all ease-in-out 0.2s;
+            margin-bottom: 0;
+            cursor: pointer;
+            background-color: transparent;
+
+            &:hover, &.active {
+                background-color: #0A2C3B;
+                color: #fff;
+            }
+        }
+
+        .btn-buy {
+            color: #917dff;
+        }
+    }
+
+    &.rtl {
+        .oct-shipping-extensions {
+            .oct-shipping-extension-content-wrapper {
+                .oct-shipping-extensions-top {
+                    &:after {
+                        right: calc(100% - 317px);
+                    }
+                }
+            }
+        }
+    }
+}

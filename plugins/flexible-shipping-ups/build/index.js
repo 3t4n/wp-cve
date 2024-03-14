@@ -1,0 +1,1 @@
+!function(){"use strict";(0,window.wp.plugins.registerPlugin)("flexible-shipping-ups-point-selection-block",{render:function(){},scope:"woocommerce-checkout"})}();
