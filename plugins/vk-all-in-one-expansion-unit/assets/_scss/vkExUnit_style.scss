@@ -1,0 +1,679 @@
+@charset "utf-8";
+// @import "compass";
+@import "_variable";
+@import "contents_option_style";
+
+/*-------------------------------------------------*/
+/* ex_unit
+/*-------------------------------------------------*/
+/* .common
+/*-------------------------------------------*/
+/* .veu_card
+/*-------------------------------------------*/
+/* .veu_autoEyeCatchBox
+/*-------------------------------------------*/
+/* .veu_sitemap
+/*-------------------------------------------*/
+/* .veu_socialSet
+/*-------------------------------------------*/
+/* .veu_childPage_list
+/*-------------------------------------------*/
+/* .veu_pageList_ancestor
+/*-------------------------------------------*/
+/* .veu_followSet
+/*-------------------------------------------*/
+/* .veu_contact
+/*-------------------------------------------*/
+/* .veu_insertAds
+/*-------------------------------------------*/
+/* .veu_relatedPosts
+/*-------------------------------------------*/
+/* .veu_pagetop-btn
+/*-------------------------------------------*/
+/* Widget .veu_fbPagePlugin
+/*-------------------------------------------*/
+/* Widget .twitter
+/*-------------------------------------------*/
+/* Widget .veu_postList
+/*-------------------------------------------*/
+/* Widget .veu_profile
+/*-------------------------------------------*/
+/* Widget .veu_3prArea
+/*-------------------------------------------*/
+/* Widget .veu_prBlocks
+/*-------------------------------------------*/
+/* Widget .veu_button
+/*-------------------------------------------*/
+/* Widget .veu_banner
+/*-------------------------------------------*/
+
+/*-------------------------------------------*/
+/* .common
+/*-------------------------------------------*/
+
+@import "_common";
+
+/*-------------------------------------------*/
+/* 過去のファイルに存在していたが、本来 プラグイン側で .media という共有で使われるclass名に対してCSSを当てるべきではないので、
+/* 読み込まないように変更済み。しばらく問題が出ないようなら削除
+// @import "_media";
+
+/*-------------------------------------------*/
+/* .veu_card
+/*-------------------------------------------*/
+@import "_card";
+
+/*-------------------------------------------*/
+/* .relatedPosts
+/*-------------------------------------------*/
+.relatedPosts {
+	h2 {
+		margin-bottom: 10px;
+	}
+}
+
+/*-------------------------------------------*/
+/* .veu_autoEyeCatchBox
+/*-------------------------------------------*/
+
+.veu_autoEyeCatchBox {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 2em;
+}
+
+/*-------------------------------------------*/
+/* .veu_sitemap
+/*-------------------------------------------*/
+
+@import "_sitemap";
+
+/*-------------------------------------------*/
+/* .veu_socialSet
+/*-------------------------------------------*/
+
+@import "../../inc/sns/assets/_scss/_sns";
+
+/*-------------------------------------------*/
+/*			import icon
+/*-------------------------------------------*/
+
+@import "_iconset";
+
+/*-------------------------------------------*/
+/* .veu_childPage_list
+/*-------------------------------------------*/
+
+@import "_child_page_list";
+
+/*-------------------------------------------*/
+/* .veu_pageList_ancestor
+/*-------------------------------------------*/
+
+@import "_page_list_ancestor";
+
+@mixin veu_content_bottom_section {
+	display: block;
+	overflow: hidden;
+	margin-top: $section_margin;
+	margin-bottom: $section_margin;
+	background-color: #efefef;
+}
+@mixin veu_content_bottom_section_title {
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	padding: 12px 20px 10px;
+	background-color: #333;
+	color: #fff;
+	font-size: 22px;
+	line-height: 1.2em;
+}
+@mixin veu_content_bottom_section_body {
+	display: block;
+	overflow: hidden;
+	padding: 1.5em 1.5em 2em;
+}
+
+/*-------------------------------------------*/
+/* .veu_followSet
+/*-------------------------------------------*/
+/*記事がよかったら、いいね*/
+.veu_followSet {
+	margin: 30px 0;
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	background-color: #2b2b2b;
+	color: #fff;
+
+	.followSet_img {
+		display: table-cell;
+		min-width: 240px;
+		background-position: center;
+		background-size: cover;
+	}
+	.followSet_body {
+		display: table-cell;
+		padding: 15px;
+		@media (min-width: 481px) {
+			padding: 40px;
+		}
+		text-align: center;
+		vertical-align: middle;
+		line-height: 1.4;
+		font-size: 20px;
+	}
+
+	.followSet_title {
+		@media (max-width: 480px) {
+			font-size: 12px;
+			margin-bottom: 0;
+		}
+		@media (min-width: 481px) {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+	}
+
+	.followSet_fb_page {
+		margin-top: 0;
+		display: block;
+		width: 100%;
+		-webkit-transform: scale(1.2);
+		-ms-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+	.followSet_tw_follow {
+		width: 100%;
+		padding: 15px 0 0;
+	}
+	.followSet_feedly {
+		text-align: center;
+	}
+} // .veu_followSet
+
+
+/*-------------------------------------------*/
+/* .veu_contact
+/*-------------------------------------------*/
+
+@import "_contact_section";
+
+/*-------------------------------------------*/
+/* .veu_insertAds
+/*-------------------------------------------*/
+.veu_insertAds {
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+@media (max-width: 971px) {
+	.veu_insertAds {
+		margin-bottom: 0.5em;
+	}
+	.veu_insertAds .col-md-6 {
+		margin-bottom: 1em;
+	}
+}
+
+/*-------------------------------------------*/
+/* .veu_relatedPosts
+/*-------------------------------------------*/
+
+@import "relatedPosts.scss";
+
+/*-------------------------------------------*/
+/* .veu_pagetop-btn
+/*-------------------------------------------*/
+@import "../../inc/pagetop-btn/_scss/_pagetop-btn.scss";
+
+/*-------------------------------------------*/
+/* Widget .veu_fbPagePlugin
+/*-------------------------------------------*/
+
+.veu_fbPagePlugin {
+	.fbPagePlugin_body {
+		margin: 0 auto;
+		border: 4px solid #efefef;
+		background-color: #f9f9f9;
+		text-align: center;
+	}
+}
+
+/*-------------------------------------------*/
+/* Widget .twitter
+/*-------------------------------------------*/
+
+// width の指定は iOS特有のバグで iframe が親要素の幅を超えてはみ出す事象に対応するために追加
+iframe.twitter-timeline {
+	margin-right: auto;
+	margin-left: auto;
+	width: 740px !important;
+}
+
+/*-------------------------------------------*/
+/* Widget .veu_postList
+/*-------------------------------------------*/
+.veu_postList {
+	margin-bottom: $section_margin;
+	h1.mainSection-title,
+	.subSection-title {
+		margin-bottom: 0;
+	}
+	ul.postList {
+		margin: 0;
+		padding: 0;
+		li {
+			display: block;
+			clear: both;
+			overflow: hidden;
+			margin: 0;
+			padding: 15px 0;
+			border-bottom: 1px solid var(--vk-color-border-hr);
+			line-height: 1.4em;
+		}
+	}
+	.postList a {
+		color: var(--vk-color-text-body);
+		text-decoration: none;
+	}
+	.postList a:hover {
+		text-decoration: underline;
+	}
+	.postList_title {
+		display: block;
+		clear: both;
+		margin: 3px 0 0;
+	}
+	.postList_meta_items {
+		font-size: 14px;
+		color: #666;
+	}
+	.postList_date {
+		margin-right: 10px;
+		color: var( --vk-color-text-meta );
+	}
+	.postList_date:before {
+		content: "";
+		margin-right: 0;
+	}
+	.postList_terms {
+		position: relative;
+	}
+	.postList_terms a {
+		margin-right: 3px;
+		padding: 2px 5px 2px;
+		border-radius: var(--vk-size-radius-sm);
+		background-color: #efefef;
+		font-size: 10px;
+		line-height: 1;
+		position: relative;
+		top:-1px;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	.postList_more {
+		margin: 10px 5px 0 0;
+		text-align: right;
+	}
+
+	// postList_miniThumb
+
+	.postList_miniThumb {
+		.postList_item {
+			display: block;
+			overflow: hidden;
+			clear: both;
+			position: relative;
+			padding: 15px 0;
+			border-bottom: 1px solid var(--vk-color-border-hr);
+			margin-bottom: 0;
+		}
+		.postList_thumbnail {
+			float: left;
+			margin-right: 15px;
+		}
+		.postList_thumbnail a {
+			position: relative;
+			display: block;
+			overflow: hidden;
+			border: 1px solid #e5e5e5;
+		}
+		.postList_thumbnail img {
+			width: 80px;
+			height: auto;
+			display: block; // block 指定しないと枠の下に余白ができる
+		}
+		.postList_body {
+			display: block;
+			overflow: hidden;
+			width: auto;
+		}
+		.postList_title {
+			font-size: 14px;
+		}
+	}
+}
+
+/*
+/*  Lightning Charm 1.2.0 での表示崩れ回避用
+/*  Lightning Charm 1.4.0 以降になったら削除
+*/
+// .mainSection .veu_postList.pt_0 .postList.postList_miniThumb {
+// 	padding: 0;
+// 	margin-left: 0;
+// 	margin-right: 0;
+// }
+// @media (min-width: 992px) {
+// 	.mainSection .veu_postList.pt_0.postList_item .postList_thumbnail {
+// 		margin-right: 30px;
+// 		margin-left: 0;
+// 	}
+// 	.mainSection .veu_postList.pt_0.postList_item.even .postList_thumbnail {
+// 		margin-left: 30px;
+// 		margin-right: 0;
+// 	}
+// }
+
+/*-------------------------------------------*/
+/* Widget .veu_profile
+/*-------------------------------------------*/
+.veu_profile {
+	.profile {
+		overflow: hidden;
+	}
+	.media_outer {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		margin: 0.8em 0 0.8em;
+		box-sizing: border-box;
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+	.media_round {
+		border-radius: 50%;
+		width: 120px;
+		height: 120px;
+		position: relative;
+		img {
+			position: absolute;
+			left: -9999px;
+		}
+	}
+	.media_center {
+		margin-left: auto;
+		margin-right: auto;
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	.media_float {
+		float: left;
+		margin-right: 1em;
+		& + .profile_text {
+			padding-top: 0.8em;
+		}
+	}
+	.profile_text {
+		margin-bottom: 1em;
+		font-size: 14px;
+	}
+	.sns_btns {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		li {
+			float: left;
+			margin-right: 0.45em;
+			list-style: none;
+			text-align: center;
+			a {
+				display: block;
+				position: relative;
+				width: 40px;
+				height: 40px;
+				border-radius: 23px;
+				color: #fff;
+				text-decoration: none;
+				font-size: 20px;
+				&:hover {
+					color: #fff;
+					text-decoration: none;
+					opacity: 0.8;
+				}
+				&.bg_fill{
+					.icon{
+						color: #fff;
+					}
+				}
+			}
+		}
+
+		.icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+		}
+		.facebook_btn a {
+			background: #3b5998;
+			border:1px solid #3b5998; 
+			.icon{
+				color: #3b5998;
+			}
+		}
+		.twitter_btn a {
+			background: #0f1419;
+			border:1px solid #0f1419;
+			.icon{
+				color: #0f1419;
+			}
+		}
+		.mail_btn a {
+			background: #2f915f;
+			border:1px solid #2f915f;
+			.icon{
+				color: #2f915f;
+			}
+		}
+		.youtube_btn a {
+			background: #c81d1c;
+			border:1px solid #c81d1c;
+			.icon{
+				color: #c81d1c;
+			}
+		}
+		.rss_btn a {
+			background: #f26522;
+			border:1px solid #f26522;;
+			.icon{
+				color: #f26522;
+			}
+		}
+		.instagram_btn a {
+			background: #3f729b;
+			border:1px solid #3f729b;;
+			.icon{
+				color: #3f729b;
+			}
+		}
+		.linkedin_btn a {
+			background: #0077b5;
+			border:1px solid #0077b5;;
+			.icon{
+				color: #0077b5;
+			}
+		}
+	}
+}
+
+/*-------------------------------------------*/
+/* Widget .veu_3prArea
+/*-------------------------------------------*/
+.veu_3prArea {
+	.prArea {
+		padding-bottom:3.5em;
+	}
+	.subSection-title {
+		font-size: 18px;
+		margin-top: 0.8em;
+	}
+	.summary {
+		margin-bottom: 0.5em;
+		font-size: 14px;
+		line-height: 1.6em;
+	}
+	.linkurl{
+		position: absolute;
+		bottom:0;
+		right:15px;
+	}
+	.linkurl a {
+		text-decoration: none;
+	}
+}
+.veu_3prArea_image {
+	margin-bottom: 0.8em;
+	.image_pc {
+		display: block;
+	}
+	.image_sp {
+		display: none;
+	}
+	border: 1px solid #e5e5e5;
+	img {
+		width: 100%;
+	}
+}
+.veu_3prArea_image_link {
+	border: 1px solid #fff;
+	display: block;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+	.veu_3prArea {
+		.prArea {
+			margin-bottom: 1em;
+			display: block;
+			overflow: hidden;
+		}
+		.image_pc {
+			display: none;
+		}
+		.image_sp {
+			display: block;
+		}
+		.linkurl {
+			margin-bottom: 1.5em;
+		}
+	}
+	.veu_3prArea_image {
+		width: 138px;
+		margin: 0 1em 0 0;
+		float: left;
+	}
+}
+
+/*-------------------------------------------*/
+/* Widget .veu_prBlocks
+/*-------------------------------------------*/
+// .veu_prBlocks{
+.prBlock {
+	a {
+		color: #333;
+		&:hover {
+			color: #333;
+			text-decoration: none;
+		}
+		.prBlock_summary:hover {
+			text-decoration: underline;
+		}
+	}
+	.prBlock_icon_outer {
+		display: block;
+		position: relative;
+		margin: 0 auto;
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+	}
+	.prBlock_icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		font-size: 36px;
+	}
+	.prBlock_title {
+		margin-top: 0.9em;
+		margin-bottom: 0.7em;
+		text-align: center;
+		font-size: 18px;
+		line-height: 1.4em;
+	}
+	.prBlock_image {
+		position: relative;
+		display: block;
+		width: 120px;
+		height: 120px;
+		margin: 0 auto;
+		overflow: hidden;
+		border-radius: 50%;
+		text-indent: -9999px;
+	}
+	.prBlock_summary {
+		margin-bottom: 0.5em;
+		text-align: center;
+		font-size: 14px;
+		line-height: 1.6em;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	// .veu_prBlocks{
+	.prBlock {
+		margin-bottom: 1.5em;
+	}
+	// }
+}
+/*-------------------------------------------*/
+/* Widget .veu_button
+/*-------------------------------------------*/
+.veu_button {
+	i,
+	svg {
+		margin-left: 0.3em;
+		margin-right: 0.3em;
+	}
+	.button_mainText,
+	.button_subText {
+		display: block;
+	}
+	.btn.btn-sm {
+		padding-top: 0.6em;
+		padding-bottom: 0.45em;
+	}
+	.btn {
+		padding-top: 0.8em;
+		padding-bottom: 0.6em;
+	}
+	.btn.btn-lg {
+		padding-top: 0.8em;
+		padding-bottom: 0.7em;
+	}
+}
+/*-------------------------------------------*/
+/* Widget .veu_banner
+/*-------------------------------------------*/
+.veu_banner {
+	text-align: center;
+	display: block;
+	overflow: hidden;
+}
