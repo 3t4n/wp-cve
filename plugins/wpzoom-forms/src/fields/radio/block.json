@@ -1,0 +1,95 @@
+{
+	"$schema":      "https://schemas.wp.org/trunk/block.json",
+	"apiVersion":   3,
+	"name":         "wpzoom-forms/radio-field",
+	"title":        "Radio",
+	"category":     "wpzoom-forms",
+	"ancestor":     [ "wpzoom-forms/form" ],
+	"description":  "A radio input field.",
+	"keywords":     [ "wpzoom", "form", "input", "radio" ],
+	"version":      "1.1.0",
+	"textdomain":   "wpzoom-forms",
+	"attributes":   {
+		"id":            {
+			"type":      "string",
+			"default":   ""
+		},
+		"name":          {
+			"type":      "string",
+			"default":   ""
+		},
+		"options":       {
+			"type":      "array",
+			"default":   [ "Item #1" ]
+		},
+		"defaultValue":  {
+			"type":      "string",
+			"default":   "Item #1"
+		},
+		"label":         {
+			"type":      "string",
+			"default":   "My Radio Field"
+		},
+		"showLabel":     {
+			"type":      "boolean",
+			"default":   true
+		},
+		"required":      {
+			"type":      "boolean",
+			"source":    "attribute",
+			"attribute": "required",
+			"selector":  "input",
+			"default":   false
+		}
+	},
+	"supports":     {
+		"align":         true,
+		"html":          false,
+		"shadow":        true,
+		"color":         {
+			"background": true,
+			"gradients":  true,
+			"text":       true
+		},
+		"typography":    {
+			"fontSize":   true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true
+		},
+		"dimensions":    {
+			"minHeight":  true
+		},
+		"spacing":       {
+			"margin":     true,
+			"padding":    true,
+			"blockGap":   true
+		},
+		"__experimentalBorder": {
+			"color":      true,
+			"radius":     true,
+			"style":      true,
+			"width":      true
+		}
+	},
+	"selectors":    {
+		"root":          ".wpzoom-forms_checkbox-field",
+		"color":         ".wpzoom-forms_checkbox-field > input",
+		"typography":    ".wpzoom-forms_checkbox-field > input",
+		"dimensions":    ".wpzoom-forms_checkbox-field > input",
+		"spacing":       ".wpzoom-forms_checkbox-field > input",
+		"__experimentalBorder": ".wpzoom-forms_checkbox-field > input"
+	},
+	"styles":       [
+		{ "name": "modern", "label": "Modern", "isDefault": true },
+		{ "name": "classic", "label": "Classic" }
+	],
+	"editorScript": "file:./index.js",
+	"editorStyle":  "wpzoom-forms-css-backend-main",
+	"script":       "wpzoom-forms-js-frontend-formblock",
+	"style":        "wpzoom-forms-css-frontend-formblock"
+}

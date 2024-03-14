@@ -1,0 +1,85 @@
+@import '~@wordpress/base-styles/variables';
+@import '~@wordpress/base-styles/colors.native';
+@import '~@wordpress/base-styles/breakpoints';
+@import '~@wordpress/base-styles/mixins';
+
+.components-placeholder .components-searchable-select-control__label {
+	display: none;
+}
+
+.components-searchable-select-control__button {
+	@include input-control;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	min-width: 250px;
+	padding-right: 6px !important;
+}
+
+.components-searchable-select-control__menu {
+	max-height: none;
+	overflow: visible;
+	margin: 0.2em 0 0;
+
+	&:focus {
+		border: none;
+		border-radius: 0;
+	}
+}
+
+.components-searchable-select-control__menu-inner {
+	border: $border-width solid $gray-900;
+	border-radius: $radius-block-ui;
+	overflow: hidden;
+}
+
+.components-searchable-select-control__search {
+	padding: 0.2em;
+	margin: 0 !important;
+
+	* {
+		margin: 0 !important;
+	}
+}
+
+.components-searchable-select-control__menu-inner .components-searchable-select-control__items {
+	max-height: 200px;
+	padding: 0;
+	overflow: auto;
+	margin: 0;
+}
+
+.components-searchable-select-control__item {
+	cursor: pointer;
+	font-family: $default-font;
+	font-size: $default-font-size;
+	line-height: $default-line-height;
+	padding-top: 5px;
+	padding-left: 35px;
+	padding-bottom: 5px;
+	margin: 0;
+
+	&.is-selected {
+		cursor: default;
+		pointer-events: none;
+		color: $white;
+		background: $blue-50;
+	}
+}
+
+.components-searchable-select-control__item-icon {
+	min-height: 24px;
+	min-width: 24px;
+	margin-left: -30px;
+	margin-right: 5px;
+}
+
+.is-selected .components-searchable-select-control__item-icon {
+	fill: currentColor;
+}
+
+.components-searchable-select-control__button-text {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}

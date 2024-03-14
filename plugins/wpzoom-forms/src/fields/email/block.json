@@ -1,0 +1,90 @@
+{
+	"$schema":      "https://schemas.wp.org/trunk/block.json",
+	"apiVersion":   3,
+	"name":         "wpzoom-forms/text-email-field",
+	"title":        "Email Input",
+	"category":     "wpzoom-forms",
+	"ancestor":     [ "wpzoom-forms/form" ],
+	"description":  "A text input field for inputting an email address.",
+	"keywords":     [ "wpzoom", "form", "input", "email", "text" ],
+	"version":      "1.1.0",
+	"textdomain":   "wpzoom-forms",
+	"attributes":   {
+		"id":            {
+			"type":      "string",
+			"default":   ""
+		},
+		"name":          {
+			"type":      "string",
+			"default":   ""
+		},
+		"placeholder":   {
+			"type":      "string",
+			"source":    "attribute",
+			"attribute": "placeholder",
+			"selector":  "input",
+			"default":   ""
+		},
+		"label":         {
+			"type":      "string",
+			"default":   "My Email Field"
+		},
+		"showLabel":     {
+			"type":      "boolean",
+			"default":   true
+		},
+		"required":      {
+			"type":      "boolean",
+			"source":    "attribute",
+			"attribute": "required",
+			"selector":  "input",
+			"default":   false
+		},
+		"replyto":       {
+			"type":      "boolean",
+			"default":   false
+		}
+	},
+	"supports":     {
+		"align":         true,
+		"html":          false,
+		"shadow":        true,
+		"color":         {
+			"background": true,
+			"gradients":  true,
+			"text":       true
+		},
+		"typography":    {
+			"fontSize":   true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true
+		},
+		"dimensions":    {
+			"minHeight":  true
+		},
+		"spacing":       {
+			"margin":     true,
+			"padding":    true,
+			"blockGap":   true
+		},
+		"__experimentalBorder": {
+			"color":      true,
+			"radius":     true,
+			"style":      true,
+			"width":      true
+		}
+	},
+	"styles":       [
+		{ "name": "modern", "label": "Modern", "isDefault": true },
+		{ "name": "classic", "label": "Classic" }
+	],
+	"editorScript": "file:./index.js",
+	"editorStyle":  "wpzoom-forms-css-backend-main",
+	"script":       "wpzoom-forms-js-frontend-formblock",
+	"style":        "wpzoom-forms-css-frontend-formblock"
+}
