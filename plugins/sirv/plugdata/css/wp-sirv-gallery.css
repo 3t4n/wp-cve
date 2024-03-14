@@ -1,0 +1,186 @@
+.sirv-gallery.no-sirv-zoom .sirv-thumbs-box ul { list-style:none; margin:0; padding:0; text-align:center; }
+.sirv-gallery.no-sirv-zoom .sirv-thumbs-box ul li { display:inline-block; margin:0 4px 5px 4px; }
+.sirv-gallery.no-sirv-zoom .sirv-thumbs-box ul li img { cursor:pointer; }
+
+.sirv-gallery-item { text-align:center; }
+
+.sirv-caption {
+    font-weight:bold;
+    margin-top:5px;
+    text-align:center;
+    flex-basis: 100%;
+    order: 3;
+}
+
+.sirv-mv-caption {
+    width: 100%;
+    min-height: 25px;
+    margin: 5px 0 5px;
+    font-size: 18px;
+    line-height: initial;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sirv-align-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.sirv-mv-left { justify-content: start; }
+.sirv-mv-center { justify-content: center; }
+.sirv-mv-right { justify-content: end; }
+
+.sirv-gallery.no-gallery .sirv-gallery-item { margin:10px 0; }
+
+.sirv-thumbs-box { margin: 0; font-size:0px; }
+
+.sirv-gallery.no-sirv-zoom .sirv-thumbs-box{ margin-top: 10px; }
+
+
+/*.no-sirv-zoom .sirv-thumbs-box { margin:0px !important;}*/
+
+.sirv-thumb-selected img { opacity: 0.5; background:#fff; }
+
+.sirv-gallery.is-sirv-gallery {
+/* Uncomment these styles to add a border shadow around the spin container */
+/*-webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;
+-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);*/
+overflow:hidden;
+}
+
+.fullscreen-mode .sirv-zoom-thumbnails .sirv-thumbnails ul > li[data-item=spin] {
+    display: none;
+}
+
+.sirv-gallery.sirv-left{
+    float: left;
+    display: inline-block;
+    margin-right: 1.625em;
+}
+
+.sirv-gallery.sirv-right{
+    float: right;
+    display: inline-block;
+    margin-left: 1.625em;
+}
+
+.sirv-gallery.sirv-center{
+    clear: both;
+    display: block;
+    margin: 1.625em auto;
+}
+
+.sirv-gallery{
+    max-width: 100%;
+    display: block;
+
+    position: relative;
+}
+
+.Sirv{
+    font-size: 0;
+}
+
+
+/* -----------------styles for Zoom gallery--------------- */
+
+.sirv-gallery.selectorsLeft:not(.no-sirv-zoom),
+.sirv-gallery.selectorsRight:not(.no-sirv-zoom){
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .sirv-thumbs-box,
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-thumbs-box,
+div.sirv-gallery.selectorsTop:not(.no-sirv-zoom) .sirv-thumbs-box {
+/*    min-height: 300px;
+    height: 0;
+    max-height: 100%;
+*/
+
+    position: absolute !important;
+    top: 0;
+}
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .sirv-thumbs-box,
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-thumbs-box{
+    bottom: 0;
+}
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .Sirv,
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .Sirv {
+    flex-grow: 1;
+}
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .Sirv,
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .Sirv {
+    font-size:0px;
+}
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .sirv-thumbs-box,
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-gallery-item {
+    order: 1;
+}
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-thumbs-box,
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .sirv-gallery-item {
+    order: 2;
+}
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .sirv-gallery-item,
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-gallery-item {
+    width: auto;
+    flex-grow: 2;
+    flex-basis: 100%;
+}
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .sirv-caption{
+    padding-left: 90px;
+}
+
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-caption{
+    padding-right: 90px;
+}
+
+div.sirv-gallery.selectorsTop:not(.no-sirv-zoom) .sirv-thumbs-box {
+    order: 1;
+}
+
+div.sirv-gallery.selectorsTop:not(.no-sirv-zoom) .sirv-gallery-item {
+    order: 2;
+    width: auto;
+    flex-grow: 2;
+
+}
+
+div.sirv-gallery.selectorsLeft:not(.no-sirv-zoom) .sirv-thumbs-box,
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-thumbs-box,
+div.sirv-gallery.selectorsTop:not(.no-sirv-zoom) .sirv-thumbs-box {
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+div.sirv-gallery.selectorsTop:not(.no-sirv-zoom) .sirv-thumbs-box{
+    left: 0;
+    right: 0;
+}
+
+div.sirv-gallery.selectorsRight:not(.no-sirv-zoom) .sirv-thumbs-box{
+    right: 0;
+}
+
+div.sirv-gallery.selectorsBottom:not(.no-sirv-zoom) .sirv-thumbs-box{
+    margin-top: 10px;
+}
+
+/* -----------------styles for Zoom gallery END--------------- */

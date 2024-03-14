@@ -1,0 +1,154 @@
+    <style>
+        .selection-content .sirv-items-container{
+            top: 120px;
+        }
+    </style>
+
+    <div class="sirv-sirv-media_library-php">
+        <div class="loading-ajax">
+            <span class="sirv-loading-icon"></span>
+        </div>
+        <div class="sirv-upload-ajax">
+            <div class="sirv-upload-dialog">
+                <h4>Uploading files..</h4>
+                <div class="sirv-progress-bar-wrapper">
+                    <div class="sirv-progress-bar sirv-progress-bar-animated"></div>
+                    <div class="sirv-progress-text"></div>
+                </div>
+            </div>
+            <!-- <span class="sirv-loading-icon"></span> -->
+        </div>
+        <div class="sirv-drop-wrapper">
+            <div class="sirv-drop-area">
+                <div class="sirv-cover-text">
+                    <!-- <div> -->
+                        <!-- <i class="fa fa-cloud-upload-alt fa-2x"></i> -->
+                        <i class="fa fa-cloud-upload" style="font-size: 160px;"></i>
+                        <span class="">Drop files here to upload</span>
+                        <h3>Uploading to: <span class="sirv-drop-to-folder"></span></h3>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="sirv-drop-handler"></div>
+        </div>
+        <div class="content">
+            <div class="selection-content" id="drag-upload-area">
+                <div class="nav">
+                    <div class="sirv-main-title">
+                        <h1>Sirv Media Library</h1>
+                        <div class="sirv-account-text">Go to <a href="https://my.sirv.com/#/browse/" target="_blank">your Sirv account</a> to edit, move or delete files.</div>
+                    </div>
+                    <!-- <ol class="breadcrumb"></ol> -->
+                    <div class="clearfix"></div>
+                </div>
+                <div class="media-tools-panel">
+                    <div class="toolbar-container">
+                        <!-- <b class="toolbar-container-title">Upload images</b> -->
+                        <div class="sub-toolbar">
+                            <div class="sub-toolbar-left">
+                                <ol class="breadcrumb"></ol>
+                                <span class="sirv-search-for"></span>
+                            </div>
+                            <div class="sub-toolbar-right">
+                                <div class="sirv-search-container">
+                                    <!-- <div class="btn btn-success sirv-search">
+                                                            <span>Search</span>
+                                                        </div> -->
+                                    <input id="sirv-search-field" class="sirv-search-narrow strech" type="text"
+                                        placeholder="🔍 Search" value="" autocomplete="off" />
+                                    <button class="sirv-search-cancel">
+                                        <span class="dashicons dashicons-no-alt"></span>
+                                    </button>
+                                    <div id="sirv-search-button" class="btn btn-success">
+                                        <span>Search</span>
+                                    </div>
+                                </div>
+                                <div class="upload-files-container">
+                                    <div class="btn btn-success fileinput-button" data-item-type="uploadButton" data-menu-position="bottom">
+                                        <span>Upload media</span>
+                                    </div>
+                                    <input id="filesToUpload" class="sirvFilesToUpload" data-current-folder="/" type="file" name="files[]" multiple="">
+                                </div>
+                                <div class="sirv-newfolder-container">
+                                    <div class="btn btn-tool create-folder">
+                                        <span>New folder</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sirv-hr">
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="sirv-items-container">
+                    <div class="clearfix"></div>
+                    <div class="sirv-empty-folder-container"></div>
+                    <div class="sirv-search">
+                        <div class="sirv-search-title sirv-block-title"><span class="sirv-search-total-found"></span> items found</div>
+                        <div class="sirv-search-message">No files matching your criteria</div>
+
+                        <div class="sirv-search-results" id="search-items"></div>
+                        <!-- <ul class="items-list" id="search-items"></ul> -->
+                    </div>
+                    <div class="sirv-dirs">
+                        <div class="sirv-dirs-title sirv-block-title" style="display: none;">
+                            Folders ( <span class="sirv-folders-count"></span> )
+                        </div>
+                        <div id="dirs"></div>
+                    </div>
+                    <div class="sirv-spins">
+                        <div class="sirv-spins-title sirv-block-title" style="display: none;">
+                            Spins ( <span class="sirv-spins-count"></span> )
+                        </div>
+                        <div id="spins"></div>
+                    </div>
+                    <div class="sirv-images">
+                        <div class="sirv-images-title sirv-block-title" style="display: none;">
+                            Images ( <span class="sirv-images-count"></span> )
+                        </div>
+                        <div id="images"></div>
+                    </div>
+                    <div class="sirv-videos">
+                        <div class="sirv-videos-title sirv-block-title" style="display: none;">
+                            Videos ( <span class="sirv-videos-count"></span> )
+                        </div>
+                        <div id="videos"></div>
+                    </div>
+                    <div class="sirv-models">
+                        <div class="sirv-models-title sirv-block-title" style="display: none;">
+                            Models ( <span class="sirv-models-count"></span> )
+                        </div>
+                        <div id="models"></div>
+                    </div>
+                </div>
+                <div class="selected-images">
+                    <div class="selected-images-container">
+                    <div class="selection-info">
+                        <span class="count"> 1 selected</span>
+                        <a class="clear-selection" href="#">Clear</a>
+                    </div>
+                    <div class="selection-view">
+                        <ul class="selected-miniatures-container">
+                            <!-- <li class="selected-miniature">
+                                <img "selected-miniature-img" src="" />
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="buttons-container">
+                        <div class="delete-selected-images">
+                            <div class="btn btn-success delete-selected">
+                                <span>Delete selected</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sirv-dropdown"></div>
+        <div class="sirv-active-menu sirv-search-dropdown">
+            <span style="font-size: 11px;margin-left: 10px; color: #81878b;">Press enter to search or use additional actions</span>
+            <a class="sirv-dropdown-item sirv-search-in-dir">Search in current folder</a>
+        </div>
+    </div>
