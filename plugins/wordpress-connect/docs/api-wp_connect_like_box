@@ -1,0 +1,73 @@
+<div id="toc" class="toc">
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1"><a href="#usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-1"><a href="#parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1"><a href="#examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2"><a href="#default-usage"><span class="tocnumber">4.1</span> <span class="toctext">Default Usage</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#change-log"><span class="tocnumber">5</span> <span class="toctext">Changelog</span></a></li>
+<li class="toclevel-1"><a href="#source-file"><span class="tocnumber">6</span> <span class="toctext">Source File</span></a></li>
+<li class="toclevel-1"><a href="#related"><span class="tocnumber">7</span> <span class="toctext">Related</span></a></li></ul>
+</div>
+<h2><span class="mw-headline" id="description">Description</span></h2>
+The <strong>wp_connect_like_box</strong> function renders a <a rel="nofollow" href="http://developers.facebook.com/docs/reference/plugins/like-box/" target="_blank">Facebook Like Box</a> based on the specified setting values. It can be used by theme designers who would like to add specific like box(es) to their theme.
+<h2><span class="mw-headline" id="usage">Usage</span></h2>
+
+<p><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php&nbsp;wp_connect_like_box</span><span style="color: #007700">(&nbsp;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">$width</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$height</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colorscheme</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$show_faces</span><span style="color: #007700">,&nbsp;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">$show_stream</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$show_header</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$echo&nbsp;</span>
+<span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">?&gt;</span></span></code></p>
+	
+<h2><span class="mw-headline" id="parameters">Parameters</span></h2>
+<dl><dt><tt>$width</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Integer" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>integer</em></a>) (<em>required</em>) The width of the plugin in pixels.<dl><dd> Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$height</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Integer" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>integer</em></a>) (<em>required</em>) The height of the plugin in pixels.<dl><dd> Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$colorscheme</tt></dt><dd>(<em>required</em>) The color scheme of the plugin. <dl><dd>Valid Values: <ul><li>WPC_THEME_LIGHT</li><li>WPC_THEME_DARK</li></ul>Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$show_faces</tt></dt><dd>(<em>required</em>) Whether to show profile photos in the plugin or not. <dl><dd>Valid Values: <ul><li>WPC_OPTION_DISABLED</li><li>WPC_OPTION_ENABLED</li></ul>Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$show_stream</tt></dt><dd>(<em>required</em>) Whether to show the profile stream for the public profile. <dl><dd>Valid Values: <ul><li>WPC_OPTION_DISABLED</li><li>WPC_OPTION_ENABLED</li></ul>Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$show_header</tt></dt><dd>(<em>required</em>) Whether to show Facebook header on the plugin or not. <dl><dd>Valid Values: <ul><li>WPC_OPTION_DISABLED</li><li>WPC_OPTION_ENABLED</li></ul>Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$echo</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Boolean" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>boolean</em></a>) (<em>optional</em>) Whether to print the plugin code (<em>TRUE</em>) or return it as a PHP variable (<em>FALSE</em>).<dl><dd> Default: TRUE</dd></dl></dd></dl>
+
+<p>Please note that the Facebook Page URL must be set by the user through the WordPress Connect options pages. The like box will be rendered only if the user has specified the Like Box URL through the <a href="http://wp-connect.tomasvorobjov.com/docs/#like-box" rel="section">WordPress Connect setting pages</a>; otherwise an empty string will be printee/returned!</p>
+
+<h2><span class="mw-headline" id="examples">Examples</span></h2>
+<h3><span class="mw-headline" id="default-usage">Default Usage</span></h3>
+<p>Prints the Like Box.</p>
+<pre>// this file is required to enable the use of Wordpress Connect constants
+$wpc_constants_file = WP_PLUGIN_DIR . '/wordpress-connect/src/WordpressConnectConstants.php';
+
+if ( file_exists( $wpc_constants_file ) &amp;&amp; function_exists( 'wp_connect_like_box' ) ){
+	require_once( $wpc_constants_file );
+
+	$like_box_width = 480;
+	$like_box_height = 180;
+	$colorscheme = WPC_THEME_DARK; // or WPC_THEME_LIGHT
+	$show_faces = WPC_OPTION_ENABLED; // or WPC_OPTION_DISABLED
+	$show_stream = WPC_OPTION_ENABLED; // or WPC_OPTION_DISABLED
+	$show_header = WPC_OPTION_ENABLED; // or WPC_OPTION_DISABLED
+
+	// render the like box in place
+	wp_connect_like_box(
+		$like_box_width,
+		$like_box_height,
+		$colorscheme,
+		$show_faces,
+		$show_stream,
+		$show_header
+	);
+}</pre>
+
+<h2><span class="mw-headline" id="change-log">Change Log</span></h2>
+<ul>
+	<li>Since: <a title="Version 2.0" href="http://wp-connect.tomasvorobjov.com/wordpress-connect-2-0-released/">2.0</a></li>
+</ul>
+
+
+<h2><span class="mw-headline" id="source-file">Source File</span></h2>
+<p><code>wp_connect_like_box()</code> is located in <code><a rel="nofollow" href="http://svn.wp-plugins.org/wordpress-connect/tags/2.0/wordpress-connect-functions.php" target="_blank">wordpress-connect/wordpress-connect-functions.php</a></a></code>.</p>
+
+<h2><span class="mw-headline" id="related">Related</span></h2>
+<a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_activity_feed" target="_blank">wp_connect_activity_feed</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments" target="_blank">wp_connect_comments</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments_default" target="_blank">wp_connect_comments_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_facepile" target="_blank">wp_connect_facepile</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button" target="_blank">wp_connect_like_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button_default" target="_blank">wp_connect_like_button_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_live_stream" target="_blank">wp_connect_live_stream</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_login_button" target="_blank">wp_connect_login_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_recommendations" target="_blank">wp_connect_recommendations</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_send_button" target="_blank">wp_connect_send_button</a>

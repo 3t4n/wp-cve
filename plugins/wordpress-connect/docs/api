@@ -1,0 +1,155 @@
+<div id="toc" class="toc">
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1"><a href="#settings"><span class="tocnumber">2</span> <span class="toctext">Settings</span></a></li>
+<li class="toclevel-1"><a href="#integration"><span class="tocnumber">3</span> <span class="toctext">Integration</span></a>
+<ul>
+	<li class="toclevel-2"><a href="#integration-api"><span class="tocnumber">3.1</span> <span class="toctext">API Functions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#constants"><span class="tocnumber">4</span> <span class="toctext">Constants</span></a>
+<ul>
+	<li class="toclevel-2"><a href="#constants-option-values"><span class="tocnumber">4.1</span> <span class="toctext">Option Values</span></a></li>
+	<li class="toclevel-2"><a href="#constants-option-names"><span class="tocnumber">4.2</span> <span class="toctext">Option Names</span></a></li>
+	<li class="toclevel-2"><a href="#constants-miscellaneous"><span class="tocnumber">4.3</span> <span class="toctext">Miscellaneous</span></a></li>
+</ul>
+</li>
+</div>
+<h2><span class="mw-headline" id="description">Description</span></h2>
+<p>A big addition since WordPress Connect 2.0 is a simple yet powerful API for plugin and theme developers. Developers can now specify default settings for Wordpress Connect to reflect the needs of their plugin/theme. Furthermore, the API provides an easy way to include any widget/plugin (such as the Like Button of Comments) anywhere in the theme/plugin pages, e.g. to add the Like Button to the page header, or create pages which include a particular plugin by default (e.g 'Comments Page', 'Like Box Page' etc) .</p>
+
+<h2><span class="mw-headline" id="settings">WordPress Connect Settings</span></h2>
+
+It may be very useful for theme developers to be able to set the default look-and-feel of Facebook Social Plugins so that they fit within the theme's design. The WordPress Connect plugin provides the 'wp_connect_options' hook to give WordPress developers an easy access to the plugin settings. 
+
+<p><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php&nbsp;add_filter</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">'wp_connect_options'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">'my_theme_name_set_wp_connect_options'&nbsp;</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">?&gt;</span></span></code></p>
+
+<pre>add_filter( 'wp_connect_options', 'my_theme_name_set_wp_connect_options' );
+
+function my_theme_name_set_wp_connect_options( $options ){
+
+	// the following shouldn't be necessary as the 'wp_connect_options' filter 
+	// should be applied only from WordPress Connect ( but just in case
+	// someone else adds a filter with the same name, do the following check:
+	
+	$wpc_constants_file = WP_PLUGIN_DIR . '/wordpress-connect/src/WordpressConnectConstants.php';
+	if ( !file_exists( $wpc_constants_file ){ return $options; }
+	require_once( $wpc_constants_file );
+	
+	// set the default wordpress connect settings
+	
+	$options = array(
+		WPC_OPTIONS => array(
+			WPC_OPTIONS_LANGUAGE => 'en_US',
+			WPC_OPTIONS_THEME => WPC_THEME_LIGHT
+		),
+		WPC_OPTIONS_COMMENTS => array(
+			WPC_OPTIONS_COMMENTS_NUMBER => 6,
+			WPC_OPTIONS_COMMENTS_WIDTH => 480,
+			WPC_OPTIONS_COMMENTS_POSTION_DEFAULT => 
+					WPC_CUSTOM_FIELD_VALUE_POSITION_BOTTOM,
+			WPC_OPTIONS_COMMENTS_ENABLED_DEFAULT => WPC_OPTIONS_ENABLED,
+			WPC_OPTIONS_DISPLAY_EVERYWHERE => 'on',
+			WPC_OPTIONS_DISPLAY_NOWHERE => ''
+		),
+		WPC_OPTIONS_LIKE_BUTTON => array(
+			WPC_OPTIONS_LIKE_BUTTON_SEND => WPC_OPTIONS_ENABLED,
+			WPC_OPTIONS_LIKE_BUTTON_LAYOUT => WPC_LAYOUT_STANDARD,
+			WPC_OPTIONS_LIKE_BUTTON_WIDTH => 480,
+			WPC_OPTIONS_LIKE_BUTTON_FACES => WPC_OPTIONS_ENABLED,
+			WPC_OPTIONS_LIKE_BUTTON_VERB => WPC_ACTION_LIKE,
+			WPC_OPTIONS_LIKE_BUTTON_FONT => WPC_FONT_DEFAULT,
+			WPC_OPTIONS_LIKE_BUTTON_POSITION_DEFAULT => 
+					WPC_CUSTOM_FIELD_VALUE_POSITION_TOP,
+			WPC_OPTIONS_LIKE_BUTTON_ENABLED_DEFAULT => WPC_OPTIONS_ENABLED,
+			WPC_OPTIONS_DISPLAY_EVERYWHERE => 'on',
+			WPC_OPTIONS_DISPLAY_NOWHERE => ''
+		)
+	);
+
+	return $options;
+}
+</pre>
+
+<a href="#toc">Back to Contents</a>
+<h2><span class="mw-headline" id="integration">WordPress Connect Integration</span></h2>
+
+The new API provide a simple way to add Facebook Social plugins anywhere within a WordPress theme. The list of functions available through the API is below. Click on the function's name to see a detailed documentation.
+<h3><span class="mw-headline" id="integration-api">WordPress Connect API Functions</span></h3>
+<ul>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_activity_feed" target="_blank">wp_connect_activity_feed</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments" target="_blank">wp_connect_comments</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments_default" target="_blank">wp_connect_comments_default</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_facepile" target="_blank">wp_connect_facepile</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_box" target="_blank">wp_connect_like_box</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button" target="_blank">wp_connect_like_button</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button_default" target="_blank">wp_connect_like_button_default</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_live_stream" target="_blank">wp_connect_live_stream</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_login_button" target="_blank">wp_connect_login_button</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_recommendations" target="_blank">wp_connect_recommendations</a></li>
+<li><a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_send_button" target="_blank">wp_connect_send_button</a></li>
+</ul>
+
+<h2><span class="mw-headline" id="constants">WordPress Connect Constants</span></h2>
+
+To simplify development and updates WordPress Connect comes with a set of constant values used throughout the plugin's code. 
+
+<a href="#toc">Back to Contents</a>
+<h2><span class="mw-headline" id="constants-option-values">Option Values</span></h2>
+<p>Option values provide a standardized set of values that can be used anywhere in your code without having to worry about the change in the actual value. For example, even if Facebook changed the xfbml value for the 'dark' theme to 'black', using <tt>WPC_THEME_DARK</tt> will still work (as the plugin will take care of the change with an update)</p>
+
+<dl><dt><tt>WPC_ACTION_LIKE</tt></dt><dd>Specifies the 'like' value for the verb option of the Like Button - details available <a href="http://wp-connect.tomasvorobjov.com/docs/#like-button" target="_blank" rel="nofollow">here</a></dd></dl></dd></dl>
+<dl><dt><tt>WPC_ACTION_RECOMMEND</tt></dt><dd>Specifies the 'recommend' value for the verb option of the Like Button - details available <a href="http://wp-connect.tomasvorobjov.com/docs/#like-button" target="_blank" rel="nofollow">here</a></dd></dl></dd></dl>
+<dl><dt><tt>WPC_FONT_ARIAL</tt></dt><dd>Specifies the 'arial' value for the font option of the WordPress Connect plugins</dd></dl>
+<dl><dt><tt>WPC_FONT_LUCIDA_GRANDE</tt></dt><dd>Specifies the 'lucida grande' value for the font option of the WordPress Connect plugins</dd></dl>
+<dl><dt><tt>WPC_FONT_SEGOE_UI</tt></dt><dd>Specifies the 'segoe ui' value for the font option of the WordPress Connect plugins</dd></dl>
+<dl><dt><tt>WPC_FONT_TAHOMA</tt></dt><dd>Specifies the 'tahoma' value for the font option of the WordPress Connect plugins</dd></dl>
+<dl><dt><tt>WPC_FONT_TREBUCHET_MS</tt></dt><dd>Specifies the 'trebuchet ms' value for the font option of the WordPress Connect plugins</dd></dl>
+<dl><dt><tt>WPC_FONT_VERDANA</tt></dt><dd>Specifies the 'verdana' value for the font option of the WordPress Connect plugins</dd></dl>
+<dl><dt><tt>WPC_FONT_DEFAULT</tt></dt><dd>see WPC_FONT_ARIAL</dd></dl>
+<dl><dt><tt>WPC_LAYOUT_BOX_COUNT</tt></dt><dd>The value for 'box_count' Like Button layout - details available <a href="http://wp-connect.tomasvorobjov.com/docs/#like-button" target="_blank" rel="nofollow">here</a></dd></dl>
+<dl><dt><tt>WPC_LAYOUT_BUTTON_COUNT</tt></dt><dd>The value for 'button_count' Like Button layout - details available <a href="http://wp-connect.tomasvorobjov.com/docs/#like-button" target="_blank" rel="nofollow">here</a></dd></dl>
+<dl><dt><tt>WPC_LAYOUT_STANDARD</tt></dt><dd>The value for 'standard' Like Button layout - details available <a href="http://wp-connect.tomasvorobjov.com/docs/#like-button" target="_blank" rel="nofollow">here</a></dd></dl>
+<dl><dt><tt>WPC_OPTION_DISABLED</tt></dt><dd>This value should be use for disabling any option that can be set either disabled or enabled</dd></dl>
+<dl><dt><tt>WPC_OPTION_ENABLED</tt></dt><dd>This value should be use for enabling any option that can be set either disabled or enabled</dd></dl>
+<dl><dt><tt>WPC_THEME_LIGHT</tt></dt><dd>Use this value to set the 'light' theme for WordPress Connect plugins</dd></dl>
+<dl><dt><tt>WPC_THEME_DARK</tt></dt><dd>Use this value to set the 'dark' theme for WordPress Connect plugins</dd></dl>
+
+<a href="#toc">Back to Contents</a>
+<h2><span class="mw-headline" id="constants-option-names">Option Names</span></h2>
+<dl><dt><tt>WPC_OPTIONS</tt></dt><dd>The <em>option_name</em> for the general settings</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_COMMENTS</tt></dt><dd>The <em>option_name</em> for the comments settings</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_COMMENTS_ENABLED</tt></dt><dd>The <em>option_name</em> for the comments enabled setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_COMMENTS_NUMBER</tt></dt><dd>The <em>option_name</em> for the number of comments setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_COMMENTS_POSITION</tt></dt><dd>The <em>option_name</em> for the comments position settings</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_COMMENTS_WIDTH</tt></dt><dd>The <em>option_name</em> for the comments width setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY</tt></dt><dd>The <em>option_name</em> for the display settings (these are subcategories to the comments and like button settings)</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY_ARCHIVE</tt></dt><dd>The <em>option_name</em> for the displaying plugin on archive pages</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY_CATEGORIES</tt></dt><dd>The <em>option_name</em> for the displaying plugin on category pages</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY_EVERYWHERE</tt></dt><dd>The <em>option_name</em> for the displaying plugin everywhere</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY_HOMEPAGE</tt></dt><dd>The <em>option_name</em> for the displaying plugin on the homepage</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY_NOWHERE</tt></dt><dd>The <em>option_name</em> for the displaying plugin nowhere</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY_SEARCH</tt></dt><dd>The <em>option_name</em> for the displaying plugin on search results</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_DISPLAY_TAGS</tt></dt><dd>The <em>option_name</em> for the displaying plugin on tag pages</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LANGUAGE</tt></dt><dd>The <em>option_name</em> for the currently selected language</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BOX</tt></dt><dd>The <em>option_name</em> for the like box settings</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BOX_URL</tt></dt><dd>The <em>option_name</em> for the like box url setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON</tt></dt><dd>The <em>option_name</em> for the like button settings</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_ENABLED</tt></dt><dd>The <em>option_name</em> for the like button enabled setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_LAYOUT</tt></dt><dd>The <em>option_name</em> for the like button layout setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_FACES</tt></dt><dd>The <em>option_name</em> for the setting specifying whether to show like button faces or not</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_FONT</tt></dt><dd>The <em>option_name</em> for the like button font setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_POSITION</tt></dt><dd>The <em>option_name</em> for the like button position setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_REF</tt></dt><dd>The <em>option_name</em> for the default like button ref value setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_SEND</tt></dt><dd>The <em>option_name</em> for the setting specifying whether to show the send button or not</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_VERB</tt></dt><dd>The <em>option_name</em> for the like button verb setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_LIKE_BUTTON_WIDTH</tt></dt><dd>The <em>option_name</em> for the like button width setting</dd></dl>
+<dl><dt><tt>WPC_OPTIONS_THEME</tt></dt><dd>The <em>option_name</em> for the currently selected color theme</dd></dl>
+
+<a href="#toc">Back to Contents</a>
+<h2><span class="mw-headline" id="constants-miscellaneous">Miscellaneous</span></h2>
+<dl><dt><tt>WPC_TEXT_DOMAIN</tt></dt><dd>The text domain for i18n</dd></dl>
+<dl><dt><tt>WPC_VERSION</tt></dt><dd>The current version of WordPress Connect</dd></dl>
+
+<a href="#toc">Back to Contents</a>

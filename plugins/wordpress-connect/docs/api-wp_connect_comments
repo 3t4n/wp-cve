@@ -1,0 +1,79 @@
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+	<li class="toclevel-1"><a href="#description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+	<li class="toclevel-1"><a href="#usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a></li>
+	<li class="toclevel-1"><a href="#parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+	<li class="toclevel-1"><a href="#examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a>
+<ul>
+	<li class="toclevel-2"><a href="#default-usage"><span class="tocnumber">4.1</span> <span class="toctext">Default Usage</span></a></li>
+</ul>
+</li>
+	<li class="toclevel-1"><a href="#change-log"><span class="tocnumber">5</span> <span class="toctext">Changelog</span></a></li>
+	<li class="toclevel-1"><a href="#source-file"><span class="tocnumber">6</span> <span class="toctext">Source File</span></a></li>
+	<li class="toclevel-1"><a href="#related"><span class="tocnumber">7</span> <span class="toctext">Related</span></a></li>
+</ul>
+</div>
+<h2><span id="description" class="mw-headline">Description</span></h2>
+The <strong>wp_connect_comments</strong> function renders a <a rel="nofollow" href="http://developers.facebook.com/docs/reference/plugins/comments/" target="_blank">Facebook Comments</a> based on the specified setting values. It can be used by theme designers who would like to add specific comment box(es) to their theme.
+<h2><span id="usage" class="mw-headline">Usage</span></h2>
+<code><span style="color: #000000;"><span style="color: #0000bb;">&lt;?php wp_connect_comments</span><span style="color: #007700;">( </span>
+<span style="color: #0000bb;">$href</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$width</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$number_of_comments</span>
+<span style="color: #007700;">, </span><span style="color: #0000bb;">$colorscheme</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$echo </span>
+<span style="color: #007700;">); </span><span style="color: #0000bb;">?&gt;</span></span></code>
+<h2><span id="parameters" class="mw-headline">Parameters</span></h2>
+<dl> <dt><tt>$href</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#String" target="_blank"><em>string</em></a>) (<em>required</em>) . The URL for the comments box. <dl> <dd>Default: <em>None</em>. Pass an empty string for the current page.</dd> </dl> </dd> </dl> <dl> <dt><tt>$width</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Integer" target="_blank"><em>integer</em></a>) (<em>required</em>) The width of the plugin in pixels. <dl> <dd> Default: <em>None</em></dd> </dl> </dd> </dl> <dl> <dt><tt>$number_of_comments</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Integer" target="_blank"><em>integer</em></a>) (<em>required</em>) The number of comments to display by default. <dl> <dd>Default: <em>None</em></dd> </dl> </dd> </dl> <dl> <dt><tt>$colorscheme</tt></dt> <dd>(<em>required</em>) The color scheme of the plugin. <dl> <dd>Valid Values: WPC_THEME_LIGHT, WPC_THEME_DARK
+Default: <em>None</em></dd> </dl> </dd> </dl> <dl> <dt><tt>$echo</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Boolean" target="_blank"><em>boolean</em></a>) (<em>optional</em>) Whether to print the plugin code (<em>TRUE</em>) or return it as a PHP variable (<em>FALSE</em>). <dl> <dd> Default: TRUE</dd> </dl> </dd> </dl>
+<h2><span id="examples" class="mw-headline">Examples</span></h2>
+<h3><span id="default-usage" class="mw-headline">Default Usage</span></h3>
+Prints the Comments box.
+<pre>// this file is required to enable the use of Wordpress Connect constants
+$wpc_constants_file = WP_PLUGIN_DIR . '/wordpress-connect/src/WordpressConnectConstants.php';
+
+if ( file_exists( $wpc_constants_file ) &amp;&amp; function_exists( 'wp_connect_comments' ) ){
+	require_once( $wpc_constants_file );
+
+	$comments_url = 'http://www.mysite.com/my-post';
+	$number_of_posts = 10;
+	$comments_width = 480;
+	$colorscheme = WPC_THEME_DARK; // or WPC_THEME_LIGHT
+
+	// render the comments box in place
+	wp_connect_comments(
+		$comments_url,
+		$number_of_comments,
+		$comments_width,
+		$colorscheme
+	);
+}</pre>
+When using <code>wp_connect_comments</code> in the loop you can use the following code to set the <code>href</code> parameter to the post's url
+<pre>// this file is required to enable the use of Wordpress Connect constants
+$wpc_constants_file = WP_PLUGIN_DIR . '/wordpress-connect/src/WordpressConnectConstants.php';
+
+if ( file_exists( $wpc_constants_file ) &amp;&amp; function_exists( 'wp_connect_comments' ) ){
+	require_once( $wpc_constants_file );
+
+	$comments_url = get_permalink(); // must be inside the loop
+	$number_of_posts = 10;
+	$comments_width = 480;
+	$colorscheme = WPC_THEME_DARK; // or WPC_THEME_LIGHT
+
+	// render the comments box in place
+	wp_connect_comments(
+		$comments_url,
+		$number_of_comments,
+		$comments_width,
+		$colorscheme
+	);
+}</pre>
+<h2><span id="change-log" class="mw-headline">Change Log</span></h2>
+<ul>
+	<li>Since: <a title="Version 2.0" href="http://wp-connect.tomasvorobjov.com/wordpress-connect-2-0-released/">2.0</a></li>
+	<li>Since: <a title="Version 2.0.1" href="http://wp-connect.tomasvorobjov.com/wordpress-connect-2-0-1-is-out/ ">2.0.1</a> - Fixes the problem with api functions not defaulting to the current post/page url when an empty string is passed in as the url parameter</li>
+</ul>
+<h2><span id="source-file" class="mw-headline">Source File</span></h2>
+<code>wp_connect_comments()</code> is located in <code><a rel="nofollow" href="http://svn.wp-plugins.org/wordpress-connect/tags/2.0.1/wordpress-connect-functions.php" target="_blank">wordpress-connect/wordpress-connect-functions.php</a></code>.
+<h2><span id="related" class="mw-headline">Related</span></h2>
+<a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_activity_feed" target="_blank">wp_connect_activity_feed</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments_default" target="_blank">wp_connect_comments_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_facepile" target="_blank">wp_connect_facepile</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_box" target="_blank">wp_connect_like_box</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button" target="_blank">wp_connect_like_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button_default" target="_blank">wp_connect_like_button_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_live_stream" target="_blank">wp_connect_live_stream</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_login_button" target="_blank">wp_connect_login_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_recommendations" target="_blank">wp_connect_recommendations</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_send_button" target="_blank">wp_connect_send_button</a>

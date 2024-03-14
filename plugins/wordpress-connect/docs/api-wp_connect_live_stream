@@ -1,0 +1,67 @@
+<div id="toc" class="toc">
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1"><a href="#usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-1"><a href="#parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1"><a href="#examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2"><a href="#default-usage"><span class="tocnumber">4.1</span> <span class="toctext">Default Usage</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#change-log"><span class="tocnumber">5</span> <span class="toctext">Changelog</span></a></li>
+<li class="toclevel-1"><a href="#source-file"><span class="tocnumber">6</span> <span class="toctext">Source File</span></a></li>
+<li class="toclevel-1"><a href="#related"><span class="tocnumber">7</span> <span class="toctext">Related</span></a></li></ul>
+</div>
+<h2><span class="mw-headline" id="description">Description</span></h2>
+The <strong>wp_connect_live_stream</strong> function renders a <a rel="nofollow" href="http://developers.facebook.com/docs/reference/plugins/live-stream/" target="_blank">Facebook Lvie Stream</a> based on the specified setting values. It can be used by theme designers who would like to add specific live stream(s) to their theme.
+<h2><span class="mw-headline" id="usage">Usage</span></h2>
+
+<p><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php&nbsp;wp_connect_live_stream</span><span style="color: #007700">(&nbsp;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000BB">$width</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$height</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$xid</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$attribution</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$post_to_friends</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$echo&nbsp;</span>
+<span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">?&gt;</span>
+</span></code></p>
+
+<h2><span class="mw-headline" id="parameters">Parameters</span></h2>
+<dl><dt><tt>$width</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Integer" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>integer</em></a>) (<em>required</em>) The width of the plugin in pixels.<dl><dd> Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$height</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Integer" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>integer</em></a>) (<em>required</em>) The width of the plugin in pixels.<dl><dd> Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$xid</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#String" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>string</em></a>) (<em>required</em>) If you have multiple live stream boxes on the same page, specify a unique <em>xid</em> for each. <dl><dd>Default: <em>None</em>; an empty string is allowed.</dd></dl></dd></dl>
+<dl><dt><tt>$attribution</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#String" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>string</em></a>) (<em>required</em>) The URL that users are redirected to when they click on your app name on a status (if not specified, your Connect URL is used). <dl><dd>Default: <em>None</em>; an empty string is allowed.</dd></dl></dd></dl>
+<dl><dt><tt>$post_to_friends</tt></dt><dd>(<em>required</em>) If set, all user posts will always go to their profile. This option should only be used when users' posts are likely to make sense outside of the context of the event. <dl><dd>Valid Values: <ul><li>WPC_OPTION_DISABLED</li><li>WPC_OPTION_ENABLED</li></ul>Default: <em>None</em></dd></dl></dd></dl>
+<dl><dt><tt>$echo</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Boolean" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>boolean</em></a>) (<em>optional</em>) Whether to print the plugin code (<em>TRUE</em>) or return it as a PHP variable (<em>FALSE</em>).<dl><dd> Default: TRUE</dd></dl></dd></dl>
+
+<h2><span class="mw-headline" id="examples">Examples</span></h2>
+<h3><span class="mw-headline" id="default-usage">Default Usage</span></h3>
+<p>Prints the Live Stream plugin.</p>
+<pre>// this file is required to enable the use of Wordpress Connect constants
+$wpc_constants_file = WP_PLUGIN_DIR . '/wordpress-connect/src/WordpressConnectConstants.php';
+
+if ( file_exists( $wpc_constants_file ) &amp;&amp; function_exists( 'wp_connect_live_stream' ) ){
+	require_once( $wpc_constants_file );
+
+	$width = 480;
+	$height = 480;
+	$xid = md5( 'http://www.mysite.com' );
+	$attribution = '';
+	$post_to_friends = WPC_OPTION_ENABLED;
+
+	// render the live stream box in place
+	wp_connect_live_stream(
+		$width,
+		$height,
+		$xid,
+		$attribution,
+		$post_to_friends
+	);
+}</pre>
+
+<h2><span class="mw-headline" id="change-log">Change Log</span></h2>
+<ul>
+	<li>Since: <a title="Version 2.0" href="http://wp-connect.tomasvorobjov.com/wordpress-connect-2-0-released/">2.0</a></li>
+</ul>
+
+<h2><span class="mw-headline" id="source-file">Source File</span></h2>
+<p><code>wp_connect_live_stream()</code> is located in <code><a rel="nofollow" href="http://svn.wp-plugins.org/wordpress-connect/tags/2.0/wordpress-connect-functions.php" target="_blank">wordpress-connect/wordpress-connect-functions.php</a></a></code>.</p>
+
+<h2><span class="mw-headline" id="related">Related</span></h2>
+<a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_activity_feed" target="_blank">wp_connect_activity_feed</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments" target="_blank">wp_connect_comments</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments_default" target="_blank">wp_connect_comments_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_facepile" target="_blank">wp_connect_facepile</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_box" target="_blank">wp_connect_like_box</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button" target="_blank">wp_connect_like_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button_default" target="_blank">wp_connect_like_button_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_login_button" target="_blank">wp_connect_login_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_recommendations" target="_blank">wp_connect_recommendations</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_send_button" target="_blank">wp_connect_send_button</a>

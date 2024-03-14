@@ -1,0 +1,42 @@
+<div id="toc" class="toc">
+<div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1"><a href="#usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-1"><a href="#parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+<li class="toclevel-1"><a href="#examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a>
+<li class="toclevel-1"><a href="#change-log"><span class="tocnumber">5</span> <span class="toctext">Changelog</span></a></li>
+<li class="toclevel-1"><a href="#source-file"><span class="tocnumber">6</span> <span class="toctext">Source File</span></a></li>
+<li class="toclevel-1"><a href="#related"><span class="tocnumber">7</span> <span class="toctext">Related</span></a></li></ul>
+</div>
+<h2><span class="mw-headline" id="description">Description</span></h2>
+The <strong>wp_connect_comments_default</strong> function is a helper function to render a <a rel="nofollow" href="http://developers.facebook.com/docs/reference/plugins/comments/" target="_blank">Facebook Comments</a> with default (currently set) setting values. Use this function is recommended only when there is no need to specify any options. See <a href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments" target="_blank" rel="section">wp_connect_comments</a> for more information about the available settings.
+<h2><span class="mw-headline" id="usage">Usage</span></h2>
+
+<p><code><span style="color: #000000">	<span style="color: #0000BB">&lt;?php&nbsp;wp_connect_comments_default</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$href</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$echo&nbsp;</span><span style="color: #007700">);&nbsp;</span><span style="color: #0000BB">?&gt;</span></span></code></p>
+	
+<h2><span class="mw-headline" id="parameters">Parameters</span></h2>
+<dl><dt><tt>$href</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#String" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>string</em></a>) (<em>required</em>) . The URL for the comments box. <dl><dd>Default: <em>None</em>. Pass an empty string for the current page.</dd></dl></dd></dl>
+<dl><dt><tt>$echo</tt></dt><dd>(<a href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Boolean" title="How to Pass Tag Parameters" target="_blank" rel="nofollow"><em>boolean</em></a>) (<em>optional</em>) Whether to print the plugin code (<em>TRUE</em>) or return it as a PHP variable (<em>FALSE</em>).<dl><dd> Default: TRUE</dd></dl></dd></dl>
+
+<h2><span class="mw-headline" id="examples">Examples</span></h2>
+<pre>
+if ( function_exists( 'wp_connect_comments_default' ) ){
+
+	$comments_url = 'http://www.mysite.com/my-post';
+
+	// render the comments box in place
+	wp_connect_comments_default( $comments_url );
+}</pre>
+
+<h2><span class="mw-headline" id="change-log">Change Log</span></h2>
+<ul>
+	<li>Since: <a title="Version 2.0" href="http://wp-connect.tomasvorobjov.com/wordpress-connect-2-0-released/">2.0</a></li>
+	<li>Since: <a title="Version 2.0.1" href="http://wp-connect.tomasvorobjov.com/wordpress-connect-2-0-1-is-out/ ">2.0.1</a> - Fixes the problem with api functions not defaulting to the current post/page url when an empty string is passed in as the url parameter</li>
+</ul>
+
+<h2><span class="mw-headline" id="source-file">Source File</span></h2>
+<p><code>wp_connect_comments_default()</code> is located in <code><a rel="nofollow" href="http://svn.wp-plugins.org/wordpress-connect/tags/2.0.1/wordpress-connect-functions.php" target="_blank">wordpress-connect/wordpress-connect-functions.php</a></a></code>.</p>
+
+<h2><span class="mw-headline" id="related">Related</span></h2>
+<a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_activity_feed" target="_blank">wp_connect_activity_feed</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments" target="_blank">wp_connect_comments</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_facepile" target="_blank">wp_connect_facepile</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_box" target="_blank">wp_connect_like_box</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button" target="_blank">wp_connect_like_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button_default" target="_blank">wp_connect_like_button_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_live_stream" target="_blank">wp_connect_live_stream</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_login_button" target="_blank">wp_connect_login_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_recommendations" target="_blank">wp_connect_recommendations</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_send_button" target="_blank">wp_connect_send_button</a>

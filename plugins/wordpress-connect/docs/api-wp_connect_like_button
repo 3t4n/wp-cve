@@ -1,0 +1,116 @@
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+	<li class="toclevel-1"><a href="#description"><span class="tocnumber">1</span> <span class="toctext">Description</span></a></li>
+	<li class="toclevel-1"><a href="#usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a></li>
+	<li class="toclevel-1"><a href="#parameters"><span class="tocnumber">3</span> <span class="toctext">Parameters</span></a></li>
+	<li class="toclevel-1"><a href="#examples"><span class="tocnumber">4</span> <span class="toctext">Examples</span></a>
+<ul>
+	<li class="toclevel-2"><a href="#default-usage"><span class="tocnumber">4.1</span> <span class="toctext">Default Usage</span></a></li>
+</ul>
+</li>
+	<li class="toclevel-1"><a href="#change-log"><span class="tocnumber">5</span> <span class="toctext">Changelog</span></a></li>
+	<li class="toclevel-1"><a href="#source-file"><span class="tocnumber">6</span> <span class="toctext">Source File</span></a></li>
+	<li class="toclevel-1"><a href="#related"><span class="tocnumber">7</span> <span class="toctext">Related</span></a></li>
+</ul>
+</div>
+<h2><span id="description" class="mw-headline">Description</span></h2>
+The <strong>wp_connect_like_button</strong> function renders a <a rel="nofollow" href="http://developers.facebook.com/docs/reference/plugins/like/" target="_blank">Facebook Like Button</a> based on the specified setting values. It can be used by theme designers who would like to add specific like buttons(s) to their theme.
+The output can be restricted globally by the <a rel="section" href="http://wp-connect.tomasvorobjov.com/docs/#like-button" target="_blank">plugin settings</a> and for individual posts and pages by the <a rel="section" href="http://wp-connect.tomasvorobjov.com/docs/#plugins-position" target="_blank">position settings</a>.
+<h2><span id="usage" class="mw-headline">Usage</span></h2>
+<code><span style="color: #000000;"><span style="color: #0000bb;">&lt;?php wp_connect_like_button</span><span style="color: #007700;">( </span>
+<span style="color: #0000bb;">$url</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$send_button</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$layout</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$width</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$show_faces</span><span style="color: #007700;">, </span>
+<span style="color: #0000bb;">$verb</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$colorscheme</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$font</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$ref</span><span style="color: #007700;">, </span><span style="color: #0000bb;">$echo </span>
+<span style="color: #007700;">); </span><span style="color: #0000bb;">?&gt;</span></span></code>
+<h2><span id="parameters" class="mw-headline">Parameters</span></h2>
+<dl> <dt><tt>$url</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#String" target="_blank"><em>string</em></a>) (<em>required</em>) The URL to like. Defaults to the current page. <dl> <dd>Default: <em>None</em>. Pass an empty string for the current page.</dd> </dl> </dd> </dl> <dl> <dt><tt>$send_button</tt></dt> <dd>(<em>required</em>) Whether to include the Send Button or not. <dl> <dd>Valid Values:
+<ul>
+	<li>WPC_OPTION_DISABLED</li>
+	<li>WPC_OPTION_ENABLED</li>
+</ul>
+Default: <em>None</em>
+
+</dd> </dl> </dd> </dl> <dl> <dt><tt>$layout</tt></dt> <dd>(<em>required</em>) The layout style determines the size and amount of social context next to the button. <dl> <dd>Valid Values:
+<ul>
+	<li>WPC_LAYOUT_STANDARD</li>
+	<li>WPC_LAYOUT_BUTTON_COUNT</li>
+	<li>WPC_LAYOUT_BOX_COUNT</li>
+</ul>
+Default: <em>None</em>
+
+</dd> </dl> </dd> </dl> <dl> <dt><tt>$width</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Integer" target="_blank"><em>integer</em></a>) (<em>required</em>) The width of the plugin in pixels. <dl> <dd> Default: <em>None</em></dd> </dl> </dd> </dl> <dl> <dt><tt>$show_faces</tt></dt> <dd>(<em>required</em>) Whether to show profile pictures below the button. <dl> <dd>Valid Values:
+<ul>
+	<li>WPC_OPTION_DISABLED</li>
+	<li>WPC_OPTION_ENABLED</li>
+</ul>
+Default: <em>None</em>
+
+</dd> </dl> </dd> </dl> <dl> <dt><tt>$verb</tt></dt> <dd>(<em>required</em>) The verb to display in the button. <dl> <dd>Valid Values:
+<ul>
+	<li>WPC_ACTION_LIKE</li>
+	<li>WPC_ACTION_RECOMMEND</li>
+</ul>
+Default: <em>None</em>
+
+</dd> </dl> </dd> </dl> <dl> <dt><tt>$colorscheme</tt></dt> <dd>(<em>required</em>) The color scheme of the plugin. <dl> <dd>Valid Values:
+<ul>
+	<li>WPC_THEME_LIGHT</li>
+	<li>WPC_THEME_DARK</li>
+</ul>
+Default: <em>None</em>
+
+</dd> </dl> </dd> </dl> <dl> <dt><tt>$font</tt></dt> <dd>(<em>required</em>) The font of the plugin. <dl> <dd>Valid Values:
+<ul>
+	<li>WPC_FONT_ARIAL</li>
+	<li>WPC_FONT_LUCIDA_GRANDE</li>
+	<li>WPC_FONT_SEGOE_UI</li>
+	<li>WPC_FONT_TAHOMA</li>
+	<li>WPC_FONT_TREBUCHET_MS</li>
+	<li>WPC_FONT_VERDANA</li>
+</ul>
+Default: <em>None</em>
+
+</dd> </dl> </dd> </dl> <dl> <dt><tt>$ref</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#String" target="_blank"><em>string</em></a>) (<em>required</em>) a label for tracking referrals; must be less than 50 characters and can contain alphanumeric characters and some punctuation (currently +/=-.:_). Specifying a value for the ref attribute adds the 'fb_ref' parameter to the any links back to your site which are clicked from within the plugin. Using different values for the ref parameter for different positions and configurations of this plugin within your pages allows you to track which instances are performing the best. <dl> <dd>Default: <em>None</em>; an empty string is allowed.</dd> </dl> </dd> </dl> <dl> <dt><tt>$echo</tt></dt> <dd>(<a title="How to Pass Tag Parameters" rel="nofollow" href="http://codex.wordpress.org/How_to_Pass_Tag_Parameters#Boolean" target="_blank"><em>boolean</em></a>) (<em>optional</em>) Whether to print the plugin code (<em>TRUE</em>) or return it as a PHP variable (<em>FALSE</em>). <dl> <dd> Default: TRUE</dd> </dl> </dd> </dl>
+<h2><span id="examples" class="mw-headline">Examples</span></h2>
+<h3><span id="default-usage" class="mw-headline">Default Usage</span></h3>
+Prints the Like Button.
+<pre>// this file is required to enable the use of Wordpress Connect constants
+$wpc_constants_file = WP_PLUGIN_DIR . '/wordpress-connect/src/WordpressConnectConstants.php';
+
+if ( file_exists( $wpc_constants_file ) &amp;&amp; function_exists( 'wp_connect_like_button' ) ){
+
+	require_once( $wpc_constants_file );
+
+	$like_url = 'http://www.mysite.com/my-post';
+	$send_button = WPC_OPTION_DISABLED; // or WPC_OPTION_ENABLED
+	$layout = WPC_LAYOUT_STANDARD;
+	$like_button_width = 480;
+	$show_faces = WPC_OPTION_ENABLED; // or WPC_OPTION_DISABLED
+	$verb = WPC_ACTION_RECOMMEND;
+	$colorscheme = WPC_THEME_DARK; // or WPC_THEME_LIGHT
+	$font = WPC_FONT_DEFAULT;
+	$ref = 'top';
+
+	// render the like button in place
+	wp_connect_like_button(
+		$like_url,
+		$send_button,
+		$layout,
+		$like_button_width,
+		$show_faces,
+		$verb,
+		$colorscheme,
+		$font,
+		$ref
+	);
+}</pre>
+<h2><span id="change-log" class="mw-headline">Change Log</span></h2>
+<ul>
+	<li> Since: <a title="Version 2.0" href="#">2.0</a></li>
+</ul>
+<h2><span id="source-file" class="mw-headline">Source File</span></h2>
+<code>wp_connect_like_button()</code> is located in <code><a rel="nofollow" href="http://svn.wp-plugins.org/wordpress-connect/tags/2.0/wordpress-connect-functions.php" target="_blank">wordpress-connect/wordpress-connect-functions.php</a></code>.
+<h2><span id="related" class="mw-headline">Related</span></h2>
+<a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_activity_feed" target="_blank">wp_connect_activity_feed</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments" target="_blank">wp_connect_comments</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_comments_default" target="_blank">wp_connect_comments_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_facepile" target="_blank">wp_connect_facepile</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button" target="_blank">wp_connect_like_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_like_button_default" target="_blank">wp_connect_like_button_default</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_live_stream" target="_blank">wp_connect_live_stream</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_login_button" target="_blank">wp_connect_login_button</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_recommendations" target="_blank">wp_connect_recommendations</a>, <a rel="bookmark" href="http://wp-connect.tomasvorobjov.com/api/wp_connect_send_button" target="_blank">wp_connect_send_button</a>
