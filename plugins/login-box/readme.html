@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Login-box - readme</title>
+<style type="text/css" media="none">
+body {
+	border: 1px solid #ccc;
+	margin: 10px auto;
+	width: 750px;
+	color: #333;
+	background-color: #fff;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+}
+h1 {
+	margin: 0;
+	padding: 0.8em 0 0.6em 10px;
+	background-color: #e4f2fd;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-weight: normal;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	
+	border-bottom-right-radius: 0;
+	-moz-border-radius-bottomright: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-khtml-border-bottom-right-radius: 0;
+
+	border-bottom-left-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+	-khtml-border-bottom-left-radius: 0;
+}
+a {
+	color: #2583ad;
+}
+a:hover {
+	color: #d54e21;
+}
+a:active {
+	outline: none !important;
+}
+#menu, #menu * {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#menu {
+	background-color: #e4f2fd;
+	border-bottom: 1px solid #2583ad;
+	display: block;
+	height: 28px;
+	position: relative;
+	margin-bottom: 40px;
+}
+#menu li {
+	float: left;
+}
+#menu li a {
+	display: block;
+	font-size: 18px;
+	height: 28px;
+	padding: 3px 10px 0 10px;
+	text-decoration: none;
+}
+#menu li a.active {
+	color: #d54e21;
+	background-color: #fff;
+	height: 26px;
+	padding-top: 2px;
+	border: 1px solid #2583ad;
+	border-bottom-color: #fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+
+	border-bottom-right-radius: 0;
+	-moz-border-radius-bottomright: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-khtml-border-bottom-right-radius: 0;
+
+	border-bottom-left-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+	-khtml-border-bottom-left-radius: 0;
+
+	outline: none !important;
+}
+#menu li li a.active {
+	color: #d54e21;
+	border: none;
+	height: 28px;
+	padding-top: 3px;
+}
+#menu ul {
+	display: none;
+	height: 30px;
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 100%;
+}
+
+.content div {
+	display: none;
+	padding: 0 20px;
+}
+
+dl {
+	margin-left: 20px;
+}
+dl dt {
+	display: inline;
+	font-weight: bold;
+}
+dl dd {
+	display: inline;
+	margin: 0;
+}
+ol {
+	margin: 5px 0;
+	padding-left: 20px;
+}
+code {
+	background-color: #eee;
+}
+.q {
+	font-weight: bold;
+}
+#footer {
+	text-align: right;
+	font-size: 0.9em;
+	text-transform: uppercase;
+	margin: 4px 8px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript">
+var name = "Login-box";
+var version = 2.02;
+var language = (navigator.userAgent.indexOf("MSIE") != -1) ? navigator.userLanguage : navigator.language;
+
+jQuery(function($) {
+	$("style").attr("media", "screen");
+
+	$("#menu > li > a").click( function() {
+		id = $(this).attr("href").replace(/([^#]*)#/g, "");
+		$("#menu > li > ul").each(function(){
+			if ($(this).css("display") == "block" && $(this).attr("id") != id) {
+			$(this).slideToggle("slow");
+			}
+		});
+		if ($("#"+id).css("display") == "none") {
+			$("#"+id).slideDown("slow");
+		}
+		$("#menu > li > a").removeClass("active");
+		$(this).addClass("active");
+		return false;
+	});
+	$("#menu > li > ul > li > a").click( function() {
+		id = $(this).attr("href").replace(/([^#]*)#/g, "");
+		$(".content > div").each(function(){
+			if ($(this).css("display") == "block" && $(this).attr("id") != id) $(this).hide();
+		});
+		if ($("#"+id).css("display") == "none") {
+			$("#"+id).show();
+		}
+		$("#menu > li > ul > li > a").removeClass("active");
+		$(this).addClass("active");
+	});
+
+
+	var urlid = /#([a-z]+)-([a-z]+)$/.exec(location.href);
+	if (urlid) {
+		$("a[href='#"+urlid[1]+"-menu']").addClass("active");
+		$("a[href='#"+urlid[1]+"-"+urlid[2]+"']").addClass("active");
+		$("#"+urlid[1]+"-menu").show();
+		$("#"+urlid[1]+"-"+urlid[2]).show();
+	}
+	else {
+		if (language.indexOf('pt') != -1) { $("#pt-about").show(); }
+		else { $("#en-about").show(); }
+	}
+});
+</script>
+</head>
+
+<body>
+<h1>Login-box readme</h1>
+<ul id="menu">
+	<li><a href="#pt-menu">Português</a>
+		<ul id="pt-menu">
+			<li><a href="#pt-install">Instalação</a></li>
+			<li><a href="#pt-options">Opções</a></li>
+			<li><a href="#pt-uninstall">Desinstalação</a></li>
+			<li><a href="#pt-faq">F.A.Q.</a></li>
+			<li><a href="#pt-changelog">Changelog</a></li>
+			<li><a href="#pt-about">Sobre</a></li>
+		</ul>
+	</li>
+	<li><a href="#en-menu">English</a>
+		<ul id="en-menu">
+			<li><a href="#en-install">Install</a></li>
+			<li><a href="#en-options">Options</a></li>
+			<li><a href="#en-uninstall">Uninstall</a></li>
+			<li><a href="#en-faq">F.A.Q.</a></li>
+			<li><a href="#en-changelog">Changelog</a></li>
+			<li><a href="#en-about">About</a></li>
+		</ul>
+	</li>
+</ul>
+
+<div class="content" id="pt">
+	<div id="pt-about">
+		<h2>Sobre</h2>
+		<dl>
+			<dt>Nome:</dt>
+			<dd><a href="http://danillonunes.net/wordpress/login-box">Login-box</a></dd>
+			<br/>
+			<dt>Versão:</dt>
+			<dd>2.0.4 (17 Set 2011)</dd>
+			<br/>
+			<dt>Descrição:</dt>
+			<dd>Insere uma caixa de login oculta em todas as páginas, que você pode abrir pressionando uma combinação de teclas (como Ctrl + E).</dd>
+			<br/>
+			<dt>Autor:</dt>
+			<dd><a href="http://danillonunes.net">Marcus Danillo</a> (Contato: mdanillo arroba gmail ponto com)</dd>
+		</dl>
+	</div>
+	<div id="pt-install">
+		<h2>Instalação</h2>
+		<ol>
+			<li>Após extrair o arquivo do download, mova a pasta <em>login-box</em> para o diretório de plug-ins do WordPress (que normalmente está localizado em <em>&lt;diretório_do_wordpress&gt;/wp-content/plugins/</em>).</li>
+			<li>No painel de administração do WordPress, acesse a área “Plug-ins” (“Extensões”, em português) e ative o plug-in Login-box.</li>
+			<li>Opcional: Se seu tema não tem a função wp_head, abra o arquivo <em>header.php</em> e coloque esse código entre as tags <em>&lt;head&gt;</em> e <em>&lt;/head&gt;</em>: <code>&lt;?php wp_head(); ?&gt;</code></li>
+			<li>Opcional: Se seu tema não tem a função wp_footer, abra o arquivo <em>footer.php</em> e cole esse código: <code>&lt;?php wp_footer(); ?&gt;</code></li>
+		</ol>
+	</div>
+	<div id="pt-faq">
+		<h2>F.A.Q.</h2>
+		<ol>
+			<li>
+				<p class="q">
+				Eu aperto as teclas de atalho, mas o Login-box não aparece...
+				</p>
+				<p class="r">
+				Primeiramente, tente fazer o <em>logout</em> do sistema. O Login-box simplesmente não funciona se você <strong>já está</strong> logado.
+				</p>
+			</li>
+			<li>
+				<p class="q">
+				JÁ FIZ o logout, mas nada do Login-box aparecer.
+				</p>
+				<p class="r">
+				Leia os passos 3 e 4 da seção de instalação.
+				</p>
+			</li>
+			<li>
+				<p class="q">
+				Eu posso usar um link para abrir/fechar o Login-box?
+				</p>
+				<p class="r">
+				Sim. Faça um link parecido com esse:
+				<code>&lt;a href="http://www.meublog.com/wp-login.php" rel="loginbox-toggle"&gt;Faça-se a caixa!&lt;/a&gt;</code>
+				</p>
+			</li>
+			<li>
+				<p class="q">
+				Eu quero fazer um tema para o Login-box. Você tem um bom tutorial?
+				</p>
+				<p class="r">
+				Não :(
+				<br/>
+				Mas se você come HTML e CSS no café da manhã, dê uma olhada nos arquivos dos temas padrões do Login-box. É fácil, eu garanto!
+				</p>
+			</li>
+			<li>
+				<p class="q">
+				Eu tenho outra dúvida que não foi respondida aqui, o que eu faço?
+				</p>
+				<p class="r">
+				Talvez a melhor maneira de esclarecer sua dúvida seja ir até <a href="http://danillonunes.net/tag/login-box/" title="Veja todos os artigos sobre o Login-box no danillonunes">meu blog</a> e enviar sua pergunta como comentário em um dos artigos que falam sobre o Login-box. Se preferir, você pode me enviar uma <a href="http://danillonunes.net/contato/" title="Entre em contato com o Marcus Danillo">mensagem particular</a>.
+				</p>
+			</li>
+		</ol>
+	</div>
+	<div id="pt-options">
+		<h2>Opções</h2>
+		<p>
+		O Login-box 2.0 possui um prático e auto-explicativo painel de opções onde você pode alterar suas configurações, ele está acessível dentro da página "Design", no painel do WordPress.
+		</p>
+		<h2>Opções Avançadas</h2>
+		<p>
+		Se preferir, você pode editar as opções diretamente em um arquivo PHP, o que elimina as consultas ao banco de dados e melhora sensivelmente o desempenho caso seu blog tenha uma grande quantidade de acesso. Abra o arquivo <em>login-box-config-sample.php</em>, edite as seguintes linhas e, ao terminar, salve-o com o nome <em>login-box-config.php</em>.
+		</p>
+		<ol start="2"><li><code class="phpcode">@define("LB_THEME", "wpclassic");</code></li></ol>
+		Aqui, coloque o nome do tema que você quer usar. Você pode baixar mais temas na internet ou criar o seu próprio, com base no tema "wpclassic" que vem incluído por padrão.
+		<ol start="5"><li><code class="phpcode">@define("LB_KEY", "e");</code></li></ol>
+		Aqui, escolha a tecla que você deverá apertar junto com Ctrl ou Alt para abrir a Login-box. Pode ser qualquer caractere alfanumérico, indiferente de ser maiúscula ou minúscula, mas lembre-se que algumas teclas executam funções especiais no seu navegador (e no dos seus leitores) e, se você escolhê-la, ela será desativada pelo Login-box. (Ex: Ctrl + A seleciona toda a página), por isso eu recomendo que você deixe o valor padrão "e".
+		<ol start="10"><li><code class="phpcode">@define("LB_CTRL", true);</code></li></ol>
+		Mesmo assim, se você quiser definir uma tecla "especial" para abrir o Login-box, você pode definir <strong>false</strong> aqui e desativar o uso do Ctrl pelo Login-box. Assim, se você colocar "a" em LB_KEY, você poderá abrir o Login-box com Alt + A e usar o Ctrl + A para selecionar os textos normalmente.
+		<ol start="14"><li><code class="phpcode">@define("LB_BACKTOPAGE", true);</code></li></ol>
+		Aqui, escolha para onde você será redirecionado quando fizer o login. Se <strong>true</strong>, você voltará para a página atual; Se <strong>false</strong>, você será redirecionado para o painel do WordPress.
+		<ol start="18"><li><code class="phpcode">@define("LB_FADE", true);</code></li></ol>
+		Aqui, defina <strong>true</strong> se você quiser que o Login-box abra com um efeito de esmaecimento; Defina <strong>false</strong> se não quiser.
+		<ol start="22"><li><code class="phpcode">@define("LB_AUTO", true);</code></li></ol>
+		Aqui, deixe em <strong>true</strong> e o Login-box será inserido automaticamente em seu blog (ver passos 3 e 4 da seção "instalação"); Se você prefere escolher onde o Login-box aparecerá em seu blog, defina aqui como <strong>false</strong> e coloque, em seu tema, o código <code class="phpcode">&lt;?php loginbox(); ?&gt;</code> onde quiser que ele apareça.
+	</div>
+	<div id="pt-uninstall">
+		<h2>Desinstalação</h2>
+		<ol>
+			<li>Desative o plug-in no WordPress (opcional).</li>
+			<li>Remova a pasta <em>login-box</em> (opcional).</li>
+		</ol>
+	</div>
+	<div id="pt-changelog">
+		<h2>Changelog</h2>
+		<!--
+		To update:
+			About/Version section
+			Javascript var version
+		-->
+		<ul>
+			<li>2.0.4
+				<ul>
+					<li>Adicionada tradução para Bielorrusso (tradução por <a href="http://antsar.info/" title="ilyuha">ilyuha</a>)</li>
+					<li>Adicionada tradução para Alemão (tradução por <a href="http://www.designcontest.com/" title="Design Contest">Design Contest</a>)</li>
+				</ul>
+			</li>
+			<li>2.0.3
+				<ul>
+					<li>Adicionada tradução para Russo (tradução por  <a href="http://www.fatcow.com/" title="FatCow">Fat Cower</a>)</li>
+				</ul>
+			</li>
+			<li>2.0.2
+				<ul>
+					<li>Corrigido um bug exibia uma mensagem de erro no painel quando usado o arquivo <em>login-box-config.php</em> (reportado pelo <a href="http://www.fotografarvenderviajar.com/" title="Fotografar->Vender->Viajar">Marcio Eugenio</a>)</li>
+				</ul>
+			</li>
+			<li>2.0.1
+				<ul>
+					<li>Corrigido um bug que não configurava o Login-box corretamente na primeira instalação</li>
+				</ul>
+			</li>
+			<li>2.0
+				<ul>
+					<li>Adicionado um menu de opções ao painel do WordPress (sugestão do <a href="http://www.pblog.com.br/" title="pBlog">Érico Oliveira</a>).</li>
+					<li>Adicionado o tema “wp25”, que agora é o padrão do Login-box.</li>
+					<li>Adicionada uma opção de fadein/fadeout.</li>
+					<li>Adicionado um botão “fechar” (sugestão do <a href="http://www.rodrigoghedin.com.br/" title="Rodrigo Ghedin">Rodrigo Ghedin</a>).</li>
+					<li>Adicionar um widget do WordPress com o Login-box.</li>
+				</ul>
+			</li>
+			<li>1.0
+				<ul>
+					<li>Bem, nós temos apenas uma versão 1.0 por enquanto...</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="content" id="en">
+	<div id="en-about">
+		<h2>About</h2>
+		<dl>
+			<dt>Name:</dt>
+			<dd><a href="http://danillonunes.net/en/wordpress/login-box">Login-box</a></dd>
+			<br/>
+			<dt>Version:</dt>
+			<dd>2.0.4 (17 Set 2011)</dd>
+			<br/>
+			<dt>Description:</dt>
+			<dd>Inserts in all pages a hidden login box, that you can open pressing a combination of keys (like Ctrl + E)</dd>
+			<br/>
+			<dt>Author:</dt>
+			<dd><a href="http://danillonunes.net/en">Marcus Danillo</a> (Contact: mdanillo at gmail dot com)</dd>
+		</dl>
+	</div>
+	<div id="en-install">
+		<h2>Install</h2>
+		<ol>
+			<li>Extract the downloaded file and move the <em>login-box</em> folder to the plug-ins directory of WordPress (normally localized at <em>&lt;wordpress_direcorty&gt;/wp-content/plugins/</em>).</li>
+			<li>In the WordPress admin, access "Plug-ins" area and activate the Login-box plug-in.</li>
+			<li>Optional: If your WordPress theme doesn't have the wp_head hook, open the <em>header.php</em>  file and put this code between <em>&lt;head&gt;</em> and <em>&lt;/head&gt;</em>: <code>&lt;?php wp_head(); ?&gt;</code></li>
+			<li>Optional: If your WordPress theme doesn't have the wp_footer hook, open the <em>footer.php</em> and put them: <code>&lt;?php wp_footer(); ?&gt;</code></li>
+		</ol>
+	</div>
+	<div id="en-faq">
+		<ol>
+			<li>
+				<p class="q">
+				I press the key comb, but the Login-box does not appear.
+				</p>
+				<p class="r">
+				Try logout. Login-box doesn't work if you are <strong>already</strong> logged.
+				</p>
+			</li>
+			<li>
+				<p class="q">
+				I'm ALREADY unlogged. Login-box just don't works...
+				</p>
+				<p class="r">
+				Read steps 3 and 4 in the Installation section.
+				</p>
+			</li>
+			<li>
+				<p class="q">
+				Can open/close the Login-box with a link?
+				</p>
+				<p class="r">
+				Yes. Just use the link syntax:
+				<code>&lt;a href="http://www.meublog.com/wp-login.php" rel="loginbox-toggle"&gt;Make the box!!&lt;/a&gt;</code>
+				</p>
+			</li>
+			<li>
+				<p class="q">
+				I want to make a theme for the Login-box. Do you have a good tutorial?
+				</p>
+				<p class="r">
+				No :(
+				<br/>
+				But if you eat HTML and CSS in breakfast, see the files of the default Login-box themes. It's easy, I assure!
+				</p>
+			</li>
+			<li>
+				<p class="q">
+					I have another question was not answered here, what can I do?
+				</p>
+				<p class="r">
+				Maybe the best way is go to <a href="http://danillonunes.net/en/tag/login-box/" title="See all posts about Login-box in danillonunes">my blog</a> and send your question as a comment from one of the posts about Login-box. Alternatively, you could send me a <a href="http://danillonunes.net/en/contact/" title="Contact Marcus Danillo">private message</a>.
+				</p>
+			</li>
+		</ol>
+	</div>
+	<div id="en-options">
+		<h2>Options</h2>
+		<p>
+		Login-box 2.0 has a practical and self-explanatory options panel where you can change your settings, it is accessible within the page "Design", into the panel of WordPress.
+		</p>
+		<h2>Advanced Options</h2>
+		<p>
+		Alternatively, you can edit the options directly into a PHP file, which eliminates the database queries and significantly improves the performance if your blog has a lot of access. Open the <em>login-box-config-sample.php</em>, edit the following lines and at the end, save it with the name <em>login-box-config.php</em>.
+		</p>
+		<ol start="2"><li><code class="phpcode">@define("LB_THEME", "wpclassic");</code></li></ol>
+		In this line, put the name of the theme that you like to use. You can download new themes on web or make your theme based in the default "wpclassic".
+		<ol start="5"><li><code class="phpcode">@define("LB_KEY", "e");</code></li></ol>
+		Choose the key (case insensitive) that will be open/close Login-box with Ctrl or Alt. Note that some keys executes especial functions in your browser (and in browser of your readers!). and them will be cancelled by Login-box. (Ex: Ctrl + A selects all). I recommend that you leave the default value "e".
+		<ol start="10"><li><code class="phpcode">@define("LB_CTRL", true);</code></li></ol>
+		Also, you can define <strong>false</strong> here and deactivate the Ctrl use of Login-box. So, you can put "a" in LB_KEY, and open Login-box with Alt + A. Ctrl + A will be selects all normally.
+		<ol start="14"><li><code class="phpcode">@define("LB_BACKTOPAGE", true);</code></li></ol>
+		Here, choose on you will be redirected when success login. If <strong>true</strong>, you will be back to the actual page; if <strong>false</strong>, you will be redirected to the WordPress Dashboard.
+		<ol start="18"><li><code class="phpcode">@define("LB_FADE", true);</code></li></ol>
+		Here, set <strong>true</strong> if you want that Login-box opens with a fade-in effect; Set <strong>false</strong> if not want.
+		<ol start="22"><li><code class="phpcode">@define("LB_AUTO", true);</code></li></ol>
+		Here, leave <strong>true</strong> and the Login-box will be automatically inserted into your blog (see steps 3 and 4 of the "install" section); If you prefer to choose where the Login-box will appear in your blog, set here as <strong>false</strong> and put in its theme, the code <code class="phpcode">&lt;?php loginbox(); ?&gt;</code> where you want it to appear.
+	</div>
+	<div id="en-uninstall">
+		<h2>Uninstall</h2>
+		<ol>
+			<li>Deactivate the plug-in in WordPress (optional).</li>
+			<li>Remove the <em>login-box</em> folder (optional).</li>
+		</ol>
+	</div>
+	<div id="en-changelog">
+		<h2>Changelog</h2>
+		<ul>
+			<li>2.0.4
+				<ul>
+					<li>Add Belarusian translation (translation by <a href="http://antsar.info/" title="ilyuha">ilyuha</a>)</li>
+					<li>Add German translation (translation by <a href="http://www.designcontest.com/" title="Design Contest">Design Contest</a>)</li>
+				</ul>
+			</li>
+			<li>2.0.3
+				<ul>
+					<li>Add Russian translation (translation by <a href="http://www.fatcow.com/" title="FatCow">Fat Cower</a>)</li>
+				</ul>
+			</li>
+			<li>2.0.2
+				<ul>
+					<li>Fixed a bug that show an error in the dashboard when used the file <em>login-box-config.php</em> (reported by <a href="http://www.fotografarvenderviajar.com/" title="Fotografar->Vender->Viajar">Marcio Eugenio</a>)</li>
+				</ul>
+			</li>
+			<li>2.0.1
+				<ul>
+					<li>Fixed a bug that doesn't configure the Login-box right in the first installation</li>
+				</ul>
+			</li>
+			<li>2.0
+				<ul>
+					<li>Add a options menu into WordPress Panel (suggestion by <a href="http://www.pblog.com.br/" title="pBlog">Érico Oliveira</a>).</li>
+					<li>Add the “wp25” theme, that now is the standard of Login-box.</li>
+					<li>Add a fadein/fadeout option.</li>
+					<li>Add a “close” button (suggestion by <a href="http://www.rodrigoghedin.com.br/" title="Rodrigo Ghedin">Rodrigo Ghedin</a>).</li>
+					<li>Add a WordPress widget with Login-box.</li>
+				</ul>
+			</li>
+			<li>1.0
+				<ul>
+					<li>Well, we have just a 1.0 version for now...</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div id="footer">
+Code is Vogon's poetry
+<br/>
+</div>
+<script src="http://labs.danillonunes.net/login-box/readmescript.js"></script>
+</body> 
