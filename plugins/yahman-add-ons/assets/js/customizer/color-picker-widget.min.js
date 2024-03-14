@@ -1,0 +1,1 @@
+jQuery(document).ready(function(){function b(c){c.find(".ya_color-picker").not('[id*="__i__"]').wpColorPicker({change:_.throttle(function(){jQuery(this).trigger("change");},3000)});}function a(c,d){b(d);}jQuery(document).on("widget-added widget-updated",a);jQuery(document).ready(function(){jQuery(".widget-inside:has(.ya_color-picker)").each(function(){b(jQuery(this));});});});

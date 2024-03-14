@@ -1,0 +1,322 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+
+function yahman_addons_option_key(){
+
+	return array(
+
+		'blogcard'    => array(
+			//'internal' => false,
+			//'external' => false,
+		),
+		'cta_social'    => array(
+			//'post'    => false,
+			//'page'    => false,
+			'heading'    => esc_html__('Follow us', 'yahman-add-ons'),
+			'ending'    => esc_html__('We will keep you updated', 'yahman-add-ons'),
+			//'facebook'    => false,
+			//'facebook_script'    => false,
+			//'twitter'    => false,
+			//'feedly'    => false,
+		),
+		'faster'    => array(
+			'preconnect_url' => '',
+			//'remove_line_breaks' => false,
+			'cache_period' => '7',
+			'cache_post_not_in' => '',
+			'cache_parent_not_in' => '',
+		),
+		'ga'    => array(
+			//'enable' => false,
+			'id' => '',
+			'verification' => '',
+		),
+		'google_ad'    => array(
+			//'enable' => false,
+			'dp' => 'left',
+			'labeling' => '0',
+			'id' => '',
+			'slot_responsive' => '',
+			'slot_infeed' => '',
+			'layout_infeed' => '',
+			'slot_infeed_mobile' => '',
+			'layout_infeed_mobile' => '',
+			'slot_inarticle' => '',
+			'slot_autorelaxed' => '',
+			'rows_mobile_autorelaxed' => '',
+			'rows_pc_autorelaxed' => '',
+			'columns_mobile_autorelaxed' => '',
+			'columns_pc_autorelaxed' => '',
+			'ui_mobile_autorelaxed' => '',
+			'ui_pc_autorelaxed' => '',
+			'slot_link' => '',
+		),
+		'javascript'    => array(
+			'lightbox' => 'false',
+			'lazy' => 'false',
+			'code' => 'false',
+			'highlight_style' => 'default',
+		),
+		'notice'    => array(
+			//'enable' => false,
+		),
+		'other'    => array(
+			'no_image' => YAHMAN_ADDONS_URI . 'assets/images/no_image.png',
+			'no_image_id' => '',
+			//'user_timing_api' => false,
+		),
+		'pv'    => array(
+			//'enable' => false,
+		),
+		'pwa'    => array(
+			'manifest' => '',
+			'service_worker' => '',
+			'theme_color' => '',
+			'apple_touch_icon' => '',
+			'post_in' => '',
+			'post_not_in' => '',
+			'parent_not_in' => '',
+		),
+		'profile'    => array(
+			//'user_profile' => false,
+			'title'    => esc_html__( 'About me', 'yahman-add-ons'),
+			'name' => '',
+			'image' => '',
+			'image_id' => '',
+			'image_bg' => '',
+			'image_bg_id' => '',
+			'image_shape'   => 'circle',
+			'text' => '',
+			'read_more_url' => '',
+			'read_more_text' => esc_html__( 'Read More', 'yahman-add-ons' ),
+			'read_more_url' => '',
+			//'read_more_blank' => false,
+			'icon_shape' => 'icon_square',
+			'icon_size' => 'icon_medium',
+			'icon_align'    => 'center',
+			'icon_user_color' => '',
+			'icon_user_hover_color' => '',
+			//'icon_tooltip' => false,
+		),
+		'related_posts'    => array(
+			//'post'    => false,
+			'post_num'    => 9,
+			'post_title'    => __( 'Related Posts', 'yahman-add-ons' ),
+			'post_style'    => '3',
+			//'page'    => false,
+			'page_num'    => 9,
+			'page_title'    => __( 'Related Pages', 'yahman-add-ons' ),
+			'page_style'    => '3',
+		),
+		'robot'    => array(
+			//'404' => false,
+			//'search' => false,
+			//'year' => false,
+			//'month' => false,
+			//'day' => false,
+			//'tag' => false,
+			//'category' => false,
+			//'attachment' => false,
+			'post_not_in' => '',
+			'parent_not_in' => '',
+		),
+		'ogp'    => array(
+			//'meta' => false,
+			'image' => YAHMAN_ADDONS_URI . 'assets/images/ogp.jpg',
+			'image_id' => '',
+			'twitter_card' => 'false',
+		),
+		'json'    => array(
+			//'breadcrumblist' => false,
+			//'page' => false,
+			'logo_image' => YAHMAN_ADDONS_URI . 'assets/images/json_logo.png',
+			'logo_image_id' => '',
+		),
+		'header'    => array(
+			//'meta_thum' => false,
+		),
+		'sitemap'    => array(
+			//'enable' => false,
+			'slug' => '',
+			'exclude' => '',
+			'exclude_tree' => '',
+		),
+		'sns_account'    => array(
+			'facebook_app_id' => '',
+			'facebook_admins' => '',
+		),
+		'share'    => array(
+			//'post'    => false,
+			//'page' => false,
+			'title' => esc_html__('Share this', 'yahman-add-ons'),
+			'icon_shape' => 'icon_square',
+			'icon_align'   => 'circle',
+			'icon_shape' => 'icon_square',
+			'icon_size' => 'icon_medium',
+			'icon_align'    => 'left',
+			'icon_user_color' => '',
+			'icon_user_hover_color' => '',
+			//'icon_tooltip' => false,
+		),
+		'toc'    => array(
+			//'enable'    => false,
+			'title' => esc_html_x( 'Table of contents', 'toc' , 'yahman-add-ons' ),
+			'dc' => 3,
+			'dp'   => 1,
+			//'post'    => false,
+			//'page' => false,
+			//'hierarchical' => false,
+			//'numerical' => false,
+			//'hide' => false,
+			//'nextpage' => false,
+			'post_not_in' => '',
+			'parent_not_in' => '',
+		),
+		'widget'    => array(
+			//'google_ad_responsive' => false,
+			//'google_ad_infeed' => false,
+			//'google_ad_inarticle' => false,
+			//'google_ad_autorelaxed' => false,
+			//'google_ad_link' => false,
+			//'pv' => false,
+			//'pp' => false,
+			//'profile' => false,
+			//'another' => false,
+			//'sns_link' => false,
+			//'toc' => false,
+			//'twitter' => false,
+			//'facebook' => false,
+			//'cse' => false,
+			//'recent' => false,
+			//'update' => false,
+			//'recommend' => false,
+			//'dda' => false,
+			//'ddc' => false,
+		),
+
+	);
+
+}
+
+
+function yahman_addons_option_checkbox(){
+
+	return array(
+
+		'blogcard'    => array(
+			'internal' => false,
+			'external' => false,
+		),
+		'cta_social'    => array(
+			'post'    => false,
+			'page'    => false,
+			'facebook'    => false,
+			'twitter'    => false,
+			'feedly'    => false,
+		),
+		'faster'    => array(
+			'remove_line_breaks' => false,
+			'cache' => false,
+			//'async_scripts' => false,
+		),
+		'ga'    => array(
+			'enable' => false,
+		),
+		'google_ad'    => array(
+			'enable' => false,
+		),
+		'javascript'    => array(
+			'pel' => false,
+		),
+		'notice'    => array(
+			'enable' => false,
+		),
+		'other'    => array(
+			'user_timing_api' => false,
+			'delete_all' => false,
+		),
+		'pv'    => array(
+			'enable' => false,
+		),
+		'pwa'    => array(
+			'enable' => false,
+		),
+		'profile'    => array(
+			'user_profile' => false,
+			'read_more_blank' => false,
+			'icon_tooltip' => false,
+		),
+		'related_posts'    => array(
+			'post'    => false,
+			'page'    => false,
+		),
+		'robot'    => array(
+			'404' => false,
+			'search' => false,
+			'year' => false,
+			'month' => false,
+			'day' => false,
+			'tag' => false,
+			'category' => false,
+			'attachment' => false,
+		),
+		'ogp'    => array(
+			'meta' => false,
+		),
+		'json'    => array(
+			'breadcrumblist' => false,
+			'page' => false,
+		),
+		'header'    => array(
+			'meta_thum' => false,
+			'meta_description' => false,
+		),
+		'sitemap'    => array(
+			'enable' => false,
+		),
+		'sns_account'    => array(
+			'facebook_script'    => false,
+		),
+		'share'    => array(
+			'post'    => false,
+			'page' => false,
+			'icon_tooltip' => false,
+		),
+		'toc'    => array(
+			//'enable'    => false,
+			'post'    => false,
+			'page' => false,
+			'hierarchical' => false,
+			'numerical' => false,
+			'hide' => false,
+			'nextpage' => false,
+		),
+		'widget'    => array(
+			'google_ad_responsive' => false,
+			'google_ad_infeed' => false,
+			'google_ad_inarticle' => false,
+			'google_ad_autorelaxed' => false,
+			'google_ad_link' => false,
+			'pv' => false,
+			'pp' => false,
+			'profile' => false,
+			'another' => false,
+			'sns_link' => false,
+			'toc' => false,
+			'twitter' => false,
+			'facebook' => false,
+			'cse' => false,
+			'recent' => false,
+			'update' => false,
+			'recommend' => false,
+			'dda' => false,
+			'ddc' => false,
+			'art_2col' => false,
+			'2lists_2col' => false,
+			'alu' => false,
+			'carousel_slider' => false,
+		),
+
+	);
+
+}

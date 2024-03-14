@@ -1,0 +1,1 @@
+jQuery(function(a){(function(b){jQuery(".ya_color-picker").wpColorPicker();})(jQuery);});
