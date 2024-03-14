@@ -1,0 +1,127 @@
+
+.pb-list {
+	box-sizing: border-box;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+	counter-reset: pbList !important;
+
+	li {
+		position: relative;
+		box-sizing: border-box;
+		margin: 0.7em 0 !important;
+		padding: 0 !important;
+		// font-size: 0.9em !important;
+		line-height: 1.5 !important;
+		list-style: none !important;
+		// font-weight: 500;
+
+		&::before {
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+			display: block !important;
+			box-sizing: content-box !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			border: none !important;
+			box-shadow: none !important;
+		}
+
+		&::after {
+			// Jinではafterでいろいろ出力されるので、消す。
+			content: none !important;
+		}
+	}
+
+	&.-border-on {
+
+		li:not(:last-child) {
+			padding-bottom: 0.7em !important;
+			// padding-bottom: calc(0.5em - 1px) !important;
+			border-bottom: 1px dashed #cdcdcd;
+		}
+	}
+
+}
+
+ul.pb-list {
+
+	li {
+		padding-left: 1.4em !important;
+
+		&::before {
+			width: 0 !important;
+			height: 0 !important;
+			font-weight: 600 !important;
+			font-family: pbicon !important;
+			background-color: none !important;
+			transform: scale(1) !important;
+		}
+	}
+
+	&.-icon-dot {
+
+		li::before {
+			content: "\e909" !important;
+		}
+	}
+
+	&.-icon-check {
+
+		li::before {
+			content: "\e902" !important;
+		}
+	}
+
+	&.-icon-chevron-right {
+
+		li::before {
+			content: "\e904" !important;
+		}
+	}
+
+	&.-icon-comment {
+
+		li::before {
+			content: "\e90a" !important;
+		}
+	}
+}
+
+ol.pb-list {
+	// counter-reset: pbList;
+
+	li {
+		padding-left: 2em !important;
+
+		&::before {
+			width: 2em !important;
+			height: 2em !important;
+			color: #fff !important;
+			font-weight: 700 !important;
+			font-size: 1em !important;
+			font-family: Arial !important;
+			line-height: 2 !important;
+			text-align: center;
+			transform: scale(0.75) !important;
+			transform-origin: 0 0 !important;
+			content: counter(pbList) !important;
+			counter-increment: pbList !important;
+		}
+	}
+
+	&.-icon-square {
+
+		li::before {
+			border-radius: 0;
+		}
+	}
+
+	&.-icon-circle {
+
+		li::before {
+			border-radius: 50%;
+		}
+	}
+}

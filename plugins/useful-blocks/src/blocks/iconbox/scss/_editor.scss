@@ -1,0 +1,161 @@
+/**
+ * エディター側だけに読み込ませるスタイル
+ */
+
+// .block-editor-writing-flow {}
+
+
+.pb-iconbox__body {
+
+	& > .block-editor-inner-blocks {
+		flex: 1 1 auto;
+		width: 70%;
+	}
+
+	.block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
+		position: relative;
+		width: 48px;
+		max-width: 50%;
+		margin: 1em 0 0 auto !important;
+	}
+}
+
+
+// iconballoon
+[data-type="ponhiro-blocks/iconbox"] {
+
+	> .block-list-appender {
+		position: relative;
+		width: 48px;
+		max-width: 50%;
+		margin: 1em 0 0 auto !important;
+	}
+
+	&:not(.is-selected):not(.has-child-selected) {
+
+		.pb-is-empty {
+			display: none;
+		}
+	}
+
+	&:not(.has-child-selected) .block-list-appender,
+	[data-type="core/paragraph"] + .block-list-appender {
+		display: none;
+	}
+
+
+	.__mediaWrap {
+		position: relative;
+	}
+
+	.__changeImage {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		border-radius: 0;
+		opacity: 0;
+		// background-color: rgba(255, 255, 255, 0.8);
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.8);
+			opacity: 1;
+		}
+	}
+
+	.pb-iconbox__topIcon .__changeImage {
+		padding: 4px;
+		font-size: 11px;
+	}
+
+	.block-editor-media-placeholder {
+		max-width: 140px;
+		min-height: 120px;
+		padding: 12px;
+
+		.components-placeholder__label {
+			font-size: 12px;
+		}
+
+		.components-placeholder__fieldset {
+
+			button {
+				font-size: 12px;
+			}
+		}
+
+		.components-form-file-upload {
+			width: 100%;
+		}
+	}
+}
+
+
+// サイドバー
+.edit-post-sidebar {
+
+	.pb-panel--colorSet.-iconbox {
+
+		span {
+			display: block;
+		}
+
+		.pb-iconbox {
+			width: 100%;
+			margin: 0 !important;
+		}
+
+		.pb-iconbox__head {
+			height: 20px;
+			padding: 0;
+		}
+
+		.pb-iconbox__body {
+			height: 40px;
+			padding: 0;
+		}
+	}
+
+	.pb-panel--colorSet.-iconset {
+
+		.__label {
+			display: flex;
+		}
+
+		.__num {
+			color: #555;
+			font-style: italic;
+		}
+
+		.pb-iconbox__figure {
+			display: block;
+			width: 40px;
+			margin-left: auto;
+		}
+
+	}
+
+	.pb-panel--colorSet.-balloon {
+
+		.__label {
+			padding: 16px 8px;
+			// font-size: 12px;
+		}
+
+		.pb-iconbox__innerIcon {
+			display: block;
+			width: 100%;
+			margin: 0 !important;
+		}
+
+		.pb-iconbox__comment {
+			display: block;
+			width: 100%;
+			margin-bottom: 0;
+			padding: 8px;
+			transform: scale(0.8);
+		}
+	}
+}

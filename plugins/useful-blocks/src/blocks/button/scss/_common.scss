@@ -1,0 +1,125 @@
+
+.pb-button {
+	position: relative;
+	box-sizing: border-box;
+	margin: 0.5em auto;
+	font-size: 16px;
+	border: none !important;
+
+	& > img {
+		position: absolute;
+		display: block;
+		visibility: hidden;
+		pointer-events: none;
+	}
+}
+
+.pb-button__btn {
+	display: flex !important;
+	align-items: center;
+	box-sizing: border-box;
+	margin: 0 auto !important;
+	padding: 0.75em 1.5em !important;
+	color: #fff;
+	line-height: 1.5 !important;
+	text-decoration: none !important;
+	border: none !important;
+	// border-bottom: solid 4px;
+	border-radius: 7px;
+	box-shadow: 0 4px 0 #000;
+	transition: 0.25s;
+
+	.is-round > & {
+		border-radius: 80px;
+	}
+
+	&:hover {
+		opacity: 0.9;
+	}
+
+	&:active {
+		// border-bottom-width: 0;
+		box-shadow: 0 0 0 transparent !important;
+		transform: translate3d(0, 4px, 0);
+		// transform: translateY(4px);
+	}
+}
+
+
+.pb-button__em {
+	display: block;
+	flex-shrink: 0;
+	box-sizing: border-box;
+	min-width: 1em;
+	max-width: 80px;
+	margin: 0 0.75em 0 0 !important;
+	padding: 0.4em 0.75em !important;
+	font-weight: 700; //600 ?
+	text-align: center;
+	background: #fff;
+	border-radius: 30px;
+
+	&:not(.has-icon) {
+		font-size: 0.9em;
+		line-height: 1.25;
+	}
+
+	&.has-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2em;
+		height: 2em;
+		padding: 0 !important;
+
+		// フロントが少し左寄りになってしまうので
+		// i {
+		// 	position: relative;
+		// 	left: 1px;
+		// }
+	}
+}
+
+.pb-button__text {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0.25em auto !important;
+	padding: 0.25em 0.5em 0.25em 0.75em !important;
+	color: #fff;
+	font-weight: 600;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	text-align: center;
+
+	.pb-button__em + & {
+		// padding-left: 1em;
+		text-align: left;
+		border-left: 1px solid #fff;
+	}
+
+}
+
+// ボタン右にある 「>」アイコン
+.pb-button__btn > i,
+.pb-button__btn > svg {
+	box-sizing: border-box;
+	min-width: 1em;
+	color: #fff;
+}
+
+.pb-text-link {
+	display: block;
+	box-sizing: border-box;
+	margin: 0.5em auto 0.5em !important;
+	font-size: 0.8em !important;
+}
+
+.pb-text-link__label {
+	box-sizing: border-box;
+}
+
+.pb-text-link__url {
+	box-sizing: border-box;
+	color: #1c1ba8 !important;
+	text-decoration: underline !important;
+}

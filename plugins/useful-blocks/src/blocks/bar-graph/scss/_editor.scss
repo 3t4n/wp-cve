@@ -1,0 +1,72 @@
+
+[data-type="ponhiro-blocks/bar-graph"] {
+
+	.pb-bar-graph__dl > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender {
+		position: relative;
+		margin-top: 2em;
+		margin-bottom: 0;
+	}
+
+	// 非選択時、+ ボタン非表示
+	&:not(.is-selected):not(.has-child-selected) {
+
+		.block-list-appender {
+			display: none;
+		}
+	}
+
+	.block-list-appender__toggle.block-editor-button-block-appender {
+		margin-left: 0;
+	}
+}
+
+[data-type="ponhiro-blocks/bar-graph-item"] {
+
+	&.is-selected {
+		padding-top: 1.5em;
+	}
+
+	& + [data-type="ponhiro-blocks/bar-graph-item"] {
+		margin-top: 2.5em !important;
+	}
+
+
+	&::after {
+		top: -4px !important;
+		right: -4px !important;
+		bottom: -4px !important;
+		left: -4px !important;
+	}
+
+
+	.rich-text {
+		min-width: 2.5em;
+	}
+}
+
+
+// サイドバーのカラーセット用CSS
+.pb-panel--colorSet.-bar-graph {
+
+	span {
+		display: block;
+	}
+
+	.pb-bar-graph {
+		margin: 0 !important;
+		padding: 12px 8px !important;
+		font-size: 10px !important;
+	}
+
+	.pb-bar-graph__item {
+		height: 8px;
+	}
+
+	.pb-bar-graph__item + .pb-bar-graph__item {
+		margin-top: 8px !important;
+
+		.pb-bar-graph__dt {
+			width: 40%;
+		}
+	}
+}

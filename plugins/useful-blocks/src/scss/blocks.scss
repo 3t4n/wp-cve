@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/*
+ * エディターのみで読み込むCSS
+ */
+
+// mixin
+@import "mixin/**/*.scss";
+
+// 共通
+@import "inc/icomoon";
+@import "../blocks/**/_common.scss";
+@import "editor/_*.scss";
+@import "../blocks/**/_editor.scss";
+
+// 無料版でのみ表示するテキスト
+.pb-free-noticeBox {
+	padding: 16px;
+	border: dashed 1px rgba(41, 12, 12, 0.2);
+}
+
+.pb-free-ctrlPreview {
+	margin-top: 16px;
+	cursor: not-allowed;
+	opacity: 0.5;
+
+	& > * {
+		pointer-events: none;
+	}
+
+}
+// ポップオーバー
+.components-popover__content .pb-link-popover {
+	padding: 16px;
+}
+
+// TextControlの調整
+.pb-is-harf-size {
+
+	.components-text-control__input {
+		display: block;
+		width: 50%;
+	}
+}
+
+// クリアボタン
+.pb-btn--clear {
+	display: block;
+	width: 100%;
+	max-width: 120px;
+	height: auto;
+	margin: 1em auto 0;
+}
+
+// 注釈
+// .pb-ctrl-description{}
+
+
+// ボタングループの調整
+.pb-btn-group {
+	display: flex;
+}
+
+// Jinで上書きされるので詳細度高く
+.wp-block {
+
+	[class*=" pb-icon-"],
+	[class^=pb-icon-] {
+		font-weight: 400 !important;
+		font-family: pbicon !important;
+	}
+}

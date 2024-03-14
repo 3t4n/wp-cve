@@ -1,0 +1,437 @@
+@charset "utf-8";
+
+/*
+ * 設定画面で読み込むCSS
+ */
+@import "mixin/**/*.scss";
+
+// アイコン
+@import "inc/icomoon";
+
+// ブロックのスタイル
+@import "../blocks/**/_common.scss";
+
+
+@keyframes pbFadeIn {
+
+	100% {
+		opacity: 1;
+	}
+}
+
+#wpbody {
+	min-height: 100vh;
+}
+
+#wpcontent {
+	padding-left: 0 !important;
+}
+
+#wpwrap {
+	background: #f7f7f7;
+}
+
+
+.usfl_blks_page {
+	opacity: 0;
+	animation: pbFadeIn 0s ease 0.2s 1 normal both;
+
+	&.-is-free {
+
+		.usfl_blks_page__body {
+
+			@include tab {
+				margin-right: 240px;
+			}
+
+		}
+	}
+}
+
+.usfl_blks_page__adarea {
+	// @include tab {
+	position: fixed;
+	right: 16px;
+	bottom: 40px;
+	width: 240px;
+	text-align: center;
+	// bottom: 40%;
+	// transform: translateY(50%);
+	// }
+
+	@include mobile {
+		bottom: 16px;
+		width: 120px;
+		margin: 0 auto;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.__ad_item {
+		padding: 16px;
+		background-color: #fff;
+		border-radius: 5px;
+		box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.1), 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+
+		@include mobile {
+			padding: 8px;
+		}
+	}
+
+	.__ad_item + .__ad_item {
+		margin-top: 24px;
+
+		@include mobile {
+			margin-top: 16px;
+		}
+	}
+
+	// .-ponhiro {
+	// 	img {
+	// 		border: solid 1px #ffd22d;
+	// 	}
+	// }
+
+	// .-swell{}
+
+	span {
+		display: block;
+		margin-top: 8px;
+		line-height: 1;
+		text-align: center;
+
+		@include mobile {
+			// margin-top: 4px;
+			// font-size: 10px;
+			display: none;
+		}
+	}
+}
+
+
+.usfl_blks_page__inner {
+	max-width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.usfl_blks_page__head {
+	padding: 24px 24px 0;
+	background: #ffd22d;
+}
+
+.usfl_blks_page__title {
+
+	display: flex;
+	align-items: center;
+	margin: 16px 0 32px;
+
+	a {
+		display: block;
+	}
+
+	img {
+		display: block;
+		max-width: 280px;
+
+		@include mobile {
+			width: 50vw;
+		}
+	}
+}
+
+.usfl_blks_page__gopro {
+	display: flex !important;
+	align-items: center;
+	margin-top: 2px;
+	margin-left: 16px;
+	padding: 0.4em 0.6em;
+	color: #ffd22d;
+	font-size: 16px;
+	text-decoration: none;
+	background-color: #fff;
+	border-radius: 5px;
+	transition: 0.25s;
+
+	i {
+		margin-right: 6px;
+		margin-left: -2px;
+	}
+
+	span {
+		transition: transform 0.25s;
+	}
+
+	&:hover {
+		color: #00babd;
+		transform: scale(1.05);
+	}
+}
+
+.usfl_blks_page__tabs {
+
+	.nav-tab-wrapper {
+		margin: 0;
+		padding: 0;
+		border-bottom: none;
+	}
+
+	.nav-tab {
+		margin: 0;
+		padding: 0.5em 1.5em;
+		color: #fff;
+		background: none;
+		border: none !important;
+		border-radius: 5px 5px 0 0;
+		box-shadow: none !important;
+		transition: 0.25s;
+
+		span {
+			font-size: 0.85em;
+			opacity: 0.8;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&.act_ {
+			color: #333;
+			background: #f7f7f7;
+		}
+	}
+
+}
+
+.usfl_blks_page__free_message {
+
+	position: relative;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	padding: 2em 2em 2em 4.5em;
+	line-height: 1.6;
+	background: #fff;
+	border: solid 1px #ffd22d;
+
+	i {
+		position: absolute;
+		top: 50%;
+		left: 1em;
+		display: block;
+		padding: 6px;
+		color: #fff;
+		font-size: 1.25em;
+		background: #ffd22d;
+		border-radius: 40px;
+		transform: translateY(-50%);
+	}
+}
+
+.usfl_blks_page__body {
+	height: 100%;
+	padding: 24px;
+	overflow-y: auto;
+
+	.tab-contents {
+		display: none;
+	}
+
+	.tab-contents.act_ {
+		display: block;
+	}
+
+	.form-table {
+		position: relative;
+		display: block;
+		margin-top: 24px;
+		margin-bottom: 64px;
+		padding: 16px;
+		background: #fdfdfd;
+		border-radius: 4px;
+		box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.1), 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+
+		tbody,
+		tr,
+		td {
+			display: block;
+		}
+
+		th {
+			display: none;
+		}
+	}
+
+	.__field_title {
+		margin-bottom: 24px;
+		font-weight: bold;
+		font-size: 16px;
+	}
+
+	.__field + .__field_title {
+		margin-top: 40px;
+	}
+
+	.__preview {
+		font-size: 14px;
+
+		.pb-cv-box {
+			margin-top: 0 !important;
+		}
+	}
+
+	.__preview_label {
+		margin-top: 1em;
+		font-size: 11px;
+		text-align: center;
+		opacity: 0.75;
+	}
+
+}
+
+
+// 設定項目とプレビューを横並びにするフィールド
+.__field.-flex {
+
+	@include pc {
+		display: flex;
+
+		.__items {
+			flex-basis: 280px;
+		}
+
+		.__label {
+			margin-right: 8px;
+		}
+
+		.__preview {
+			flex-basis: calc(100% - 280px);
+		}
+	}
+
+	@include sp {
+
+		.__preview {
+			margin-top: 16px;
+		}
+	}
+
+}
+
+// カラー設定に関するフィールド
+.__field.-color {
+
+	.__item {
+		display: flex;
+	}
+
+	.__item + .__item {
+		margin-top: 16px;
+	}
+
+	.__label {
+		display: block;
+		margin-top: 4px;
+	}
+}
+
+
+// カラーセットに関するフィールド
+.__field.-pb-colset {
+
+	// .pb-compare-box{}
+
+	// ちょっと左寄せに
+	.__preview {
+
+		@include pc {
+			margin-right: 40px;
+		}
+
+	}
+
+	.__label {
+		min-width: 6em;
+
+		[data-lang="ja"] & {
+			min-width: 4em;
+		}
+	}
+
+
+	.__preview > .pb-compare-box,
+	.__preview > .pb-cv-box,
+	.__preview > .pb-iconbox {
+		max-width: 400px;
+		margin-bottom: 0 !important;
+	}
+
+	.pb-compare-box__head {
+		min-height: 3em;
+	}
+
+	.pb-compare-box__head__l,
+	.pb-compare-box__head__r {
+		min-height: 2em;
+	}
+
+	.pb-cv-box {
+		margin-bottom: 0 !important;
+	}
+
+	.pb-button__text {
+		margin: 0 !important;
+	}
+
+	.pb-list {
+		font-size: 1em;
+	}
+
+	// .pb-button {
+	// 	margin-top: 1em;
+	// }
+
+	.pb-cv-box__note {
+		margin-top: 1.25em !important;
+	}
+
+	.pb-iconbox__figure {
+		max-width: 80px;
+	}
+}
+
+/**
+ * 画像アップロードボタン
+ */
+.pb-mediaBtns {
+	margin: 8px 0;
+
+	[name="media-clear"] {
+		margin-left: 8px;
+		background: none;
+		border: none;
+		box-shadow: none;
+	}
+}
+
+.pb-mediaPreview {
+	min-height: 8px;
+	margin: 4px 0;
+	padding: 4px;
+	border: dashed 1px #ccc;
+
+	img {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+// アイコン画像に関するフィールド
+.__field.-pb-icon {
+
+	.pb-mediaPreview {
+		max-width: 120px;
+	}
+}
