@@ -1,0 +1,99 @@
+.af2_toast_wrapper {
+    position: fixed;
+    top: 150px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 5;
+}
+
+.af2_toast {
+    display: none;
+    width: 300px;
+    position: relative;
+    cursor: pointer;
+}
+.af2_toast_content_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: var(--af2-border-radius-small);
+}
+.af2_toast_icon {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.af2_toast.af2_error .af2_toast_content_wrapper .af2_toast_icon {
+    background: var(--af2-support-color-red-background);
+    color:  var(--af2-support-color-red);
+}
+.af2_toast.af2_success .af2_toast_content_wrapper .af2_toast_icon {
+    background: var(--af2-support-color-green-background);
+    color: var(--af2-support-color-green);
+}
+.af2_toast.af2_warning .af2_toast_content_wrapper .af2_toast_icon {
+    background: var(--af2-support-color-orange-background);
+    color:  var(--af2-support-color-orange);
+}
+.af2_toast.af2_info .af2_toast_content_wrapper .af2_toast_icon {
+    background: var(--af2-support-color-blue-background);
+    color:  var(--af2-support-color-blue);
+}
+.af2_toast_text {
+    width: 250px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+}
+
+.af2_toast.show {
+    display: block;
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+}
+.af2_toast.out {
+    display: block;
+    -webkit-animation: fadeout 0.5s;
+    animation: fadeout 0.5s;
+}
+
+@keyframes fadein {
+    from {
+      margin-left: 100%;
+      opacity: 0%;
+    }
+  
+    to {
+      margin-left: 0%;
+      opacity: 100%;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        margin-left: 0%;
+        opacity: 100%;
+    }
+
+    99% {
+        margin-left: 100%;
+        opacity: 0%;
+    }
+  
+    to {
+        margin-left: 100%;
+        opacity: 0%;
+        display: none;
+    }
+}
