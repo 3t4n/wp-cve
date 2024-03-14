@@ -1,0 +1,271 @@
+/* separator */
+
+#customize-controls .clp-customizer-separator-heading {
+    margin: 0 -12px;
+    border-left: 0;
+    border-right: 0;
+    padding: 12px 0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #4c4c4c;
+    background-color: #bfbfbf;
+    text-align: center;
+}
+
+/* reload icon */
+
+.reset__default {
+    display: inline-block;
+    position: relative;
+    height: 1.2em;
+    padding: 0.15em;
+    width: 1em;
+    margin-right: 10px;
+}
+
+.reset__default::before {
+    content: '';
+    display: inline-block;
+    border-color: transparent #0085ba #0085ba #0085ba;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: .125em;
+    height: 1em;
+    width: 1em;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.reset__default::after {
+    content: '';
+    display: inline-block;
+    border-color: transparent transparent transparent #0085ba;
+    border-style: solid;
+    border-width: .25em 0 .25em .5em;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+}
+
+/* Range Control */
+
+.range-slider {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.range-slider__range {
+    flex: 1;
+    border-radius: 5px;
+    background: #d7dcdf;
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+
+.range-slider__value {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 3px;
+    background: #0085ba;
+    padding: 3px 5px;
+    margin-left: 5px;
+}
+
+/* Toggle Control */
+
+input[type=checkbox].tgl {
+    display: none;
+}
+
+input[type=checkbox].tgl, input[type=checkbox].tgl:after, input[type=checkbox].tgl:before, input[type=checkbox].tgl *, input[type=checkbox].tgl *:after, input[type=checkbox].tgl *:before, input[type=checkbox].tgl+.tgl-btn {
+    box-sizing: border-box;
+}
+
+input[type=checkbox].tgl::-moz-selection, input[type=checkbox].tgl:after::-moz-selection, input[type=checkbox].tgl:before::-moz-selection, input[type=checkbox].tgl *::-moz-selection, input[type=checkbox].tgl *:after::-moz-selection, input[type=checkbox].tgl *:before::-moz-selection, input[type=checkbox].tgl+.tgl-btn::-moz-selection {
+    background: none;
+}
+
+input[type=checkbox].tgl::selection, input[type=checkbox].tgl:after::selection, input[type=checkbox].tgl:before::selection, input[type=checkbox].tgl *::selection, input[type=checkbox].tgl *:after::selection, input[type=checkbox].tgl *:before::selection, input[type=checkbox].tgl+.tgl-btn::selection {
+    background: none;
+}
+
+input[type=checkbox].tgl+.tgl-btn {
+    outline: 0;
+    display: block;
+    width: 3em;
+    height: 1.5em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type=checkbox].tgl+.tgl-btn:after, input[type=checkbox].tgl+.tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+}
+
+input[type=checkbox].tgl+.tgl-btn:after {
+    left: 0;
+}
+
+input[type=checkbox].tgl+.tgl-btn:before {
+    display: none;
+}
+
+input[type=checkbox].tgl:checked+.tgl-btn:after {
+    left: 50%;
+}
+
+input[type=checkbox].tgl-toggle+.tgl-btn {
+    background: #fbfbfb;
+    border-radius: 2em;
+    padding: 4px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    border: 1px solid #bfbfbf;
+}
+
+input[type=checkbox].tgl-toggle+.tgl-btn:after {
+    border-radius: 2em;
+    background: #bfbfbf;
+    -webkit-transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+    transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+}
+
+input[type=checkbox].tgl-toggle+.tgl-btn:hover:after {
+    will-change: padding;
+}
+
+input[type=checkbox].tgl-toggle+.tgl-btn:active {
+    box-shadow: inset 0 0 0 2em #e8eae9;
+}
+
+input[type=checkbox].tgl-toggle+.tgl-btn:active:after {
+    padding-right: .8em;
+}
+
+input[type=checkbox].tgl-toggle:checked+.tgl-btn:active {
+    box-shadow: none;
+}
+
+input[type=checkbox].tgl-toggle:checked+.tgl-btn:active:after {
+    margin-left: -.8em;
+}
+
+input[type=checkbox].tgl-toggle:checked+.tgl-btn {
+    border: 1px solid #0085ba;
+}
+
+input[type=checkbox].tgl-toggle:checked+.tgl-btn:after {
+    background: #0085ba;
+}
+
+/* templates */
+.clp-template-thumbnail {
+    position: relative;
+    border: 2px solid white;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.clp-template-thumbnail:hover .clp-template-overlay {
+    opacity: 1;
+}
+
+.clp-template-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.clp-template-overlay-text {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#customize-control-clp_css>.CodeMirror-wrap {
+    height: calc(50vh);
+}
+
+.clp-customizer-btn {
+    width: 100%;
+    height: 50px;
+    background: #0085ba;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    margin-bottom: 10px;
+}
+
+.clp-customizer-btn:hover {
+    background-color: #0071a1;
+}
+
+.clp-customizer-btn.btn-warning {
+    background-color: #f7007d;
+}
+.clp-customizer-btn.btn-warning:hover {
+    background-color: #bb0360;
+}
+
+/* #accordion-section-clp_language_switcher h3.accordion-section-title:before,
+#accordion-section-clp_social_icons h3.accordion-section-title:before {
+    content: 'PRO';
+    position: absolute;
+    right: 40px;
+} */
+
+.control-section-clp-pro h3.wp-ui-highlight {
+    margin: 0;
+    margin-top: 10px;
+    padding: 1px 0;
+    border: 0;
+    position: relative;
+    background: none;
+}
+.control-section-clp-pro a.wp-ui-text-highlight {
+    display: block;
+    padding: 11px 10px 12px 14px;
+    text-decoration: none;
+    background: #4CBEEB;
+    color: white;
+}
