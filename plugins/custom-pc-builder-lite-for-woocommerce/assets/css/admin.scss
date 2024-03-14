@@ -1,0 +1,275 @@
+
+
+.nkcpcb-container{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .pre-saving{
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    top: 0;
+    background: rgb(243 243 243 / 86%) url(../images/loading.svg) center no-repeat;
+    display: none;
+  }
+  .pop-alert{
+    position: fixed;
+    right: 5px;
+    bottom: 50%;
+    min-width: 130px;
+    color: #fff;
+    height: 30px;
+    box-shadow: 2px 2px 10px #00000038;
+    padding: 10px 7px 10px 50px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    &.success{
+      background-color: #4ab565;
+      &:before {
+        background-color: #fff;
+        -webkit-mask: url("../images/right.svg"); mask: url("../images/right.svg");
+      }
+    }
+    &.error{
+      background-color: #d63838;
+      &:before {
+        content:'';
+        -webkit-mask: url("../images/error.svg");
+        mask: url("../images/error.svg");
+      }
+    }
+    &:before{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 10px;
+        content:'';
+        background-color: #fff;
+    }
+  }
+  .nkcpcb-left{
+    padding: 0 15px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 70%;
+    max-width: 70%;
+    @media (max-width: 767px) {
+      max-width: 100%;
+      flex: 100%;
+      margin: 10px 0;
+    }
+  }
+  .nkcpcb-right{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 26%;
+    max-width: 30%;
+    @media (max-width: 767px) {
+      max-width: 100%;
+      flex: 100%;
+      margin: 10px 0;
+    }
+  }
+  .nkcpcb-inner{
+    padding: 20px;
+    background: #fff;
+    box-shadow: 3px 3px 10px #00000008;
+    margin-bottom: 15px;
+  }
+  .nkcpcb-form-group{
+    img{
+      width: 150px;
+      height: auto;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+  }
+  .nk-setting-form{
+    display: block;
+    input[type="text"]{
+      width: 100%;
+      height: 35px;
+    }
+    .notice {
+      font-size: 13px;
+      margin: 5px 0;
+    }
+  }
+  .nkcpcb-add{
+    button{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+      height: 40px;
+      border: 1px dashed #ccc;
+      margin-top: 30px;
+      &:hover{
+        cursor: pointer;
+        background: #0b97c6;
+        color: #fff;
+        svg{
+          fill: #fff;
+        }
+      }
+    }
+  }
+  .nkcpcb-list-footer{
+    margin: 30px 0;
+  }
+  .nkcpcb-list-title{
+    display: flex;
+    justify-content: space-around;
+    .form-inline{
+      border: 1px solid #e8e8e8;
+      flex-grow: 1;
+      text-align: center;
+      padding: 7px;
+      font-weight: 700;
+      background: #f2f2f2;
+      max-width:62%;
+      &:first-child{
+        max-width: 70px;
+      }
+      &:nth-child(2){
+        max-width: 325px;
+      }
+      &:last-child{
+        max-width: 50px;
+      }
+    }
+  }
+  .nkcpcb-list{
+    ul{
+      padding: 0;
+      margin: 0;
+      li{
+        display: flex;
+        margin-bottom: -1px;
+        .form-inline{
+          border: 1px solid #e8e8e8;
+          flex-grow: 1;
+          text-align: left;
+          padding: 7px;
+          font-weight: 700;
+          max-width:62%;
+          &:first-child{
+            max-width: 70px;
+            align-items: center;
+            display: flex;
+            text-align: center;
+            span{
+              display: block;
+              width: 100%;
+              text-align: center;
+            }
+          }
+          &:nth-child(2){
+            max-width: 325px;
+          }
+          &:last-child{
+            max-width: 50px;
+          }
+          input,select{
+            width: 100%;
+            height: 35px;
+          }
+          button{
+            &.button-danger{
+              background: #d63838;
+              border: none;
+              border-radius: 3px;
+              color: #fff;
+              height: 34px;
+              display: flex;
+              align-items: center;
+              svg{
+                fill: #fff;
+              }
+            }
+            &:hover{
+              cursor: pointer;
+            }
+          }
+          .attribute-list{
+            ul{
+              li{
+                display: inline-block;
+                margin: 2px;
+                input{
+                  display: none;
+                }
+                label{
+                  border: 1px solid #e8e8e8;
+                }
+                input:checked + label{
+                  border: 1px solid red;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.nkcpcb-setting{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .nk-notice{
+    margin: 2px 0;
+  }
+  .pre-saving{
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    top: 0;
+    background: rgb(243 243 243 / 86%) url(../images/loading.svg) center no-repeat;
+    display: none;
+  }
+  .pop-alert{
+    position: fixed;
+    right: 5px;
+    bottom: 50%;
+    min-width: 130px;
+    color: #fff;
+    height: 30px;
+    box-shadow: 2px 2px 10px #00000038;
+    padding: 10px 7px 10px 50px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    &.success{
+      background-color: #4ab565;
+      &:before {
+        background-color: #fff;
+        -webkit-mask: url("../images/right.svg"); mask: url("../images/right.svg");
+      }
+    }
+    &.error{
+      background-color: #d63838;
+      &:before {
+        content:'';
+        -webkit-mask: url("../images/error.svg");
+        mask: url("../images/error.svg");
+      }
+    }
+    &:before{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: 10px;
+      content:'';
+      background-color: #fff;
+    }
+  }
+}
