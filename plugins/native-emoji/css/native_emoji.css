@@ -1,0 +1,2770 @@
+﻿@charset "utf-8";
+/*
+* Plugin Name Native Emoji
+* Version 3.0
+* Author Daniel Brandenburg
+*/
+
+div#nep_container {
+    position: relative;
+}
+
+div#nep_container div#nep_fake_textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a#nep_call_panel {
+    position: absolute;    
+    display: none;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/nep_sprite.png);
+    background-size: 48px 264px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    z-index: 9999;
+}
+
+a#nep_call_panel.nep_right_bottom {
+    right: 5px;
+    bottom: 5px;
+}
+
+a#nep_call_panel.nep_right_top {
+    right: 5px;
+    top: 5px;
+}
+
+a#nep_call_panel.nep_left_bottom {
+    left: 5px;
+    bottom: 5px;
+}
+
+a#nep_call_panel.nep_left_top {
+    left: 5px;
+    top: 5px;
+}
+
+a#nep_call_panel.nep_light {
+    background-position: -2px -241px;
+}
+
+a#nep_call_panel.nep_dark {
+    background-position: -26px -241px;
+}
+
+div#nep_panel_container {
+    position: absolute;
+    display: none;
+    width: 249px;
+    height: 276px;    
+    z-index: 9999;
+}
+
+div#nep_panel_container.nep_right_bottom,
+div#nep_panel_container.nep_left_bottom {
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 2px 8px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 2px 8px 0px rgba(50, 50, 50, 0.75);
+}
+
+div#nep_panel_container.nep_right_top,
+div#nep_panel_container.nep_left_top {
+    -webkit-box-shadow: 0px -2px 8px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px -2px 8px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px -2px 8px 0px rgba(50, 50, 50, 0.75);
+}
+
+div#nep_panel_container.nep_right_bottom {
+    right: 0;
+    bottom: -276px;
+}
+
+div#nep_panel_container.nep_right_top {
+    right: 0;
+    top: -276px;
+}
+
+div#nep_panel_container.nep_left_bottom {
+    left: 0;
+    bottom: -276px;
+}
+
+div#nep_panel_container.nep_left_top {
+    left: 0;
+    top: -276px;
+}
+
+div#nep_panel_container > div.nep_categories {
+    float: left;
+    width: 30px;
+    height: 246px;
+    overflow: hidden;    
+}
+
+div#nep_panel_container.nep_light > div.nep_categories {
+    background: #f5f5f5;
+}
+
+div#nep_panel_container.nep_dark > div.nep_categories {
+    background: #1d2127;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_scroll {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 3px;
+    cursor: pointer;
+    background-image: url(../img/nep_sprite.png);
+    text-decoration: none;
+    outline: none;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_frequently_used {
+    background-position: -24px 0;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_frequently_used.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_frequently_used:hover {
+    background-position: 0 0;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_smileys_people {
+    background-position: -24px -24px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_smileys_people.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_smileys_people:hover {
+    background-position: 0 -24px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_animals_nature {
+    background-position: -24px -48px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_animals_nature.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_animals_nature:hover {
+    background-position: 0 -48px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_food_drink {
+    background-position: -24px -72px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_food_drink.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_food_drink:hover {
+    background-position: 0 -72px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_activity_sports {
+    background-position: -24px -96px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_activity_sports.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_activity_sports:hover {
+    background-position: 0 -96px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_travel_places {
+    background-position: -24px -120px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_travel_places.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_travel_places:hover {
+    background-position: 0 -120px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_objects {
+    background-position: -24px -144px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_objects.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_objects:hover {
+    background-position: 0 -144px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_symbols {
+    background-position: -24px -168px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_symbols.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_symbols:hover {
+    background-position: 0 -168px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_flags {
+    background-position: -24px -192px;
+}
+
+div#nep_panel_container > div.nep_categories a.nep_flags.nep_active,
+div#nep_panel_container > div.nep_categories a.nep_flags:hover {
+    background-position: 0 -192px;
+}
+
+div#nep_panel_container > div.nep_list_picker {
+    float: left;
+    width: 219px;
+    height: 246px;
+    padding: 0 10px;
+    overflow: auto;
+    -webkit-box-sizing: border-box;
+    moz-box-sizing: border-box;
+    box-sizing: border-box;    
+}
+
+div#nep_panel_container.nep_light > div.nep_list_picker { 
+    background: #FCFCFC;
+}
+
+div#nep_panel_container.nep_dark > div.nep_list_picker { 
+    background: #21262d;
+}
+
+div#nep_panel_container > div.nep_list_picker div.nep_category {
+    font-size: 0;
+}
+
+div#nep_panel_container > div.nep_list_picker h3.nep_category_title {    
+    font-size: 14px;
+    line-height: 14px;
+    padding: 6px 0;
+    margin: 6px 0;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: sticky;
+    top: 0;
+}
+
+div#nep_panel_container.nep_light > div.nep_list_picker h3.nep_category_title {
+    background: #FCFCFC;
+    border-bottom: 1px solid #CCC;
+    color: #333;
+}
+
+div#nep_panel_container.nep_dark > div.nep_list_picker h3.nep_category_title {
+    background: #21262d;
+    border-bottom: 1px solid #777;
+    color: #f0f0f0;
+}
+
+div#nep_panel_container > div.nep_list_picker a.nep_insert_emoji {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; 
+    -webkit-transition: background-color .3s linear;
+    -moz-transition: background-color .3s linear;
+    transition: background-color .3s linear;
+    text-decoration: none;
+    outline: none;
+}
+
+div#nep_panel_container > div.nep_list_picker a.nep_insert_emoji i {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/emoji_sprite.png);
+    margin: 3px;    
+}
+
+div#nep_panel_container > div.nep_list_picker div:not(#nep_frequently_used) a.nep_tone {
+    display: none;
+}
+
+div#nep_panel_container > div.nep_list_picker div:not(#nep_frequently_used) a.nep_emoji_yellow {
+    display: inline-block;
+}
+
+div#nep_panel_container > div.nep_list_picker a.nep_insert_emoji:hover {
+    background-color: #008ec2;    
+}
+
+div#nep_panel_container > div.nep_tones_picker {
+    clear: both;
+    padding: 5px 10px;    
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    font-size: 0;
+}
+
+div#nep_panel_container.nep_light > div.nep_tones_picker {
+    background: #f5f5f5;
+}
+
+div#nep_panel_container.nep_dark > div.nep_tones_picker {
+    background: #1d2127;
+}
+
+div#nep_panel_container.nep_dark > div.nep_tones_picker span.nep_loading {
+    background-image: url(../img/loader_dark.gif);
+}
+
+div#nep_panel_container.nep_light > div.nep_tones_picker span.nep_loading {
+    background-image: url(../img/loader_light.gif);
+}
+
+div#nep_panel_container > div.nep_tones_picker span.nep_loading {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 20px;
+    height: 20px;    
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_tone_picker {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_tone_picker.nep_active:before {
+    display: block;
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-image: url(../img/nep_sprite.png);
+    background-position: -2px -218px;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_emoji_yellow {
+    background: #ffcc4d;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_emoji_pale {
+    background: #f7dece;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_emoji_cream {
+    background: #f3d2a2;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_emoji_moderate_brown {
+    background: #d5ab88;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_emoji_dark_brown {
+    background: #af7e57;
+}
+
+div#nep_panel_container > div.nep_tones_picker a.nep_emoji_black {
+    background: #7c533e;
+}
+
+div#nep_panel_container > div.nep_tones_picker a#nep_close_panel {
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 3px;
+    cursor: pointer;
+    background-image: url(../img/nep_sprite.png);
+    background-position: -24px -216px;
+    right: 0;
+    top: 0;
+}
+
+
+/* Emojis Icons */
+/* Smileys and People */
+
+#nep_emoji_1f600 i {background-position: 0px 0px;}
+#nep_emoji_1f62c i {background-position: -20px 0px;}
+#nep_emoji_1f601 i {background-position: -40px 0px;}
+#nep_emoji_1f602 i {background-position: -60px 0px;}
+#nep_emoji_1f603 i {background-position: -80px 0px;}
+#nep_emoji_1f604 i {background-position: -100px 0px;}
+#nep_emoji_1f923 i {background-position: -120px 0px;}
+#nep_emoji_1f605 i {background-position: -140px 0px;}
+#nep_emoji_1f606 i {background-position: -160px 0px;}
+#nep_emoji_1f607 i {background-position: -180px 0px;}
+#nep_emoji_1f609 i {background-position: -200px 0px;}
+#nep_emoji_1f60a i {background-position: -220px 0px;}
+#nep_emoji_1f642 i {background-position: -240px 0px;}
+#nep_emoji_1f643 i {background-position: -260px 0px;}
+#nep_emoji_263a i {background-position: -280px 0px;}
+#nep_emoji_1f60b i {background-position: -300px 0px;}
+#nep_emoji_1f60c i {background-position: -320px 0px;}
+#nep_emoji_1f60d i {background-position: -340px 0px;}
+#nep_emoji_1f618 i {background-position: -360px 0px;}
+#nep_emoji_1f617 i {background-position: -380px 0px;}
+#nep_emoji_1f619 i {background-position: -400px 0px;}
+#nep_emoji_1f61a i {background-position: -420px 0px;}
+#nep_emoji_1f92a i {background-position: -440px 0px;}
+#nep_emoji_1f61c i {background-position: -460px 0px;}
+#nep_emoji_1f61d i {background-position: -480px 0px;}
+#nep_emoji_1f61b i {background-position: -500px 0px;}
+#nep_emoji_1f911 i {background-position: -520px 0px;}
+#nep_emoji_1f60e i {background-position: -540px 0px;}
+#nep_emoji_1f913 i {background-position: -560px 0px;}
+#nep_emoji_1f9d0 i {background-position: -580px 0px;}
+#nep_emoji_1f920 i {background-position: 0px -20px;}
+#nep_emoji_1f917 i {background-position: -20px -20px;}
+#nep_emoji_1f921 i {background-position: -40px -20px;}
+#nep_emoji_1f60f i {background-position: -60px -20px;}
+#nep_emoji_1f636 i {background-position: -80px -20px;}
+#nep_emoji_1f610 i {background-position: -100px -20px;}
+#nep_emoji_1f611 i {background-position: -120px -20px;}
+#nep_emoji_1f612 i {background-position: -140px -20px;}
+#nep_emoji_1f644 i {background-position: -160px -20px;}
+#nep_emoji_1f928 i {background-position: -180px -20px;}
+#nep_emoji_1f914 i {background-position: -200px -20px;}
+#nep_emoji_1f92b i {background-position: -220px -20px;}
+#nep_emoji_1f92d i {background-position: -240px -20px;}
+#nep_emoji_1f925 i {background-position: -260px -20px;}
+#nep_emoji_1f633 i {background-position: -280px -20px;}
+#nep_emoji_1f61e i {background-position: -300px -20px;}
+#nep_emoji_1f61f i {background-position: -320px -20px;}
+#nep_emoji_1f620 i {background-position: -340px -20px;}
+#nep_emoji_1f621 i {background-position: -360px -20px;}
+#nep_emoji_1f92c i {background-position: -380px -20px;}
+#nep_emoji_1f614 i {background-position: -400px -20px;}
+#nep_emoji_1f615 i {background-position: -420px -20px;}
+#nep_emoji_1f641 i {background-position: -440px -20px;}
+#nep_emoji_2639 i {background-position: -460px -20px;}
+#nep_emoji_1f623 i {background-position: -480px -20px;}
+#nep_emoji_1f616 i {background-position: -500px -20px;}
+#nep_emoji_1f62b i {background-position: -520px -20px;}
+#nep_emoji_1f629 i {background-position: -540px -20px;}
+#nep_emoji_1f624 i {background-position: -560px -20px;}
+#nep_emoji_1f62e i {background-position: -580px -20px;}
+#nep_emoji_1f631 i {background-position: 0px -40px;}
+#nep_emoji_1f628 i {background-position: -20px -40px;}
+#nep_emoji_1f630 i {background-position: -40px -40px;}
+#nep_emoji_1f62f i {background-position: -60px -40px;}
+#nep_emoji_1f626 i {background-position: -80px -40px;}
+#nep_emoji_1f627 i {background-position: -100px -40px;}
+#nep_emoji_1f622 i {background-position: -120px -40px;}
+#nep_emoji_1f625 i {background-position: -140px -40px;}
+#nep_emoji_1f62a i {background-position: -160px -40px;}
+#nep_emoji_1f924 i {background-position: -180px -40px;}
+#nep_emoji_1f613 i {background-position: -200px -40px;}
+#nep_emoji_1f62d i {background-position: -220px -40px;}
+#nep_emoji_1f929 i {background-position: -240px -40px;}
+#nep_emoji_1f635 i {background-position: -260px -40px;}
+#nep_emoji_1f632 i {background-position: -280px -40px;}
+#nep_emoji_1f92f i {background-position: -300px -40px;}
+#nep_emoji_1f910 i {background-position: -320px -40px;}
+#nep_emoji_1f637 i {background-position: -340px -40px;}
+#nep_emoji_1f915 i {background-position: -360px -40px;}
+#nep_emoji_1f912 i {background-position: -380px -40px;}
+#nep_emoji_1f92e i {background-position: -400px -40px;}
+#nep_emoji_1f922 i {background-position: -420px -40px;}
+#nep_emoji_1f927 i {background-position: -440px -40px;}
+#nep_emoji_1f634 i {background-position: -460px -40px;}
+#nep_emoji_1f4a4 i {background-position: -480px -40px;}
+#nep_emoji_1f608 i {background-position: -500px -40px;}
+#nep_emoji_1f47f i {background-position: -520px -40px;}
+#nep_emoji_1f479 i {background-position: -540px -40px;}
+#nep_emoji_1f47a i {background-position: -560px -40px;}
+#nep_emoji_1f4a9 i {background-position: -580px -40px;}
+#nep_emoji_1f47b i {background-position: 0px -60px;}
+#nep_emoji_1f480 i {background-position: -20px -60px;}
+#nep_emoji_2620 i {background-position: -40px -60px;}
+#nep_emoji_1f47d i {background-position: -60px -60px;}
+#nep_emoji_1f916 i {background-position: -80px -60px;}
+#nep_emoji_1f383 i {background-position: -100px -60px;}
+#nep_emoji_1f63a i {background-position: -120px -60px;}
+#nep_emoji_1f638 i {background-position: -140px -60px;}
+#nep_emoji_1f639 i {background-position: -160px -60px;}
+#nep_emoji_1f63b i {background-position: -180px -60px;}
+#nep_emoji_1f63c i {background-position: -200px -60px;}
+#nep_emoji_1f63d i {background-position: -220px -60px;}
+#nep_emoji_1f640 i {background-position: -240px -60px;}
+#nep_emoji_1f63f i {background-position: -260px -60px;}
+#nep_emoji_1f63e i {background-position: -280px -60px;}
+#nep_emoji_1f450 i {background-position: -300px -60px;}
+#nep_emoji_1f932 i {background-position: -320px -60px;}
+#nep_emoji_1f64c i {background-position: -340px -60px;}
+#nep_emoji_1f44f i {background-position: -360px -60px;}
+#nep_emoji_1f64f i {background-position: -380px -60px;}
+#nep_emoji_1f450-1f3fb i {background-position: -400px -60px;}
+#nep_emoji_1f932-1f3fb i {background-position: -420px -60px;}
+#nep_emoji_1f64c-1f3fb i {background-position: -440px -60px;}
+#nep_emoji_1f44f-1f3fb i {background-position: -460px -60px;}
+#nep_emoji_1f64f-1f3fb i {background-position: -480px -60px;}
+#nep_emoji_1f450-1f3fc i {background-position: -500px -60px;}
+#nep_emoji_1f932-1f3fc i {background-position: -520px -60px;}
+#nep_emoji_1f64c-1f3fc i {background-position: -540px -60px;}
+#nep_emoji_1f44f-1f3fc i {background-position: -560px -60px;}
+#nep_emoji_1f64f-1f3fc i {background-position: -580px -60px;}
+#nep_emoji_1f450-1f3fd i {background-position: 0px -80px;}
+#nep_emoji_1f932-1f3fd i {background-position: -20px -80px;}
+#nep_emoji_1f64c-1f3fd i {background-position: -40px -80px;}
+#nep_emoji_1f44f-1f3fd i {background-position: -60px -80px;}
+#nep_emoji_1f64f-1f3fd i {background-position: -80px -80px;}
+#nep_emoji_1f450-1f3fe i {background-position: -100px -80px;}
+#nep_emoji_1f932-1f3fe i {background-position: -120px -80px;}
+#nep_emoji_1f64c-1f3fe i {background-position: -140px -80px;}
+#nep_emoji_1f44f-1f3fe i {background-position: -160px -80px;}
+#nep_emoji_1f64f-1f3fe i {background-position: -180px -80px;}
+#nep_emoji_1f450-1f3ff i {background-position: -200px -80px;}
+#nep_emoji_1f932-1f3ff i {background-position: -220px -80px;}
+#nep_emoji_1f64c-1f3ff i {background-position: -240px -80px;}
+#nep_emoji_1f44f-1f3ff i {background-position: -260px -80px;}
+#nep_emoji_1f64f-1f3ff i {background-position: -280px -80px;}
+#nep_emoji_1f91d i {background-position: -300px -80px;}
+#nep_emoji_1f44d i {background-position: -320px -80px;}
+#nep_emoji_1f44e i {background-position: -340px -80px;}
+#nep_emoji_1f44a i {background-position: -360px -80px;}
+#nep_emoji_270a i {background-position: -380px -80px;}
+#nep_emoji_1f91b i {background-position: -400px -80px;}
+#nep_emoji_1f91c i {background-position: -420px -80px;}
+
+#nep_emoji_1f91e i {background-position: -440px -80px;}
+#nep_emoji_270c i {background-position: -460px -80px;}
+#nep_emoji_1f918 i {background-position: -480px -80px;}
+#nep_emoji_1f91f i {background-position: -500px -80px;}
+#nep_emoji_1f44c i {background-position: -520px -80px;}
+#nep_emoji_1f448 i {background-position: -540px -80px;}
+#nep_emoji_1f449 i {background-position: -560px -80px;}
+#nep_emoji_1f446 i {background-position: -580px -80px;}
+#nep_emoji_1f447 i {background-position: 0px -100px;}
+#nep_emoji_261d i {background-position: -20px -100px;}
+#nep_emoji_270b i {background-position: -40px -100px;}
+#nep_emoji_1f91a i {background-position: -60px -100px;}
+#nep_emoji_1f590 i {background-position: -80px -100px;}
+#nep_emoji_1f596 i {background-position: -100px -100px;}
+#nep_emoji_1f44b i {background-position: -120px -100px;}
+#nep_emoji_1f919 i {background-position: -140px -100px;}
+#nep_emoji_1f4aa i {background-position: -160px -100px;}
+#nep_emoji_1f595 i {background-position: -180px -100px;}
+#nep_emoji_270d i {background-position: -200px -100px;}
+#nep_emoji_1f933 i {background-position: -220px -100px;}
+#nep_emoji_1f485 i {background-position: -240px -100px;}
+#nep_emoji_1f44d-1f3fb i {background-position: -260px -100px;}
+#nep_emoji_1f44e-1f3fb i {background-position: -280px -100px;}
+#nep_emoji_1f44a-1f3fb i {background-position: -300px -100px;}
+#nep_emoji_270a-1f3fb i {background-position: -320px -100px;}
+#nep_emoji_1f91b-1f3fb i {background-position: -340px -100px;}
+#nep_emoji_1f91c-1f3fb i {background-position: -360px -100px;}
+#nep_emoji_1f91e-1f3fb i {background-position: -380px -100px;}
+#nep_emoji_270c-1f3fb i {background-position: -400px -100px;}
+#nep_emoji_1f918-1f3fb i {background-position: -420px -100px;}
+#nep_emoji_1f91f-1f3fb i {background-position: -440px -100px;}
+#nep_emoji_1f44c-1f3fb i {background-position: -460px -100px;}
+#nep_emoji_1f448-1f3fb i {background-position: -480px -100px;}
+#nep_emoji_1f449-1f3fb i {background-position: -500px -100px;}
+#nep_emoji_1f446-1f3fb i {background-position: -520px -100px;}
+#nep_emoji_1f447-1f3fb i {background-position: -540px -100px;}
+#nep_emoji_261d-1f3fb i {background-position: -560px -100px;}
+#nep_emoji_270b-1f3fb i {background-position: -580px -100px;}
+#nep_emoji_1f91a-1f3fb i {background-position: 0px -120px;}
+#nep_emoji_1f590-1f3fb i {background-position: -20px -120px;}
+#nep_emoji_1f596-1f3fb i {background-position: -40px -120px;}
+#nep_emoji_1f44b-1f3fb i {background-position: -60px -120px;}
+#nep_emoji_1f919-1f3fb i {background-position: -80px -120px;}
+#nep_emoji_1f4aa-1f3fb i {background-position: -100px -120px;}
+#nep_emoji_1f595-1f3fb i {background-position: -120px -120px;}
+#nep_emoji_270d-1f3fb i {background-position: -140px -120px;}
+#nep_emoji_1f933-1f3fb i {background-position: -160px -120px;}
+#nep_emoji_1f485-1f3fb i {background-position: -180px -120px;}
+#nep_emoji_1f44d-1f3fc i {background-position: -200px -120px;}
+#nep_emoji_1f44e-1f3fc i {background-position: -220px -120px;}
+#nep_emoji_1f44a-1f3fc i {background-position: -240px -120px;}
+#nep_emoji_270a-1f3fc i {background-position: -260px -120px;}
+#nep_emoji_1f91b-1f3fc i {background-position: -280px -120px;}
+#nep_emoji_1f91c-1f3fc i {background-position: -300px -120px;}
+#nep_emoji_1f91e-1f3fc i {background-position: -320px -120px;}
+#nep_emoji_270c-1f3fc i {background-position: -340px -120px;}
+#nep_emoji_1f918-1f3fc i {background-position: -360px -120px;}
+#nep_emoji_1f91f-1f3fc i {background-position: -380px -120px;}
+#nep_emoji_1f44c-1f3fc i {background-position: -400px -120px;}
+#nep_emoji_1f448-1f3fc i {background-position: -420px -120px;}
+#nep_emoji_1f449-1f3fc i {background-position: -440px -120px;}
+#nep_emoji_1f446-1f3fc i {background-position: -460px -120px;}
+#nep_emoji_1f447-1f3fc i {background-position: -480px -120px;}
+#nep_emoji_261d-1f3fc i {background-position: -500px -120px;}
+#nep_emoji_270b-1f3fc i {background-position: -520px -120px;}
+#nep_emoji_1f91a-1f3fc i {background-position: -540px -120px;}
+#nep_emoji_1f590-1f3fc i {background-position: -560px -120px;}
+#nep_emoji_1f596-1f3fc i {background-position: -580px -120px;}
+#nep_emoji_1f44b-1f3fc i {background-position: 0px -140px;}
+#nep_emoji_1f919-1f3fc i {background-position: -20px -140px;}
+#nep_emoji_1f4aa-1f3fc i {background-position: -40px -140px;}
+#nep_emoji_1f595-1f3fc i {background-position: -60px -140px;}
+#nep_emoji_270d-1f3fc i {background-position: -80px -140px;}
+#nep_emoji_1f933-1f3fc i {background-position: -100px -140px;}
+#nep_emoji_1f485-1f3fc i {background-position: -120px -140px;}
+#nep_emoji_1f44d-1f3fd i {background-position: -140px -140px;}
+#nep_emoji_1f44e-1f3fd i {background-position: -160px -140px;}
+#nep_emoji_1f44a-1f3fd i {background-position: -180px -140px;}
+#nep_emoji_270a-1f3fd i {background-position: -200px -140px;}
+#nep_emoji_1f91b-1f3fd i {background-position: -220px -140px;}
+#nep_emoji_1f91c-1f3fd i {background-position: -240px -140px;}
+#nep_emoji_1f91e-1f3fd i {background-position: -260px -140px;}
+#nep_emoji_270c-1f3fd i {background-position: -280px -140px;}
+#nep_emoji_1f918-1f3fd i {background-position: -300px -140px;}
+#nep_emoji_1f91f-1f3fd i {background-position: -320px -140px;}
+#nep_emoji_1f44c-1f3fd i {background-position: -340px -140px;}
+#nep_emoji_1f448-1f3fd i {background-position: -360px -140px;}
+#nep_emoji_1f449-1f3fd i {background-position: -380px -140px;}
+#nep_emoji_1f446-1f3fd i {background-position: -400px -140px;}
+#nep_emoji_1f447-1f3fd i {background-position: -420px -140px;}
+#nep_emoji_261d-1f3fd i {background-position: -440px -140px;}
+#nep_emoji_270b-1f3fd i {background-position: -460px -140px;}
+#nep_emoji_1f91a-1f3fd i {background-position: -480px -140px;}
+#nep_emoji_1f590-1f3fd i {background-position: -500px -140px;}
+#nep_emoji_1f596-1f3fd i {background-position: -520px -140px;}
+#nep_emoji_1f44b-1f3fd i {background-position: -540px -140px;}
+#nep_emoji_1f919-1f3fd i {background-position: -560px -140px;}
+#nep_emoji_1f4aa-1f3fd i {background-position: -580px -140px;}
+#nep_emoji_1f595-1f3fd i {background-position: 0px -160px;}
+#nep_emoji_270d-1f3fd i {background-position: -20px -160px;}
+#nep_emoji_1f933-1f3fd i {background-position: -40px -160px;}
+#nep_emoji_1f485-1f3fd i {background-position: -60px -160px;}
+#nep_emoji_1f44d-1f3fe i {background-position: -80px -160px;}
+#nep_emoji_1f44e-1f3fe i {background-position: -100px -160px;}
+#nep_emoji_1f44a-1f3fe i {background-position: -120px -160px;}
+#nep_emoji_270a-1f3fe i {background-position: -140px -160px;}
+#nep_emoji_1f91b-1f3fe i {background-position: -160px -160px;}
+#nep_emoji_1f91c-1f3fe i {background-position: -180px -160px;}
+#nep_emoji_1f91e-1f3fe i {background-position: -200px -160px;}
+#nep_emoji_270c-1f3fe i {background-position: -220px -160px;}
+#nep_emoji_1f918-1f3fe i {background-position: -240px -160px;}
+#nep_emoji_1f91f-1f3fe i {background-position: -260px -160px;}
+#nep_emoji_1f44c-1f3fe i {background-position: -280px -160px;}
+#nep_emoji_1f448-1f3fe i {background-position: -300px -160px;}
+#nep_emoji_1f449-1f3fe i {background-position: -320px -160px;}
+#nep_emoji_1f446-1f3fe i {background-position: -340px -160px;}
+#nep_emoji_1f447-1f3fe i {background-position: -360px -160px;}
+#nep_emoji_261d-1f3fe i {background-position: -380px -160px;}
+#nep_emoji_270b-1f3fe i {background-position: -400px -160px;}
+#nep_emoji_1f91a-1f3fe i {background-position: -420px -160px;}
+#nep_emoji_1f590-1f3fe i {background-position: -440px -160px;}
+#nep_emoji_1f596-1f3fe i {background-position: -460px -160px;}
+#nep_emoji_1f44b-1f3fe i {background-position: -480px -160px;}
+#nep_emoji_1f919-1f3fe i {background-position: -500px -160px;}
+#nep_emoji_1f4aa-1f3fe i {background-position: -520px -160px;}
+#nep_emoji_1f595-1f3fe i {background-position: -540px -160px;}
+#nep_emoji_270d-1f3fe i {background-position: -560px -160px;}
+#nep_emoji_1f933-1f3fe i {background-position: -580px -160px;}
+#nep_emoji_1f485-1f3fe i {background-position: 0px -180px;}
+#nep_emoji_1f44d-1f3ff i {background-position: -20px -180px;}
+#nep_emoji_1f44e-1f3ff i {background-position: -40px -180px;}
+#nep_emoji_1f44a-1f3ff i {background-position: -60px -180px;}
+#nep_emoji_270a-1f3ff i {background-position: -80px -180px;}
+#nep_emoji_1f91b-1f3ff i {background-position: -100px -180px;}
+#nep_emoji_1f91c-1f3ff i {background-position: -120px -180px;}
+#nep_emoji_1f91e-1f3ff i {background-position: -140px -180px;}
+#nep_emoji_270c-1f3ff i {background-position: -160px -180px;}
+#nep_emoji_1f918-1f3ff i {background-position: -180px -180px;}
+#nep_emoji_1f91f-1f3ff i {background-position: -200px -180px;}
+#nep_emoji_1f44c-1f3ff i {background-position: -220px -180px;}
+#nep_emoji_1f448-1f3ff i {background-position: -240px -180px;}
+#nep_emoji_1f449-1f3ff i {background-position: -260px -180px;}
+#nep_emoji_1f446-1f3ff i {background-position: -280px -180px;}
+#nep_emoji_1f447-1f3ff i {background-position: -300px -180px;}
+#nep_emoji_261d-1f3ff i {background-position: -320px -180px;}
+#nep_emoji_270b-1f3ff i {background-position: -340px -180px;}
+#nep_emoji_1f91a-1f3ff i {background-position: -360px -180px;}
+#nep_emoji_1f590-1f3ff i {background-position: -380px -180px;}
+#nep_emoji_1f596-1f3ff i {background-position: -400px -180px;}
+#nep_emoji_1f44b-1f3ff i {background-position: -420px -180px;}
+#nep_emoji_1f919-1f3ff i {background-position: -440px -180px;}
+#nep_emoji_1f4aa-1f3ff i {background-position: -460px -180px;}
+#nep_emoji_1f595-1f3ff i {background-position: -480px -180px;}
+#nep_emoji_270d-1f3ff i {background-position: -500px -180px;}
+#nep_emoji_1f933-1f3ff i {background-position: -520px -180px;}
+#nep_emoji_1f485-1f3ff i {background-position: -540px -180px;}
+#nep_emoji_1f444 i {background-position: -560px -180px;}
+#nep_emoji_1f445 i {background-position: -580px -180px;}
+#nep_emoji_1f442 i {background-position: 0px -200px;}
+#nep_emoji_1f443 i {background-position: -20px -200px;}
+#nep_emoji_1f442-1f3fb i {background-position: -40px -200px;}
+#nep_emoji_1f443-1f3fb i {background-position: -60px -200px;}
+#nep_emoji_1f442-1f3fc i {background-position: -80px -200px;}
+#nep_emoji_1f443-1f3fc i {background-position: -100px -200px;}
+#nep_emoji_1f442-1f3fd i {background-position: -120px -200px;}
+#nep_emoji_1f443-1f3fd i {background-position: -140px -200px;}
+#nep_emoji_1f442-1f3fe i {background-position: -160px -200px;}
+#nep_emoji_1f443-1f3fe i {background-position: -180px -200px;}
+#nep_emoji_1f442-1f3ff i {background-position: -200px -200px;}
+#nep_emoji_1f443-1f3ff i {background-position: -220px -200px;}
+#nep_emoji_1f441 i {background-position: -240px -200px;}
+#nep_emoji_1f440 i {background-position: -260px -200px;}
+#nep_emoji_1f9e0 i {background-position: -280px -200px;}
+#nep_emoji_1f464 i {background-position: -300px -200px;}
+#nep_emoji_1f465 i {background-position: -320px -200px;}
+#nep_emoji_1f5e3 i {background-position: -340px -200px;}
+#nep_emoji_1f476 i {background-position: -360px -200px;}
+#nep_emoji_1f9d2 i {background-position: -380px -200px;}
+#nep_emoji_1f466 i {background-position: -400px -200px;}
+#nep_emoji_1f467 i {background-position: -420px -200px;}
+#nep_emoji_1f9d1 i {background-position: -440px -200px;}
+#nep_emoji_1f468 i {background-position: -460px -200px;}
+#nep_emoji_1f9d4 i {background-position: -480px -200px;}
+#nep_emoji_1f471 i {background-position: -500px -200px;}
+#nep_emoji_1f469 i {background-position: -520px -200px;}
+#nep_emoji_1f471-200d-2640-fe0f i {background-position: -540px -200px;}
+#nep_emoji_1f9d3 i {background-position: -560px -200px;}
+#nep_emoji_1f474 i {background-position: -580px -200px;}
+#nep_emoji_1f475 i {background-position: 0px -220px;}
+#nep_emoji_1f472 i {background-position: -20px -220px;}
+#nep_emoji_1f473-200d-2640-fe0f i {background-position: -40px -220px;}
+#nep_emoji_1f473 i {background-position: -60px -220px;}
+#nep_emoji_1f9d5 i {background-position: -80px -220px;}
+#nep_emoji_1f46e-200d-2640-fe0f i {background-position: -100px -220px;}
+#nep_emoji_1f46e i {background-position: -120px -220px;}
+#nep_emoji_1f469-200d-1f692 i {background-position: -140px -220px;}
+#nep_emoji_1f468-200d-1f692 i {background-position: -160px -220px;}
+#nep_emoji_1f477-200d-2640-fe0f i {background-position: -180px -220px;}
+#nep_emoji_1f477 i {background-position: -200px -220px;}
+#nep_emoji_1f469-200d-1f3ed i {background-position: -220px -220px;}
+#nep_emoji_1f468-200d-1f3ed i {background-position: -240px -220px;}
+#nep_emoji_1f469-200d-1f527 i {background-position: -260px -220px;}
+#nep_emoji_1f468-200d-1f527 i {background-position: -280px -220px;}
+#nep_emoji_1f469-200d-1f33e i {background-position: -300px -220px;}
+#nep_emoji_1f468-200d-1f33e i {background-position: -320px -220px;}
+#nep_emoji_1f469-200d-1f373 i {background-position: -340px -220px;}
+#nep_emoji_1f468-200d-1f373 i {background-position: -360px -220px;}
+#nep_emoji_1f476-1f3fb i {background-position: -380px -220px;}
+#nep_emoji_1f9d2-1f3fb i {background-position: -400px -220px;}
+#nep_emoji_1f466-1f3fb i {background-position: -420px -220px;}
+#nep_emoji_1f467-1f3fb i {background-position: -440px -220px;}
+#nep_emoji_1f9d1-1f3fb i {background-position: -460px -220px;}
+#nep_emoji_1f468-1f3fb i {background-position: -480px -220px;}
+#nep_emoji_1f9d4-1f3fb i {background-position: -500px -220px;}
+#nep_emoji_1f471-1f3fb i {background-position: -520px -220px;}
+#nep_emoji_1f469-1f3fb i {background-position: -540px -220px;}
+#nep_emoji_1f471-1f3fb-200d-2640-fe0f i {background-position: -560px -220px;}
+#nep_emoji_1f9d3-1f3fb i {background-position: -580px -220px;}
+#nep_emoji_1f474-1f3fb i {background-position: 0px -240px;}
+#nep_emoji_1f475-1f3fb i {background-position: -20px -240px;}
+#nep_emoji_1f472-1f3fb i {background-position: -40px -240px;}
+#nep_emoji_1f473-1f3fb-200d-2640-fe0f i {background-position: -60px -240px;}
+#nep_emoji_1f473-1f3fb i {background-position: -80px -240px;}
+#nep_emoji_1f9d5-1f3fb i {background-position: -100px -240px;}
+#nep_emoji_1f46e-1f3fb-200d-2640-fe0f i {background-position: -120px -240px;}
+#nep_emoji_1f46e-1f3fb i {background-position: -140px -240px;}
+#nep_emoji_1f469-1f3fb-200d-1f692 i {background-position: -160px -240px;}
+#nep_emoji_1f468-1f3fb-200d-1f692 i {background-position: -180px -240px;}
+#nep_emoji_1f477-1f3fb-200d-2640-fe0f i {background-position: -200px -240px;}
+#nep_emoji_1f477-1f3fb i {background-position: -220px -240px;}
+#nep_emoji_1f469-1f3fb-200d-1f3ed i {background-position: -240px -240px;}
+#nep_emoji_1f468-1f3fb-200d-1f3ed i {background-position: -260px -240px;}
+#nep_emoji_1f469-1f3fb-200d-1f527 i {background-position: -280px -240px;}
+#nep_emoji_1f468-1f3fb-200d-1f527 i {background-position: -300px -240px;}
+#nep_emoji_1f469-1f3fb-200d-1f33e i {background-position: -320px -240px;}
+#nep_emoji_1f468-1f3fb-200d-1f33e i {background-position: -340px -240px;}
+#nep_emoji_1f469-1f3fb-200d-1f373 i {background-position: -360px -240px;}
+#nep_emoji_1f468-1f3fb-200d-1f373 i {background-position: -380px -240px;}
+#nep_emoji_1f476-1f3fc i {background-position: -400px -240px;}
+#nep_emoji_1f9d2-1f3fc i {background-position: -420px -240px;}
+#nep_emoji_1f466-1f3fc i {background-position: -440px -240px;}
+#nep_emoji_1f467-1f3fc i {background-position: -460px -240px;}
+#nep_emoji_1f9d1-1f3fc i {background-position: -480px -240px;}
+#nep_emoji_1f468-1f3fc i {background-position: -500px -240px;}
+#nep_emoji_1f9d4-1f3fc i {background-position: -520px -240px;}
+#nep_emoji_1f471-1f3fc i {background-position: -540px -240px;}
+#nep_emoji_1f469-1f3fc i {background-position: -560px -240px;}
+#nep_emoji_1f471-1f3fc-200d-2640-fe0f i {background-position: -580px -240px;}
+#nep_emoji_1f9d3-1f3fc i {background-position: 0px -260px;}
+#nep_emoji_1f474-1f3fc i {background-position: -20px -260px;}
+#nep_emoji_1f475-1f3fc i {background-position: -40px -260px;}
+#nep_emoji_1f472-1f3fc i {background-position: -60px -260px;}
+#nep_emoji_1f473-1f3fc-200d-2640-fe0f i {background-position: -80px -260px;}
+#nep_emoji_1f473-1f3fc i {background-position: -100px -260px;}
+#nep_emoji_1f9d5-1f3fc i {background-position: -120px -260px;}
+#nep_emoji_1f46e-1f3fc-200d-2640-fe0f i {background-position: -140px -260px;}
+#nep_emoji_1f46e-1f3fc i {background-position: -160px -260px;}
+#nep_emoji_1f469-1f3fc-200d-1f692 i {background-position: -180px -260px;}
+#nep_emoji_1f468-1f3fc-200d-1f692 i {background-position: -200px -260px;}
+#nep_emoji_1f477-1f3fc-200d-2640-fe0f i {background-position: -220px -260px;}
+#nep_emoji_1f477-1f3fc i {background-position: -240px -260px;}
+#nep_emoji_1f469-1f3fc-200d-1f3ed i {background-position: -260px -260px;}
+#nep_emoji_1f468-1f3fc-200d-1f3ed i {background-position: -280px -260px;}
+#nep_emoji_1f469-1f3fc-200d-1f527 i {background-position: -300px -260px;}
+#nep_emoji_1f468-1f3fc-200d-1f527 i {background-position: -320px -260px;}
+#nep_emoji_1f469-1f3fc-200d-1f33e i {background-position: -340px -260px;}
+#nep_emoji_1f468-1f3fc-200d-1f33e i {background-position: -360px -260px;}
+#nep_emoji_1f469-1f3fc-200d-1f373 i {background-position: -380px -260px;}
+#nep_emoji_1f468-1f3fc-200d-1f373 i {background-position: -400px -260px;}
+#nep_emoji_1f476-1f3fd i {background-position: -420px -260px;}
+#nep_emoji_1f9d2-1f3fd i {background-position: -440px -260px;}
+#nep_emoji_1f466-1f3fd i {background-position: -460px -260px;}
+#nep_emoji_1f467-1f3fd i {background-position: -480px -260px;}
+#nep_emoji_1f9d1-1f3fd i {background-position: -500px -260px;}
+#nep_emoji_1f468-1f3fd i {background-position: -520px -260px;}
+#nep_emoji_1f9d4-1f3fd i {background-position: -540px -260px;}
+#nep_emoji_1f471-1f3fd i {background-position: -560px -260px;}
+#nep_emoji_1f469-1f3fd i {background-position: -580px -260px;}
+#nep_emoji_1f471-1f3fd-200d-2640-fe0f i {background-position: 0px -280px;}
+#nep_emoji_1f9d3-1f3fd i {background-position: -20px -280px;}
+#nep_emoji_1f474-1f3fd i {background-position: -40px -280px;}
+#nep_emoji_1f475-1f3fd i {background-position: -60px -280px;}
+#nep_emoji_1f472-1f3fd i {background-position: -80px -280px;}
+#nep_emoji_1f473-1f3fd-200d-2640-fe0f i {background-position: -100px -280px;}
+#nep_emoji_1f473-1f3fd i {background-position: -120px -280px;}
+#nep_emoji_1f9d5-1f3fd i {background-position: -140px -280px;}
+#nep_emoji_1f46e-1f3fd-200d-2640-fe0f i {background-position: -160px -280px;}
+#nep_emoji_1f46e-1f3fd i {background-position: -180px -280px;}
+#nep_emoji_1f469-1f3fd-200d-1f692 i {background-position: -200px -280px;}
+#nep_emoji_1f468-1f3fd-200d-1f692 i {background-position: -220px -280px;}
+#nep_emoji_1f477-1f3fd-200d-2640-fe0f i {background-position: -240px -280px;}
+#nep_emoji_1f477-1f3fd i {background-position: -260px -280px;}
+#nep_emoji_1f469-1f3fd-200d-1f3ed i {background-position: -280px -280px;}
+#nep_emoji_1f468-1f3fd-200d-1f3ed i {background-position: -300px -280px;}
+#nep_emoji_1f469-1f3fd-200d-1f527 i {background-position: -320px -280px;}
+#nep_emoji_1f468-1f3fd-200d-1f527 i {background-position: -340px -280px;}
+#nep_emoji_1f469-1f3fd-200d-1f33e i {background-position: -360px -280px;}
+#nep_emoji_1f468-1f3fd-200d-1f33e i {background-position: -380px -280px;}
+#nep_emoji_1f469-1f3fd-200d-1f373 i {background-position: -400px -280px;}
+#nep_emoji_1f468-1f3fd-200d-1f373 i {background-position: -420px -280px;}
+#nep_emoji_1f476-1f3fe i {background-position: -440px -280px;}
+#nep_emoji_1f9d2-1f3fe i {background-position: -460px -280px;}
+#nep_emoji_1f466-1f3fe i {background-position: -480px -280px;}
+#nep_emoji_1f467-1f3fe i {background-position: -500px -280px;}
+#nep_emoji_1f9d1-1f3fe i {background-position: -520px -280px;}
+#nep_emoji_1f468-1f3fe i {background-position: -540px -280px;}
+#nep_emoji_1f9d4-1f3fe i {background-position: -560px -280px;}
+#nep_emoji_1f471-1f3fe i {background-position: -580px -280px;}
+#nep_emoji_1f469-1f3fe i {background-position: 0px -300px;}
+#nep_emoji_1f471-1f3fe-200d-2640-fe0f i {background-position: -20px -300px;}
+#nep_emoji_1f9d3-1f3fe i {background-position: -40px -300px;}
+#nep_emoji_1f474-1f3fe i {background-position: -60px -300px;}
+#nep_emoji_1f475-1f3fe i {background-position: -80px -300px;}
+#nep_emoji_1f472-1f3fe i {background-position: -100px -300px;}
+#nep_emoji_1f473-1f3fe-200d-2640-fe0f i {background-position: -120px -300px;}
+#nep_emoji_1f473-1f3fe i {background-position: -140px -300px;}
+#nep_emoji_1f9d5-1f3fe i {background-position: -160px -300px;}
+#nep_emoji_1f46e-1f3fe-200d-2640-fe0f i {background-position: -180px -300px;}
+#nep_emoji_1f46e-1f3fe i {background-position: -200px -300px;}
+#nep_emoji_1f469-1f3fe-200d-1f692 i {background-position: -220px -300px;}
+#nep_emoji_1f468-1f3fe-200d-1f692 i {background-position: -240px -300px;}
+#nep_emoji_1f477-1f3fe-200d-2640-fe0f i {background-position: -260px -300px;}
+#nep_emoji_1f477-1f3fe i {background-position: -280px -300px;}
+#nep_emoji_1f469-1f3fe-200d-1f3ed i {background-position: -300px -300px;}
+#nep_emoji_1f468-1f3fe-200d-1f3ed i {background-position: -320px -300px;}
+#nep_emoji_1f469-1f3fe-200d-1f527 i {background-position: -340px -300px;}
+#nep_emoji_1f468-1f3fe-200d-1f527 i {background-position: -360px -300px;}
+#nep_emoji_1f469-1f3fe-200d-1f33e i {background-position: -380px -300px;}
+#nep_emoji_1f468-1f3fe-200d-1f33e i {background-position: -400px -300px;}
+#nep_emoji_1f469-1f3fe-200d-1f373 i {background-position: -420px -300px;}
+#nep_emoji_1f468-1f3fe-200d-1f373 i {background-position: -440px -300px;}
+#nep_emoji_1f476-1f3ff i {background-position: -460px -300px;}
+#nep_emoji_1f9d2-1f3ff i {background-position: -480px -300px;}
+#nep_emoji_1f466-1f3ff i {background-position: -500px -300px;}
+#nep_emoji_1f467-1f3ff i {background-position: -520px -300px;}
+#nep_emoji_1f9d1-1f3ff i {background-position: -540px -300px;}
+#nep_emoji_1f468-1f3ff i {background-position: -560px -300px;}
+#nep_emoji_1f9d4-1f3ff i {background-position: -580px -300px;}
+#nep_emoji_1f471-1f3ff i {background-position: 0px -320px;}
+#nep_emoji_1f469-1f3ff i {background-position: -20px -320px;}
+#nep_emoji_1f471-1f3ff-200d-2640-fe0f i {background-position: -40px -320px;}
+#nep_emoji_1f9d3-1f3ff i {background-position: -60px -320px;}
+#nep_emoji_1f474-1f3ff i {background-position: -80px -320px;}
+#nep_emoji_1f475-1f3ff i {background-position: -100px -320px;}
+#nep_emoji_1f472-1f3ff i {background-position: -120px -320px;}
+#nep_emoji_1f473-1f3ff-200d-2640-fe0f i {background-position: -140px -320px;}
+#nep_emoji_1f473-1f3ff i {background-position: -160px -320px;}
+#nep_emoji_1f9d5-1f3ff i {background-position: -180px -320px;}
+#nep_emoji_1f46e-1f3ff-200d-2640-fe0f i {background-position: -200px -320px;}
+#nep_emoji_1f46e-1f3ff i {background-position: -220px -320px;}
+#nep_emoji_1f469-1f3ff-200d-1f692 i {background-position: -240px -320px;}
+#nep_emoji_1f468-1f3ff-200d-1f692 i {background-position: -260px -320px;}
+#nep_emoji_1f477-1f3ff-200d-2640-fe0f i {background-position: -280px -320px;}
+#nep_emoji_1f477-1f3ff i {background-position: -300px -320px;}
+#nep_emoji_1f469-1f3ff-200d-1f3ed i {background-position: -320px -320px;}
+#nep_emoji_1f468-1f3ff-200d-1f3ed i {background-position: -340px -320px;}
+#nep_emoji_1f469-1f3ff-200d-1f527 i {background-position: -360px -320px;}
+#nep_emoji_1f468-1f3ff-200d-1f527 i {background-position: -380px -320px;}
+#nep_emoji_1f469-1f3ff-200d-1f33e i {background-position: -400px -320px;}
+#nep_emoji_1f468-1f3ff-200d-1f33e i {background-position: -420px -320px;}
+#nep_emoji_1f469-1f3ff-200d-1f373 i {background-position: -440px -320px;}
+#nep_emoji_1f468-1f3ff-200d-1f373 i {background-position: -460px -320px;}
+#nep_emoji_1f469-200d-1f3a4 i {background-position: -480px -320px;}
+#nep_emoji_1f468-200d-1f3a4 i {background-position: -500px -320px;}
+#nep_emoji_1f469-200d-1f3a8 i {background-position: -520px -320px;}
+#nep_emoji_1f468-200d-1f3a8 i {background-position: -540px -320px;}
+#nep_emoji_1f469-200d-1f3eb i {background-position: -560px -320px;}
+#nep_emoji_1f468-200d-1f3eb i {background-position: -580px -320px;}
+#nep_emoji_1f469-200d-1f393 i {background-position: 0px -340px;}
+#nep_emoji_1f468-200d-1f393 i {background-position: -20px -340px;}
+#nep_emoji_1f469-200d-1f4bc i {background-position: -40px -340px;}
+#nep_emoji_1f468-200d-1f4bc i {background-position: -60px -340px;}
+#nep_emoji_1f469-200d-1f4bb i {background-position: -80px -340px;}
+#nep_emoji_1f468-200d-1f4bb i {background-position: -100px -340px;}
+#nep_emoji_1f469-200d-1f52c i {background-position: -120px -340px;}
+#nep_emoji_1f468-200d-1f52c i {background-position: -140px -340px;}
+#nep_emoji_1f469-200d-1f680 i {background-position: -160px -340px;}
+#nep_emoji_1f468-200d-1f680 i {background-position: -180px -340px;}
+#nep_emoji_1f469-200d-2695-fe0f i {background-position: -200px -340px;}
+#nep_emoji_1f468-200d-2695-fe0f i {background-position: -220px -340px;}
+#nep_emoji_1f469-200d-2696-fe0f i {background-position: -240px -340px;}
+#nep_emoji_1f468-200d-2696-fe0f i {background-position: -260px -340px;}
+#nep_emoji_1f469-200d-2708-fe0f i {background-position: -280px -340px;}
+#nep_emoji_1f468-200d-2708-fe0f i {background-position: -300px -340px;}
+#nep_emoji_1f482-200d-2640-fe0f i {background-position: -320px -340px;}
+#nep_emoji_1f482 i {background-position: -340px -340px;}
+#nep_emoji_1f575-fe0f-200d-2640-fe0f i {background-position: -360px -340px;}
+#nep_emoji_1f575 i {background-position: -380px -340px;}
+#nep_emoji_1f385 i {background-position: -400px -340px;}
+#nep_emoji_1f936 i {background-position: -420px -340px;}
+#nep_emoji_1f47c i {background-position: -440px -340px;}
+#nep_emoji_1f478 i {background-position: -460px -340px;}
+#nep_emoji_1f934 i {background-position: -480px -340px;}
+#nep_emoji_1f469-1f3fb-200d-1f3a4 i {background-position: -500px -340px;}
+#nep_emoji_1f468-1f3fb-200d-1f3a4 i {background-position: -520px -340px;}
+#nep_emoji_1f469-1f3fb-200d-1f3a8 i {background-position: -540px -340px;}
+#nep_emoji_1f468-1f3fb-200d-1f3a8 i {background-position: -560px -340px;}
+#nep_emoji_1f469-1f3fb-200d-1f3eb i {background-position: -580px -340px;}
+#nep_emoji_1f468-1f3fb-200d-1f3eb i {background-position: 0px -360px;}
+#nep_emoji_1f469-1f3fb-200d-1f393 i {background-position: -20px -360px;}
+#nep_emoji_1f468-1f3fb-200d-1f393 i {background-position: -40px -360px;}
+#nep_emoji_1f469-1f3fb-200d-1f4bc i {background-position: -60px -360px;}
+#nep_emoji_1f468-1f3fb-200d-1f4bc i {background-position: -80px -360px;}
+#nep_emoji_1f469-1f3fb-200d-1f4bb i {background-position: -100px -360px;}
+#nep_emoji_1f468-1f3fb-200d-1f4bb i {background-position: -120px -360px;}
+#nep_emoji_1f469-1f3fb-200d-1f52c i {background-position: -140px -360px;}
+#nep_emoji_1f468-1f3fb-200d-1f52c i {background-position: -160px -360px;}
+#nep_emoji_1f469-1f3fb-200d-1f680 i {background-position: -180px -360px;}
+#nep_emoji_1f468-1f3fb-200d-1f680 i {background-position: -200px -360px;}
+#nep_emoji_1f469-1f3fb-200d-2695-fe0f i {background-position: -220px -360px;}
+#nep_emoji_1f468-1f3fb-200d-2695-fe0f i {background-position: -240px -360px;}
+#nep_emoji_1f469-1f3fb-200d-2696-fe0f i {background-position: -260px -360px;}
+#nep_emoji_1f468-1f3fb-200d-2696-fe0f i {background-position: -280px -360px;}
+#nep_emoji_1f469-1f3fb-200d-2708-fe0f i {background-position: -300px -360px;}
+#nep_emoji_1f468-1f3fb-200d-2708-fe0f i {background-position: -320px -360px;}
+#nep_emoji_1f482-1f3fb-200d-2640-fe0f i {background-position: -340px -360px;}
+#nep_emoji_1f482-1f3fb i {background-position: -360px -360px;}
+#nep_emoji_1f575-1f3fb-200d-2640-fe0f i {background-position: -380px -360px;}
+#nep_emoji_1f575-1f3fb i {background-position: -400px -360px;}
+#nep_emoji_1f385-1f3fb i {background-position: -420px -360px;}
+#nep_emoji_1f936-1f3fb i {background-position: -440px -360px;}
+#nep_emoji_1f47c-1f3fb i {background-position: -460px -360px;}
+#nep_emoji_1f478-1f3fb i {background-position: -480px -360px;}
+#nep_emoji_1f934-1f3fb i {background-position: -500px -360px;}
+#nep_emoji_1f469-1f3fc-200d-1f3a4 i {background-position: -520px -360px;}
+#nep_emoji_1f468-1f3fc-200d-1f3a4 i {background-position: -540px -360px;}
+#nep_emoji_1f469-1f3fc-200d-1f3a8 i {background-position: -560px -360px;}
+#nep_emoji_1f468-1f3fc-200d-1f3a8 i {background-position: -580px -360px;}
+#nep_emoji_1f469-1f3fc-200d-1f3eb i {background-position: 0px -380px;}
+#nep_emoji_1f468-1f3fc-200d-1f3eb i {background-position: -20px -380px;}
+#nep_emoji_1f469-1f3fc-200d-1f393 i {background-position: -40px -380px;}
+#nep_emoji_1f468-1f3fc-200d-1f393 i {background-position: -60px -380px;}
+#nep_emoji_1f469-1f3fc-200d-1f4bc i {background-position: -80px -380px;}
+#nep_emoji_1f468-1f3fc-200d-1f4bc i {background-position: -100px -380px;}
+#nep_emoji_1f469-1f3fc-200d-1f4bb i {background-position: -120px -380px;}
+#nep_emoji_1f468-1f3fc-200d-1f4bb i {background-position: -140px -380px;}
+#nep_emoji_1f469-1f3fc-200d-1f52c i {background-position: -160px -380px;}
+#nep_emoji_1f468-1f3fc-200d-1f52c i {background-position: -180px -380px;}
+#nep_emoji_1f469-1f3fc-200d-1f680 i {background-position: -200px -380px;}
+#nep_emoji_1f468-1f3fc-200d-1f680 i {background-position: -220px -380px;}
+#nep_emoji_1f469-1f3fc-200d-2695-fe0f i {background-position: -240px -380px;}
+#nep_emoji_1f468-1f3fc-200d-2695-fe0f i {background-position: -260px -380px;}
+#nep_emoji_1f469-1f3fc-200d-2696-fe0f i {background-position: -280px -380px;}
+#nep_emoji_1f468-1f3fc-200d-2696-fe0f i {background-position: -300px -380px;}
+#nep_emoji_1f469-1f3fc-200d-2708-fe0f i {background-position: -320px -380px;}
+#nep_emoji_1f468-1f3fc-200d-2708-fe0f i {background-position: -340px -380px;}
+#nep_emoji_1f482-1f3fc-200d-2640-fe0f i {background-position: -360px -380px;}
+#nep_emoji_1f482-1f3fc i {background-position: -380px -380px;}
+#nep_emoji_1f575-1f3fc-200d-2640-fe0f i {background-position: -400px -380px;}
+#nep_emoji_1f575-1f3fc i {background-position: -420px -380px;}
+#nep_emoji_1f385-1f3fc i {background-position: -440px -380px;}
+#nep_emoji_1f936-1f3fc i {background-position: -460px -380px;}
+#nep_emoji_1f47c-1f3fc i {background-position: -480px -380px;}
+#nep_emoji_1f478-1f3fc i {background-position: -500px -380px;}
+#nep_emoji_1f934-1f3fc i {background-position: -520px -380px;}
+#nep_emoji_1f469-1f3fd-200d-1f3a4 i {background-position: -540px -380px;}
+#nep_emoji_1f468-1f3fd-200d-1f3a4 i {background-position: -560px -380px;}
+#nep_emoji_1f469-1f3fd-200d-1f3a8 i {background-position: -580px -380px;}
+#nep_emoji_1f468-1f3fd-200d-1f3a8 i {background-position: 0px -400px;}
+#nep_emoji_1f469-1f3fd-200d-1f3eb i {background-position: -20px -400px;}
+#nep_emoji_1f468-1f3fd-200d-1f3eb i {background-position: -40px -400px;}
+#nep_emoji_1f469-1f3fd-200d-1f393 i {background-position: -60px -400px;}
+#nep_emoji_1f468-1f3fd-200d-1f393 i {background-position: -80px -400px;}
+#nep_emoji_1f469-1f3fd-200d-1f4bc i {background-position: -100px -400px;}
+#nep_emoji_1f468-1f3fd-200d-1f4bc i {background-position: -120px -400px;}
+#nep_emoji_1f469-1f3fd-200d-1f4bb i {background-position: -140px -400px;}
+#nep_emoji_1f468-1f3fd-200d-1f4bb i {background-position: -160px -400px;}
+#nep_emoji_1f469-1f3fd-200d-1f52c i {background-position: -180px -400px;}
+#nep_emoji_1f468-1f3fd-200d-1f52c i {background-position: -200px -400px;}
+#nep_emoji_1f469-1f3fd-200d-1f680 i {background-position: -220px -400px;}
+#nep_emoji_1f468-1f3fd-200d-1f680 i {background-position: -240px -400px;}
+#nep_emoji_1f469-1f3fd-200d-2695-fe0f i {background-position: -260px -400px;}
+#nep_emoji_1f468-1f3fd-200d-2695-fe0f i {background-position: -280px -400px;}
+#nep_emoji_1f469-1f3fd-200d-2696-fe0f i {background-position: -300px -400px;}
+#nep_emoji_1f468-1f3fd-200d-2696-fe0f i {background-position: -320px -400px;}
+#nep_emoji_1f469-1f3fd-200d-2708-fe0f i {background-position: -340px -400px;}
+#nep_emoji_1f468-1f3fd-200d-2708-fe0f i {background-position: -360px -400px;}
+#nep_emoji_1f482-1f3fd-200d-2640-fe0f i {background-position: -380px -400px;}
+#nep_emoji_1f482-1f3fd i {background-position: -400px -400px;}
+#nep_emoji_1f575-1f3fd-200d-2640-fe0f i {background-position: -420px -400px;}
+#nep_emoji_1f575-1f3fd i {background-position: -440px -400px;}
+#nep_emoji_1f385-1f3fd i {background-position: -460px -400px;}
+#nep_emoji_1f936-1f3fd i {background-position: -480px -400px;}
+#nep_emoji_1f47c-1f3fd i {background-position: -500px -400px;}
+#nep_emoji_1f478-1f3fd i {background-position: -520px -400px;}
+#nep_emoji_1f934-1f3fd i {background-position: -540px -400px;}
+#nep_emoji_1f469-1f3fe-200d-1f3a4 i {background-position: -560px -400px;}
+#nep_emoji_1f468-1f3fe-200d-1f3a4 i {background-position: -580px -400px;}
+#nep_emoji_1f469-1f3fe-200d-1f3a8 i {background-position: 0px -420px;}
+#nep_emoji_1f468-1f3fe-200d-1f3a8 i {background-position: -20px -420px;}
+#nep_emoji_1f469-1f3fe-200d-1f3eb i {background-position: -40px -420px;}
+#nep_emoji_1f468-1f3fe-200d-1f3eb i {background-position: -60px -420px;}
+#nep_emoji_1f469-1f3fe-200d-1f393 i {background-position: -80px -420px;}
+#nep_emoji_1f468-1f3fe-200d-1f393 i {background-position: -100px -420px;}
+#nep_emoji_1f469-1f3fe-200d-1f4bc i {background-position: -120px -420px;}
+#nep_emoji_1f468-1f3fe-200d-1f4bc i {background-position: -140px -420px;}
+#nep_emoji_1f469-1f3fe-200d-1f4bb i {background-position: -160px -420px;}
+#nep_emoji_1f468-1f3fe-200d-1f4bb i {background-position: -180px -420px;}
+#nep_emoji_1f469-1f3fe-200d-1f52c i {background-position: -200px -420px;}
+#nep_emoji_1f468-1f3fe-200d-1f52c i {background-position: -220px -420px;}
+#nep_emoji_1f469-1f3fe-200d-1f680 i {background-position: -240px -420px;}
+#nep_emoji_1f468-1f3fe-200d-1f680 i {background-position: -260px -420px;}
+#nep_emoji_1f469-1f3fe-200d-2695-fe0f i {background-position: -280px -420px;}
+#nep_emoji_1f468-1f3fe-200d-2695-fe0f i {background-position: -300px -420px;}
+#nep_emoji_1f469-1f3fe-200d-2696-fe0f i {background-position: -320px -420px;}
+#nep_emoji_1f468-1f3fe-200d-2696-fe0f i {background-position: -340px -420px;}
+#nep_emoji_1f469-1f3fe-200d-2708-fe0f i {background-position: -360px -420px;}
+#nep_emoji_1f468-1f3fe-200d-2708-fe0f i {background-position: -380px -420px;}
+#nep_emoji_1f482-1f3fe-200d-2640-fe0f i {background-position: -400px -420px;}
+#nep_emoji_1f482-1f3fe i {background-position: -420px -420px;}
+#nep_emoji_1f575-1f3fe-200d-2640-fe0f i {background-position: -440px -420px;}
+#nep_emoji_1f575-1f3fe i {background-position: -460px -420px;}
+#nep_emoji_1f385-1f3fe i {background-position: -480px -420px;}
+#nep_emoji_1f936-1f3fe i {background-position: -500px -420px;}
+#nep_emoji_1f47c-1f3fe i {background-position: -520px -420px;}
+#nep_emoji_1f478-1f3fe i {background-position: -540px -420px;}
+#nep_emoji_1f934-1f3fe i {background-position: -560px -420px;}
+#nep_emoji_1f469-1f3ff-200d-1f3a4 i {background-position: -580px -420px;}
+#nep_emoji_1f468-1f3ff-200d-1f3a4 i {background-position: 0px -440px;}
+#nep_emoji_1f469-1f3ff-200d-1f3a8 i {background-position: -20px -440px;}
+#nep_emoji_1f468-1f3ff-200d-1f3a8 i {background-position: -40px -440px;}
+#nep_emoji_1f469-1f3ff-200d-1f3eb i {background-position: -60px -440px;}
+#nep_emoji_1f468-1f3ff-200d-1f3eb i {background-position: -80px -440px;}
+#nep_emoji_1f469-1f3ff-200d-1f393 i {background-position: -100px -440px;}
+#nep_emoji_1f468-1f3ff-200d-1f393 i {background-position: -120px -440px;}
+#nep_emoji_1f469-1f3ff-200d-1f4bc i {background-position: -140px -440px;}
+#nep_emoji_1f468-1f3ff-200d-1f4bc i {background-position: -160px -440px;}
+#nep_emoji_1f469-1f3ff-200d-1f4bb i {background-position: -180px -440px;}
+#nep_emoji_1f468-1f3ff-200d-1f4bb i {background-position: -200px -440px;}
+#nep_emoji_1f469-1f3ff-200d-1f52c i {background-position: -220px -440px;}
+#nep_emoji_1f468-1f3ff-200d-1f52c i {background-position: -240px -440px;}
+#nep_emoji_1f469-1f3ff-200d-1f680 i {background-position: -260px -440px;}
+#nep_emoji_1f468-1f3ff-200d-1f680 i {background-position: -280px -440px;}
+#nep_emoji_1f469-1f3ff-200d-2695-fe0f i {background-position: -300px -440px;}
+#nep_emoji_1f468-1f3ff-200d-2695-fe0f i {background-position: -320px -440px;}
+#nep_emoji_1f469-1f3ff-200d-2696-fe0f i {background-position: -340px -440px;}
+#nep_emoji_1f468-1f3ff-200d-2696-fe0f i {background-position: -360px -440px;}
+#nep_emoji_1f469-1f3ff-200d-2708-fe0f i {background-position: -380px -440px;}
+#nep_emoji_1f468-1f3ff-200d-2708-fe0f i {background-position: -400px -440px;}
+#nep_emoji_1f482-1f3ff-200d-2640-fe0f i {background-position: -420px -440px;}
+#nep_emoji_1f482-1f3ff i {background-position: -440px -440px;}
+#nep_emoji_1f575-1f3ff-200d-2640-fe0f i {background-position: -460px -440px;}
+#nep_emoji_1f575-1f3ff i {background-position: -480px -440px;}
+#nep_emoji_1f385-1f3ff i {background-position: -500px -440px;}
+#nep_emoji_1f936-1f3ff i {background-position: -520px -440px;}
+#nep_emoji_1f47c-1f3ff i {background-position: -540px -440px;}
+#nep_emoji_1f478-1f3ff i {background-position: -560px -440px;}
+#nep_emoji_1f934-1f3ff i {background-position: -580px -440px;}
+#nep_emoji_1f470 i {background-position: 0px -460px;}
+#nep_emoji_1f935 i {background-position: -20px -460px;}
+#nep_emoji_1f574 i {background-position: -40px -460px;}
+#nep_emoji_1f9d9-200d-2640-fe0f i {background-position: -60px -460px;}
+#nep_emoji_1f9d9-200d-2642-fe0f i {background-position: -80px -460px;}
+#nep_emoji_1f9dd-200d-2640-fe0f i {background-position: -100px -460px;}
+#nep_emoji_1f9dd-200d-2642-fe0f i {background-position: -120px -460px;}
+#nep_emoji_1f9da-200d-2640-fe0f i {background-position: -140px -460px;}
+#nep_emoji_1f9da-200d-2642-fe0f i {background-position: -160px -460px;}
+#nep_emoji_1f470-1f3fb i {background-position: -180px -460px;}
+#nep_emoji_1f935-1f3fb i {background-position: -200px -460px;}
+#nep_emoji_1f574-1f3fb i {background-position: -220px -460px;}
+#nep_emoji_1f9d9-1f3fb-200d-2640-fe0f i {background-position: -240px -460px;}
+#nep_emoji_1f9d9-1f3fb-200d-2642-fe0f i {background-position: -260px -460px;}
+#nep_emoji_1f9dd-1f3fb-200d-2640-fe0f i {background-position: -280px -460px;}
+#nep_emoji_1f9dd-1f3fb-200d-2642-fe0f i {background-position: -300px -460px;}
+#nep_emoji_1f9da-1f3fb-200d-2640-fe0f i {background-position: -320px -460px;}
+#nep_emoji_1f9da-1f3fb-200d-2642-fe0f i {background-position: -340px -460px;}
+#nep_emoji_1f470-1f3fc i {background-position: -360px -460px;}
+#nep_emoji_1f935-1f3fc i {background-position: -380px -460px;}
+#nep_emoji_1f574-1f3fc i {background-position: -400px -460px;}
+#nep_emoji_1f9d9-1f3fc-200d-2640-fe0f i {background-position: -420px -460px;}
+#nep_emoji_1f9d9-1f3fc-200d-2642-fe0f i {background-position: -440px -460px;}
+#nep_emoji_1f9dd-1f3fc-200d-2640-fe0f i {background-position: -460px -460px;}
+#nep_emoji_1f9dd-1f3fc-200d-2642-fe0f i {background-position: -480px -460px;}
+#nep_emoji_1f9da-1f3fc-200d-2640-fe0f i {background-position: -500px -460px;}
+#nep_emoji_1f9da-1f3fc-200d-2642-fe0f i {background-position: -520px -460px;}
+#nep_emoji_1f470-1f3fd i {background-position: -540px -460px;}
+#nep_emoji_1f935-1f3fd i {background-position: -560px -460px;}
+#nep_emoji_1f574-1f3fd i {background-position: -580px -460px;}
+#nep_emoji_1f9d9-1f3fd-200d-2640-fe0f i {background-position: 0px -480px;}
+#nep_emoji_1f9d9-1f3fd-200d-2642-fe0f i {background-position: -20px -480px;}
+#nep_emoji_1f9dd-1f3fd-200d-2640-fe0f i {background-position: -40px -480px;}
+#nep_emoji_1f9dd-1f3fd-200d-2642-fe0f i {background-position: -60px -480px;}
+#nep_emoji_1f9da-1f3fd-200d-2640-fe0f i {background-position: -80px -480px;}
+#nep_emoji_1f9da-1f3fd-200d-2642-fe0f i {background-position: -100px -480px;}
+#nep_emoji_1f470-1f3fe i {background-position: -120px -480px;}
+#nep_emoji_1f935-1f3fe i {background-position: -140px -480px;}
+#nep_emoji_1f574-1f3fe i {background-position: -160px -480px;}
+#nep_emoji_1f9d9-1f3fe-200d-2640-fe0f i {background-position: -180px -480px;}
+#nep_emoji_1f9d9-1f3fe-200d-2642-fe0f i {background-position: -200px -480px;}
+#nep_emoji_1f9dd-1f3fe-200d-2640-fe0f i {background-position: -220px -480px;}
+#nep_emoji_1f9dd-1f3fe-200d-2642-fe0f i {background-position: -240px -480px;}
+#nep_emoji_1f9da-1f3fe-200d-2640-fe0f i {background-position: -260px -480px;}
+#nep_emoji_1f9da-1f3fe-200d-2642-fe0f i {background-position: -280px -480px;}
+#nep_emoji_1f470-1f3ff i {background-position: -300px -480px;}
+#nep_emoji_1f935-1f3ff i {background-position: -320px -480px;}
+#nep_emoji_1f574-1f3ff i {background-position: -340px -480px;}
+#nep_emoji_1f9d9-1f3ff-200d-2640-fe0f i {background-position: -360px -480px;}
+#nep_emoji_1f9d9-1f3ff-200d-2642-fe0f i {background-position: -380px -480px;}
+#nep_emoji_1f9dd-1f3ff-200d-2640-fe0f i {background-position: -400px -480px;}
+#nep_emoji_1f9dd-1f3ff-200d-2642-fe0f i {background-position: -420px -480px;}
+#nep_emoji_1f9da-1f3ff-200d-2640-fe0f i {background-position: -440px -480px;}
+#nep_emoji_1f9da-1f3ff-200d-2642-fe0f i {background-position: -460px -480px;}
+#nep_emoji_1f9de-200d-2640-fe0f i {background-position: -480px -480px;}
+#nep_emoji_1f9de-200d-2642-fe0f i {background-position: -500px -480px;}
+#nep_emoji_1f9dc-200d-2640-fe0f i {background-position: -520px -480px;}
+#nep_emoji_1f9dc-200d-2642-fe0f i {background-position: -540px -480px;}
+#nep_emoji_1f9db-200d-2640-fe0f i {background-position: -560px -480px;}
+#nep_emoji_1f9db-200d-2642-fe0f i {background-position: -580px -480px;}
+#nep_emoji_1f9dc-1f3fb-200d-2640-fe0f i {background-position: 0px -500px;}
+#nep_emoji_1f9dc-1f3fb-200d-2642-fe0f i {background-position: -20px -500px;}
+#nep_emoji_1f9db-1f3fb-200d-2640-fe0f i {background-position: -40px -500px;}
+#nep_emoji_1f9db-1f3fb-200d-2642-fe0f i {background-position: -60px -500px;}
+#nep_emoji_1f9dc-1f3fc-200d-2640-fe0f i {background-position: -80px -500px;}
+#nep_emoji_1f9dc-1f3fc-200d-2642-fe0f i {background-position: -100px -500px;}
+#nep_emoji_1f9db-1f3fc-200d-2640-fe0f i {background-position: -120px -500px;}
+#nep_emoji_1f9db-1f3fc-200d-2642-fe0f i {background-position: -140px -500px;}
+#nep_emoji_1f9dc-1f3fd-200d-2640-fe0f i {background-position: -160px -500px;}
+#nep_emoji_1f9dc-1f3fd-200d-2642-fe0f i {background-position: -180px -500px;}
+#nep_emoji_1f9db-1f3fd-200d-2640-fe0f i {background-position: -200px -500px;}
+#nep_emoji_1f9db-1f3fd-200d-2642-fe0f i {background-position: -220px -500px;}
+#nep_emoji_1f9dc-1f3fe-200d-2640-fe0f i {background-position: -240px -500px;}
+#nep_emoji_1f9dc-1f3fe-200d-2642-fe0f i {background-position: -260px -500px;}
+#nep_emoji_1f9db-1f3fe-200d-2640-fe0f i {background-position: -280px -500px;}
+#nep_emoji_1f9db-1f3fe-200d-2642-fe0f i {background-position: -300px -500px;}
+#nep_emoji_1f9dc-1f3ff-200d-2640-fe0f i {background-position: -320px -500px;}
+#nep_emoji_1f9dc-1f3ff-200d-2642-fe0f i {background-position: -340px -500px;}
+#nep_emoji_1f9db-1f3ff-200d-2640-fe0f i {background-position: -360px -500px;}
+#nep_emoji_1f9db-1f3ff-200d-2642-fe0f i {background-position: -380px -500px;}
+#nep_emoji_1f9df-200d-2640-fe0f i {background-position: -400px -500px;}
+#nep_emoji_1f9df-200d-2642-fe0f i {background-position: -420px -500px;}
+#nep_emoji_1f647-200d-2640-fe0f i {background-position: -440px -500px;}
+#nep_emoji_1f647 i {background-position: -460px -500px;}
+#nep_emoji_1f481 i {background-position: -480px -500px;}
+#nep_emoji_1f481-200d-2642-fe0f i {background-position: -500px -500px;}
+#nep_emoji_1f645 i {background-position: -520px -500px;}
+#nep_emoji_1f645-200d-2642-fe0f i {background-position: -540px -500px;}
+#nep_emoji_1f646 i {background-position: -560px -500px;}
+#nep_emoji_1f646-200d-2642-fe0f i {background-position: -580px -500px;}
+#nep_emoji_1f937 i {background-position: 0px -520px;}
+#nep_emoji_1f937-200d-2642-fe0f i {background-position: -20px -520px;}
+#nep_emoji_1f64b i {background-position: -40px -520px;}
+#nep_emoji_1f64b-200d-2642-fe0f i {background-position: -60px -520px;}
+#nep_emoji_1f926 i {background-position: -80px -520px;}
+#nep_emoji_1f926-200d-2642-fe0f i {background-position: -100px -520px;}
+#nep_emoji_1f64e i {background-position: -120px -520px;}
+#nep_emoji_1f64e-200d-2642-fe0f i {background-position: -140px -520px;}
+#nep_emoji_1f64d i {background-position: -160px -520px;}
+#nep_emoji_1f64d-200d-2642-fe0f i {background-position: -180px -520px;}
+#nep_emoji_1f487 i {background-position: -200px -520px;}
+#nep_emoji_1f487-200d-2642-fe0f i {background-position: -220px -520px;}
+#nep_emoji_1f486 i {background-position: -240px -520px;}
+#nep_emoji_1f486-200d-2642-fe0f i {background-position: -260px -520px;}
+#nep_emoji_1f930 i {background-position: -280px -520px;}
+#nep_emoji_1f931 i {background-position: -300px -520px;}
+#nep_emoji_1f6b6-200d-2640-fe0f i {background-position: -320px -520px;}
+#nep_emoji_1f6b6 i {background-position: -340px -520px;}
+#nep_emoji_1f3c3-200d-2640-fe0f i {background-position: -360px -520px;}
+#nep_emoji_1f3c3 i {background-position: -380px -520px;}
+#nep_emoji_1f483 i {background-position: -400px -520px;}
+#nep_emoji_1f57a i {background-position: -420px -520px;}
+#nep_emoji_1f647-1f3fb-200d-2640-fe0f i {background-position: -440px -520px;}
+#nep_emoji_1f647-1f3fb i {background-position: -460px -520px;}
+#nep_emoji_1f481-1f3fb i {background-position: -480px -520px;}
+#nep_emoji_1f481-1f3fb-200d-2642-fe0f i {background-position: -500px -520px;}
+#nep_emoji_1f645-1f3fb i {background-position: -520px -520px;}
+#nep_emoji_1f645-1f3fb-200d-2642-fe0f i {background-position: -540px -520px;}
+#nep_emoji_1f646-1f3fb i {background-position: -560px -520px;}
+#nep_emoji_1f646-1f3fb-200d-2642-fe0f i {background-position: -580px -520px;}
+#nep_emoji_1f937-1f3fb i {background-position: 0px -540px;}
+#nep_emoji_1f937-1f3fb-200d-2642-fe0f i {background-position: -20px -540px;}
+#nep_emoji_1f64b-1f3fb i {background-position: -40px -540px;}
+#nep_emoji_1f64b-1f3fb-200d-2642-fe0f i {background-position: -60px -540px;}
+#nep_emoji_1f926-1f3fb i {background-position: -80px -540px;}
+#nep_emoji_1f926-1f3fb-200d-2642-fe0f i {background-position: -100px -540px;}
+#nep_emoji_1f64e-1f3fb i {background-position: -120px -540px;}
+#nep_emoji_1f64e-1f3fb-200d-2642-fe0f i {background-position: -140px -540px;}
+#nep_emoji_1f64d-1f3fb i {background-position: -160px -540px;}
+#nep_emoji_1f64d-1f3fb-200d-2642-fe0f i {background-position: -180px -540px;}
+#nep_emoji_1f487-1f3fb i {background-position: -200px -540px;}
+#nep_emoji_1f487-1f3fb-200d-2642-fe0f i {background-position: -220px -540px;}
+#nep_emoji_1f486-1f3fb i {background-position: -240px -540px;}
+#nep_emoji_1f486-1f3fb-200d-2642-fe0f i {background-position: -260px -540px;}
+#nep_emoji_1f930-1f3fb i {background-position: -280px -540px;}
+#nep_emoji_1f931-1f3fb i {background-position: -300px -540px;}
+#nep_emoji_1f6b6-1f3fb-200d-2640-fe0f i {background-position: -320px -540px;}
+#nep_emoji_1f6b6-1f3fb i {background-position: -340px -540px;}
+#nep_emoji_1f3c3-1f3fb-200d-2640-fe0f i {background-position: -360px -540px;}
+#nep_emoji_1f3c3-1f3fb i {background-position: -380px -540px;}
+#nep_emoji_1f483-1f3fb i {background-position: -400px -540px;}
+#nep_emoji_1f57a-1f3fb i {background-position: -420px -540px;}
+#nep_emoji_1f647-1f3fc-200d-2640-fe0f i {background-position: -440px -540px;}
+#nep_emoji_1f647-1f3fc i {background-position: -460px -540px;}
+#nep_emoji_1f481-1f3fc i {background-position: -480px -540px;}
+#nep_emoji_1f481-1f3fc-200d-2642-fe0f i {background-position: -500px -540px;}
+#nep_emoji_1f645-1f3fc i {background-position: -520px -540px;}
+#nep_emoji_1f645-1f3fc-200d-2642-fe0f i {background-position: -540px -540px;}
+#nep_emoji_1f646-1f3fc i {background-position: -560px -540px;}
+#nep_emoji_1f646-1f3fc-200d-2642-fe0f i {background-position: -580px -540px;}
+#nep_emoji_1f937-1f3fc i {background-position: 0px -560px;}
+#nep_emoji_1f937-1f3fc-200d-2642-fe0f i {background-position: -20px -560px;}
+#nep_emoji_1f64b-1f3fc i {background-position: -40px -560px;}
+#nep_emoji_1f64b-1f3fc-200d-2642-fe0f i {background-position: -60px -560px;}
+#nep_emoji_1f926-1f3fc i {background-position: -80px -560px;}
+#nep_emoji_1f926-1f3fc-200d-2642-fe0f i {background-position: -100px -560px;}
+#nep_emoji_1f64e-1f3fc i {background-position: -120px -560px;}
+#nep_emoji_1f64e-1f3fc-200d-2642-fe0f i {background-position: -140px -560px;}
+#nep_emoji_1f64d-1f3fc i {background-position: -160px -560px;}
+#nep_emoji_1f64d-1f3fc-200d-2642-fe0f i {background-position: -180px -560px;}
+#nep_emoji_1f487-1f3fc i {background-position: -200px -560px;}
+#nep_emoji_1f487-1f3fc-200d-2642-fe0f i {background-position: -220px -560px;}
+#nep_emoji_1f486-1f3fc i {background-position: -240px -560px;}
+#nep_emoji_1f486-1f3fc-200d-2642-fe0f i {background-position: -260px -560px;}
+#nep_emoji_1f930-1f3fc i {background-position: -280px -560px;}
+#nep_emoji_1f931-1f3fc i {background-position: -300px -560px;}
+#nep_emoji_1f6b6-1f3fc-200d-2640-fe0f i {background-position: -320px -560px;}
+#nep_emoji_1f6b6-1f3fc i {background-position: -340px -560px;}
+#nep_emoji_1f3c3-1f3fc-200d-2640-fe0f i {background-position: -360px -560px;}
+#nep_emoji_1f3c3-1f3fc i {background-position: -380px -560px;}
+#nep_emoji_1f483-1f3fc i {background-position: -400px -560px;}
+#nep_emoji_1f57a-1f3fc i {background-position: -420px -560px;}
+#nep_emoji_1f647-1f3fd-200d-2640-fe0f i {background-position: -440px -560px;}
+#nep_emoji_1f647-1f3fd i {background-position: -460px -560px;}
+#nep_emoji_1f481-1f3fd i {background-position: -480px -560px;}
+#nep_emoji_1f481-1f3fd-200d-2642-fe0f i {background-position: -500px -560px;}
+#nep_emoji_1f645-1f3fd i {background-position: -520px -560px;}
+#nep_emoji_1f645-1f3fd-200d-2642-fe0f i {background-position: -540px -560px;}
+#nep_emoji_1f646-1f3fd i {background-position: -560px -560px;}
+#nep_emoji_1f646-1f3fd-200d-2642-fe0f i {background-position: -580px -560px;}
+#nep_emoji_1f937-1f3fd i {background-position: 0px -580px;}
+#nep_emoji_1f937-1f3fd-200d-2642-fe0f i {background-position: -20px -580px;}
+#nep_emoji_1f64b-1f3fd i {background-position: -40px -580px;}
+#nep_emoji_1f64b-1f3fd-200d-2642-fe0f i {background-position: -60px -580px;}
+#nep_emoji_1f926-1f3fd i {background-position: -80px -580px;}
+#nep_emoji_1f926-1f3fd-200d-2642-fe0f i {background-position: -100px -580px;}
+#nep_emoji_1f64e-1f3fd i {background-position: -120px -580px;}
+#nep_emoji_1f64e-1f3fd-200d-2642-fe0f i {background-position: -140px -580px;}
+#nep_emoji_1f64d-1f3fd i {background-position: -160px -580px;}
+#nep_emoji_1f64d-1f3fd-200d-2642-fe0f i {background-position: -180px -580px;}
+#nep_emoji_1f487-1f3fd i {background-position: -200px -580px;}
+#nep_emoji_1f487-1f3fd-200d-2642-fe0f i {background-position: -220px -580px;}
+#nep_emoji_1f486-1f3fd i {background-position: -240px -580px;}
+#nep_emoji_1f486-1f3fd-200d-2642-fe0f i {background-position: -260px -580px;}
+#nep_emoji_1f930-1f3fd i {background-position: -280px -580px;}
+#nep_emoji_1f931-1f3fd i {background-position: -300px -580px;}
+#nep_emoji_1f6b6-1f3fd-200d-2640-fe0f i {background-position: -320px -580px;}
+#nep_emoji_1f6b6-1f3fd i {background-position: -340px -580px;}
+#nep_emoji_1f3c3-1f3fd-200d-2640-fe0f i {background-position: -360px -580px;}
+#nep_emoji_1f3c3-1f3fd i {background-position: -380px -580px;}
+#nep_emoji_1f483-1f3fd i {background-position: -400px -580px;}
+#nep_emoji_1f57a-1f3fd i {background-position: -420px -580px;}
+#nep_emoji_1f647-1f3fe-200d-2640-fe0f i {background-position: -440px -580px;}
+#nep_emoji_1f647-1f3fe i {background-position: -460px -580px;}
+#nep_emoji_1f481-1f3fe i {background-position: -480px -580px;}
+#nep_emoji_1f481-1f3fe-200d-2642-fe0f i {background-position: -500px -580px;}
+#nep_emoji_1f645-1f3fe i {background-position: -520px -580px;}
+#nep_emoji_1f645-1f3fe-200d-2642-fe0f i {background-position: -540px -580px;}
+#nep_emoji_1f646-1f3fe i {background-position: -560px -580px;}
+#nep_emoji_1f646-1f3fe-200d-2642-fe0f i {background-position: -580px -580px;}
+#nep_emoji_1f937-1f3fe i {background-position: 0px -600px;}
+#nep_emoji_1f937-1f3fe-200d-2642-fe0f i {background-position: -20px -600px;}
+#nep_emoji_1f64b-1f3fe i {background-position: -40px -600px;}
+#nep_emoji_1f64b-1f3fe-200d-2642-fe0f i {background-position: -60px -600px;}
+#nep_emoji_1f926-1f3fe i {background-position: -80px -600px;}
+#nep_emoji_1f926-1f3fe-200d-2642-fe0f i {background-position: -100px -600px;}
+#nep_emoji_1f64e-1f3fe i {background-position: -120px -600px;}
+#nep_emoji_1f64e-1f3fe-200d-2642-fe0f i {background-position: -140px -600px;}
+#nep_emoji_1f64d-1f3fe i {background-position: -160px -600px;}
+#nep_emoji_1f64d-1f3fe-200d-2642-fe0f i {background-position: -180px -600px;}
+#nep_emoji_1f487-1f3fe i {background-position: -200px -600px;}
+#nep_emoji_1f487-1f3fe-200d-2642-fe0f i {background-position: -220px -600px;}
+#nep_emoji_1f486-1f3fe i {background-position: -240px -600px;}
+#nep_emoji_1f486-1f3fe-200d-2642-fe0f i {background-position: -260px -600px;}
+#nep_emoji_1f930-1f3fe i {background-position: -280px -600px;}
+#nep_emoji_1f931-1f3fe i {background-position: -300px -600px;}
+#nep_emoji_1f6b6-1f3fe-200d-2640-fe0f i {background-position: -320px -600px;}
+#nep_emoji_1f6b6-1f3fe i {background-position: -340px -600px;}
+#nep_emoji_1f3c3-1f3fe-200d-2640-fe0f i {background-position: -360px -600px;}
+#nep_emoji_1f3c3-1f3fe i {background-position: -380px -600px;}
+#nep_emoji_1f483-1f3fe i {background-position: -400px -600px;}
+#nep_emoji_1f57a-1f3fe i {background-position: -420px -600px;}
+#nep_emoji_1f647-1f3ff-200d-2640-fe0f i {background-position: -440px -600px;}
+#nep_emoji_1f647-1f3ff i {background-position: -460px -600px;}
+#nep_emoji_1f481-1f3ff i {background-position: -480px -600px;}
+#nep_emoji_1f481-1f3ff-200d-2642-fe0f i {background-position: -500px -600px;}
+#nep_emoji_1f645-1f3ff i {background-position: -520px -600px;}
+#nep_emoji_1f645-1f3ff-200d-2642-fe0f i {background-position: -540px -600px;}
+#nep_emoji_1f646-1f3ff i {background-position: -560px -600px;}
+#nep_emoji_1f646-1f3ff-200d-2642-fe0f i {background-position: -580px -600px;}
+#nep_emoji_1f937-1f3ff i {background-position: 0px -620px;}
+#nep_emoji_1f937-1f3ff-200d-2642-fe0f i {background-position: -20px -620px;}
+#nep_emoji_1f64b-1f3ff i {background-position: -40px -620px;}
+#nep_emoji_1f64b-1f3ff-200d-2642-fe0f i {background-position: -60px -620px;}
+#nep_emoji_1f926-1f3ff i {background-position: -80px -620px;}
+#nep_emoji_1f926-1f3ff-200d-2642-fe0f i {background-position: -100px -620px;}
+#nep_emoji_1f64e-1f3ff i {background-position: -120px -620px;}
+#nep_emoji_1f64e-1f3ff-200d-2642-fe0f i {background-position: -140px -620px;}
+#nep_emoji_1f64d-1f3ff i {background-position: -160px -620px;}
+#nep_emoji_1f64d-1f3ff-200d-2642-fe0f i {background-position: -180px -620px;}
+#nep_emoji_1f487-1f3ff i {background-position: -200px -620px;}
+#nep_emoji_1f487-1f3ff-200d-2642-fe0f i {background-position: -220px -620px;}
+#nep_emoji_1f486-1f3ff i {background-position: -240px -620px;}
+#nep_emoji_1f486-1f3ff-200d-2642-fe0f i {background-position: -260px -620px;}
+#nep_emoji_1f930-1f3ff i {background-position: -280px -620px;}
+#nep_emoji_1f931-1f3ff i {background-position: -300px -620px;}
+#nep_emoji_1f6b6-1f3ff-200d-2640-fe0f i {background-position: -320px -620px;}
+#nep_emoji_1f6b6-1f3ff i {background-position: -340px -620px;}
+#nep_emoji_1f3c3-1f3ff-200d-2640-fe0f i {background-position: -360px -620px;}
+#nep_emoji_1f3c3-1f3ff i {background-position: -380px -620px;}
+#nep_emoji_1f483-1f3ff i {background-position: -400px -620px;}
+#nep_emoji_1f57a-1f3ff i {background-position: -420px -620px;}
+#nep_emoji_1f46f i {background-position: -440px -620px;}
+#nep_emoji_1f46f-200d-2642-fe0f i {background-position: -460px -620px;}
+#nep_emoji_1f46b i {background-position: -480px -620px;}
+#nep_emoji_1f46c i {background-position: -500px -620px;}
+#nep_emoji_1f46d i {background-position: -520px -620px;}
+#nep_emoji_1f491 i {background-position: -540px -620px;}
+#nep_emoji_1f469-200d-2764-fe0f-200d-1f469 i {background-position: -560px -620px;}
+#nep_emoji_1f468-200d-2764-fe0f-200d-1f468 i {background-position: -580px -620px;}
+#nep_emoji_1f48f i {background-position: 0px -640px;}
+#nep_emoji_1f469-200d-2764-fe0f-200d-1f48b-200d-1f469 i {background-position: -20px -640px;}
+#nep_emoji_1f468-200d-2764-fe0f-200d-1f48b-200d-1f468 i {background-position: -40px -640px;}
+#nep_emoji_1f46a i {background-position: -60px -640px;}
+#nep_emoji_1f468-200d-1f469-200d-1f467 i {background-position: -80px -640px;}
+#nep_emoji_1f468-200d-1f469-200d-1f467-200d-1f466 i {background-position: -100px -640px;}
+#nep_emoji_1f468-200d-1f469-200d-1f466-200d-1f466 i {background-position: -120px -640px;}
+#nep_emoji_1f468-200d-1f469-200d-1f467-200d-1f467 i {background-position: -140px -640px;}
+#nep_emoji_1f469-200d-1f469-200d-1f466 i {background-position: -160px -640px;}
+#nep_emoji_1f469-200d-1f469-200d-1f467 i {background-position: -180px -640px;}
+#nep_emoji_1f469-200d-1f469-200d-1f467-200d-1f466 i {background-position: -200px -640px;}
+#nep_emoji_1f469-200d-1f469-200d-1f466-200d-1f466 i {background-position: -220px -640px;}
+#nep_emoji_1f469-200d-1f469-200d-1f467-200d-1f467 i {background-position: -240px -640px;}
+#nep_emoji_1f468-200d-1f468-200d-1f466 i {background-position: -260px -640px;}
+#nep_emoji_1f468-200d-1f468-200d-1f467 i {background-position: -280px -640px;}
+#nep_emoji_1f468-200d-1f468-200d-1f467-200d-1f466 i {background-position: -300px -640px;}
+#nep_emoji_1f468-200d-1f468-200d-1f466-200d-1f466 i {background-position: -320px -640px;}
+#nep_emoji_1f468-200d-1f468-200d-1f467-200d-1f467 i {background-position: -340px -640px;}
+#nep_emoji_1f469-200d-1f466 i {background-position: -360px -640px;}
+#nep_emoji_1f469-200d-1f467 i {background-position: -380px -640px;}
+#nep_emoji_1f469-200d-1f467-200d-1f466 i {background-position: -400px -640px;}
+#nep_emoji_1f469-200d-1f466-200d-1f466 i {background-position: -420px -640px;}
+#nep_emoji_1f469-200d-1f467-200d-1f467 i {background-position: -440px -640px;}
+#nep_emoji_1f468-200d-1f466 i {background-position: -460px -640px;}
+#nep_emoji_1f468-200d-1f467 i {background-position: -480px -640px;}
+#nep_emoji_1f468-200d-1f467-200d-1f466 i {background-position: -500px -640px;}
+#nep_emoji_1f468-200d-1f466-200d-1f466 i {background-position: -520px -640px;}
+#nep_emoji_1f468-200d-1f467-200d-1f467 i {background-position: -540px -640px;}
+#nep_emoji_1f45a i {background-position: -560px -640px;}
+#nep_emoji_1f455 i {background-position: -580px -640px;}
+#nep_emoji_1f9e5 i {background-position: 0px -660px;}
+#nep_emoji_1f456 i {background-position: -20px -660px;}
+#nep_emoji_1f454 i {background-position: -40px -660px;}
+#nep_emoji_1f457 i {background-position: -60px -660px;}
+#nep_emoji_1f459 i {background-position: -80px -660px;}
+#nep_emoji_1f458 i {background-position: -100px -660px;}
+#nep_emoji_1f484 i {background-position: -120px -660px;}
+#nep_emoji_1f48b i {background-position: -140px -660px;}
+#nep_emoji_1f463 i {background-position: -160px -660px;}
+#nep_emoji_1f9e6 i {background-position: -180px -660px;}
+#nep_emoji_1f460 i {background-position: -200px -660px;}
+#nep_emoji_1f461 i {background-position: -220px -660px;}
+#nep_emoji_1f462 i {background-position: -240px -660px;}
+#nep_emoji_1f45e i {background-position: -260px -660px;}
+#nep_emoji_1f45f i {background-position: -280px -660px;}
+#nep_emoji_1f9e2 i {background-position: -300px -660px;}
+#nep_emoji_1f452 i {background-position: -320px -660px;}
+#nep_emoji_1f3a9 i {background-position: -340px -660px;}
+#nep_emoji_1f393 i {background-position: -360px -660px;}
+#nep_emoji_1f451 i {background-position: -380px -660px;}
+#nep_emoji_26d1 i {background-position: -400px -660px;}
+#nep_emoji_1f392 i {background-position: -420px -660px;}
+#nep_emoji_1f45d i {background-position: -440px -660px;}
+#nep_emoji_1f45b i {background-position: -460px -660px;}
+#nep_emoji_1f45c i {background-position: -480px -660px;}
+#nep_emoji_1f4bc i {background-position: -500px -660px;}
+#nep_emoji_1f453 i {background-position: -520px -660px;}
+#nep_emoji_1f576 i {background-position: -540px -660px;}
+#nep_emoji_1f9e3 i {background-position: -560px -660px;}
+#nep_emoji_1f9e4 i {background-position: -580px -660px;}
+#nep_emoji_1f48d i {background-position: 0px -680px;}
+#nep_emoji_1f302 i {background-position: -20px -680px;}
+#nep_emoji_2602 i {background-position: -40px -680px;}
+
+/* Animals and Nature */
+
+#nep_emoji_1f436 i {background-position: -60px -680px;}
+#nep_emoji_1f431 i {background-position: -80px -680px;}
+#nep_emoji_1f42d i {background-position: -100px -680px;}
+#nep_emoji_1f439 i {background-position: -120px -680px;}
+#nep_emoji_1f430 i {background-position: -140px -680px;}
+#nep_emoji_1f43b i {background-position: -160px -680px;}
+#nep_emoji_1f43c i {background-position: -180px -680px;}
+#nep_emoji_1f428 i {background-position: -200px -680px;}
+#nep_emoji_1f42f i {background-position: -220px -680px;}
+#nep_emoji_1f981 i {background-position: -240px -680px;}
+#nep_emoji_1f42e i {background-position: -260px -680px;}
+#nep_emoji_1f437 i {background-position: -280px -680px;}
+#nep_emoji_1f43d i {background-position: -300px -680px;}
+#nep_emoji_1f438 i {background-position: -320px -680px;}
+#nep_emoji_1f435 i {background-position: -340px -680px;}
+#nep_emoji_1f648 i {background-position: -360px -680px;}
+#nep_emoji_1f649 i {background-position: -380px -680px;}
+#nep_emoji_1f64a i {background-position: -400px -680px;}
+#nep_emoji_1f412 i {background-position: -420px -680px;}
+#nep_emoji_1f98d i {background-position: -440px -680px;}
+#nep_emoji_1f414 i {background-position: -460px -680px;}
+#nep_emoji_1f427 i {background-position: -480px -680px;}
+#nep_emoji_1f426 i {background-position: -500px -680px;}
+#nep_emoji_1f424 i {background-position: -520px -680px;}
+#nep_emoji_1f423 i {background-position: -540px -680px;}
+#nep_emoji_1f425 i {background-position: -560px -680px;}
+#nep_emoji_1f43a i {background-position: -580px -680px;}
+#nep_emoji_1f98a i {background-position: 0px -700px;}
+#nep_emoji_1f417 i {background-position: -20px -700px;}
+#nep_emoji_1f434 i {background-position: -40px -700px;}
+#nep_emoji_1f993 i {background-position: -60px -700px;}
+#nep_emoji_1f992 i {background-position: -80px -700px;}
+#nep_emoji_1f98c i {background-position: -100px -700px;}
+#nep_emoji_1f984 i {background-position: -120px -700px;}
+#nep_emoji_1f41d i {background-position: -140px -700px;}
+#nep_emoji_1f41b i {background-position: -160px -700px;}
+#nep_emoji_1f98b i {background-position: -180px -700px;}
+#nep_emoji_1f40c i {background-position: -200px -700px;}
+#nep_emoji_1f41e i {background-position: -220px -700px;}
+#nep_emoji_1f41c i {background-position: -240px -700px;}
+#nep_emoji_1f997 i {background-position: -260px -700px;}
+#nep_emoji_1f577 i {background-position: -280px -700px;}
+#nep_emoji_1f578 i {background-position: -300px -700px;}
+#nep_emoji_1f982 i {background-position: -320px -700px;}
+#nep_emoji_1f422 i {background-position: -340px -700px;}
+#nep_emoji_1f40d i {background-position: -360px -700px;}
+#nep_emoji_1f98e i {background-position: -380px -700px;}
+#nep_emoji_1f980 i {background-position: -400px -700px;}
+#nep_emoji_1f991 i {background-position: -420px -700px;}
+#nep_emoji_1f419 i {background-position: -440px -700px;}
+#nep_emoji_1f990 i {background-position: -460px -700px;}
+#nep_emoji_1f420 i {background-position: -480px -700px;}
+#nep_emoji_1f41f i {background-position: -500px -700px;}
+#nep_emoji_1f421 i {background-position: -520px -700px;}
+#nep_emoji_1f42c i {background-position: -540px -700px;}
+#nep_emoji_1f988 i {background-position: -560px -700px;}
+#nep_emoji_1f433 i {background-position: -580px -700px;}
+#nep_emoji_1f40b i {background-position: 0px -720px;}
+#nep_emoji_1f40a i {background-position: -20px -720px;}
+#nep_emoji_1f406 i {background-position: -40px -720px;}
+#nep_emoji_1f405 i {background-position: -60px -720px;}
+#nep_emoji_1f403 i {background-position: -80px -720px;}
+#nep_emoji_1f402 i {background-position: -100px -720px;}
+#nep_emoji_1f404 i {background-position: -120px -720px;}
+#nep_emoji_1f42a i {background-position: -140px -720px;}
+#nep_emoji_1f42b i {background-position: -160px -720px;}
+#nep_emoji_1f418 i {background-position: -180px -720px;}
+#nep_emoji_1f98f i {background-position: -200px -720px;}
+#nep_emoji_1f410 i {background-position: -220px -720px;}
+#nep_emoji_1f40f i {background-position: -240px -720px;}
+#nep_emoji_1f411 i {background-position: -260px -720px;}
+#nep_emoji_1f40e i {background-position: -280px -720px;}
+#nep_emoji_1f416 i {background-position: -300px -720px;}
+#nep_emoji_1f987 i {background-position: -320px -720px;}
+#nep_emoji_1f413 i {background-position: -340px -720px;}
+#nep_emoji_1f983 i {background-position: -360px -720px;}
+#nep_emoji_1f54a i {background-position: -380px -720px;}
+#nep_emoji_1f985 i {background-position: -400px -720px;}
+#nep_emoji_1f986 i {background-position: -420px -720px;}
+#nep_emoji_1f989 i {background-position: -440px -720px;}
+#nep_emoji_1f415 i {background-position: -460px -720px;}
+#nep_emoji_1f429 i {background-position: -480px -720px;}
+#nep_emoji_1f408 i {background-position: -500px -720px;}
+#nep_emoji_1f407 i {background-position: -520px -720px;}
+#nep_emoji_1f400 i {background-position: -540px -720px;}
+#nep_emoji_1f401 i {background-position: -560px -720px;}
+#nep_emoji_1f43f i {background-position: -580px -720px;}
+#nep_emoji_1f994 i {background-position: 0px -740px;}
+#nep_emoji_1f43e i {background-position: -20px -740px;}
+#nep_emoji_1f409 i {background-position: -40px -740px;}
+#nep_emoji_1f432 i {background-position: -60px -740px;}
+#nep_emoji_1f995 i {background-position: -80px -740px;}
+#nep_emoji_1f996 i {background-position: -100px -740px;}
+#nep_emoji_1f335 i {background-position: -120px -740px;}
+#nep_emoji_1f384 i {background-position: -140px -740px;}
+#nep_emoji_1f332 i {background-position: -160px -740px;}
+#nep_emoji_1f333 i {background-position: -180px -740px;}
+#nep_emoji_1f334 i {background-position: -200px -740px;}
+#nep_emoji_1f331 i {background-position: -220px -740px;}
+#nep_emoji_1f33f i {background-position: -240px -740px;}
+#nep_emoji_2618 i {background-position: -260px -740px;}
+#nep_emoji_1f340 i {background-position: -280px -740px;}
+#nep_emoji_1f38d i {background-position: -300px -740px;}
+#nep_emoji_1f38b i {background-position: -320px -740px;}
+#nep_emoji_1f343 i {background-position: -340px -740px;}
+#nep_emoji_1f342 i {background-position: -360px -740px;}
+#nep_emoji_1f341 i {background-position: -380px -740px;}
+#nep_emoji_1f33e i {background-position: -400px -740px;}
+#nep_emoji_1f33a i {background-position: -420px -740px;}
+#nep_emoji_1f33b i {background-position: -440px -740px;}
+#nep_emoji_1f339 i {background-position: -460px -740px;}
+#nep_emoji_1f940 i {background-position: -480px -740px;}
+#nep_emoji_1f337 i {background-position: -500px -740px;}
+#nep_emoji_1f33c i {background-position: -520px -740px;}
+#nep_emoji_1f338 i {background-position: -540px -740px;}
+#nep_emoji_1f490 i {background-position: -560px -740px;}
+#nep_emoji_1f344 i {background-position: -580px -740px;}
+#nep_emoji_1f330 i {background-position: 0px -760px;}
+#nep_emoji_1f41a i {background-position: -20px -760px;}
+#nep_emoji_1f30e i {background-position: -40px -760px;}
+#nep_emoji_1f30d i {background-position: -60px -760px;}
+#nep_emoji_1f30f i {background-position: -80px -760px;}
+#nep_emoji_1f315 i {background-position: -100px -760px;}
+#nep_emoji_1f316 i {background-position: -120px -760px;}
+#nep_emoji_1f317 i {background-position: -140px -760px;}
+#nep_emoji_1f318 i {background-position: -160px -760px;}
+#nep_emoji_1f311 i {background-position: -180px -760px;}
+#nep_emoji_1f312 i {background-position: -200px -760px;}
+#nep_emoji_1f313 i {background-position: -220px -760px;}
+#nep_emoji_1f314 i {background-position: -240px -760px;}
+#nep_emoji_1f31a i {background-position: -260px -760px;}
+#nep_emoji_1f31d i {background-position: -280px -760px;}
+#nep_emoji_1f31b i {background-position: -300px -760px;}
+#nep_emoji_1f31c i {background-position: -320px -760px;}
+#nep_emoji_1f31e i {background-position: -340px -760px;}
+#nep_emoji_1f319 i {background-position: -360px -760px;}
+#nep_emoji_2b50 i {background-position: -380px -760px;}
+#nep_emoji_1f31f i {background-position: -400px -760px;}
+#nep_emoji_1f4ab i {background-position: -420px -760px;}
+#nep_emoji_2728 i {background-position: -440px -760px;}
+#nep_emoji_2604 i {background-position: -460px -760px;}
+#nep_emoji_2600 i {background-position: -480px -760px;}
+#nep_emoji_1f324 i {background-position: -500px -760px;}
+#nep_emoji_26c5 i {background-position: -520px -760px;}
+#nep_emoji_1f325 i {background-position: -540px -760px;}
+#nep_emoji_1f326 i {background-position: -560px -760px;}
+#nep_emoji_2601 i {background-position: -580px -760px;}
+#nep_emoji_1f327 i {background-position: 0px -780px;}
+#nep_emoji_26c8 i {background-position: -20px -780px;}
+#nep_emoji_1f329 i {background-position: -40px -780px;}
+#nep_emoji_26a1 i {background-position: -60px -780px;}
+#nep_emoji_1f525 i {background-position: -80px -780px;}
+#nep_emoji_1f4a5 i {background-position: -100px -780px;}
+#nep_emoji_2744 i {background-position: -120px -780px;}
+#nep_emoji_1f328 i {background-position: -140px -780px;}
+#nep_emoji_2603 i {background-position: -160px -780px;}
+#nep_emoji_26c4 i {background-position: -180px -780px;}
+#nep_emoji_1f32c i {background-position: -200px -780px;}
+#nep_emoji_1f4a8 i {background-position: -220px -780px;}
+#nep_emoji_1f32a i {background-position: -240px -780px;}
+#nep_emoji_1f32b i {background-position: -260px -780px;}
+#nep_emoji_2614 i {background-position: -280px -780px;}
+#nep_emoji_1f4a7 i {background-position: -300px -780px;}
+#nep_emoji_1f4a6 i {background-position: -320px -780px;}
+#nep_emoji_1f30a i {background-position: -340px -780px;}
+
+/* Food and Drinks */
+
+#nep_emoji_1f34f i {background-position: -360px -780px;}
+#nep_emoji_1f34e i {background-position: -380px -780px;}
+#nep_emoji_1f350 i {background-position: -400px -780px;}
+#nep_emoji_1f34a i {background-position: -420px -780px;}
+#nep_emoji_1f34b i {background-position: -440px -780px;}
+#nep_emoji_1f34c i {background-position: -460px -780px;}
+#nep_emoji_1f349 i {background-position: -480px -780px;}
+#nep_emoji_1f347 i {background-position: -500px -780px;}
+#nep_emoji_1f353 i {background-position: -520px -780px;}
+#nep_emoji_1f348 i {background-position: -540px -780px;}
+#nep_emoji_1f352 i {background-position: -560px -780px;}
+#nep_emoji_1f351 i {background-position: -580px -780px;}
+#nep_emoji_1f34d i {background-position: 0px -800px;}
+#nep_emoji_1f965 i {background-position: -20px -800px;}
+#nep_emoji_1f95d i {background-position: -40px -800px;}
+#nep_emoji_1f345 i {background-position: -60px -800px;}
+#nep_emoji_1f951 i {background-position: -80px -800px;}
+#nep_emoji_1f346 i {background-position: -100px -800px;}
+#nep_emoji_1f336 i {background-position: -120px -800px;}
+#nep_emoji_1f952 i {background-position: -140px -800px;}
+#nep_emoji_1f966 i {background-position: -160px -800px;}
+#nep_emoji_1f33d i {background-position: -180px -800px;}
+#nep_emoji_1f955 i {background-position: -200px -800px;}
+#nep_emoji_1f957 i {background-position: -220px -800px;}
+#nep_emoji_1f954 i {background-position: -240px -800px;}
+#nep_emoji_1f360 i {background-position: -260px -800px;}
+#nep_emoji_1f95c i {background-position: -280px -800px;}
+#nep_emoji_1f36f i {background-position: -300px -800px;}
+#nep_emoji_1f35e i {background-position: -320px -800px;}
+#nep_emoji_1f950 i {background-position: -340px -800px;}
+#nep_emoji_1f956 i {background-position: -360px -800px;}
+#nep_emoji_1f968 i {background-position: -380px -800px;}
+#nep_emoji_1f95e i {background-position: -400px -800px;}
+#nep_emoji_1f9c0 i {background-position: -420px -800px;}
+#nep_emoji_1f357 i {background-position: -440px -800px;}
+#nep_emoji_1f356 i {background-position: -460px -800px;}
+#nep_emoji_1f969 i {background-position: -480px -800px;}
+#nep_emoji_1f364 i {background-position: -500px -800px;}
+#nep_emoji_1f95a i {background-position: -520px -800px;}
+#nep_emoji_1f373 i {background-position: -540px -800px;}
+#nep_emoji_1f953 i {background-position: -560px -800px;}
+#nep_emoji_1f354 i {background-position: -580px -800px;}
+#nep_emoji_1f35f i {background-position: 0px -820px;}
+#nep_emoji_1f32d i {background-position: -20px -820px;}
+#nep_emoji_1f355 i {background-position: -40px -820px;}
+#nep_emoji_1f35d i {background-position: -60px -820px;}
+#nep_emoji_1f96a i {background-position: -80px -820px;}
+#nep_emoji_1f959 i {background-position: -100px -820px;}
+#nep_emoji_1f32e i {background-position: -120px -820px;}
+#nep_emoji_1f32f i {background-position: -140px -820px;}
+#nep_emoji_1f35c i {background-position: -160px -820px;}
+#nep_emoji_1f958 i {background-position: -180px -820px;}
+#nep_emoji_1f372 i {background-position: -200px -820px;}
+#nep_emoji_1f96b i {background-position: -220px -820px;}
+#nep_emoji_1f365 i {background-position: -240px -820px;}
+#nep_emoji_1f363 i {background-position: -260px -820px;}
+#nep_emoji_1f371 i {background-position: -280px -820px;}
+#nep_emoji_1f35b i {background-position: -300px -820px;}
+#nep_emoji_1f359 i {background-position: -320px -820px;}
+#nep_emoji_1f35a i {background-position: -340px -820px;}
+#nep_emoji_1f358 i {background-position: -360px -820px;}
+#nep_emoji_1f95f i {background-position: -380px -820px;}
+#nep_emoji_1f362 i {background-position: -400px -820px;}
+#nep_emoji_1f361 i {background-position: -420px -820px;}
+#nep_emoji_1f367 i {background-position: -440px -820px;}
+#nep_emoji_1f368 i {background-position: -460px -820px;}
+#nep_emoji_1f366 i {background-position: -480px -820px;}
+#nep_emoji_1f370 i {background-position: -500px -820px;}
+#nep_emoji_1f382 i {background-position: -520px -820px;}
+#nep_emoji_1f967 i {background-position: -540px -820px;}
+#nep_emoji_1f36e i {background-position: -560px -820px;}
+#nep_emoji_1f36d i {background-position: -580px -820px;}
+#nep_emoji_1f36c i {background-position: 0px -840px;}
+#nep_emoji_1f36b i {background-position: -20px -840px;}
+#nep_emoji_1f37f i {background-position: -40px -840px;}
+#nep_emoji_1f369 i {background-position: -60px -840px;}
+#nep_emoji_1f36a i {background-position: -80px -840px;}
+#nep_emoji_1f960 i {background-position: -100px -840px;}
+#nep_emoji_2615 i {background-position: -120px -840px;}
+#nep_emoji_1f375 i {background-position: -140px -840px;}
+#nep_emoji_1f963 i {background-position: -160px -840px;}
+#nep_emoji_1f37c i {background-position: -180px -840px;}
+#nep_emoji_1f964 i {background-position: -200px -840px;}
+#nep_emoji_1f95b i {background-position: -220px -840px;}
+#nep_emoji_1f37a i {background-position: -240px -840px;}
+#nep_emoji_1f37b i {background-position: -260px -840px;}
+#nep_emoji_1f377 i {background-position: -280px -840px;}
+#nep_emoji_1f942 i {background-position: -300px -840px;}
+#nep_emoji_1f943 i {background-position: -320px -840px;}
+#nep_emoji_1f378 i {background-position: -340px -840px;}
+#nep_emoji_1f379 i {background-position: -360px -840px;}
+#nep_emoji_1f37e i {background-position: -380px -840px;}
+#nep_emoji_1f376 i {background-position: -400px -840px;}
+#nep_emoji_1f944 i {background-position: -420px -840px;}
+#nep_emoji_1f374 i {background-position: -440px -840px;}
+#nep_emoji_1f37d i {background-position: -460px -840px;}
+#nep_emoji_1f962 i {background-position: -480px -840px;}
+#nep_emoji_1f961 i {background-position: -500px -840px;}
+#nep_emoji_26bd i {background-position: -520px -840px;}
+#nep_emoji_1f3c0 i {background-position: -540px -840px;}
+#nep_emoji_1f3c8 i {background-position: -560px -840px;}
+#nep_emoji_26be i {background-position: -580px -840px;}
+#nep_emoji_1f3be i {background-position: 0px -860px;}
+#nep_emoji_1f3d0 i {background-position: -20px -860px;}
+#nep_emoji_1f3c9 i {background-position: -40px -860px;}
+#nep_emoji_1f3b1 i {background-position: -60px -860px;}
+#nep_emoji_1f3d3 i {background-position: -80px -860px;}
+#nep_emoji_1f3f8 i {background-position: -100px -860px;}
+#nep_emoji_1f945 i {background-position: -120px -860px;}
+#nep_emoji_1f3d2 i {background-position: -140px -860px;}
+#nep_emoji_1f3d1 i {background-position: -160px -860px;}
+#nep_emoji_1f3cf i {background-position: -180px -860px;}
+#nep_emoji_1f94c i {background-position: -200px -860px;}
+#nep_emoji_26f3 i {background-position: -220px -860px;}
+#nep_emoji_1f3f9 i {background-position: -240px -860px;}
+#nep_emoji_1f3a3 i {background-position: -260px -860px;}
+#nep_emoji_1f94a i {background-position: -280px -860px;}
+#nep_emoji_1f94b i {background-position: -300px -860px;}
+#nep_emoji_26f8 i {background-position: -320px -860px;}
+#nep_emoji_1f3bf i {background-position: -340px -860px;}
+#nep_emoji_1f6f7 i {background-position: -360px -860px;}
+#nep_emoji_26f7 i {background-position: -380px -860px;}
+#nep_emoji_1f3c2 i {background-position: -400px -860px;}
+#nep_emoji_1f3cb-fe0f-200d-2640-fe0f i {background-position: -420px -860px;}
+#nep_emoji_1f3cb i {background-position: -440px -860px;}
+#nep_emoji_1f3cb-1f3fb-200d-2640-fe0f i {background-position: -460px -860px;}
+#nep_emoji_1f3cb-1f3fb i {background-position: -480px -860px;}
+#nep_emoji_1f3cb-1f3fc-200d-2640-fe0f i {background-position: -500px -860px;}
+#nep_emoji_1f3cb-1f3fc i {background-position: -520px -860px;}
+#nep_emoji_1f3cb-1f3fd-200d-2640-fe0f i {background-position: -540px -860px;}
+#nep_emoji_1f3cb-1f3fd i {background-position: -560px -860px;}
+#nep_emoji_1f3cb-1f3fe-200d-2640-fe0f i {background-position: -580px -860px;}
+#nep_emoji_1f3cb-1f3fe i {background-position: 0px -880px;}
+#nep_emoji_1f3cb-1f3ff-200d-2640-fe0f i {background-position: -20px -880px;}
+#nep_emoji_1f3cb-1f3ff i {background-position: -40px -880px;}
+#nep_emoji_1f93a i {background-position: -60px -880px;}
+#nep_emoji_1f93c-200d-2640-fe0f i {background-position: -80px -880px;}
+#nep_emoji_1f93c i {background-position: -100px -880px;}
+#nep_emoji_1f938 i {background-position: -120px -880px;}
+#nep_emoji_1f938-200d-2642-fe0f i {background-position: -140px -880px;}
+#nep_emoji_26f9-fe0f-200d-2640-fe0f i {background-position: -160px -880px;}
+#nep_emoji_26f9 i {background-position: -180px -880px;}
+#nep_emoji_1f93e i {background-position: -200px -880px;}
+#nep_emoji_1f93e-200d-2642-fe0f i {background-position: -220px -880px;}
+#nep_emoji_1f9d7-200d-2640-fe0f i {background-position: -240px -880px;}
+#nep_emoji_1f9d7-200d-2642-fe0f i {background-position: -260px -880px;}
+#nep_emoji_1f3cc-fe0f-200d-2640-fe0f i {background-position: -280px -880px;}
+#nep_emoji_1f3cc i {background-position: -300px -880px;}
+#nep_emoji_1f9d8-200d-2640-fe0f i {background-position: -320px -880px;}
+#nep_emoji_1f9d8-200d-2642-fe0f i {background-position: -340px -880px;}
+#nep_emoji_1f9d6-200d-2640-fe0f i {background-position: -360px -880px;}
+#nep_emoji_1f9d6-200d-2642-fe0f i {background-position: -380px -880px;}
+#nep_emoji_1f3c4-200d-2640-fe0f i {background-position: -400px -880px;}
+#nep_emoji_1f3c4-200d-2642-fe0f i {background-position: -420px -880px;}
+#nep_emoji_1f3ca-200d-2640-fe0f i {background-position: -440px -880px;}
+#nep_emoji_1f3ca i {background-position: -460px -880px;}
+#nep_emoji_1f93d-200d-2640-fe0f i {background-position: -480px -880px;}
+#nep_emoji_1f93d i {background-position: -500px -880px;}
+#nep_emoji_1f6a3-200d-2640-fe0f i {background-position: -520px -880px;}
+#nep_emoji_1f6a3 i {background-position: -540px -880px;}
+#nep_emoji_1f3c7 i {background-position: -560px -880px;}
+#nep_emoji_1f6b4-200d-2640-fe0f i {background-position: -580px -880px;}
+#nep_emoji_1f6b4 i {background-position: 0px -900px;}
+#nep_emoji_1f6b5-200d-2640-fe0f i {background-position: -20px -900px;}
+#nep_emoji_1f6b5 i {background-position: -40px -900px;}
+#nep_emoji_1f938-1f3fb i {background-position: -60px -900px;}
+#nep_emoji_1f938-1f3fb-200d-2642-fe0f i {background-position: -80px -900px;}
+#nep_emoji_26f9-1f3fb-200d-2640-fe0f i {background-position: -100px -900px;}
+#nep_emoji_26f9-1f3fb i {background-position: -120px -900px;}
+#nep_emoji_1f93e-1f3fb i {background-position: -140px -900px;}
+#nep_emoji_1f93e-1f3fb-200d-2642-fe0f i {background-position: -160px -900px;}
+#nep_emoji_1f9d7-1f3fb-200d-2640-fe0f i {background-position: -180px -900px;}
+#nep_emoji_1f9d7-1f3fb-200d-2642-fe0f i {background-position: -200px -900px;}
+#nep_emoji_1f3cc-1f3fb-200d-2640-fe0f i {background-position: -220px -900px;}
+#nep_emoji_1f3cc-1f3fb i {background-position: -240px -900px;}
+#nep_emoji_1f9d8-1f3fb-200d-2640-fe0f i {background-position: -260px -900px;}
+#nep_emoji_1f9d8-1f3fb-200d-2642-fe0f i {background-position: -280px -900px;}
+#nep_emoji_1f9d6-1f3fb-200d-2640-fe0f i {background-position: -300px -900px;}
+#nep_emoji_1f9d6-1f3fb-200d-2642-fe0f i {background-position: -320px -900px;}
+#nep_emoji_1f3c4-1f3fb-200d-2640-fe0f i {background-position: -340px -900px;}
+#nep_emoji_1f3c4-1f3fb-200d-2642-fe0f i {background-position: -360px -900px;}
+#nep_emoji_1f3ca-1f3fb-200d-2640-fe0f i {background-position: -380px -900px;}
+#nep_emoji_1f3ca-1f3fb i {background-position: -400px -900px;}
+#nep_emoji_1f93d-1f3fb-200d-2640-fe0f i {background-position: -420px -900px;}
+#nep_emoji_1f93d-1f3fb i {background-position: -440px -900px;}
+#nep_emoji_1f6a3-1f3fb-200d-2640-fe0f i {background-position: -460px -900px;}
+#nep_emoji_1f6a3-1f3fb i {background-position: -480px -900px;}
+#nep_emoji_1f3c7-1f3fb i {background-position: -500px -900px;}
+#nep_emoji_1f6b4-1f3fb-200d-2640-fe0f i {background-position: -520px -900px;}
+#nep_emoji_1f6b4-1f3fb i {background-position: -540px -900px;}
+#nep_emoji_1f6b5-1f3fb-200d-2640-fe0f i {background-position: -560px -900px;}
+#nep_emoji_1f6b5-1f3fb i {background-position: -580px -900px;}
+#nep_emoji_1f938-1f3fc i {background-position: 0px -920px;}
+#nep_emoji_1f938-1f3fc-200d-2642-fe0f i {background-position: -20px -920px;}
+#nep_emoji_26f9-1f3fc-200d-2640-fe0f i {background-position: -40px -920px;}
+#nep_emoji_26f9-1f3fc i {background-position: -60px -920px;}
+#nep_emoji_1f93e-1f3fc i {background-position: -80px -920px;}
+#nep_emoji_1f93e-1f3fc-200d-2642-fe0f i {background-position: -100px -920px;}
+#nep_emoji_1f9d7-1f3fc-200d-2640-fe0f i {background-position: -120px -920px;}
+#nep_emoji_1f9d7-1f3fc-200d-2642-fe0f i {background-position: -140px -920px;}
+#nep_emoji_1f3cc-1f3fc-200d-2640-fe0f i {background-position: -160px -920px;}
+#nep_emoji_1f3cc-1f3fc i {background-position: -180px -920px;}
+#nep_emoji_1f9d8-1f3fc-200d-2640-fe0f i {background-position: -200px -920px;}
+#nep_emoji_1f9d8-1f3fc-200d-2642-fe0f i {background-position: -220px -920px;}
+#nep_emoji_1f9d6-1f3fc-200d-2640-fe0f i {background-position: -240px -920px;}
+#nep_emoji_1f9d6-1f3fc-200d-2642-fe0f i {background-position: -260px -920px;}
+#nep_emoji_1f3c4-1f3fc-200d-2640-fe0f i {background-position: -280px -920px;}
+#nep_emoji_1f3c4-1f3fc-200d-2642-fe0f i {background-position: -300px -920px;}
+#nep_emoji_1f3ca-1f3fc-200d-2640-fe0f i {background-position: -320px -920px;}
+#nep_emoji_1f3ca-1f3fc i {background-position: -340px -920px;}
+#nep_emoji_1f93d-1f3fc-200d-2640-fe0f i {background-position: -360px -920px;}
+#nep_emoji_1f93d-1f3fc i {background-position: -380px -920px;}
+#nep_emoji_1f6a3-1f3fc-200d-2640-fe0f i {background-position: -400px -920px;}
+#nep_emoji_1f6a3-1f3fc i {background-position: -420px -920px;}
+#nep_emoji_1f3c7-1f3fc i {background-position: -440px -920px;}
+#nep_emoji_1f6b4-1f3fc-200d-2640-fe0f i {background-position: -460px -920px;}
+#nep_emoji_1f6b4-1f3fc i {background-position: -480px -920px;}
+#nep_emoji_1f6b5-1f3fc-200d-2640-fe0f i {background-position: -500px -920px;}
+#nep_emoji_1f6b5-1f3fc i {background-position: -520px -920px;}
+#nep_emoji_1f938-1f3fd i {background-position: -540px -920px;}
+#nep_emoji_1f938-1f3fd-200d-2642-fe0f i {background-position: -560px -920px;}
+#nep_emoji_26f9-1f3fd-200d-2640-fe0f i {background-position: -580px -920px;}
+#nep_emoji_26f9-1f3fd i {background-position: 0px -940px;}
+#nep_emoji_1f93e-1f3fd i {background-position: -20px -940px;}
+#nep_emoji_1f93e-1f3fd-200d-2642-fe0f i {background-position: -40px -940px;}
+#nep_emoji_1f9d7-1f3fd-200d-2640-fe0f i {background-position: -60px -940px;}
+#nep_emoji_1f9d7-1f3fd-200d-2642-fe0f i {background-position: -80px -940px;}
+#nep_emoji_1f3cc-1f3fd-200d-2640-fe0f i {background-position: -100px -940px;}
+#nep_emoji_1f3cc-1f3fd i {background-position: -120px -940px;}
+#nep_emoji_1f9d8-1f3fd-200d-2640-fe0f i {background-position: -140px -940px;}
+#nep_emoji_1f9d8-1f3fd-200d-2642-fe0f i {background-position: -160px -940px;}
+#nep_emoji_1f9d6-1f3fd-200d-2640-fe0f i {background-position: -180px -940px;}
+#nep_emoji_1f9d6-1f3fd-200d-2642-fe0f i {background-position: -200px -940px;}
+#nep_emoji_1f3c4-1f3fd-200d-2640-fe0f i {background-position: -220px -940px;}
+#nep_emoji_1f3c4-1f3fd-200d-2642-fe0f i {background-position: -240px -940px;}
+#nep_emoji_1f3ca-1f3fd-200d-2640-fe0f i {background-position: -260px -940px;}
+#nep_emoji_1f3ca-1f3fd i {background-position: -280px -940px;}
+#nep_emoji_1f93d-1f3fd-200d-2640-fe0f i {background-position: -300px -940px;}
+#nep_emoji_1f93d-1f3fd i {background-position: -320px -940px;}
+#nep_emoji_1f6a3-1f3fd-200d-2640-fe0f i {background-position: -340px -940px;}
+#nep_emoji_1f6a3-1f3fd i {background-position: -360px -940px;}
+#nep_emoji_1f3c7-1f3fd i {background-position: -380px -940px;}
+#nep_emoji_1f6b4-1f3fd-200d-2640-fe0f i {background-position: -400px -940px;}
+#nep_emoji_1f6b4-1f3fd i {background-position: -420px -940px;}
+#nep_emoji_1f6b5-1f3fd-200d-2640-fe0f i {background-position: -440px -940px;}
+#nep_emoji_1f6b5-1f3fd i {background-position: -460px -940px;}
+#nep_emoji_1f938-1f3fe i {background-position: -480px -940px;}
+#nep_emoji_1f938-1f3fe-200d-2642-fe0f i {background-position: -500px -940px;}
+#nep_emoji_26f9-1f3fe-200d-2640-fe0f i {background-position: -520px -940px;}
+#nep_emoji_26f9-1f3fe i {background-position: -540px -940px;}
+#nep_emoji_1f93e-1f3fe i {background-position: -560px -940px;}
+#nep_emoji_1f93e-1f3fe-200d-2642-fe0f i {background-position: -580px -940px;}
+#nep_emoji_1f9d7-1f3fe-200d-2640-fe0f i {background-position: 0px -960px;}
+#nep_emoji_1f9d7-1f3fe-200d-2642-fe0f i {background-position: -20px -960px;}
+#nep_emoji_1f3cc-1f3fe-200d-2640-fe0f i {background-position: -40px -960px;}
+#nep_emoji_1f3cc-1f3fe i {background-position: -60px -960px;}
+#nep_emoji_1f9d8-1f3fe-200d-2640-fe0f i {background-position: -80px -960px;}
+#nep_emoji_1f9d8-1f3fe-200d-2642-fe0f i {background-position: -100px -960px;}
+#nep_emoji_1f9d6-1f3fe-200d-2640-fe0f i {background-position: -120px -960px;}
+#nep_emoji_1f9d6-1f3fe-200d-2642-fe0f i {background-position: -140px -960px;}
+#nep_emoji_1f3c4-1f3fe-200d-2640-fe0f i {background-position: -160px -960px;}
+#nep_emoji_1f3c4-1f3fe-200d-2642-fe0f i {background-position: -180px -960px;}
+#nep_emoji_1f3ca-1f3fe-200d-2640-fe0f i {background-position: -200px -960px;}
+#nep_emoji_1f3ca-1f3fe i {background-position: -220px -960px;}
+#nep_emoji_1f93d-1f3fe-200d-2640-fe0f i {background-position: -240px -960px;}
+#nep_emoji_1f93d-1f3fe i {background-position: -260px -960px;}
+#nep_emoji_1f6a3-1f3fe-200d-2640-fe0f i {background-position: -280px -960px;}
+#nep_emoji_1f6a3-1f3fe i {background-position: -300px -960px;}
+#nep_emoji_1f3c7-1f3fe i {background-position: -320px -960px;}
+#nep_emoji_1f6b4-1f3fe-200d-2640-fe0f i {background-position: -340px -960px;}
+#nep_emoji_1f6b4-1f3fe i {background-position: -360px -960px;}
+#nep_emoji_1f6b5-1f3fe-200d-2640-fe0f i {background-position: -380px -960px;}
+#nep_emoji_1f6b5-1f3fe i {background-position: -400px -960px;}
+#nep_emoji_1f938-1f3ff i {background-position: -420px -960px;}
+#nep_emoji_1f938-1f3ff-200d-2642-fe0f i {background-position: -440px -960px;}
+#nep_emoji_26f9-1f3ff-200d-2640-fe0f i {background-position: -460px -960px;}
+#nep_emoji_26f9-1f3ff i {background-position: -480px -960px;}
+#nep_emoji_1f93e-1f3ff i {background-position: -500px -960px;}
+#nep_emoji_1f93e-1f3ff-200d-2642-fe0f i {background-position: -520px -960px;}
+#nep_emoji_1f9d7-1f3ff-200d-2640-fe0f i {background-position: -540px -960px;}
+#nep_emoji_1f9d7-1f3ff-200d-2642-fe0f i {background-position: -560px -960px;}
+#nep_emoji_1f3cc-1f3ff-200d-2640-fe0f i {background-position: -580px -960px;}
+#nep_emoji_1f3cc-1f3ff i {background-position: 0px -980px;}
+#nep_emoji_1f9d8-1f3ff-200d-2640-fe0f i {background-position: -20px -980px;}
+#nep_emoji_1f9d8-1f3ff-200d-2642-fe0f i {background-position: -40px -980px;}
+#nep_emoji_1f9d6-1f3ff-200d-2640-fe0f i {background-position: -60px -980px;}
+#nep_emoji_1f9d6-1f3ff-200d-2642-fe0f i {background-position: -80px -980px;}
+#nep_emoji_1f3c4-1f3ff-200d-2640-fe0f i {background-position: -100px -980px;}
+#nep_emoji_1f3c4-1f3ff-200d-2642-fe0f i {background-position: -120px -980px;}
+#nep_emoji_1f3ca-1f3ff-200d-2640-fe0f i {background-position: -140px -980px;}
+#nep_emoji_1f3ca-1f3ff i {background-position: -160px -980px;}
+#nep_emoji_1f93d-1f3ff-200d-2640-fe0f i {background-position: -180px -980px;}
+#nep_emoji_1f93d-1f3ff i {background-position: -200px -980px;}
+#nep_emoji_1f6a3-1f3ff-200d-2640-fe0f i {background-position: -220px -980px;}
+#nep_emoji_1f6a3-1f3ff i {background-position: -240px -980px;}
+#nep_emoji_1f3c7-1f3ff i {background-position: -260px -980px;}
+#nep_emoji_1f6b4-1f3ff-200d-2640-fe0f i {background-position: -280px -980px;}
+#nep_emoji_1f6b4-1f3ff i {background-position: -300px -980px;}
+#nep_emoji_1f6b5-1f3ff-200d-2640-fe0f i {background-position: -320px -980px;}
+#nep_emoji_1f6b5-1f3ff i {background-position: -340px -980px;}
+#nep_emoji_1f3bd i {background-position: -360px -980px;}
+#nep_emoji_1f396 i {background-position: -380px -980px;}
+#nep_emoji_1f3c5 i {background-position: -400px -980px;}
+#nep_emoji_1f947 i {background-position: -420px -980px;}
+#nep_emoji_1f948 i {background-position: -440px -980px;}
+#nep_emoji_1f949 i {background-position: -460px -980px;}
+#nep_emoji_1f3c6 i {background-position: -480px -980px;}
+#nep_emoji_1f3f5 i {background-position: -500px -980px;}
+#nep_emoji_1f397 i {background-position: -520px -980px;}
+#nep_emoji_1f3ab i {background-position: -540px -980px;}
+#nep_emoji_1f39f i {background-position: -560px -980px;}
+#nep_emoji_1f3aa i {background-position: -580px -980px;}
+#nep_emoji_1f939-200d-2640-fe0f i {background-position: 0px -1000px;}
+#nep_emoji_1f939 i {background-position: -20px -1000px;}
+#nep_emoji_1f939-1f3fb-200d-2640-fe0f i {background-position: -40px -1000px;}
+#nep_emoji_1f939-1f3fb i {background-position: -60px -1000px;}
+#nep_emoji_1f939-1f3fc-200d-2640-fe0f i {background-position: -80px -1000px;}
+#nep_emoji_1f939-1f3fc i {background-position: -100px -1000px;}
+#nep_emoji_1f939-1f3fd-200d-2640-fe0f i {background-position: -120px -1000px;}
+#nep_emoji_1f939-1f3fd i {background-position: -140px -1000px;}
+#nep_emoji_1f939-1f3fe-200d-2640-fe0f i {background-position: -160px -1000px;}
+#nep_emoji_1f939-1f3fe i {background-position: -180px -1000px;}
+#nep_emoji_1f939-1f3ff-200d-2640-fe0f i {background-position: -200px -1000px;}
+#nep_emoji_1f939-1f3ff i {background-position: -220px -1000px;}
+#nep_emoji_1f3ad i {background-position: -240px -1000px;}
+#nep_emoji_1f3a8 i {background-position: -260px -1000px;}
+#nep_emoji_1f3ac i {background-position: -280px -1000px;}
+#nep_emoji_1f3a4 i {background-position: -300px -1000px;}
+#nep_emoji_1f3a7 i {background-position: -320px -1000px;}
+#nep_emoji_1f3bc i {background-position: -340px -1000px;}
+#nep_emoji_1f3b9 i {background-position: -360px -1000px;}
+#nep_emoji_1f941 i {background-position: -380px -1000px;}
+#nep_emoji_1f3b7 i {background-position: -400px -1000px;}
+#nep_emoji_1f3ba i {background-position: -420px -1000px;}
+#nep_emoji_1f3b8 i {background-position: -440px -1000px;}
+#nep_emoji_1f3bb i {background-position: -460px -1000px;}
+#nep_emoji_1f3b2 i {background-position: -480px -1000px;}
+#nep_emoji_1f3af i {background-position: -500px -1000px;}
+#nep_emoji_1f3b3 i {background-position: -520px -1000px;}
+#nep_emoji_1f3ae i {background-position: -540px -1000px;}
+#nep_emoji_1f47e i {background-position: -560px -1000px;}
+#nep_emoji_1f3b0 i {background-position: -580px -1000px;}
+
+/* Travel and Places */
+#nep_emoji_1f697 i {background-position: 0px -1020px;}
+#nep_emoji_1f695 i {background-position: -20px -1020px;}
+#nep_emoji_1f699 i {background-position: -40px -1020px;}
+#nep_emoji_1f68c i {background-position: -60px -1020px;}
+#nep_emoji_1f68e i {background-position: -80px -1020px;}
+#nep_emoji_1f3ce i {background-position: -100px -1020px;}
+#nep_emoji_1f693 i {background-position: -120px -1020px;}
+#nep_emoji_1f691 i {background-position: -140px -1020px;}
+#nep_emoji_1f692 i {background-position: -160px -1020px;}
+#nep_emoji_1f690 i {background-position: -180px -1020px;}
+#nep_emoji_1f69a i {background-position: -200px -1020px;}
+#nep_emoji_1f69b i {background-position: -220px -1020px;}
+#nep_emoji_1f69c i {background-position: -240px -1020px;}
+#nep_emoji_1f3cd i {background-position: -260px -1020px;}
+#nep_emoji_1f6f5 i {background-position: -280px -1020px;}
+#nep_emoji_1f6b2 i {background-position: -300px -1020px;}
+#nep_emoji_1f6f4 i {background-position: -320px -1020px;}
+#nep_emoji_1f6a8 i {background-position: -340px -1020px;}
+#nep_emoji_1f694 i {background-position: -360px -1020px;}
+#nep_emoji_1f68d i {background-position: -380px -1020px;}
+#nep_emoji_1f698 i {background-position: -400px -1020px;}
+#nep_emoji_1f696 i {background-position: -420px -1020px;}
+#nep_emoji_1f6a1 i {background-position: -440px -1020px;}
+#nep_emoji_1f6a0 i {background-position: -460px -1020px;}
+#nep_emoji_1f69f i {background-position: -480px -1020px;}
+#nep_emoji_1f683 i {background-position: -500px -1020px;}
+#nep_emoji_1f68b i {background-position: -520px -1020px;}
+#nep_emoji_1f69d i {background-position: -540px -1020px;}
+#nep_emoji_1f684 i {background-position: -560px -1020px;}
+#nep_emoji_1f685 i {background-position: -580px -1020px;}
+#nep_emoji_1f688 i {background-position: 0px -1040px;}
+#nep_emoji_1f69e i {background-position: -20px -1040px;}
+#nep_emoji_1f682 i {background-position: -40px -1040px;}
+#nep_emoji_1f686 i {background-position: -60px -1040px;}
+#nep_emoji_1f687 i {background-position: -80px -1040px;}
+#nep_emoji_1f68a i {background-position: -100px -1040px;}
+#nep_emoji_1f689 i {background-position: -120px -1040px;}
+#nep_emoji_1f681 i {background-position: -140px -1040px;}
+#nep_emoji_1f6e9 i {background-position: -160px -1040px;}
+#nep_emoji_2708 i {background-position: -180px -1040px;}
+#nep_emoji_1f6eb i {background-position: -200px -1040px;}
+#nep_emoji_1f6ec i {background-position: -220px -1040px;}
+#nep_emoji_1f6f6 i {background-position: -240px -1040px;}
+#nep_emoji_26f5 i {background-position: -260px -1040px;}
+#nep_emoji_1f6e5 i {background-position: -280px -1040px;}
+#nep_emoji_1f6a4 i {background-position: -300px -1040px;}
+#nep_emoji_26f4 i {background-position: -320px -1040px;}
+#nep_emoji_1f6f3 i {background-position: -340px -1040px;}
+#nep_emoji_1f680 i {background-position: -360px -1040px;}
+#nep_emoji_1f6f8 i {background-position: -380px -1040px;}
+#nep_emoji_1f6f0 i {background-position: -400px -1040px;}
+#nep_emoji_1f4ba i {background-position: -420px -1040px;}
+#nep_emoji_2693 i {background-position: -440px -1040px;}
+#nep_emoji_1f6a7 i {background-position: -460px -1040px;}
+#nep_emoji_26fd i {background-position: -480px -1040px;}
+#nep_emoji_1f68f i {background-position: -500px -1040px;}
+#nep_emoji_1f6a6 i {background-position: -520px -1040px;}
+#nep_emoji_1f6a5 i {background-position: -540px -1040px;}
+#nep_emoji_1f6d1 i {background-position: -560px -1040px;}
+#nep_emoji_1f6a2 i {background-position: -580px -1040px;}
+#nep_emoji_1f3a1 i {background-position: 0px -1060px;}
+#nep_emoji_1f3a2 i {background-position: -20px -1060px;}
+#nep_emoji_1f3a0 i {background-position: -40px -1060px;}
+#nep_emoji_1f3d7 i {background-position: -60px -1060px;}
+#nep_emoji_1f301 i {background-position: -80px -1060px;}
+#nep_emoji_1f5fc i {background-position: -100px -1060px;}
+#nep_emoji_1f3ed i {background-position: -120px -1060px;}
+#nep_emoji_26f2 i {background-position: -140px -1060px;}
+#nep_emoji_1f391 i {background-position: -160px -1060px;}
+#nep_emoji_26f0 i {background-position: -180px -1060px;}
+#nep_emoji_1f3d4 i {background-position: -200px -1060px;}
+#nep_emoji_1f5fb i {background-position: -220px -1060px;}
+#nep_emoji_1f30b i {background-position: -240px -1060px;}
+#nep_emoji_1f5fe i {background-position: -260px -1060px;}
+#nep_emoji_1f3d5 i {background-position: -280px -1060px;}
+#nep_emoji_26fa i {background-position: -300px -1060px;}
+#nep_emoji_1f3de i {background-position: -320px -1060px;}
+#nep_emoji_1f6e3 i {background-position: -340px -1060px;}
+#nep_emoji_1f6e4 i {background-position: -360px -1060px;}
+#nep_emoji_1f305 i {background-position: -380px -1060px;}
+#nep_emoji_1f304 i {background-position: -400px -1060px;}
+#nep_emoji_1f3dc i {background-position: -420px -1060px;}
+#nep_emoji_1f3d6 i {background-position: -440px -1060px;}
+#nep_emoji_1f3dd i {background-position: -460px -1060px;}
+#nep_emoji_1f307 i {background-position: -480px -1060px;}
+#nep_emoji_1f306 i {background-position: -500px -1060px;}
+#nep_emoji_1f3d9 i {background-position: -520px -1060px;}
+#nep_emoji_1f303 i {background-position: -540px -1060px;}
+#nep_emoji_1f309 i {background-position: -560px -1060px;}
+#nep_emoji_1f30c i {background-position: -580px -1060px;}
+#nep_emoji_1f320 i {background-position: 0px -1080px;}
+#nep_emoji_1f387 i {background-position: -20px -1080px;}
+#nep_emoji_1f386 i {background-position: -40px -1080px;}
+#nep_emoji_1f308 i {background-position: -60px -1080px;}
+#nep_emoji_1f3d8 i {background-position: -80px -1080px;}
+#nep_emoji_1f3f0 i {background-position: -100px -1080px;}
+#nep_emoji_1f3ef i {background-position: -120px -1080px;}
+#nep_emoji_1f3df i {background-position: -140px -1080px;}
+#nep_emoji_1f5fd i {background-position: -160px -1080px;}
+#nep_emoji_1f3e0 i {background-position: -180px -1080px;}
+#nep_emoji_1f3e1 i {background-position: -200px -1080px;}
+#nep_emoji_1f3da i {background-position: -220px -1080px;}
+#nep_emoji_1f3e2 i {background-position: -240px -1080px;}
+#nep_emoji_1f3ec i {background-position: -260px -1080px;}
+#nep_emoji_1f3e3 i {background-position: -280px -1080px;}
+#nep_emoji_1f3e4 i {background-position: -300px -1080px;}
+#nep_emoji_1f3e5 i {background-position: -320px -1080px;}
+#nep_emoji_1f3e6 i {background-position: -340px -1080px;}
+#nep_emoji_1f3e8 i {background-position: -360px -1080px;}
+#nep_emoji_1f3ea i {background-position: -380px -1080px;}
+#nep_emoji_1f3eb i {background-position: -400px -1080px;}
+#nep_emoji_1f3e9 i {background-position: -420px -1080px;}
+#nep_emoji_1f492 i {background-position: -440px -1080px;}
+#nep_emoji_1f3db i {background-position: -460px -1080px;}
+#nep_emoji_26ea i {background-position: -480px -1080px;}
+#nep_emoji_1f54c i {background-position: -500px -1080px;}
+#nep_emoji_1f54d i {background-position: -520px -1080px;}
+#nep_emoji_1f54b i {background-position: -540px -1080px;}
+#nep_emoji_26e9 i {background-position: -560px -1080px;}
+
+/* Objects */
+
+#nep_emoji_231a i {background-position: -580px -1080px;}
+#nep_emoji_1f4f1 i {background-position: 0px -1100px;}
+#nep_emoji_1f4f2 i {background-position: -20px -1100px;}
+#nep_emoji_1f4bb i {background-position: -40px -1100px;}
+#nep_emoji_2328 i {background-position: -60px -1100px;}
+#nep_emoji_1f5a5 i {background-position: -80px -1100px;}
+#nep_emoji_1f5a8 i {background-position: -100px -1100px;}
+#nep_emoji_1f5b1 i {background-position: -120px -1100px;}
+#nep_emoji_1f5b2 i {background-position: -140px -1100px;}
+#nep_emoji_1f579 i {background-position: -160px -1100px;}
+#nep_emoji_1f5dc i {background-position: -180px -1100px;}
+#nep_emoji_1f4bd i {background-position: -200px -1100px;}
+#nep_emoji_1f4be i {background-position: -220px -1100px;}
+#nep_emoji_1f4bf i {background-position: -240px -1100px;}
+#nep_emoji_1f4c0 i {background-position: -260px -1100px;}
+#nep_emoji_1f4fc i {background-position: -280px -1100px;}
+#nep_emoji_1f4f7 i {background-position: -300px -1100px;}
+#nep_emoji_1f4f8 i {background-position: -320px -1100px;}
+#nep_emoji_1f4f9 i {background-position: -340px -1100px;}
+#nep_emoji_1f3a5 i {background-position: -360px -1100px;}
+#nep_emoji_1f4fd i {background-position: -380px -1100px;}
+#nep_emoji_1f39e i {background-position: -400px -1100px;}
+#nep_emoji_1f4de i {background-position: -420px -1100px;}
+#nep_emoji_260e i {background-position: -440px -1100px;}
+#nep_emoji_1f4df i {background-position: -460px -1100px;}
+#nep_emoji_1f4e0 i {background-position: -480px -1100px;}
+#nep_emoji_1f4fa i {background-position: -500px -1100px;}
+#nep_emoji_1f4fb i {background-position: -520px -1100px;}
+#nep_emoji_1f399 i {background-position: -540px -1100px;}
+#nep_emoji_1f39a i {background-position: -560px -1100px;}
+#nep_emoji_1f39b i {background-position: -580px -1100px;}
+#nep_emoji_23f1 i {background-position: 0px -1120px;}
+#nep_emoji_23f2 i {background-position: -20px -1120px;}
+#nep_emoji_23f0 i {background-position: -40px -1120px;}
+#nep_emoji_1f570 i {background-position: -60px -1120px;}
+#nep_emoji_23f3 i {background-position: -80px -1120px;}
+#nep_emoji_231b i {background-position: -100px -1120px;}
+#nep_emoji_1f4e1 i {background-position: -120px -1120px;}
+#nep_emoji_1f50b i {background-position: -140px -1120px;}
+#nep_emoji_1f50c i {background-position: -160px -1120px;}
+#nep_emoji_1f4a1 i {background-position: -180px -1120px;}
+#nep_emoji_1f526 i {background-position: -200px -1120px;}
+#nep_emoji_1f56f i {background-position: -220px -1120px;}
+#nep_emoji_1f5d1 i {background-position: -240px -1120px;}
+#nep_emoji_1f6e2 i {background-position: -260px -1120px;}
+#nep_emoji_1f6d2 i {background-position: -280px -1120px;}
+#nep_emoji_1f4b8 i {background-position: -300px -1120px;}
+#nep_emoji_1f4b5 i {background-position: -320px -1120px;}
+#nep_emoji_1f4b4 i {background-position: -340px -1120px;}
+#nep_emoji_1f4b6 i {background-position: -360px -1120px;}
+#nep_emoji_1f4b7 i {background-position: -380px -1120px;}
+#nep_emoji_1f4b0 i {background-position: -400px -1120px;}
+#nep_emoji_1f4b3 i {background-position: -420px -1120px;}
+#nep_emoji_1f48e i {background-position: -440px -1120px;}
+#nep_emoji_2696 i {background-position: -460px -1120px;}
+#nep_emoji_1f527 i {background-position: -480px -1120px;}
+#nep_emoji_1f528 i {background-position: -500px -1120px;}
+#nep_emoji_2692 i {background-position: -520px -1120px;}
+#nep_emoji_1f6e0 i {background-position: -540px -1120px;}
+#nep_emoji_26cf i {background-position: -560px -1120px;}
+#nep_emoji_1f529 i {background-position: -580px -1120px;}
+#nep_emoji_2699 i {background-position: 0px -1140px;}
+#nep_emoji_26d3 i {background-position: -20px -1140px;}
+#nep_emoji_1f52b i {background-position: -40px -1140px;}
+#nep_emoji_1f4a3 i {background-position: -60px -1140px;}
+#nep_emoji_1f52a i {background-position: -80px -1140px;}
+#nep_emoji_1f5e1 i {background-position: -100px -1140px;}
+#nep_emoji_2694 i {background-position: -120px -1140px;}
+#nep_emoji_1f6e1 i {background-position: -140px -1140px;}
+#nep_emoji_1f6ac i {background-position: -160px -1140px;}
+#nep_emoji_26b0 i {background-position: -180px -1140px;}
+#nep_emoji_26b1 i {background-position: -200px -1140px;}
+#nep_emoji_1f3fa i {background-position: -220px -1140px;}
+#nep_emoji_1f52e i {background-position: -240px -1140px;}
+#nep_emoji_1f4ff i {background-position: -260px -1140px;}
+#nep_emoji_1f488 i {background-position: -280px -1140px;}
+#nep_emoji_2697 i {background-position: -300px -1140px;}
+#nep_emoji_1f52d i {background-position: -320px -1140px;}
+#nep_emoji_1f52c i {background-position: -340px -1140px;}
+#nep_emoji_1f573 i {background-position: -360px -1140px;}
+#nep_emoji_1f48a i {background-position: -380px -1140px;}
+#nep_emoji_1f489 i {background-position: -400px -1140px;}
+#nep_emoji_1f321 i {background-position: -420px -1140px;}
+#nep_emoji_1f3f7 i {background-position: -440px -1140px;}
+#nep_emoji_1f516 i {background-position: -460px -1140px;}
+#nep_emoji_1f6bd i {background-position: -480px -1140px;}
+#nep_emoji_1f6bf i {background-position: -500px -1140px;}
+#nep_emoji_1f6c1 i {background-position: -520px -1140px;}
+#nep_emoji_1f6c0 i {background-position: -540px -1140px;}
+#nep_emoji_1f6c0-1f3fb i {background-position: -560px -1140px;}
+#nep_emoji_1f6c0-1f3fc i {background-position: -580px -1140px;}
+#nep_emoji_1f6c0-1f3fd i {background-position: 0px -1160px;}
+#nep_emoji_1f6c0-1f3fe i {background-position: -20px -1160px;}
+#nep_emoji_1f6c0-1f3ff i {background-position: -40px -1160px;}
+#nep_emoji_1f511 i {background-position: -60px -1160px;}
+#nep_emoji_1f5dd i {background-position: -80px -1160px;}
+#nep_emoji_1f6cb i {background-position: -100px -1160px;}
+#nep_emoji_1f6cc i {background-position: -120px -1160px;}
+#nep_emoji_1f6cc-1f3fb i {background-position: -140px -1160px;}
+#nep_emoji_1f6cc-1f3fc i {background-position: -160px -1160px;}
+#nep_emoji_1f6cc-1f3fd i {background-position: -180px -1160px;}
+#nep_emoji_1f6cc-1f3fe i {background-position: -200px -1160px;}
+#nep_emoji_1f6cc-1f3ff i {background-position: -220px -1160px;}
+#nep_emoji_1f6cf i {background-position: -240px -1160px;}
+#nep_emoji_1f6aa i {background-position: -260px -1160px;}
+#nep_emoji_1f6ce i {background-position: -280px -1160px;}
+#nep_emoji_1f5bc i {background-position: -300px -1160px;}
+#nep_emoji_1f5fa i {background-position: -320px -1160px;}
+#nep_emoji_26f1 i {background-position: -340px -1160px;}
+#nep_emoji_1f5ff i {background-position: -360px -1160px;}
+#nep_emoji_1f6cd i {background-position: -380px -1160px;}
+#nep_emoji_1f388 i {background-position: -400px -1160px;}
+#nep_emoji_1f38f i {background-position: -420px -1160px;}
+#nep_emoji_1f380 i {background-position: -440px -1160px;}
+#nep_emoji_1f381 i {background-position: -460px -1160px;}
+#nep_emoji_1f38a i {background-position: -480px -1160px;}
+#nep_emoji_1f389 i {background-position: -500px -1160px;}
+#nep_emoji_1f38e i {background-position: -520px -1160px;}
+#nep_emoji_1f390 i {background-position: -540px -1160px;}
+#nep_emoji_1f3ee i {background-position: -560px -1160px;}
+#nep_emoji_2709 i {background-position: -580px -1160px;}
+#nep_emoji_1f4e9 i {background-position: 0px -1180px;}
+#nep_emoji_1f4e8 i {background-position: -20px -1180px;}
+#nep_emoji_1f4e7 i {background-position: -40px -1180px;}
+#nep_emoji_1f48c i {background-position: -60px -1180px;}
+#nep_emoji_1f4ee i {background-position: -80px -1180px;}
+#nep_emoji_1f4ea i {background-position: -100px -1180px;}
+#nep_emoji_1f4eb i {background-position: -120px -1180px;}
+#nep_emoji_1f4ec i {background-position: -140px -1180px;}
+#nep_emoji_1f4ed i {background-position: -160px -1180px;}
+#nep_emoji_1f4e6 i {background-position: -180px -1180px;}
+#nep_emoji_1f4ef i {background-position: -200px -1180px;}
+#nep_emoji_1f4e5 i {background-position: -220px -1180px;}
+#nep_emoji_1f4e4 i {background-position: -240px -1180px;}
+#nep_emoji_1f4dc i {background-position: -260px -1180px;}
+#nep_emoji_1f4c3 i {background-position: -280px -1180px;}
+#nep_emoji_1f4d1 i {background-position: -300px -1180px;}
+#nep_emoji_1f4ca i {background-position: -320px -1180px;}
+#nep_emoji_1f4c8 i {background-position: -340px -1180px;}
+#nep_emoji_1f4c9 i {background-position: -360px -1180px;}
+#nep_emoji_1f4c4 i {background-position: -380px -1180px;}
+#nep_emoji_1f4c5 i {background-position: -400px -1180px;}
+#nep_emoji_1f4c6 i {background-position: -420px -1180px;}
+#nep_emoji_1f5d3 i {background-position: -440px -1180px;}
+#nep_emoji_1f4c7 i {background-position: -460px -1180px;}
+#nep_emoji_1f5c3 i {background-position: -480px -1180px;}
+#nep_emoji_1f5f3 i {background-position: -500px -1180px;}
+#nep_emoji_1f5c4 i {background-position: -520px -1180px;}
+#nep_emoji_1f4cb i {background-position: -540px -1180px;}
+#nep_emoji_1f5d2 i {background-position: -560px -1180px;}
+#nep_emoji_1f4c1 i {background-position: -580px -1180px;}
+#nep_emoji_1f4c2 i {background-position: 0px -1200px;}
+#nep_emoji_1f5c2 i {background-position: -20px -1200px;}
+#nep_emoji_1f5de i {background-position: -40px -1200px;}
+#nep_emoji_1f4f0 i {background-position: -60px -1200px;}
+#nep_emoji_1f4d3 i {background-position: -80px -1200px;}
+#nep_emoji_1f4d5 i {background-position: -100px -1200px;}
+#nep_emoji_1f4d7 i {background-position: -120px -1200px;}
+#nep_emoji_1f4d8 i {background-position: -140px -1200px;}
+#nep_emoji_1f4d9 i {background-position: -160px -1200px;}
+#nep_emoji_1f4d4 i {background-position: -180px -1200px;}
+#nep_emoji_1f4d2 i {background-position: -200px -1200px;}
+#nep_emoji_1f4da i {background-position: -220px -1200px;}
+#nep_emoji_1f4d6 i {background-position: -240px -1200px;}
+#nep_emoji_1f517 i {background-position: -260px -1200px;}
+#nep_emoji_1f4ce i {background-position: -280px -1200px;}
+#nep_emoji_1f587 i {background-position: -300px -1200px;}
+#nep_emoji_2702 i {background-position: -320px -1200px;}
+#nep_emoji_1f4d0 i {background-position: -340px -1200px;}
+#nep_emoji_1f4cf i {background-position: -360px -1200px;}
+#nep_emoji_1f4cc i {background-position: -380px -1200px;}
+#nep_emoji_1f4cd i {background-position: -400px -1200px;}
+#nep_emoji_1f510 i {background-position: -420px -1200px;}
+#nep_emoji_1f512 i {background-position: -440px -1200px;}
+#nep_emoji_1f513 i {background-position: -460px -1200px;}
+#nep_emoji_1f50f i {background-position: -480px -1200px;}
+#nep_emoji_1f58a i {background-position: -500px -1200px;}
+#nep_emoji_1f58b i {background-position: -520px -1200px;}
+#nep_emoji_2712 i {background-position: -540px -1200px;}
+#nep_emoji_1f4dd i {background-position: -560px -1200px;}
+#nep_emoji_270f i {background-position: -580px -1200px;}
+#nep_emoji_1f58d i {background-position: 0px -1220px;}
+#nep_emoji_1f58c i {background-position: -20px -1220px;}
+#nep_emoji_1f50d i {background-position: -40px -1220px;}
+#nep_emoji_1f50e i {background-position: -60px -1220px;}
+
+/* Symbols */
+
+#nep_emoji_2764 i {background-position: -80px -1220px;}
+#nep_emoji_1f9e1 i {background-position: -100px -1220px;}
+#nep_emoji_1f49b i {background-position: -120px -1220px;}
+#nep_emoji_1f49a i {background-position: -140px -1220px;}
+#nep_emoji_1f499 i {background-position: -160px -1220px;}
+#nep_emoji_1f49c i {background-position: -180px -1220px;}
+#nep_emoji_1f5a4 i {background-position: -200px -1220px;}
+#nep_emoji_1f494 i {background-position: -220px -1220px;}
+#nep_emoji_2763 i {background-position: -240px -1220px;}
+#nep_emoji_1f495 i {background-position: -260px -1220px;}
+#nep_emoji_1f49e i {background-position: -280px -1220px;}
+#nep_emoji_1f493 i {background-position: -300px -1220px;}
+#nep_emoji_1f497 i {background-position: -320px -1220px;}
+#nep_emoji_1f496 i {background-position: -340px -1220px;}
+#nep_emoji_1f498 i {background-position: -360px -1220px;}
+#nep_emoji_1f49d i {background-position: -380px -1220px;}
+#nep_emoji_1f49f i {background-position: -400px -1220px;}
+#nep_emoji_262e i {background-position: -420px -1220px;}
+#nep_emoji_271d i {background-position: -440px -1220px;}
+#nep_emoji_262a i {background-position: -460px -1220px;}
+#nep_emoji_1f549 i {background-position: -480px -1220px;}
+#nep_emoji_2638 i {background-position: -500px -1220px;}
+#nep_emoji_2721 i {background-position: -520px -1220px;}
+#nep_emoji_1f52f i {background-position: -540px -1220px;}
+#nep_emoji_1f54e i {background-position: -560px -1220px;}
+#nep_emoji_262f i {background-position: -580px -1220px;}
+#nep_emoji_2626 i {background-position: 0px -1240px;}
+#nep_emoji_1f6d0 i {background-position: -20px -1240px;}
+#nep_emoji_26ce i {background-position: -40px -1240px;}
+#nep_emoji_2648 i {background-position: -60px -1240px;}
+#nep_emoji_2649 i {background-position: -80px -1240px;}
+#nep_emoji_264a i {background-position: -100px -1240px;}
+#nep_emoji_264b i {background-position: -120px -1240px;}
+#nep_emoji_264c i {background-position: -140px -1240px;}
+#nep_emoji_264d i {background-position: -160px -1240px;}
+#nep_emoji_264e i {background-position: -180px -1240px;}
+#nep_emoji_264f i {background-position: -200px -1240px;}
+#nep_emoji_2650 i {background-position: -220px -1240px;}
+#nep_emoji_2651 i {background-position: -240px -1240px;}
+#nep_emoji_2652 i {background-position: -260px -1240px;}
+#nep_emoji_2653 i {background-position: -280px -1240px;}
+#nep_emoji_1f194 i {background-position: -300px -1240px;}
+#nep_emoji_269b i {background-position: -320px -1240px;}
+#nep_emoji_2695 i {background-position: -340px -1240px;}
+#nep_emoji_2622 i {background-position: -360px -1240px;}
+#nep_emoji_2623 i {background-position: -380px -1240px;}
+#nep_emoji_1f4f4 i {background-position: -400px -1240px;}
+#nep_emoji_1f4f3 i {background-position: -420px -1240px;}
+#nep_emoji_1f236 i {background-position: -440px -1240px;}
+#nep_emoji_1f21a i {background-position: -460px -1240px;}
+#nep_emoji_1f238 i {background-position: -480px -1240px;}
+#nep_emoji_1f23a i {background-position: -500px -1240px;}
+#nep_emoji_1f237 i {background-position: -520px -1240px;}
+#nep_emoji_2734 i {background-position: -540px -1240px;}
+#nep_emoji_1f19a i {background-position: -560px -1240px;}
+#nep_emoji_1f251 i {background-position: -580px -1240px;}
+#nep_emoji_1f4ae i {background-position: 0px -1260px;}
+#nep_emoji_1f250 i {background-position: -20px -1260px;}
+#nep_emoji_3299 i {background-position: -40px -1260px;}
+#nep_emoji_3297 i {background-position: -60px -1260px;}
+#nep_emoji_1f234 i {background-position: -80px -1260px;}
+#nep_emoji_1f235 i {background-position: -100px -1260px;}
+#nep_emoji_1f239 i {background-position: -120px -1260px;}
+#nep_emoji_1f232 i {background-position: -140px -1260px;}
+#nep_emoji_1f170 i {background-position: -160px -1260px;}
+#nep_emoji_1f171 i {background-position: -180px -1260px;}
+#nep_emoji_1f18e i {background-position: -200px -1260px;}
+#nep_emoji_1f191 i {background-position: -220px -1260px;}
+#nep_emoji_1f17e i {background-position: -240px -1260px;}
+#nep_emoji_1f198 i {background-position: -260px -1260px;}
+#nep_emoji_26d4 i {background-position: -280px -1260px;}
+#nep_emoji_1f4db i {background-position: -300px -1260px;}
+#nep_emoji_1f6ab i {background-position: -320px -1260px;}
+#nep_emoji_274c i {background-position: -340px -1260px;}
+#nep_emoji_2b55 i {background-position: -360px -1260px;}
+#nep_emoji_1f4a2 i {background-position: -380px -1260px;}
+#nep_emoji_2668 i {background-position: -400px -1260px;}
+#nep_emoji_1f6b7 i {background-position: -420px -1260px;}
+#nep_emoji_1f6af i {background-position: -440px -1260px;}
+#nep_emoji_1f6b3 i {background-position: -460px -1260px;}
+#nep_emoji_1f6b1 i {background-position: -480px -1260px;}
+#nep_emoji_1f51e i {background-position: -500px -1260px;}
+#nep_emoji_1f4f5 i {background-position: -520px -1260px;}
+#nep_emoji_1f6ad i {background-position: -540px -1260px;}
+#nep_emoji_2757 i {background-position: -560px -1260px;}
+#nep_emoji_2755 i {background-position: -580px -1260px;}
+#nep_emoji_2753 i {background-position: 0px -1280px;}
+#nep_emoji_2754 i {background-position: -20px -1280px;}
+#nep_emoji_203c i {background-position: -40px -1280px;}
+#nep_emoji_2049 i {background-position: -60px -1280px;}
+#nep_emoji_1f4af i {background-position: -80px -1280px;}
+#nep_emoji_1f505 i {background-position: -100px -1280px;}
+#nep_emoji_1f506 i {background-position: -120px -1280px;}
+#nep_emoji_1f531 i {background-position: -140px -1280px;}
+#nep_emoji_269c i {background-position: -160px -1280px;}
+#nep_emoji_303d i {background-position: -180px -1280px;}
+#nep_emoji_26a0 i {background-position: -200px -1280px;}
+#nep_emoji_1f6b8 i {background-position: -220px -1280px;}
+#nep_emoji_1f530 i {background-position: -240px -1280px;}
+#nep_emoji_267b i {background-position: -260px -1280px;}
+#nep_emoji_1f22f i {background-position: -280px -1280px;}
+#nep_emoji_1f4b9 i {background-position: -300px -1280px;}
+#nep_emoji_2747 i {background-position: -320px -1280px;}
+#nep_emoji_2733 i {background-position: -340px -1280px;}
+#nep_emoji_274e i {background-position: -360px -1280px;}
+#nep_emoji_2705 i {background-position: -380px -1280px;}
+#nep_emoji_1f4a0 i {background-position: -400px -1280px;}
+#nep_emoji_1f300 i {background-position: -420px -1280px;}
+#nep_emoji_27bf i {background-position: -440px -1280px;}
+#nep_emoji_1f310 i {background-position: -460px -1280px;}
+#nep_emoji_24c2 i {background-position: -480px -1280px;}
+#nep_emoji_1f3e7 i {background-position: -500px -1280px;}
+#nep_emoji_1f6be i {background-position: -520px -1280px;}
+#nep_emoji_267f i {background-position: -540px -1280px;}
+#nep_emoji_1f17f i {background-position: -560px -1280px;}
+#nep_emoji_1f233 i {background-position: -580px -1280px;}
+#nep_emoji_1f202 i {background-position: 0px -1300px;}
+#nep_emoji_1f6c2 i {background-position: -20px -1300px;}
+#nep_emoji_1f6c3 i {background-position: -40px -1300px;}
+#nep_emoji_1f6c4 i {background-position: -60px -1300px;}
+#nep_emoji_1f6c5 i {background-position: -80px -1300px;}
+#nep_emoji_1f6b0 i {background-position: -100px -1300px;}
+#nep_emoji_1f6b9 i {background-position: -120px -1300px;}
+#nep_emoji_2642 i {background-position: -140px -1300px;}
+#nep_emoji_1f6ba i {background-position: -160px -1300px;}
+#nep_emoji_2640 i {background-position: -180px -1300px;}
+#nep_emoji_1f6bc i {background-position: -200px -1300px;}
+#nep_emoji_1f6bb i {background-position: -220px -1300px;}
+#nep_emoji_1f6ae i {background-position: -240px -1300px;}
+#nep_emoji_1f3a6 i {background-position: -260px -1300px;}
+#nep_emoji_1f4f6 i {background-position: -280px -1300px;}
+#nep_emoji_1f201 i {background-position: -300px -1300px;}
+#nep_emoji_1f196 i {background-position: -320px -1300px;}
+#nep_emoji_1f197 i {background-position: -340px -1300px;}
+#nep_emoji_1f199 i {background-position: -360px -1300px;}
+#nep_emoji_1f192 i {background-position: -380px -1300px;}
+#nep_emoji_1f195 i {background-position: -400px -1300px;}
+#nep_emoji_1f193 i {background-position: -420px -1300px;}
+#nep_emoji_30-20e3 i {background-position: -440px -1300px;}
+#nep_emoji_31-20e3 i {background-position: -460px -1300px;}
+#nep_emoji_32-20e3 i {background-position: -480px -1300px;}
+#nep_emoji_33-20e3 i {background-position: -500px -1300px;}
+#nep_emoji_34-20e3 i {background-position: -520px -1300px;}
+#nep_emoji_35-20e3 i {background-position: -540px -1300px;}
+#nep_emoji_36-20e3 i {background-position: -560px -1300px;}
+#nep_emoji_37-20e3 i {background-position: -580px -1300px;}
+#nep_emoji_38-20e3 i {background-position: 0px -1320px;}
+#nep_emoji_39-20e3 i {background-position: -20px -1320px;}
+#nep_emoji_1f51f i {background-position: -40px -1320px;}
+#nep_emoji_1f522 i {background-position: -60px -1320px;}
+#nep_emoji_25b6 i {background-position: -80px -1320px;}
+#nep_emoji_23f8 i {background-position: -100px -1320px;}
+#nep_emoji_23ef i {background-position: -120px -1320px;}
+#nep_emoji_23f9 i {background-position: -140px -1320px;}
+#nep_emoji_23fa i {background-position: -160px -1320px;}
+#nep_emoji_23cf i {background-position: -180px -1320px;}
+#nep_emoji_23ed i {background-position: -200px -1320px;}
+#nep_emoji_23ee i {background-position: -220px -1320px;}
+#nep_emoji_23e9 i {background-position: -240px -1320px;}
+#nep_emoji_23ea i {background-position: -260px -1320px;}
+#nep_emoji_1f500 i {background-position: -280px -1320px;}
+#nep_emoji_1f501 i {background-position: -300px -1320px;}
+#nep_emoji_1f502 i {background-position: -320px -1320px;}
+#nep_emoji_25c0 i {background-position: -340px -1320px;}
+#nep_emoji_1f53c i {background-position: -360px -1320px;}
+#nep_emoji_1f53d i {background-position: -380px -1320px;}
+#nep_emoji_23eb i {background-position: -400px -1320px;}
+#nep_emoji_23ec i {background-position: -420px -1320px;}
+#nep_emoji_27a1 i {background-position: -440px -1320px;}
+#nep_emoji_2b05 i {background-position: -460px -1320px;}
+#nep_emoji_2b06 i {background-position: -480px -1320px;}
+#nep_emoji_2b07 i {background-position: -500px -1320px;}
+#nep_emoji_2197 i {background-position: -520px -1320px;}
+#nep_emoji_2198 i {background-position: -540px -1320px;}
+#nep_emoji_2199 i {background-position: -560px -1320px;}
+#nep_emoji_2196 i {background-position: -580px -1320px;}
+#nep_emoji_2195 i {background-position: 0px -1340px;}
+#nep_emoji_1f504 i {background-position: -20px -1340px;}
+#nep_emoji_21aa i {background-position: -40px -1340px;}
+#nep_emoji_21a9 i {background-position: -60px -1340px;}
+#nep_emoji_1f503 i {background-position: -80px -1340px;}
+#nep_emoji_2934 i {background-position: -100px -1340px;}
+#nep_emoji_2935 i {background-position: -120px -1340px;}
+#nep_emoji_23-20e3 i {background-position: -140px -1340px;}
+#nep_emoji_2a-20e3 i {background-position: -160px -1340px;}
+#nep_emoji_2139 i {background-position: -180px -1340px;}
+#nep_emoji_1f524 i {background-position: -200px -1340px;}
+#nep_emoji_1f521 i {background-position: -220px -1340px;}
+#nep_emoji_1f520 i {background-position: -240px -1340px;}
+#nep_emoji_1f523 i {background-position: -260px -1340px;}
+#nep_emoji_1f3b5 i {background-position: -280px -1340px;}
+#nep_emoji_1f3b6 i {background-position: -300px -1340px;}
+#nep_emoji_3030 i {background-position: -320px -1340px;}
+#nep_emoji_27b0 i {background-position: -340px -1340px;}
+#nep_emoji_2714 i {background-position: -360px -1340px;}
+#nep_emoji_2795 i {background-position: -380px -1340px;}
+#nep_emoji_2796 i {background-position: -400px -1340px;}
+#nep_emoji_2797 i {background-position: -420px -1340px;}
+#nep_emoji_2716 i {background-position: -440px -1340px;}
+#nep_emoji_1f4b2 i {background-position: -460px -1340px;}
+#nep_emoji_1f4b1 i {background-position: -480px -1340px;}
+#nep_emoji_1f51a i {background-position: -500px -1340px;}
+#nep_emoji_1f519 i {background-position: -520px -1340px;}
+#nep_emoji_1f51b i {background-position: -540px -1340px;}
+#nep_emoji_1f51d i {background-position: -560px -1340px;}
+#nep_emoji_1f51c i {background-position: -580px -1340px;}
+#nep_emoji_2611 i {background-position: 0px -1360px;}
+#nep_emoji_1f518 i {background-position: -20px -1360px;}
+#nep_emoji_26aa i {background-position: -40px -1360px;}
+#nep_emoji_26ab i {background-position: -60px -1360px;}
+#nep_emoji_1f534 i {background-position: -80px -1360px;}
+#nep_emoji_1f535 i {background-position: -100px -1360px;}
+#nep_emoji_1f538 i {background-position: -120px -1360px;}
+#nep_emoji_1f539 i {background-position: -140px -1360px;}
+#nep_emoji_1f536 i {background-position: -160px -1360px;}
+#nep_emoji_1f537 i {background-position: -180px -1360px;}
+#nep_emoji_1f53a i {background-position: -200px -1360px;}
+#nep_emoji_25aa i {background-position: -220px -1360px;}
+#nep_emoji_25ab i {background-position: -240px -1360px;}
+#nep_emoji_2b1b i {background-position: -260px -1360px;}
+#nep_emoji_2b1c i {background-position: -280px -1360px;}
+#nep_emoji_1f53b i {background-position: -300px -1360px;}
+#nep_emoji_25fc i {background-position: -320px -1360px;}
+#nep_emoji_25fb i {background-position: -340px -1360px;}
+#nep_emoji_25fe i {background-position: -360px -1360px;}
+#nep_emoji_25fd i {background-position: -380px -1360px;}
+#nep_emoji_1f532 i {background-position: -400px -1360px;}
+#nep_emoji_1f533 i {background-position: -420px -1360px;}
+#nep_emoji_1f508 i {background-position: -440px -1360px;}
+#nep_emoji_1f509 i {background-position: -460px -1360px;}
+#nep_emoji_1f50a i {background-position: -480px -1360px;}
+#nep_emoji_1f507 i {background-position: -500px -1360px;}
+#nep_emoji_1f4e3 i {background-position: -520px -1360px;}
+#nep_emoji_1f4e2 i {background-position: -540px -1360px;}
+#nep_emoji_1f514 i {background-position: -560px -1360px;}
+#nep_emoji_1f515 i {background-position: -580px -1360px;}
+#nep_emoji_1f0cf i {background-position: 0px -1380px;}
+#nep_emoji_1f004 i {background-position: -20px -1380px;}
+#nep_emoji_1f3b4 i {background-position: -40px -1380px;}
+#nep_emoji_1f441-200d-1f5e8 i {background-position: -60px -1380px;}
+#nep_emoji_1f5e8 i {background-position: -80px -1380px;}
+#nep_emoji_1f4ad i {background-position: -100px -1380px;}
+#nep_emoji_1f5ef i {background-position: -120px -1380px;}
+#nep_emoji_1f4ac i {background-position: -140px -1380px;}
+#nep_emoji_1f550 i {background-position: -160px -1380px;}
+#nep_emoji_1f551 i {background-position: -180px -1380px;}
+#nep_emoji_1f552 i {background-position: -200px -1380px;}
+#nep_emoji_1f553 i {background-position: -220px -1380px;}
+#nep_emoji_1f554 i {background-position: -240px -1380px;}
+#nep_emoji_1f555 i {background-position: -260px -1380px;}
+#nep_emoji_1f556 i {background-position: -280px -1380px;}
+#nep_emoji_1f557 i {background-position: -300px -1380px;}
+#nep_emoji_1f558 i {background-position: -320px -1380px;}
+#nep_emoji_1f559 i {background-position: -340px -1380px;}
+#nep_emoji_1f55a i {background-position: -360px -1380px;}
+#nep_emoji_1f55b i {background-position: -380px -1380px;}
+#nep_emoji_1f55c i {background-position: -400px -1380px;}
+#nep_emoji_1f55d i {background-position: -420px -1380px;}
+#nep_emoji_1f55e i {background-position: -440px -1380px;}
+#nep_emoji_1f55f i {background-position: -460px -1380px;}
+#nep_emoji_1f560 i {background-position: -480px -1380px;}
+#nep_emoji_1f561 i {background-position: -500px -1380px;}
+#nep_emoji_1f562 i {background-position: -520px -1380px;}
+#nep_emoji_1f563 i {background-position: -540px -1380px;}
+#nep_emoji_1f564 i {background-position: -560px -1380px;}
+#nep_emoji_1f565 i {background-position: -580px -1380px;}
+#nep_emoji_1f566 i {background-position: 0px -1400px;}
+#nep_emoji_1f567 i {background-position: -20px -1400px;}
+
+/* Flags */
+#nep_emoji_1f3f3 i {background-position: -40px -1400px;}
+#nep_emoji_1f3f4 i {background-position: -60px -1400px;}
+#nep_emoji_1f3c1 i {background-position: -80px -1400px;}
+#nep_emoji_1f6a9 i {background-position: -100px -1400px;}
+#nep_emoji_1f38c i {background-position: -120px -1400px;}
+#nep_emoji_1f3f4-200d-2620-fe0f i {background-position: -140px -1400px;}
+#nep_emoji_1f3f3-fe0f-200d-1f308 i {background-position: -160px -1400px;}
+#nep_emoji_1f1e6-1f1e8 i {background-position: -180px -1400px;}
+#nep_emoji_1f1e6-1f1e9 i {background-position: -200px -1400px;}
+#nep_emoji_1f1e6-1f1ea i {background-position: -220px -1400px;}
+#nep_emoji_1f1e6-1f1eb i {background-position: -240px -1400px;}
+#nep_emoji_1f1e6-1f1ec i {background-position: -260px -1400px;}
+#nep_emoji_1f1e6-1f1ee i {background-position: -280px -1400px;}
+#nep_emoji_1f1e6-1f1f1 i {background-position: -300px -1400px;}
+#nep_emoji_1f1e6-1f1f2 i {background-position: -320px -1400px;}
+#nep_emoji_1f1e6-1f1f4 i {background-position: -340px -1400px;}
+#nep_emoji_1f1e6-1f1f6 i {background-position: -360px -1400px;}
+#nep_emoji_1f1e6-1f1f7 i {background-position: -380px -1400px;}
+#nep_emoji_1f1e6-1f1f8 i {background-position: -400px -1400px;}
+#nep_emoji_1f1e6-1f1f9 i {background-position: -420px -1400px;}
+#nep_emoji_1f1e6-1f1fa i {background-position: -440px -1400px;}
+#nep_emoji_1f1e6-1f1fc i {background-position: -460px -1400px;}
+#nep_emoji_1f1e6-1f1fd i {background-position: -480px -1400px;}
+#nep_emoji_1f1e6-1f1ff i {background-position: -500px -1400px;}
+#nep_emoji_1f1e7-1f1e6 i {background-position: -520px -1400px;}
+#nep_emoji_1f1e7-1f1e7 i {background-position: -540px -1400px;}
+#nep_emoji_1f1e7-1f1e9 i {background-position: -560px -1400px;}
+#nep_emoji_1f1e7-1f1ea i {background-position: -580px -1400px;}
+#nep_emoji_1f1e7-1f1eb i {background-position: 0px -1420px;}
+#nep_emoji_1f1e7-1f1ec i {background-position: -20px -1420px;}
+#nep_emoji_1f1e7-1f1ed i {background-position: -40px -1420px;}
+#nep_emoji_1f1e7-1f1ee i {background-position: -60px -1420px;}
+#nep_emoji_1f1e7-1f1ef i {background-position: -80px -1420px;}
+#nep_emoji_1f1e7-1f1f1 i {background-position: -100px -1420px;}
+#nep_emoji_1f1e7-1f1f2 i {background-position: -120px -1420px;}
+#nep_emoji_1f1e7-1f1f3 i {background-position: -140px -1420px;}
+#nep_emoji_1f1e7-1f1f4 i {background-position: -160px -1420px;}
+#nep_emoji_1f1e7-1f1f6 i {background-position: -180px -1420px;}
+#nep_emoji_1f1e7-1f1f7 i {background-position: -200px -1420px;}
+#nep_emoji_1f1e7-1f1f8 i {background-position: -220px -1420px;}
+#nep_emoji_1f1e7-1f1f9 i {background-position: -240px -1420px;}
+#nep_emoji_1f1e7-1f1fc i {background-position: -260px -1420px;}
+#nep_emoji_1f1e7-1f1fe i {background-position: -280px -1420px;}
+#nep_emoji_1f1e7-1f1ff i {background-position: -300px -1420px;}
+#nep_emoji_1f1e8-1f1e6 i {background-position: -320px -1420px;}
+#nep_emoji_1f1e8-1f1e8 i {background-position: -340px -1420px;}
+#nep_emoji_1f1e8-1f1e9 i {background-position: -360px -1420px;}
+#nep_emoji_1f1e8-1f1eb i {background-position: -380px -1420px;}
+#nep_emoji_1f1e8-1f1ec i {background-position: -400px -1420px;}
+#nep_emoji_1f1e8-1f1ed i {background-position: -420px -1420px;}
+#nep_emoji_1f1e8-1f1ee i {background-position: -440px -1420px;}
+#nep_emoji_1f1e8-1f1f0 i {background-position: -460px -1420px;}
+#nep_emoji_1f1e8-1f1f1 i {background-position: -480px -1420px;}
+#nep_emoji_1f1e8-1f1f2 i {background-position: -500px -1420px;}
+#nep_emoji_1f1e8-1f1f3 i {background-position: -520px -1420px;}
+#nep_emoji_1f1e8-1f1f4 i {background-position: -540px -1420px;}
+#nep_emoji_1f1e8-1f1f7 i {background-position: -560px -1420px;}
+#nep_emoji_1f1e8-1f1fa i {background-position: -580px -1420px;}
+#nep_emoji_1f1e8-1f1fb i {background-position: 0px -1440px;}
+#nep_emoji_1f1e8-1f1fc i {background-position: -20px -1440px;}
+#nep_emoji_1f1e8-1f1fd i {background-position: -40px -1440px;}
+#nep_emoji_1f1e8-1f1fe i {background-position: -60px -1440px;}
+#nep_emoji_1f1e8-1f1ff i {background-position: -80px -1440px;}
+#nep_emoji_1f1e9-1f1ea i {background-position: -100px -1440px;}
+#nep_emoji_1f1e9-1f1ef i {background-position: -120px -1440px;}
+#nep_emoji_1f1e9-1f1f0 i {background-position: -140px -1440px;}
+#nep_emoji_1f1e9-1f1f2 i {background-position: -160px -1440px;}
+#nep_emoji_1f1e9-1f1f4 i {background-position: -180px -1440px;}
+#nep_emoji_1f1e9-1f1ff i {background-position: -200px -1440px;}
+#nep_emoji_1f1ea-1f1e8 i {background-position: -220px -1440px;}
+#nep_emoji_1f3f4-e0067-e0062-e0065-e006e-e0067-e007f i {background-position: -240px -1440px;}
+#nep_emoji_1f1ea-1f1ea i {background-position: -260px -1440px;}
+#nep_emoji_1f1ea-1f1ec i {background-position: -280px -1440px;}
+#nep_emoji_1f1ea-1f1ed i {background-position: -300px -1440px;}
+#nep_emoji_1f1ea-1f1f7 i {background-position: -320px -1440px;}
+#nep_emoji_1f1ea-1f1f8 i {background-position: -340px -1440px;}
+#nep_emoji_1f1ea-1f1f9 i {background-position: -360px -1440px;}
+#nep_emoji_1f1ea-1f1fa i {background-position: -380px -1440px;}
+#nep_emoji_1f1eb-1f1ee i {background-position: -400px -1440px;}
+#nep_emoji_1f1eb-1f1ef i {background-position: -420px -1440px;}
+#nep_emoji_1f1eb-1f1f0 i {background-position: -440px -1440px;}
+#nep_emoji_1f1eb-1f1f2 i {background-position: -460px -1440px;}
+#nep_emoji_1f1eb-1f1f4 i {background-position: -480px -1440px;}
+#nep_emoji_1f1eb-1f1f7 i {background-position: -500px -1440px;}
+#nep_emoji_1f1ec-1f1e6 i {background-position: -520px -1440px;}
+#nep_emoji_1f1ec-1f1e7 i {background-position: -540px -1440px;}
+#nep_emoji_1f1ec-1f1e9 i {background-position: -560px -1440px;}
+#nep_emoji_1f1ec-1f1ea i {background-position: -580px -1440px;}
+#nep_emoji_1f1ec-1f1eb i {background-position: 0px -1460px;}
+#nep_emoji_1f1ec-1f1ec i {background-position: -20px -1460px;}
+#nep_emoji_1f1ec-1f1ed i {background-position: -40px -1460px;}
+#nep_emoji_1f1ec-1f1ee i {background-position: -60px -1460px;}
+#nep_emoji_1f1ec-1f1f1 i {background-position: -80px -1460px;}
+#nep_emoji_1f1ec-1f1f2 i {background-position: -100px -1460px;}
+#nep_emoji_1f1ec-1f1f3 i {background-position: -120px -1460px;}
+#nep_emoji_1f1ec-1f1f5 i {background-position: -140px -1460px;}
+#nep_emoji_1f1ec-1f1f6 i {background-position: -160px -1460px;}
+#nep_emoji_1f1ec-1f1f7 i {background-position: -180px -1460px;}
+#nep_emoji_1f1ec-1f1f8 i {background-position: -200px -1460px;}
+#nep_emoji_1f1ec-1f1f9 i {background-position: -220px -1460px;}
+#nep_emoji_1f1ec-1f1fa i {background-position: -240px -1460px;}
+#nep_emoji_1f1ec-1f1fc i {background-position: -260px -1460px;}
+#nep_emoji_1f1ec-1f1fe i {background-position: -280px -1460px;}
+#nep_emoji_1f1ed-1f1f0 i {background-position: -300px -1460px;}
+#nep_emoji_1f1ed-1f1f3 i {background-position: -320px -1460px;}
+#nep_emoji_1f1ed-1f1f7 i {background-position: -340px -1460px;}
+#nep_emoji_1f1ed-1f1f9 i {background-position: -360px -1460px;}
+#nep_emoji_1f1ed-1f1fa i {background-position: -380px -1460px;}
+#nep_emoji_1f1ee-1f1e8 i {background-position: -400px -1460px;}
+#nep_emoji_1f1ee-1f1e9 i {background-position: -420px -1460px;}
+#nep_emoji_1f1ee-1f1ea i {background-position: -440px -1460px;}
+#nep_emoji_1f1ee-1f1f1 i {background-position: -460px -1460px;}
+#nep_emoji_1f1ee-1f1f2 i {background-position: -480px -1460px;}
+#nep_emoji_1f1ee-1f1f3 i {background-position: -500px -1460px;}
+#nep_emoji_1f1ee-1f1f4 i {background-position: -520px -1460px;}
+#nep_emoji_1f1ee-1f1f6 i {background-position: -540px -1460px;}
+#nep_emoji_1f1ee-1f1f7 i {background-position: -560px -1460px;}
+#nep_emoji_1f1ee-1f1f8 i {background-position: -580px -1460px;}
+#nep_emoji_1f1ee-1f1f9 i {background-position: 0px -1480px;}
+#nep_emoji_1f1ef-1f1ea i {background-position: -20px -1480px;}
+#nep_emoji_1f1ef-1f1f2 i {background-position: -40px -1480px;}
+#nep_emoji_1f1ef-1f1f4 i {background-position: -60px -1480px;}
+#nep_emoji_1f1ef-1f1f5 i {background-position: -80px -1480px;}
+#nep_emoji_1f1f0-1f1ea i {background-position: -100px -1480px;}
+#nep_emoji_1f1f0-1f1ec i {background-position: -120px -1480px;}
+#nep_emoji_1f1f0-1f1ed i {background-position: -140px -1480px;}
+#nep_emoji_1f1f0-1f1ee i {background-position: -160px -1480px;}
+#nep_emoji_1f1f0-1f1f2 i {background-position: -180px -1480px;}
+#nep_emoji_1f1f0-1f1f3 i {background-position: -200px -1480px;}
+#nep_emoji_1f1f0-1f1f5 i {background-position: -220px -1480px;}
+#nep_emoji_1f1f0-1f1f7 i {background-position: -240px -1480px;}
+#nep_emoji_1f1f0-1f1fc i {background-position: -260px -1480px;}
+#nep_emoji_1f1f0-1f1fe i {background-position: -280px -1480px;}
+#nep_emoji_1f1f0-1f1ff i {background-position: -300px -1480px;}
+#nep_emoji_1f1f1-1f1e6 i {background-position: -320px -1480px;}
+#nep_emoji_1f1f1-1f1e7 i {background-position: -340px -1480px;}
+#nep_emoji_1f1f1-1f1e8 i {background-position: -360px -1480px;}
+#nep_emoji_1f1f1-1f1ee i {background-position: -380px -1480px;}
+#nep_emoji_1f1f1-1f1f0 i {background-position: -400px -1480px;}
+#nep_emoji_1f1f1-1f1f7 i {background-position: -420px -1480px;}
+#nep_emoji_1f1f1-1f1f8 i {background-position: -440px -1480px;}
+#nep_emoji_1f1f1-1f1f9 i {background-position: -460px -1480px;}
+#nep_emoji_1f1f1-1f1fa i {background-position: -480px -1480px;}
+#nep_emoji_1f1f1-1f1fb i {background-position: -500px -1480px;}
+#nep_emoji_1f1f1-1f1fe i {background-position: -520px -1480px;}
+#nep_emoji_1f1f2-1f1e6 i {background-position: -540px -1480px;}
+#nep_emoji_1f1f2-1f1e8 i {background-position: -560px -1480px;}
+#nep_emoji_1f1f2-1f1e9 i {background-position: -580px -1480px;}
+#nep_emoji_1f1f2-1f1ea i {background-position: 0px -1500px;}
+#nep_emoji_1f1f2-1f1ec i {background-position: -20px -1500px;}
+#nep_emoji_1f1f2-1f1ed i {background-position: -40px -1500px;}
+#nep_emoji_1f1f2-1f1f0 i {background-position: -60px -1500px;}
+#nep_emoji_1f1f2-1f1f1 i {background-position: -80px -1500px;}
+#nep_emoji_1f1f2-1f1f2 i {background-position: -100px -1500px;}
+#nep_emoji_1f1f2-1f1f3 i {background-position: -120px -1500px;}
+#nep_emoji_1f1f2-1f1f4 i {background-position: -140px -1500px;}
+#nep_emoji_1f1f2-1f1f5 i {background-position: -160px -1500px;}
+#nep_emoji_1f1f2-1f1f6 i {background-position: -180px -1500px;}
+#nep_emoji_1f1f2-1f1f7 i {background-position: -200px -1500px;}
+#nep_emoji_1f1f2-1f1f8 i {background-position: -220px -1500px;}
+#nep_emoji_1f1f2-1f1f9 i {background-position: -240px -1500px;}
+#nep_emoji_1f1f2-1f1fa i {background-position: -260px -1500px;}
+#nep_emoji_1f1f2-1f1fb i {background-position: -280px -1500px;}
+#nep_emoji_1f1f2-1f1fc i {background-position: -300px -1500px;}
+#nep_emoji_1f1f2-1f1fd i {background-position: -320px -1500px;}
+#nep_emoji_1f1f2-1f1fe i {background-position: -340px -1500px;}
+#nep_emoji_1f1f2-1f1ff i {background-position: -360px -1500px;}
+#nep_emoji_1f1f3-1f1e6 i {background-position: -380px -1500px;}
+#nep_emoji_1f1f3-1f1e8 i {background-position: -400px -1500px;}
+#nep_emoji_1f1f3-1f1ea i {background-position: -420px -1500px;}
+#nep_emoji_1f1f3-1f1eb i {background-position: -440px -1500px;}
+#nep_emoji_1f1f3-1f1ec i {background-position: -460px -1500px;}
+#nep_emoji_1f1f3-1f1ee i {background-position: -480px -1500px;}
+#nep_emoji_1f1f3-1f1f1 i {background-position: -500px -1500px;}
+#nep_emoji_1f1f3-1f1f4 i {background-position: -520px -1500px;}
+#nep_emoji_1f1f3-1f1f5 i {background-position: -540px -1500px;}
+#nep_emoji_1f1f3-1f1f7 i {background-position: -560px -1500px;}
+#nep_emoji_1f1f3-1f1fa i {background-position: -580px -1500px;}
+#nep_emoji_1f1f3-1f1ff i {background-position: 0px -1520px;}
+#nep_emoji_1f1f4-1f1f2 i {background-position: -20px -1520px;}
+#nep_emoji_1f1f5-1f1e6 i {background-position: -40px -1520px;}
+#nep_emoji_1f1f5-1f1ea i {background-position: -60px -1520px;}
+#nep_emoji_1f1f5-1f1eb i {background-position: -80px -1520px;}
+#nep_emoji_1f1f5-1f1ec i {background-position: -100px -1520px;}
+#nep_emoji_1f1f5-1f1ed i {background-position: -120px -1520px;}
+#nep_emoji_1f1f5-1f1f0 i {background-position: -140px -1520px;}
+#nep_emoji_1f1f5-1f1f1 i {background-position: -160px -1520px;}
+#nep_emoji_1f1f5-1f1f2 i {background-position: -180px -1520px;}
+#nep_emoji_1f1f5-1f1f3 i {background-position: -200px -1520px;}
+#nep_emoji_1f1f5-1f1f7 i {background-position: -220px -1520px;}
+#nep_emoji_1f1f5-1f1f8 i {background-position: -240px -1520px;}
+#nep_emoji_1f1f5-1f1f9 i {background-position: -260px -1520px;}
+#nep_emoji_1f1f5-1f1fc i {background-position: -280px -1520px;}
+#nep_emoji_1f1f5-1f1fe i {background-position: -300px -1520px;}
+#nep_emoji_1f1f6-1f1e6 i {background-position: -320px -1520px;}
+#nep_emoji_1f1f7-1f1ea i {background-position: -340px -1520px;}
+#nep_emoji_1f1f7-1f1f4 i {background-position: -360px -1520px;}
+#nep_emoji_1f1f7-1f1f8 i {background-position: -380px -1520px;}
+#nep_emoji_1f1f7-1f1fa i {background-position: -400px -1520px;}
+#nep_emoji_1f1f7-1f1fc i {background-position: -420px -1520px;}
+#nep_emoji_1f1f8-1f1e6 i {background-position: -440px -1520px;}
+#nep_emoji_1f3f4-e0067-e0062-e0073-e0063-e0074-e007f i {background-position: -460px -1520px;}
+#nep_emoji_1f1f8-1f1e7 i {background-position: -480px -1520px;}
+#nep_emoji_1f1f8-1f1e8 i {background-position: -500px -1520px;}
+#nep_emoji_1f1f8-1f1e9 i {background-position: -520px -1520px;}
+#nep_emoji_1f1f8-1f1ea i {background-position: -540px -1520px;}
+#nep_emoji_1f1f8-1f1ec i {background-position: -560px -1520px;}
+#nep_emoji_1f1f8-1f1ed i {background-position: -580px -1520px;}
+#nep_emoji_1f1f8-1f1ee i {background-position: 0px -1540px;}
+#nep_emoji_1f1f8-1f1f0 i {background-position: -20px -1540px;}
+#nep_emoji_1f1f8-1f1f1 i {background-position: -40px -1540px;}
+#nep_emoji_1f1f8-1f1f2 i {background-position: -60px -1540px;}
+#nep_emoji_1f1f8-1f1f3 i {background-position: -80px -1540px;}
+#nep_emoji_1f1f8-1f1f4 i {background-position: -100px -1540px;}
+#nep_emoji_1f1f8-1f1f7 i {background-position: -120px -1540px;}
+#nep_emoji_1f1f8-1f1f8 i {background-position: -140px -1540px;}
+#nep_emoji_1f1f8-1f1f9 i {background-position: -160px -1540px;}
+#nep_emoji_1f1f8-1f1fb i {background-position: -180px -1540px;}
+#nep_emoji_1f1f8-1f1fd i {background-position: -200px -1540px;}
+#nep_emoji_1f1f8-1f1fe i {background-position: -220px -1540px;}
+#nep_emoji_1f1f8-1f1ff i {background-position: -240px -1540px;}
+#nep_emoji_1f1f9-1f1e6 i {background-position: -260px -1540px;}
+#nep_emoji_1f1f9-1f1e8 i {background-position: -280px -1540px;}
+#nep_emoji_1f1f9-1f1e9 i {background-position: -300px -1540px;}
+#nep_emoji_1f1f9-1f1eb i {background-position: -320px -1540px;}
+#nep_emoji_1f1f9-1f1ec i {background-position: -340px -1540px;}
+#nep_emoji_1f1f9-1f1ed i {background-position: -360px -1540px;}
+#nep_emoji_1f1f9-1f1ef i {background-position: -380px -1540px;}
+#nep_emoji_1f1f9-1f1f0 i {background-position: -400px -1540px;}
+#nep_emoji_1f1f9-1f1f1 i {background-position: -420px -1540px;}
+#nep_emoji_1f1f9-1f1f2 i {background-position: -440px -1540px;}
+#nep_emoji_1f1f9-1f1f3 i {background-position: -460px -1540px;}
+#nep_emoji_1f1f9-1f1f4 i {background-position: -480px -1540px;}
+#nep_emoji_1f1f9-1f1f7 i {background-position: -500px -1540px;}
+#nep_emoji_1f1f9-1f1f9 i {background-position: -520px -1540px;}
+#nep_emoji_1f1f9-1f1fb i {background-position: -540px -1540px;}
+#nep_emoji_1f1f9-1f1fc i {background-position: -560px -1540px;}
+#nep_emoji_1f1f9-1f1ff i {background-position: -580px -1540px;}
+#nep_emoji_1f1fa-1f1e6 i {background-position: 0px -1560px;}
+#nep_emoji_1f1fa-1f1ec i {background-position: -20px -1560px;}
+#nep_emoji_1f1fa-1f1f3 i {background-position: -40px -1560px;}
+#nep_emoji_1f1fa-1f1f8 i {background-position: -60px -1560px;}
+#nep_emoji_1f1fa-1f1fe i {background-position: -80px -1560px;}
+#nep_emoji_1f1fa-1f1ff i {background-position: -100px -1560px;}
+#nep_emoji_1f1fb-1f1e6 i {background-position: -120px -1560px;}
+#nep_emoji_1f1fb-1f1e8 i {background-position: -140px -1560px;}
+#nep_emoji_1f1fb-1f1ea i {background-position: -160px -1560px;}
+#nep_emoji_1f1fb-1f1ec i {background-position: -180px -1560px;}
+#nep_emoji_1f1fb-1f1ee i {background-position: -200px -1560px;}
+#nep_emoji_1f1fb-1f1f3 i {background-position: -220px -1560px;}
+#nep_emoji_1f1fb-1f1fa i {background-position: -240px -1560px;}
+#nep_emoji_1f3f4-e0067-e0062-e0077-e006c-e0073-e007f i {background-position: -260px -1560px;}
+#nep_emoji_1f1fc-1f1eb i {background-position: -280px -1560px;}
+#nep_emoji_1f1fc-1f1f8 i {background-position: -300px -1560px;}
+#nep_emoji_1f1fd-1f1f0 i {background-position: -320px -1560px;}
+#nep_emoji_1f1fe-1f1ea i {background-position: -340px -1560px;}
+#nep_emoji_1f1fe-1f1f9 i {background-position: -360px -1560px;}
+#nep_emoji_1f1ff-1f1e6 i {background-position: -380px -1560px;}
+#nep_emoji_1f1ff-1f1f2 i {background-position: -400px -1560px;}
+#nep_emoji_1f1ff-1f1fc i {background-position: -420px -1560px;}
