@@ -1,0 +1,106 @@
+// sass-lint:disable class-name-format no-qualifying-elements id-name-format
+//--------------------------------------------------------------
+//   INPUTS
+//--------------------------------------------------------------
+
+.ctct-form-wrapper {
+
+	input {
+
+		&[type='text'],
+		&[type='email'],
+		&[type='password'],
+		&[type='tel'],
+		&[type='number'] {
+
+			&:required:valid {
+				background-image: url( ../images/check_circle.svg );
+				background-position: 8px 50%;
+				background-repeat: no-repeat;
+				background-size: 18px;
+				border-color: $color-success;
+				padding-left: 32px;
+			}
+
+			&:required.ctct-invalid,
+			&.ctct-invalid {
+				background: $color-white url( ../images/error.svg ) no-repeat;
+				background-color: fade-out($color-error, 0.98);
+				background-position: 8px 50%;
+				background-size: 24px;
+				border-color: $color-error;
+				padding-left: 40px;
+			}
+		}
+
+	}
+
+	select {
+	  &.ctct-label-top,
+	  &.ctct-label-bottom {
+		width: 100%;
+	  }
+	}
+
+	.ctct-field-error {
+		font-size: 0.85rem;
+		font-style: italic;
+	}
+
+	input.ctct-invalid {
+		background: $color-white url( ../images/error.svg ) no-repeat;
+		background-color: fade-out($color-error, 0.98);
+		background-position: 8px 50%;
+		background-size: 24px;
+		border-color: $color-error;
+		padding-left: 40px;
+	}
+
+	input.ctct-label-left,
+	textarea.ctct-label-left {
+		display: inline-block;
+		width: 75%;
+	}
+
+	span.ctct-label-left {
+		display: inline-block;
+		margin-right: 5%;
+		width: 20%;
+	}
+
+	input.ctct-label-right,
+	textarea.ctct-label-right,
+	select.ctct-label-right {
+		display: inline-block;
+		margin-right: 5%;
+		width: 75%;
+
+		&[type="checkbox"] {
+			width: auto;
+		}
+	}
+
+	span.ctct-label-right {
+		display: inline-block;
+		width: 20%;
+	}
+
+	span.ctct-label-hidden {
+		left: -9999px !important;
+		position: absolute !important;
+		top: -9999px !important;
+	}
+
+	.no-recaptcha .ctct-submitted:disabled {
+		background-image: url( ../images/oval.min.svg );
+		background-position: center;
+		background-repeat: no-repeat;
+		color: transparent;
+		cursor: wait;
+		opacity: 0.3;
+	}
+
+	.has-recaptcha .ctct-submitted:disabled {
+		cursor: not-allowed;
+	}
+}
