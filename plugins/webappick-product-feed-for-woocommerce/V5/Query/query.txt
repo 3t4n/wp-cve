@@ -1,0 +1,38 @@
+// Custom WP Query with filters
+$args = array(
+    'post_type'      => 'product_variation',
+    'posts_per_page' => 500,
+);
+$query = new WP_Query($args);
+
+// Add custom join and where clause
+add_filter('posts_join', 'custom_join_query');
+add_filter('posts_where', 'custom_where_query');
+
+// Fetch posts
+$products = $query->get_posts();
+
+// Remove filters after the query is executed
+remove_filter('posts_join', 'custom_join_query');
+remove_filter('posts_where', 'custom_where_query');
+
+// Custom Join to get data from parent product and its meta
+function custom_join_query($join) {
+    global $wpdb;
+    $join .= " LEFT JOIN {$wpdb->posts} AS parent ON parent.ID = {$wpdb->posts}.post_parent";
+    $join .= " LEFT JOIN {$wpdb->term_relationships} AS rel ON rel.object_id = parent.ID";
+    $join .= " LEFT JOIN {$wpdb->term_taxonomy} AS tax ON tax.term_taxonomy_id = rel.term_taxonomy_id";
+    $join .= " LEFT JOIN {$wpdb->terms} AS term ON term.term_id = tax.term_id";
+    $join .= " LEFT JOIN {$wpdb->postmeta} AS parent_meta ON parent_meta.post_id = parent.ID";
+    return $join;
+}
+
+// Custom Where Clause to exclude certain categories, meta values, and stock status
+function custom_where_query($where) {
+    global $wpdb;
+    $where .= " AND (term.slug NOT IN ('exclude-category-1', 'exclude-category-2'))"; // Exclude certain categories
+    $where .= " AND (parent_meta.meta_key = '_stock_status' AND parent_meta.meta_value != 'onbackorder')"; // Exclude products on backorder
+    return $where;
+}
+
+// Use $products as needed
