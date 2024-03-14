@@ -1,0 +1,91 @@
+/* Add Phone Icon Font */
+
+@charset "UTF-8";
+
+@font-face {
+    font-family: "ctc-icon-font";
+    src:url("../font/icon-font.eot");
+    src:url("../font/icon-font.eot?#iefix") format("embedded-opentype"),
+    url("../font/icon-font.woff") format("woff"),
+    url("../font/icon-font.ttf") format("truetype"),
+    url("../font/icon-font.svg#icon-font") format("svg");
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+[data-icon]:before {
+    font-family: "ctc-icon-font" !important;
+    content: attr(data-icon);
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="ctc-icon-"]:before,
+[class*=" ctc-icon-"]:before {
+    font-family: "ctc-icon-font" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.ctc-icon-phone:before {
+    content: "\61";
+}
+
+/* Basic Styles */
+
+/* Only Show over 736px - Why 736? Max width of iPhone 7 Plus in landscape */
+@media (max-width: 736px) {
+    body {
+        padding-bottom: 50px;
+    }
+    #click_to_call_bar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #222;
+        z-index: 1000;
+        text-align: center;
+        display: block;
+        z-index: 10000;
+        height: 50px;
+        font-size: 18px;
+        line-height: 50px;
+        text-decoration: none !important;
+    }
+    #click_to_call_bar a {
+        color: white;
+        text-decoration: none !important;
+    }
+    #click_to_call_bar:hover {
+        text-decoration: none !important;
+    }
+    #click_to_call_bar:focus {
+        text-decoration: none !important;
+    }
+    /* Icon Size */
+    #click_to_call_bar span {
+        font-size: 18px;
+        margin-right:5px;
+        vertical-align: sub;
+    }
+}
+
+/* Hide Over 737px */
+
+@media (min-width: 737px) {
+    #click_to_call_bar {
+        display: none;
+    }
+}
