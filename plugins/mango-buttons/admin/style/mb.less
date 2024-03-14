@@ -1,0 +1,183 @@
+@import 'colors.less';
+@import 'utility.less';
+@import 'typography.less';
+
+@import 'components/buttons.less';
+@import 'components/mb-form-box.less';
+@import 'components/mb-options-list.less';
+@import 'components/mb-setup-steps.less';
+@import 'components/mb-subscribe.less';
+
+@import 'components/mb-modal.less';
+
+@import 'pages/settings.less';
+@import 'pages/help.less';
+
+.mb-page{
+	
+	position:relative;float:left;
+	width:100%;
+
+	.mb-header{
+		position:relative;float:left;
+		padding-top:15px;
+
+		.mb-header-text,.mb-page-icon{
+			position:relative;
+			float:left;
+			clear:none;
+		}
+
+		.mb-header-text{
+			line-height:40px;
+			margin:0 10px;
+			padding:0;
+
+			color:@dark;
+			small{
+				color:fade(@dark, 50%);
+			}
+		}
+		.mb-page-icon{
+			width:40px;
+			height:40px;
+			background-size:100%;
+
+			background-image:url("../images/page-icon.png");
+		}
+		
+		.mb-header-notification{
+			position:relative;
+			display:inline-block;
+			
+			padding:3px 30px 3px 10px;
+			
+			top:-5px;
+			
+			line-height:20px;
+			font-size:13px;
+			color:#FFF;
+			font-weight:bold;
+			
+			.rounded-corners(2px);
+			
+			&.mb-success{
+				background:#84C334;
+			}
+			&.mb-failure{
+				background:#CA4119;
+			}
+			
+			i{
+				color:#FFF;
+				
+				&.fa-times-circle{
+					position:absolute;
+					right:0;
+					top:0;
+					padding:2px;
+					line-height:22px;
+					width:22px;
+					text-align:center;
+					
+					opacity:.5;
+					
+					&:hover{
+						cursor:pointer;
+						opacity:1;
+					}
+				}
+			}
+		}
+	}
+	
+	.tiny-mce-color-small,.tiny-mce-grayscale-small{
+		width:16px;
+		height:16px;
+		background-size:cover;
+		border:none;
+		margin-bottom:-4px;
+		
+		.rounded-corners(5px);
+		overflow:hidden;
+	}
+	.tiny-mce-color-small{
+		background-image:url('../images/TinyMCEButton-color.png');
+	}
+	.tiny-mce-grayscale-small{
+		background-image:url('../images/TinyMCEButton-grayscale.png');
+	}
+
+	.actionable{
+		cursor:pointer;
+	}
+
+	.faded{
+		opacity:.65;
+	}
+	.faded2x{
+		opacity:.40;
+	}
+	.faded3x{
+		opacity:.25;
+	}
+
+	.mb-main-content{
+		position:relative;
+		float:left;
+		clear:both;
+
+		width:100%;
+		padding-right:230px;
+		.paddingSubtractsFromWidth();
+
+		max-width:1280px;
+		
+		&.no-sidebar{
+			padding-right:0;
+		}
+	}
+	.mb-sidebar-content{
+		width:200px;
+		.paddingSubtractsFromWidth();
+		
+		top:100px;
+		right:30px;
+		padding-left:25px;
+		border-left:1px solid #DDD;
+
+		min-height:80vh;
+		
+		position:absolute;/*Changed to absolute since any wordpress notifiaction at the top of the page will cover up this content*/
+
+		h5{
+			margin:1rem 0;
+			color:@dark;
+			font-weight:bold;
+		}
+		p{
+
+		}
+		button{
+			margin:10px 0 0 0;
+		}
+		
+		.mb-sidebar-ad{
+			position:relative;float:left;clear:both;margin-top:100px;
+			
+			width:175px;
+			height:225px;
+			
+			.transition();
+			
+			&:hover{
+				cursor:pointer;
+				.drop-shadow(1px, 3px, 7px, 3px, fade(@dark, 25%));
+			}
+			
+			&.ad1{
+				background-image:url('../images/ads/sidebar-ad-2.png');
+			}
+		}
+	}
+}

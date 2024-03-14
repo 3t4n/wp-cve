@@ -1,0 +1,134 @@
+<div id="mb-modal" style="display:none;" data-bind="fadeVisible: isVisible">
+	
+	<div class="mb-modal-overlay" data-bind="click: hide"></div>
+	
+	<div class="centeringWrap verticalCentering" data-bind="click: hide">
+		<div class="mb-modal-content centeredWrap" data-bind="click: function(data, e){ e.stopImmediatePropagation(); }">
+		
+			<div class="mb-modal-title">
+				<div class="mb-icon"></div>
+				<div class="mb-modal-close" data-bind="click: hide"><i class="fa fa-times"></i></div>
+			</div><!--/.mb-modal-title-->
+		
+			<div class="mb-modal-body">
+			
+				<div class="mb-modal-button-preview" data-bind="visible: (userHasSelectedStyle() || selectingStyle()) && !addingIcon() && !gettingMoreStyles()">
+					<span data-bind="visible: previewingButtonStyle() == ''">SELECT A STYLE...</span>
+					<span class="mb-button " data-bind="style: { backgroundColor: settings.color }, attr: { 'class': 'mb-button mb-size-' + settings.size() + ' mb-corners-' + settings.corners() + ' mb-text-style-' + settings.text_style() + ' mb-style-' + (previewingButtonStyle() ? previewingButtonStyle() : '')}, visible: previewingButtonStyle() != '', html: buttonTextAsHtml"></span>
+				</div>
+				
+				<div class="mb-modal-search-box" data-bind="visible: addingIcon()">
+					<input id="mb-icon-search-input" type="text" placeholder="search..." data-bind="value: faSearchText, valueUpdate: 'keyup'"/>
+				</div>
+			
+				<div class="mb-modal-options" data-bind="visible: !selectingStyle() && !addingIcon()">
+					<div class="mb-modal-option">
+						<div class="mb-option-icon"><i class="fa fa-tint"></i></div>
+						<div class="mb-option-field">
+							<p class="actionable" data-bind="click: showStyleSelection">
+								<span data-bind="visible: settings.style() == ''">Select a style...</span>
+								<span data-bind="visible: settings.style() != '', attr: { 'class': 'mb-button mb-size-micro mb-' + (settings.style() ? settings.style() : '') }, text: (settings.style() ? settings.style().toUpperCase() : '')"></span>
+								<i class="mb-right-input-icon fa fa-chevron-right"></i>
+							</p>
+						</div>
+					</div>
+				
+					<div class="mb-modal-option" data-bind="slowFadeVisible: userHasSelectedStyle()">
+						<div class="mb-option-colors">
+							<div class="mb-option-icon">&nbsp;</div>
+							<div class="mb-option-color mb-tooltip" data-bind="style: { backgroundColor: settings.color() }" title="Color...">
+								<input id="mb-primary-color-input" class="mb-color-picker-input" data-bind="value: settings.color" />
+							</div>
+							<!--<div class="mb-option-color" data-bind="style: { backgroundColor: settings.secondaryColor() }">
+								<input id="mb-secondary-color-input" class="mb-color-picker-input" data-bind="value: settings.secondaryColor" />
+							</div>-->
+							<!--<div class="mb-option-color" data-bind="style: { backgroundColor: settings.borderColor() }">
+								<input id="mb-border-color-input" class="mb-color-picker-input" data-bind="value: settings.borderColor" />
+							</div>-->
+							<!--<div class="mb-option-color" data-bind="style: { backgroundColor: settings.textColor() }">
+								<input id="mb-text-color-input" class="mb-color-picker-input" data-bind="value: settings.textColor" />
+							</div>-->
+						</div>
+						<div class="mb-option-more mb-tooltip" title="More Options" data-bind="visible: !viewingMoreOptions(), click: function(){ viewingMoreOptions(true); }">...</div>
+						<ul class="mb-option-toggle mb-tooltip" data-bind="visible: viewingMoreOptions()" title="Size">
+							<li data-bind="css: { selected: settings.size() == 'tiny' }, click: function(){ settings.size('tiny'); }"><div class="mb-toggle-square sm mb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.size() == 'small' }, click: function(){ settings.size('small'); }"><div class="mb-toggle-square mb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.size() == 'default' }, click: function(){ settings.size('default'); }"><div class="mb-toggle-square lg mb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.size() == 'large' }, click: function(){ settings.size('large'); }"><div class="mb-toggle-square xl mb-toggle-rounded"></div></li>
+						</ul>
+						<ul class="mb-option-toggle mb-tooltip" data-bind="visible: viewingMoreOptions()" title="Corners">
+							<li data-bind="css: { selected: settings.corners() == 'straight' }, click: function(){ settings.corners('straight'); }"><div class="mb-toggle-square"></div></li>
+							<li data-bind="css: { selected: settings.corners() == 'default' }, click: function(){ settings.corners('default'); }"><div class="mb-toggle-square mb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.corners() == 'pill' }, click: function(){ settings.corners('pill'); }"><div class="mb-toggle-square mb-toggle-pill"></div></li>
+						</ul>
+						<ul class="mb-option-toggle mb-tooltip" data-bind="visible: viewingMoreOptions()" title="Text Style">
+							<li data-bind="css: { selected: settings.text_style() == 'heavy' }, click: function(){ settings.text_style('heavy'); }"><div class="mb-toggle-letter thick">A</div></li>
+							<li data-bind="css: { selected: settings.text_style() == 'default' }, click: function(){ settings.text_style('default'); }"><div class="mb-toggle-letter">A</div></li>
+							<li data-bind="css: { selected: settings.text_style() == 'light' }, click: function(){ settings.text_style('light'); }"><div class="mb-toggle-letter thin">A</div></li>
+						</ul>
+					</div>
+				
+					<div class="mb-modal-option">
+						<div class="mb-option-icon"><i class="fa fa-font"></i></div>
+						<div class="mb-option-field">
+							<input type="text" placeholder="Button Text" data-bind="textInput: settings.text, returnKey: insertButton" />
+							<i class="mb-right-input-icon fa fa-plus-square-o mb-tooltip" title="Add Icon" data-bind="click: function(){ addingIcon(true); }"></i>
+						</div>
+					</div>
+				
+					<div class="mb-modal-option">
+						<div class="mb-option-icon"><i class="fa fa-link"></i></div>
+						<div class="mb-option-field">
+							<input type="text" placeholder="Button Link" data-bind="textInput: settings.link, returnKey: insertButton" />
+							<i class="mb-right-input-icon fa fa-share-square-o mb-tooltip toggle" title="Opens in new tab?" data-bind="css: { selected: settings.new_tab() }, click: function(){ settings.new_tab(!settings.new_tab()); }"></i>
+							<!--<div class="mb-button-toggle"><i class="fa fa-square-o selected"></i> <span>/</span> <i class="fa fa-share-square-o mb-tooltip"></i></div>-->
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="mb-modal-styles-selector" data-bind="visible: selectingStyle() && !gettingMoreStyles()">
+				    <!--<ul data-bind="foreach: ['flat', 'traditional', 'bordered', 'raised', 'metro', 'outline', 'cloud', 'app', 'subtle', 'glass', 'ocean', 'mango']">-->
+						<ul data-bind="foreach: ['flat', 'raised', 'bordered', 'glass', 'reversed', 'traditional']">
+							<li data-bind="click: $root.selectStyle, event: { mouseover: $root.setPreviewStyle, mouseout: $root.clearStylePreview }">
+								<span class="tiny" data-bind="attr: { 'class': 'mb-button mb-size-tiny mb-style-' + $data}, text: $data[0].toUpperCase() + $data.slice(1)"></span>
+							</li>
+				    </ul>
+				</div>
+				
+				<!-- Populate this dynamically using jQuery - too expensive to use KO to bind this -->
+				<div class="mb-modal-icon-selector" data-bind="visible: addingIcon()"></div>
+				
+				<div class="mb-modal-ad" data-bind="click: purchasePro, visible: selectingStyle() && gettingMoreStyles()"></div>
+			
+			</div><!--/.mb-modal-body-->
+		
+			<div class="mb-modal-actions" data-bind="visible: selectingStyle() && !gettingMoreStyles()">
+				<div class="cancel-action" data-bind="click: function(){ selectingStyle(false); }"><i class="fa fa-angle-left"></i> &nbsp;Back</div>				
+				
+				<!--For free-->
+				<div class="cancel-action" style="float:right;margin-right:0;" data-bind="click: function(){ gettingMoreStyles(true); }"><i class="fa fa-gift"></i> &nbsp;Get more styles</div>
+			</div>
+			
+			<div class="mb-modal-actions" data-bind="visible: selectingStyle() && gettingMoreStyles()">
+				<div class="cancel-action" data-bind="click: function(){ gettingMoreStyles(false); }"><i class="fa fa-angle-left"></i> &nbsp;Maybe Later</div>
+			</div>
+			
+			<div class="mb-modal-actions" data-bind="visible: addingIcon()">
+				<div class="cancel-action" data-bind="click: function(){ addingIcon(false); }"><i class="fa fa-angle-left"></i> &nbsp;Back</div>
+				
+				
+				<!--<button class="purple small" data-bind="click: addIcon"><i class="fa fa-plus"></i> ADD</button>-->
+				
+				<!--For free-->
+				<!--<a href="https://mangobuttons.com/pricing" target="_blank"><div class="info-text">Get more icons &nbsp;<i class="fa fa-long-arrow-right"></i></div></a>-->
+			</div>
+			
+			<div class="mb-modal-actions" data-bind="visible: !selectingStyle() && !addingIcon()">
+				<button class="grey small" data-bind="visible: !isUpdatingExistingButton(), click: insertButton, enable: settingsAreValid(), css: {disabled: !settingsAreValid() }">INSERT</button>
+				<button class="grey small" data-bind="visible: isUpdatingExistingButton(), click: insertButton, enable: settingsAreValid(), css: {disabled: !settingsAreValid() }">UPDATE</button>
+			</div><!--/.mb-modal-actions-->
+		</div><!--/.mb-modal-content-->
+	</div>
+	
+</div>

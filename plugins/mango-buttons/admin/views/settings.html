@@ -1,0 +1,84 @@
+<div id="mb-settings" class="mb-page">
+	
+	<div class="mb-subscribe" style="display:none;">
+		<div class="wrap">
+			<div class="mb-subscribe-text">Subscribe to email updates and get 10% OFF Mango Buttons PRO.</div>
+			<form data-bind="submit: subscribe">
+				<input type="text" placeholder="Email" spellcheck="false" data-bind="value: settings.email, valueUpdate: 'keyup'" />
+				<input type="submit" value="SUBSCRIBE" data-bind="enable: !subscribing(), value: subscribing() ? 'Subscribing...' : 'SUBSCRIBE'" />
+			</form>
+		</div>
+	</div>
+	
+	<div class="wrap">
+		
+		<div class="mb-header">
+			<div class="mb-page-icon"></div>
+			<h2 class="mb-header-text">
+				<span>Mango Buttons Settings &nbsp;<span data-bind="with: notification()"><span class='mb-header-notification' data-bind="css: {'mb-success': status == 'success', 'mb-failure': status == 'failure'}"><i class="fa fa-check" data-bind="visible: status == 'success'"></i><i class="fa fa-exclamation-triangle" data-bind="visible: status == 'failure'"></i>&nbsp;<span data-bind="text: text"></span><i class="fa fa-times-circle" data-bind="click: $root.dismissNotification"></i></span></span></span>
+			</h2>
+		</div>
+		
+		<div class="mb-main-content">
+		
+			<div class="mb-loading-page-placeholder" data-bind="visible: syncingDataWithServer()">
+				<i class="fa fa-spin fa-spinner" style="font-size:100px;text-align:center;width:100%;padding:100px 0;color:#DDD;"></i>
+			</div>
+			
+			<div style="display:none;" class="mb-options-list" data-bind="visible: !syncingDataWithServer(), with: settings">
+				
+				<div class="option-element">
+					<h6>Editor Icon</h6>
+					<p>Do you want the mango-colored icon ("color") or grayscale? <small>( <img class="tiny-mce-color-small" />&nbsp; OR &nbsp;<img class="tiny-mce-grayscale-small" /> )</small></p>
+					
+					<ul>
+						<li data-bind="click: function(){ icon_color('color'); }, css: { selected: icon_color() == 'color' }">COLOR</li>
+						<li data-bind="click: function(){ icon_color('grayscale'); }, css: { selected: icon_color() == 'grayscale' }">GRAYSCALE</li>
+					</ul>
+					
+				</div>
+				
+				<div class="option-element">
+					<h6>Extended Language Support</h6>
+					<p>Enabling support for extended languages will include the latin-ext character set.</p>
+					
+					<ul>
+						<li data-bind="click: function(){ extended_language_support('disable'); }, css: { selected: extended_language_support() == 'disable' }">DISABLE</li>
+						<li data-bind="click: function(){ extended_language_support('enable'); }, css: { selected: extended_language_support() == 'enable' }">ENABLE</li>
+					</ul>
+					
+				</div>
+				
+			</div><!--/.mb-options-list-->
+			
+			<!--<a href="//fast.wistia.net/embed/iframe/bj9wbt88v4?popover=true" class="wistia-popover[height=341,playerColor=7b796a,width=640]"><i class="fa fa-youtube-play"></i> &nbsp;Visual Editor Introduction</a>-->
+			
+			<button style="display:none;" id="save-settings-button" class="purple extra-padding" data-bind="visible: !syncingDataWithServer(), click: saveSettings, enable: settings.dirty(), css: { disabled: !settings.dirty() || savingSettings() }">
+				<span data-bind="visible: !savingSettings()">Save Settings</span>
+				<span data-bind="visible: savingSettings()"><i class="fa fa-spin fa-spinner"></i> &nbsp;Saving...</span>
+			</button>
+			
+			<div style="float:left;margin-top:150px;position:relative;width:100%;" class="option-element" data-bind="with: $root">
+				<span style="display:none;cursor:pointer;font-size:12px;border-bottom:1px dotted #AAA;color:#AAA;" data-bind="visible: !deletingPlugin(), click: function(){ deletingPlugin(true); }">Delete all plugin settings & data</span>
+				<div style="display:none;" class="dark-color" style="font-size:16px;padding:20px;position:relative;float:left;border-radius:3px;background:#EEE;border:1px solid #DDD;" data-bind="visible: deletingPlugin()">
+					<div><p>Are you sure you want to remove all plugin data and settings.</p>
+					<p><small>Mango Buttons will also be deactivated following deletion.</small></p></div>
+					<button style="position:relative;float:left;clear:both;margin-top:15px;" data-bind="click: destroyPluginData" class="red tiny">DELETE</button>
+					<button style="position:relative;float:left;clear:none;margin-top:15px;margin-left:20px;" data-bind="visible: deletingPlugin(), click: function(){ deletingPlugin(false); }" class="grey tiny">CANCEL</button>
+					</div>
+			</div>
+			
+			
+			
+		</div><!--/.mb-main-content-->
+		
+		<div class="mb-sidebar-content">
+			<h5>Any Questions?</h5>
+			<p>Open a ticket on <a href="https://mangobuttons.com/support" target="_blank">mangobuttons.com</a>. We’re always happy to help you get set up and answer any questions you might have.</p>
+			<a href="https://mangobuttons.com/support" target="_blank"><button class="dark tiny extra-padding">Open a ticket</button></a>
+			
+			<a href="https://mangobuttons.com/pricing" target="_blank"><div class="mb-sidebar-ad ad1"></div></a>
+		</div><!--/.mb-sidebar-content-->
+		
+	</div>
+</div>

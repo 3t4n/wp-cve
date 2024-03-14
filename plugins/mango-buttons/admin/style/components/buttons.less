@@ -1,0 +1,269 @@
+.mb-page button, .mb-page input[type="submit"], #mb-modal button{
+
+	/*Reset*/
+	border:0;
+	outline:none;
+	text-transform:none;
+	.no-shadow();
+	text-shadow:none;
+
+	.rounded-corners(3px);
+
+	&:hover,&:active,&:focus{
+		outline:none;
+		text-transform:none;
+		.no-shadow();
+	}
+
+	font-family:@buttonFont;
+	font-weight:bold;
+	letter-spacing:.10em;
+	
+	height:50px;
+	line-height:45px;
+	font-size:14px;
+
+	padding:0 20px;
+
+	text-align:center;//for when we set a width
+	
+	&.disabled{
+		cursor:pointer;
+		opacity:.35;
+	}
+
+	&.extra-padding{
+		padding:0 25px;
+	}
+	
+	&.micro{
+		height:25px;
+		line-height:17px;
+		font-size:10px;
+		padding:0 5px;
+	}
+	
+	&.tiny{
+		height:30px;
+		line-height:23px;
+		font-size:12px;
+		padding:0 5px;
+		&.extra-padding{
+			padding:0 12px;
+		}
+	}
+
+	&.small{
+		height:40px;
+		line-height:35px;
+		font-size:13px;
+		padding:0 15px;
+		&.extra-padding{
+			padding:0 20px;
+		}
+	}
+
+	&.large{
+		height:60px;
+		line-height:57px;
+		font-size:15px;
+	
+		padding: 0 25px;
+		&.extra-padding{
+			padding:0 35px;
+		}
+	}
+	&.jumbo{
+		height:70px;
+		line-height:67px;
+		font-size:16px;
+	
+		padding: 0 40px;
+		&.extra-padding{
+			padding:0 60px;
+		}
+	}
+
+	&.full-width{
+		width:100%;
+		padding:0;
+	}
+
+	/*Colors*/
+	color:#FFF;
+	background:@primary;
+	border:3px solid @primary;
+	border-bottom:3px solid darken(@primary, 8%);
+
+	.transition();
+
+	&:hover{
+		cursor:pointer;
+		border:3px solid darken(@primary, 8%);
+		background:darken(@primary, 8%);
+	}
+	&:active,&:focus{
+		border:3px solid @primary;
+	}
+	&.primary,&.mango{
+		.angled-gradient-background(@red, @yellow);
+		border:none;
+		
+		&:hover{
+			background: -webkit-linear-gradient(160deg, darken(@red, 5%), darken(@yellow, 5%)); /* Chrome10+,Safari5.1+ */
+			background: linear-gradient(160deg, darken(@red, 5%), darken(@yellow, 5%));
+		}
+		&:active{
+		}
+	}
+	&.outline{
+		color:@dark;
+		border:2px solid @dark;
+		background:transparent;
+	
+		&.white{
+			border:2px solid #FFF;
+			color:#FFF;
+		}
+	
+		&:hover{
+			color:darken(@dark, 50%);
+			background:fade(@dark, 2%);
+		}
+		&.white:hover{
+			color:#FFF;
+			background:rgba(255,255,255,.15);
+		}
+		&:active{
+		
+		}
+	}
+	&.transparent{
+		color:@dark;
+		border:2px solid transparent;
+		background:transparent;
+		&:hover{
+			border:2px solid transparent;
+			background:transparent;
+		}
+	}
+	&.secondary{
+		background:@secondary;
+		border:3px solid @secondary;
+		border-bottom:3px solid darken(@secondary, 8%);
+		&:hover{
+			background:darken(@secondary, 8%);
+			border:3px solid darken(@secondary, 8%);
+		}
+		&:active{
+			border:3px solid @secondary;
+		}
+	}
+	&.dark{
+		background:@dark;
+		border:3px solid @dark;
+		border-bottom:3px solid darken(@dark, 50%);
+		&:hover{
+			background:darken(@dark, 50%);
+			border:3px solid darken(@dark, 50%);
+		}
+		&:active{
+			border:3px solid @dark;
+		}
+	}
+	&.grey{
+		background:darken(@grey, 30%);
+		border:3px solid darken(@grey, 30%);
+		border-bottom:3px solid darken(@grey, 35%);
+		&:hover{
+			background:darken(@grey, 35%);
+			border:3px solid darken(@grey, 35%);
+		}
+		&:active{
+			border:3px solid darken(@grey, 30%);
+		}
+	}
+	&.pro{
+		background:@pro;
+		border:3px solid @pro;
+		border-bottom:3px solid darken(@pro, 8%);
+		&:hover{
+			background:darken(@pro, 8%);
+			border:3px solid darken(@pro, 8%);
+		}
+		&:active{
+			border:3px solid @pro;
+		}
+	}
+	&.unlimited,&.gold{
+		/*background:@unlimited;
+		border:3px solid @unlimited;
+		border-bottom:3px solid darken(@unlimited, 8%);
+		&:hover{
+			background:darken(@unlimited, 8%);
+			border:3px solid darken(@unlimited, 8%);
+		}
+		&:active{
+			border:3px solid @unlimited;
+		}*/
+		
+		.angled-gradient-background(@unlimited1, @unlimited2);
+		border:none;
+		
+		&:hover{
+			background: -webkit-linear-gradient(160deg, darken(@unlimited1, 2%), darken(@unlimited2, 2%)); /* Chrome10+,Safari5.1+ */
+			background: linear-gradient(160deg, darken(@unlimited1, 2%), darken(@unlimited2, 2%));
+		}
+		&:active{
+		}
+	}
+	&.red{
+		background:@red;
+		border:3px solid @red;
+		border-bottom:3px solid darken(@red, 8%);
+		&:hover{
+			background:darken(@red, 8%);
+			border:3px solid darken(@red, 8%);
+		}
+		&:active{
+			border:3px solid @red;
+		}
+	}
+	&.yellow{
+		background:@yellow;
+		border:3px solid @yellow;
+		border-bottom:3px solid darken(@yellow, 8%);
+		&:hover{
+			background:darken(@yellow, 8%);
+			border:3px solid darken(@yellow, 8%);
+		}
+		&:active{
+			border:3px solid @yellow;
+		}
+	}
+	&.green{
+		background:@green;
+		border:3px solid @green;
+		border-bottom:3px solid darken(@green, 8%);
+		&:hover{
+			background:darken(@green, 8%);
+			border:3px solid darken(@green, 8%);
+		}
+		&:active{
+			border:3px solid @green;
+		}
+	}
+	&.red{
+		background:@red;
+		border:3px solid @red;
+		border-bottom:3px solid darken(@red, 8%);
+		&:hover{
+			background:darken(@red, 8%);
+			border:3px solid darken(@red, 8%);
+		}
+		&:active{
+			border:3px solid @red;
+		}
+	}
+
+}
