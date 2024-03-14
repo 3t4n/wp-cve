@@ -1,0 +1,248 @@
+.blaze-demo-importer-modal {
+    border: 1px solid #eee;
+    background: #fff;
+    margin-top: 30px;
+}
+
+.blaze-demo-importer-modal-header {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.4;
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+}
+
+.blaze-demo-importer-modal-header h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.blaze-demo-importer-modal-header .blaze-demo-importer-modal-back {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-left: 1px solid #EEE;
+    height: 48px;
+    width: 48px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.blaze-demo-importer-modal-header .blaze-demo-importer-modal-back .dashicons {
+    line-height: 48px;
+    opacity: 0.8;
+    display: inline-block;
+    font-size: 22px;
+}
+
+.blaze-demo-importer-modal-wrap {
+    padding: 30px;
+}
+
+.blaze-demo-importer-modal-wrap p {
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+.blaze-demo-importer-modal-recommended-plugins h4,
+.blaze-demo-importer-reset-checkbox h4 {
+    margin: 30px 0 15px;
+    font-size: 16px;
+}
+
+.blaze-demo-importer-modal-recommended-plugins ul {
+    margin: 0 0 15px;
+    padding: 0;
+}
+
+.blaze-demo-importer-modal-recommended-plugins ul li {
+    margin-bottom: 10px;
+}
+
+.blaze-demo-importer-plugin-status li .dashicons-warning,
+.blaze-demo-importer-plugin-status .blaze-demo-importer-inactive i{
+    color: #ffb900;
+}
+
+.blaze-demo-importer-plugin-status li .dashicons-dismiss,
+.blaze-demo-importer-plugin-status .blaze-demo-importer-install i{
+    color: #c00;
+}
+
+.blaze-demo-importer-plugin-status li .dashicons-yes-alt,
+.blaze-demo-importer-plugin-status .blaze-demo-importer-active i{
+    color: #46b450;
+}
+
+.blaze-demo-importer-reset-checkbox {
+    margin: 30px 0;
+    border: 2px solid #EEE;
+    padding: 20px;
+}
+
+.blaze-demo-importer-reset-checkbox h4{
+    margin: 0 0 15px;
+}
+
+.blaze-demo-importer-reset-website-checkbox{
+    color: #FF0000;
+}
+
+#blaze-demo-importer-import-progress {
+    background: #FFF;
+    text-align: center;
+    margin-top: 25px;
+}
+
+#blaze-demo-importer-import-progress .blaze-demo-importer-import-progress-header {
+    padding: 15px;
+    border-bottom: 1px solid #EEE;
+    margin: 0;
+}
+
+.blaze-demo-importer-import-progress-wrap {
+    padding: 40px;
+}
+
+#blaze-demo-importer-import-progress .blaze-demo-importer-import-progress-message {
+    font-size: 12px;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+#blaze-demo-importer-import-progress .blaze-demo-importer-import-progress-message .message-item {
+    text-align: left;
+    margin: 6px 0;
+    padding-left: 20%;
+}
+
+#blaze-demo-importer-import-progress .blaze-demo-importer-import-progress-message .message-item.error-item {
+    color: #ff0000;
+}
+
+#blaze-demo-importer-import-progress .blaze-demo-importer-import-progress-message .message-item.complete-item:before {
+    content: "\2713";
+    margin-right: 8px;
+    color: #2271b1;
+}
+
+#blaze-demo-importer-import-progress .progress-bar-note.error-note {
+    color: #ff0000;
+}
+
+.blaze-demo-importer-import-progress-wrap .button {
+    margin: 0 4px;
+}
+
+body.blaze-demo-importer-modal-opened .blaze-demo-importer-tab-filter,
+body.blaze-demo-importer-modal-opened .blaze-demo-importer-demo-box-wrap{
+    display: none;
+}
+
+.blaze-demo-importer-import-progress-message:after {
+    content: '.';
+    animation: dots 1s linear infinite;
+}
+
+.import-error .blaze-demo-importer-import-progress-message:after,
+.import-success .blaze-demo-importer-import-progress-message:after {
+    content: '';
+    animation: none;
+}
+
+@keyframes dots {
+    0%,
+    20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    40% {
+        color: #444;
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    60% {
+        text-shadow: .25em 0 0 #444, .5em 0 0 rgba(0, 0, 0, 0);
+    }
+    80%,
+    100% {
+        text-shadow: .25em 0 0 #444, .5em 0 0 #444;
+    }
+}
+/*********************************************
+        Loader Styles
+*********************************************/
+.blaze-demo-importer-import-loader { 
+    width: 500px;
+    margin: 2px auto;
+    position: relative;
+    padding: 1px;
+}
+
+.blaze-demo-importer-import-loader .loaderBar { 
+    position:absolute;
+    top:0;
+    right:100%;
+    bottom:0;
+    left:0;
+    background:#2271b1;
+    width:0;
+    animation:borealisBar 2s linear infinite;
+}
+
+#blaze-demo-importer-import-progress.import-complete .blaze-demo-importer-import-loader .loaderBar {
+    width: 100%;
+    animation: none;
+}
+
+@keyframes borealisBar {
+  0% {
+    left:0%;
+    right:100%;
+    width:0%;
+  }
+  10% {
+    left:0%;
+    right:75%;
+    width:25%;
+  }
+  90% {
+    right:0%;
+    left:75%;
+    width:25%;
+  }
+  100% {
+    left:100%;
+    right:0%;
+    width:0%;
+  }
+}
+
+.blaze-demo-importer-import-progress-bar { 
+    width: 500px;
+    margin: 0 auto;
+    border: 2px solid #ababab;
+    position: relative;
+    padding: 5px;
+}
+
+.blaze-demo-importer-import-progress-bar .loaderBar { 
+    position:absolute;
+    top:0;
+    right:100%;
+    bottom:0;
+    left:0;
+    background:#2271b1;
+    width:0;
+}
+
+#blaze-demo-importer-import-progress.import-complete .blaze-demo-importer-import-progress-bar {
+    border: none;
+}
+
+#blaze-demo-importer-import-progress.import-complete .blaze-demo-importer-import-progress-bar .loaderBar {
+    width: 100%;
+}
