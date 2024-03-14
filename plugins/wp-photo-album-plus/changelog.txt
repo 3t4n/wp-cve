@@ -1,0 +1,617 @@
+WP Photo Album Plus Changelog
+
+= 8.6.04 =
+
+* The superview widget and the uploadsection on the cover and thumbnail area did not supply encrypted album ids, so it always returned invalid url. Fixed.
+* Same for uploader widget when all albums is selected.
+* The shortcode attribute size="1" is meaningless and will now be ignored and will no longer produce an errormessage.
+* Cosmetic changes to the text of various email messages, like New video upload rather than New photo upload when it is a video.
+* Various fixes to warnings related to PHP 8.1.
+* Request info stopped working. Fixed.
+* On the album admin page, in the tab Content, a button is added to clear the descriptions of all items in the album.
+* Fixed a conflict with other plugins a.o. Postie.
+* If you changed the cron mechanism, you can now permanently dismiss the corresponding errormessage on the settings page.
+* 8.6.04.009: Fixed a caching issue with slideshows.
+* 8.6.04.009: Fixed slideonly with fractional size and align did not show up.
+* 8.6.04.009: Extended shorcode attribute album so it may contain a user to limit last uploads. e.g. 
+[wppa type="thumbs" album="#lasten,0,20,opajaapzelf" or [wppa type="slide" album="#lasten,0,20,#me"] for the curremt user
+
+= 8.6.03 =
+
+* Support for photofile type .webp added.
+* On a comten display of thumbnails, the links to e.g. a slideshow did not work. Fixed.
+* Fixed pagination on comment admin page.
+* When shortcode arg anon is added, names are no longer replaced by 4 bullets, but will be blank.
+* Fixed a problem with encryption, there was a chance of 1 out of 795.866.111 that the crypt causes wppa to break a display, and it happened.
+* Fixed the functionality of the browser back button.
+* Fixed a security issue.
+
+= 8.6.02 =
+
+* Fixed two problems with lazy load.
+* When a multipage pdf has been converted to single .jpg pages, and pages have been moved to a sub album of the original album (e.g. to split the book into chapters) 
+you can now also re-convert the pdf: the new pages will overwrite the existing ones now also in the subalbums.
+* When ewww image optimizer plugin is installed and activated, it will now always be used when display or thumbnail files are generated. You need no longer sitching it on inside wppa.
+* Various minor fixes and performance enhancements.
+* Fixes for compatibility with PHP 8.1
+
+= 8.6.01 = 
+
+* Fixed layout isssues of panoramic and zoomable images in slideshows.
+* Fixed possible issues with wppa shortcode identifiers (mocc) when using multiple different selectable occurrancies on a single page.
+* After frontend upload a js error appeared preventing the re-display.
+* New shortcode arttribute: anon, when used, replaces the owners and item(photo) names by three dots. Especially usefull for contest display, but works on all [wppa] shortcodes.
+* Fixed security issues. Changes are:
+1. You can no longer configure rating for logged out visitors.
+2. You can no longer configure commenting for logged out visitors.
+3. You can no longer have album and/or photo names in urls.
+4. Album and photo item numbers in links are now always encrypted.
+5. You can no longer configure upload for logged out visitors.
+6. You can no longer enter html in comments.
+7. You can ony edit your own last comment of the current photo as long as it is still in view.
+* New shortcode attribute: meonly, when used, only albums / photos are shown that are owned by the current visitor. Works on all [wppa] shortcodes.
+
+= 8.5.02 =
+
+* New feature: Pdf conversion.
+If your server has ImageMagick on board, and its external command 'convert', you can now convert pdf files to jpg files.
+The purpose of tjhis new feature is the ability to avaoid the browser to open a pdf reader (including the download option that you might not want to be there),
+and the possibility to display other pages than just the first.
+When the pdf consists of only one page, it can be converted to a single image; a multiple page pdf can be converted to an album containing jpg images of all pages.
+The name of the album will be the filename of the pdf without extension, the names of the jpg's will be like 'Page xx'; the sequence method of the album will be sequence #,
+and the sequence numbers of the jpg's will be the physical page numbers, starting at 1. There are severtal options on how to start the page numbering (item names).
+* New feature: Selectable occurrrence.
+Each wppa shortcode has a unique identifier: the occurrance (mocc). This is basically the sequence number of the wppa dieplay on the page / on the widget area.
+These numbers are automatically assigned and are basically only there for internal use. When one clicks on an item - like 'Slideshow' on an album cover -
+the corresponding code is fetched from the server by an ajax call. When the code is received from the server, the ajax code knows by the occurrance number where to place it,
+i.e. the content of which wppa container should be replaced by it.
+Sometimes it is usedfull for the author of the page to decide himself what the number must be, so he has control over it and can refer to it.
+The new shortcode attribute is simply 'mocc="x"' where x is an integer number > 100 and < 200. ( Wppa containers in widgets start at 201 ).
+An example where you can use it for is as follows.
+The shortcode option delay has now the ability to specify the container id mocc where to place the delayed contant.
+It is only usefull for delay with a text or a button argument; the result is that the text or buttton stayes visible after the delayed content is placed on the page.
+Example:
+First the display of a single photo in container id 123
+Then three textlinks to replace the photo by a slideshow in container 123, while the textlinks stay visible:
+
+[wppa type="photo" photo="4711" mocc="123" size="0.7" align="left"]
+[wppa type="slide" album="13" delay="text,See the slidehow,123"]
+[wppa type="slide" album="14" delay="text,See the other show,123"]
+[wppa type="slide" album="15" delay="text,Yet another show,123"]
+
+* New feature: Inline settings directly in the shortcode.
+There is a new shortcode attribute for the [wppa] shortcode: set
+Syntax: set="name1:value1,name2:value2,..."
+Works like the wppa_set shortcode, but is intented for delayed shortcodes where the wppa_set shortcode does not work.
+
+= 8.5.01 =
+
+* Panoramic and zoomable images are now correctly displayed in slideshows.
+* Slideshows now correctly wraps from the last to the first page and vice versa. Timeout value is hereby preserved.
+* Delayed shortcodes now work correctly.
+* Fixed an issue creating the very first album in the system.
+* New shortcode attribute timeout. Works on all slideshow types. Example: [wppa type="slideonlyf" album="13" timeout="7"] for 7 seconds between successive slides.
+* Improvements to the gutenberg block shortcode generators.
+* Implemented translations in javascript files the way it is conform the wp developers handbook.
+  After updating to this version, you will need to wait for an automatic update of the language files to make all translations work again.
+
+= 8.4.05 =
+
+* Slideshow filmstrip images from the pre- and post-ambule did not link to lightbox when lightbox was configured. Fixed.
+* Fixed layout issue on filmstrip thumbnails with fixed aspect ratio. Note: portrait videos still have misformed filmimages on Firefox.
+* Potd preview on the settings page did not work. Fixed.
+* Fixed a layout issue for videos with posterfiles on the photo admin page.
+
+= 8.4.04 =
+
+* When album names or photo names in urls is activated and the items name is numeric and unequal to the items id,
+the item was not recognized and reported as deleted, or the wrong item was displayed. Fixed.
+* User premium icon was not shown under thumbnails. Fixed.
+* On only 3 out of originally 80 locations, the settings page will be reloaded (after an alert message).
+All relevant display changes when changing a seting are now done immediately without reloading.
+* Fixed an issue related to server running windows os.
+* Fixed spurious unexpected output.
+* The size of logfile is now not only kept below 1000 lines, but also kept below 1 MB.
+
+= 8.4.03 =
+
+* On Album/Photo admin pages both albums and photos have a new tab indicating on which post or page the item is used (Used by), if it is explicitly set in a shortcode.
+This information is added as soon as the page has been viewed, and removed when the page is edited; to be added again at the next viewoing the page if still applicable.
+* Rewarding medals after configured number of max ratings stopped working. Fixed.
+* Fixed an issue with cached slideshow widgets.
+* When changing album info, the cachefiles where the album is used are now cleared.
+* Reduction of queries.
+* Removed 'Same as filmimage' as a choice for the link on slide. If used, it is replaced by 'Lightbox' on updating the pugin, as it is the only choice that makes sense.
+* Frontend download is revised. If you use it, you must reconfigure the corresponding setting that are moved to a separate subtable in
+Photo Albums -> Settings -> Links -> IV: Frontend download links.
+* align="left", align="right" and align="center" in shortcodes for slideshows now also work properly when the max width as specified in
+Basic Settings -> Slideshow -> I -> Item 1 is set to a smaller size than the available width on the page.
+* Plugin Disable Gutenberg has been added to the blacklist. It contains an inconsistency that the author refuses to fix, while it is very simple to do.
+It causes front-end ajax in the normal mode to fail with a fatal error.
+There is a good alternative for Disable Gutenberg: Classic Editor and Classic Widgets.
+If you still want to use Disable Gutenberg, try a differend ajax method in Advanced settings -> System -> I -> Item 5: Ajax method.
+However, this may disable frontend ajax if a different plugin denies frontend acces to wp-admin/admin-ajax.php.
+If you want to patch Disable Gutenberg: Remove in disable-gutenberg.php: line 95: if (is_admin()) { and its corresponing } on line 108.
+
+= 8.4.02 =
+
+* On admin pages, navigation is now always shown rather than only when more items than 20 exists.
+* Slideshow starts now with a spinner until the first item is loaded.
+* On clearing caches, now also WP Optimize cache will be cleared.
+* Filmstrip with clipped images now also shows the videos at the right size.
+* Fixed a spoureous security fail 70 on entering comments.
+* Horizontal alignment setting for slideshows now works. See Basic settings -> Slideshow -> II -> Item 3
+* Entering an ampersand (&) in comment text no longer crashes the comment.
+* Auto start audio and video on slideshows now works. See Basic settings -> Slideshow -> IV -> Items 3 and 4.
+* Fixed an issue when displaying thumbnails when the photo is recently deleted.
+
+= 8.4.01 =
+
+* Pagination of all wppa admin pages fixed.
+* Sorting comment admin page fixed.
+* Tags in photo admin page are now immediately updated, exif and iptc keywords are immediately translated to the actual photos value.
+* Database interface reviewed and partly recoded
+* Extended logging, see Advanced settings -> Misc -> II
+* Background processes reviewed and made faster.
+* Fixed a layout issue on photo admin page for users who do not have the capability to change status.
+* Added a subtable in the settings page for the configuration of slideshow filmstrips. See Basic settings -> Slideshow -> Filmstrip.
+All existig filmstrip related settings - except links from filmstrip images - are also moved to this subtable.
+* You can now have a filmstrip with all items of the same size and clipped to the same aspect ratio. See Basic settings -> Slideshow -> Filmstrip -> Item 3 ( and 4 when selected ).
+* When a film only slideshow was the first slideshow on a page, it did not start. Fixed.
+* Various other minor bugfixes.
+
+= 8.4.00 =
+
+* New mailing list type: Subscribe/Unsubscribe. Mail admins when a user (un)subscribes a mailing list. See Adbanced settings -> Email -> I -> Item 9.
+* IPTC Descriptions were not displayed on the settings page. Fixed.
+* WPPA Database tables will be converted at installation or update to enable the support of emoji's in names, descriptions and comments.
+* You can now enter IPTC and EXIF keywords as tags; they will automatically be replaced by their respective values or left out when not present in the items IPTC/EXIF data.
+* Improved security around (un)subscription on mailinglists.
+* Improved start behaviour of running slideshows.
+
+= 8.3.07 =
+
+* Shortcode type audio now supports all html supported audio file types: mp3, wav and ogg.
+* Fixed possible warning about $_SERVER('REMOTE_ADDR') not being set.
+* Minor fixes to the import page when importing large filestructures.
+* Fixed a front-end pagination issue for thumbnails and slideshows when ajax failed or was switched off.
+
+= 8.3.06 =
+
+* Fixed pagination on Bulk edit photos.
+* Fixed possible problem with copying to wp media when status set to featured.
+* Fixed possible double entries in supersearch.
+* Fixed pagination on edit email sbscription list.
+* New setting: Advanced settings -> New -> I -> Item 41: Optimize new images. This item shows up only when plugin EWWW optimze images is activated.
+Note: This setting works - when on - on new uploads/imports. To optimize existing images, run Advanced settings -> Maintenance -> II -> Item 19: Optimize files.
+Details on optimizing this way can be set in the settings of EWWW optimize images.
+* New setting: Basic settings -> Layout -> VI -> Item 6: Show item description. Show the items description on hoovering and when playing.
+* Fixed possible warning in wppa_session.
+
+= 8.3.05 =
+
+* Changing Nice scroller options did not work, fixed ( Advanced settings -> System -> I -> Item 35 )
+* New shortcode type: [wppa type="audio" {audio="123" | album="123"}] Album id may be integer or a vertual album or a name preceeded by $.
+Displays audio control bar with single item ( audio="nn" where nn is item id ), or a playlist ( album="nn" where nn is album id ). Clicking the name of the item starts playing.
+For configuration see: Basic settings -> Layout -> VI: Audio only specifications
+* New shortcode type: [wppa type="notify"] No further arguments. Displays the mailing list subscription boxes like the Notify widget.
+* One can no longer accidentally delete items outside the depot (sub)folder(s)  during import.
+
+= 8.3.04 =
+
+* On the Export page: including owners to the info files (.amf and .pmf) is now optional.
+* Importing album info file (.amf) did not work. Fixed.
+* Photo names from photo info files (.pmf) were not converted during import. Fixed.
+* Extracting zips on the import page skipped files with uppercase extensions. Fixed.
+* Realmedia items did only show up in the import screen when something else convertable was present. Fixed.
+* When importing directories to albums will now also import non-photo files directly rather than copying them to the depot root for later processing.
+* The sequence of displaying items has changed, so that when everything is checked, posterfiles will automatically be added to media items when in the same album.
+* New setting: Advanced settings -> Users -> I -> Item 33: Del vanished users. Remove albums and items owned by users when they are deleted.
+Related: Advanced settings -> Maintenance -> II -> Items 38 and 39 to delete items and albums owned by users who had already been deleted before.
+Note: Item 39 will run automatically when item 38 is ready.
+* Importing .csv files did not always work, and other issues of the import page. Fixed.
+* New settings: Advanced settings -> Admin -> III -> Items 11 and 12: Import all and import auto.
+If import auto is activated, the process will stop on error, processed files will be removed from depot but not on missing album error.
+* New setting: Advanced settings -> New -> I -> Item 40: BE albums public. If ticked, backend created new albums are public.
+* Administrators, having the capability to edit the email subscription lists could not (un)subscribe themselves in the Notify Me widget. Fixed.
+* New setting: Basic settings -> Comments -> I -> Item 17: User comment roles. A multiselection box to select userroles that can see and enter comments. Requires being logged in.
+* New settings to maximize the number of cache files. Advanced settings -> System -> I -> Item 41a and Basic settings -> Widgets -> III -> Item 5.
+* Fixed an isue with pdfs in slideshows.
+
+= 8.3.03 =
+
+* New shortcode attributes: <b>landscape</b> and <b>portrait</b>. Filters the photos/videos in the selection to be landscape or portrait only. These attributes do not need a value.
+Example: [wppa type="slideonly" album="#lasten,0,10" landscape]
+* No right mouseclick (Setting Advanced settings -> System -> I -> Item 33) now also correctly applies to lightbox images.
+* Fixed layout of drag/drop album sequence arrows.
+* While changing album order by drag/drop you will no longer encounter max_user_connections errors.
+* Shortcode attribute <b>cache</b> no longer needs a value. It may have a value, but if it differs from one out of ['0', 'off', 'no'], it will be interpreted as true.
+If you do not want caching, leave it out.
+* Widget landing pages will now only be crerated if the widget links are configured so that they actually require a landing page as target.
+* Running remake album/photo index will not pre-clear the index table (unchanged) but will mark all items as need to be reindexed.
+* Indexing mechanism has been revised and is believed to be more stable and reliable. A.o. fixed an issue with certain (scandinavian) accented characters.
+* Added log type Idx (index). Logs all index related actions. Advanced settings -> Miscellaneous -> Logging -> Item 8: Log Index (items are renumbered).
+* Fixed missing space after comma in slideshow description.
+* All imports now use ajax.
+* Import from realmedia is no longer a selection near 'local/remote'. You will find the potential realmedialibrary albums and items to import when connected to 'local' at the 'depot directory'.
+* When changing the photo status to 'featured', the item is attempted to be copied to the wp media library.
+This was already working for photos, it works for mp3, mp4 and pdfs now also.
+The item name will be used rather than the item description for the attachment name, and the item description for the attachment content.
+* Plugin BuddyPress damages compressed inline script causing js errors causing a.o. not working slideshows. Inline script is therefor no longer comressed.
+
+= 8.3.02 =
+
+* Added pagination to the Moderate admin page.
+* Restyled and enhanced Import admin page. You can now directly upload to the depot.
+* In Album admin, the separate albums will no longer be displayed in a second table in the collapsable view, but just together with the others. Because it caused confusion.
+* The open/close arrows and the Open/close all buttons in the Album admin now work correctly as expected.
+* Maximum selectable pagesize increased to 10.000.
+* New setting: Basic settings -> Lightbox -> I -> Item 29: Big Browe Buttons. An alternative for the Previous, Next and Exit buttons on lightbox.
+  If ticked, Item 30 will show up where you can decide if you want the small buttons to be displayed as well.
+* New setting: Advanced settings -> System -> I -> Item 48: Show shortcode generators. Multi selecbox for userroles that will see the shortcode hgenerator buttons in editors.
+* Fixed a problem with incoming links that have been extended by other programs like facebook.
+
+= 8.3.01 =
+
+* Maintenance release
+* It is now properly detected when an album owner no longer exists.
+* Many textual corrections.
+* Pagination of admin pages made like the wp style, with the addition of page size selection at the top.
+Admin page sizes are no longer in the settings page, but user individually remembered by transient options.
+* Frontend download revised. No more zips, but always a proper download dialog. Use New style to enable pdf doqnloads.
+* Placed a few items to the photo preview area - like status - in photo admin for convenience.
+
+= 8.2.09 =
+
+* New admin page: Email admin. Enables adding/removing subscribers from the various wppa email lists as well as enabling, disabling and clearing lists.
+* Now excluded wppa-cdn folder when selecting import local root dir.
+
+= 8.2.08 =
+
+* Fixed frontend edit photo info dialog. Now also supports visual editor.
+To use the visual editor tick Advanced settings -> Admin -> VI -> Item 14: Enable TinyMCE editor.
+* You can now exlude indexing album and photo descriptions and therefor exclude the descriptions from search.
+Basic settings -> Search -> I -> Item 3: Include description. Note: The items in the settings table have been renumbered.
+* You can now also limit the viewport of slideshows. See Basic settings -> Slideshow -> III -> Item 8: Slide area max size.
+Works like the setting for covers and thumbnails in Basic settings -> Layout -> I -> Item 7: Area max size.</strong>
+* You can now ignore shortcode attributes size and align for mobile devices.
+See: Basic settings -> Layout -> I -> Item 12: Ignore size/align on mobile.
+* Fixed the error: Misconfig. thumbnail area too small.
+
+= 8.2.07 =
+
+* New virtual album shortcode specification: #posttitle. Example: [wppa type="cover" album="#posttitle"]
+Shows the album(s) with their names eaqual to the title of the post/page. If such an album does not exist,
+it will be created with the owner set to the post/page author or ---public---, dependant of setting Advanced settings -> New -> I -> Item 39: Owner of #posttitle album.
+* Fixed ajax method 'none' at the frontend.
+* When the skip empty album switch is ticked and frontend uploads are enabled, empty albums with status --- public --- will be visible to enable uploading.
+
+= 8.2.06 =
+
+* Export page enhanced.
+* Fixed mail system problems due to issues with the php function array_merge() that occurred only under special configurations i.e. commentnotify owner and admin only.
+* Subsearch did not work anymore, fixed.
+
+= 8.2.05 =
+
+* Switching language e.g. by qTranslate plugin, did no longer load the right language files. Fixed. Also retro-fixed in 8.2.04.009 on aug 08 2022.
+* Fixed an errormessage that might show up when there are no photos in the system and shortcode [photo ...] was enabled.. Also retro-fixed in 8.2.04.009 on aug 11 2022.
+* Some cosmetic changes to album and photo admin pages with respect to upload limits and owner fields.
+* Removed obsolete debuggig code.
+* Reduced number of queries by better cacing option data.
+* Added Timstamp descending to the sub-album sequence methods.
+* Added import from realmedialibrary plugin categorized wp media.
+* Fixed a slideshow pagination issue that resulted in serious performance degradations on large slideshows.
+* Multiline settings lost their linebreaks. Fixed.
+* You can now directly download exported albums on the export page. Also timeouts are now detected.
+
+= 8.2.04 =
+
+* The width and height of portrait oriented mp4 videos is now properly recorded.
+* The dirs wp-content/cache and wp-content/widget-cache are now skipped when scanning for importable files.
+* To improve previews, you can now add your theme and custom css at the backend. See new settings Advanced settings -> Admin -> VI -> Items 15, 16 and 17.
+* Improved algorithm to decide if an album or item (photo, video, document) is visble for the current visitor.
+This takes in account: item (photo) status, album status, user status: admin/superuser, logged-in or out, owner of the item or not etc.
+Note: The visibility of items that reside in albums that can not be seen by the current visitor,
+depends upon their own status when they are explicitly requested e.g. by a shortcode like [wppa type="photo" photo=".."].
+* Added the following items that were missing after the recent restructuration of the photo admin page: Single image shortcode, remake buttons and photo specific urls.
+* Added settings to precache album and photo data. See Advanced settings -> System -> I -> Items 46 and 47.
+
+= 8.2.03 =
+
+* The display of the album and photo admin page has been restructured. Phase II
+* You can now enter exif dates ending in 00 min and 00 sec.
+* New album setting: Max sub albums. This setting only limits the creation of sub albums at the frontend and looks at direct sub albums only.
+
+= 8.2.02 =
+
+* Introduction of native blocks: Photo of the day, upload and simple slideshow. Usable for posts/pages and widgets.
+* Textual corrections. The use of 'sub album' is now consistent.
+* Emai callback urls did not work when refuse unencrypted is enabled. Fixed.
+* The display of the album and photo admin page has been restructured.
+
+= 8.2.01 =
+
+* The start/stop icon in the center of the slideshow sometimes displayed the wrong icon. Fixed.
+* Optimized code for zoomable images and flat panoramas.
+* Fixed layout and text issues on the settings page.
+* Description field in album and photo admin lost linebreaks. Fixed.
+* Re-implemented WP editor for album and photo descriptions. Enable in Advanced settings -> Admin -> VI -> Item 14.
+* When using PDF in a slideshow, the link from the slide no longer needs to be to lightbox.
+* On multisites creating a new album using the Add new button, created a system album rather than an album for the current site. Fixed.
+* Added settings to change the delay of resize end and scroll end events. Advanced settings -> System -> I -> Item 44 and 45
+
+= 8.1.10 =
+
+* Widgets do no longer give errors in the widget block editor.
+* Improved layout of the album admin and photo admin pages.
+* A non admin user who has album admin access can now only delete items that are in albums that he can edit at the backend i.e. has access to (public or his own).
+* Fixed a pagination issue on masonry rows display.
+
+= 8.1.09 =
+
+* size="auto,500" i.e. responsive with maximum did not work as the maximum was not working. Fixed.
+* You can now limit frontend album creation to one or more userroles. See Advanced settings -> Admin -> I -> Item 2
+* You can now select where to have the thumbnail popups, always, on pc only (i.e. not on mobile) or nowhere. See Basic settings -> Thumbnails -> III -> Item 6: Thumb popup
+* Hiding the photodescription on a slideshow when empty did not work. Fixed.
+* Next ugly browse button in slideshow did not work properly on mobile devices. Fixed.
+* Fixed date formatting issue in calendar on exif date slideshow breadcrumb.
+* Nicescroller did not work on contest display. Fixed.
+
+= 8.1.08 =
+
+* New selectable item in Album cover (title) link: manual entered. If selected, an extra input field appears where you can enter any url the cover title should link to.
+* Mailing feuploadnotify did not always work. Fixed.
+* All calendar types are now properly translated.
+* Added real calendare types to the shortcode generators.
+* The albums in the selection lists in the shortcode generators are now including parents and alphabetically sorted
+* New feature: Indicator of any users very first upload. See Advanced settings -> New -> I -> Items 4a, 7a and 9a
+* Admin and moderators will see a selectionbox in the fe upload box to overrule the default status during upload.
+
+= 8.1.07 =
+
+* Maintenance release
+* Clicking the 'back to thumbnails' button in the slideshow breadcrumb now always returns to the right page,
+hilgliting the right item, regardless of either page size.
+* Fixed a possible conflict with wp customizer.
+* Fixed a db warning at initial installation.
+* You can now also specify a default description for 'granted' albums in Advanced settings -> New -> I -> Item 19a: Grant album description.
+You can use $user as placeholder for the user name as defined in Item 19, as well as all existing album description keywords.
+* You need no longer to wait one up to two hours before deleted items will be permanently removed.
+On the album table the last line show the recoverable items as before.
+The various edit types on this line now also allow you to remove the items from the system immediately,
+either one by one or multiple at once on the (new) Bulk edit page for recoverable items.
+Undeleting can now be done bulkwise too.
+
+= 8.1.06 =
+
+* Fixed upload widget.
+* Fixed shortcode types acount and pcount for multiple albums/parents.
+* Fixed maintenances procs Custom album proc and Custom photo proc.
+* Improved behaviour of pan buttons on zoomable images. Improved touch moving of zoomed images.
+* Improved stability of displaying panorama and zoomable images.
+* Extra checkbox on Ajax method selection ( Advanced settings -> System -> I -> Item 5: Ajax method ) to use home url rather than site url.
+
+= 8.1.05 =
+
+* Fixed a js error when no nicescroller active.
+* Added list tags in allowed html tags for descriptions.
+* Fixed Gutenberg shortcode generators.
+
+= 8.1.04 =
+
+* Fixed frontend upload.
+* Dropped attribute all="1" on non-real calendars.
+* Link to slideshow on real calendars now work.
+* Album and Photo Sequence edit now also works on mobile devices.
+* The album list in Eit Photo Sequence is now alphabetical.
+* Selective clearing cache on post/page update did not work. Fixed.
+
+= 8.1.03 =
+
+* New tab on links from slideshow to single image did not woek. Fixed.
+* Fixed a caching issue that resulted in not dispaying the requested single image generated without ajax call.
+* Cosmetic improvement on Photo Sequence edit.
+* Fixed a spurious divide by 0 when an expected photo file does not exist.
+* Fixed an issue with updating addressline when delaying is on.
+* Fixed missng thumbnail in emails.
+
+= 8.1.02 =
+
+* Re-enabled update addressline.
+* Nicescroll options are now sanitized to prevent js crash after wrong edits.
+* On Album Admin table, when set to collapsable and pagination is on,
+now also all (grand)children of the albums on the list are included,
+to avoid confusion when only a part of them are shown.
+* New feature: Edit tags, To globally change or remove photo tags. Requires capability Tag edit. See Advanced settings -> Admin -> I
+* New feature: Edit sequence, to chnage the sequence of the items in an album without having album access. Requires capability Sequence Edit.
+* You can now globally switch off certain menu items in Advanced settings -> Admin -> VI.
+
+= 8.1.01 =
+
+* Lightbox on slide images did not always show the full list of items. Fixed.
+* You can now also send emails on backend uploads/imports. See: Advanced settings -> Email -> I -> Item 2: Mail on upload.
+Works only when frontend upload mailing is activated.
+Mails are sent 15 minutes after the first upload.
+You can also specify if preview thumbnails should be included.
+If no thumbnails should be shown in case of multiple photos, just the number of them is in the email.
+* Fixed a nicescroller issue.
+* Html tags were stripped when changing album or photo descriptions. Fixed.
+* Slideshow widgets did not start when cached. Fixed.
+* Fixed a google.maps js error when gpx was enabled but when there is no map on the pgae.
+* Fixed a layout conflict with plugin Contact form 7.
+
+= 8.1.00 =
+
+* Many changes to comply with the wp coding standards to improve security:
+- Removed ajax method 'Classic'.
+- Javascript is now always deferred (Removed Advanced settings -> System I -> Item 11: Defer javascript),
+  in order to use the prescribed method for inline javascript.
+- Dropped all custom style items in Advanced settings -> System -> I. Use wp customizer instead.
+- Dropped the use of the wp editor for multiline textfields on admin pages.
+- Dropped frontend edit photo method 'Classic'.
+* Deleting a users 'Admins choice' zipfile will also remove his tags.
+* Removed Google+ share.
+* Added round black share buttons. See Advanced settings -> Share -> I Items 7, 10, 11.
+
+* Known problems:
+- shortcode generator on Gutenberg editor does not work correctly.
+- update addressline is temporarely disabled due to infinite looping on refresh page.
+
+= 8.0.10 =
+
+* Security fix: The logfile was prone to XSS attacks. Fixed.
+* Added option 'Same as filmthumb' to the links on slideshow images.
+This makes sense only for links on filmthubs to lightbox. This construction will transfer the click on slide image to filmstrip image.
+This is to overcome the restriction that links from slideshow to lightbox do not support zoomable and panoramic images.
+This will only work when the filmstrip is not disabled.
+Note that zoomable and panoramic images on lightbox do not show name, description, rating etc below the image.
+* Users without album admin rights are now also allowed to copy the 'admins choice' photos to their granted album;
+i.e. for non album admin righted users, clicking My choice no longer returns an error when
+Advanced settings -> System -> i -> Item 31: Admins choice action is set to To album or To album and zip.
+* In the shortcode [wppa type="choice"], the attribute admin="" may contain a comma seperated list of users to display in the box.
+This list used to be a list of display names, it now may also be a list of login names (or a mix), e.g.:
+[wppa type="choice" admin="kimmy,opajaap"] (login names)
+[wppa type="choice" admin="Kimmy,opajaap"] (mixed)
+[wppa type="choice" admin="Kimmy,Opa Jaap"] (display names)
+are all valid shortcodes.
+Note 1: All names are case sensitive.
+Note 2: This specification to limit the display does not exist in the widget implementation but you can put the shortcode in a text widget.
+If you want to show your own zipfile only: Tick Advanced settings -> System -> I -> Item 30: Admins choice me only. This works on the widget also.
+* When the 'Admins choice' selection includes tagging the photo, it will now be tagged by the users displayname rather than user-<userid>.
+* Added maintenance procedure Advanced settings -> Maintenance -> III: One time conversions -> Item 3 to convert old style Choice generated tags to new style tags.
+* Corrected (lowered) wheel zoom sensitivity on panoramic and zoomable images for browsers other than chrome.
+* On new sites one did not have the rights to change the photo of the day settings. Fixed.
+
+= 8.0.09 =
+
+* The photo updated flag will now also be set when the photo hes been re-uploaded.
+* Update photo new style dialog did not close when used on a thumbnail due to a js error. Fixed.
+* In import and upload, when called directly from the album admin table, the requested album was no longer pre-selectd. Fixed.
+* Fixed various issues caused by caching and delaying.
+* New setting in Advanced settings -> New -> Item 4: Modified Photo, added a checkbox. If checked, a modified photo will also set the album as being modified.
+
+= 8.0.08 =
+
+* Improved smartness of caching. On changing photos, albums, adding comments and ratings etc., only the affected cachefiles will be cleared.
+* Fixed film thumbnail titles.
+* Calendars (non real) did no longer work. Fixed.
+* Fixed erroneously stripped tags in descriptions.
+* New settings Advanced settings -> System -> Items 41: Caching overrule and 42: Delay overrule.
+To globally overrule the shortcode and widget settings.
+There are 3 options: 1. do not overrule, 2. always as possible and 3. never.
+
+= 8.0.07 =
+
+* Security release. All querystring args are now processed and sanitized in one function wppa_get() in wppa-input.php
+* Role specific upload limits did no longer work. Fixed.
+* Popups on masonry thumbnails did not work when links on thumbnails differ from lightbox. Fixed.
+* Rightclick on thumbnail or thumbnail popup allows you to open the link in a new tab, if No rightclick is not on.
+* Title of the QR widget was wrong and not editable. Fixed.
+* Linktypes 'The photos in the author(s) albums, slideshow' and 'All the authors photos, slideshow' for the BestOf widget/shortcode did not work. Fixed.
+* Fixed issues caused by tags that contain single quotes.
+* Custom datafields could only be updated by users that had unfiltered_html capability. Fixed.
+* One can no longer cache the stats widget, its useless.
+* Fixed a conflict with plugin Page Load Ajax.
+* Added menu item Search. Opens a page with the green search bar like on the album table. Required capability is equal to that for Album Admin.
+* If comments are disabled, the menu item to manage comments will no longer show up.
+* Fixed various typos in texts.
+* Frontend edit photo New style will automatically update the displayed name and description in the slideshow.
+
+= 8.0.06 =
+
+* New setting options to Basic settings -> Thumbnails -> II: Thumbnail display options -> Item 4: Thumbnail comcount.
+Enables you to select a userrole, and show the number of comments given by userts with that role separately, only visible to users of that role.
+* Pagination is now switched off when a photo enumeration is given.
+* Fixed wrong links when photo names in urls is activated.
+* In case of duplicate names in 'names in urls' they will not be converted to avoid confusion.
+* When photo names in urls, slideshow always started at the first slide, also when a link expected a specific item. Fixed.
+* Fix first found in cover image selection did not result in less db queries that was the objective of the feature. Fixed.
+
+= 8.0.05 =
+
+* New shortcode type: grid. New attribute photos. Typical use: [wppa type="grid" photos="1.2.5..19"] [wppa type="grid" album="5"] optionally size= and align=.
+* New setting: Basic settings -> Links -> II: Links from standard images -> Item 8: Grid. Grid photo link.
+* New setting: Basic settings -> Misc -> I: Miscellaneous settings -> Item 9: Grid video controls. Show the video controms on a video in a grid display.
+* New setting: Basic settings -> Search -> I: Search albums and photos features related settings -> Item 35: Show empty search.	Display empty search message.
+* Fixed a fatal error on the Album admin pages, that happened only when not admin and photo order restricted.
+* Basic settings -> Misc -> I -> Item 3: Default coverphoto selection, has an extra checkbox named Fix first found. This shows only when a random methid is selected.
+When checked, the first found will be registered as fixed cover image. The Reset all checkbox enables you to reset all the fixed coverimages.
+* Dropped the selection item Compressed for pretty links as it often does not work correctly.
+* Filmstrip layout was wrong when the size arg was used in the shortcode. Fixed.
+* WPPA now uses wp-jquery-ui-dialog css file, and code has been changed to be compatible with it, to avoid conflicts with other plugins that use it also.
+
+= 8.0.04 =
+
+* Settings page will no longer crash when the php implementation does not support the exec() command.
+* Fixed inconsistent behaviour of 'slideshow wrap around' feature.
+* Improved behaviour of popup thumbnails. They come up now correctly.
+* New setting: Basic settings -> Slideshow -> IV -> Item 14: Easing formula.
+* New setting: Basic settings -> Lightbox -> I -> Item 28: Easing formula.
+* New setting: Basic settings -> Thumbnails -> III -> Item 9: Popup easing formula.
+* You can now combine thumbnail popups with all available thumbnail links, so also lightbox.
+* Albums now have a status. Publish is the default, Private: only visible to loggedin visitors, Hidden: only visible to admin and superusers.
+* Mailing unsubscribe links failed. Fixed.
+* Improved algorithm to clear non-wppa caches.
+* Corrected and extended helptext in titles (balloons) on the Album Admin -> Edit Album Information page.
+* Hotfix 8.0.04.007: Current values of input and selections did not show up on the settings page. Fixed.
+
+= 8.0.03 =
+
+* Extended alternate ajax methods and fixed certain links.
+If frontend ajax links do not work, you can select different ajax methods on Advanced settings -> System -> I Item 5: Ajax method. ('Normal' is default).
+Classic is like pre ver 8 method 'Ajax non admin' ticked, Backend method is like pre ver 8 'Ajax non admin' unticked (uses admin-ajax).
+* If frontend upload does not work (give errors) set Advanced settings -> Users -> I Item 5.1: Upload Ajax method to 'extern' (like classic) or to 'backend' (uses admin-ajax). ('normal' is default).
+* Note on upload. If you want users to upload to sites that have a site password, i.e. where users do not need to login with their name, treat them as non logged in.
+To allow uploads in this case: tick the box in Advanced settings -> Users -> I Item 32: Upload logout, and make sure the owners of the albums allowed to upload to are set to ---public---.
+* If you do not use the widget or the upload shortcode but let them upload using the album cover link, make sure empty albums are not skipped, to allow the first upload.
+See Basic settings -> Albums -> II Item 7: Skip empty albums.
+* Plugin All in One SEO tampers the internal wppa occurrance counters because it renders the page before the actual page building.
+This results in certain links not working like the link from an image in a widget to a landing page, because the landing shortcode is no longer the first occurrance.
+Provided a fix for this by resetting the counters at the end of the the process that builds the page header.
+* When both defer javascript was active and the shortcode was cached, reponsiveness was no longer fully supported. Fixed.
+* Switching off manual control on a spheric panorama caused a js error resulting in not displaying the image. Fixed.
+* The documentation site https://wppa.nl now shows the version 8 settings.
+* Fixed a problem in scheduled renewing crypts. The time interval is now correctly obeyed.
+* Cache is now cleared when a maintenance procedure has completed.
+
+= 8.0.02 =
+
+* Further restructured javascript loading and inits. One can now also cache slideshows and slideshow widgets when defer javascript is on.
+* Re-added the feature that non loggedin users can upload photos. Be careful wit this, especially make sure moderating is on.
+See Advanced settings -> Users -> I Item 32: Upload logout, and Advanced settings -> Admin -> II Item 11: Upload moderation.
+Added an admin notice about this if applicable.
+* Fixed frontend upload issues.
+* Added option Advanced settings -> System -> I Item 5: Ajax method.
+In vertsion 8 the official way to use Ajax at the frontend as documented in the Developers manual was implemented.
+Unfortunately this method appears not to work on every site, so i added a selectionbox with 4 options.
+If certain links at the frontend do not work, try one of the alternate methods.
+If frontend upload does not work properly when the progressbar (i.e. ajax upload) is on,
+try one of the alternate methods listed in Advanced settings -> Users -> I: Item 5.1: Upload Ajax method
+
+= 8.0.01 =
+
+* Re-added the WPPA+ text widget for backward compatibility.
+* All querystring items now have a value. This fixes the fact that isset() returns false when the value is null, leading to certain links not working proprtly.
+* Improved algorithm for lazy load on mobile devices.
+
+= 8.0.00 =
+
+* Restructured and greatly simplified settings page. Removed obsolete and redundant settings. Made the layout more friendly.
+* Photo of the day admin page is now in the Settings page under Photos.
+* To create albums or upload photos can only be done by logged in users, you can no longer configure these features for loggedout visitors.
+* Custom css settings are being fased out. One is encouraged to move that to the wp customizer.
+On the settings page you will only see the custom css items that are not empty. The help text encourages you to move the content to the wp customizer.
+* Ajax method changed. No longer possible to choose between admin or non admin ajax.
+Ajax is always activated, because there can no longer be conflicts due to inaccessibility of both ajax files from the frontend by http request.
+* Photo count treshold has been removed because one can select a childrens image as cover image of any album.
+* Nice scroller is no longer loaded on mobile devives. Scrollbars on mobile are nice enough by themselves and this improves performance.
+* Removed WPPA+ Text widget. You can now use the WP Custom HTML widget instead.
+* HTML in descriptions is now automatically allowed for those users who have HTML edit rights.
+* Widgets do no longer show up anywhere if the corresponding feature is not enabled. e.g. Notify widget - Enable email. etc.
+* The shortcode to display the most recently uploaded photo did not work when additionally the album was specified e.g.
+[wppa type="photo" photo="#last,12"] or [wppa type="photo" album="12" photo="#last"]. Fixed. Works also for type="mphoto" and type="xphoto".
+* Fixed a slideshow filmstrip layout issue for theme twentytwentyone.
+* The max simultaneous ajax requests during resequencing photos is now limited to 10. This prevents db errors due to too many open db instances.
+* Caching system is simplified. Just on or off. In widgets: checkbox; in shortcodes: '', '0', 'off' or 'no' means no caching; anything else means caching on.
+Although the fact that there are separate cachefiles for logged-in and logged-out visitors, make sure you do not cache widgets or shortcodes that may display user dependant content.
