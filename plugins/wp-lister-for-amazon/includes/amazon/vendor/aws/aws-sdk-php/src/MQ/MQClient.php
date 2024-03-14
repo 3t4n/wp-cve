@@ -1,0 +1,53 @@
+<?php
+namespace Aws\MQ;
+
+use Aws\AwsClient;
+
+/**
+ * This client is used to interact with the **AmazonMQ** service.
+ * @method \Aws\Result createBroker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createBrokerAsync(array $args = [])
+ * @method \Aws\Result createConfiguration(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createConfigurationAsync(array $args = [])
+ * @method \Aws\Result createTags(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createTagsAsync(array $args = [])
+ * @method \Aws\Result createUser(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createUserAsync(array $args = [])
+ * @method \Aws\Result deleteBroker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteBrokerAsync(array $args = [])
+ * @method \Aws\Result deleteTags(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteTagsAsync(array $args = [])
+ * @method \Aws\Result deleteUser(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteUserAsync(array $args = [])
+ * @method \Aws\Result describeBroker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeBrokerAsync(array $args = [])
+ * @method \Aws\Result describeBrokerEngineTypes(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeBrokerEngineTypesAsync(array $args = [])
+ * @method \Aws\Result describeBrokerInstanceOptions(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeBrokerInstanceOptionsAsync(array $args = [])
+ * @method \Aws\Result describeConfiguration(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeConfigurationAsync(array $args = [])
+ * @method \Aws\Result describeConfigurationRevision(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeConfigurationRevisionAsync(array $args = [])
+ * @method \Aws\Result describeUser(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeUserAsync(array $args = [])
+ * @method \Aws\Result listBrokers(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listBrokersAsync(array $args = [])
+ * @method \Aws\Result listConfigurationRevisions(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listConfigurationRevisionsAsync(array $args = [])
+ * @method \Aws\Result listConfigurations(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listConfigurationsAsync(array $args = [])
+ * @method \Aws\Result listTags(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listTagsAsync(array $args = [])
+ * @method \Aws\Result listUsers(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listUsersAsync(array $args = [])
+ * @method \Aws\Result rebootBroker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise rebootBrokerAsync(array $args = [])
+ * @method \Aws\Result updateBroker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateBrokerAsync(array $args = [])
+ * @method \Aws\Result updateConfiguration(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateConfigurationAsync(array $args = [])
+ * @method \Aws\Result updateUser(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateUserAsync(array $args = [])
+ */
+class MQClient extends AwsClient {}

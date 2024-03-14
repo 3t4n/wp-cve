@@ -1,0 +1,51 @@
+<?php
+namespace Aws\MediaStore;
+
+use Aws\AwsClient;
+
+/**
+ * This client is used to interact with the **AWS Elemental MediaStore** service.
+ * @method \Aws\Result createContainer(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createContainerAsync(array $args = [])
+ * @method \Aws\Result deleteContainer(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteContainerAsync(array $args = [])
+ * @method \Aws\Result deleteContainerPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteContainerPolicyAsync(array $args = [])
+ * @method \Aws\Result deleteCorsPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteCorsPolicyAsync(array $args = [])
+ * @method \Aws\Result deleteLifecyclePolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteLifecyclePolicyAsync(array $args = [])
+ * @method \Aws\Result deleteMetricPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteMetricPolicyAsync(array $args = [])
+ * @method \Aws\Result describeContainer(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeContainerAsync(array $args = [])
+ * @method \Aws\Result getContainerPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getContainerPolicyAsync(array $args = [])
+ * @method \Aws\Result getCorsPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getCorsPolicyAsync(array $args = [])
+ * @method \Aws\Result getLifecyclePolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getLifecyclePolicyAsync(array $args = [])
+ * @method \Aws\Result getMetricPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getMetricPolicyAsync(array $args = [])
+ * @method \Aws\Result listContainers(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listContainersAsync(array $args = [])
+ * @method \Aws\Result listTagsForResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listTagsForResourceAsync(array $args = [])
+ * @method \Aws\Result putContainerPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise putContainerPolicyAsync(array $args = [])
+ * @method \Aws\Result putCorsPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise putCorsPolicyAsync(array $args = [])
+ * @method \Aws\Result putLifecyclePolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise putLifecyclePolicyAsync(array $args = [])
+ * @method \Aws\Result putMetricPolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise putMetricPolicyAsync(array $args = [])
+ * @method \Aws\Result startAccessLogging(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise startAccessLoggingAsync(array $args = [])
+ * @method \Aws\Result stopAccessLogging(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise stopAccessLoggingAsync(array $args = [])
+ * @method \Aws\Result tagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise tagResourceAsync(array $args = [])
+ * @method \Aws\Result untagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise untagResourceAsync(array $args = [])
+ */
+class MediaStoreClient extends AwsClient {}

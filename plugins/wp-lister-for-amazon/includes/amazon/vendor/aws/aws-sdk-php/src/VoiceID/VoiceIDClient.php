@@ -1,0 +1,51 @@
+<?php
+namespace Aws\VoiceID;
+
+use Aws\AwsClient;
+
+/**
+ * This client is used to interact with the **Amazon Voice ID** service.
+ * @method \Aws\Result createDomain(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createDomainAsync(array $args = [])
+ * @method \Aws\Result deleteDomain(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteDomainAsync(array $args = [])
+ * @method \Aws\Result deleteFraudster(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteFraudsterAsync(array $args = [])
+ * @method \Aws\Result deleteSpeaker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteSpeakerAsync(array $args = [])
+ * @method \Aws\Result describeDomain(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeDomainAsync(array $args = [])
+ * @method \Aws\Result describeFraudster(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeFraudsterAsync(array $args = [])
+ * @method \Aws\Result describeFraudsterRegistrationJob(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeFraudsterRegistrationJobAsync(array $args = [])
+ * @method \Aws\Result describeSpeaker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeSpeakerAsync(array $args = [])
+ * @method \Aws\Result describeSpeakerEnrollmentJob(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeSpeakerEnrollmentJobAsync(array $args = [])
+ * @method \Aws\Result evaluateSession(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise evaluateSessionAsync(array $args = [])
+ * @method \Aws\Result listDomains(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listDomainsAsync(array $args = [])
+ * @method \Aws\Result listFraudsterRegistrationJobs(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listFraudsterRegistrationJobsAsync(array $args = [])
+ * @method \Aws\Result listSpeakerEnrollmentJobs(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listSpeakerEnrollmentJobsAsync(array $args = [])
+ * @method \Aws\Result listSpeakers(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listSpeakersAsync(array $args = [])
+ * @method \Aws\Result listTagsForResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listTagsForResourceAsync(array $args = [])
+ * @method \Aws\Result optOutSpeaker(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise optOutSpeakerAsync(array $args = [])
+ * @method \Aws\Result startFraudsterRegistrationJob(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise startFraudsterRegistrationJobAsync(array $args = [])
+ * @method \Aws\Result startSpeakerEnrollmentJob(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise startSpeakerEnrollmentJobAsync(array $args = [])
+ * @method \Aws\Result tagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise tagResourceAsync(array $args = [])
+ * @method \Aws\Result untagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise untagResourceAsync(array $args = [])
+ * @method \Aws\Result updateDomain(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateDomainAsync(array $args = [])
+ */
+class VoiceIDClient extends AwsClient {}

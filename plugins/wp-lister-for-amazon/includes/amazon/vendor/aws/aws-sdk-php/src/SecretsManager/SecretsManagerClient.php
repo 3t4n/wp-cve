@@ -1,0 +1,53 @@
+<?php
+namespace Aws\SecretsManager;
+
+use Aws\AwsClient;
+
+/**
+ * This client is used to interact with the **AWS Secrets Manager** service.
+ * @method \Aws\Result cancelRotateSecret(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise cancelRotateSecretAsync(array $args = [])
+ * @method \Aws\Result createSecret(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createSecretAsync(array $args = [])
+ * @method \Aws\Result deleteResourcePolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteResourcePolicyAsync(array $args = [])
+ * @method \Aws\Result deleteSecret(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteSecretAsync(array $args = [])
+ * @method \Aws\Result describeSecret(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise describeSecretAsync(array $args = [])
+ * @method \Aws\Result getRandomPassword(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getRandomPasswordAsync(array $args = [])
+ * @method \Aws\Result getResourcePolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getResourcePolicyAsync(array $args = [])
+ * @method \Aws\Result getSecretValue(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getSecretValueAsync(array $args = [])
+ * @method \Aws\Result listSecretVersionIds(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listSecretVersionIdsAsync(array $args = [])
+ * @method \Aws\Result listSecrets(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listSecretsAsync(array $args = [])
+ * @method \Aws\Result putResourcePolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise putResourcePolicyAsync(array $args = [])
+ * @method \Aws\Result putSecretValue(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise putSecretValueAsync(array $args = [])
+ * @method \Aws\Result removeRegionsFromReplication(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise removeRegionsFromReplicationAsync(array $args = [])
+ * @method \Aws\Result replicateSecretToRegions(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise replicateSecretToRegionsAsync(array $args = [])
+ * @method \Aws\Result restoreSecret(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise restoreSecretAsync(array $args = [])
+ * @method \Aws\Result rotateSecret(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise rotateSecretAsync(array $args = [])
+ * @method \Aws\Result stopReplicationToReplica(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise stopReplicationToReplicaAsync(array $args = [])
+ * @method \Aws\Result tagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise tagResourceAsync(array $args = [])
+ * @method \Aws\Result untagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise untagResourceAsync(array $args = [])
+ * @method \Aws\Result updateSecret(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateSecretAsync(array $args = [])
+ * @method \Aws\Result updateSecretVersionStage(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateSecretVersionStageAsync(array $args = [])
+ * @method \Aws\Result validateResourcePolicy(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise validateResourcePolicyAsync(array $args = [])
+ */
+class SecretsManagerClient extends AwsClient {}

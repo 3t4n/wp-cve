@@ -1,0 +1,53 @@
+<?php
+namespace Aws\AppRegistry;
+
+use Aws\AwsClient;
+
+/**
+ * This client is used to interact with the **AWS Service Catalog App Registry** service.
+ * @method \Aws\Result associateAttributeGroup(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise associateAttributeGroupAsync(array $args = [])
+ * @method \Aws\Result associateResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise associateResourceAsync(array $args = [])
+ * @method \Aws\Result createApplication(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createApplicationAsync(array $args = [])
+ * @method \Aws\Result createAttributeGroup(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise createAttributeGroupAsync(array $args = [])
+ * @method \Aws\Result deleteApplication(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteApplicationAsync(array $args = [])
+ * @method \Aws\Result deleteAttributeGroup(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise deleteAttributeGroupAsync(array $args = [])
+ * @method \Aws\Result disassociateAttributeGroup(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise disassociateAttributeGroupAsync(array $args = [])
+ * @method \Aws\Result disassociateResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise disassociateResourceAsync(array $args = [])
+ * @method \Aws\Result getApplication(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getApplicationAsync(array $args = [])
+ * @method \Aws\Result getAssociatedResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getAssociatedResourceAsync(array $args = [])
+ * @method \Aws\Result getAttributeGroup(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise getAttributeGroupAsync(array $args = [])
+ * @method \Aws\Result listApplications(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listApplicationsAsync(array $args = [])
+ * @method \Aws\Result listAssociatedAttributeGroups(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listAssociatedAttributeGroupsAsync(array $args = [])
+ * @method \Aws\Result listAssociatedResources(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listAssociatedResourcesAsync(array $args = [])
+ * @method \Aws\Result listAttributeGroups(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listAttributeGroupsAsync(array $args = [])
+ * @method \Aws\Result listAttributeGroupsForApplication(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listAttributeGroupsForApplicationAsync(array $args = [])
+ * @method \Aws\Result listTagsForResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise listTagsForResourceAsync(array $args = [])
+ * @method \Aws\Result syncResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise syncResourceAsync(array $args = [])
+ * @method \Aws\Result tagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise tagResourceAsync(array $args = [])
+ * @method \Aws\Result untagResource(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise untagResourceAsync(array $args = [])
+ * @method \Aws\Result updateApplication(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateApplicationAsync(array $args = [])
+ * @method \Aws\Result updateAttributeGroup(array $args = [])
+ * @method \WPLab\GuzzeHttp\Promise\Promise updateAttributeGroupAsync(array $args = [])
+ */
+class AppRegistryClient extends AwsClient {}
