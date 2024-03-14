@@ -1,0 +1,1 @@
+jQuery(function(t){var n=t(".single_add_to_cart_button"),e=n.html();t("form.variations_form").on("show_variation",function(t,o,r){"yes"==o.is_pre_order?n.html(o.pre_order_label):n.html(e)}).on("hide_variation",function(t){t.preventDefault(),n.html(e)})});
