@@ -1,0 +1,164 @@
+/* ON / OFF UI BUTTONS */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e5e5;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #0073aa;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #0073aa;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* END - ON / OFF UI BUTTONS */
+
+.webp-images-plugin .webp-images-container {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.webp-images-plugin .webp-images-container .webp-images-main {
+    padding-right: 40px;
+}
+
+.webp-images-plugin .webp-images-container .webp-images-sidebar {
+    flex: 1;
+}
+
+.webp-images-plugin h1 {
+    padding-bottom: 20px;
+}
+
+.webp-images-plugin h2 {
+    margin: 0;
+    padding: 40px 0 15px;
+    text-transform: uppercase;
+}
+
+.webp-images-plugin *:not(.notice) p {
+    margin: 0 0 15px;
+}
+
+.webp-images-plugin .webp-images-bulk-infos {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 0 10px;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    background: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+    color: #23282d;
+}
+
+.webp-images-plugin .webp-images-bulk-infos .webp-images-bulk-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.webp-images-plugin .webp-images-bulk-infos .webp-images-bulk-info.last {
+    border-bottom: 0;
+}
+
+.webp-images-plugin .webp-images-bulk-infos .webp-images-bulk-info div:first-child {
+    padding-right: 25px;
+}
+
+.webp-images-plugin .webp-images-bulk-infos .webp-images-bulk-info div:last-child {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.webp-images-plugin .webp-images-bulk-infos .webp-images-bulk-info.nowebp div:last-child {
+    color: #a00;
+}
+
+.webp-images-plugin .webp-images-bulk-infos .webp-images-bulk-info.webp div:last-child {
+    color: #46b450;
+}
+
+.webp-images-plugin .webp-images-bulk-infos .webp-images-bulk-info.time div:last-child {
+    color: #ffb900;
+}
+
+.webp-images-plugin .webp-images-container .webp-images-sidebar .webp-images-sidebar-content {
+    background-color: #32373c;
+    color: #fff;
+    padding: 30px 30px 10px;
+    text-align: center;
+    min-width: 250px;
+}
+
+.webp-images-plugin .webp-images-container .webp-images-sidebar .webp-images-sidebar-content h2 {
+    color: #fff;
+    padding-top: 0;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.webp-images-plugin .webp-images-container .webp-images-sidebar .webp-images-sidebar-content .button {
+    width: 100%;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 782px) {
+    .webp-images-plugin .webp-images-container {
+        flex-direction: column;
+    }
+
+    .webp-images-plugin .webp-images-container .webp-images-main {
+        padding-top: 40px;
+        padding-right: 0;
+        order: 2;
+    }
+
+    .webp-images-plugin .webp-images-bulk-infos {
+        display: block;
+    }
+}
