@@ -1,0 +1,1 @@
+(function($){"use strict";$(document).ready(function(){$(".rank-my-wp-settings #wpwrap #adminmenumain").remove();$(".rank-my-wp-settings #adminmenuback").remove();$(".rank-my-wp-settings #adminmenuwrap").remove();$(".rank-my-wp-settings #footer").remove();$(".rank-my-wp-settings #wpfooter").remove();$(".rank-my-wp-settings #wpwrap .et-core-form").remove()})})(jQuery);
