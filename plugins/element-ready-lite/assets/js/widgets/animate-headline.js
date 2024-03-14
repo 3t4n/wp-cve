@@ -1,0 +1,1 @@
+!function(e){var n=function(e,n){var t=e.find(".element__ready__animate__heading__activation").eq(0),a=t.data("settings"),i=n("#"+t.attr("id")),d=(a.random_id,a.animate_type);i.animatedHeadline({animationType:d})};e(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/Element_Ready_Animate_Headline.default",n)})}(jQuery);

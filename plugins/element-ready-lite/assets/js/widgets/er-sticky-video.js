@@ -1,0 +1,1 @@
+!function(e){var n=function(e,n){var t=e.find(".sticky__video__wrap").eq(0);t.find("iframe").attr("class","sticky-container__object");t.data("options");var i=t.attr("id");new StickyVideo(i)};e(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/Element_Ready_Sticky_Video_Widget.default",n)})}(jQuery);

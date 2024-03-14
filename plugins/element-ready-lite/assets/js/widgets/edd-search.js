@@ -1,0 +1,1 @@
+!function(e){var n=function(e,n){var t=n("select");n("select").addClass("wide"),t.niceSelect()};e(window).on("elementor/frontend/init",function(){elementorFrontend.hooks.addAction("frontend/element_ready/Element_Ready_Edd_Search_Widget.default",n)})}(jQuery);
