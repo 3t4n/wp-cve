@@ -1,0 +1,147 @@
+/*Search For Icons*/
+
+.borderless-postbox-search {
+  .search-icon {
+    padding: 10px;
+  }
+  &.postbox {
+    .search-icon {
+      width: 100%;
+    }
+    .search-area {
+      margin: 1em;
+    }
+    .search-count-open {
+      margin-top: 1em;
+      display: flex;
+      align-items: center;
+    }
+    .search-count a {
+      margin-left: 1em;
+    }
+    .inside {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+/*Icon Manager*/
+
+.borderless-postbox-icon-manager {
+  /* Tooltip */
+  .borderless_icon li {
+    float: left;
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    display: block;
+    margin: 0;
+    > i {
+      font-size: 2rem;
+      vertical-align: text-bottom;
+      display: inline-block;
+      line-height: 4rem;
+      transition: all .1s linear;
+      -moz-transition: all .1s linear;
+      -webkit-transition: all .1s linear;
+    }
+    &:hover > i {
+      transform: scale(1.3);
+    }
+    label {
+      display: none;
+    }
+  }
+  .icon_search {
+    width: 100%;
+    height: 100%;
+    height: auto;
+    overflow: hidden;
+    > ul {
+      margin: 0;
+    }
+  }
+  [class^="icon_set-"], [class*=" icon_set-"] {
+    width: 100%;
+    float: left;
+  }
+  .fonts-count {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 600;
+    vertical-align: middle;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    z-index: 26;
+    padding: 0 6px;
+    margin-left: 10px;
+  }
+  .ip_name {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 10px;
+    button {
+      margin-top: -2px !important;
+      float: right;
+    }
+  }
+  &.postbox .inside {
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    &.tooltips {
+      position: relative;
+      display: block;
+      height: 4rem;
+      width: 4rem;
+      margin-top: -4rem;
+      span {
+        position: absolute;
+        width: 140px;
+        color: #FFFFFF;
+        background: #23282d;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        visibility: hidden;
+        border-radius: 3px;
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          margin-left: -8px;
+          width: 0;
+          height: 0;
+          border-bottom: 8px solid #23282d;
+          border-right: 8px solid transparent;
+          border-left: 8px solid transparent;
+        }
+      }
+    }
+    &:hover.tooltips span {
+      visibility: visible;
+      top: 4rem;
+      left: 50%;
+      margin-left: -4.3rem;
+      z-index: 999;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .borderless-postbox-icon-manager .icon_search {
+    max-height: 10rem;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .borderless-postbox-icon-manager .ip_name button {
+    margin-top: -7px !important;
+  }
+}
