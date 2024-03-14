@@ -1,0 +1,12 @@
+<?php 
+
+// this is adapted from https://raw.githubusercontent.com/monperrus/crawler-user-agents/master/crawler-user-agents.json
+// run this code
+// $list = json_decode(file_get_contents("https://raw.githubusercontent.com/monperrus/crawler-user-agents/master/crawler-user-agents.json"), true);
+// $bots = [];
+// foreach($list as $item) {
+// 	$bots[] = '"'.$item['pattern'].'"';
+// }
+// echo implode(",", $bots);
+
+$_ROBOT_USER_AGENTS = array ("googlebot\/","Googlebot-Mobile","Googlebot-Image","Mediapartners-Google","bingbot","slurp","java","wget","curl","Commons-HttpClient","Python-urllib","libwww","httpunit","nutch","phpcrawl","msnbot","Adidxbot","blekkobot","teoma","ia_archiver","GingerCrawler","webmon ","httrack","webcrawler","FAST-WebCrawler","FAST Enterprise Crawler","convera","biglotron","grub.org","UsineNouvelleCrawler","antibot","netresearchserver","speedy","fluffy","jyxobot","bibnum.bnf","findlink","exabot","gigabot","msrbot","seekbot","ngbot","panscient","yacybot","AISearchBot","IOI","ips-agent","tagoobot","MJ12bot","dotbot","woriobot","yanga","buzzbot","mlbot","yandex","purebot","Linguee Bot","Voyager","CyberPatrol","voilabot","baiduspider","citeseerxbot","spbot","twengabot","postrank","turnitinbot","scribdbot","page2rss","sitebot","linkdex","ezooms","dotbot","Mail.RU_Bot","discobot","heritrix","findthatfile","europarchive.org","NerdByNature.Bot","sistrix crawler","ahrefsbot","Aboundex","domaincrawler","wbsearchbot","summify","ccbot","edisterbot","seznambot","ec2linkfinder","gslfbot","aihitbot","intelium_bot","facebookexternalhit","yeti","RetrevoPageAnalyzer","lb-spider","sogou","lssbot","careerbot","wotbox","wocbot","ichiro","DuckDuckBot","lssrocketcrawler","drupact","webcompanycrawler","acoonbot","openindexspider","gnam gnam spider","web-archive-net.com.bot","backlinkcrawler","coccoc","integromedb","content crawler spider","toplistbot","seokicks-robot","it2media-domain-crawler","ip-web-crawler.com","siteexplorer.info","elisabot","proximic","changedetection","blexbot","arabot","WeSEE:Search","niki-bot","CrystalSemanticsBot","rogerbot","360Spider","psbot","InterfaxScanBot","Lipperhey SEO Service","CC Metadata Scaper","g00g1e.net","GrapeshotCrawler","urlappendbot","brainobot","fr-crawler","binlar","SimpleCrawler","SimpleCrawler","Livelapbot","Twitterbot","cXensebot","smtbot","bnf.fr_bot","A6-Indexer","ADmantX", "Facebot", "Twitterbot");
