@@ -1,0 +1,1 @@
+jQuery(".aop-color-picker").wpColorPicker();
