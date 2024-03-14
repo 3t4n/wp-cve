@@ -1,0 +1,18 @@
+jQuery( document ).on( 'cfc.discount.apply', function ( event, data ) {
+
+	var state = cfstate[data.form_id];
+
+	for ( option_id in data.options ) {
+
+		var option = data.options[option_id],
+		field_id = option.field_id + '_' + data.instance;
+
+		state.mutateState( field_id, option.value );
+
+		// unbind and rebind field
+		state.unbind( field_id );
+		state.rebind( field_id );
+
+	}
+
+} );
