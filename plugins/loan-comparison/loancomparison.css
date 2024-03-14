@@ -1,0 +1,424 @@
+/* General Rules */
+
+.loancomparison_form {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box; 
+	margin: 20px 0;
+	font-size:16px;
+}
+
+/* Sliders */
+
+.loancomparison,
+.loancomparison__fill {
+	background: #e6e6e6;display: block;height: 8em;
+	box-sizing: border-box;
+	border-radius: 4em;
+}
+
+.loancomparison {
+	position: relative;
+	height: 14px;
+	width: 100%;
+	margin:1em 0;
+}
+
+.loancomparison--disabled {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+	opacity: 0.4;
+}
+
+.loancomparison__fill {
+	height: 14px;
+	width: 100%;
+	background: #369e71;
+	position: absolute;
+	top: 0;
+}
+
+.loancomparison__handle {
+	background: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height:20px;
+	position: absolute;
+	top: -8px;
+	border-radius: 50%;
+	border: 6px solid #aacc5e;
+	box-sizing: content-box !important;
+}
+
+input[type="range"]:focus + .loancomparison .loancomparison__handle {
+	-webkit-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+	-moz-box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+	box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+}
+
+.loancomparison_form h2 {text-align: center;}
+
+.loancomparison-range {margin-bottom: 20px;}
+.loancomparison-slider-principal {width:48%;float:left;}
+.loancomparison-slider-term {width:48%;float:right;}
+
+.loancomparison-termslider-full, .loancomparison-loanslider-full {width:100%;}
+
+/* Slider Outputs */
+
+.output-left {display:inline-block;width:50%;text-align: left;}
+.output-right {display:inline-block;width:50%;text-align: right;}
+
+
+.loancomparison_slider_output { font-size: 25px; text-align: center; }
+.loancomparison_slider_output div { line-height: 25px; }
+
+.loancomparison_rates { position: relative;}
+.loancomparison_rates .more_info a {color: #FFF !important;}
+
+.loancomparison-slideroutput {margin-bottom:20px; display: none; }
+.loancomparison-slideroutput:after, .loancomparison-range:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+
+.loancomparison_form .main_output { padding-bottom: 14px; clear:both;}
+	
+.output { clear: both; }
+
+/* Number of Offers */
+.banks_matches {font-size: 25px; text-align:center; margin-bottom: 20px !important; color:#369e71;}
+
+/* Checkboxes */
+.loancomparison-filterlabel {text-align:center;padding:10px 0;border-top: 1px solid #aacc5e}
+.loancomparison-filterlabel ul, .loancomparison-filterlabel li, .loancomparison_filter_content ul, .loancomparison_filter_content li { list-style: none; position: relative;line-height: 20px !important;}
+.loancomparison-filterlabel ul {padding: 0 !important; margin: 0 !important;  width: 100%;}
+.loancomparison-filterlabel li {float: right; text-align: left; }
+.loancomparison-filterlabel li.label {float: left; font-weight: 600;color:#339966;}
+.loancomparison-filterlabel li.check {padding-left: 10px; }
+.loancomparison-filterlabel::after, .loancomparison-filterlabel ul::after{clear: both; content: " "; display: block; }
+
+.loancomparison_checkbox {width: 20px;height: 20px;display: inline-block;position: relative;top: 3px;margin-right: 10px;}
+.loancomparison_checkbox input { visibility: hidden; position: absolute; }
+.loancomparison_checkbox label { width: 100%; height: 100%; display: block; border-radius: 3px; border: 1px solid #339966; position: relative; background-color: white; cursor: pointer;margin-left: 0; }
+.loancomparison_checkbox label::after { opacity: 0; border: 3px solid #339966; background: transparent; position: absolute; width: 9px; height: 5px; bottom: 7px; left: 5px; border-top: none; border-right: none; transform: rotate(-45deg);content: "";}
+.loancomparison_checkbox label:hover::after {opacity: 0.5;}
+.loancomparison_checkbox input:checked + label:after {opacity: 1;}
+.loancomparison-header-hidden, .loancomparison-slider-hidden, .loancomparison-filter-hidden, .loancomparison-termslider-hidden, .loancomparison-loanslider-hidden { display: none !important;}
+
+/* Sorting */
+.sorting, .filters {width:100%;padding:10px 0;border-top: 1px solid #aacc5e}
+.sortinglabel {font-weight: 600;color:#339966;float:left;padding: 4px 0;}
+.loancomparison_form select {color: #465069;font-family: inherit;font-size: inherit;height:auto;border:1px solid #339966;box-sizing: border-box;line-height:normal;margin: 0;padding: 3px;border-radius:5px;float:right;width:auto !important;max-width: 60%;}
+.sorting::after, .filters::after {clear: both; content: " "; display: block; }
+
+/* Bank Box Rules */
+.banks_header {border: 1px solid #f4f4f4;background-color: #f4f4f4;padding: 0 20px;}
+.banks_header div {text-align: center;line-height: 30px;}
+
+.bank_box { margin-bottom: 16px; border: 1px solid #aacc5e; width: 100%; text-align: center;padding: 20px; background: #FFF;position:relative;box-sizing: border-box;}
+.bank_box.bank_offset { background-color: #f4f4f4 !important; }
+ .bank_name {width:100%;float:left;font-weight: 900;margin: 0 0 6px 0;font-size:16px;padding:4px 0;border-bottom: 1px solid #CCC;text-align: left;}
+.bank_name::after, .filters::after {clear: both; content: " "; display: block; }
+.bank_logo img {vertical-align: middle;width:auto !important;max-height: 40px !important;margin:0 !important;}
+.bank_details { padding-top: 0; }
+.bank_details span {color:#666666;}
+.bank_details b {font-size:18px;}
+.bank_apply {line-height: 40px;}
+.bank_apply a ,.bank_apply span {display: block;border: 2px solid #369e71; margin-top: 4px; background: #aacc5e;font-size:16px;color: #FFF !important;border-radius: 3px; text-decoration: none;box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 5px 0 rgba(0,0,0,.15);}
+.bank_apply span {background: #666666;}
+.bank_apply.standalone {width:30%;margin:auto;text-align:center;}
+.bank_sponsored {font-size:12px; color:#999999;}
+.read_more { margin-top: 10px;}
+.read_more a {border: 2px solid #3D9BE9; border-radius: 3px; line-height: 30px; text-decoration: none; background: #ADD8E6; color: #343848; padding:5px;box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 5px 0 rgba(0,0,0,.15);}
+.fas.fa-star, .far.fa-star, .fas.fa-star-half-alt {padding: 1px;color: #f89426;}
+
+/* Example */
+.showexample {font-size:12px; color: #666;text-align: left;margin: 8px 0 0 0;}
+
+/* Bank Box Read More */
+.bank_box .drop { display: none;}
+a.readmore { color: #369e71; padding: 5px; min-height: 20px; text-decoration: none; }
+.bank_box h6 {color:#3D9BE9;margin:12px 0 0 0;}
+.review {text-decoration: none;color:#004183;}
+
+.bank-padding { padding-bottom: 10px; }
+
+.loancomparison_form_header { display: block;}
+
+/* Features Checks */
+p.features {margin-bottom: 20px !important;text-align: center;}
+
+.bank_box .checks {margin: 0;list-style-type: none;text-align: left;line-height: 24px;}
+.bank_box .checks li {display: inline-block;margin: 0 10px;color: #999999;}
+.bank_box .checks .fa-check, .features .fa-check {color: #3facd6;}
+
+/* numbering */
+
+.loancomparison-numbering {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:5;
+	overflow:hidden;
+	width:20px;
+	height:20px;
+	font-size:14px;
+	padding: 1px 0 0 0;
+	text-align: center;
+	background: #369e71;
+	border-radius: 0 0 4px 0;
+	color: #FFF;
+}
+
+/* numbering */
+
+.loancomparison-numbering-circle {
+	position:absolute;
+	left:-15px;
+	top:-15px;
+	z-index:5;
+	overflow:hidden;
+	width:30px;
+	height:30px;
+	font-size:16px;
+	padding: 5px 0 0 0;
+	text-align: center;
+	background: #369e71;
+	border-radius: 15px;
+	color: #FFF;
+}
+
+
+/* Ribbon */
+.loancomparison-ribbon {
+	position:absolute;
+	left:-5px;
+	top:-5px;
+	z-index:4;
+	overflow:hidden;
+	width:75px;
+	height:75px;
+	text-align:right
+}
+
+.loancomparison-ribbon span {
+	font-size:10px;
+	color:#fff;
+	text-transform:uppercase;
+	background:#ffea03;
+	text-align:center;
+	line-height:20px;
+	transform:rotate(-45deg);
+	-webkit-transform:rotate(-45deg);
+	width:100px;
+	display:block;
+	box-shadow:0 3px 10px -5px rgba(0,0,0,.5);
+	position:absolute;
+	top:19px;
+	left:-21px;
+	color:#000
+}
+
+span.ribbonlabel {margin-left: 8px;padding: 1px;font-size:14px;}
+.loancomparison-ribbon span.ribbon1, span.ribbonlabel1 {background: #ff0000;}
+.loancomparison-ribbon span.ribbon2, span.ribbonlabel2 {background: #ffea03;}
+.loancomparison-ribbon span.ribbon3, span.ribbonlabel3 {background: #33ccff}
+.loancomparison-ribbon span.ribbon4, span.ribbonlabel4 {background: #00ff00}
+
+.loancomparison-ribbon span::before {
+ content:"";
+ position:absolute;
+ left:0;
+ top:100%;
+ z-index:-1;
+ border-left:3px solid #d7c71d;
+ border-right:3px solid transparent;
+ border-bottom:3px solid transparent;
+ border-top:3px solid #d7c71d
+}
+.loancomparison-ribbon span::after {
+ content:"";
+ position:absolute;
+ right:0;
+ top:100%;
+ z-index:-1;
+ border-left:3px solid transparent;
+ border-right:3px solid #d7c71d;
+ border-bottom:3px solid transparent;
+ border-top:3px solid #d7c71d
+}
+
+/* Normal Grid Options */
+.bank_details,
+.colmd3,
+.colmd4,
+.colmd5,
+.colmd6,
+.colmd7,
+.colmd8 { float: left; display: inline-block; vertical-align: middle;}
+.infogrid::after { clear: both; content: ' '; display: block; }
+.bank_details { width: 16.6666666667%; }
+.colmd3 { width: 50%; text-align: left;padding-right: 20px;}
+.colmd4, .colmd8 { width: 16.6666666667%;}
+.colmd8 {text-align: left;}
+.colmd5 { width: 80%; text-align: left;}
+.colmd6 { width: 100%;text-align: center;padding:5px}
+.colmd7 { width: 100%; text-align: left;margin-bottom: 10px; border-bottom: 1px solid #CCC; padding-bottom: 4px; line-height: 14px;}
+.colmd0 { display: none; }
+.checklist {display:none;}
+.hiderating {display:none;}
+
+/* Circle Rules */
+.circle-down 	{ height: 25px; width: 25px; position: absolute; top: 0; left: 0; border-radius: 12.5px; border: 2px solid #369e71; }
+.circle-down:after {
+	content: "";
+	width: 15px;
+	position: absolute;
+	height: 3px;
+	background-color: #369e71;
+	top: 50%;
+	margin-top: -1.5px;
+	left: 50%; 
+	margin-left: -7.5px;
+}
+.circle-up 		{ height: 25px; width: 25px; position: absolute; right: 0; top: 0; border-radius: 12.5px; border: 2px solid #369e71; }
+.circle-up:after {
+	content: "";
+	width: 15px;
+	position: absolute;
+	height: 3px;
+	background-color: #369e71;
+	top: 50%;
+	left: 50%; 
+	margin-top: -1.5px;
+	margin-left: -7.5px;
+}
+.circle-up:before {
+	content: "";
+	width: 3px;
+	position: absolute;
+	height: 15px;
+	background-color: #369e71;
+	top: 50%;
+	left: 50%;
+	margin-top: -7.5px;
+	margin-left: -1.5px;
+}
+.output-number	{ line-height: 25px; font-size:25px;color: #666666}
+.output-number output {color: #369e71;}
+.output-pad		{ padding: 0 25px; line-height: 25px; min-height: 25px; position: relative; }
+.circle-up:hover, .circle-down:hover { background-color: #e6e6e6; cursor: pointer; }
+.circle-control {
+	touch-action: none;
+}
+
+/* Show More */
+#lc_show_more{text-align:center;cursor:pointer;position:relative;color:#369e71;font-size:25px;z-index:999;margin:15px auto 35px auto;height:25px;line-height:25px!important}
+#lc_show_more:hover{color:#408dc2;}
+#lc_show_more .fg{position:absolute;width:100%;height:100%;top:0;left:0}
+
+/* Bargraph CSS */
+#bargraph { overflow: hidden; width: 100%; height: 200px; position: relative; margin-bottom: 20px; }
+#bargraph .bars { position: absolute; box-sizing: border-box; z-index: 10; }
+#bargraph .lines { position: absolute; bottom: 0; left: 0; right: 0; top: 0; z-index: 9; }
+.bargraph-bar { box-sizing: border-box; 
+	-webkit-transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s;
+	-moz-transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s;
+	-o-transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s;
+	transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s;
+}
+.bargraph-bar .fill { box-sizing: border-box;
+	-webkit-transition: background 0.5s;
+	-moz-transition: background 0.5s;
+	-o-transition: background 0.5s;
+	transition: background 0.5s;
+}
+.bargraph-bar .image { }
+
+/* FICO CSS */
+.loancomparison-fico-section {border-top: 2px solid #dd9933;}
+.loancomparison-fico {display: grid;grid-template-columns: 19.6% 19.6% 19.6% 19.6% 19.6%;grid-gap: 0.5%;margin-bottom: 12px;}
+.ficolabel {font-weight: 600;color:#339966;padding: 10px 0;}
+.ficolink {font-style: italic;padding: 10px 0;}
+.fico-option {height: 68px;cursor: pointer; }
+.fico-contain{height: 100%; opacity: .5;padding: 14px;color:#343848}
+.fico-contain:hover{ opacity: .7; }
+.selected .fico-contain {opacity: 1; color:#FFF;}
+.verypoor .fico-contain { background-color: #bf1e2e; }
+.poor .fico-contain { background-color: #f1592a; }
+.fair .fico-contain { background-color: #fca140; }
+.good .fico-contain { background-color: #8cc63f; }
+.excellent .fico-contain { background-color: #39b54a; }
+.fico-contain .fico-label, .fico-contain .fico-score { height: 22px; line-height: 22px; text-align: center;}
+.fico-contain .fico-label {font-weight: bold; }
+
+/* 965px wide screens */
+@media only screen and (max-width: 965px) {
+	.colmd0, .infogrid > div.colmd0 { display: inline-block; }
+	.infogrid > div.colmd0 { display: none; }
+	.readmore { border-right: none; }
+	.extra { width: 100%; }
+	.colsmindent { padding: 0 0 10px 0; }
+	
+	.loancomparison_form .logo { padding-left: 8px !important; }
+	.loancomparison-filterlabel li { width: 50%; float: left; padding: 2px 0 !important; }
+	.colmd5 {clear: both;float:none;text-align: center; margin:0 auto;}
+}
+
+/* 600px wide screens */
+@media only screen and (max-width: 600px) {
+	.loancomparison_form {font-size: 14px;}
+	.loancomparison-slider-principal {width:100%;float:left;}
+	.loancomparison-slider-term {width:100%;float:left;}
+	
+	.output-number	{font-size:20px;}
+	
+	.banks_header {display:none;}
+	.loancomparison_rates {margin-top: 10px;}
+
+	.bank_details,
+	.colmd3 { width: 100% !important; padding-right: 0;}
+	.colmd4 {width: 100%;}
+	.colmd7 {width: 50%;}
+	.colmd8 { width: 50%;}
+	
+	.bank_details {margin: 5px 0;text-align: left;} 
+	.bank_logo {text-align: left;vertical-align: middle;}
+	.bank_logo img {width:auto!important;overflow:hidden;margin:0 !important;vertical-align: middle !important;display:inline !important;}
+	.hiderating {display:inline-block;}
+	.showrating, .showchecks {display:none;}
+	.bank_rating {text-align: left;vertical-align: middle;}
+	.bank_details span, .bank_details b{width: 50%; float:left;font-size:14px}
+	.bank_details br {display: none;}
+	
+	.loancomparison-filterlabel .check { display: block; clear: both; }
+	.checklist {display:block;text-align: left;margin: 10px 0 0 0 ;padding: 0;}
+	.bank_box .checks {line-height: 16px;}
+	.bank_box .checks li {margin: 0;font-size: 14px;width:50%;}
+	.bank_apply { padding: 10px 0;}
+	.bank_box h6 {margin:0;}
+	.colsmindent {padding: 0 0 5px 0;}
+	.bank_apply.standalone {width:100%;}
+}
+
+/* 450px wide screens */
+@media only screen and (max-width: 450px) {
+	.loancomparison_form {font-size: 12px;}
+	.output-number	{font-size:18px;}
+	.bank_box {padding: 6px;}
+	.loancomparison_form select {padding: 2px;}
+	.loancomparison-filterlabel li { width: 100%;}
+	.loancomparison_filter_toggle a {height:26px;line-height: 26px; padding: 4px 6px;border-radius: 13px;}
+	.readmore_div {margin-top: 8px;}
+	.bank_box h6 {margin:0;}
+	.loancomparison_slider_output, .loancomparison_slider_output div { line-height: 20px; }
+	.circle-down 	{height: 20px; width: 20px;border-radius: 10px;}
+	.circle-down:after {height: 2px;width: 12px;margin-top: -1px;margin-left: -6px;}
+	.circle-up 		{height: 20px; width: 20px;border-radius: 10px;}
+	.circle-up:after {width: 12px;height: 2px;margin-top: -1px;margin-left: -6px;}
+	.circle-up:before {height: 12px;width: 2px;margin-top: -6px;margin-left: -1px;}
+	.output-number	{line-height: 18px; font-size:18px;}
+	.output-pad		{padding: 0 20px; line-height: 20px; min-height: 20px;}
+	.fico-contain{padding: 6px 0;}
+	.fico-option {height: 46px;}
+	.fico-contain .fico-label {font-size:9px;}
+	.fico-contain .fico-label, .fico-contain .fico-score { height: 16px; line-height: 16px;}
+}
