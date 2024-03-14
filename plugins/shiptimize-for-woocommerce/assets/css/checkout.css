@@ -1,0 +1,343 @@
+#sw {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: none;
+    font-size: 14px;
+    color: #3D4750;
+}
+
+#sw.open {
+    display: block;
+}
+
+#sw__container {
+    width: var(--containerwidth);
+    z-index: 99991;
+    position: absolute;
+    top: 30px;
+    left: 7%;
+    width: 86%;
+    min-height: 50%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 0px 0px 40px 20px rgba(222,222,222,1);
+    -moz-box-shadow: 0px 0px 40px 20px rgba(222,222,222,1);
+    box-shadow: 0px 0px 40px 20px rgba(222,222,222,1);
+}
+
+#sw__overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    background: #fff;
+    top: 0;
+    left: 0
+}
+
+
+#sw-query-wrapper, #sw-display-options {
+    display: flex;
+    flex-direction: row;
+}
+
+#sw-query {
+    flex-grow: 1;
+    line-height: 50px;
+    border: solid thin #F2F0F3;
+    padding-left: 15px;
+    outline:#010101;
+}
+
+#sw-query-btn {
+    background: var(--query-bg);
+    border: none;
+    color: var(--query-text);
+    padding: 15px;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    height: 50px;
+    border-radius: 0;
+}
+
+#sw-query-btn:hover {
+    background: var(--query-hover-bg);
+    color:var(--query-text-hover);
+    transition: all .5s;
+}
+
+#sw-query-results {
+    position: absolute;
+    z-index: 999999999;
+    background: #fff;
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sw-query-result {
+    line-height: 2em;
+    cursor: pointer;
+}
+
+.sw-query-result:hover {
+    color:var(--query-result-hover);
+}
+
+#sw-query-options {
+    margin-top: 15px;
+    margin-bottom:30px;
+}
+
+.sw-query-results-description {
+    font-size: 16px;
+    padding: 20px;
+}
+
+.sw-display-option {
+    color:var(--map-list-text);
+    font-size:20px;
+    flex-grow: 1;
+    text-align: center;
+    border-bottom: solid #F2F0F3;
+    cursor: pointer;
+    line-height: 50px;
+    height: 50px;
+    margin-top:20px;
+}
+
+#sw__container.searching .sw-display-option {
+    display: none;
+}
+
+.sw-display-option.selected {
+    color:var(--map-list-text-selected);
+    border-bottom: solid var(--map-list-text-selected);
+}
+
+.sw-display-option:hover {
+    color: var(--map-list-text-hover);
+    border-color: var(--map-list-text-hover);
+}
+
+.sw-tab {
+    display: none;
+    position: relative;
+}
+
+.sw-tab.selected {
+    display: block;
+}
+
+#sw__container.searching .sw-tab.selected {
+    display: none;
+}
+
+#sw-map-wrapper.loading #sw-map {
+    display: none;
+}
+
+#sw-map {
+    width: 100%;
+    height: calc(100vh - 230px);
+}
+
+#sw-map-error {
+    position: absolute;
+    top:50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#sw-map-selected-point {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 99999;
+    width: 30vw;
+    min-width: 400px;
+}
+
+#sw-map-selected-point .sw-point-info {
+    width: 100%;
+    margin-bottom: 0;
+    padding: 20px;
+    line-height: 1.5em;
+}
+
+#sw-search-status {
+    display: none;
+    line-height: 100px;
+    position: absolute;
+    top:calc(50vh - 148px);
+    left: calc(50% - 40px);
+    z-index: 99999;
+}
+
+#sw__container.searching #sw-search-status {
+    display: block;
+}
+
+#sw-search-summary {
+    line-height: 2em;
+    margin:20px 0;
+}
+
+#sw-map-message {
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
+    justify-content: center;
+    align-content: center;
+    height: calc(100vh - 218px);
+    background: white;
+    z-index: 9999999;
+    padding-top: 30px;
+}
+
+#sw-map-message.open {
+    display: flex;
+}
+
+#sw-list-points {
+    padding:20px 0px 20px 1%;
+}
+
+.sw-point-info {
+    width: 49%;
+    min-height: 150px;
+    float: left;
+    padding: 20px;
+    box-sizing:border-box;
+    margin-right: 1%;
+    margin-bottom: 10px;
+    position: relative;
+    background: white;
+    -webkit-box-shadow: 7px 7px 15px -3px rgba(186,186,186,1);
+    -moz-box-shadow: 7px 7px 15px -3px rgba(186,186,186,1);
+    box-shadow: 7px 7px 15px -3px rgba(186,186,186,1);
+}
+
+.sw-point-info-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.sw-point-info-open {
+    min-height: 55px;
+}
+
+.sw-point-info-addr {
+    margin-bottom: 15px;
+}
+
+.sw-point-info-btn {
+    background: var(--btn-bg);
+    border: solid thin var(--btn-text);
+    color: var(--btn-text);
+    text-align: center;
+    padding:9px 16px 9px 16px;
+
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+
+
+.sw-point-info-btn:hover,
+.sw-point-info-btn.selected {
+    cursor: pointer;
+    color: var(--btn-text-hover);
+    background: var(--btn-bg-hover);
+    border: solid thin var(--btn-bg-hover);
+}
+
+.sw-point-info-day {
+    display: flex;
+    flex-direction: row;
+}
+
+.sw-point-info-day label {
+    display: inline-block;
+    margin-right: 5px;
+    color:var(--info-day-label);
+    vertical-align: top;
+}
+
+.sw-point-info-additional input {
+    max-width: 400px;
+}
+
+@media(max-width:1024px) {
+    .sw-point-info {
+        width: 100%;
+    }
+
+    #sw-map {
+        height: calc(100vw);
+    }
+
+    .sw-tab {
+        padding:10px;
+    }
+
+    #sw-map-selected-point {
+        width:93%;
+    }
+}
+
+
+
+.sw-loader {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.sw-loader div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: var(--loader-bg);
+    animation: sw-loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.sw-loader div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+.sw-loader div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+.sw-loader div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+
+@keyframes sw-loader {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
+}
