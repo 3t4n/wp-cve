@@ -1,0 +1,1 @@
+jQuery( document ).ready(function() { jQuery(".awYearsDropdown").change( function() { location.href = jQuery(this).val(); }); jQuery(".awYearsDropdown").prepend("<option>Choose A Year</option>").val("Choose A Year"); });      
