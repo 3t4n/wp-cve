@@ -1,0 +1,137 @@
+@import url("lesshat/lesshat.less");
+/* Single, post editor */
+#onetrt-single {
+
+}
+
+/* Main UI */
+#onetRegenThumb {
+	& > .left-side {
+		float: left;
+		width: 70%;
+
+		.datadisplay {
+			margin: 30px 0 40px 0;
+			height: 100px;
+
+			.stats {
+				float: left;
+				width: 20%;
+				margin: 0;
+			}
+			.progress {
+				float: right;
+				width: 75%;
+				height: 100%;
+				//display:none;
+				#progressbar {
+					position: relative;
+					.percent {
+						text-align: center;
+						position: absolute;
+						top: 0;
+						line-height: 27px;
+						width: 50px;
+						left: 50%;
+						margin: 0 0 0 -25px;
+					}
+					.estimated {
+						position: absolute;
+						right: 10px;
+						top: 0;
+						line-height: 27px;
+					}
+					.remaining {
+						position: absolute;
+						top: 0;
+						line-height: 27px;
+						left: 10px;
+					}
+				}
+			}
+
+			#progresslog {
+				overflow: auto;
+				height: 0px;
+				.terminated {
+					color: red;
+					font-weight: bold;
+				}
+				.error {
+					color: red;
+					font-style: italic;
+				}
+			}
+			&.processing {
+				height: auto;
+				& .progress { display: block; }
+				& #progresslog { height: 220px; }
+			}
+		}
+
+		.btnset {
+			width: 75%;
+			float:right;
+		}
+	}
+	& > .right-side {
+		float: right;
+		width: 25%;
+		padding: 10px 10px 0 5px;
+
+		#onetrt-customdim {
+			.lister {
+				border-bottom: 1px solid #DDD;
+				.box-shadow(~"0 1px 0 #fff");
+				.custom-thumbnails li {
+					position: relative;
+					.opt {
+						position: absolute;
+						right: 30px;
+					}
+				}
+			}
+			.editor {
+				div > label:first-child {
+					width: 60px;
+					display: inline-block;
+				}
+				div {
+					margin-bottom: 8px;
+				}
+			}
+			abbr.hint {
+				cursor: help;
+				font-style: italic;
+			}
+			p.head {
+				font-size: 110%;
+			}
+			.save {
+				position: absolute;
+				background: #F8F8F8;
+				background: rgba(245, 245, 245, 0.78);
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 10;
+				font-weight: bold;
+				font-size: 150%;
+				text-align: center;
+				line-height: 100px;
+				display: none;
+			}
+
+			&.load {
+				.save { display: block; }
+			}
+		}
+		
+	}
+
+	.orte-box {
+		.hndle { cursor: default; }
+		.handlediv { display: none; }
+	}
+}
