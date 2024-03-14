@@ -1,0 +1,248 @@
+#copymatic-post-box label {
+    font-weight: bold;
+    margin-bottom: 7px;
+    margin-top: 10px;
+	display: flex;
+    justify-content: space-between;
+}
+#copymatic-post-box label[for="copymatic_description"] div {
+    font-weight: normal;
+}
+#copymatic-post-box select {
+    width: 100%;
+    color: #000;
+    line-height: 32px;
+    background: #edf2f7;
+    border: 1px solid rgba(226,232,240);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+#copymatic-post-box textarea, #copymatic-post-box input{
+    width: 100%;
+	max-width: 100% !important;
+    border-color: rgba(226,232,240);
+    background: #edf2f7;
+    padding: 6px 10px;
+    color: #000;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+#copymatic-post-box textarea::placeholder, #copymatic-post-box input::placeholder{
+    color: #A0AEC6;
+}
+.copymatic_additionals > div {
+    display: flex;
+    flex-direction: column;
+}
+.copymatic_actions {
+    margin-top: 15px;
+}
+.copymatic-btn {
+    background: #2e16e6 !important;
+	border: none !important;
+	font-weight: 500;
+}
+.copymatic_actions .copymatic-btn {
+  	padding: 0 20px !important;
+    margin-bottom: 8px;
+	transition: all 0.3s ease;
+	min-height: 36px !important;
+}
+.copymatic-btn:hover{
+    opacity: 0.9;
+}
+.copymatic_actions .copymatic-btn:last-child{
+    margin-bottom:0px;
+}
+body.copymatic-modal-open:before {
+    background: rgba(0,0,0,.7);
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 100000;
+    position: fixed;
+}
+.copymatic-modal {
+	display:none;
+    width: 60%;
+    background: #fff;
+    position: fixed;
+    z-index: 100000;
+    max-height: 80%;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    border-radius: 6px;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 10%), 0 4px 20px 0 rgb(0 0 0 / 19%);
+}
+.copymatic-modal-header h1 {
+    padding: 0 12px 0 16px;
+    font-size: 22px;
+    line-height: 2.27272727;
+    margin: 0;
+}
+.copymatic-modal-ideas {
+    border-top: 1px solid #dcdcde;
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+	display: flex;
+    flex-direction: column;
+	background: #edf2f7;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 6%);
+	padding: 20px 25px;
+	border-radius: 0 0 6px 6px;
+}
+.copymatic-modal-ideas .idea {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+    padding: 30px 40px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in;
+    text-align: left;
+	box-sizing: border-box;
+}
+.idea p {
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0;
+    color: #2d3748;
+    text-align: left;
+}
+.idea .index {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #EDF3F7;
+    width: 20px;
+    height: 20px;
+    line-height: 21px;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(113,128,150);
+    border-radius: 100%;
+    text-align: center;
+}
+.btn-ideas {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+.idea:hover .btn-ideas {
+    opacity: 1;
+    visibility: visible;
+}
+.btn-ideas > .btn {
+    margin-left: 10px;
+    height: 25px;
+    min-height: 25px;
+    font-size: 11px;
+    padding: 0 7px;
+    background: #fff;
+    color: #001737;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    border-radius: 0.375rem;
+    font-weight: bold;
+    display: flex;
+    border: 1px solid rgb(203, 213, 224);
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+	transition: all 0.3s ease;
+}
+.btn-ideas > .btn:hover{
+	cursor:pointer;
+	background: #F7FAFC;
+}
+.btn-ideas > .btn span {
+    color: rgb(190 200 211);
+    font-size: 16px;
+    height: 16px;
+	width: 13px;
+    margin-right: 5px;
+}
+.btn-ideas > .btn i {
+    color: #001737;
+    vertical-align: -1px;
+}
+.loading-results{
+	text-align:center;
+	position:absolute;
+	top:52%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.dot-opacity-loader {
+    width: 100px;
+    border-radius: 100%;
+    position: relative;
+	height: auto;
+    margin: 0 auto 20px;
+}
+.dot-opacity-loader span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #2e16e6;
+    margin: 0 5px;
+    opacity: 0;
+}
+.dot-opacity-loader span:nth-child(1) {
+    -webkit-animation: opacitychange 1s ease-in-out infinite;
+    animation: opacitychange 1s ease-in-out infinite;
+}
+.dot-opacity-loader span:nth-child(2) {
+    -webkit-animation: opacitychange 1s ease-in-out 0.33s infinite;
+    animation: opacitychange 1s ease-in-out 0.33s infinite;
+}
+.dot-opacity-loader span:nth-child(3) {
+    -webkit-animation: opacitychange 1s ease-in-out 0.66s infinite;
+    animation: opacitychange 1s ease-in-out 0.66s infinite;
+}
+@keyframes opacitychange{
+    0%, 100%{
+        opacity: 0;
+    }
+
+    60%{
+        opacity: 1;
+    }
+}
+.loading-results h2 {
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 21px;
+	margin-bottom: 12px;
+}
+.loading-results p.description {
+    width: 90%;
+    margin: 0 auto;
+    color: #4a5568;
+}
+.copymatic-modal-header h1, .copymatic-modal-header .copymatic-action {
+    display: inline-block;
+}
+.copymatic-modal-header .copymatic-btn {
+    margin-top: 8px;
+}
+.swal-text {
+    text-align: center !important;
+}
+.swal-button--confirm{
+	background: #2e16e6 !important
+}
+.swal-icon{
+	margin-bottom: 0 !important;
+}
+.swal-footer {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
