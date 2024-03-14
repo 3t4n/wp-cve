@@ -1,0 +1,115 @@
+/*! chota.css v0.8.0 | MIT License | github.com/jenil/chota */
+@import "mixins";
+@import "margins";
+
+@import "base";
+@import "grid";
+@import "form";
+@import "nav";
+@import "card";
+@import "tab";
+@import "tag";
+@import "dropdown";
+@import "util";
+
+@import "cbx_icons";
+@import "menu_branding";
+
+@import "baloon";
+@import "swal";
+@import "wplisttable";
+//@import "vuetable";
+@import "minitoggle";
+//@import "setting-color"; //skipped  in setting scss
+@import "setting_fields/color";//we skipped this in setting scss file
+@import "magic_check/magic-check";
+@import "shortcode";
+
+//modal global. then we override as need
+.dark-mode div::v-deep(.modal-content) {
+  border-color: #2d3748;
+  background-color: #1a202c;
+}
+
+::v-deep(.modal-container) {
+  /*display: flex;*/
+  justify-content: center;
+  align-items: center;
+}
+
+::v-deep(.modal-content) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 90%;
+  min-width: 350px;
+  width: 50%;
+  margin: 50px auto;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  background: #fff;
+  overflow-x: auto;
+}
+
+.modal__title {
+  margin: 0 2rem 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.modal__content {
+  flex-grow: 1;
+  /*overflow-x: auto;*/
+}
+
+.modal__action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 1rem 0 0;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+//modal global end
+
+.cbx-chota {
+  //custom css
+  .vfm__content.modal-content {
+    position: relative !important;
+
+    .modal__title {
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+      font-size: 20px !important;
+      line-height: 1.5 !important;
+      font-weight: normal !important;
+    }
+
+    .modal__content {
+      margin-top: 20px !important;
+    }
+
+    .modal__close {
+      display: initial !important;
+      position: absolute !important;
+      top: 20px !important;
+      right: 14px !important;
+      cursor: pointer !important;
+    }
+  }
+
+  input[type="checkbox"]:checked::before {
+    margin: 0 !important;
+  }
+}
+
+
+@import "baloon";
+@import "swal";

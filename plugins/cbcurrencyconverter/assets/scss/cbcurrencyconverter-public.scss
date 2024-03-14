@@ -1,0 +1,373 @@
+@import "chota/sr_only";
+@import "extras/flags";
+
+.cbcurrencyconverter_cal_wrapper {
+	margin: 0 auto !important;
+	width: 100% !important;
+	max-width: 350px !important;
+
+	&.cbcurrencyconverter_cal_wrapper_widget{
+		margin: 0 !important;
+	}
+
+	.cbcurrencyconverter_select2{
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.select2-container .select2-selection--single{
+		background-image: none !important;
+	}
+}
+
+
+.cbcurrencyconverter_heading {
+	margin: 0 0 20px 0 !important;
+	font-size: 22px !important;
+	line-height: 1.2 !important;
+}
+
+.woocommerce-page .select2-container--cbxcc .select2-selection--single .select2-selection__rendered,
+.select2-container--cbxcc .select2-selection--single .select2-selection__rendered{
+	font-size: 15px !important;
+	line-height: 1.2 !important;
+	background-color: #fff !important;
+	box-shadow: none !important;
+}
+
+.woocommerce-page .select2-container--cbxcc .select2-selection--single,
+.select2-container--cbxcc .select2-selection--single{
+	//height: 40px !important;
+	font-size: 15px !important;
+	line-height: 1.2 !important;
+	background-color: #fff !important;
+	box-shadow: none !important;
+}
+
+.woocommerce-page .select2-container--cbxcc, .select2-container--cbxcc {
+	input:focus, .cbcurrencyconverter_form_field select:focus,
+	input:active, .cbcurrencyconverter_form_field select:active{
+		outline-offset: 0px !important;
+		outline: 0 none !important;
+	}
+
+	.select2-search--dropdown {
+		font-size: 15px !important;
+		line-height: 1.2 !important;
+		border: 1px solid #ccc !important;
+
+		.select2-search__field{
+			font-size: 15px !important;
+			line-height: 1.2 !important;
+			padding: 5px 10px !important;
+			border: 1px solid #ccc !important;
+			height: auto !important;
+			margin-bottom: 5px !important;
+			min-height: auto !important;
+			box-shadow: none !important;
+
+			&:focus, &:active{
+				outline-offset: 0px !important;
+				outline: 0 none !important;
+				box-shadow: none !important;
+				border: 1px solid #ccc !important;
+			}
+		}
+	}
+
+
+	.select2-dropdown{
+		border: 1px solid #ccc !important;
+		padding: 5px !important;
+	}
+
+	.select2-search__field{
+		border: 1px solid #ccc !important;
+		padding: 5px !important;
+		height: auto !important;
+	}
+
+	.select2-selection{
+		border: 1px solid #ccc !important;
+		padding: 5px !important;
+		height: auto !important;
+
+		.select2-selection__arrow{
+			width: 18px !important;
+			height: 18px !important;
+			top: 5px !important;
+		}
+	}
+
+	.select2-results__options{
+		.select2-results__option{
+			font-size: 15px !important;
+			line-height: 2 !important;
+			margin: 0!important;
+			padding:0 5px !important;
+			cursor: pointer !important;
+			background-color: #f0f0f0 !important;
+			color: #444444 !important;
+
+			&[aria-selected=true]{
+				background-color: #ddd !important;
+				color: #444444 !important;
+			}
+
+			&.select2-results__option--highlighted[aria-selected]{
+				background-color: rgb(0, 113, 235) !important;
+				color: #fff !important;
+			}
+		}
+	}
+}
+
+
+.cbconverter_result_wrapper{
+	text-align: center;
+
+	.cbcurrencyconverter_calculate {
+		width: 100%;
+		cursor: pointer !important;
+		margin: 0 auto !important;
+		padding: 5px 20px !important;
+		border: 1px solid #ccc !important;
+		font-size: 16px !important;
+		line-height: 1.5 !important;
+		font-weight: normal !important;
+		padding: 5px 15px !important;
+		border-radius: 5px !important;
+
+		color: #fff !important;
+		background-color: rgb(0, 113, 235) !important;
+		border: 1px solid rgb(0, 113, 235) !important;
+		box-shadow: none !important;
+		text-transform: none !important;
+
+
+		&:focus, &:hover{
+			text-decoration: none !important;
+			outline: none !important;
+			box-shadow: none !important;
+		}
+
+		&.cbcurrencyconverter_calculate_busy{
+			opacity: .5;
+			span{
+				display: none;
+			}
+			&:before{
+				content: '';
+				display: inline-block;
+				margin-right: 5px;
+				background-image: url('../images/busy.gif') !important;
+				background-size: contain;
+				background-position: center;
+				width: 16px;
+				height: 16px;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+.cbcurrencyconverter_amont_result_combo{
+	display: flex;
+	//flex-wrap: wrap;
+
+	.cbcurrencyconverter_form_field_amount{
+		//width: 60%;
+		flex: 1;
+	}
+	.cbconverter_result_wrapper{
+		//width: 40%;
+		flex: 2;
+	}
+
+	@media screen and (max-width: 400px) {
+		flex-direction: column;
+		.cbcurrencyconverter_form_field_amount{
+			width: 100%;
+			flex: none;
+			//padding-right: 0 !important;
+		}
+		.cbconverter_result_wrapper{
+			width: 100%;
+			flex: none;
+		}
+	}
+}
+
+.cbcurrencyconverter_result {
+	display: none;
+	padding: 8px 10px !important;
+	margin: 8px 0px !important;
+	border-radius: 4px !important;
+	text-align: left;
+	color: #1a4207 !important;
+	background-color: #a7d590 !important;
+	font-weight: bold !important;
+	font-size: 14px !important;
+	line-height: 1.2 !important;
+}
+
+
+.cbcurrencyconverter_list_wrapper {
+	padding: 8px 0 !important;
+	margin: 8px auto !important;
+	border-radius: 4px !important;
+	width: 350px !important;
+	max-width: 100% !important;
+
+	&.cbcurrencyconverter_list_wrapper_widget{
+		margin: 8px 0 !important;
+	}
+
+	ul{
+		list-style: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+
+		li {
+			margin: 0 0 5px 0 !important;
+			padding: 5px 0 !important;
+			list-style: none;
+
+			font-size: 15px !important;
+			line-height: 1.2 !important;
+
+			.cbcur_list_custom_text {
+				margin-left: 5px;
+			}
+
+			.cbcur_list_to_country {
+				i{
+					margin-right: 5px;
+					vertical-align: middle;
+				}
+			}
+
+			.cbcur_list_to_cur {
+				float: right;
+				display: inline-block;
+				//width: 70px !important;
+			}
+
+			&.cbcurrencyconverter_list_to_from{
+				padding-bottom: 10px !important;
+				border-bottom: 1px solid #3b3c36;
+			}
+
+			&.cbcurrencyconverter_list_to_to{
+				border-bottom: 1px solid #ccc;
+				&:last-child{
+					border-bottom: 0 none;
+				}
+			}
+		}
+	}
+}
+
+
+.cbcurrencyconverter_form_field_select_flag{
+	.currency-flag{
+		margin-right: 5px;
+	}
+}
+
+
+
+
+
+
+.cbcurrencyconverter_form_field {
+	width: 100%;
+	margin: 5px 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 10px !important;
+
+	&.cbcurrencyconverter_form_field_select{
+
+	}
+
+	.cbcurrencyconverter_label{
+		flex: 0 0 120px;
+		i{
+			font-style: normal !important;
+		}
+	}
+	.cbcurrencyconverter_form_field_input{
+		flex-grow: 1;
+		flex-basis: 200px;
+		display: flex;
+		position: relative;
+
+		&.cbcurrencyconverter_arrow_disable{
+			.select2-selection__arrow{
+				visibility: hidden;
+				display: none;
+			}
+			.select2-search__field, .select2-search.select2-search--dropdown{
+				display: none;
+				visibility: hidden;
+			}
+		}
+
+	}
+
+	.cbcurrencyconverter_cal_amount{
+		width: 100% !important;
+		outline-offset: 0px !important;
+		outline: 0 none !important;
+		border: 1px solid #ccc !important;
+		font-size: 15px !important;
+		line-height: 1.2 !important;
+		padding: 5px 10px !important;
+		border-radius: 4px !important;
+		box-shadow: none !important;
+		background-color: #fff !important;
+		color: #444 !important;
+		min-height: auto !important;
+
+		&:focus, &:active{
+			outline-offset: 0px;
+			outline: 0 none;
+			box-shadow: none !important;
+			border: 1px solid #ccc !important;
+		}
+	}
+	.select2-container--cbxcc{
+	}
+
+	&.cbcurrencyconverter_form_field_amount{
+		.cbcurrencyconverter_form_field_input{
+			padding-right: 20px;
+
+			@media screen and (max-width: 400px) {
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+.cbcurrencyconverter_cal_wrapper{
+	.select2-container{
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+}
+
+body.woocommerce{
+	form.cart{
+		.cbcurrencyconverter_cal_wrapper{
+			margin-top: 10px;
+			clear: both;
+			float: left;
+
+			.select2-search.select2-search--dropdown{
+				display: none !important;
+			}
+		}
+	}
+}
