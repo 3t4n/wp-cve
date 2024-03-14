@@ -1,0 +1,33 @@
+{
+  "name": "iankennerley/cws-google-photos-gallery",
+  "authors": [
+    {
+      "name": "Ian Kennerley",
+      "email": "iankennerley@gmail.com"
+    }
+  ],
+  "type"    : "wordpress-plugin", 
+  "require" : { 
+    "composer/installers": "~1.0",
+    "google/apiclient": "^2.0",
+    "google/photos-library": "^1.5"
+  },
+  "scripts": {
+    "pre-autoload-dump": "Google\\Task\\Composer::cleanup"
+},
+"extra": {
+    "google/apiclient-services": [
+        "Oauth2"
+    ]
+},
+  "autoload": {
+    "psr-4": {
+        "App\\": "app/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}
