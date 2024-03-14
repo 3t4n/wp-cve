@@ -1,0 +1,1 @@
+<div class="mbp-progress-inner"></div>

@@ -1,0 +1,1 @@
+{{- this.model.get('name') ? this.model.get('name') : '(<?php _e('no name', 'mybookprogres'); ?>)' }}
