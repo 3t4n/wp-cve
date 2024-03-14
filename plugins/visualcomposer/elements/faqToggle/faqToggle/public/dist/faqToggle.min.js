@@ -1,0 +1,1 @@
+!function(){var e;e=window.jQuery,vcv.on("ready",(function(){e((function(){var t=e(".vce-faq-toggle-inner"),l={titleSelector:".vce-faq-toggle-title",titleTextSelector:".vce-faq-toggle-title-text",contentSelector:".vce-faq-toggle-text-block",activeClass:"vce-faq-toggle-state--opened"};t.each((function(){var t=e(this);!t.data("vcvCollapsible")&&t.collapsible(l)}))}))}))}();
