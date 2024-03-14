@@ -1,0 +1,167 @@
+.ywcas-shortcodes-list {
+  .ywcas-heading {
+    display: flex;
+    gap: 8px;
+    flex-direction: row;
+    padding: 25px 25px 0;
+    div {
+      border-bottom: 0;
+      font-weight: 600;
+      color:#2c3338;
+      flex:1;
+      font-size: 1.2em;
+    }
+  }
+  .ywcas-row{
+    background: var(--yith-content-bg);
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px var(--yith-light-border-color), 0 3px 11px 6px var(--yith-light-shadow);
+    transition: background-color .2s ease-in-out;
+    margin-bottom: 25px;
+    margin-top: 25px;
+
+    .ywcas-preview{
+      display: flex;
+      gap: 8px;
+      flex-direction: row;
+      padding: 25px;
+      border-radius: inherit;
+
+      .column-name,.column-code{
+        flex:1;
+      }
+      .column-name{
+        font-size: 14px;
+        line-height: 2.5;
+        font-weight: 600;
+      }
+      .column-actions{
+        flex:1;
+        text-align: right;
+        opacity: 0;
+        transition: .3s;
+      }
+      &:hover{
+        background: var(--yith-table-row-highlight);
+
+        .column-actions{
+          opacity: 1;
+        }
+      }
+    }
+    &.ywcas-row-opened{
+      .ywcas-preview{
+        background: var(--yith-table-row-highlight);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        .column-actions{
+          opacity: 1;
+        }
+      }
+    }
+    .ywcas-edit{
+      display: none;
+      box-shadow: 0 2px 10px 5px rgba(145, 191, 227, 0.11);
+
+      form{
+        padding: 0 20px;
+      }
+      .yith-plugin-fw__panel__option{
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: flex-start;
+       &.yith-plugin-fw__panel__option--onoff .yith-plugin-fw__panel__option__label{
+         flex:none!important;
+       }
+      }
+      .yith-plugin-fw__panel__option__label{
+        width:200px;
+      }
+      .ywcas-options--container{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+        max-width: 670px;
+        gap: 8px;
+        flex:1;
+        .yith-colorpicker-group{
+          display: grid;
+          grid-template-columns: 50% 50%;
+        }
+        .ywcas-toggle-button{
+          display:flex;
+          label{
+            &::before{
+              content:none!important;
+          }
+        }
+          .yith-plugin-fw-radio__row{
+            label {
+              padding-block: 5px;
+              padding-inline: 30px;
+              border-color: #DFDFDF;
+              background: #E8E8E8;
+            }
+            [type="radio"]:checked + label {
+              border-color: #3D8BCF;
+              background: #3D8BCF;
+              color:#ffffff;
+            }
+            [type="radio"]:checked + label:after{
+              content:none!important;
+            }
+          }
+          .yith-plugin-fw-radio__row:first-child label{
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+          }
+          .yith-plugin-fw-radio__row:last-child label{
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+          }
+
+        }
+      }
+      .yith-plugin-fw__panel__section__content{
+        display: none;
+        &:first-child{
+          display:block;
+        }
+      }
+      .yith-plugin-fw__tabs{
+        align-items: end;
+        margin-bottom: 15px;
+        .search-results{
+          padding:0;
+        }
+      }
+
+    }
+    .ywcas-save-shortcode{
+      text-align: right;
+      button{
+        margin-inline: 20px;
+        margin-block-end: 42px;
+      }
+    }
+  }
+
+  .ywcas-toggle-button.yith-plugin-fw-radio{
+    grid-gap: 0;
+  }
+}
+
+.yith-plugin-ui .yith-plugin-fw__button--add.ywcas-add-shortcode{
+  width: 100%;
+  text-align: left;
+  padding: 7px 20px;
+  background-color: rgb(227, 239, 243);
+  border: 1px solid rgb(215, 227, 231);
+
+  box-shadow: 0 0 0 1px #fdfdfd, 0 3px 11px 6px var(--yith-light-shadow);
+  color: #000;
+}
+
+.yith-plugins_page_yith_wcas_panel #wpfooter{
+  position: relative;
+}

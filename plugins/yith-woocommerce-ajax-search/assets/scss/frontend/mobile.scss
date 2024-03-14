@@ -1,0 +1,101 @@
+.mobile-search-close {
+  display: none;
+}
+
+body.ywcas-disable-overflow {
+  overflow: hidden;
+}
+
+.ywcas-search-mobile {
+  padding: 30px 0;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+
+  &.with-wp-admin-toolbar {
+    padding: 60px 0;
+
+    .mobile-search-content {
+      height: calc(100vh - 180px);
+    }
+  }
+
+  .ywcas-block-components-search-field {
+    padding: 0 30px;
+  }
+
+  .mobile-search-close {
+    display: block;
+    text-align: right;
+    opacity: 0.6;
+    margin-right: -15px;
+    margin-bottom: 20px;
+
+    svg {
+      height: 20px;
+    }
+  }
+
+  .mobile-search-content {
+    margin-top: 15px;
+    overflow: hidden;
+    overflow-y: auto;
+    height: calc(100vh - 150px);
+    padding: 30px;
+
+    .wp-block-yith-filled-block {
+      display: flex;
+      flex-flow: column nowrap;
+      height: 100%
+    }
+
+    .ywcas-classic-related-content-wrapper {
+      margin-top: auto;
+    }
+  }
+
+  .wp-block-separator {
+    padding: 0;
+  }
+
+  .wp-block-yith-product-results-block .search-result-item.list .search-result-item__thumbnail,
+  .ywcas-search-results .search-result-item.list .search-result-item__thumbnail {
+    display: block;
+    position: relative;
+    max-width: 35%;
+  }
+
+  .wp-block-yith-product-results-block .search-result-item.grid .search-result-item__thumbnail,
+  .ywcas-search-results .search-result-item.grid .search-result-item__thumbnail {
+    display: block;
+    position: relative;
+    max-width: calc(100vw - 20px - 15px);
+  }
+
+  .search-result-item__content {
+    flex-wrap: wrap;
+  }
+
+  .wp-block-yith-product-results-block .ywcas-search-results-grid.grid.lapilliUI-Grid__root {
+    & {
+      grid-template-columns: 1fr 1fr !important;
+      column-gap: normal !important;
+    }
+
+    img, .search-result-item__thumbnail {
+      width: auto !important;
+    }
+  }
+
+  .wp-block-yith-product-results-block .ywcas-search-results-grid.list.lapilliUI-Grid__root {
+    .search-result-item__summary {
+      min-width: 100% !important;
+    }
+  }
+
+}
+
