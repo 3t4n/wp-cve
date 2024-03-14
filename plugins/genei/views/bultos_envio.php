@@ -1,0 +1,3 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+?><div class="wrap"><table class="wp-list-table widefat fixed striped"><thead><tr><th><?=__('Bulto');?></th><th class="alinear_derecha"><?=__('Cantidad');?></th><th><?=__('Descripción');?></th><th><?=__('Peso kg.');?></th><th class="alinear_derecha"><?=__('Alto cm.');?></th><th class="alinear_derecha"><?=__('Ancho cm.');?></th><th class="alinear_derecha"><?=__('Largo cm.');?></th></tr></thead><tbody>
