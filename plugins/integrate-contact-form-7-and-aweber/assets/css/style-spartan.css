@@ -1,0 +1,347 @@
+/*
+  Author Name: Renzo Johnson <renzo.johnson@gmail.com>
+  Plugin Name: Contact Form 7 Aweber Extension
+  Plugin URI: http://renzojohnson.com/contributions/contact-form-7-Aweber-extension
+
+  Copyright 2013-2021 Renzo Johnson (email: renzojohnson at gmail.com)
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+a.helping-field {
+    font-size: 13px;
+    line-height: 1.2em;
+    font-weight: bold;
+    padding-left: 4px;
+    padding-right: 20px;
+    text-decoration: none;
+}
+
+a.helping-hand:hover,
+a.helping-field:hover,
+a.helping-field:hover .red-icon:before {
+    color: #444;
+}
+
+.red-icon {
+    color: #dd3d36;
+}
+
+.Aweber-custom-fields .col-6 {
+    display: inline-block;
+    width: 49.3%;
+    margin-bottom: 0.6rem;
+}
+
+.Aweber-custom-fields .col-6 input {
+    max-width: 95%;
+}
+
+.a-support {
+    color: #222;
+    background: #f7f7f7;
+    -webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0, 0, 0, .08);
+    box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0, 0, 0, .08);
+    vertical-align: top;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    margin: 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ul#contact-form-editor-tabs>li a:focus,
+.a-support:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.a-support:focus {
+    color: #0073aa;
+}
+
+.spartan-blue {
+    color: #0073aa;
+}
+
+.smiles {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.a-support:after {
+    right: 0;
+    content: '\f333';
+    font: 400 20px/1 dashicons;
+    speak: none;
+    display: inline-block;
+    padding: 3px 0 0 5px;
+    bottom: 2px;
+    position: relative;
+    vertical-align: bottom;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none!important;
+    color: #0073aa;
+}
+
+li#Aweber-Extension-tab {
+    border-top: 1px solid #01b7ff;
+    background: rgba(255, 255, 255, 0.5) url('../images/postal-marks.png') center top no-repeat;
+}
+
+div#Aweber-Extension .metabox-holder {
+    background: url('../images/aweber-logo.png') right top no-repeat;
+}
+
+.p-hr {
+    margin-top: 4rem;
+    height: 12px;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.2);
+}
+
+.p-hr-s {
+    margin-top: 2rem;
+    height: 0.5rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dbl {
+  display: block;
+  /* border: 1px solid red !important; */
+}
+
+.awb-container {
+    padding: 16px;
+}
+
+.awb-container small {
+    font-style: italic;
+}
+
+.awb-support {
+    border-top: 1px solid rgba(0, 0, 0, 0);
+}
+
+.awb-container .p-author {
+    font-size: 12px;
+    color: #555;
+    opacity: .9;
+}
+
+.awb-container .p-author a {
+    text-decoration: none;
+    /*color: #333;*/
+}
+
+span.awb {
+    font-size: 14px;
+    line-height: 1.2em;
+    padding: 2px 10px 2px 5px;
+    margin-left: 2em;
+}
+
+// span.awb .dashicons {
+//   line-height: 1.4em;
+// }
+span.valid {
+    background-color: #7ad03a;
+    color: #fff;
+}
+
+span.invalid {
+    background-color: #dd3d36;
+    color: #fff;
+}
+
+.awb-titles {
+    margin-bottom: 0.15em;
+}
+
+.awb-legend {
+    margin-bottom: 0.45em;
+}
+
+.awb-select {
+    margin-bottom: 7px;
+}
+
+.awb-activated {
+    background-color: rgba(0, 255, 0, .05);
+    border: 1px dashed blue;
+    display: none;
+}
+
+.awb-in-use {
+    background-color: rgba(0, 255, 0, .05);
+    border: 1px dashed green;
+    display: none;
+}
+
+.awb-invalid {
+    background-color: rgba(255, 0, 0, .05);
+    border: 1px dashed peru;
+}
+
+.awb-no-access {
+    background-color: rgba(0, 0, 255, .05);
+    border: 1px dashed red;
+}
+
+.awb-support3.awb-invalid,
+.awb-support3.awb-no-access {
+    background-color: pink;
+    border: 1px solid red;
+    display: block !important;
+}
+
+.spt-hidden {
+    background-color: purple !important;
+    border: 3px dashed purple !important;
+    font-size: 3px;
+    width: 100% !important;
+    padding: 0;
+    display: none;
+}
+
+.awb-main-fields>*,
+.spt-response-out>* {
+    transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+    -webkit-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
+    /*opacity: 0.8;*/
+}
+
+.spt-response-out {
+    /*background-color: pink;*/
+    /*border: 1px solid red !important;*/
+    height: 0;
+    transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+    -webkit-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
+    opacity: 0;
+}
+
+.spt-response-out:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.spt-valid {
+    height: auto;
+    margin-bottom: 20px;
+    opacity: 1;
+    /*  background-color: rgba(0,255,0,.05);
+  border: 1px solid green !important;*/
+}
+
+
+/*Agregadas por FFCP 15/05/2021*/
+
+.awb-type {
+    color: #999 !important;
+}
+
+.awb-custom-fields {
+    background-color: rgba(255, 255, 255, .95);
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    padding: 12px 15px 15px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+    margin-bottom: 15px;
+}
+
+.awb-custom-fields .spinner {
+    float: none;
+    margin-top: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    /* chimpmail */
+    .awbb-container {
+        display: inline-block;
+        width: 49.5%;
+        box-sizing: border-box;
+    }
+    .awbb-container select {
+        margin-top: 3px;
+        margin-bottom: 10px;
+    }
+    .awb-custom-fields .md-half {
+        display: inline-block;
+        width: 49%;
+        vertical-align: top;
+    }
+}
+
+.awb-required {
+    color: #dd3d36;
+    font-weight: 900;
+}
+
+.awb-active {
+    display: block;
+    height: auto;
+}
+
+.awb-inactive {
+    display: none;
+    height: 0;
+    width: 100%;
+}
+
+.awb-inactive:before .awb-inactive:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.aw-lite {
+    color: #121212;
+    font-size: 0.87em;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 3px;
+    padding: 3px 8px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, .15);
+}
+
+.aw-code {
+    font-size: 11px;
+    color: #999;
+    display: block;
+    /* font-family: Menlo,Monaco,Consolas,"Courier New",monospace; */
+}
+
+
+/*.spt-response-out.spt-valid {
+
+}*/
