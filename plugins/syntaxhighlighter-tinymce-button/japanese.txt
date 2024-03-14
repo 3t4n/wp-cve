@@ -1,0 +1,212 @@
+はじめに
+
+「SyntaxHighlighter TinyMCE Button」は、「ビジュアルエディター（TinyMCE）」のメニューに「SyntaxHighlighter」のための<pre>タグの入力を手助けするボタンを追加します。
+
+ビジュアルエディター（TinyMCE）上でも、簡単にソースコードを<pre>タグでマークアップ出来るようになります。
+
+= 特徴 =
+・必要な操作は、ビジュアルエディター（TinyMCE）で完結できる。HTMLエディターを使う必要がない。
+・ボタンを使って簡単に<pre>タグでソースコードをマークアップする事が可能。
+・<pre>タグでマークアップ済みのソースコードのオプションの変更もボタンで可能。
+・<pre>タグでマークアップされたソースコードは、TABでインデントが可能。
+・表示言語は、英語および日本語。
+
+= 対応プラグイン =
+
+動作の確認がとれた「SyntaxHighlighter」ベースのプラグインの一部です。
+
+・WP SyntaxHighlighter(オススメ) http://wordpress.org/extend/plugins/wp-syntaxhighlighter
+・Syntax Highlighter Compress http://wordpress.org/extend/plugins/syntax-highlighter-compress/
+・Auto SyntaxHighlighter http://wordpress.org/extend/plugins/auto-syntaxhighlighter/
+・Syntax Highlighter and Code Colorizer for WordPress http://wordpress.org/extend/plugins/syntax-highlighter-and-code-prettifier/
+・Syntax Highlighter MT http://wordpress.org/extend/plugins/syntax-highlighter-mt/
+・SyntaxHighlighterPro http://wordpress.org/extend/plugins/syntaxhighlighterpro/
+・Easy Google Syntax Highlighter http://wordpress.org/extend/plugins/easy-google-syntax-highlighter/
+・SyntaxHighlighter Evolved http://wordpress.org/extend/plugins/syntaxhighlighter/
+
+※ "SyntaxHighlighter Evolved"を使用する場合は、"SyntaxHighlighter Evolved"の設定画面で「すべてのブラシを読み込む」を有効にする必要があります。
+※ "WP SyntaxHighlighter"と"Syntax Highlighter Compress"、"SyntaxHighlighter Evolved"に最適化された動作モードを設定画面で選択できます。
+
+= ご注意 =
+
+このプラグインは、標準のビジュアルエディター（TinyMCE）のみサポートしています。
+
+このプラグインは、Alex Gorbatchev氏が開発した「SyntaxHighlighter」ライブラリーのバージョン2.0以上に対応しています。
+
+SyntaxHighlighter: http://alexgorbatchev.com/SyntaxHighlighter/
+
+「SyntaxHighlighter」ライブラリーを使用するプラグインであっても、<pre>タグをサポートしていない場合があります。
+このプラグインは、<pre>タグをサポートしないプラグインに対しては使用できません。
+
+１．動作環境
+
+・WordPress バージョン2.8 以上
+
+２．インストール
+
+・ダウンロードしたファイルを解凍し、「sh-tinymce-button」フォルダごと、WordPressのプラグインディレクトリ（wp-content/plugins/）にアップロードします。
+・WordPressの管理画面の「プラグイン」で、このプラグインを有効化します。
+・WordPressの管理画面の「設定」の中の「SH TinyMCE Button」という項目で設定を行います。
+※「WP SyntaxHighlighter」または「Syntax Highlighter Compress」、「SyntaxHighlighter Evolved」を使用している場合は、設定画面で設定を行ってください。
+
+３．アップデート
+・WordPressの管理画面で、「SyntaxHighlighter TinyMCE Button」を停止する。
+・インストールの要領でファイルをサーバーにアップロードし、上書きする。
+・WordPressの管理画面で、再度、プラグインを有効化する。
+
+４．アンインストール
+
+・WordPressの管理画面で、まずプラグインを停止。
+・続いて、削除を実行する。
+
+５．使い方
+
+投稿やページ上に既にあるソースコードをハイライト表示させたい場合。
+
+・ハイライト表示させるソースコードを選択し、反転表示させる。
+・「pre」ボタンをクリックする。
+・言語とオプションを選択する。
+・「挿入」ボタンをクリックする。
+
+ソースコードを投稿やページにペーストしたい場合。
+
+・「CODE」ボタンをクリックする。
+・言語とオプションを選択し、ソースコードをテキストボックスにペーストする。
+・「挿入」ボタンをクリックする。
+
+ハイライト表示済みのソースコードの言語やオプションを変更したい場合。
+
+・設定を変更したいソースコードを選択し、反転表示させる。
+・「pre」ボタンをクリックする。
+・言語とオプションを変更する。
+・「更新」ボタンをクリックする。
+
+ソースコードをタブでインデントさせる場合
+
+・単にTABを入力します。ただし、<pre>タグでマークアップ済みのソースコードでなければ、TABによるインデントは有効になりません。
+
+６．よくある質問
+
+Q.「pre」ボタンを使って言語とオプションを変更するため、コードを選択、反転表示しようとしましたが、コード全体が選択出来ません。
+
+A.全体を選択する必要はありません。コードの最初の１行が選択出来れば十分です。
+
+Q.バージョンアップしたところ、ボタンが正常に動作しなくなりました。
+
+A.古いバージョンのJavaスクリプトファイルがキャッシュされている可能性があります。ブラウザのキャッシュを消去するか、キャッシュが保存されているフォルダから、古いJavaスクリプを削除して下さい。
+
+Q.「html-scripts」オプションを使用したところ、エラーになりました。
+
+A.「html-scripts」オプションは、「XML」ブラシに依存していますが、Alex Gorbatchev氏の「SyntaxHighlighter」をベースにしたプラグインの中には、デフォルトで「XML」ブラシを読み込んでいないものも存在します。このオプションを使用する必要がある場合は、「html-scripts」対応した「WP SyntaxHighlighter」の使用も検討して下さい。
+WP SyntaxHighlighter http://wordpress.org/extend/plugins/wp-syntaxhighlighter/
+
+７．ライセンス
+
+GPL v2
+
+８．このプラグインが気に入ったら
+
+プラグインの開発のサポートをお願いしております。
+
+http://www.near-mint.com/blog/donate
+
+９．履歴
+
+2011/12/24　バージョン 0.7.8.4 リリース
+ ※「使用中のプラグイン」オプションが変更できない問題を修正。
+
+2011/12/17　バージョン 0.7.8.3 リリース
+ ※bloginfo()の誤った使用を修正。
+ ※textdomainの記述抜けを修正。
+
+2011/11/11　バージョン 0.7.8.1 リリース
+ ※ビジュアルエディターの「code」ボタンが実際参照(&amp;、&lt;、&gt;、&quot;、&#039;)を含むコードを正しく処理できない問題を修正。
+
+2011/10/20　バージョン 0.7.8 リリース
+ ※配列の定義のための処理を変更。
+ ※データの移行処理を変更。
+ ※ブラウザによってはcodeボタン使用時に、余分な改行が追加される不具合を修正。
+
+2011/10/7　バージョン 0.7.7 リリース
+ ※より厳密な設定値の検証。
+ ※設定画面のタイトルの前にアイコンを表示。
+ ※設定データの移行処理が自動更新と同時に実行されない問題を修正。
+ ※エラーメッセージが翻訳されない不具合を修正。
+
+2011/9/22　バージョン 0.7.5 リリース
+ ※WP SyntaxHighlighter バージョン1.5.5以降への対応。
+ ※設定の保存またはリセット時に、セッションの正当性をnonce値により検証。
+ ※保存前に設定値を検証。
+ ※改行コードをLFに変更。（テキストファイルは除く。）多くのファイルの改行コードがCR/LFになっていた。
+ ※管理者へのメッセージの表示方法を変更。
+ ※アップデート時の処理を変更。
+ ※プラグインのディレクトリ名を関数で取得するように変更。
+ ※翻訳ファイルを格納するディレクトリ名を変更。
+
+2011/8/11　バージョン 0.7.2 リリース
+ ※「pre」ボタンの「挿入」機能がフルスクリーンモードで動作しない問題を修正。
+
+2011/8/8　バージョン 0.7.1 リリース
+ ※WordPress 3.2以上のフルスクリーンモードもサポート。
+
+2011/7/10　バージョン 0.7 リリース
+ ※設定画面に「ボタンのデフォルト設定」を追加。
+ ※設定画面に「設定をリセット」ボタンを追加。
+ ※設定値を連想配列に格納するように変更。
+ ※ボタンの表示に関する処理を変更。
+ ※設定画面へのJavaスクリプトの追加方法を変更。
+
+2011/6/25　バージョン 0.6 リリース
+ ※ポップアップウィンドウのサイズを選択するためのオプションを追加。
+ ※プラグインディレクトリURLの取得方法を変更。
+ ※セーフモードを通常モードに完全に統合し、廃止。
+
+2011/6/23　バージョン 0.5.7 リリース
+ ※プラグインディレクトリURLの取得方法を変更。
+
+2011/6/22　バージョン 0.5.6 リリース
+ ※"sh-tinymce-button-ins-2nd.php"と"sh-tinymce-button-box-2nd.php"を廃止。
+ ※セーフモードを通常モードに統合。
+ ※「セーフモード」において、プラグインディレクトリURLの取得方法を変更。
+
+2011/6/19　バージョン 0.5.5 リリース
+ ※WP_DEBUGが有効の時に管理画面で「Notice: has_cap の使用はバージョン 2.0 から非推奨になりました! プラグインやテーマでのユーザーレベルの使用は推奨されていません。代わりに権限グループと権限を使ってください。」と言う警告が表示される問題を修正。
+ ※設定画面にシステム情報を表示。
+ ※「セーフモード」の処理を変更。
+
+2011/6/10　バージョン 0.5 リリース
+ ※ ボタンを表示する行を選択するオプションを追加。
+ ※ 「SyntaxHighlighter Evolved」に最適化された動作モードを追加。
+ ※ 「セーフモード」を搭載。
+ ※ ボタンの表示に関する処理を変更。
+
+2011/6/5　バージョン 0.4.1 リリース
+ ※ 「WP SyntaxHighlighter バージョン1.2.3以上」に最適化。
+
+2011/5/21　バージョン 0.4 リリース
+ ※ 「WP SyntaxHighlighter」と「Syntax Highlighter Compress」に最適化された動作モードを追加。
+ ※ ポップアップウィンドウに新しいオプションを追加。
+ ※ フルスクリーンモードで「CODE」ボタンが動作しない問題を修正。
+
+2011/5/16　バージョン 0.3 リリース
+ ※ ポップアップウィンドウに新しいオプションを追加。
+
+2011/5/13　バージョン 0.2.2 リリース
+ ※ 「Auto SyntaxHighlighter」との競合を避けるためフックの優先度を変更。
+
+2011/5/12　バージョン 0.2.1 リリース
+ ※ タブフォーカス関連のソースコードを整理。
+ ※ 日本語の訳文を変更。（shtb_adv_lang-ja.moを修正。）
+ ※ ポップアップウィンドウ内に表示されるボタンラベルの翻訳を完成。
+ ※ ポップアップウィンドウ内に表示されるボタンの配置を変更。
+
+2011/5/10　バージョン 0.2 リリース
+ ※ タブを維持したままソースコードをペースト出来る「CODE」ボタンを追加。
+ ※ マークアップ済みソースコードの言語やオプションの変更が可能になった。
+
+2011/5/1　バージョン 0.1.1 リリース
+
+
+Redcocker
+URL: http://www.near-mint.com/blog/
+SyntaxHighlighter TinyMCE Button: http://www.near-mint.com/blog/software/syntaxhighlighter-tinymce-button
