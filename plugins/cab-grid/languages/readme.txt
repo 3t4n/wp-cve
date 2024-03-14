@@ -1,0 +1,1 @@
+To make translations, use PoEdit: https://poedit.net/download
