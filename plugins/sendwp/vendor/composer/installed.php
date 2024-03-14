@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'sendwp/sendwp',
+        'pretty_version' => '1.4.6',
+        'version' => '1.4.6.0',
+        'reference' => 'c72144198bda2e2d16bfbee8a952a8eb2feab39a',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'scssphp/scssphp' => array(
+            'pretty_version' => '1.x-dev',
+            'version' => '1.9999999.9999999.9999999-dev',
+            'reference' => '33749d12c2569bb24071f94e9af828662dabb068',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../scssphp/scssphp',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'sendwp/sendwp' => array(
+            'pretty_version' => '1.4.6',
+            'version' => '1.4.6.0',
+            'reference' => 'c72144198bda2e2d16bfbee8a952a8eb2feab39a',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'trustedlogin/client' => array(
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'reference' => '21776f0ab82341af429bb1106d9637c52cb0a431',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../trustedlogin/client',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
