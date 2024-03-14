@@ -1,0 +1,364 @@
+/* CSS Reset 
+   ========================================================================== */
+
+.sg-marketing-form-container,
+.sg-marketing-form-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+.sg-marketing-form-container {
+  font-family: inherit;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-block-start: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+  padding-block-end: 0;
+  min-inline-size: auto;
+  border-width: medium;
+  border-style: none;
+  border-color: initial;
+  border-image: none;
+}
+
+.sg-marketing-form-container input,
+.sg-marketing-form-container button {
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: none;
+}
+
+/* Form Styles  
+	  ========================================================================== */
+
+.sg-marketing-form-container {
+	background-color: var(--sg-email-marketing-form-form-background-color);
+}
+
+.sg-input-container:nth-child(4) {
+  order: 3;
+}
+
+.sg-input-container:nth-child(2) {
+  order: 1;
+}
+
+.sg-input-container:nth-child(3) {
+  order: 2;
+}
+
+.sg-marketing-form-container button {
+  order: 4;
+}
+
+/* Input Styles  
+	  ========================================================================== */
+
+.sg-marketing-form-container .sg-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width: 100%;
+}
+
+.sg-marketing-form-container .sg-input-container input {
+  width: 100%;
+  color: var(--sg-email-marketing-form-field-text-color);
+  height: var(--sg-email-marketing-form-form-size-field-input-height);
+  font-size: var(--sg-email-marketing-form-form-size-field-input-font-size);
+  border: 1px solid var(--sg-email-marketing-form-field-border-color);
+  border-radius: var(--sg-email-marketing-form-field-border-radius);
+  background-color: var(--sg-email-marketing-form-field-background-color);
+  padding: var(--sg-email-marketing-form-form-size-field-padding-v)
+    var(--sg-email-marketing-form-form-size-field-padding-h);
+}
+
+.sg-marketing-form-container .sg-input-container input {
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.sg-marketing-form-container .sg-input-container input:hover {
+  box-shadow: inset 0px 0px 0px 2px
+    var(--sg-email-marketing-form-field-border-color);
+}
+
+.sg-marketing-form-container .sg-input-container input:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 0px 1px
+    var(--sg-email-marketing-form-field-border-color);
+}
+
+.sg-marketing-form-container .sg-input-container input::placeholder {
+  color: var(--sg-email-marketing-form-field-placeholder-color);
+}
+
+/* Title and Description Styles
+	  ========================================================================== */
+.sg-marketing-form-title-and-description-fields {
+  order: 0;
+}
+
+.sg-marketing-form-container 
+.sg-marketing-form-title-and-description-fields
+.sg-marketing-form-title,
+.sg-marketing-form-description {
+  margin-bottom: 10px;
+  color: var(--sg-email-marketing-form-label-color);
+}
+
+.sg-marketing-form-title {
+  font-family: var(--wp--preset--font-family--heading);
+}
+/* Label Styles  
+	  ========================================================================== */
+
+.sg-marketing-form-container .sg-input-container label {
+  font-size: var(--sg-email-marketing-form-form-size-field-font-size-label);
+  margin-bottom: var(
+    --sg-email-marketing-form-form-size-field-sublabel-spacing
+  );
+  color: var(--sg-email-marketing-form-label-color);
+  line-height: 16px;
+  align-self: flex-start;
+}
+
+.sg-marketing-form-container
+  .sg-input-container
+  .sg-marketing-form-required-label {
+  color: var(--sg-email-marketing-form-label-sublabel-color);
+}
+
+/* Button Styles  
+	  ========================================================================== */
+
+.sg-marketing-form-container button {
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--sg-email-marketing-form-button-text-color);
+  font-size: var(--sg-email-marketing-form-form-size-button-font-size);
+  height: var(--sg-email-marketing-form-form-size-button-height);
+  border-radius: var(--sg-email-marketing-form-button-border-radius);
+  padding: 0 var(--sg-email-marketing-form-form-size-button-padding-h);
+  background-color: var(--sg-email-marketing-form-button-background-color);
+}
+
+/* Sub-label Styles  
+	  ========================================================================== */
+.sg-input-container {
+  position: relative;
+}
+
+.sg-marketing-form-sublabel {
+  position: absolute;
+  bottom: 0px;
+  transform: translate(0, 100%);
+  font-size: 14px;
+}
+
+/* Vertical/Column layout
+	  ========================================================================== */
+
+.sg-marketing-form-container.sg-marketing-form-container-column {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(260px, 40%), 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+
+.sg-marketing-form-container.sg-marketing-form-container-column
+  .sg-marketing-form-title-and-description-fields {
+  grid-column: 1 / -1;
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-column
+  .sg-input-container:nth-child(4) {
+  grid-column: 1 / -1;
+  /* This will make the fourth input field span the entire width of the grid on the second row*/
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-column button {
+  justify-self: var(--sg-email-marketing-form-align-items);
+  align-self: end;
+  grid-column: 1 / -1;
+}
+.sg-marketing-form-container.sg-marketing-form-container-column
+  > div.sg-marketing-form-title-and-description-fields
+  + div.sg-input-container:last-of-type {
+  grid-column: 1 / -1;
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-column
+  > div.sg-marketing-form-title-and-description-fields
+  + div.sg-input-container:last-of-type
+  > input {
+  width: 100%;
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-column
+  > .sg-input-container:only-of-type {
+  grid-column: 1 / -1;
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-column
+  > .sg-input-container:only-of-type
+  > input {
+  width: 100%;
+}
+
+/* Horizontal/Row layout
+	  ========================================================================== */
+
+.sg-marketing-form-container.sg-marketing-form-container-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-row
+  .sg-input-container {
+  flex: 1 0 260px;
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-row button {
+  align-self: flex-end;
+  justify-self: flex-start;
+}
+
+.sg-marketing-form-container.sg-marketing-form-container-row
+  .sg-marketing-form-title-and-description-fields {
+  flex-basis: 100%;
+}
+
+/* Field errors
+	  ========================================================================== */
+
+.sg-input-container input.sg-marketing-form--error,
+.sg-input-container .sg-marketing-form-sublabel.sg-marketing-form--error {
+  color: var(--sg-email-marketing-form-label-sublabel-color);
+  border-color: var(--sg-email-marketing-form-label-sublabel-color);
+}
+
+/* Submit error
+	  ========================================================================== */
+.sg-marketing-form .sg-marketing-form-submit_message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.sg-marketing-form
+  .sg-marketing-form-submit_message.sg-marketing-form-submit_message--error {
+  color: var(--sg-email-marketing-form-label-sublabel-color);
+}
+
+.sg-marketing-form
+  .sg-marketing-form-submit_message.sg-marketing-form-submit_message--success {
+  color: var(--sg-email-marketing-form-field-text-color);
+}
+
+
+.sg-marketing-form .sg-marketing-form-submit_message.sg-marketing-form-submit_message--hidden {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+}
+
+/* SG EM Block creator 
+	  ========================================================================== */
+.components-placeholder__fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.components-placeholder__fieldset h3 {
+  margin: 10px 0px;
+}
+
+.sg-email-marketing-gutenberg-form-logo {
+  width: 98px;
+  fill: transparent;
+}
+
+.components-input-control__suffix svg {
+  fill: transparent;
+}
+
+.components-input-control__container {
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  border: 1px solid #333;
+}
+
+.components-select-control__input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  color: #333;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.components-input-control__suffix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.components-input-control__suffix svg {
+  fill: #333;
+}
+
+.components-input-control__backdrop {
+  display: none;
+}
+
+.components-select-control__input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>')
+    no-repeat;
+  background-position:
+    right 10px top 50%,
+    0 0;
+  background-size:
+    12px auto,
+    100%;
+}
+
+.components-select-control__input option {
+  width: 100%;
+  background-color: #f5f5f5;
+  color: #333;
+}
+form.sg-marketing-form{
+  margin: var(--sg-email-marketing-form-form-margin);
+  box-sizing: border-box;
+}
+.block-editor-block-list__block form.sg-marketing-form {
+  margin: initial;
+}
+div[data-type="sg-email-marketing/form-selector"] {
+  box-sizing: border-box;
+  padding: initial!important;
+}
+
+.block-editor-block-list__block fieldset.sg-marketing-form-container {
+  padding: var(--sg-email-marketing-form-form-padding);
+}
+
+fieldset.sg-marketing-form-container {
+  padding: var(--sg-email-marketing-form-form-padding);
+  box-sizing: border-box;
+}
