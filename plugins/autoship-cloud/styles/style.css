@@ -1,0 +1,1002 @@
+@font-face {
+  font-family: 'autoship';
+  src: url("../fonts/icomoon.eot?644i3q");
+  src: url("../fonts/icomoon.eot?644i3q#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?644i3q") format("truetype"), url("../fonts/icomoon.woff?644i3q") format("woff"), url("../fonts/icomoon.svg?644i3q#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="autoship-iconfont"], [class*=" autoship-iconfont"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'autoship' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.autoship-icon-cloud-clock:before {
+  content: "\e900";
+}
+
+.autoship-icon-cloud-error:before {
+  content: "\e901";
+}
+
+.autoship-icon-cloud-off:before {
+  content: "\e902";
+}
+
+.autoship-icon-cloud-queue:before {
+  content: "\e903";
+}
+
+.autoship-icon-schedule-unknown:before {
+  content: "\e904";
+}
+
+.autoship-icon-scheduled-order:before {
+  content: "\e905";
+}
+
+.autoship-icon-scheduled-orders:before {
+  content: "\e906";
+}
+
+.autoship-icon-scheduled-orders-error:before {
+  content: "\e907";
+}
+
+.autoship_update_all_orders {
+  padding: 4px;
+  margin-right: 2px;
+  border-radius: 2px;
+  border: 1px solid;
+  background-color: #fff;
+}
+
+.autoship_update_all_orders:before {
+  content: "\27F3";
+  font-size: 14px;
+  font-style: normal;
+}
+
+.autoship-widget-iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.autoship-scheduled-orders-iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+#autoship-select-frequency-dialog, #autoship-select-next-occurrence-dialog {
+  display: none;
+  position: fixed;
+  top: 100px;
+  right: 100px;
+  height: 400px;
+  width: 400px;
+  background: white;
+  border: 1px solid black;
+  z-index: 10000;
+}
+
+#autoship-customer-bot {
+  position: relative;
+  height: 350px;
+  width: 100%;
+  border: 1px solid gray;
+}
+
+.autoship-schedule-cart {
+  position: relative;
+  width: 100%;
+}
+
+.autoship-schedule-cart .frequency-title {
+  white-space: nowrap;
+}
+
+.autoship-schedule-cart .frequency-title h3 {
+  width: 60%;
+  display: inline-block;
+  margin-right: 0;
+  margin-left: 0;
+  white-space: normal;
+}
+
+.autoship-schedule-cart .frequency-title .next-occurrence {
+  width: 40%;
+  display: inline-block;
+  margin-right: 0;
+  margin-left: 0;
+  white-space: normal;
+}
+
+.autoship-schedule-cart table.autoship-schedule-cart-items {
+  border: none;
+}
+
+.autoship-schedule-cart table.autoship-schedule-cart-items td {
+  border: none;
+}
+
+.autoship-schedule-cart .autoship-schedule-cart-item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.autoship-schedule-cart .autoship-schedule-cart-item img {
+  width: 25px;
+}
+
+.autoship-schedule-options {
+  margin: 20px 0;
+}
+
+.autoship-schedule-options .frequency-type-label {
+  font-weight: bold;
+}
+
+.autoship-schedule-options .autoship-old-price {
+  color: grey;
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.autoship-schedule-options .autoship-discounted-price {
+  color: red;
+}
+
+.autoship-schedule-options select {
+  display: inline;
+}
+
+.autoship-schedule-options select.autoship-frequency-select .current-frequency {
+  font-weight: bold;
+}
+
+.autoship-schedule-options .loading {
+  display: none;
+}
+
+.autoship-schedule-options .autoship-frequency {
+  display: none;
+}
+
+.autoship-schedule-options .autoship-frequency.active {
+  display: block;
+}
+
+.autoship-schedule-options.hidden {
+  display: none;
+}
+
+.autoship-schedule-options.loading > * {
+  display: none;
+}
+
+.autoship-schedule-options.loading .loading {
+  display: block;
+}
+
+/* Scheduled Order(s) Template
+============================== */
+.autoship-button {
+  margin-right: 2px;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  color: #000;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  -omstransition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.autoship-button:hover, .autoship-button:focus, .autoship-button:active {
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+}
+
+.autoship-button.deleted {
+  opacity: .5;
+}
+
+.autoship-icon-button {
+  font-family: dashicons;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+  text-decoration: none !important;
+  font-weight: 400;
+  font-style: normal;
+  vertical-align: top;
+  text-align: center;
+  transition: color .1s ease-in 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+.autoship-icon-button.paused::after {
+  content: "\f523";
+}
+
+.autoship-icon-button.active::after {
+  content: "\f522";
+}
+
+.autoship-icon-button.edit::after {
+  content: "\f464";
+}
+
+.autoship-icon-button.failed::after {
+  content: "\f534";
+}
+
+.autoship-icon-button.deleted::after {
+  content: "\f182";
+}
+
+.autoship-icon-button.pending::after {
+  content: "\f469";
+}
+
+.autoship-icon-button.view::after {
+  content: "\f177";
+}
+
+.autoship-scheduled-orders-header-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.woocommerce table.shop_table.autoship-scheduled-orders-table tbody tr.Active.order-locked .status-icon::after {
+  font-family: dashicons;
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  font-size: 15px;
+  line-height: 20px;
+  content: "\f160";
+  vertical-align: middle;
+}
+
+.autoship-notice-row .autoship-order-notice,
+.autoship-notice-block .autoship-order-notice {
+  padding: 10px !important;
+}
+
+.autoship-notice-row .autoship-order-notice p,
+.autoship-notice-block .autoship-order-notice p {
+  position: relative;
+  margin: 0px;
+  padding: 1em 1.618em;
+  border-radius: 5px;
+  font-size: 12px;
+  border: 2px solid red;
+  color: red;
+  text-align: left;
+}
+
+.autoship-notice-row .autoship-order-notice.action-notice p,
+.autoship-notice-block .autoship-order-notice.action-notice p {
+  border: 2px solid #3d9cd2;
+  color: #3d9cd2;
+}
+
+.woocommerce table.shop_table.autoship-scheduled-orders-table tbody tr.autoship-notice-row {
+  border-top: 0px;
+}
+
+.woocommerce table.shop_table.autoship-scheduled-orders-table tbody tr.autoship-notice-row td:nth-child(1) {
+  border-top: 0px;
+}
+
+.woocommerce table.shop_table.autoship-scheduled-orders-table tbody tr.autoship-notice-row td:nth-child(1) p {
+  font-size: 12px;
+}
+
+.autoship-scheduled-order-template * {
+  box-sizing: border-box;
+}
+
+.autoship-scheduled-order-template form,
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template {
+  display: inline-block;
+  width: 100%;
+}
+
+.autoship-scheduled-order-template h2 {
+  font-size: 30px;
+}
+
+.autoship-scheduled-order-template h3 {
+  font-size: 25px;
+  position: relative;
+}
+
+.autoship-scheduled-order-template .activate-action,
+.autoship-scheduled-order-template .deactivate-action,
+.autoship-scheduled-order-template .autoship-action-link,
+.autoship-scheduled-order-template .autoship-action-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.autoship-scheduled-order-template .activate-action.small-autoship-action,
+.autoship-scheduled-order-template .deactivate-action.small-autoship-action,
+.autoship-scheduled-order-template .autoship-action-link.small-autoship-action,
+.autoship-scheduled-order-template .autoship-action-btn.small-autoship-action {
+  padding: 3px 6px;
+  font-size: 10px;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+.autoship-scheduled-order-template .activate-action.slim-autoship-action,
+.autoship-scheduled-order-template .deactivate-action.slim-autoship-action,
+.autoship-scheduled-order-template .autoship-action-link.slim-autoship-action,
+.autoship-scheduled-order-template .autoship-action-btn.slim-autoship-action {
+  padding: 0px;
+  border: none;
+}
+
+.autoship-scheduled-order-template .autoship-action-btn.deleted {
+  opacity: .5;
+}
+
+.autoship-scheduled-order-template .action-info {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.autoship-scheduled-order-template .payment-method-name {
+  font-style: normal;
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+  border-radius: 5px;
+  padding: 6px 12px;
+}
+
+.autoship-scheduled-order-template .product-name .autoship-item-notice {
+  font-style: italic;
+  max-width: 277px;
+  margin-top: 8px;
+  opacity: 0.75;
+}
+
+.autoship-scheduled-order-template form.processing .autoship-scheduled-order-items-table .scheduled_order_item {
+  opacity: .6;
+}
+
+.autoship-scheduled-order-template form.processing .scheduled-order-add-ons-placeholder td.auto_loader {
+  position: relative;
+}
+
+.autoship-scheduled-order-template form.processing .scheduled-order-add-ons-placeholder td.auto_loader > span::after {
+  height: 1em;
+  width: 1em;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -.5em;
+  margin-top: -.5em;
+  content: '';
+  -webkit-animation: spin 1s ease-in-out infinite;
+  animation: spin 1s ease-in-out infinite;
+  background: url(../images/loader.svg) center center;
+  background-size: cover;
+  line-height: 1;
+  text-align: center;
+  font-size: 2em;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons-msg {
+  display: none;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons-placeholder {
+  display: none;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons-placeholder td {
+  border-top: 1px dashed !important;
+  border-bottom: 1px dashed !important;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons-placeholder td:first-of-type {
+  border-left: 1px dashed !important;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons-placeholder td:last-of-type {
+  border-right: 1px dashed !important;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons-placeholder img {
+  width: 100px !important;
+  height: auto !important;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons select,
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons input {
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ebebeb;
+  color: #686868;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 12px;
+  min-width: 100%;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons .add-on-action {
+  text-align: center;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-add-ons .add-on-action a {
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+  line-height: 40px;
+  display: inline-block;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-coupons ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-coupons li {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  margin: 5px;
+  margin-bottom: 5px;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-coupons li a {
+  padding-right: 5px;
+  font-weight: bold;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-coupons li span {
+  font-weight: bold;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-coupons li:hover, .autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-coupons li:focus, .autoship-scheduled-order-template .autoship-scheduled-order-items-table .scheduled-order-coupons li:active {
+  border: 1px solid;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table tr.outofstock td:not(.product-remove) {
+  opacity: .5;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table td.product-remove {
+  text-align: center;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table td.product-remove > * {
+  margin: 0 auto;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table tr.outofstock td.product-name > :not(.autoship-item-notice) {
+  text-decoration: line-through;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-items-table tr .autoship-item-notice {
+  display: block;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-summary,
+.autoship-scheduled-order-template .autoship-scheduled-order-payment-method-summary {
+  margin: .85em 0;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-summary h3,
+.autoship-scheduled-order-template .autoship-scheduled-order-payment-method-summary h3 {
+  font-size: 1.5em;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-summary p,
+.autoship-scheduled-order-template .autoship-scheduled-order-payment-method-summary p {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-summary mark,
+.autoship-scheduled-order-template .autoship-scheduled-order-payment-method-summary mark {
+  font-weight: 600;
+}
+
+.autoship-scheduled-order-template .autoship-address-summary .autoship-address-summary-subnote {
+  font-size: 12px;
+  opacity: .75;
+  font-style: italic;
+}
+
+.autoship-scheduled-order-template .autoship-order-details-summary-form,
+.autoship-scheduled-order-template .autoship-order-payment-details-summary-form {
+  border: 1px solid #eee;
+  padding: 20px;
+}
+
+.autoship-scheduled-order-template .autoship-order-details-summary-form > div,
+.autoship-scheduled-order-template .autoship-order-payment-details-summary-form > div {
+  display: inline-block;
+  margin: .85em;
+}
+
+.autoship-scheduled-order-template .autoship-order-details-summary-form label,
+.autoship-scheduled-order-template .autoship-order-payment-details-summary-form label {
+  margin-right: 6px;
+}
+
+.autoship-scheduled-order-template .autoship-order-details-summary-form select,
+.autoship-scheduled-order-template .autoship-order-details-summary-form input,
+.autoship-scheduled-order-template .autoship-order-payment-details-summary-form select,
+.autoship-scheduled-order-template .autoship-order-payment-details-summary-form input {
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ebebeb;
+  color: #686868;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 12px;
+  min-width: 100%;
+}
+
+.autoship-scheduled-order-template .autoship-order-details-summary-form button,
+.autoship-scheduled-order-template .autoship-order-payment-details-summary-form button {
+  width: 100%;
+}
+
+.autoship-scheduled-order-template .autoship-edit-scheduled-order-schedule-form,
+.autoship-scheduled-order-template .autoship-edit-scheduled-order-payment-form,
+.autoship-scheduled-order-template .autoship-edit-scheduled-order-shipping-address-form {
+  display: none;
+}
+
+.autoship-scheduled-order-template .activated.autoship-edit-scheduled-order-schedule-form,
+.autoship-scheduled-order-template .activated.autoship-edit-scheduled-order-payment-form,
+.autoship-scheduled-order-template .activated.autoship-edit-scheduled-order-shipping-address-form {
+  display: inline-block;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template .no-items-notice,
+.autoship-scheduled-order-template .autoship-scheduled-order-edit-form .no-items-notice {
+  display: none;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template.empty-order,
+.autoship-scheduled-order-template .autoship-scheduled-order-edit-form.empty-order {
+  margin: 50px 0px;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template.empty-order .autoship-order-totals-section,
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template.empty-order .autoship-update-action,
+.autoship-scheduled-order-template .autoship-scheduled-order-edit-form.empty-order .autoship-order-totals-section,
+.autoship-scheduled-order-template .autoship-scheduled-order-edit-form.empty-order .autoship-update-action {
+  display: none;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template.empty-order .autoship-order-totals-section.no-items,
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template.empty-order .autoship-update-action.no-items,
+.autoship-scheduled-order-template .autoship-scheduled-order-edit-form.empty-order .autoship-order-totals-section.no-items,
+.autoship-scheduled-order-template .autoship-scheduled-order-edit-form.empty-order .autoship-update-action.no-items {
+  display: table-cell;
+}
+
+.autoship-scheduled-order-template .autoship-scheduled-order-view-template.empty-order .no-items-notice,
+.autoship-scheduled-order-template .autoship-scheduled-order-edit-form.empty-order .no-items-notice {
+  display: block;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+.autoship-scheduled-order-template .autoship-edit-scheduled-order-shipping-address-form .autoship-order-details-summary-form > div:first-of-type {
+  width: 100%;
+}
+
+.autoship-error-template {
+  padding: 20px;
+  border: 1px solid red;
+}
+
+.autoship-error-template.no-error {
+  display: none;
+}
+
+.autoship-error-template h2 {
+  font-size: 33px;
+}
+
+.autoship-error-template h3 {
+  font-size: 23px;
+}
+
+.autoship-error-template h3 > span {
+  display: inline-block;
+}
+
+.autoship-error-template h3 > span:after {
+  color: red;
+  content: "\f534";
+  font-family: dashicons;
+  display: inline-block;
+  position: absolute;
+  width: 40px;
+  font-size: 26px;
+  text-decoration: inherit;
+  font-weight: 400;
+  font-style: normal;
+  vertical-align: top;
+  text-align: center;
+  transition: color .1s ease-in 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .autoship-scheduled-order-template .autoship-order-details-summary-form > div,
+  .autoship-scheduled-order-template .autoship-order-payment-details-summary-form > div {
+    display: inline-block;
+  }
+  .autoship-scheduled-order-template .autoship-order-details-summary-form select,
+  .autoship-scheduled-order-template .autoship-order-details-summary-form input,
+  .autoship-scheduled-order-template .autoship-order-payment-details-summary-form select,
+  .autoship-scheduled-order-template .autoship-order-payment-details-summary-form input {
+    min-width: inherit;
+  }
+  .autoship-scheduled-order-template .autoship-order-details-summary-form button,
+  .autoship-scheduled-order-template .autoship-order-payment-details-summary-form button {
+    width: inherit;
+  }
+}
+
+/* My Account > Orders
+============================== */
+.woocommerce-MyAccount-orders th.woocommerce-orders-table__header-order-autoship-icon > span {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.woocommerce-MyAccount-orders th.woocommerce-orders-table__header-order-autoship-icon > span::after {
+  content: url(../images/scheduled_order.svg);
+  width: 100%;
+}
+
+.woocommerce-MyAccount-orders td.woocommerce-orders-table__cell-order-autoship-icon .order-origin-icon {
+  display: inline-flex;
+  line-height: 1;
+  border-radius: 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin: 0;
+  cursor: inherit !important;
+  white-space: nowrap;
+  max-width: 100%;
+  background: transparent;
+  color: #0073aa;
+  padding: 9px;
+  font-weight: bold;
+}
+
+.woocommerce-MyAccount-orders td.woocommerce-orders-table__cell-order-autoship-icon .order-origin-icon.created > span::after {
+  content: url(../images/scheduled_order.svg);
+  width: 100%;
+}
+
+.woocommerce-MyAccount-orders td.woocommerce-orders-table__cell-order-autoship-icon .order-origin-icon.scheduled > span::after {
+  content: url(../images/scheduled_orders.svg);
+  width: 100%;
+}
+
+/**
+ * tiptip-jquery-plugin
+ */
+#tiptip_holder {
+  display: none;
+  z-index: 8675309;
+  position: absolute;
+  top: 0;
+  /*rtl:ignore*/
+  left: 0;
+}
+
+#tiptip_holder.tip_top {
+  padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+  margin-top: -7px;
+  margin-left: -6px;
+  border-top-color: #333;
+}
+
+#tiptip_holder.tip_bottom {
+  padding-top: 5px;
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+  margin-top: -5px;
+  margin-left: -6px;
+  border-bottom-color: #333;
+}
+
+#tiptip_holder.tip_right {
+  padding-left: 5px;
+}
+
+#tiptip_holder.tip_right #tiptip_arrow_inner {
+  margin-top: -6px;
+  margin-left: -5px;
+  border-right-color: #333;
+}
+
+#tiptip_holder.tip_left {
+  padding-right: 5px;
+}
+
+#tiptip_holder.tip_left #tiptip_arrow_inner {
+  margin-top: -6px;
+  margin-left: -7px;
+  border-left-color: #333;
+}
+
+#tiptip_content {
+  color: #fff;
+  font-size: 0.8em;
+  background: #333;
+  text-align: center;
+  border-radius: 3px;
+  padding: 0.618em 1em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#tiptip_content code {
+  padding: 1px;
+  background: #888;
+}
+
+#tiptip_content::not(.autoship-toolip-content) {
+  max-width: 230px;
+}
+
+#tiptip_arrow,
+#tiptip_arrow_inner {
+  position: absolute;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 6px;
+  height: 0;
+  width: 0;
+}
+
+body.autoship-modal-open {
+  overflow: hidden;
+}
+
+.autoship-modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 99998;
+  /* Sit on top of all but admin bar*/
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  /* Modal Content/Box */
+  /* The Close Button */
+}
+
+.autoship-modal.open {
+  display: block;
+}
+
+.autoship-modal.small .autoship-modal-content {
+  max-width: 300px;
+}
+
+.autoship-modal.medium .autoship-modal-content {
+  max-width: 500px;
+}
+
+.autoship-modal.large .autoship-modal-content {
+  max-width: 800px;
+}
+
+.autoship-modal .autoship-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 25px;
+  border: 1px solid #11a0d2;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+  font-size: 14px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: autoshipmodalanimatetop;
+  animation-name: autoshipmodalanimatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+}
+
+.autoship-modal .autoship-modal-content h3 {
+  font-weight: bold;
+  font-size: 1.5em !important;
+}
+
+.autoship-modal.customer-modal .autoship-modal-content {
+  border: 1px solid transparent;
+}
+
+.autoship-modal.autoship-form-modal .autoship-modal-content {
+  max-width: 500px;
+  width: calc( 100% - 20px);
+  padding: 20px;
+}
+
+@media (min-width: 500px) {
+  .autoship-modal.autoship-form-modal .autoship-modal-content {
+    width: 80%;
+    padding: 25px;
+  }
+}
+
+.autoship-modal .close:not(.autoship-action-btn) {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.autoship-modal .close:not(.autoship-action-btn):hover, .autoship-modal .close:not(.autoship-action-btn):focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.autoship-modal .autoship-update-action {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 375px) {
+  .autoship-modal .autoship-update-action {
+    flex-direction: row;
+  }
+}
+
+.autoship-modal .autoship-update-action .refresh-rates-link {
+  width: 100%;
+}
+
+.autoship-modal .autoship-update-action .button {
+  margin: 5px;
+  width: 100%;
+  font-size: 12px;
+}
+
+@media (min-width: 375px) {
+  .autoship-modal .autoship-update-action .button {
+    width: auto;
+    font-size: .97em;
+  }
+}
+
+/* Autoship Modal Animation */
+@-webkit-keyframes autoshipmodalanimatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes autoshipmodalanimatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.autoship-info-link {
+  padding-left: 5px;
+}
+
+.autoship-credits {
+  margin-top: 10px;
+  font-size: 8px;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+#tiptip_content .autoship-modal-content > span.close {
+  display: none;
+}
+
+.customer-modal.autoship-modal .autoship-modal-content {
+  position: relative;
+}
+
+.customer-modal.autoship-modal .autoship-modal-content .autoship-modal-footer-content {
+  position: absolute;
+  bottom: -2px;
+  right: 13px;
+}
+
+.customer-modal.autoship-modal .autoship-credits {
+  font-size: 10px;
+}
+
+.customer-modal.autoship-modal .autoship-credits img {
+  width: 30px;
+}
+
+.customer-modal.autoship-modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+  position: absolute;
+  right: 6px;
+  top: -2px;
+  line-height: 28px;
+}
