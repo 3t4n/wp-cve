@@ -1,0 +1,1467 @@
+:root {
+    --text-color-light: #8b8b8b;
+    --text-color: #1d2327;
+    --border-color: #f2f2f2;
+    --bg-color-green: #17b978;
+    --bg-color-blue: #1696e7;
+    --bg-color-blue-light: rgba(22, 150, 231, 0.14);
+}
+
+.wlr-dot-pulse {
+    position: relative;
+    left: -9999px;
+    width: 7px;
+    height: 7px;
+    border-radius: 5px;
+    box-shadow: 9999px 0 0 -5px;
+    animation: wlr-dot-pulse 1.5s infinite linear;
+    animation-delay: 0.25s;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.wlr-dot-pulse::before, .wlr-dot-pulse::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 5px;
+}
+
+.wlr-dot-pulse::before {
+    box-shadow: 9984px 0 0 -5px;
+    animation: wlr-dot-pulse-before 1.5s infinite linear;
+    animation-delay: 0s;
+}
+
+.wlr-dot-pulse::after {
+    box-shadow: 10014px 0 0 -5px;
+    animation: wlr-dot-pulse-after 1.5s infinite linear;
+    animation-delay: 0.5s;
+}
+
+@keyframes wlr-dot-pulse-before {
+    0% {
+        box-shadow: 9990px 0 0 -5px;
+        /*9984*/
+    }
+    30% {
+        box-shadow: 9990px 0 0 2px;
+    }
+    60%, 100% {
+        box-shadow: 9990px 0 0 -5px;
+    }
+}
+
+@keyframes wlr-dot-pulse {
+    0% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 9999px 0 0 2px;
+    }
+    60%, 100% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+}
+
+@keyframes wlr-dot-pulse-after {
+    /*10014*/
+    0% {
+        box-shadow: 10010px 0 0 -5px;
+    }
+    30% {
+        box-shadow: 10010px 0 0 2px;
+    }
+    60%, 100% {
+        box-shadow: 10010px 0 0 -5px;
+    }
+}
+
+
+.wlr-product-name {
+    padding-left: 10px;
+}
+
+.wlr_change_product {
+    cursor: pointer;
+    display: flex;
+}
+
+.wlr_free_product_variants {
+    padding: 5px;
+}
+
+.wlr-select-free-variant-product-toggle {
+    color: gray;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.02em;
+    transition: 0.4s;
+}
+
+.wlr-select-free-variant-product-toggle-active,
+.wlr-select-free-variant-product-toggle:hover {
+    color: #444;
+}
+
+.wlr-select-variant-product {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+.wlr-select-free-variant-product-toggle:after {
+    content: "\02795"; /* Unicode character for "plus" sign (+) */
+    font-size: 12px;
+    color: #777;
+    margin-left: 10px;
+}
+
+.wlr-select-free-variant-product-toggle-active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* ------------------------------------------------ */
+
+
+/* ----------- Predefined css reset start here -------- */
+
+/*.wlr-myaccount-page div, .wlr-myaccount-page span,*/
+/*.wlr-myaccount-page h1, .wlr-myaccount-page h2, .wlr-myaccount-page h3, .wlr-myaccount-page h4, .wlr-myaccount-page h5, .wlr-myaccount-page h6,*/
+/*.wlr-myaccount-page p, .wlr-myaccount-page pre, .wlr-myaccount-page a,*/
+/*.wlr-myaccount-page img, tt, var,*/
+/*b, u, i, center,*/
+/*dl, dt, dd, ol, ul, li,*/
+/*fieldset, form, label, legend,*/
+/*table, caption, tbody, tfoot, thead, tr, th, td,*/
+/*article, aside, canvas, details, embed,*/
+/*figure, figcaption, footer, header, hgroup,*/
+/*menu, nav, output, ruby, section, summary,*/
+/*time, mark, audio, video {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    border: 0;*/
+/*    font-size: 100%;*/
+/*    font: inherit;*/
+/*    vertical-align: baseline;*/
+/*}*/
+
+.wlr-myaccount-page p {
+    margin: 0 0 10px 0;
+}
+
+.wlr-myaccount-page p:first-of-type {
+    margin-bottom: 0 !important;
+}
+
+.wlr-myaccount-page h4 {
+    margin: 0 !important;
+}
+
+.wlr-myaccount-page a:focus {
+    outline: 0;
+}
+
+.wlr-myaccount-page table th,
+.wlr-myaccount-page table td {
+    background: unset;
+}
+
+.wlr-myaccount-page table:not( .has-background ) th,
+.wlr-myaccount-page table:not( .has-background ) tbody td,
+.wlr-myaccount-page table:not( .has-background ) tbody tr:nth-child(2n) td {
+    background-color: unset;
+}
+
+.wlr-myaccount-page input {
+    margin: 0;
+    padding: 0;
+    background: unset;
+}
+
+.wlr-myaccount-page .wlr-coupons-container,
+.wlr-myaccount-page .wlr-coupons-expired-container {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.wlr-myaccount-page input:disabled {
+    background: unset;
+}
+
+/* ----------- Predefined css reset end here ---------*/
+.wlr-myaccount-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 25px;
+    font-family: inherit;
+    scroll-behavior: smooth;
+}
+
+.wlr-myaccount-page .wlr-spinner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wlr-myaccount-page .spinner {
+    width: 25px;
+    height: 25px;
+    border: 4px #ddd solid;
+    border-radius: 50%;
+    animation: spinner-anime 0.8s infinite linear;
+}
+
+.wlr-myaccount-page .wlr-enable-email-sent-blog .wlr-sent-email {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.wlr-myaccount-page .wlr-cursor {
+    cursor: pointer;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlrf-close {
+    float: right;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlr-input-point-conversion {
+    border-radius: 6px 0 0 6px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlr-point-label-content {
+    border-radius: 0 6px 6px 0;
+    border-width: 1px;
+    border-style: solid;
+    border-left-width: 0;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlr-input-point-section {
+    display: flex;
+    padding: 0 5%;
+}
+
+.wlr-myaccount-page .wlr-nowrap {
+    white-space: nowrap;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlr-input-point-section .wlr-point-label-content {
+    display: flex;
+    gap: 2px;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+    place-items: center;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlr-input-point-section .wlr-point-label-content p {
+    margin: 0 5px;
+    font-size: inherit;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlr-input-point-section input {
+    width: 38px;
+    height: 40px;
+    padding: 0 2px;
+    background-color: unset;
+    box-shadow: unset;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section .wlr-input-point-section input:focus {
+    outline: none;
+}
+
+.wlr-myaccount-page .wlr-point-conversion-section p {
+    margin: 0;
+}
+
+@keyframes spinner-anime {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.wlr-myaccount-page > * {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.wlr-myaccount-page .wlr-user-details,
+.wlr-myaccount-page .wlr-level-details {
+    width: 100%;
+}
+
+.wlr-level-title-section p {
+    margin: 0 0 2px;
+}
+
+.wlr-myaccount-page .wlr-heading-container {
+    max-width: max-content;
+    display: flex;
+    justify-content: center;
+}
+
+.wlr-myaccount-page .wlr-heading {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 32px;
+    border-left: 3px solid #4F47EB;
+    padding-left: 5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+
+.wlr-myaccount-page .wlr-points-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.wlr-myaccount-page .wlr-points-container p,
+.wlr-myaccount-page #wlr-levels p, .wlr-myaccount-page #wlr-levels b,
+.wlr-myaccount-page .wlr-sent-email label {
+    font-size: 16px;
+}
+
+.wlr-myaccount-page #wlr-points {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 0;
+    outline: none;
+    border: none;
+}
+
+.wlr-myaccount-page #wlr-levels {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 8px;
+    outline: none;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.wlr-myaccount-page #wlr-level-name,
+.wlr-myaccount-page #wlr-next-level-name {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.wlr-myaccount-page #wlr-next-level-name {
+    opacity: 0.6;
+}
+
+.wlr-myaccount-page #wlr-levels .wlr-level-data-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wlr-myaccount-page #wlr-levels .wlr-level-name-section {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 20px 0 20px;
+}
+
+.wlr-myaccount-page #wlr-levels .wlr-current-level-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.wlr-myaccount-page #wlr-levels .wlr-level-image {
+    margin-top: 5px;
+}
+
+.wlr-myaccount-page .wlr-date-container {
+    display: flex;
+    gap: 5px;
+    color: white;
+}
+
+.wlr-myaccount-page .wlr-date-container input {
+    height: 2rem;
+    width: 4rem;
+    border-radius: 6px;
+}
+
+.wlr-myaccount-page #wlr-points {
+    gap: 18px;
+}
+
+.wlr-myaccount-page #wlr-points i {
+    font-size: 2.5rem;
+}
+
+.wlr-myaccount-page #wlr-available-points, .wlr-myaccount-page #wlr-redeemed-points, .wlr-myaccount-page #wlr-used-rewards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.wlr-myaccount-page #wlr-used-rewards select {
+    outline: 0;
+    background: inherit;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.wlr-myaccount-page #wlr-used-rewards select option {
+    background-color: inherit;
+}
+
+.wlr-myaccount-page #wlr-available-points,
+.wlr-myaccount-page #wlr-redeemed-points,
+.wlr-myaccount-page #wlr-used-rewards {
+    flex-wrap: wrap;
+    padding-bottom: 14px;
+}
+
+.wlr-myaccount-page #wlr-points-desc {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #535863;
+}
+
+.wlr-myaccount-page #wlr-available-points-heading, .wlr-myaccount-page #wlr-redeemed-points-heading, .wlr-myaccount-page #wlr-used-rewards-heading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+}
+
+.wlr-myaccount-page #wlr-available-point-value, .wlr-myaccount-page #wlr-redeemed-point-value,
+.wlr-myaccount-page #wlr-used-reward-value-count {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.wlr-myaccount-page table * {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    padding: 10px;
+}
+
+
+.wlr-myaccount-page .wlr-table-header {
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #161F31;
+    text-align: left;
+    align-items: center;
+}
+
+.wlr-myaccount-page #wlr-transaction-table-header .wlr-transaction-table-header-label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #161F31;
+    margin-bottom: 0;
+}
+
+.wlr-myaccount-page .wlr-transaction-table-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 4fr 1fr 1fr;
+    height: auto;
+    border-bottom: 1px solid #DADAE7;
+    align-items: center;
+    padding: 10px;
+}
+
+.wlr-myaccount-page .wlr-transaction-table-row div {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #161F31;
+}
+
+.wlr-transaction-table-body {
+    border-bottom: 1px solid #E7E7EF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #161F31;
+}
+
+.wlr-myaccount-page .set-center {
+    text-align: center;
+}
+
+#wlr-next-button, #wlr-prev-button {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.wlr-myaccount-page .wlr-points {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+}
+
+.wlr-myaccount-page .wlr-points > * {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.wlr-myaccount-page .wlr-points-icon {
+    font-size: 32px;
+}
+
+.wlr-myaccount-page .wlr-icon-dicount:before {
+    font-size: 48px;
+    transform: scale(130%);
+    color: #4caf50;
+}
+
+.wlr-myaccount-page .wlr-user-details .wlr-points-name {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.wlr-myaccount-page .wlr-points-value {
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.wlr-myaccount-page .level-points {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px 24px 20px;
+    border-top: 1px solid;
+}
+
+.wlr-myaccount-page .wlr-level-bar-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.wlr-myaccount-page .wlr-level-bar-container i {
+    font-size: 23px;
+}
+
+.wlr-myaccount-page .wlr-levels-bar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wlr-myaccount-page .wlr-progress-content {
+    text-align: center;
+}
+
+.wlr-myaccount-page .wlr-progress-content p {
+    display: inline;
+    font-size: 12px;
+    color: #1d2327;
+    position: relative;
+    top: 14px;
+}
+
+.wlr-myaccount-page .wlr-progress-content div {
+    display: inline;
+    font-size: 18px;
+    color: #17b978;
+    position: relative;
+    font-weight: bold;
+    top: 0;
+    left: 3px;
+}
+
+.wlr-myaccount-page .wlr-progress-bar {
+    background-color: #d9d9d9;
+    width: 100%;
+    height: 6px;
+    border-radius: 4px;
+}
+
+.wlr-myaccount-page .wlr-progress-bar .wlr-progress-level {
+    background-color: #4F47EB;
+    height: inherit;
+    border-radius: 4px;
+}
+
+.wlr-myaccount-page .wlr-my-rewards-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.wlr-myaccount-page .wlr-user-reward-titles {
+    display: flex;
+}
+
+.wlr-myaccount-page .wlr-user-reward-titles h4 {
+    font-size: 16px;
+}
+
+
+.wlr-myaccount-page .wlr-user-expired-reward-section:not(.active) {
+    display: none;
+}
+
+.wlr-myaccount-page .wlr-rewards-container:not(.active),
+.wlr-myaccount-page .wlr-coupons-container:not(.active),
+.wlr-myaccount-page .wlr-coupons-expired-container:not(.active) {
+    display: none;
+}
+
+.wlr-myaccount-page .wlr-norecords-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: none;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.wlr-myaccount-page .wlr-norecords-container i {
+    font-size: 50px;
+}
+
+.wlr-myaccount-page .wlr-norecords-container h4 {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.wlr-myaccount-page .wlr-expired-card {
+    cursor: default;
+    pointer-events: none;
+    background: #DADAE730;
+}
+
+.wlr-myaccount-page .wlr-my-rewards-title {
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 10px 16px;
+}
+
+.wlr-myaccount-page .wlr-today-expire-points-section {
+    display: flex;
+    padding: 16px;
+    column-gap: 10px;
+    background: #4f47eb24;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.wlr-myaccount-page .wlr-my-rewards-title h4 {
+    margin: 0;
+    font-weight: 500;
+    text-transform: initial;
+}
+
+.wlr-myaccount-page .wlr-my-rewards-title i {
+    font-size: 20px;
+}
+
+.wlr-myaccount-page .wlr-your-reward {
+    width: 100%;
+    margin-bottom: 35px;
+    margin-top: 20px;
+}
+
+.wlr-myaccount-page .wlr-customer-reward {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 24px;
+    column-gap: 12px;
+}
+
+.wlr-myaccount-page .wlr-card {
+    border-radius: 8px;
+    position: relative;
+    min-height: 200px;
+    min-width: 180px;
+    border: 1px solid #8D87F2;
+    padding: 0 12px 12px;
+}
+
+.wlr-myaccount-page .wlr-reward-card {
+    border-radius: 8px;
+    position: relative;
+    min-height: 200px;
+    min-width: 180px;
+    border: 1px solid #E7E7EF;
+    padding: 0 12px 12px;
+}
+
+.wlr-myaccount-page .wlr-reward-card .wlr-card-container,
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-card-container {
+    margin-top: 28px !important;
+}
+
+.wlr-myaccount-page .wlr-coupon-card {
+    position: relative;
+    min-height: 200px;
+    min-width: 180px;
+    border: 1px solid #E7E7EF;
+    border-radius: 8px;
+    padding: 0 12px 12px;
+    /*display: inline-grid;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+
+.wlr-myaccount-page .wlr-reward-card:hover {
+    box-shadow: 0 2px 32px rgb(12 8 92 / 8%);
+}
+
+.wlr-myaccount-page .wlr-coupon-card:hover {
+    box-shadow: 0 2px 32px rgba(12, 8, 92, 0.08);
+    border-radius: 8px;
+}
+
+/* read more css*/
+
+.wlr-myaccount-page .add-read-more.show-less-content .sec-half,
+.wlr-myaccount-page .add-read-more.show-less-content .read-less {
+    display: none;
+}
+
+.wlr-myaccount-page .add-read-more.show-more-content .read-more {
+    display: none;
+}
+
+.wlr-myaccount-page .add-read-more .read-more,
+.wlr-myaccount-page .add-read-more .read-less {
+    font-weight: bold;
+    margin-left: 2px;
+    color: blue;
+    cursor: pointer;
+}
+
+.wlr-myaccount-page .show-more-content .sec-half,
+.wlr-myaccount-page .show-more-content .read-less {
+    display: inline-block;
+}
+
+/* read more end*/
+
+
+.wlr-myaccount-page .wlr-card-container {
+    width: 100%;
+}
+
+.wlr-card-container > * {
+    margin-top: 5px;
+    margin-bottom: 4px;
+}
+
+.wlr-myaccount-page .wlr-card-container .wlr-card-icon-container {
+    margin-top: 7px;
+}
+
+.wlr-myaccount-page .wlr-name-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.wlr-myaccount-page .wlr-name-container h4,
+.wlr-myaccount-page .wlr-name-container h4 p {
+    margin: 0;
+}
+
+.wlr-myaccount-page .wlr-card-inner-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100px;
+}
+
+.wlr-myaccount-page .wlr-card-inner-container > * {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.wlr-myaccount-page .wlr-your-reward .wlr-icon {
+    border-radius: 100%;
+    font-size: 36px;
+}
+
+.wlr-myaccount-page .wlr-pre-text {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+}
+
+.wlr-myaccount-page .wlr-your-reward .wlr-name {
+    font-size: 16px;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.wlr-myaccount-page .wlr-your-reward .wlr-reward-type-name {
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+    border-radius: 0 8px 0 2px;
+    float: right;
+    padding: 4px;
+    margin: unset !important;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+}
+
+.wlr-myaccount-page .wlr-your-reward .wlr-description {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    padding-right: 10px;
+    margin: unset !important;
+    word-break: break-word;
+}
+
+.wlr-myaccount-page .wlr-code {
+    display: flex;
+    flex-direction: row;
+    color: #FF8E3D;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background: #FFF8F3;
+    border: 1px dashed #FF8E3D;
+    /*margin-top: 5px;*/
+    width: 100%;
+}
+
+.wlr-myaccount-page .wlr-update-birthday {
+    background: #4F47EB;
+    padding: 0 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.wlr-myaccount-page .wlr-code .wlr-coupon-code {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0 0 8px;
+}
+
+.wlr-myaccount-page .wlr-code .wlr-coupon-copy-icon {
+    width: 18%;
+}
+
+.wlr-myaccount-page .wlr-code p {
+    margin: 0 0 1px 0 !important;
+    font-size: 12px !important;
+    padding: 5px;
+}
+
+.wlr-myaccount-page .wlr-code .wlr-coupon-copy-icon {
+    background: #FF8E3D;
+    border-radius: 0 6px 6px 0;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: dashed;
+    border-width: 0 0 0 1px;
+}
+
+.wlr-myaccount-page .wlr-expire-date,
+.wlr-myaccount-page .wlr-created-date,
+.wlr-myaccount-page .wlr-revert-active {
+    color: #535863;
+}
+
+.wlr-myaccount-page .wlr-revert:not(.wlr-revert-active) {
+    display: none;
+}
+
+.wlr-myaccount-page .wlr-button {
+    text-align: center;
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.wlr-myaccount-page .wlr-button-reward {
+    background: #4F47EB;
+}
+
+.wlr-myaccount-page .wlr-button-reward-apply {
+    cursor: pointer;
+    background: #4F47EB;
+}
+
+.wlr-myaccount-page .wlr-revert-tool {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    float: right;
+}
+
+.wlr-myaccount-page .wlr-revert {
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.wlr-myaccount-page .wlr-revert .wlr-revert-reward {
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 2px;
+    padding: 3px 5px;
+    position: relative;
+}
+
+.wlr-action-text {
+    color: white;
+    text-decoration: none !important;
+    font-size: 14px !important;
+}
+
+.wlr-myaccount-page .wlr-campaign-container .wlr-campaign-level-batch {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    float: right;
+}
+
+.wlr-myaccount-page .wlr-campaign-container .wlr-campaign-level-batch img,
+.wlr-myaccount-page .wlr-campaign-container .wlr-campaign-level-batch span {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+}
+
+.wlr-myaccount-page .wlr-earning-options {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-campaign-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 28px;
+    column-gap: 24px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-campaign-container .wlr-discount-point {
+    font-size: small;
+    font-weight: bold;
+    margin: 0;
+    word-break: break-word;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card {
+    border-radius: 8px;
+    padding: 0px 12px 12px;
+    position: relative;
+    min-width: 230px;
+    min-height: max-content;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card > * {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.wlr-myaccount-page .wlr-upload-img-icon {
+    margin: revert !important;
+    padding: revert !important;
+    border-radius: 3px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-icon {
+    box-shadow: 0 4px 20px rgba(10, 19, 65, 0.08);
+    font-size: 20px;
+    height: 48px;
+    width: 48px;
+    text-align: center;
+    align-self: center;
+    padding: 12px;
+    border-radius: 8px
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 18px;
+    line-height: 20px;
+    word-break: break-word;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-description {
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-word;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date {
+    position: absolute;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date a {
+    font-size: 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-campaign-points {
+    display: flex;
+    align-items: flex-start;
+    gap: 3px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-birthday-edit-button {
+    position: relative;
+    float: right;
+    right: 0;
+    margin-left: 6px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date-editor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date-editor .wlr-date-editor-layer {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #021b2ac7;
+    border-radius: 8px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date-editor .wlr-close-layer {
+    position: absolute;
+    top: 2px;
+    right: 14px;
+    font-weight: 700;
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.911);
+    cursor: pointer;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date-editor.wlr-close-layer:hover {
+    color: rgb(255, 255, 255);
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date-editor .wlr-date-editor-container {
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 20% 0 30%;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card.wlr-date-editor .wlr-date-editor-container .wlr-date-action {
+    margin-top: 8px;
+    text-decoration: none !important;
+    color: white;
+    font-weight: 600;
+    padding: 4px 8px 4px;
+    background-color: var(--bg-color-green);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.wlr-myaccount-page .wlr-earning-options .wlr-card .wlr-date-editor .wlr-date-editor-container .wlr-input-date {
+    padding: 4px 8px 4px;
+    border-radius: 4px;
+    border: none;
+}
+
+.wlr-myaccount-page .wlr-referral-blog {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog > * {
+    margin-top: 16px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-referral-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-referral-box .input-group-text {
+    display: flex;
+    white-space: nowrap;
+    background: #4F47EB;
+    border-radius: 0 7px 7px 0;
+    padding: 10px 16px;
+    gap: 4px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr_referral_url {
+    border: 0;
+    outline: none;
+    width: 100%;
+    box-shadow: none;
+    font-weight: 500;
+    border-radius: 7px 0 0 7px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-referral-box .input-group-append {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-referral-box .wlr-icon:before {
+    cursor: pointer;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-referral-box.wlr-icon:before,
+.wlr-myaccount-page .wlr-referral-blog .wlr-social-share {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-social-share > * {
+    margin-right: 32px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-icon-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none !important;
+    margin-top: 6px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-social-icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+}
+
+.wlr-myaccount-page .wlr-referral-blog .wlr-social-text {
+    font-weight: 500;
+}
+
+.wlr-myaccount-page .wlr-social-share {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.wlr-myaccount-page .wlr-transaction-blog {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.ajs-dialog {
+    max-width: 51vw !important;
+}
+
+.ajs-dialog .wlr-myaccount-page {
+    width: auto;
+}
+
+#wlr-reward-link {
+    cursor: pointer;
+}
+
+.wlr-myaccount-page .wlr-coupons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wlr-myaccount-page .wlr-coupons-content,
+.wlr-myaccount-page .wlr-coupons-expired-content {
+    display: flex;
+    padding: 5px 20px 5px 20px;
+    flex-direction: column;
+    border: 1px solid #E7E7EF;
+    border-radius: 8px;
+    min-height: 120px;
+    align-items: center;
+    justify-content: center;
+}
+
+.wlr-myaccount-page .wlr-coupons-list p,
+.wlr-myaccount-page .wlr-coupons-list h4,
+.wlr-myaccount-page .wlr-coupons-list .wlr-name {
+    margin: 0;
+    font-size: 16px;
+}
+
+.wlr-myaccount-page .wlr-coupon-card-header,
+.wlr-myaccount-page .wlr-coupon-card-footer {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.wlr-myaccount-page .wlr-coupon-card-footer p, .wlr-myaccount-page .wlr-coupon-card-footer span {
+    font-size: 13px;
+}
+
+.wlr-myaccount-page .wlr-title-icon {
+    display: flex;
+    gap: 16px;
+    width: 70%;
+}
+
+.wlr-myaccount-page .wlr-code-button {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex-direction: column;
+    width: 30%;
+}
+
+.wlr-myaccount-page .wlr-code-button .wlr-button {
+    width: 100%;
+}
+
+.wlr-myaccount-page .wlr-coupon-date-section {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.wlr-myaccount-page .wlr-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+@media only screen and (max-width: 1440px) {
+    /* For mobile phones: */
+    .ajs-dialog {
+        max-width: 70vw !important;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    /*For mobile phones:*/
+    .ajs-dialog {
+        max-width: 90vw !important;
+    }
+
+    .alertify .ajs-body .ajs-content {
+        padding: 0 !important;
+    }
+
+    .wlr-myaccount-page .wlr-points-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .wlr-myaccount-page .wlr-customer-reward {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wlr-myaccount-page .wlr-earning-options .wlr-campaign-container {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 12px;
+    }
+
+    .wlr-myaccount-page .wlr-earning-options .wlr-card {
+        min-width: unset;
+    }
+
+    .wlr-myaccount-page #wlr-levels, .wlr-myaccount-page #wlr-points {
+        width: 100%;
+    }
+
+    .wlr-myaccount-page #wlr-available-points, .wlr-myaccount-page #wlr-redeemed-points, .wlr-myaccount-page #wlr-used-rewards {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .wlr-myaccount-page .wlr-points-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .wlr-myaccount-page .wlr-referral-blog .wlr-referral-box .input-group-text {
+        font-size: 0;
+    }
+
+    .wlr-myaccount-page .wlr-customer-reward {
+        grid-template-columns: 1fr;
+    }
+
+    .wlr-myaccount-page .wlr-earning-options .wlr-campaign-container {
+        grid-template-columns: 1fr;
+    }
+
+    .wlr-myaccount-page #wlr-levels, .wlr-myaccount-page #wlr-points {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .wlr-myaccount-page .wlr-coupon-card-header {
+        flex-direction: column;
+    }
+
+    .wlr-myaccount-page .wlr-code-button {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .wlr-myaccount-page .wlr-title-icon {
+        width: 100%;
+    }
+
+    .wlr-myaccount-page .wlr-user-reward-titles {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    #wlr-transaction-table {
+        max-width: 325px;
+        overflow-x: scroll;
+    }
+
+    .wlr-myaccount-page .wlr-coupon-date-section {
+        flex-direction: column;
+    }
+
+    #wlr-transaction-table-header > tr > th {
+        font-size: 9px !important;
+        padding: 4px !important;
+    }
+
+    .wlr-transaction-table-body {
+        font-size: 8px !important;
+        padding: 4px !important;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .ajs-dialog {
+        max-width: 90vw !important;
+    }
+
+    .alertify .ajs-body .ajs-content {
+        padding: 0 !important;
+    }
+
+    .wlr-myaccount-page {
+        padding: 0;
+    }
+}
