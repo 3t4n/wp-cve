@@ -1,0 +1,35 @@
+<?php
+/*
+* File version: 2
+*/
+?>
+<div class="directory-lite edit-logo bootstrap-wrapper">
+
+    <?php ldl_get_header(); ?>
+
+    <h2><?php printf( __( 'Update logo for &ldquo;%s&rdquo;', 'ldd-directory-lite' ), ldl_get_value('title') ); ?></h2>
+
+    <form id="submit-listing" name="submit-listing" method="post" enctype="multipart/form-data" novalidate>
+        <input type="hidden" name="action" value="edit-logo">
+        <?php echo wp_nonce_field('edit-logo', 'nonce_field', 0, 0); ?>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Current Logo:</strong>
+                    <?php echo ldl_get_value('thumb'); ?>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="control-label" for="f_logo"><?php esc_html_e('Select New Logo:', 'ldd-directory-lite'); ?></label>
+                        <input type="file" id="f_logo" class="form-control" name="n_logo">
+                        <?php echo ldl_get_error('category'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php ldl_get_template_part('frontend/edit', 'submit'); ?>
+    </form>
+
+</div>
