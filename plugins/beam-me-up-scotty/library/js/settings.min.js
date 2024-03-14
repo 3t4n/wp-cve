@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){$('.colorpicker').each(function(){var colorPicker=new jscolor($(this)[0],{'hash':!0})})})

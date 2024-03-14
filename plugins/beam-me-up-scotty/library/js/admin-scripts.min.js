@@ -1,0 +1,1 @@
+(function(n){n(document).ready(function(){n("a.purchase").click(function(e){e.preventDefault();window.open(n(this).attr("href"),"_blank","width=960,height=800,resizeable,scrollbars");return false})});n(window).resize(function(){}).resize();n(window).on("load",function(){})})(jQuery);
