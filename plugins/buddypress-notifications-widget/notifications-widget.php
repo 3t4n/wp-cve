@@ -1,0 +1,181 @@
+<?php
+/**
+ * Plugin Name: BuddyPress Notifications Widget
+ * Author: BuddyDev
+ * Version: 1.3.3
+ * Plugin URI: https://buddydev.com/plugins/buddypress-notifications-widget/
+ * Author URI: https://buddydev.com/
+ * Description: Allow site admins to show BuddyPress user notification in widget.
+ * License: GPL
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 0 );
+}
+
+/**
+ * BuddyDev_BP_Notifications_Widget_Helper
+ */
+class BuddyDev_BP_Notifications_Widget_Helper {
+
+	/**
+	 * Class instance
+	 *
+	 * @var BuddyDev_BP_Notifications_Widget_Helper
+	 */
+	private static $instance = null;
+
+	/**
+	 * Absolute path to this plugin directory
+	 *
+	 * @var string
+	 */
+	private $path;
+
+	/**
+	 * Plugin directory url.
+	 *
+	 * @var string
+	 */
+	private $url;
+
+	/**
+	 * Guarded properties.
+	 *
+	 * @var array
+	 */
+	private $guarded_properties = array( 'instance' );
+
+	/**
+	 * Check if buddyboss active or not
+	 *
+	 * @var bool
+	 */
+	private $active_buddyboss = false;
+
+	/**
+	 * BuddyDev_BP_Notifications_Widget_Helper Constructor
+	 */
+	public function __construct() {
+		$this->path = plugin_dir_path( __FILE__ );
+		$this->url  = plugin_dir_url( __FILE__ );
+
+		$this->active_buddyboss = defined( 'BP_PLATFORM_VERSION' );
+
+		add_action( 'bp_loaded', array( $this, 'setup' ) );
+	}
+
+	/**
+	 * Class instance
+	 *
+	 * @return BuddyDev_BP_Notifications_Widget_Helper
+	 */
+	public static function get_instance() {
+
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	/**
+	 * Setup hooks.
+	 */
+	public function setup() {
+
+		// Only if the notifications component is enabled, we will load and do other stuff.
+		if ( ! bp_is_active( 'notifications' ) ) {
+			return ;
+		}
+
+		$this->load();
+
+		add_action( 'bp_init', array( $this, 'load_textdomain' ) );
+		add_action( 'bp_widgets_init', array( $this, 'register_widget' ) );
+		add_action( 'bp_enqueue_scripts', array( $this, 'load_js' ) );
+		add_action( 'wp_ajax_bpdev_notification_clear_notifications', array( $this, 'clear_notifications' ) );
+	}
+
+	/**
+	 * Load file
+	 */
+	public function load() {
+		require_once $this->path . 'core/bpnw-functions.php';
+		require_once $this->path . 'core/class-bp-notification-widget.php';
+		require_once $this->path . 'core/class-bp-notification-shortcode-helper.php';
+
+		BP_Notification_Shortcode_Helper::boot();
+	}
+
+	/**
+	 * Load translation.
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'buddypress-notifications-widget', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+
+	/**
+	 * Register the widget.
+	 */
+	public function register_widget() {
+		register_widget( 'BuddyDev_BPNotification_Widget' );
+	}
+
+	/**
+	 * Ajax clear all notifications for the current user.
+	 */
+	public function clear_notifications() {
+
+		if ( ! is_user_logged_in() ) {
+			return;
+		}
+
+		$user_id = bp_loggedin_user_id();
+
+		check_ajax_referer( 'bp-notifications-widget-clear-all-' . $user_id );
+
+		global $wpdb;
+
+		$bp = buddypress();
+
+		$wpdb->query( $wpdb->prepare( "DELETE FROM {$bp->core->table_name_notifications} WHERE user_id = %d ", $user_id ) );
+
+		wp_send_json_success( __( 'Cleared', 'buddypress-notifications-widget' ) );
+	}
+
+	/**
+	 * Load js
+	 */
+	public function load_js() {
+		wp_enqueue_script( 'bp-notification-widget-clear-js', $this->url . 'notification.js', array( 'jquery' ) );
+	}
+
+	/**
+	 * Get property value
+	 *
+	 * @param string $name Property name.
+	 *
+	 * @return mixed|null
+	 */
+	public function __get( $name ) {
+
+		if ( property_exists( $this, $name ) && ! in_array( $name, $this->guarded_properties ) ) {
+			return $this->{$name};
+		}
+
+		return null;
+	}
+}
+
+/**
+ * Class instance;
+ *
+ * @return BuddyDev_BP_Notifications_Widget_Helper
+ */
+function buddypress_notification_widget() {
+	return BuddyDev_BP_Notifications_Widget_Helper::get_instance();
+}
+
+buddypress_notification_widget();
