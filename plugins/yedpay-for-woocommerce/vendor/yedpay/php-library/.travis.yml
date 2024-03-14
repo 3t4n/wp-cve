@@ -1,0 +1,64 @@
+language: php
+
+dist: trusty
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 5.5
+    - php: 5.6
+    - php: 7.0
+    - php: 7.1
+    - php: 7.2
+      env: composer_update=true
+    - php: 7.3
+      env: composer_update=true
+    - php: 7.4
+      env: composer_update=true
+    - php: 8.0
+      dist: xenial
+      env: composer_update=true
+    - php: 8.1.0
+      dist: bionic
+      env: composer_update=true
+
+install:
+  # Install composer packages
+  - if [[ $composer_update == true ]]; then
+      travis_retry composer update;
+    else 
+      travis_retry composer install --no-interaction --no-suggest; 
+    fi
+  # Install coveralls.phar
+  - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/v2.4.3/php-coveralls.phar -O coveralls.phar
+  - chmod +x coveralls.phar
+  - php coveralls.phar --version
+
+# Create a storage folder for coverage report
+before_script:
+  - mkdir -p build/logs
+  - ls -al
+
+# Testing the app (see phpunit.xml) for configs, generating Code Coverage report
+script:
+  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+after_success:
+# Submit coverage report to Coveralls servers, see .coveralls.yml
+  - travis_retry php coveralls.phar -v
+# Submit coverage report to codecov.io
+  - bash <(curl -s https://codecov.io/bash)
+
+#after_failure:
+
+# Tell Travis CI to monitor only 'master' branch
+branches:
+  only:
+    - master
+
+# You can delete the cache using travis-ci web interface
+cache:
+  directories:
+    - vendor
+    - $HOME/.cache/composer
+  
