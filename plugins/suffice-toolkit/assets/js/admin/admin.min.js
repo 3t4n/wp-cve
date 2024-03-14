@@ -1,0 +1,1 @@
+jQuery(function(i){i(document.body).on("init_tooltips",function(){var t={attribute:"data-tip",fadeIn:50,fadeOut:50,delay:200};i(".tips, .help_tip, .suffice-toolkit-help-tip").tipTip(t),i(".parent-tips").each(function(){i(this).closest("a, th").attr("data-tip",i(this).data("tip")).tipTip(t).css("cursor","help")})}).trigger("init_tooltips")});
