@@ -1,0 +1,36 @@
+/* Initially hide the .wpzoom-secondary-image-container */
+.wpzoom-secondary-image-container {
+	display: none;
+}
+/* Add a class for displaying with animation */
+.show-secondary-image {
+	display: block;
+	transition: display 0.85s;
+	transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+.wpzoom-wc-spi-has-enabled {
+	position: relative;
+}
+.wpzoom-wc-spi-secondary-img {
+	position:absolute;
+	width: auto;
+	height: auto !important;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	transition: opacity 0.85s, visibility 0.85s, -webkit-transform 0.85s;
+	transition: opacity 0.85s, transform 0.85s, visibility 0.85s;
+	transition: opacity 0.85s, transform 0.85s, visibility 0.85s, -webkit-transform 0.85s;
+	transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+.wpzoom-wc-spi-secondary-img.lazyloaded {
+	opacity:0;
+}
+
+.woocommerce .products .product:hover .wpzoom-wc-spi-secondary-img,
+.woocommerce .products-block-post-template .product:hover .wpzoom-wc-spi-secondary-img {
+    opacity: 1;
+    visibility: visible;
+}
