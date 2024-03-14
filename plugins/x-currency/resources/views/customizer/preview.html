@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script data-cfasync="false" type="text/javascript" src="../../../assets/js/switcher.js"></script>
+    <script data-cfasync="false" type="text/javascript" src="../../../assets/js/sticky-default.js"></script>
+    <script data-cfasync="false" type="text/javascript" src="../../../assets/js/shortcode-default.js"></script>
+</head>
+<body>
+    <div class="preview-container" id="root"></div>
+
+    <script data-cfasync="false" type="text/javascript">
+        const root = document.getElementById('root');
+        window.addEventListener( 'x_currency/mount_switcher', (ev) => {
+            if( root.children.length === 0 ) {
+                root.innerHTML = ev.detail;
+            }
+        }, {
+            once: true
+        } )
+    </script>
+</body>
+</html>
