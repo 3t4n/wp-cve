@@ -1,0 +1,106 @@
+<style>
+	#staff_directory_help {
+		max-width: 750px;
+	}
+	#staff_directory_help > div {
+		padding-top: 25px;
+	}
+	#staff_directory_help > div > h3 {
+		border-bottom: 1px solid lightgray;
+		max-width: 650px;
+		padding-bottom: 7px;
+	}
+	#staff_directory_help p {
+		max-width: 550px;
+	}
+	#staff_directory_help li {
+		max-width: 550px;
+	}
+	#staff_directory_help ul{
+		list-style-type: disc;
+		margin-left: 2em;
+	}
+</style>
+<div id="staff_directory_help">
+	<h3>Help &amp; Instructions</h3>
+	<p>This page includes all kinds of helpful tips for getting you up and running.</p>
+	<h3>Contents:</h3>
+	<ol class="quick_nav">
+		<li><a href="#add_a_new_staff_member">Adding a New Staff Member</a></li>
+		<li><a href="#edit_a_staff_member">Editing a Staff Member</a></li>
+		<li><a href="#delete_a_staff_member">Deleting a Staff Member</a></li>
+		<li><a href="#outputting_staff_members">Outputting Staff Members</a></li>
+		<li><a href="#searching_staff_members">Searching Staff Members</a></li>
+		<li><a href="#searching_staff_members_advanced">Advanced Search (PRO)</a></li>
+		<li><a href="#importing_and_exporting_staff_members">Import &amp; Export (PRO)</a></li>
+	</ol>
+	<div id="add_a_new_staff_member">
+		<h3 id="adding-a-new-Staff Member">Adding a New Staff Member</h3>
+		<p>Adding a New Staff Member is easy! There are 3 ways to start adding a new Staff Member</p>
+		<p><strong>How to Add a New Staff Member</strong></p>
+		<ol>
+		<li>Click on "+ New" -&gt; Staff Member, from the Admin Bar or</li>
+		<li>Click on "Add New Staff Member" from the Menu Bar in the WordPress Admin or</li>
+		<li>Click on "Add New Staff Member" from the top of the list of Staff Members, if you're viewing them all.</li>
+		</ol>
+		<h3 id="new-Staff Member-content">New Staff Member Content</h3>
+		<p>You have a few things to pay attention to:</p>
+		<ul>		
+			<li><strong>Staff Member Title:</strong> This will be displayed, in the default list, as the Staff Member's Name. This allows you to have a different format of the Staff Member's name for Display purposes than for Sorting purposes.</li>
+			<li><strong>Staff Member Body:</strong> This is the Bio or Description of the Staff Member.</li>
+			<li><strong>First Name:</strong> This field is used for List, Grid, and other views where having the First Name separate is necessary.</li>
+			<li><strong>Last Name:</strong> This field is used for List, Grid, and other views where having the Last Name separate is necessary.</li>
+			<li><strong>Title:</strong> This is the Staff Member's Job Title, and it is displayed below their name in the default list.</li>
+			<li><strong>Phone:</strong> This field is displayed as part of the Contact Information meta data, below the Staff Member's Name, Title, and Bio.</li>
+			<li><strong>Email:</strong> This field is displayed as part of the Contact Information meta data, below the Staff Member's Name, Title, and Bio  This will be displayed as a clickable link.</li>
+			<li><strong>Featured Image:</strong> This image is shown to the left of the Staff Member.  We recommend using appropriately sized images for your layout.</li>
+		</ul>
+	</div>
+	<div id="edit_a_staff_member">
+		<h3 id="editing-a-Staff Member">Editing a Staff Member</h3>
+		<p><em>This is as easy as adding a New Staff Member!</em></p>
+		<ol>
+		<li>Click on "Staff Members" in the Admin Menu.</li>
+		<li>Hover over the Staff Member you want to Edit and click "Edit".</li>
+		<li>Change the fields to the desired content and click "Update".</li>
+		</ol>
+	</div>
+	<div id="delete_a_staff_member">
+		<h3 id="deleting-a-Staff Member">Deleting a Staff Member</h3>
+		<p><em>This is as easy as adding a New Staff Member!</em></p>
+		<ol>
+		<li>Click on "Staff Members" in the Admin Menu.</li>
+		<li>Hover over the Staff Member you want to Delete and click "Delete". You can also change the Status of a Staff Member, if you want to keep it on file.</li>
+		</ol>
+	</div>
+	<div id="outputting_staff_members">
+		<h3 id="outputting-Staff Members">Outputting Staff Members</h3>
+		<ul>
+		<li>To display a list of staff on your website, use the shortcode <code>[staff_list]</code> in the page content area that you want them to appear.</li>
+		<li>To limit the Staff displayed to a specific category, use the shortcode <code>[staff_list category='the_slug']</code>, where the value of <code>category</code> is the slug of the Category you want displayed.  You can locate the slugs by looking at the List of Staff Member Categories.</li>
+		<li>To display a Table of All Staff, use the shortcode <code>[staff_list style='table']</code>.  To display a Grid of All Staff, use the shortcode <code>[staff_list style='grid']</code>.  <strong>Please Note:</strong> Company Directory Pro is required to gain access to advanced features such as the Grid and Table views.</li>
+		<li>To display a single Staff Member on your Website, use the shortcode <code>[staff_member id="123"]</code>, where the value of id is the Staff Member's internal ID (you can get this shortcode by looking at the Staff Member List or the Edit Staff Member screen, inside WordPress.)</li>
+		</ul>
+	</div>
+	<div id="searching_staff_members">
+		<h3 id="searching_staff_members_heading">Searching Staff Members</h3>
+		<p>By default, your Staff Members will appear along with your posts and pages in your search results. You can turn this off by unchecking the box for "Include Staff Members In Search Results" on your options page.</p>
+		<p>You might also like to show a search for for <em>only</em> your staff. To do that, simply add the shortcode <code>[search_staff_members]</code> to any page. This will output a search form that uses normal search form template from your theme (searchform.php), but the search will be restricted to only staff members.</p>
+		<p><strong>Tip:</strong> you can also output the staff member search form by calling this PHP function in your code: <code>&lt;?php echo cd_get_staff_search_form(); ?&gt;</code>. You will probably want to replace all calls to get_search_form() with cd_get_staff_search_form() in your theme's search.php template (if you have one).</p>
+	</div>
+	<div id="searching_staff_members_advanced">
+		<h3>Advanced Search (PRO)</h3>
+		<p>Company Directory Pro also includes an advanced search form, which lets your visitors search by first name, last name, and department (i.e., Staff Category).</p>
+		<p>To output the advanced search form, simply add the shortcode<br /><code>[search_staff_members mode="advanced"]</code> to any page.</p>
+		<p>If you'd like to customize the advanced search form, simply copy the file 'search-staff-members-form.php' from our plugins' "templates" folder into the root folder of your theme, and customize it to your liking. The plugin will automatically detect and use your custom template.</p>
+		<p><strong>Tip:</strong> you can also output the advanced search form by calling this PHP function in your code: <code>&lt;?php echo cd_get_staff_search_form(true); ?&gt;</code>. You will probably want to replace all calls to get_search_form() with cd_get_staff_search_form(true) in your theme's search.php template (if you have one).</p>
+	</div>
+	<div id="importing_and_exporting_staff_members">
+		<h3>Import &amp; Export Staff Members (PRO)</h3>
+		<p>Company Directory Pro allows you to Bulk Import and Export your staff members, to save countless hours on data entry!</p>
+		<p>To import your Staff Members, first you must create a CSV file that contains matching columns to the CSV Headers listed below:<br/> <code>'Full Name','Body','First Name','Last Name','Title','Phone','Email','Address','Website','Categories','Photo'</code></p>
+		<p>Place the relevant data into each column, such as the member's name into the Full Name column.  The Category column expects a list of Category ID's -- to obtain these, either use the Export tool (if moving from one site to another) or create the Categories ahead of time and manually insert the ID's, as needed.</p>
+		<p>To import photos, the photo to be imported must be available online (ie, you should be able to visit it in a web-browser.)  Simply input the path to the photo, online, in the Photo column of your CSV and the Importer will automatically upload and attach the photo.  This feature requires that your WordPress uploads directory be writeable.</p>
+		<p>To Export your Staff Members, simply click the Export Staff Members button and you're all set!</p>
+	</div>
+</div>
