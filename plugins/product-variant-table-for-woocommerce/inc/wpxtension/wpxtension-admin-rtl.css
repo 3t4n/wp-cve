@@ -1,0 +1,125 @@
+/* Toggle Switcher CSS */
+.wpx-table input[type=checkbox]:checked::before {
+  content: "";
+}
+.wpx-table input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.wpx-table input[type=checkbox]:focus {
+  outline: 0;
+  border-color: #a9a9a9;
+  box-shadow: none;
+}
+
+.wpx-table input[type=checkbox] {
+  height: 32px;
+  width: 52px;
+  border-radius: 16px;
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 10px ;
+  border: 2px solid #a9a9a9;
+  background: linear-gradient(-180deg, #a9a9a9 0%, #a9a9a9 100%);
+  transition: all 0.2s ease;
+}
+
+.wpx-table input[type=checkbox]:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 2px rgba(44, 44, 44, 0.2);
+  transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+}
+
+.wpx-table input[type=checkbox]:checked {
+  border-color: #8012f9;
+  background: linear-gradient(-180deg, #8012f9 0%, #8012f9 100%);
+}
+
+.wpx-table input[type=checkbox]:checked:focus {
+  border-color: #8012f9;
+  box-shadow: none;
+}
+
+.wpx-table input[type=checkbox]:checked:after {
+  transform: translatex(-20px);
+}
+
+/*Input type text size*/
+.wpx-table input[type=text] {
+  max-width: 280px;
+}
+
+/*Setting Element CSS*/
+
+.regular-ele-width{
+    width: 20em;
+}
+
+.wpx-lock-wrapper span{
+    color: #9e0303;
+    font-size: 16px;
+    margin-top: 3px;
+}
+
+.wpx-need-pro{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+label.wpx-number-group {
+    display: inline-flex;
+}
+
+label.wpx-number-group input {
+    width: 55px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+label.wpx-number-group span {
+    background-color: #8c8f94;
+    color: #fff;
+    padding:5px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+/*Row Title CSS*/
+.wpx-table .row-title{
+  width:  200px;
+}
+
+
+/*New Tag CSS*/
+.wpx-table tr.new{
+  position: relative;
+}
+
+/*.wpx-table tr.new td{
+  padding:  20px 10px;
+}*/
+
+.wpx-table tr.new:after {
+  content: attr(data-new-tag);
+  position: absolute;
+  background: #8012f9;
+  color: white;
+  padding: 0 3px;
+  line-height: 2;
+  bottom: 0;
+  left: 0;
+  font-size: 9px;
+}
