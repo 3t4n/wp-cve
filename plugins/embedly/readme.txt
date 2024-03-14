@@ -1,0 +1,346 @@
+=== Embedly ===
+
+Contributors: Embedly
+Tags: embed, oembed, video, image, pdf, card
+Requires at least: 3.8
+Tested up to: 4.9.4
+Stable tag: 4.9.2
+License: GPLv2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+The Embedly Plugin extends Wordpress's auto-embed feature to give your blog more media types and style optons.
+
+== Description ==
+
+Enhance the default Wordpress embedding to get previews for any article,
+including your own blog posts. You also get embeds for Gfycat, Twitch, Google
+Maps, and Embedly’s growing list of [500+ supported
+providers](http://embed.ly/providers).
+
+You can customize the style of the embeds, to optimize for darker WP themes,
+alignment, and width. In addition, social buttons can be added around the embeds
+to make it easier to share content from your blog posts.
+
+If you have an Embedly Cards account, you can link it to the plugin with your Embedly API key.  Not only does this remove branding from the cards, it also gives you access to analytics and viewer behaviors for most popular music and video player embeds (YouTube, Vimeo, Instagram, SoundCloud).  Find out how many people viewed your embeds for how long. To learn more about Embedly Cards please visit [our website](http://embed.ly/cards).
+
+Using it is as simple as the default Wordpress embedding. Embed media by pasting its URL in a single line when writing a post
+
+The plugin automatically displays an embed of the media in the Wordpress post
+editor (for WP 4.0+).
+
+Fair Warning: This plugin generates static HTML content for your posts.  After you deactivate
+the plugin, that HTML will still remain behind in all posts where the plugin was used to create
+embeds.
+
+
+== Installation ==
+
+
+Using the Plugin Manager
+
+1. Click Plugins in the Wordpress Dashboard sidebar.
+
+1. Click Add New.
+
+1. Search for Embedly.
+
+1. Click Install
+
+1. Click Install Now
+
+1. Click Activate Plugin
+
+1. Create a new post and paste a URL. It will automatically turn into an embed.
+
+1. (optional) Save your Embedly API key to link your Embedly Cards account for analytics and unbranding
+
+
+Manually
+
+1. Upload `embedly` to the `/wp-content/plugins/` directory
+
+1. Activate the plugin through the 'Plugins' menu in WordPress
+
+1. Go through the sign up flow as described above.
+
+
+
+Multi-Site
+
+1. Navigate to My Sites -> Network Admin
+
+1. Follow Steps 1-5 in Using the Plugin Manager setup above, `Do not Network Activate`
+
+1. Go to each site's dashboard and activate Embedly in Plugins section
+
+1. Go through the sign up flow as described above.
+
+
+
+== Frequently Asked Questions ==
+
+=
+Is this plugin for me?
+=
+
+Yes
+
+=
+Where do I get a key?
+=
+
+You can obtain a key when sign up for an Embedly account. You
+can also get your key anytime by going to your [Embedly
+account](http://app.embed.ly).
+
+=
+How do I embed "any" URL?
+=
+
+In the post editor, once the plugin is installed, paste in the URL you are
+trying to embed.
+
+=
+What happens after I deactivate the plugin or delete my Embedly account?
+=
+
+Cards will remain active even if you delete the plugin and/or delete your Embedly account.  This happens
+because after we generate a card for your post, it is converted into static HTML.  This HTML gets saved
+to the post.  Removing the plugin has no effect on posts that were created in the past.
+
+=
+I updated a setting for an embed but the embed didn't reflect the change?
+=
+
+Advanced Settings only affect newly generated cards.  If you wish to change the appearance of a pre-existing
+card, you will have to recreate the card in the post editor after making any settings changes.
+
+=
+Do I need a key?
+=
+
+No. An Embedly API key is optional. It's only required if you have an Embedly Cards account and you want to remove embedly branding or you want to view analytics about the content embedded on your posts.
+
+=
+What is your support email?
+=
+
+support@embed.ly
+
+=
+Do you support multi-site?
+=
+
+Yes, see steps above to install for multi-site.
+Note: You will need to activate Embedly for each site.
+
+=
+Can the width and alignment be changed?
+=
+Yes! Both the width and alignment can be changed for embeds that use the plugin.
+You can make these adjustments under Advanced Embed Settings in the Embedly
+plugin settings in your Wordpress Dashboard.
+
+=
+Can I change the CSS of the embeds?
+=
+
+No, but you have a few options in styling under the Advanced Embed Settings section of
+the Embedly plugin dashboard.
+
+=
+What options are there for styling the embeds?
+=
+
+You can change the width, alignment, and adjust the cards to work better for
+darker themes.
+
+=
+How do I find more analytics?
+=
+
+You can view the full set of analytics on your embed by going to your account
+dashboard.
+
+=
+How does this affect my SEO?
+=
+
+The embeds from the Embedly Wordpress plugin include title and description meta
+information that can provide relevant information to search engines about the
+embeds to boost SEO.
+
+== Screenshots ==
+
+
+1. Advanced Embed Settings
+
+2. Writing a post and embedding.
+
+3. Sample Post.
+
+
+== Changelog ==
+
+= 4.7.0 =
+
+* Having an active app.embed.ly account is now optional to use the plugin! Users who want access to unbranded
+card embeds and/or analytics can elect to input their Embedly API key in the plugin settings, but users who just want
+to get started embedding no longer need to create an embedly account and activate the plugin.
+
+= 4.0.9 =
+
+* Improved plugin security.
+
+= 4.0.6 =
+
+* Embedly is not currently supporting historical analytics for embeds, but you can still see realtime views.
+* Improves the implementation of javascript dependencies via the wp_enqueue_script api.
+
+= 4.0 =
+
+* Removed Embedly TinyMCE Button.
+* Added Editor Preview URL functionality for all URLS (WP v4.0+)
+* Redesigned Embedly Admin page
+* All embeds will be generated as Embedly Cards
+
+= 3.2 =
+
+* Embedly TinyMCE dialog and dependencies managed server side.
+* Refactor code to use class structure.
+* Clean up deprecated SQL generation to make compliant with WP3.6 and above.
+
+= 3.1.3 =
+
+* Fix Add Post bug in IE.
+
+= 3.1.2 =
+
+* Enable Twitter WP OEmbed.
+
+= 3.1 =
+
+* Fixes issue with Embedly not loading on WP3.9.
+* Load tiny_mce_popup_4_0.js when TinyMCE is v4.0.
+
+= 3.0 =
+
+* Upgrade Embedly TinyMce editor option to use Embedly Cards.
+
+= 2.3.0 =
+
+* Use TinyMCE provided by WP Core.
+* Fixes issue with HTML editting and formatting.
+
+= 2.2.2 =
+
+* Change server side calls to HTTP to avoid issues.
+* Disable rocketloader syntax.
+
+= 2.2 =
+
+* Update TinyMce Popup js to latest.
+* Update to latest JQuery 1.10.2.
+* Update Powered by link destination to code generator.
+* Fix powered by logo for RSS generation.
+* Add support for links to open in new window.
+
+= 2.1.4 =
+
+* Support for blogs using HTTPS.
+* Steps for multi-site setup.
+
+= 2.1.2 =
+
+* Use wp-includes tiny_mce_popup.js
+* Compatible with WP 3.5
+
+= 2.1.1 =
+
+* Providers save fix.
+
+= 2.1 =
+
+* Admin Redesign.
+* embedly_settngs option for wp_options table.
+* SQL optimizations.
+
+= 2.0.9 =
+
+* Fix for feature status check.
+
+= 2.0.8 =
+
+* Allow script tag embeds.
+
+= 2.0.6 =
+
+* Add Embedly providers on 'plugins_loaded' instead of 'init' and other tweaks
+
+= 2.0.5 =
+
+* Fixing the path to TinyMCE plugin.
+
+= 2.0.4 =
+
+* Updated flow for previewing and updating embeds.
+
+* Improved previews for preview endpoint.
+
+* Better error handling for loading plugin in Post Editor.
+
+= 2.0.3 =
+
+* Resolve issue with tag attributes getting stripped
+
+* Resolve quirks with height getting set incorrectly
+
+= 2.0.2 =
+
+* Resolve conflict with WordPress image editing
+
+= 2.0.1 =
+
+* Resolves Rich Editor not showing up.
+
+= 2.0 =
+
+* Adds Embedly TinyMCE plugin to Rich Editor.
+
+* Support for Embedly Key to Embed "any" URL.
+
+= 1.0 =
+
+A few fixes.
+
+= 0.9 =
+
+Initial Version
+
+
+
+== Upgrade Notice ==
+
+= 2.0 =
+
+Embed "any" URL.
+
+= 2.1 =
+
+Admin Redesign.
+
+= 2.2 =
+
+Update tinymce and jquery libs.
+
+= 3.0 =
+
+Embedly rich post editor option now uses Embedly Cards layout.
+
+= 3.1 =
+
+Dynamically loading Embedly popup based on TinyMCE Version.
+
+= 3.2 =
+
+Refactor Embedly TinyMCE Dialog to generate via iframe request.
