@@ -1,0 +1,194 @@
+/**
+ * CSS for plugin admin pages
+ *
+ * @package     vgw-metis
+ * @copyright   Verwertungsgesellschaft Wort
+ * @license     https://www.gnu.org/licenses/gpl-3.0.html
+ * @author      Torben Gallob
+ * @author      Michael Hillebrand
+ *
+ */
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    min-width: 150px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 115%;
+    font-size: 1.2em;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* special tooltip rounded boxes for limit status */
+.tooltip.chip {
+    background: #777;
+    width: 50px;
+    color: white;
+    height: 1.4em;
+    line-height: 1.4em;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 0.7em;
+}
+
+.tooltip.limit-reached {
+    background: #00f3c2;
+}
+
+.tooltip.limit-proportionally-reached {
+    background: #0190f9;
+}
+
+.tooltip.limit-not-reached {
+    background: #ed5565;
+}
+
+.tooltip.limit-not-set {
+    background: #b5b5b5;
+}
+
+
+/* pixel table */
+.wp-list-table .column-id {
+    width: 80px;
+}
+.wp-list-table .column-min_hits {
+    width: 170px;
+}
+.wp-list-table .column-active {
+    width: 130px;
+}
+
+/* metis metaboxes */
+.wp_metis_metabox {
+
+}
+
+.wp_metis_metabox > p {
+    margin: 0 0 20px 0;
+}
+
+.wp_metis_metabox > p > label {
+    display: block;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+
+.wp_metis_metabox > p input[type=radio] + label,
+.wp_metis_metabox > p input[type=checkbox] + label{
+    display: inline;
+    padding: 0 10px 0 0;
+    font-weight: normal;
+}
+
+
+/* messages / posts with pixels */
+.messages .column-post_title { width: 30%; }
+.messages .column-post_type { width: 5%; text-align: center; }
+.messages .column-perma_link { width: 20%; }
+.messages .column-text_length { width: 5%; text-align: center; }
+.messages .column-count_started { width: 10%; text-align: center; }
+.messages .column-min_hits {  width: 15%; }
+.messages .column-state { width: 10%; }
+
+/* create message */
+.message h2 {
+    margin: 2em 0;
+}
+
+.message ul.urls {
+    list-style: none;
+    margin: 0 0 1em 0;
+    padding: 0;
+    width: 100%;
+}
+
+.message ul.urls > li {
+    padding: 0 0 1em 0;
+}
+
+.message ul.urls > li a.action-remove-url {
+    display: none;
+}
+
+.message ul.urls > li:hover a.action-remove-url {
+    display: inline;
+    padding-left: 0.5em;
+    cursor: pointer;
+}
+
+
+.message textarea {
+    width: 100%;
+    max-width: 80em;
+    height: 300px;
+}
+
+.message .form-table th {
+    width: 225px;
+}
+
+.message hr {
+    margin: 2em 0;
+}
+
+/* transfer list */
+
+#transfer-list {
+    display: flex;
+    gap: 3em;
+    width: 100%;
+    max-width: 1600px;
+}
+
+#transfer-list > table {
+    font-size: 1.2em;
+    flex: 1 1 auto;
+    border: 1px solid #ccc;
+}
+
+#transfer-list > table tr.table-title-row th {
+    background: #e7e7e7;
+    text-align: center;
+    padding: 10px;
+    font-weight: normal;
+}
+
+#transfer-list > table tr.column-titles-row th {
+    text-align: left;
+    padding: 10px;
+}
+
+#transfer-list > table tbody td {
+    padding: 10px;
+}
+
+#transfer-list > table tbody tr:hover {
+    background: #e7e7e7;
+}
+
+#transfer-list tr.invisible-row {
+    display: none;
+}
+
+#transfer-list .remove-participant,
+#transfer-list .add-participant {
+    cursor: pointer;
+}

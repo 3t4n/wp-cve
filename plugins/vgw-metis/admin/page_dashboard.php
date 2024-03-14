@@ -1,0 +1,62 @@
+<?php
+
+namespace WP_VGWORT;
+
+/**
+ * Dashboard Page View Class
+ *
+ * holds all things necessary to set up the dashboard page template
+ *
+ * @package     vgw-metis
+ * @copyright   Verwertungsgesellschaft Wort
+ * @license     https://www.gnu.org/licenses/gpl-3.0.html
+ * @author      Torben Gallob
+ * @author      Michael Hillebrand
+ *
+ */
+class Page_Dashboard extends Page {
+	/**
+	 * constructor
+	 */
+	public function __construct( object $plugin ) {
+		parent::__construct( $plugin );
+
+		// add menu and submenu item
+		add_action( 'admin_menu', [$this, 'add_dashboard_menu'] );
+	}
+
+	/**
+	 * add the main menu entry and the submenu for the dashboard
+	 *
+	 * @return void
+	 */
+	public function add_dashboard_menu(): void {
+		add_menu_page( esc_html__( 'VG WORT METIS Dashboard', 'vgw-metis' ), esc_html__( 'VG WORT METIS', 'vgw-metis' ), 'manage_options', 'metis-dashboard', array(
+			$this,
+			'render'
+		), 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxzdmcgdmlld0JveD0iMjAwLjE3OSAxMjMuNzM1IDE4LjIyOCAxOC41OTEiIHdpZHRoPSIxOC4yMjgiIGhlaWdodD0iMTguNTkxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cGF0aCBkPSJNIDIwMS4xOTIgMTI1Ljk0MyBMIDIwMy44NzcgMTI1Ljk0MyBMIDIwNS43NDYgMTMxLjkxOSBMIDIwNy41ODcgMTI1Ljk0MyBMIDIxMC4xOTMgMTI1Ljk0MyBMIDIwNy4xMTEgMTM0LjI0NyBMIDIwNC4zMyAxMzQuMjQ3IFogTSAyMTMuOTEyIDEzMS4yMzkgTCAyMTMuOTEyIDEyOS41MTIgTCAyMTcuODc3IDEyOS41MTIgTCAyMTcuODc3IDEzMy4wNTIgUSAyMTYuNzM5IDEzMy44MjggMjE1Ljg2MyAxMzQuMTA4IFEgMjE0Ljk4OCAxMzQuMzg5IDIxMy43ODggMTM0LjM4OSBRIDIxMi4zMDkgMTM0LjM4OSAyMTEuMzc3IDEzMy44ODUgUSAyMTAuNDQ2IDEzMy4zOCAyMDkuOTMzIDEzMi4zODQgUSAyMDkuNDIxIDEzMS4zODcgMjA5LjQyMSAxMzAuMDk1IFEgMjA5LjQyMSAxMjguNzM2IDIwOS45ODEgMTI3LjczMSBRIDIxMC41NDIgMTI2LjcyNSAyMTEuNjI0IDEyNi4yMDQgUSAyMTIuNDY4IDEyNS44MDIgMjEzLjg5NSAxMjUuODAyIFEgMjE1LjI3MiAxMjUuODAyIDIxNS45NTQgMTI2LjA1MSBRIDIxNi42MzcgMTI2LjMgMjE3LjA4NyAxMjYuODI0IFEgMjE3LjUzNyAxMjcuMzQ4IDIxNy43NjQgMTI4LjE1MiBMIDIxNS4yODkgMTI4LjU5NCBRIDIxNS4xMzYgMTI4LjEyNCAyMTQuNzcgMTI3Ljg3NSBRIDIxNC40MDUgMTI3LjYyNiAyMTMuODM5IDEyNy42MjYgUSAyMTIuOTk1IDEyNy42MjYgMjEyLjQ5MyAxMjguMjEyIFEgMjExLjk5MiAxMjguNzk4IDIxMS45OTIgMTMwLjA2NyBRIDIxMS45OTIgMTMxLjQxNSAyMTIuNDk5IDEzMS45OTMgUSAyMTMuMDA2IDEzMi41NyAyMTMuOTEyIDEzMi41NyBRIDIxNC4zNDMgMTMyLjU3IDIxNC43MzMgMTMyLjQ0NiBRIDIxNS4xMjQgMTMyLjMyMSAyMTUuNjI4IDEzMi4wMjEgTCAyMTUuNjI4IDEzMS4yMzkgWiIgc3R5bGU9ImZpbGw6IG5vbmU7IiAvPg0KICA8cGF0aCBkPSJNIDIwMS4yMzggMTM1LjczNSBMIDIwMS41MzIgMTM1LjczNSBMIDIwMS42MzggMTM2LjI5NSBMIDIwMS43OTMgMTM1LjczNSBMIDIwMi4wODYgMTM1LjczNSBMIDIwMi4yNDEgMTM2LjI5NSBMIDIwMi4zNDcgMTM1LjczNSBMIDIwMi42NCAxMzUuNzM1IEwgMjAyLjQxOSAxMzYuNzM3IEwgMjAyLjExNSAxMzYuNzM3IEwgMjAxLjk0IDEzNi4xMDYgTCAyMDEuNzY1IDEzNi43MzcgTCAyMDEuNDYxIDEzNi43MzcgWiBNIDIwMi42MjEgMTM2LjIzNyBRIDIwMi42MjEgMTM1Ljk5MSAyMDIuNzU4IDEzNS44NTQgUSAyMDIuODk1IDEzNS43MTggMjAzLjEzOSAxMzUuNzE4IFEgMjAzLjM4OSAxMzUuNzE4IDIwMy41MjQgMTM1Ljg1MiBRIDIwMy42NiAxMzUuOTg2IDIwMy42NiAxMzYuMjI4IFEgMjAzLjY2IDEzNi40MDQgMjAzLjYwMSAxMzYuNTE3IFEgMjAzLjU0MiAxMzYuNjI5IDIwMy40MyAxMzYuNjkyIFEgMjAzLjMxOCAxMzYuNzU0IDIwMy4xNTEgMTM2Ljc1NCBRIDIwMi45ODIgMTM2Ljc1NCAyMDIuODcxIDEzNi43IFEgMjAyLjc1OSAxMzYuNjQ2IDIwMi42OSAxMzYuNTI5IFEgMjAyLjYyMSAxMzYuNDEyIDIwMi42MjEgMTM2LjIzNyBaIE0gMjAyLjkzMSAxMzYuMjM4IFEgMjAyLjkzMSAxMzYuMzkgMjAyLjk4NyAxMzYuNDU2IFEgMjAzLjA0NCAxMzYuNTIyIDIwMy4xNDEgMTM2LjUyMiBRIDIwMy4yNDEgMTM2LjUyMiAyMDMuMjk1IDEzNi40NTcgUSAyMDMuMzUgMTM2LjM5MiAyMDMuMzUgMTM2LjIyNCBRIDIwMy4zNSAxMzYuMDgzIDIwMy4yOTMgMTM2LjAxOCBRIDIwMy4yMzYgMTM1Ljk1MiAyMDMuMTM4IDEzNS45NTIgUSAyMDMuMDQ1IDEzNS45NTIgMjAyLjk4OCAxMzYuMDE5IFEgMjAyLjkzMSAxMzYuMDg1IDIwMi45MzEgMTM2LjIzOCBaIE0gMjAzLjc0OCAxMzYuNzM3IEwgMjAzLjc0OCAxMzUuNzM1IEwgMjA0LjI2NSAxMzUuNzM1IFEgMjA0LjQwOCAxMzUuNzM1IDIwNC40ODQgMTM1Ljc1OSBRIDIwNC41NiAxMzUuNzg0IDIwNC42MDYgMTM1Ljg1MSBRIDIwNC42NTMgMTM1LjkxNyAyMDQuNjUzIDEzNi4wMTMgUSAyMDQuNjUzIDEzNi4wOTYgMjA0LjYxNyAxMzYuMTU3IFEgMjA0LjU4MiAxMzYuMjE3IDIwNC41MTkgMTM2LjI1NSBRIDIwNC40OCAxMzYuMjc5IDIwNC40MTEgMTM2LjI5NSBRIDIwNC40NjYgMTM2LjMxMyAyMDQuNDkxIDEzNi4zMzIgUSAyMDQuNTA5IDEzNi4zNDQgMjA0LjU0MSAxMzYuMzg0IFEgMjA0LjU3MyAxMzYuNDI1IDIwNC41ODQgMTM2LjQ0NiBMIDIwNC43MzQgMTM2LjczNyBMIDIwNC4zODQgMTM2LjczNyBMIDIwNC4yMTkgMTM2LjQzMSBRIDIwNC4xODcgMTM2LjM3MSAyMDQuMTYzIDEzNi4zNTQgUSAyMDQuMTI5IDEzNi4zMyAyMDQuMDg3IDEzNi4zMyBMIDIwNC4wNTkgMTM2LjMzIEwgMjA0LjA1OSAxMzYuNzM3IFogTSAyMDQuMDU5IDEzNi4xNDEgTCAyMDQuMTkgMTM2LjE0MSBRIDIwNC4yMTEgMTM2LjE0MSAyMDQuMjcyIDEzNi4xMjcgUSAyMDQuMzAzIDEzNi4xMjEgMjA0LjMyMiAxMzYuMDk2IFEgMjA0LjM0MiAxMzYuMDcgMjA0LjM0MiAxMzYuMDM4IFEgMjA0LjM0MiAxMzUuOTg5IDIwNC4zMTEgMTM1Ljk2MyBRIDIwNC4yOCAxMzUuOTM3IDIwNC4xOTUgMTM1LjkzNyBMIDIwNC4wNTkgMTM1LjkzNyBaIE0gMjA0LjY1OSAxMzUuNzM1IEwgMjA1LjYgMTM1LjczNSBMIDIwNS42IDEzNS45ODIgTCAyMDUuMjg0IDEzNS45ODIgTCAyMDUuMjg0IDEzNi43MzcgTCAyMDQuOTc1IDEzNi43MzcgTCAyMDQuOTc1IDEzNS45ODIgTCAyMDQuNjU5IDEzNS45ODIgWiIgdHJhbnNmb3JtPSJtYXRyaXgoMy43NzUwNDQsIDAsIDAsIDMuODEyNSwgLTU1OC40NDcwODMsIC0zODAuOTYzODA2KSIgc3R5bGU9ImZpbGw6IG5vbmU7Ii8+DQo8L3N2Zz4=', 250 );
+		add_submenu_page( 'metis-dashboard', esc_html__( 'VG WORT METIS Dashboard', 'vgw-metis' ), esc_html__( 'Dashboard', 'vgw-metis' ), 'manage_options', 'metis-dashboard', array(
+			$this,
+			'render'
+		), 1 );
+	}
+
+	/**
+	 * loads the views template file > render page
+	 *
+	 * @return void
+	 */
+	public function render(): void {
+		$this->plugin->notifications->display_notices();
+		require_once 'partials/dashboard.php';
+	}
+
+	public function dev_info() {
+		$file = $this->plugin->locations['path'] . 'metis-version.php';
+		if( file_exists($file)) {
+			require $file;
+
+			echo '| <b>Dev Info</b>: ' . esc_html($vgw_metis_commit);
+		}
+	}
+}
