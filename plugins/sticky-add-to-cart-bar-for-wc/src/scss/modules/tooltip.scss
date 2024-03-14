@@ -1,0 +1,106 @@
+.tooltip {
+    float: right;
+    background-color:#555;
+    color:#fff;
+    border-radius:50%;
+    width:15px;
+    height:inherit;
+    display:inline-block;
+    position:relative;
+    text-align:center;
+    cursor:help;
+    font-size: 12px;
+}
+
+@media (min-width: 768px) {
+    .tooltip .tipbox {
+        padding: 0 20px;
+        min-width:200px;
+        top:40px;
+        left:50%;
+        transform:translate(-50%, 0);
+        color:#fff;
+        background-color:#333;
+        font-weight:normal;
+        font-size:13px;
+        border-radius:8px;
+        position:absolute;
+        z-index:99999999;
+        box-sizing:border-box;
+        box-shadow:0 1px 8px rgba(0,0,0,0.5);
+        display:none;
+    }
+
+    .tooltip:hover .tipbox {
+        display:block;
+    }
+
+    .tooltip .tipbox i {
+        position:absolute;
+        bottom:100%;
+        left:50%;
+        margin-left:-12px;
+        width:24px;
+        height:12px;
+        overflow:hidden;
+    }
+
+    .tooltip .tipbox i::after {
+        content:'';
+        position:absolute;
+        width:12px;
+        height:12px;
+        left:50%;
+        transform:translate(-50%,50%) rotate(45deg);
+        background-color:#333;
+        box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    }
+}
+
+@media (max-width: 768px) {
+    .tooltip .tipbox {
+        min-width:200px;
+        max-width:400px;
+        top:50%;
+        right:100%;
+        margin-right:20px;
+        transform:translate(0, -50%);
+        padding:0 20px;
+        color:#fff;
+        background-color:#333;
+        font-weight:normal;
+        font-size:13px;
+        border-radius:8px;
+        position:absolute;
+        z-index:99999999;
+        box-sizing:border-box;
+        display:none;
+        border:1px solid #333;
+    }
+
+    .tooltip:hover .tipbox {
+        display:block;
+    }
+
+    .tooltip .tipbox i {
+        position:absolute;
+        top:50%;
+        left:100%;
+        margin-top:-12px;
+        width:12px;
+        height:24px;
+        overflow:hidden;
+    }
+
+    .tooltip .tipbox i::after {
+        content:'';
+        position:absolute;
+        width:12px;
+        height:12px;
+        left:0;
+        top:50%;
+        transform:translate(-50%,-50%) rotate(-45deg);
+        background-color:#333;
+        border:1px solid #333;
+    }
+}
