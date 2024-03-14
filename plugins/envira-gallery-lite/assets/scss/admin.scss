@@ -1,0 +1,1472 @@
+/* ==========================================================================
+   admin.css loads on all Envira Administration Screens:
+   - WP_List_Tables
+   - Add New
+   - Albums
+   - Settings
+   - NextGEN Import
+
+   Any styles that will be used by all of the above (or are useful to be included
+   for future use) should be added to this file:
+   - Header and Logo
+   - WordPress Red Button
+   ========================================================================== */
+
+/* ==========================================================================
+   Imports
+   ========================================================================== */
+@import 'vars';
+@import 'mixins';
+
+/** UI Elements **/
+@import 'buttons';
+
+body.post-type-envira,
+body.post-type-envira_album {
+	// Remove left padding on the main content area, so items can be full width e.g. the header
+	#wpcontent {
+		padding-left: 0;
+		min-height: 80vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	// adding some padding/margin around the WordPress update-nag
+	.update-nag {
+		margin-left: 20px;
+		margin-bottom: 20px;
+	}
+	/**
+	* Subheading
+	*/
+	.subheading {
+		background-color: $white;
+		height: 45px;
+		margin-left: -20px;
+		@include mq(xs) {
+			height: auto;
+			padding-bottom: 20px;
+		}
+
+		h1 {
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 45px;
+			margin: 0 0 0 20px;
+			padding-left: 20px;
+		}
+	}
+
+	/**
+	* Wrapper
+	*/
+	div.wrap {
+		margin: 0;
+
+		/**
+		* Page Title Action (i.e. Add New)
+		*/
+		a.page-title-action {
+			position: relative;
+			top: -53px;
+			left: 115px; /* default - English */
+			&:hover {
+				background: $primary_button_color_hover;
+				border-color: $primary_button_color_hover;
+				color: $white;
+			}
+			/* display: none; */ /* Trying To Prevent The "Shift" Upload Page Load Before JS can move the button */
+			/* margin-left: 10px; */ /* Change WordPress 4.7 */
+		}
+
+		/**
+		* Screen Title
+		* - h1 used from WordPress 4.3+
+		* - h2 used in WordPress 4.2-
+		*/
+		> h1,
+		> h2 {
+			margin: 0 0 20px 0;
+			padding: 15px 0 10px;
+			background: $white;
+			font-weight: 600;
+			font-size: 20px;
+			width: 100%;
+			text-indent: 20px;
+
+			/**
+			* Page Title Action (i.e. Add New)
+			*/
+			a.page-title-action {
+				top: -3px;
+				left: auto;
+				&:hover {
+					background: $primary_button_color_hover;
+					border-color: $primary_button_color_hover;
+					color: $white;
+				}
+				/* display: none; */ /* Trying To Prevent The "Shift" Upload Page Load Before JS can move the button */
+				/* margin-left: 10px; */ /* Change WordPress 4.7 */
+			}
+
+			/**
+			* Subtitle (search results title)
+			*/
+			span.subtitle {
+				float: right;
+			}
+		}
+
+		/**
+        * Tab Panels
+        * - By default, they're hidden and the .envira-active class displays them
+        */
+		.envira-tab {
+			display: none;
+
+			/**
+            * Active Tab
+            */
+			&.envira-active {
+				display: block;
+			}
+		}
+
+		/**
+		* Code Snippets
+		*/
+		div.envira-code {
+			position: relative;
+			margin: 0 0 10px 0;
+
+			/**
+            * Clearfix
+            */
+			&:after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+
+			code {
+				display: block;
+				font-size: 11px;
+				padding: 5px 20px 5px 5px;
+			}
+
+			/**
+			* Copy to Clipboard
+			*/
+			a.envira-clipboard {
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				color: #23282d;
+
+				span {
+					display: block;
+					text-indent: -9999px;
+				}
+			}
+		}
+	}
+
+	/* ==========================================================================
+	   Button Styles
+	   ========================================================================== */
+	.button {
+		@include borderRadius(2px);
+		padding: 0 16px 1px;
+		height: 33px;
+		line-height: 30px;
+		text-decoration: none;
+		text-shadow: none;
+		font-weight: 600;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+
+		/**
+		* Small
+		*/
+		&.button-small {
+			padding: 0 8px 1px;
+			line-height: 22px;
+			height: 24px;
+		}
+
+		/**
+		* Extra Large
+		* (.button-large is used on publish actions in WordPress, so we don't want to affect that)
+		*/
+		&.button-x-large {
+			padding: 0 32px 1px;
+			line-height: 48px;
+			height: 50px;
+			font-size: 18px;
+			text-transform: uppercase;
+		}
+
+		@include mq(xs) {
+			margin-top: 10px;
+		}
+
+		/**
+		* Screen Options
+		* - Don't set a height
+		*/
+		&.show-settings {
+			height: auto;
+		}
+
+		/**
+		* Green Button
+		* - Replaces WordPress' default primary button style
+		*/
+		&.button-primary {
+			background: $primary_button_color;
+			border-color: $primary_button_color;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			color: $white;
+
+			&:hover {
+				background: $primary_button_color_hover;
+				border-color: $primary_button_color_hover;
+				color: $white;
+			}
+		}
+
+		/**
+		* Red Button
+		*/
+		&.button-danger {
+			background: $danger_button_color;
+			border-color: $danger_button_color;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			color: $white;
+
+			&:hover {
+				background: $danger_button_color_hover;
+				border-color: $danger_button_color_hover;
+				color: $white;
+			}
+		}
+	}
+
+	/* ==========================================================================
+	   Thickbox (used for choosing a Default Gallery/Album)
+	   ========================================================================== */
+	div#TB_window {
+		div.wrap {
+			margin: 10px 20px 0 2px;
+		}
+	}
+	#wpfooter {
+		margin-top: auto;
+		position: relative;
+		.envira-footer-promotion {
+			text-align: center;
+    		font-weight: 400;
+  		  	font-size: 13px;
+   			line-height: normal;
+    		color: #646970;
+    		padding: 30px 0;
+    		margin-bottom: 20px;
+
+		}
+		.envira-footer-promotion-links {
+			margin: 10px 0;
+			color: #646970;
+			span {
+					color: #c3c4c7;
+					padding: 0 7px;
+			}
+		}
+		.envira-footer-promotion-links,
+		.envira-footer-promotion-social {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.envira-footer-promotion-social {
+			gap: 10px;
+			margin: 0;
+		}
+	}
+}
+
+/* ==========================================================================
+   Language Specific
+   ========================================================================== */
+body.post-type-envira.locale-fr-fr,
+body.post-type-envira_album.locale-fr-fr {
+	/**
+	* Wrapper
+	*/
+	div.wrap {
+		/**
+		* Page Title Action (i.e. Add New)
+		*/
+		a.page-title-action {
+			left: 220px;
+		}
+	}
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+#envira-header-temp {
+	position: relative;
+	display: none;
+}
+#envira-top-notification {
+	border-top: 3px solid #D99B3D;
+	position: relative;
+	background-color: #DDDDDD;
+	text-align: center;
+	color: #3C434ACC;
+	height: 40px;
+	vertical-align: middle;
+	p {
+		margin: 0;
+		padding: 0;
+		line-height: 40px;
+		font-size: 13px;
+	}
+	a {
+		color: #D88913;
+		font-size: 13px;
+	}
+	.envira-dismiss {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+}
+#envira-header {
+	background-color: rgb(235, 235, 235);
+	background-image: url('../images/background.jpeg');
+	background-repeat: repeat;
+	height: $header-height;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;   /* <---- NEW    */
+	@include mq(xxs) {
+		padding-top: 46px;
+	}
+
+	h1.envira-logo {
+		margin: 0;
+		margin-left: 20px;
+
+		img {
+			/**
+			* Image width and height (image is 2x so this ensures it displays correctly)
+			*/
+			max-width: 339px;
+
+			/**
+			* Responsive - ensure the logo doesn't exceed the header dimensions
+			*/
+			@include mq(xs) {
+				width: 90%;
+			}
+		}
+	}
+	.envira-right {
+		padding-right: 20px;
+	}
+	.envira-notifications-inbox {
+		position: relative;
+		&[data-count]:after {
+			background: $red;
+			border-radius: 50%;
+			bottom: 100%;
+			color: #fff;
+			content: attr(data-count);
+			display: block;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 12px;
+			font-weight: 700;
+			height: 16px;
+			left: 100%;
+			line-height: 18px;
+			min-width: 16px;
+			position: absolute;
+			text-align: center;
+			transform: translate(-40%, 30%);
+		}
+	}
+}
+
+body.post-type-envira_album {
+	div.wrap {
+		/**
+		* Page Title Action (i.e. Add New)
+		*/
+		a.page-title-action {
+			left: 180px !important;
+		}
+		> h1,
+		> h2 {
+			a.page-title-action {
+				top: -3px !important;
+				left: auto !important;
+			}
+		}
+	}
+}
+body.post-php.post-type-envira_album {
+	div.wrap {
+		/**
+		* Page Title Action (i.e. Add New)
+		*/
+		a.page-title-action {
+			left: 200px !important;
+		}
+		> h1,
+		> h2 {
+			a.page-title-action {
+				top: -3px !important;
+				left: auto !important;
+			}
+		}
+	}
+}
+body.post-php.post-type-envira {
+	div.wrap {
+		/**
+		* Page Title Action (i.e. Add New)
+		*/
+		a.page-title-action {
+			left: 140px !important;
+		}
+		> h1,
+		> h2 {
+			a.page-title-action {
+				top: -3px !important;
+				left: auto !important;
+			}
+		}
+		span.subtitle {
+			display: block;
+			margin-top: -10px;
+			padding-left: 21px;
+		}
+	}
+}
+body.edit-php.post-type-envira {
+	div.wrap {
+		span.subtitle {
+			display: block;
+			margin-top: -15px;
+			margin-bottom: 10px;
+			padding-left: 22px;
+		}
+	}
+}
+
+/* ==========================================================================
+   Inline Notices
+   - These are Envira-specific notices with custom styling for e.g. Instagram oAuth,
+   upgrade / upsells.
+   ========================================================================== */
+.envira-notice {
+	position: relative;
+	margin: 0 0 20px 0;
+	padding: 20px;
+	@include borderRadius(2px);
+
+	/**
+    * Heading
+    */
+	p.envira-intro {
+		border: none !important;
+		margin: 0 0 20px 0 !important;
+		padding: 0 !important;
+	}
+
+	.dashicons.star {
+		color: #ff982d;
+		line-height: 1.3;
+		font-size: 15px;
+		width: 15px;
+		height: 15px;
+	}
+
+	/**
+    * Close Button
+    */
+	.notice-dismiss {
+		top: 10px;
+		right: 10px;
+		color: $white;
+
+		&:before {
+			color: $white;
+			width: 26px;
+			height: 26px;
+			font-size: 22px;
+		}
+	}
+
+	/**
+    * Layout
+    */
+	.no-margin-top {
+		margin-top: 0;
+	}
+
+	/**
+    * Success
+    */
+	&.success {
+		background: $primary_color;
+		color: $white;
+		border: none;
+
+		/**
+        * Button background color needs to be adjusted so it displays over the green background
+        * of the success message
+        */
+		.button.button-primary {
+			background-color: $green_alt;
+			border-color: $green_alt;
+		}
+	}
+
+	/**
+    * Warning
+    */
+	&.warning {
+		background: #fcf8e3;
+		border: 1px solid #faebcc;
+
+		.notice-dismiss {
+			color: $black;
+
+			&:before {
+				color: $black;
+			}
+		}
+	}
+
+	/**
+    * Error
+    */
+	&.error {
+		border-top: 1px solid #dc3232;
+		border-right: 1px solid #dc3232;
+		border-bottom: 1px solid #dc3232;
+	}
+}
+
+.envira-tab .two-column-list {
+	display: table;
+	width: 100%;
+	ul {
+		list-style: none;
+		margin-left: 0;
+		padding-left: 1em;
+		text-indent: -1em;
+		width: 45%;
+		padding-right: 10px;
+		float: left;
+		li:before {
+			content: '+ ';
+		}
+		li {
+			line-height: 1.5;
+		}
+	}
+}
+
+.upgrade-content {
+	.two-column-list {
+		li {
+			line-height: 21px;
+		}
+	}
+}
+
+.cta-buttons {
+	margin-top: 40px;
+	// .button.button-primary {
+	//   margin: -15px 0 40px 0;
+	//   padding: 0 60px;
+	//   line-height: 60px;
+	//   font-weight: 700;
+	//   font-size: 21px;
+	//   height: 60px;
+	// }
+}
+
+/* ==========================================================================
+   Table, Add, Edit Screens
+   ========================================================================== */
+body.post-type-envira.edit-php,
+body.post-type-envira.post-new-php,
+body.post-type-envira.post-php,
+body.post-type-envira_album.edit-php,
+body.post-type-envira_album.post-new-php,
+body.post-type-envira_album.post-php {
+	div.wrap {
+		/**
+		* Remove the margin on the wrapper
+		*/
+		margin: 0;
+
+		/**
+		* Add margin to notices
+		*/
+		> div.error,
+		> div.notice,
+		> div.updated {
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+	}
+}
+
+/* ==========================================================================
+   Notifications Sidebar
+   ========================================================================== */
+.envira-notifications-close,
+.envira-notifications-inbox {
+	&:hover {
+		cursor: pointer;
+	}
+}
+.envira-notifications-drawer {
+	box-sizing: border-box;
+    background: $white;
+    bottom: 0;
+    position: fixed;
+    right: -400px;
+    top: 32px;
+    transition: right 300ms ease 0s,visibility 0s ease 400ms;
+    visibility: hidden;
+    width: 400px;
+    z-index: 1100;
+	border: 1px solid #DDDDDD;
+	.envira-notifications-open & {
+		right: 0;
+		transition: right 300ms ease 0s, visibility 0s ease 0ms;
+		visibility: visible;
+	}
+}
+
+.envira-notifications-overlay {
+	background-color: rgba(0, 0, 0, 0.3);
+	bottom: 0;
+	display: none;
+	left: 0;
+	opacity: .5;
+	position: fixed;
+	right: 0;
+	top: 46px;
+	transition: .5s;
+	z-index: 1052;
+
+	.folded & {
+		left: 36px;
+	}
+
+	.envira-notifications-open & {
+		display: block;
+	}
+
+
+	@media screen and (min-width: 783px) {
+		left: 36px;
+
+		.admin-bar & {
+			top: 32px;
+		}
+	}
+
+	@media screen and (min-width: 961px) {
+		left: 160px;
+
+		.folded & {
+			left: 36px;
+		}
+	}
+}
+
+.envira-notifications-header {
+	background: #EEEEEE;
+	border-bottom: 1px solid #DDDDDD;
+	padding: 18px 40px 18px 20px;
+
+	.envira-notifications-close {
+		position: absolute;
+		right: 18px;
+		top: 22px;
+
+		path {
+			fill: #3C434A;
+		}
+	}
+
+	h3 {
+		color: #3C434A;
+		display: inline-block;
+		font-size: 14px;
+		font-weight: 700;
+		line-height: 21px;
+		margin: 0 10px 0 0;
+	}
+}
+
+.envira-notifications-list {
+	height: calc(100% - 130px);
+	overflow: auto;
+
+	ul {
+		margin: 0;
+	}
+
+	li {
+		border-bottom: 1px solid #DDDDDD;
+		display: flex;
+		margin: 0;
+		padding: 24px;
+		font-size: 14px;
+		color: #3C434A99;
+		&:first-child {
+			border-top: none;
+		}
+
+		h4 {
+			color: hsl(210, 10%, 26%);
+			;
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 21px;
+			margin: 0;
+		}
+	}
+
+	p {
+		color: #3C434A99;
+		font-size: 14px;
+		margin: 8px 0;
+		margin-bottom: 20px;
+		&.envira-start {
+			font-size: 12px;
+		}
+	}
+	.envira-button {
+		padding: 8px 14px;
+		border-radius: 4px;
+		text-decoration: none;
+		font-size: 12px;
+		&.envira-button-primary {
+			background-color: #37993B;
+			color: $white;
+		}
+		&.envira-button-secondary {
+			border: 1px solid #DDDDDD;
+		}
+	}
+
+}
+.envira-button-text {
+	font-size: 12px;
+	color: #3C434AB2;
+}
+.envira-notification-actions {
+	.envira-button {
+		margin-right: 10px;
+	}
+}
+
+.envira-notifications-footer {
+	border-top: 1px solid #DDDDDD;
+	padding: 24px 27px;
+	text-align: right;
+}
+
+#envira-dismissed-title,
+#envira-notifications-show-active,
+.envira-notifications-dismissed {
+	display: none;
+}
+
+.show-dismissed {
+	#envira-notifications-show-dismissed,
+	.envira-notifications-active,
+	#envira-active-title {
+		display: none;
+	}
+
+	#envira-notifications-show-active,
+	#envira-dismissed-title {
+		display: inline-block;
+	}
+
+	.envira-notifications-dismissed {
+		display: block;
+	}
+}
+
+.envira-notifications-dismissed {
+	.envira-notification-dismiss {
+		display: none;
+	}
+}
+
+.envira-notification-icon {
+	margin-right: 10px;
+}
+
+/* ==========================================================================
+   Taxonomy Screens
+   ========================================================================== */
+body.post-type-envira.edit-tags-php,
+body.post-type-envira.taxonomy-envira-tag {
+	div.wrap {
+		margin: 0;
+
+		/**
+		* Add margin to notices
+		*/
+		> div.error,
+		> div.notice,
+		> div.updated {
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+
+		form.search-form,
+		form#edittag,
+		#col-container {
+			/**
+			* Re-establish the left and right margins, so there's spacing between the Admin Menu
+			* and the content
+			*/
+			margin: 0 20px;
+		}
+
+		/**
+		* Reduce our global custom button sizes so they align with inputs
+		*/
+		.button {
+			height: 28px;
+			line-height: 26px;
+		}
+	}
+}
+
+/* ==========================================================================
+   Third Party Screens
+   ========================================================================== */
+body.post-type-envira {
+	div.wrap {
+		/**
+		* Re-establish the left and right margins, so there's spacing between the Admin Menu
+		* and the content for any third party plugins which add sections / pages within Envira
+		*/
+		margin: 0 20px;
+	}
+}
+
+/* ==========================================================================
+   Gallery / Album Selection Media Modal
+   ========================================================================== */
+.media-modal {
+	.media-modal-content {
+		.media-frame-content {
+			.attachments-browser.envira-gallery-editor {
+				/**
+                * Error
+                * - Position below the search bar
+                */
+				div.envira-gallery-error {
+					position: absolute;
+					top: 50px;
+					left: 0;
+					right: 300px;
+				}
+
+				/**
+                * Grid
+                */
+				ul.attachments {
+					li.attachment {
+						width: 20%;
+
+						div.attachment-preview {
+							div.thumbnail {
+								/**
+                                * Thumbnail Image
+                                */
+								img {
+									position: absolute;
+									z-index: 1;
+									top: 0;
+									left: 0;
+									width: 100%;
+									height: 100%;
+									opacity: 0.2;
+								}
+
+								/**
+                                * Title
+                                */
+								strong {
+									position: absolute;
+									z-index: 2;
+									height: 50%;
+									top: 0;
+									left: 0;
+									right: 0;
+									padding: 10px;
+									text-align: center;
+									overflow: hidden;
+									-webkit-box-sizing: border-box;
+									-moz-box-sizing: border-box;
+									box-sizing: border-box;
+									vertical-align: bottom;
+									background: rgba(0, 0, 0, 0.07);
+									text-shadow: 1px 1px #ddd;
+
+									span {
+										display: block;
+										position: absolute;
+										bottom: 10px;
+										left: 0;
+										right: 0;
+										padding: 0 10px;
+										text-align: center;
+									}
+								}
+
+								/**
+                                * Shortcode
+                                */
+								code {
+									position: absolute;
+									z-index: 2;
+									height: 50%;
+									bottom: 0;
+									left: 0;
+									right: 0;
+									padding: 10px;
+									text-align: center;
+									-webkit-box-sizing: border-box;
+									-moz-box-sizing: border-box;
+									box-sizing: border-box;
+									vertical-align: middle;
+									text-shadow: 1px 1px #ddd;
+								}
+							}
+						}
+					}
+				}
+
+				/**
+                * Sidebar
+                */
+				div.media-sidebar {
+					div.settings {
+						.name {
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* ==========================================================================
+   WordPress 5.5+
+   ========================================================================== */
+
+// Remove WP 5.5 metabox arrows
+body.post-type-envira .postbox-header {
+	display: none;
+}
+
+/* ==========================================================================
+   Header Welcome Exceptions
+   ========================================================================== */
+
+.envira-admin-litevspro-section {
+	h3 {
+		font-size: 42px;
+		line-height: 50px;
+		font-weight: 600;
+		margin: 5px auto;
+	}
+}
+
+/* ==========================================================================
+   Gallery List
+   ========================================================================== */
+
+@media screen and (max-width: 782px) {
+	body.post-type-envira
+		.wp-list-table
+		tr:not(.inline-edit-row):not(.no-items)
+		td:not(.check-column) {
+		display: table-cell;
+	}
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media screen and (max-width: 640px) {
+	body.post-type-envira,
+	body.post-type-envira_album {
+		/**
+		* Wrapper
+		*/
+		div.wrap {
+			/**
+			* Screen Title
+			*/
+			h1 {
+				/**
+				* Allow space for the "Search results for..." text to display, when searching
+				*/
+				padding-bottom: 40px;
+
+				/**
+				* Subtitle (search results title)
+				*/
+				span.subtitle {
+					clear: both;
+					width: 100%;
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 340px) {
+	body.post-type-envira,
+	body.post-type-envira_album {
+		/**
+		* Wrapper
+		*/
+		div.wrap {
+			/**
+			* Screen Title
+			*/
+			h1 {
+				text-align: center;
+
+				/**
+				* Page Title Action (i.e. Add New)
+				*/
+				a.page-title-action {
+					display: block;
+					text-align: center;
+					margin: 10px 0 0 0;
+				}
+			}
+		}
+	}
+}
+
+.addon-tag {
+	position: absolute;
+	display: inline-block;
+	padding: 0.75em 3em 0.75em 1.1em;
+	overflow: hidden;
+	color: #fff;
+	z-index: 999;
+	font-weight: bold;
+	left: 0;
+	font-size: 1.3em;
+}
+div.addon-tag:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #1c45ba;
+	-webkit-transform-origin: 100% 0;
+	-ms-transform-origin: 100% 0;
+	transform-origin: 100% 0;
+	-webkit-transform: skew(-45deg);
+	-ms-transform: skew(-45deg);
+	transform: skew(-45deg);
+	z-index: -1;
+}
+
+.envira-admin-content {
+	position: relative;
+	.envira-admin-modal *, .envira-admin-modal *::before, .envira-admin-modal *::after {
+		/* -webkit-box-sizing: border-box; */
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.envira-admin-modal {
+		text-align: center;
+		width: 730px;
+		box-shadow: 0 0 60px 30px rgba(0, 0, 0, 0.15);
+		background-color: $white;
+		border-radius: 6px;
+		position: absolute;
+		top: 95px;
+		left: 50%;
+		margin: 0 auto 0 -365px;
+		z-index: 9999;
+		overflow: hidden;
+		h2 {
+			font-size: 20px;
+			margin: 0 0 16px 0;
+			padding: 0;
+		}
+		p {
+			font-size: 16px;
+			line-height: 24px;
+			color: #777777;
+			margin: 0 0 30px 0;
+			padding: 0;
+		}
+		ul {
+			float: left;
+			width: 50%;
+			margin: 0;
+			padding: 0 0 0 30px;
+			text-align: left;
+		}
+		li {
+			color: #777777;
+			font-size: 16px;
+			line-height: 28px;
+			padding: 6px 0;
+			display: flex;
+			svg {
+				padding-right: 10px;
+			}
+		}
+	}
+	.envira-admin-modal-content {
+		border-radius: 3px 3px 0 0;
+		padding: 40px;
+	}
+	.envira-admin-model-lists {
+		width: 100%;
+	}
+	.envira-admin-modal-button {
+		border-radius: 0 0 3px 3px;
+		text-align: center;
+		margin: 30px 0;
+	}
+	.envira-admin-modal-bonus {
+		position: relative;
+		padding: 30px;
+		background: #f5f5f5;
+		text-align: center;
+		p {
+			font-size: 14px;
+			margin: 0px;
+		}
+		svg {
+			position: absolute;
+			border-radius: 50%;
+			top: -14px;
+			background-color: $white;
+		}
+
+
+	}
+	.envira-admin-modal-text-link {
+		display: block;
+		margin: 15px 0;
+		font-size: 14px;
+		color: #3C434AB2;
+	}
+	.button.envira-button {
+		font-size: 21px;
+		height: 50px;
+		line-height: 48px;
+		background-color: $dark_green;
+	}
+	.wrap{
+		webkit-filter: blur(3px);
+    	-moz-filter: blur(3px);
+    	-ms-filter: blur(3px);
+    	-o-filter: blur(3px);
+    	filter: blur(3px);
+		&:hover > * {
+			pointer-events: none !important;
+		}
+	}
+	.envira-clear,
+	.envira-clear::before,
+	.envira-clear::after {
+		content: " ";
+    	display: table;
+	}
+}
+.envira-nav-tab-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 30px;
+	margin: 0 0 20px 0;
+	padding: 0 20px;
+	background-color: #ffffff;
+	list-style: none;
+	font-size: 14px;
+	font-weight: 400;
+	li {
+		margin: 0;
+		padding: 0;
+		a {
+			display: block;
+			padding: 15px 0 12px 0;
+			line-height: 30px;
+			border-bottom: 3px solid #ffffff;
+			box-shadow: none;
+			color: #2c3338;
+			text-decoration: none;
+		}
+	}
+	.envira-nav-tab:hover,
+	.envira-nav-tab-active {
+		border-bottom: 4px solid $dark_green;
+	}
+}
+
+
+.envira-settings-tab {
+	padding: 20px;
+	box-sizing: border-box;
+	#envira-gallery-refresh-submit {
+		margin-left: 10px;
+	}
+
+	.envira-hideme {
+		display: none;
+	}
+	/**
+	* Clearing
+	*/
+	.envira-clear {
+	    clear: both;
+
+		&:after {
+		    clear: both;
+		    content: '.';
+		    display: block;
+		    height: 0;
+		    line-height: 0;
+		    overflow: auto;
+		    visibility: hidden;
+		    zoom: 1;
+		}
+	}
+
+	.envira-gallery {
+	    margin: 15px 0 20px;
+	}
+
+    th {
+     width: 170px;
+      padding-right: 40px;
+		@include mq(xs) {
+			width: auto;
+		}
+    }
+    input[type="text"],
+	input[type="number"],
+	input[type="password"],
+	select,
+	textarea {
+	    width: 350px;
+	    padding-right: 0;
+		border: 1px solid #00000026;
+		@include mq(xs) {
+			width: 100%;
+		}
+		font-size: 14px;
+	}
+    input[type="text"],
+	input[type="number"],
+	input[type="password"] {
+		height: 40px;
+		@include mq(xs) {
+			height: auto;
+		}
+	}
+	.button {
+		&.envira-gallery-verify-submit {
+			height: 39px;
+		}
+	}
+	/**
+	* Copy to Clipboard Button
+	*/
+	a.envira-clipboard {
+		width: 33px;
+		padding: 0;
+	}
+	/**
+	* Submit Button
+	*/
+	#envira-gallery-settings-submit {
+		margin: 40px 0 0 0px;
+	}
+
+	/**
+	* Refresh
+	*/
+	#envira-gallery-refresh-submit {
+     vertical-align: baseline;
+	}
+	.envira-external-req{
+	    border: 1px solid $primary-color;
+	    border-radius: 4px;
+	    padding: 30px;
+	    h2{
+	        font-size: 20px;
+	        margin: 0;
+	        padding: 0;
+	    }
+	}
+	.envira-external-req-active{
+	    border: 1px solid $green;
+	    background-color:  $white;
+	    border-radius: 4px;
+	    padding: 30px;
+	    h2{
+	        font-size: 20px;
+	        font-weight: 600;
+	        margin: 0;
+	        padding: 0;
+	    }
+	}
+	.form-table {
+		th, td {
+			padding-top: 25px;
+			padding-bottom: 25px;
+		}
+		th {
+			@include mq(sm) {
+				padding-top: 40px;
+				padding-bottom: 10px;
+				padding-right: 0px !important;
+			}
+			@include mq(xs) {
+				padding-top: 40px;
+				padding-bottom: 10px;
+				padding-right: 0px !important;
+			}
+		}
+		tr#envira-settings-key-box th { /* bit of a hack */
+			@include mq(sm) {
+				padding-top: 20px;
+			}
+			@include mq(xs) {
+				padding-top: 20px;
+			}
+		}
+		td {
+			@include mq(sm) {
+				padding-top: 0;
+				padding-right: 0px;
+			}
+			@include mq(xs) {
+				padding-top: 0;
+				padding-right: 0px;
+			}
+			p {
+				margin-bottom: 15px;
+			}
+		}
+		#envira-image-gallery-settings-title {
+			h3 {
+				font-size: 17px;
+			}
+			p {
+				font-size: 14px;
+				color: #3C434AB2;
+			}
+		}
+		tr {
+			border-bottom: 1px solid #ddd;
+		}
+		tr.no-bottom-border,
+		tr.title {
+			border-bottom: 0;
+			label {
+				font-size: 14px;
+			}
+			h6 {
+				font-size: 14px;
+				line-height: 16px;
+				margin: 5px auto;
+			}
+		}
+	}
+		table.form-table {
+			tr:first-of-type th,
+			tr:first-of-type td {
+				padding-top: 0;
+			}
+			input[type=checkbox] {
+				margin-top: 0px; /* was 10px 4/12/19 */
+				float: left;
+			}
+
+		}
+
+	.description {
+		color: #3C434AB2;
+		font-size: 14px;
+		margin-top: 0px;
+		margin-bottom: 15px;
+
+	}
+}
+
+
+.envira_tr {
+	box-sizing: border-box;
+
+	td {
+		border-left: 5px solid #3871AC;
+		div {
+			padding: 5px 0;
+			display: flex;
+			align-items: center;
+			h3 {
+				margin: 0;
+				font-size: 14px;
+			}
+			h5 {
+				margin: 0;
+				font-size: 14px;
+				font-weight: 400;
+				color: #3C434A;
+			}
+			svg {
+				padding-right: 20px;
+			}
+
+		}
+		.envira-button-blue {
+			font-size: 16px;
+			margin-left: auto;
+			height: 38px !important;
+			line-height: 38px !important;
+		}
+	}
+}
+.envira-green {
+	color: #37993B;
+}
+
