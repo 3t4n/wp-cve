@@ -1,0 +1,432 @@
+/*overlay processing*/
+li.woocommerce-thank-you-page-control-processing{
+    position: absolute;
+    top: 75px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+    display: none;
+    z-index: 99999999999;
+}
+.woocommerce-thank-you-page-container__block {
+    background: #ffffff;
+    display: block;
+    margin: 0;
+    padding: 10px 0 30px 0;
+    position: relative;
+    border: 1px solid rgba(1, 1, 1, .2);
+    min-height: 60px;
+}
+
+.woocommerce-thank-you-page-components-close {
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    cursor: pointer;
+    background: #f5f5f5;
+    color: #23282d;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 8px;
+    transition: all 200ms ease-out;
+}
+
+.woocommerce-thank-you-page-components-close-container {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.woocommerce-thank-you-page-components-close:hover {
+    opacity: .6;
+}
+
+.woocommerce-thank-you-page-components-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(1, 1, 1, .3);
+}
+
+.woocommerce-thank-you-page-components-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.woocommerce-thank-you-page-components {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    width: 80%;
+    background: #ffffff;
+    transform: translateX(-50%);
+    font-size: 14px;
+}
+
+.woocommerce-thank-you-page-components .woocommerce-thank-you-page-available-components {
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    background: #5b9dd9;
+    color: #ffffff;
+}
+
+.woocommerce-thank-you-page-components .woocommerce-thank-you-page-item {
+    margin: 5px auto;
+    background: #ccc;
+    color: #000000;
+    border: 1px rgba(1, 1, 1, .4);
+    width: 90% !important;
+    padding: 4px 0;
+}
+
+.woocommerce-thank-you-page-container__block .woocommerce-thank-you-page-item {
+    width: 96% !important;
+    margin: 5px auto;
+    background: rgba(229, 229, 229, 0.5);
+    border: 1px dashed rgba(1, 1, 1, .4);
+    height: auto !important;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+    cursor: move;
+    min-height: 24px;
+}
+
+.woocommerce-thank-you-page-item {
+    position: relative;
+    text-align: center;
+    height: 20px;
+    margin: 5px 0;
+    width: 50% !important;
+    cursor: pointer;
+    transition: all 200ms ease-out;
+}
+
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item:hover {
+    opacity: .6;
+}
+
+.woocommerce-thank-you-page-container {
+    width: 100%;
+    min-height: 100px;
+    background: white;
+    color: black;
+    padding: 6px;
+}
+
+.woocommerce-thank-you-page-container,
+.woocommerce-thank-you-page-container * {
+    box-sizing: border-box;
+}
+
+.woocommerce-thank-you-page-remove {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    display: none;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+    text-align: center;
+    background: white;
+    color: #f30909;
+    border-radius: 50%;
+    font-size: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: font-size 300ms ease-out;
+
+}
+
+.woocommerce-thank-you-page-edit {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+    display: none;
+    width: 16px;
+    height: 16px;
+    line-height: 14px;
+    vertical-align: middle;
+    text-align: center;
+    color: #008ec2;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+    transition: font-size 300ms ease-out;
+
+}
+
+.woocommerce-thank-you-page-remove:hover {
+    font-size: 12px !important;
+}
+
+.woocommerce-thank-you-page-edit:hover {
+    font-size: 18px !important;
+}
+
+.woocommerce-thank-you-page-container__block .woocommerce-thank-you-page-item:nth-child(n):hover .woocommerce-thank-you-page-edit:nth-child(n) {
+    display: inline-block;
+}
+
+.woocommerce-thank-you-page-container__block .woocommerce-thank-you-page-item:nth-child(n):hover .woocommerce-thank-you-page-remove:nth-child(n) {
+    display: inline-block;
+}
+
+/*page item while dragging*/
+.woocommerce-thank-you-page-container__block .woocommerce-thank-you-page-item.ui-sortable-helper {
+    border: solid 1px #aaa !important;
+    background: #eee !important;
+    visibility: visible;
+    width: 90% !important;
+}
+
+.woocommerce-thank-you-page-components .woocommerce-thank-you-page-place-holder {
+    width: 49% !important;
+}
+
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-place-holder {
+    width: 96% !important;
+}
+
+.woocommerce-thank-you-page-place-holder {
+    margin: 5px auto;
+    background: white;
+    border: 1px dashed rgba(1, 1, 1, .3);
+    height: 30px !important;
+    line-height: 30px;
+    visibility: visible;
+    display: block;
+}
+
+/*dragging item over droppable zone*/
+.woocommerce-thank-you-page-container__block.hover-over-draggable {
+    border: solid 1px #aaa;
+}
+
+/*received block*/
+.woocommerce-thank-you-page-received-block {
+    -webkit-animation-name: twinkle_outline; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+    animation-name: twinkle_outline;
+    animation-duration: 1s;
+    animation-iteration-count: infinite
+}
+
+@keyframes twinkle_outline {
+    0% {
+        outline: 1px solid;
+    }
+    50% {
+        outline: none;
+    }
+    100% {
+        outline: 1px solid;
+    }
+}
+
+/*dynamic add row*/
+
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    position: relative;
+    outline: 1px dotted;
+    padding: 6px;
+}
+
+.woocommerce-thank-you-page-add-row.woocommerce-thank-you-page-row-1-column span.woocommerce-thank-you-page-add-row-item,
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row.woocommerce-thank-you-page-0-column .woocommerce-thank-you-page-container__block,
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row.woocommerce-thank-you-page-1-column .woocommerce-thank-you-page-container__block {
+    width: 100% !important;
+}
+
+.woocommerce-thank-you-page-add-row.woocommerce-thank-you-page-row-2-column span.woocommerce-thank-you-page-add-row-item,
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row.woocommerce-thank-you-page-2-column .woocommerce-thank-you-page-container__block {
+    width: 49% !important;
+}
+
+.woocommerce-thank-you-page-add-row.woocommerce-thank-you-page-row-3-column span.woocommerce-thank-you-page-add-row-item,
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row.woocommerce-thank-you-page-3-column .woocommerce-thank-you-page-container__block {
+    width: 33% !important;
+}
+
+.woocommerce-thank-you-page-add-row.woocommerce-thank-you-page-row-4-column span.woocommerce-thank-you-page-add-row-item,
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row.woocommerce-thank-you-page-4-column .woocommerce-thank-you-page-container__block {
+    width: 24% !important;
+}
+
+/*remove row*/
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row .woocommerce-thank-you-page-remove-row {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    display: none;
+    text-align: center;
+    color: #dc3232;
+    font-size: 20px;
+    vertical-align: middle;
+    font-weight: 300;
+    cursor: pointer;
+    position: absolute;
+    right: -6px;
+    top: -8px;
+    transition: font-size 300ms ease-out;
+
+}
+
+.woocommerce-thank-you-page-remove-row:hover {
+    font-size: 22px !important;
+}
+
+.woocommerce-thank-you-page-container__row:nth-child(n):hover .woocommerce-thank-you-page-remove-row:nth-child(n) {
+    display: inline-block;
+}
+
+/*button add item to row*/
+
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row .woocommerce-thank-you-page-edit-block-container .woocommerce-thank-you-page-edit-block-add-item {
+    width: 16px;
+    height: 16px;
+    line-height: 10px;
+    display: inline-block;
+    background: #ffffff;
+    text-align: center;
+    border-radius: 50%;
+    color: #0085ba;
+    font-size: 16px;
+    vertical-align: middle;
+    font-weight: 300;
+    border: 1px solid;
+    cursor: pointer;
+    transition: transform 300ms ease-out;
+}
+
+.woocommerce-thank-you-page-edit-block-add-item:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.woocommerce-thank-you-page-container .woocommerce-thank-you-page-container__row .woocommerce-thank-you-page-edit-block-container {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+}
+
+.woocommerce-thank-you-page-add-row-container {
+    display: flex;
+    margin: 20px 0;
+    border: 1px solid lightgray;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.woocommerce-thank-you-page-add-row .woocommerce-thank-you-page-add-row-item {
+    width: 15px;
+    height: 30px;
+    display: inline-block;
+    background: #008ec2;
+    margin: 0 2px;
+}
+
+.woocommerce-thank-you-page-add-row {
+    text-align: center;
+    padding: 10px 0;
+    width: 22%;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    outline: 1px dotted grey;
+    -webkit-transition: opacity 300ms ease-out;
+    -moz-transition: opacity 300ms ease-out;
+    -ms-transition: opacity 300ms ease-out;
+    -o-transition: opacity 300ms ease-out;
+    transition: opacity 300ms ease-out;
+}
+
+.woocommerce-thank-you-page-add-row:hover {
+    opacity: .6;
+}
+
+#sub-accordion-section-woo_thank_you_page_design_general {
+    min-height: 100%;
+}
+/*available components icons*/
+.woocommerce-thank-you-page-item:before{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}
+.woocommerce-thank-you-page-contents__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-products:before{
+    content: "\f105";
+    font-family: "wtyp_available_coponents_icons";
+}
+.woocommerce-thank-you-page-contents__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-text_editor:before{
+     content: "\f110";
+     font-family: "wtyp_available_coponents_icons";
+}
+
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-order_details:before{
+    content: "\f108";
+    font-family: "wtyp_available_coponents_icons";
+}
+
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-google_map:before{
+    content: "\f109";
+    font-family: "wtyp_available_coponents_icons";
+}
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-order_again:before{
+    content: "\f515";
+    font-family: Dashicons;
+}
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-social_icons:before{
+    content: "\f103";
+    font-family: "wtyp_available_coponents_icons";
+}
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-coupon:before{
+    content: "\f10b";
+    font-family: "wtyp_available_coponents_icons";
+}
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-order_confirmation:before{
+    content: "\f10c";
+    font-family: "wtyp_available_coponents_icons";
+}
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-thank_you_message:before{
+    content: "\f101";
+    font-family: "wtyp_available_coponents_icons";
+}
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-customer_information:before{
+    content: "\f100";
+    font-family: "wtyp_available_coponents_icons";
+}
+.woocommerce-thank-you-page-components__block .woocommerce-thank-you-page-item.woocommerce-thank-you-page-payment_method:before{
+    content: "\f108";
+    font-family: "wtypc_nav_icons";
+}
