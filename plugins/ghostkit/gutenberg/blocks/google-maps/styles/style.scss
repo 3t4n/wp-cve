@@ -1,0 +1,31 @@
+/**
+ * Frontend Styles
+ */
+@import "./variables";
+
+/* Fullheight */
+.ghostkit-google-maps-fullheight {
+	height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+}
+
+.ghostkit-google-maps {
+	position: relative;
+	background-color: var(--gkt-google-maps__background-color);
+
+	&::before,
+	> svg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		opacity: var(--gkt-google-maps--placeholder-icon__opacity);
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	&::before {
+		display: block;
+		width: var(--gkt-google-maps--placeholder-icon__width);
+		height: var(--gkt-google-maps--placeholder-icon__height);
+		content: "";
+		background-image: var(--gkt-google-maps--placeholder-icon__background-image);
+	}
+}
