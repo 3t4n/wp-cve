@@ -1,0 +1,9 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
+global $current_user, $wpscfunction ,$wp;
+$project_id  = isset($_POST['project_id']) ? sanitize_text_field($_POST['project_id']) : 0 ;
+if (!(($current_user->ID && $current_user->has_cap('manage_options')) || $wppmfunction->has_permission('delete_project',$project_id))) {exit;}
+$wpdb->delete($wpdb->prefix.'wppm_project',array('id'=>$project_id));
