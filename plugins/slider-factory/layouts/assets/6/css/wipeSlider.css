@@ -1,0 +1,132 @@
+.slidesWrap{
+position: relative;
+}
+.slidesWrap .slides{
+position: relative;
+z-index: 1;
+}
+.slidesWrap .slides .slide{
+position: absolute;
+top: 0;
+left: 0;
+opacity: 0;
+}
+.ulslide{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+.slidesWrap{
+vertical-align: top;
+}
+.slidesWrap .controlls button,
+.slidesWrap .pager button{
+-webkit-appearance: none;
+box-shadow: none;
+border: none;
+background: none;
+padding: 0;
+margin: 0;
+}
+.slidesWrap .pager {
+list-style-type: none;
+}
+.slidesWrap .controlls{
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+width: 100%;
+z-index: 3;
+display: flex;
+align-items: center;
+pointer-events: none
+}
+.slidesWrap button{
+cursor: pointer;
+outline:none;
+}
+.slidesWrap .controlls button{
+pointer-events: auto;
+text-indent: -9999px;
+width: 50px;
+height: 100%;
+position: relative;
+}
+.slidesWrap .controlls button:after{
+content: '';
+display: block;
+width: 20px;
+height: 20px;
+box-sizing: border-box;
+border-top: 2px solid #fff;
+border-right: 2px solid #fff;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+}
+.slidesWrap .controlls .prevBtn:after{
+	transform: rotate(-135deg);
+}
+.slidesWrap .controlls .nextBtn{
+margin-left: auto;
+}
+.slidesWrap .controlls .nextBtn:after{
+transform: rotate(45deg);
+}
+.slidesWrap .pager{
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 3;
+margin: 10px 0 0;
+}
+.slidesWrap .pager li + li{
+margin-left: 10px;
+}
+.slidesWrap .pager li button{
+display: block;
+text-indent: -9999px;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #fff;
+border: 1px solid #000;
+box-sizing: border-box;
+}
+.slidesWrap .pager li button.current{
+background: #000;
+}
+
+.m_innerBox{
+background: rgba(0,0,0,0.7);
+color: #fff;
+padding: 10px;
+}
+.slide .m_innerBox{
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	padding: 10px;
+}
+.slide .m_innerBox.s_animation{
+opacity: 0;
+transform: translateX(20px);
+transition: 0.3s 0.5s;
+}
+.slide.active .m_innerBox.s_animation{
+opacity: 1;
+transform: translateX(0);
+}
+
+/* .slidesWrap .slide{
+	width: 100%;
+}
+.slidesWrap .slide img{
+	width: 100%;
+} */
