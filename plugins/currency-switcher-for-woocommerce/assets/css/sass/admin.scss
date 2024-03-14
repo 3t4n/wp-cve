@@ -1,0 +1,239 @@
+/**
+ * Currency Switcher for WooCommerce
+ * #
+ *
+ * Copyright (c) 2018 TruongSa
+ * Licensed under the GPL-2.0+ license.
+ */
+ .pmcs-table-lm {
+	margin-bottom: 1em;
+ }
+ .pmcs-limit {
+	table.pmcs-geoip-list {
+		opacity: 0.6;
+	}
+ }
+.pmcs-currencies-list {
+	max-width: 100%;
+	display: none;
+	tr {
+		background: #fff;
+	}
+	tbody {
+		tr {
+			background: #fff;
+			&:nth-child(2n) {
+				background: #f5f5f5;
+			}
+		}
+	}
+	th.td {
+		padding: 10px;
+	}
+	.pmcs_default_row {
+		.pmcs-button.remove {
+			opacity: 0.2;
+			cursor: default;
+		}
+	}
+	.td_currency_code {
+		width: auto;
+	}
+	.currency_position {
+		width: 100px;
+		select {
+			width: 100px;
+			max-width: 100%;
+		}
+	}
+	.num_seperator {
+		width: 30px;
+	}
+	.currency_flag {
+		width: 40px;
+	}
+	.display_name {
+		width: 130px;
+		input {
+			width: 130px;
+			max-width: 100%;
+		}
+	}
+
+	.rate {
+		width: 100px;
+		input {
+			width: 100px !important;
+			max-width: 100%;
+		}
+	}
+
+	.currency_flag {
+		//width: 45px;
+		img {
+			max-width: 40px;
+		}
+	}
+	.actions {
+		text-align: right;
+	}
+}
+.riname {
+	//width: 100%;
+	display: inline-block;
+}
+.pmcs-button {
+	display: inline-block;
+	border: 0px none;
+	background: #eeeeee;
+	padding: 5px;
+	color: #fff;
+	cursor: pointer;
+	&.handle {
+		cursor: move;
+	}
+	&.pmcs-sync-rate {
+		background: #1a7e11;
+	}
+	&.remove {
+		background: #d35343;
+	}
+	&.handle {
+		background: #4683ca;
+	}
+	&.loading {
+		.dashicons {
+			animation-name: spin;
+			animation-duration: 2000ms;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+	}
+}
+
+.geoip-select {
+	width: 100% !important;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.pmsc-report-tab {
+	position: relative;
+	cursor: pointer;
+	ul {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: -1px;
+		width: 210px;
+		background: #fff;
+		z-index: 999;
+		border: 1px solid #ccc;
+		margin: 0px;
+		padding: 0px;
+		li {
+			border-bottom: 1px solid #ededed;
+			margin-bottom: 0px;
+			a {
+				display: block;
+				padding: 7px 10px;
+				overflow-wrap: break-word;
+				word-break: break-all;
+				&:hover {
+					background: #ededed;
+				}
+			}
+			&:last-child {
+				border-bottom: 0px none;
+			}
+		}
+	}
+	&:hover {
+		ul {
+			display: block;
+		}
+	}
+}
+
+.pmsc-report-tab {
+	float: left;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	margin-left: 0.5em;
+	padding: 5px 10px;
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 600;
+	background: #3498db;
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.sales-this-month:not(.pmcs-report-li) {
+	display: none;
+}
+
+#woocommerce_dashboard_status {
+	.wc_status_list {
+		display: flex;
+		width: 100%;
+		max-width: 100%;
+		//flex-direction: column;
+		flex-flow: row wrap;
+		li {
+			flex-basis: 50%;
+			float: none;
+			order: 10;
+			&.best-seller-this-month {
+				flex-basis: 100%;
+			}
+			&.sales-this-month {
+				order: 1;
+				flex-basis: 100%;
+			}
+		}
+	}
+}
+
+.woocommerce_options_panel {
+	.pmcs-price-field {
+		&._pmcs_price_heading {
+			margin-bottom: 0px;
+			padding-bottom: 0px !important;
+		}
+		.wrap {
+			width: 50%;
+			display: block;
+			input,
+			.label {
+				width: 48%;
+				display: inline-block;
+				margin-right: 2%;
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}
+
+#general_coupon_data {
+	display: flex;
+	flex-direction: column;
+	p {
+		order: 100;
+	}
+	.discount_type_field,
+	.coupon_amount_field,
+	.pmcs_coupon_field {
+		order: 1;
+	}
+}
