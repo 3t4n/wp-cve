@@ -1,0 +1,1 @@
+(window.tiktok=window.tiktok||{}).backend={};
