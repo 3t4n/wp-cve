@@ -1,0 +1,1 @@
+jQuery(document).on("click","#simple-page-access-restriction-review .notice-dismiss",function(){jQuery.post(ajaxurl,{action:"ps_simple_par_review_notice"},function(i){i&&console.log(i)})});
