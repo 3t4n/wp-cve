@@ -1,0 +1,152 @@
+<?php
+/**
+ * Fields mapping table.
+ *
+ * @var array $args
+ */
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
+<div class="publisher_mappings" data-publisher_id="<?php echo esc_attr( $args['publisher_id'] ); ?>">
+	
+	<h3><?php echo wp_kses_post( $args['title'] ); ?></h3>
+	
+	<table>
+		<tbody>
+			
+			<tr>
+				<th> Merge Tag </th>
+				<th> Publisher Meta Field </th>
+			</tr>
+			
+			<?php 
+				
+				$i = -1;
+				$keys = array();
+				foreach ( $args['meta'] as $key => $value ) {
+					
+					$i++;
+					
+					if ( false === $value ) {						
+						$key = empty($keys) ? $i : max($keys) + 1 ;
+						$key_value = "";
+						$meta_field_value = "";
+					}
+					else {
+						$key = !is_numeric($key) ? $i : $key;
+						$key_value = isset ($value['merge_tag']) ? $value['merge_tag'] : "" ;
+						$meta_field_value = isset ($value['meta_field']) ? $value['meta_field'] : "" ;
+					}
+					
+					$tag_field_name = sprintf( '%1$s[%2$s][merge_tag]', $args['name'], $key ); 
+					$meta_field_name = sprintf( '%1$s[%2$s][meta_field]', $args['name'], $key ); 
+					
+					$tag_field_data_name = sprintf( '%1$s[{replaceKey}][merge_tag]', $args['name'], $key ); 
+					$meta_field_data_name = sprintf( '%1$s[{replaceKey}][meta_field]', $args['name'], $key ); 
+					
+					$keys[] = $key;
+					?>
+					
+					<tr>
+						<td class="key">
+							<input 
+								type="text" 
+								value="<?php echo esc_attr( $key_value ); ?>" 
+								class="key-destination wpforms-field-map-inputText" 
+								name="<?php echo esc_attr( $tag_field_name ); ?>" 
+								
+								data-name="<?php echo esc_attr( $tag_field_data_name ); ?>" 
+								data-suffix="[{replaceKey}]" 
+							>
+							</td>
+							
+							<td class="field<?php echo esc_attr( $extra_class ); ?>">
+								<input 
+									type="text" 
+									value="<?php echo esc_attr( $meta_field_value ); ?>" 
+									class="key-destination wpforms-field-map-inputText" 
+									name="<?php echo esc_attr( $meta_field_name ); ?>" 
+									
+								>
+							</td>
+
+							<td class="actions">
+								<a class="add" href="#"><i class="fa fa-plus-circle"></i></a>
+								<a class="remove" href="#"><i class="fa fa-minus-circle"></i></a>
+							</td>
+					<?php
+				}			
+			?>
+		</tbody>
+	</table>
+	<input type="hidden" class="max_key" value="<?php echo max($keys); ?>">
+</div>
+
+<?php  /*
+<div class="wpforms-field-map-tablex publisher_mappings">
+	<h3><?php echo wp_kses_post( $args['title'] ); ?></h3>
+	<table>
+		<tbody>
+		<?php
+		$i = 1;
+		foreach ( $args['meta'] as $key => $value ) :
+
+			$flds_name   = [
+				'source' => '',
+				'custom' => '',
+				'secure' => '',
+			];
+			$extra_class = '';
+			$is_custom   = false;
+
+			$key = ( false !== $value ) ? esc_attr( $key ) : '';
+
+			if ( ! wpforms_is_empty_string( $key ) ) {
+				$is_custom = ( 0 === strpos( $key, 'custom_' ) && is_array( $value ) );
+
+				if ( $is_custom ) {
+					$key                 = substr_replace( $key, '', 0, 7 );
+					$value['value']      = ! empty( $value['secure'] ) ? \WPForms\Helpers\Crypto::decrypt( $value['value'] ) : $value['value'];
+					$flds_name['custom'] = sprintf( '%1$s[custom_%2$s][value]', $args['name'], $key );
+					$flds_name['secure'] = sprintf( '%1$s[custom_%2$s][secure]', $args['name'], $key );
+
+					$extra_class = ' field-is-custom-value';
+
+				} else {
+					$flds_name['source'] = sprintf( '%1$s[%2$s]', $args['name'], $key );
+				}
+			}
+			
+			$field_id = "publisher-wpforms-field-option-".$i;
+		?>
+			<tr>
+				<td class="key">
+					<input type="text" value="<?php echo esc_attr( $key ); ?>" placeholder="<?php esc_attr_e( 'Enter a parameter key&hellip;', 'superwatchman-publishers' ); ?>" class="http-key-source">
+					<label for="<?php echo $field_id ?>">&nbsp;</label>
+				</td>
+				<td class="field<?php echo esc_attr( $extra_class ); ?>">
+					<div class="wpforms-field-map-wrap">
+						<div class="wpforms-field-map-wrap-l">
+							
+							<input type="text" value="<?php echo esc_attr( $value ); ?>" class="key-destination wpforms-field-map-inputText" name="<?php echo esc_attr( $flds_name['source'] ); ?>" data-name="<?php echo esc_attr( $args['name'] ); ?>" data-suffix="[{source}]" data-field-map-allowed="<?php echo esc_attr( $args['allowed_types'] ); ?>" data-custom-value-support="true" id="<?php echo $field_id ?>" >
+							
+							
+							<label for="<?php echo $field_id ?>">
+								<a href="#" class="toggle-smart-tag-display" data-type="all" data-fields=""><i class="fa fa-tags"></i> <span>Show Smart Tags</span></a>
+							</label>
+						</div>
+						
+					</div>
+				</td>
+				<td class="actions">
+					<a class="add" href="#"><i class="fa fa-plus-circle"></i></a>
+					<a class="remove" href="#"><i class="fa fa-minus-circle"></i></a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
+*/ ?>
