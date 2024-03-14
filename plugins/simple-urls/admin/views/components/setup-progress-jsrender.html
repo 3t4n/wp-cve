@@ -1,0 +1,49 @@
+<div id="circle"></div>
+<div id="setup-progress-wrapper">
+	<ul id="setup-progress" {{if is_show_review_note}}class="progress-95"{{/if}}>
+		<li class="setup-progress-header">You've completed {{:progress_percent}}% of your Lasso setup tasks</li>
+		<li id="setup-progress-enable-support" class="setup-progress-item">
+			<span class="progress-check-icon">{{if enable_support}}<i class="fas fa-check-circle"></i>{{else}}<i class="far fa-circle"></i>{{/if}}</span>
+			<span class="setup-progress-item-info">Enable support</span>
+		</li>
+		<li class="setup-progress-item">
+			<span class="progress-check-icon">{{if setup_amz_tracking_id}}<i class="fas fa-check-circle"></i>{{else}}<i class="far fa-circle"></i>{{/if}}</span>
+			<span class="setup-progress-item-info">
+				<a href="{{:setting_amz_url}}">Setup your Amazon Tracking ID</a>
+			</span>
+		</li>
+		<li class="setup-progress-item {{:open_modal_add_link}}">
+			<span class="progress-check-icon">{{if links == 20}}<i class="fas fa-check-circle"></i>{{else}}<i class="far fa-circle"></i>{{/if}}</span>
+			<div class="setup-progress-item-info">Add 20 links to Lasso</div>
+			<div class="clearfix"></div>
+			<div class="setup-progress-item-bar">
+				<div class="progress links-progress-bar">
+					<div class="progress-bar" role="progressbar" style="width: {{:links_percent}}%" aria-valuenow="{{:links_percent}}" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div>
+			<div class="setup-progress-item-total links-progress-bar-total">{{:links}}/20</div>
+		</li>
+		<li class="setup-progress-item">
+			<span class="progress-check-icon">{{if follow_on_twitter}}<i class="fas fa-check-circle"></i>{{else}}<i class="far fa-circle"></i>{{/if}}</span>
+			<span class="setup-progress-item-info">
+				<a href="{{:follow_twitter_url}}" target="_blank">Follow @LassoWP on Twitter</a>
+			</span>
+		</li>
+		<li class="setup-progress-item">
+			<span class="progress-check-icon">{{if share_on_twitter}}<i class="fas fa-check-circle"></i>{{else}}<i class="far fa-circle"></i>{{/if}}</span>
+			<span class="setup-progress-item-info">
+				<a href="{{:share_twitter_url}}" target="_blank">Share Lasso on Twitter</a>
+			</span>
+		</li>
+		<li class="setup-progress-footer {{if progress == 1}}d-none{{/if}}">Complete your setup and unlock an exclusive bonus.</li>
+		<li class="setup-progress-item-95 text-center">You've completed <strong>{{:progress * 100}}%</strong> of your Lasso setup tasks</li>
+		<li class="setup-progress-footer-95"><div>You have one final step to unlock your bonus</div>
+			<a href="{{:review_url}}" target="_blank">Leave a review of Lasso</a>
+		</li>
+	</ul>
+	<ul id="progress-complete">
+		<li class="progress-complete-header">Congratulations!</li>
+		<li>You've completed 100% of your Lasso-Lite setup tasks</li>
+		<li class="progress-complete-footer"><a href="https://getlasso.co/upgrade/?progress=complete" target="_blank">Access Your Exclusive Bonus</a></li>
+	</ul>
+</div>
