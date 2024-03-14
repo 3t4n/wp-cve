@@ -1,0 +1,188 @@
+= 2.13.0 (March 12, 2024, Released on a train somewhere between Seattle and Portland 🚆) =
+- [New] Hide new default box-shadows design feature. Should not interfere with theme-defined shadows. Enable default shadows via `mrw_hidden_block_editor_settings` filter.
+- [Fix] Hide Headings 1, 5, and 6 in WordPress 6.5+
+- Add new `blueprint.json` file to support plugin repository playground feature
+
+= 2.12.1 (November 30, 2023) =
+- Fix ability to unhide newly-hidden inline formats (Footnote, highlight, inline image, inline code, and keyboard)
+
+= 2.12.0 (November 3, 2023) =
+- WordPress 6.4 compatibility
+- Fix error that hid custom theme duotone options
+- Fully hide Footnotes inserter unless the block is unhidden via `mrw_hidden_blocks` filter
+- Hide "Highlight", "Inline Image", "Inline Code", and "Keyboard" toolbar inline formats. Can be re-enabled via `mrw_hidden_block_editor_settings` filter.
+- Hide "Upload" option in "Replace" media menu
+- Remove background color options from Cover block placeholder
+- Hide new Background Image option on Group block
+- Hide new "Text Orientation" / writing mode option
+
+= 2.11.0 (August 21, 2023) =
+- **Requires WordPress 6.0**. Legacy code removed
+- [New] Show all Post- and Query-related blocks in the Site Editor
+- [New] Hide Classic (aka freeform), Details, Footnotes, Comments, and Post Author blocks
+- [New] Hide Group / Cover width settings and Group child blocks Justification settings and min-height setting (does not impact Cover min-height setting). Can be shown with `mrw_hidden_block_editor_settings` filter.
+- [Dev] The `mrw_hidden_blocks` and all `mrw_hidden_*_blocks` filters now support a second `$context` parameter that contains the current screen's ID so you can target the block editor (`post`), site editor (`site-editor`), or widget editor (`widgets`).
+- [New] New Jetpack blocks hidden including AI Assistance, all form blocks, and payment-related blocks
+- [Fix] WordPress 6.3 compatibility (re-hide media upload buttons, default gradients, comments block)
+- [Fix] "getBlockVariations(…) is undefined warning in Widget and Site Editors
+- [Meta] Removed "Formerly MRW Web Design Simple TinyMCE" now that the block editor is 4.5 years old!
+- 2.11.1: Change `layout-width-height` value in the `mrw_hidden_block_editor_settings` filter to be accurate `layout-width`.
+
+= 2.10.0 (October 15, 2022) =
+- Tested up to WordPress 6.1
+- Hide new Text Decoration settings by default (enable via `text-decoration` in  `mrw_hidden_block_editor_settings`)
+- Hide image duotone setting (enable via `duotone` in `mrw_hidden_block_editor_settings`)
+
+= 2.9.0 (May 27, 2022) =
+- WordPress 6.0 compatibility fixes: hide new blocks, fix regressions
+- [New] Hide the default color palette which was re-added by default in WP 5.8. Can be shown by removing `default-color-palette` value from `mrw_hidden_block_editor_settings` filter
+- [New] Hide Avatar, Read More, Comments Query Loop, Post Comments Form, and Post Author Biography blocks
+- [Fix] Hide Border Radius in WP 5.9 and 6.0
+- [Fix] Prominent contrast error changes in WP 6.0
+
+= 2.8.0 (February 21, 2022) =
+* [New] Hide many new default block controls added in WordPress 5.9. All options can be enabled with the [mrw_hidden_block_editor_settings filter](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/Filter-Reference).
+	* Text Formatting: line-height, font-weight, letter-spacing, and text-transform
+	* Spacing: gap, margin, padding
+	* Borders: General, pull-quote
+* [Remove] Remove support for hiding paragraph block dropcap setting in WordPress 5.6 and earlier
+* [Remove] Remove support for all old versions of `mrw_*` filters using the terms "blacklist" and "disabled"
+
+= 2.7.0 (February 4, 2022) =
+* [New] Hide new blocks added in WordPress 5.9: Navigation, Post Pagination, Post Author, Post Comments, Term Description, Wolfram Cloud Embed
+* [Dev] Improve inline documentation of new `mrw_hidden_*_blocks` filters added in Simplified Editor 2.5.0
+* [Preview] Version 2.8 will continue to hide new settings added in WordPress 5.9: default border controls on pullquote, new typopgraphy settings (e.g. line height, letter spacing), and default padding controls on Group, Cover, and Columns unless themes explicitly opt-in.
+
+= 2.6.1 (November 22, 2021) = 
+* [Fix] Resolve fatal error on editor screen in WordPress versions before 5.8
+
+= 2.6.0 (November 12, 2021) =
+* [New] Hide Button block Border Radius setting by default. Show by removing `border-radius` from the array in the `mrw_hidden_block_editor_settings` filter.
+* [Dev] Improve documentation of options that trigger hiding editor features with CSS in `block-editor.css`.
+* [Dev] Use is_wp_compatible_version() for version comparison
+
+= 2.5.0 (August 16, 2021) =
+* tl;dr - WordPress 5.8 support and fixes, more hidden blocks by default, new filters to quickly unhide categories of hidden blocks
+* [Fix] Use updated `block_editor_settings_all` filter instead of deprecated `block_editor_settings`. Support for old filter will be removed in a future version
+* [New] Hide Shortcode block since shortcodes work in a Paragraph block
+* [New] Hide Archives, Categories, and Latest Comments widget blocks by default after almost never using these
+* [New] Hide all new Full Site Editing/FSE and Query-related blocks (e.g. Query Loop, Post Title, Site Logo, etc.)
+* [New] Add new filters `mrw_hidden_core_blocks`, `mrw_hidden_widget_blocks`, `mrw_hidden_query_blocks`, and `mrw_hidden_post_blocks` that can be used to unhide entire group of related blocks with `__return_empty_array()`.
+* [Fix] Re-hide `drop-cap` after change in WordPress settings array.
+
+= 2.4.0 (January 7, 2021) =
+* [Fix] Hide Embeds which were previously hidden. Refactoring of embeds in WordPress 5.6 broke the previous way of hiding them
+* [Dev] Introduce new `mrw_hidden_embeds` filter. Embeds are no long hidden via the `mrw_hidden_blocks`.
+* [Dev] Improve consistency of how filters are applied
+
+= 2.3.0 (January 3, 2021) =
+* WordPress 5.6 support confirmed
+* [New] Hide Jetpack Blocks: Markdown, Star Rating, Repeat Visitor, OpenTable, Revue, Eventbrite Tickets, GIF, Calendly, and WhatsApp Button. Adds `mrw_jetpack_hidden_blocks` filter, allowing developers to easily unhide these blocks while also making it easier to hide other Jetpack blocks!
+* [Fix] (!!!) Hide Dropcap setting in Editor ([big props](https://github.com/mrwweb/mrw-simplified-editor-wordpress/issues/15) to @xemlock and @joppuyo on Github)
+* [Fix] Resolve notice from Block Editor Colors plugin when using a theme without a custom color palette.
+* [Fix] Only add body classes that hide editor settings on the Block Editor screen
+* [Dev] **Deprecated Filters (Sorry for doing this again, last time I foresee):** Replace "disabled" with "hidden" and "style variations" with "block styles" for improved clarity.
+	* `mrw_disabled_blocks` ➡ `mrw_hidden_blocks`
+	* `mrw_disabled_style_variations` ➡ `mrw_hidden_block_styles`
+	* `mrw_disabled_block_editor_settings` ➡ `mrw_hidden_block_editor_settings`
+* [Docs] - Moved Filter references and code examples to [GitHub wiki](https://github.com/mrwweb/mrw-simplified-editor-wordpress/wiki/MRW-Simplified-Editor-Documentation)
+
+= 2.2.0 (Aug 5, 2020) =
+* WordPress 5.5 support
+* [NEW] WP 5.5 features disabled:
+	* Core Block Patterns
+	* Block Directory Installer
+* [NEW] Hide "Default style" select for style variations (the theme's default is the default for a reason!)
+* [Fix] Hide Headings 1, 5, and 6 in all languages, not just English
+* [Fix] Adjust "Save draft" button to show consistently and match new secondary button styles
+* [Fix] Restore more prominent color contrast errors
+* [Fix] Restore ability to edit galleries (props to Mackenzie at WSCADV for reporting this one)
+* [Regression] WordPress 5.5 makes it impossible to hide the Dropcap option
+* [Dev] **Deprecated Filters:** Remove all instances of "blacklist" from the plugin. `mrw_block_blacklist` and `mrw_style_variations_blacklist` are now deprecated in favor of `mrw_disabled_blocks` and `mrw_disabled_style_variations`. Respective object properties in JS are also renamed. Deprecate `mrw_block_editor_disable_settings` and add `mrw_disabled_block_editor_settings` for consistency. *Filters will be removed from the plugin as early as August 2021.*
+* [Dev] Refactor internal functions for managing default options
+
+= 2.1.0 (Mar 30, 2020) =
+* Significant WordPress 5.4 compatibility updates/fixes
+* [New] Remove default Gradient Presets if theme does not provide them. This matches the existing behavior for Color Palettes.
+* [New] Remove majority of ways to open links in a new tab
+* [New] Style "Save Draft" button as a button for greater prominence
+* [Dev] Make `mrw_block_editor_disable_settings` filterable array available in JavaScript as `mrwEditorOptions.featureBlacklist`
+
+= 2.0.2 (Jan 13, 2019) =
+* Add check for get_current_screen() to prevent errors when using TinyMCE on the front end. props @patrick-b
+
+= 2.0.1 (Nov 14, 2019) =
+* Fix release package. See 2.0.0 release notes.
+
+= 2.0.0 (Nov 14, 2019) =
+* [NEW] MAJOR UPDATE! Includes numerous changes to the Block Editor made using the same philosophy of encouraging editors to create semantic, portable content while letting themes make content beautiful. This update removes:
+	* **Blocks:** Verse, Table, Preformatted, Code, More, Nextpage, HTML, Calendar, Tag Cloud, Search, RSS, Audio, Video, and Archive.
+		* The "More" Block is shown if you previously used this plugin and had filtered the TinyMCE buttons to re-add the More button.
+	* **Embeds:** Amazon Kindle, Animoto, Cloudup, College Humor, Crowd Signal, Daily Motion, Hulu, Mixcloud, Polldaddy, Reverbnation, Smugmug, Speaker, Videopress, and Wordpress.tv.
+	* **All default Block Style Variations.**
+	* **Block Settings:** Drop Cap, Heading 1, Heading 5, Heading 6, percentage and pixel sizing for images, and font sizing by pixel.
+	* **Image Uploads:** All images are selected from and uploaded to "Media Library."
+	* Colors: All color options unless theme explicitly defines a color palette.
+* [NEW] Calls extra attention to color contrast errors.
+* [NEW] Block Editor Filters
+	* `mrw_block_blacklist` filter allows hiding blocks from the editor in PHP.
+	* `mrw_style_variations_blacklist` filter allows hiding style variations in PHP.
+	* `mrw_block_editor_disable_settings` filter for re-enabling settings hidden by this plugin
+	* `mrw_block_editor_hide_color_palette` filter to unhide default Block Editor color palette
+
+= 1.2.0 (Nov 13, 2016) =
+* Update "Heading" list to emphasize implied hierarchy. (See [#38049](https://core.trac.wordpress.org/ticket/38049) for background and potential core inclusion.)
+* Add horizontal rule button.
+* Rename "Text Styles" to "Custom Styles" for clarity.
+* Remove Indent/Outdent buttons. (Use TAB / SHIFT + TAB for list indentation.)
+* Remove code and pre from "Other Formats". (Use `backticks` for code.)
+* Update textdomain to support language packs.
+* Escape all translations
+
+= 1.1.0 (Mar 13, 2015) =
+* Hide `wp_help` button on mobile just like WordPress 4.2 ([#31161](https://core.trac.wordpress.org/ticket/31161)).
+* Add `code` element to available "Other Formats."
+
+= 1.0.5 (Feb 13, 2015) =
+* Improved code formatting thanks to [@robneu](https://profiles.wordpress.org/fatmedia/)!
+* Add keys to the `$buttons` array filtered by `mce_buttons` for more intuitive button insertion.
+* Example of above and working with "Text Styles" submenu added as "Code Recipes" in ["Other Notes"](https://wordpress.org/plugins/mrw-web-design-simple-tinymce/other_notes/).
+* [Breaking Change] Remove `mrw_mce_style_formats` filter. It was a stupid idea and I doubt anyone's used it yet.
+* Fixed PNG mime-types for files used by repository in `/assets/`
+
+= 1.0.4 (Feb 6, 2015) =
+* Cleaned up and submitted to the repository.
+* Renamed "MRW Web Design Simple TinyMCE"
+* New readme, screenshots, etc.
+* Feb 12, 2015: No version update, but revised screenshots and improved readme.
+
+= 1.0.3 (Jan 5, 2015) =
+* Change "fullscreen" to "dfw" for Distraction Free Writing Mode support in 4.1.
+
+= 1.0.2 (Sept 16, 2014) =
+* Fix "Header" to "Heading." D'oh!
+
+= 1.0.1 (May 9, 2014) =
+* [Fix] Fix Help Icon
+
+= 1.0 (May 5, 2014) =
+* Initial release
+
+== Upgrade Notice ==
+= 2.1.0 =
+* Important WordPress 5.4 compatibility fixes. Disable default gradients and social icon style variations.
+
+= 2.0.2 =
+* Bug fix for front-end TinyMCE. (2.0.0 is a MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.)
+
+= 2.0.1 =
+* MAJOR UPDATE: Hide infrequently used blocks, all default style variations, and many block settings from WordPress 5.0+ Block Editor.
+
+= 1.1.0 =
+* Beating WordPress 4.2 to hiding `wp_help` on mobile. Adding `code` element to "Other Formats."
+
+= 1.0.5 =
+* Better formatting and inline documentation. BREAKING CHANGE: Remove `mrw_mce_style_formats` filter. I doubt you were using it.
+
+= 1.0.4 =
+* I'm impressed you had this installed already. Welcome to the beautiful world of automatic updates.
