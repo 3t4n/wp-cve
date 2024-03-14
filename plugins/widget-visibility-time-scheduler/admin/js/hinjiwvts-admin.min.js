@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){e(document).on("click",".wvts-link",function(s){s.preventDefault();var t=e(this).parent().parent();t.hasClass("wvts-collapsed")?(t.removeClass("wvts-collapsed").addClass("wvts-expanded"),e(this).text(wvts_i18n.close_scheduler)):(t.removeClass("wvts-expanded").addClass("wvts-collapsed"),e(this).text(wvts_i18n.open_scheduler))})});
