@@ -1,0 +1,1 @@
+jQuery(document).ready(function(a){a("ul.tabs.tp-education-search-tabs li").click(function(){var b=a(this).attr("data-tab");a("ul.tabs.tp-education-search-tabs li").removeClass("active"),a(".tab-content").removeClass("active"),a(this).addClass("active"),a("#"+b).addClass("active")}),a(function(){a(".datepicker").datepicker()})});
