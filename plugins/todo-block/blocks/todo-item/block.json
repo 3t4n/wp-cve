@@ -1,0 +1,43 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "pluginette/todo-block-item",
+	"version": "1.0",
+	"title": "ToDo Item",
+	"category": "text",
+	"description": "ToDo Item for ToDo List",
+	"parent": ["pluginette/todo-block-list"],
+	"supports": {
+		"html": false,
+		"typography": {
+			"fontSize": true
+		},
+		"color": true
+	},
+	"attributes": {
+		"content": {
+			"type": "string",
+			"selector": "div",
+			"source": "html"
+		},
+		"type": {
+			"type": "string"
+		},
+		"checked": {
+			"type": "boolean",
+			"default": false
+		},
+		"toggleReadOnly": {
+			"type": "boolean",
+			"default": null
+		},
+		"toggleDisable": {
+			"type": "boolean",
+			"default": null
+		}
+	},
+	"textdomain": "pluginette-todo-list",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
