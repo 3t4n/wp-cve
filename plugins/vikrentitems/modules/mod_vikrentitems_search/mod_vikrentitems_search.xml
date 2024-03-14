@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<extension type="module" version="1.6.0" client="site" method="upgrade">
+	<name>MOD_VIKRENTITEMS_SEARCH</name>
+	<author>E4J srl</author>
+	<creationDate>October 2020</creationDate>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>tech@extensionsforjoomla.com</authorEmail>
+	<authorUrl>https://extensionsforjoomla.com</authorUrl>
+	<version>1.7</version>
+	<description>MOD_VIKRENTITEMS_SEARCH_DESC</description>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="heading_text" type="text" default="" label="PARAMHEADINGTEXT" description="PARAMHEADINGTEXT" />
+
+				<field name="showloc" type="list" default="0" label="SHOWLOC" description="SHOWLOC">
+					<option value="0">USEGLOB</option>
+					<option value="1">JYES</option>
+					<option value="2">JNO</option>
+				</field>
+
+				<field name="showcat" type="list" default="1" label="SHOWCAT" description="SHOWCAT">
+					<option value="1">JYES</option>
+					<option value="2">JNO</option>
+				</field>
+
+				<field name="category_id" type="sql" default="0" label="FORCESINGLECATEGORYSEARCH" description="FORCESINGLECATEGORYSEARCHHELP" query="SELECT id AS value, name AS title FROM #__vikrentitems_categories ORDER BY name ASC" key_field="value" value_field="title" required="false">
+					<option value="0">FORCESINGLECATEGORYSEARCHDISABLED</option>
+				</field>
+
+				<field name="showgotosumm" type="list" default="1" label="VIEW_SUMMARY_BTN" description="VIEW_SUMMARY_BTN_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JLAYOUT"
+					description="JLAYOUT_DESC"
+				/>
+
+				<field
+					name="itemid"
+					type="menuitem"
+					prefix="vikrentitems"
+					default=""
+					required="true"
+					label="JMENUITEM"
+					description="JMENUITEM_DESC"
+				/>
+
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>

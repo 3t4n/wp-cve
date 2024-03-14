@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>MOD_VIKRENTITEMS_ITEMS</name>
+	<author>E4J srl</author>
+	<creationDate>October 2020</creationDate>
+	<copyright>Copyright (C) e4j - Extensionsforjoomla.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>tech@e4j.com</authorEmail>
+	<authorUrl>https://e4j.com</authorUrl>
+	<version>1.7</version>
+	<description>MOD_VIKRENTITEMS_ITEMS_DESC</description>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="showcatname" type="radio" default="1" label="VRIITEMSCATEGORY" description="VRIITEMSCATEGORYDESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="showdetailsbtn" type="radio" default="1" label="VRIITEMSSHOWDETAILSBTN" description="VRIITEMSSHOWDETAILSBTN" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="showitemdesc" type="radio" default="1" label="SHOWITEMDESC" description="SHOWITEMDESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="show_carats" type="radio" default="1" label="SHOWCARATS" description="SHOWCARATSDESC" >
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="currency" type="text" default="€" label="VRIITEMSCURRENCY" description="VRIITEMSCURRENCYDESC" size="5" filter="raw" />
+				<field name="mod_desc" type="textarea" default="" label="VRIITEMSDESCLABEL" description="VRIITEMSDDESC"  width="300" filter="safehtml" />
+
+				<field name="numb" type="number" default="20" min="0" max="20" step="1" label="VRIITEMSNUMB" description="VRIITEMSNUMBDESC"/>
+				<field name="numb_itemrow" type="number" default="4" min="0" max="10" step="1" label="VRIITEMSNUMBROW" description="VRIITEMSNUMBROW" size="5" filter="integer"/>
+				<field name="pagination" type="radio" default="1" label="VRIITEMSDOTNAV" description="VRIITEMSDOTNAVDESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="navigation" type="radio" default="0" label="VRIITEMSARROWS" description="VRIITEMSARROWSDESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="autoplay" type="radio" default="0" label="VRIITEMSAUTOPLAY" description="VRIITEMSAUTOPLAYDESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="get_loop" type="radio" default="0" label="VRIITEMSLOOP" description="VRIITEMSLOOPDESC">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="query" type="list" default="price" label="VRIITEMSORDERFILTER" description="VRIITEMSORDERFILTERDESC">
+					<option value="price">BYPRICE</option>
+					<option value="name">BYNAME</option>
+					<option value="category">BYCATEGORY</option>
+				</field>
+				<field name="order" type="list" default="asc" label="VRIITEMSORDERTYPE" description="VRIITEMSORDERTYPEDESC">
+					<option value="asc">TYPEASC</option>
+					<option value="desc">TYPEDESC</option>
+				</field>
+				<field name="catid" type="sql" default="0" label="VRIITEMSSELECTCAT" query="SELECT id, name FROM #__vikrentitems_categories" key_field="id" value_field="name">
+					<option value="0">-----</option>
+				</field>
+				<field name="querycat" type="list" default="price" label="ORDERING" description="ORDERING">
+					<option value="price">BYPRICE</option>
+					<option value="name">BYNAME</option>
+				</field>
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JLAYOUT"
+					description="JLAYOUT_DESC"
+				/>
+
+				<field
+					name="itemid"
+					type="menuitem"
+					prefix="vikrentitems"
+					default=""
+					required="true"
+					label="JMENUITEM"
+					description="JMENUITEM_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+
+</extension>
