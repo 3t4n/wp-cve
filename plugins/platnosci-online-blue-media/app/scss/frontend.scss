@@ -1,0 +1,333 @@
+#payment ul.wc_payment_methods {
+    .payment_method_bluemedia {
+        img {
+            width: 100px;
+            height: 80px;
+            object-fit: contain;
+        }
+    }
+
+    > li.wc_payment_method.payment_method_bluemedia {
+        img {
+            float: unset !important;
+            max-height: unset !important;
+            box-sizing: border-box;
+        }
+
+        > input {
+            vertical-align: middle;
+        }
+
+        > label {
+            display: inline-flex;
+            align-items: center;
+
+            > img {
+                margin-left: 15px;
+            }
+        }
+
+        > .payment_box.payment_method_bluemedia {
+            .payment_box.payment_method_bacs {
+                padding: 0;
+
+                > .bm-payment-channels-wrapper {
+                    ul.woocommerce-shipping-methods {
+                        display: grid;
+                        grid-template-areas:
+                            "blik"
+                            "carts"
+                            "pbl"
+                            "wallets"
+                            "fr"
+                            "installment";
+                        grid-template-rows: auto;
+                        grid-auto-columns: auto;
+
+                        > div {
+                            margin: 8px 0;
+
+                            > li {
+                                justify-content: flex-start;
+                                margin-bottom: 0;
+
+                                > ul {
+                                    margin-left: 0;
+                                    width: 100%;
+
+                                    li.bm-payment-channel {
+                                        &-item,
+                                        &-group-item {
+                                            border: 1px solid transparent !important;
+                                            justify-content: flex-start;
+                                            margin-bottom: 0;
+                                            padding: 5px;
+
+                                            &.selected,
+                                            &.bm-selected-group {
+                                                border: 1px solid #87ca8d !important;
+                                            }
+
+                                            > label {
+                                                display: flex;
+                                                align-items: center;
+                                                column-gap: 5px;
+                                                cursor: pointer;
+                                                font-size: .9em;
+                                                text-indent: initial;
+                                                min-height: 100px;
+                                                @media only screen and (max-width: 375px) {
+                                                    min-height: 75px;
+                                                }
+
+                                                > input {
+                                                    &[type="radio"] {
+                                                        cursor: pointer;
+                                                        margin-left: 0;
+                                                        max-width: 1.5em;
+                                                    }
+                                                }
+
+                                                .bm-payment-channel-method-logo,
+                                                .bm-payment-channel-group-method-logo {
+                                                    display: initial;
+                                                    height: unset;
+                                                    max-width: 90px;
+                                                    width: 100%;
+                                                }
+
+                                                .bm-payment-channel-method-name,
+                                                .bm-payment-channel-group-method-name {
+                                                    word-wrap: break-word;
+                                                }
+                                            }
+
+                                            > span.bm-payment-channel-method-desc {
+                                                display: none;
+                                                font-size: .9em;
+                                            }
+                                        }
+
+                                        &-item {
+
+                                            &.selected {
+                                                flex-direction: column;
+
+                                                span {
+                                                    text-align: start;
+                                                }
+
+                                                > span.bm-payment-channel-method-desc {
+                                                    display: block;
+                                                    margin-top: 5px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            &.bm-group {
+                                &-blik {
+                                    grid-area: blik;
+
+                                    .bm-blik {
+                                        &-overlay {
+                                            display: none;
+                                            position: fixed;
+                                            top: 50%;
+                                            left: 50%;
+                                            transform: translate(-50%, -50%);
+                                            z-index: 9999;
+                                            background-color: rgba(255, 255, 255, 1);
+                                            border: #CCC5C5 1px solid;
+                                            border-radius: 10px;
+                                            box-shadow: 5px 5px 10px;
+                                            color: #CCC5C5;
+                                            font-size: 33px;
+                                            padding: 1.3em;
+                                            max-width: 600px;
+                                            width: 80vw;
+
+                                            p {
+                                                text-align: center;
+
+                                                &::after {
+                                                    content: "";
+                                                    display: block;
+                                                    background-image: url("https://platnosci.bm.pl/pomoc/grafika/509.gif");
+                                                    background-size: cover;
+                                                    background-position: center center;
+                                                    margin: 10px auto 0;
+                                                    height: 55px;
+                                                    width: 123px;
+                                                }
+
+                                                span {
+                                                    display: inline-block;
+
+                                                    &.bm-blik-overlay-status {
+                                                        font-weight: bold;
+
+                                                        &--success {
+                                                            color: #0e7b17;
+                                                        }
+
+                                                        &--process {
+                                                            color: #CCC5C5;
+                                                        }
+
+                                                        &--error {
+                                                            color: #A7301F;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        &-code-wrapper {
+                                            > * {
+                                                display: block;
+                                            }
+
+                                            input {
+                                                margin-right: 0;
+                                                width: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &-karta-platnicza,
+                                &-platnosc-karta {
+                                    grid-area: carts;
+                                }
+
+                                &-portfel-elektroniczny,
+                                &-przelew-internetowy {
+                                    grid-area: wallets;
+                                }
+
+                                &-pbl {
+                                    grid-area: pbl;
+                                }
+
+                                &-raty-online {
+                                    grid-area: installment;
+                                }
+
+                                &-szybki-przelew {
+                                    grid-area: fr;
+                                }
+
+                                &-apple-pay {
+                                    display: none;
+                                }
+
+                                &-expandable {
+                                    .bm-group-expandable-wrapper {
+                                        display: none;
+                                        flex-wrap: wrap;
+                                        gap: 5px;
+                                        &.active {
+                                            display: flex;
+                                        }
+
+                                        > li {
+                                            display: block;
+                                            position: relative;
+                                            width: auto;
+
+                                            > label {
+                                                display: block;
+                                                margin: 0;
+                                                min-height: unset;
+                                                @media only screen and (max-width: 375px) {
+                                                    min-height: unset;
+                                                }
+
+                                                > input {
+                                                    &[type="radio"] {
+                                                        display: block !important;
+                                                        height: 100%;
+                                                        width: 100%;
+                                                        margin-right: 0;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 0;
+                                                        opacity: 0;
+                                                        z-index: 2;
+                                                    }
+                                                }
+
+                                                .bm-payment-channel-method-logo {
+                                                    width: 65px;
+                                                    height: 65px;
+                                                    object-fit: contain;
+                                                    margin-left: auto;
+                                                    margin-right: auto;
+                                                    min-height: unset;
+                                                }
+
+                                                > p {
+                                                    display: none;
+                                                }
+                                            }
+
+                                            > span.bm-payment-channel-method-desc {
+                                                margin-top: 0 !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Redirect overlay */
+.bm-redirect-overlay {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    min-height: 90vh;
+    text-align: center;
+    width: 90vw;
+
+    h2 {
+        font-size: 3em;
+        @media only screen and (min-width: 768px) {
+            font-size: 2em;
+        }
+    }
+
+    > span {
+        font-size: 2em;
+        @media only screen and (min-width: 768px) {
+            font-size: 1.2em;
+        }
+    }
+}
+
+/* Compatibility with Astra theme - start */
+body.theme-astra {
+    .woocommerce-checkout #payment .payment_method_bluemedia img {
+	    margin: 0;
+    }
+
+    .payment_box.payment_method_bluemedia > .bm-payment-channels-wrapper {
+        margin-left: 0;
+    }
+
+    .woocommerce .woocommerce-checkout #payment ul.wc_payment_methods li.payment_method_bluemedia ul#shipping_method li {
+        padding-left: 0;
+    }
+}
+/* Compatibility with Astra theme - end */
