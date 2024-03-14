@@ -1,0 +1,70 @@
+/* Cursor */
+
+.dl-cursor {
+    background-color: rgba(1250, 87, 92, 1);
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    user-select: none;
+    pointer-events: none;
+    transform: translate(50%, 50%);
+    visibility: hidden;
+    z-index: 10000;
+}
+
+.dl-fill {
+    display: block;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(250, 87, 92, 0.6);
+    border-radius: 50%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    user-select: none;
+    pointer-events: none;
+    transform: translate(50%, 50%);
+    transition: all 0.1s ease;
+    visibility: hidden;
+    z-index: 10000;
+}
+
+.dl-fill:before {
+    background-color: rgba(250, 87, 92, 0.4);
+    display: block;
+    border-radius: 50%;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.dl-fill.cursor-grow {
+    border: 0px solid transparent;
+}
+
+.dl-fill.cursor-grow:before {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1.4);
+    transition: all 0.3s ease;
+}
+
+.dl-cursor.hide {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transition-delay: 0.4s;
+}
+
+.dl-cursor.hide .inner {
+    transform: scale(0.1);
+    transition: transform 0.3s ease;
+}
