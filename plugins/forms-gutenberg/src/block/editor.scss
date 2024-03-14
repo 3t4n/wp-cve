@@ -1,0 +1,318 @@
+@import "../_partials/pre_mixins";
+@import "../_partials/variables";
+@import "../_partials/mixins";
+@import "../_partials/extend_fields";
+
+@include settings_modal();
+
+.cwp-tag-selector {
+	@include tag_selector();
+}
+
+.cwp-gutenberg-forms-reusable {
+	@include reusable_form();
+}
+.cwp-reusable-edit-url {
+	width: 100%;
+	text-align: right;
+}
+
+.cwp-fields-plotter {
+	& .components-notice {
+		margin: 10px 0px !important;
+	}
+}
+
+.cwp-template-builder {
+	display: block;
+
+	& .to-field {
+		display: flex;
+		justify-content: space-between;
+		margin: 10px 0px;
+		align-items: center;
+	}
+
+	& .cwp_data_drop {
+		display: flex;
+		justify-content: space-between;
+
+		& span {
+			margin: auto 0;
+		}
+	}
+}
+
+.cwp-intro {
+	.content {
+		display: flex;
+		flex-direction: column;
+		& div.types {
+			& button,
+			span {
+				margin: 0px 10px 0px 0px;
+			}
+		}
+	}
+}
+
+.cwp-form {
+	.cwp-gutenberg-form.cwp-progress-bar {
+		@include Progressbar("backend");
+	}
+
+	& .wp-block-cwp-form-button {
+		@include normalize_button();
+	}
+
+	&.cwp-showEditor {
+		&.cwp-form_main {
+			display: none;
+		}
+
+		& .cwp-editor {
+			display: block;
+		}
+	}
+
+	&.cwp-hideEditor {
+		&.cwp-form_main {
+			display: block;
+		}
+
+		& .cwp-editor {
+			display: none;
+		}
+	}
+
+	& .cwp-form-col-main {
+		@include column();
+
+		& .cwp_column_intro_selector {
+			@include column_introduction();
+		}
+	}
+
+	& .cwp-form-steps-wrapper {
+		.cwp-form-steps-labels {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			.cwp-step-label-root {
+				margin: 10px 10px;
+				a {
+					padding: 6px;
+					cursor: pointer;
+					&.is-active-step {
+						border: 1px solid #ccc;
+					}
+				}
+			}
+		}
+	}
+
+	& .cwp-field {
+		.cwp-suffix {
+			@include Suffix();
+		}
+
+		.cwp-prefix {
+			@include Prefix();
+		}
+
+		&.is-style-inline {
+			& .cwp-field-set,
+			& .cwp-radio-set-preview,
+			& .cwp-checkbox-set-preview,
+			& .cwp-select-set {
+				@include inline-field(0px 20px 0px 0px);
+			}
+		}
+
+		&.is-style-button {
+			& .cwp-checkbox-set-preview {
+				@include buttonStyle();
+			}
+
+			& .cwp-radio-set-preview {
+				@include buttonStyle();
+			}
+		}
+
+		& .cwp-select-set {
+			& .cwp-label-wrap {
+				display: flex;
+				flex-direction: row;
+				justify-content: start;
+			}
+		}
+
+		& .cwp-checkbox-set {
+			& .cwp-label-wrap {
+				display: flex;
+				flex-direction: row;
+				justify-content: start;
+			}
+		}
+
+		& .cwp-radios-set {
+			& .cwp-label-wrap {
+				display: flex;
+				flex-direction: row;
+				justify-content: start;
+			}
+		}
+
+		& .cwp-field-set {
+			.cwp-field-with-elements {
+				display: table;
+				width: 100%;
+				position: relative;
+			}
+
+			& .cwp-label-wrap {
+				display: flex;
+				flex-direction: row;
+				justify-content: start;
+			}
+
+			@include field();
+
+			& .cwp-range-set {
+				display: flex;
+				flex-direction: row;
+
+				& input[type="number"] {
+					flex: 1;
+					width: 80px;
+					margin: 0px 0px 0px 15px;
+				}
+			}
+		}
+
+		&.cwp-calculation {
+			& .cwp-calc-toggle {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+
+				& h3 {
+					margin: 0px 10px 0px 0px;
+					font-size: 15px;
+				}
+			}
+
+			& .cwp-field-set {
+				display: flex;
+				flex-direction: column !important;
+			}
+
+			& .cwp-form-calc-builder {
+				@include formulaBuilder();
+			}
+		}
+
+		&.cwp-yes-no {
+			& .cwp-field-set {
+				@include switch();
+			}
+		}
+		@include bulk_add();
+
+		&.cwp-hidden {
+			@include hidden-field();
+		}
+
+		& .cwp-checkbox-set {
+			@include checkbox-field("backend");
+		}
+
+		& .cwp-radios-set {
+			@include radio-field("backend");
+		}
+
+		& .cwp-select-set {
+			@include select-field("backend");
+		}
+
+		& .cwp-required:not(.cwp-noticed) {
+			@include isRequired("toggle");
+		}
+
+		& .cwp-required.cwp-noticed {
+			@include isRequired("noticed");
+		}
+	}
+
+	& .cwp-submit {
+		padding: 20px 0px;
+		display: flex;
+		@include buttonAlignment();
+		& .cwp-submit-btn {
+			@include defaultSubmit();
+		}
+	}
+
+	.cwp-button-block-appender .block-editor-inserter {
+		width: 100%;
+	}
+}
+
+//miscs
+
+.cwp-heading {
+	margin: 0px 0px !important;
+}
+
+.cwp-option {
+	margin: 20px 0px !important;
+
+	&.column {
+		& .cwp-column {
+			margin: 10px 0px;
+		}
+	}
+
+	& h3.cwp-message_header {
+		margin: 0px 0px 10px 0px !important;
+		display: flex;
+
+		& svg {
+			margin: 0px 10px;
+		}
+	}
+
+	& h3 {
+		margin: 0;
+	}
+
+	& p {
+		& svg {
+			vertical-align: bottom;
+		}
+	}
+}
+
+.cwp-step-appender {
+	display: flex;
+	align-items: stretch;
+	.add_btn {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: center;
+		cursor: pointer;
+		user-select: none;
+
+		span {
+			margin: 0px 5px 0px 0px;
+		}
+	}
+}
+
+.cwp-hint {
+	font-weight: 300;
+	font-size: 1rem;
+}
