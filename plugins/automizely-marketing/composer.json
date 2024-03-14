@@ -1,0 +1,29 @@
+{
+    "name": "aftership/connectors-plugins-ecommerces",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6",
+        "woocommerce/woocommerce-sniffs": "^0.1.0"
+    },
+	"scripts": {
+		"lint:all": [
+			"./vendor/bin/phpcbf ./woocommerce"
+		],
+		"lint:dp": [
+			"./vendor/bin/phpcbf ./woocommerce/automizely-dropshipping/"
+		],
+		"lint:mt": [
+			"./vendor/bin/phpcbf ./woocommerce/automizely-marketing/"
+		],
+		"lint:rc": [
+			"./vendor/bin/phpcbf ./woocommerce/automizely-returnscenter/"
+		],
+		"lint:feed": [
+			"./vendor/bin/phpcbf --standard=WooCommerce-Core woocommerce/tiktok-shopping/"
+		]
+	},
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
