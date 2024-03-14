@@ -1,0 +1,89 @@
+{
+	"name": "wpdesk/flexible-refund-and-return-order-for-woocommerce",
+	"description": "Flexible Refund and Return Order for WooCommerce",
+	"authors": [
+		{
+			"name": "Piotr",
+			"email": "piotr.potrebka@wpdesk.pl"
+		}
+	],
+	"prefer-stable": true,
+	"minimum-stability": "stable",
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "7.3.33"
+		},
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"cweagans/composer-patches": true,
+			"kylekatarnls/update-helper": true,
+			"wpdesk/wp-wpdesk-composer": true,
+			"wpdesk/wp-codeception": true
+		},
+		"gitlab-domains": ["gitlab.wpdesk.dev"]
+	},
+	"require": {
+		"php": ">=7.3 | ^8",
+		"ext-json": "*",
+		"psr/container": "^1",
+		"psr/log": "^1.1.3",
+		"wpdesk/wp-wpdesk-helper-override": "^1.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"WPDesk\\WPDeskFRFree\\": "src/"
+		},
+		"classmap": [
+			"vendor_prefixed"
+		]
+	},
+	"require-dev": {
+		"10up/wp_mock": "*",
+		"phpunit/phpunit": "^8 | ^9",
+		"wpdesk/wp-logs": "^1.7",
+		"wpdesk/wp-codeception": "^2.7.2",
+		"wpdesk/wp-plugin-flow-free": "^1",
+		"wpdesk/wp-wpdesk-composer": "^2",
+		"wpdesk/flexible-refunds-core": "^1.0.30",
+		"wpdesk/ltv-dashboard-widget": "^1",
+		"wpdesk/wp-wpdesk-deactivation-modal": "^1.0"
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/"
+		]
+	},
+	"extra": {
+		"text-domain": "flexible-refund-and-return-order-for-woocommerce",
+		"translations-folder": "lang",
+		"translation-file-headers": {
+			"Project-Id-Version": "Flexible Refund Order for WooCommerce",
+			"Last-Translator": "Piotr Potrebka <piotr.potrebka@wpdesk.pl>",
+			"X-Poedit-WPHeader": "flexible-refund-and-return-order-for-woocommerce.php"
+		},
+		"po-files": {
+			"pl_PL": "pl_PL.po"
+		},
+		"prefix_psr": true
+	},
+	"scripts": {
+		"test": "echo composer is alive",
+		"phpcs": "phpcs",
+		"phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+		"phpunit-unit-fast": "phpunit --configuration phpunit-unit.xml --no-coverage",
+		"phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+		"phpunit-integration-fast": "phpunit --configuration phpunit-integration.xml --no-coverage",
+		"docs": "apigen generate"
+	},
+	"repositories": {
+		"octolize": {
+			"type": "composer",
+			"url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
+		},
+		"wpdesk": {
+			"type": "composer",
+			"url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
+		}
+	}
+}
