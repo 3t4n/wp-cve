@@ -1,0 +1,112 @@
+<?php
+//echo "=".ICL_LANGUAGE_CODE;
+//$trans_page_id = intval(icl_object_id(74, 'page' , false, 'de'));
+    //echo "=".$trans_page_id;
+//print_r(wp_upload_dir());
+
+?><div class="wpsgitrecht_mod_haendlerbund_settings">
+
+	<div class="wpsgitrecht_clear"></div><br />
+
+	<div class="wpsgitrecht_form_field">
+		<div class="wpsgitrecht_form_left">
+			<label for="wpsgitrecht_apiToken"><?php echo __('API Token', 'wpsgitrecht'); ?>:</label>
+		</div>
+		<div class="wpsgitrecht_form_right">
+			<input id="wpsgitrecht_apiToken" type="text" class="text" name="wpsgitrecht_apiToken" value="<?php echo htmlspecialchars($this->getAPIKey()); ?>" style="background-image:none; font-size:12px; background-position: 0% 0%; background-repeat: repeat; width:95;" />
+			<a title="<?php echo __('Neuen API Key generieren', 'wpsgitrecht'); ?>" href="#" onclick="return wpsgitrecht_generateToken();" class="wpsg_itrecht_generatebutton"></a>
+		</div>
+	</div>
+		 
+	<br />
+	
+	<?php echo wpsgitrecht_drawForm_Input('', __('API URL', 'wpsgitrecht'), $this->getAPIUrl(), array('readonly' => true, 'nohspc' => true)); ?>
+
+	<div class="wpsgitrecht_clear"></div><br />
+	
+	<table class="wpsgitrecht_table">
+		<?php foreach ($this->getPageTypes() as $page_key => $page) { ?>	
+		<tr>
+			<td class="col0">
+				<strong><?php echo __($page['label'], 'wpsgitrecht'); ?></strong><br />
+				<?php echo __('Shortcode', 'wpsgitrecht'); ?>: <strong>[wpsg_itrecht_<?php echo $page_key; ?>]</strong>
+			</td>
+			<td class="col1">
+				<select name="ContentPage[<?php echo $page_key; ?>]">
+					<option value="0"><?php echo __('Keine Seite verwenden', 'wpsgitrecht'); ?></option>
+					<option value="-1"><?php echo __('Neue Seite anlegen', 'wpsgitrecht'); ?></option>
+					<?php foreach ($this->getPages() as $wp_page_uid => $wp_page_label) { ?>
+					<option value="<?php echo $wp_page_uid; ?>" <?php echo (($wp_page_uid == $page['set'])?'selected="selected"':''); ?>><?php echo $wp_page_label; ?></option>
+					<?php } ?>
+				</select>
+				<br />
+				<p>
+					<?php if ($page['last_update'] > 0) { ?>
+					<?php echo __('Letzter Abgleich', 'wpsgitrecht'); ?>: <span style="color:green;"><?php echo get_date_from_gmt(date('Y-m-d H:i:s', $page['last_update'])); ?></span>
+					<?php } else { ?>
+					<span style="color:red;"><?php echo __('Nicht abgeglichen.', 'wpsgitrecht'); ?></span>
+					<?php } ?>
+				</p>
+			</td>			
+		</tr>
+		<tr>
+			<td colspan="3" class="col3">
+				URL: <a href="<?php echo get_permalink($page['set']); ?>"><?php echo get_permalink($page['set']); ?></a>
+				<?php if (isset($page['pdf_url'])) { ?>
+				<a href="<?php echo $page['pdf_url'] ?>" target="_blank">PDF</a>
+				<?php } ?>
+			</td>
+		</tr>
+		<?php if (($page['needPDF']??false) === true) { ?>
+		<tr>
+			<td colspan="3" class="col4"> 
+				<div>
+					<?php if (\is_plugin_active('wpshopgermany-free/wpshopgermany.php')) { ?>
+					<label>
+						<input type="hidden" name=WpsgOrderMail[<?php echo $page_key; ?>]" value="0" />
+						<input type="checkbox" name="WpsgOrderMail[<?php echo $page_key; ?>]" value="1" <?php echo (($this->get_option('wpsgitrecht_wpsgmail_'.$page_key) === '1')?'checked="checked"':''); ?> />&nbsp;<?php echo __('PDF An wpShopGermany Bestellmail anhängen', 'wpsgit'); ?>
+					</label>
+					<?php } ?>
+					<?php if (\is_plugin_active('woocommerce/woocommerce.php')) { ?>
+					<label>
+						<input type="hidden" name="WooOrderMail[<?php echo $page_key; ?>]" value="0" />
+						<input type="checkbox" name="WooOrderMail[<?php echo $page_key; ?>]" value="1" <?php echo (($this->get_option('wpsgitrecht_woomail_'.$page_key) === '1')?'checked="checked"':''); ?> />&nbsp;<?php echo __('PDF An WooCommerce Bestellmail anhängen', 'wpsgit'); ?>
+					</label>
+					<?php } ?>
+				</div>
+			</td>
+		</tr>
+		<?php } ?>
+		
+		<?php if ($page_key !== array_reverse(array_keys($this->getPageTypes()))[0]) { ?>
+		<tr>
+			<td colspan="2"><hr /></td>
+		</tr>
+		<?php }  ?>
+			
+		<?php } ?>
+	</table>
+	
+	<script type="text/javascript">/* <![CDATA[ */
+
+		function wpsgitrecht_generateToken() 
+		{
+
+			jQuery.ajax( {
+				
+				url: '<?php echo site_url(); ?>/wp-admin/admin.php?wpsgitrecht_action=genKey',
+				
+				success: function(data) {
+
+					jQuery('#wpsgitrecht_apiToken').val(data);
+					
+				}
+			} );
+			
+			return false;
+			
+		}		
+
+	/* ]]> */</script>
+	
+</div>
