@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>Gif Master</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="description" content="Find Gifs from GIPHY and Tenor.">
+	<link href="./css/Popup.css" rel="stylesheet" type="text/css"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
+<body>
+	<div id="app">
+		<div class="ff_window_close_btn"><span href="#">CLOSE</span></div>
+		<ul class="toggle_source">
+			<li id="giphy_src" class="gif_src active">
+				<img class="logo-image" src="img/giphy_logo_laser.gif"/>
+				<img class="logo-text" src="img/giphy_logo_txt.png"/>
+			</li>
+			<li id="tenor_src" class="gif_rc">
+				<img class="tenor-image" src="img/PB_tenor_logo_white_horizontal.png" style="width: 90%;"/>
+			</li>
+		</ul>
+		
+		<div class="giphy_sec">
+			<div id="header">
+				<span id="back-button" class="back-button"> </span>
+			</div>
+			<div id="container">
+				<ul id="gifs"></ul> 
+				<div id="gif-detail">
+					<div draggable="true" class="gif-detail-cover"></div>
+					<img id="gif-detail-gif" src="">
+					<div id="share-menu">
+						<div id="gif-detail-tags"></div>
+						<div id="gif-detail-link"></div>
+						<div id="gif-inject-cms"><button class="button button-hero embed-button" style="background: #6157FF;color: white;border: none;text-shadow: none;text-transform: uppercase;font-size:20px;font-weight:bold">Insert into post</button></div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<div id="searchbar">
+					<input id="searchbar-input" type="text" name="q" placeholder="Search"/>
+				</div>
+				<a id="search-button" href="#"></a>
+			</div>
+		</div>
+		
+		<div class="tenor_sec" style="display: none;">
+			<div class="tenor_header">
+				<span id="tnr-back-button" class="back-button"> </span>
+			</div>
+
+			<div class="tenor_container">
+				<ul id="tnrgifs"></ul> 
+				<div id="tnr-gif-detail" style="display: none;">
+					<div draggable="true" class="gif-detail-cover"></div>
+					<img id="tnr-gif-detail-gif" src="">
+					<div id="tnr-share-menu">
+						<div id="tnr-gif-inject-cms">
+							<button id="tnr-embed-button" class="button button-hero" style="background: #6157FF;color: white;border: none;text-shadow: none;text-transform: uppercase;font-size:20px;font-weight:bold">Insert into post</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="tnr-footer">
+				<div id="tnr-searchbar">
+					<input id="tnr-searchbar-input" type="text" name="tq" placeholder="Search Tenor"/>
+				</div>
+				<a id="tnr-search-button" href="#"></a>
+			</div>
+		</div>
+	</div>
+
+	<script type='text/javascript' src='../../../../wp-admin/load-scripts.php?c=1&load%5Bchunk_0%5D=jquery-core,jquery-migrate,utils,moxiejs,plupload'></script>
+	
+	<!-- giphy functions -->
+	<script src="js/newT.js"></script>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/masonry.pkgd.min.js"></script>
+	<script src="js/GiphySearch.js"></script>
+	<script src="js/giphy_cms_ext.js"></script>
+	<script src="js/init.js"></script>
+	
+	<!-- Tenor functions -->
+	<script src="js/tenor/init.js"></script>
+
+</body>
+</html>
