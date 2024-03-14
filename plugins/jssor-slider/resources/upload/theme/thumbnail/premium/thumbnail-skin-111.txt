@@ -1,0 +1,34 @@
+﻿{
+    id: "jssort111",
+    type: "thumbnail",
+    name: "thumbnail skin 111",
+    note: "<!-- Note: v:0 = id; v:1 = itemWidth; v:2 = itemHeight; v:3 = borderWidth -->",
+    css: ''
+        + '\r\n.{{v:0}} .p {position:absolute;top:0;left:0;width:{{v:1}}px;height:{{v:2}}px;background-color:#000;}'
+        + '\r\n.{{v:0}} .p img {position:absolute;top:0;left:0;width:100%;height:100%;}'
+        + '\r\n.{{v:0}} .t {position:absolute;top:0;left:0;width:100%;height:100%;border:none;opacity:.45;}'
+        + '\r\n.{{v:0}} .p:hover .t{opacity:.8;}'
+        + '\r\n.{{v:0}} .pav .t, .{{v:0}} .pdn .t, .{{v:0}} .p:hover.pdn .t{opacity:1;}'
+        + '\r\n.{{v:0}} .ti {position:absolute;bottom:0px;left:0px;width:100%;height:{{v:2,f:.28}}px;line-height:{{v:2,f:.28}}px;text-align:center;font-size:{{v:2,f:.12}}px;color:#fff;background-color:rgba(0,0,0,.3)}'
+        + '\r\n.{{v:0}} .pav .ti, .{{v:0}} .pdn .ti, .{{v:0}} .p:hover.pdn .ti{color:#000;background-color:rgba(255,255,255,.6);}',
+    html: ''
+        + '\r\n<div data-u="thumbnavigator" class="{{v:0}}" style="position:absolute;left:0px;bottom:0px;width:980px;height:100px;cursor:default;">'
+        + '\r\n    <div data-u="slides">'
+        + '\r\n        <div data-u="prototype" class="p">'
+        + '\r\n            <div data-u="thumbnailtemplate" class="t"></div>'
+        + '\r\n        </div>'
+        + '\r\n    </div>'
+        + '\r\n</div>',
+    itemHtml: ''
+        + '\r\n<div data-u="thumb">'
+        + '\r\n    <img data-u="thumb" data-tsize="{w:{{v:1}},h:{{v:2}}}" src="{{i:0}}" />'
+        + '\r\n    <div class="ti">{{c:0}}</div>'
+        + '\r\n</div>',
+    defaultValue: {
+        itemWidth: 200,
+        itemHeight: 100,
+        cntrHeight: 100,
+        cntrAutoCenter: 1,
+        bhvScalePos: .75
+    }
+}
