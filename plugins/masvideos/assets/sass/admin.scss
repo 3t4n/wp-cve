@@ -1,0 +1,1743 @@
+/**
+ * admin.scss
+ * General MasVideos admin styles. Settings, movie data tabs, reports, etc.
+ */
+
+ /**
+ * Imports
+ */
+
+@import 'mixins';
+@import 'select2';
+@import "animation";
+
+/**
+  * Styling begins
+  */
+.blockUI.blockOverlay {
+    @include loader();
+}
+
+/**
+ * MasVideos meta boxes
+ */
+.masvideos-metaboxes-wrapper {
+    .toolbar {
+        margin: 0 !important;
+        border-top: 1px solid white;
+        border-bottom: 1px solid #eee;
+        padding: 9px 12px !important;
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    p.toolbar {
+        overflow: hidden;
+        zoom: 1;
+    }
+
+    .expand-close {
+        margin-right: 2px;
+        color: #777;
+        font-size: 12px;
+        font-style: italic;
+        a {
+            background: none;
+            padding: 0;
+            font-size: 12px;
+            text-decoration: none;
+        }
+    }
+
+    &#person_attributes .expand-close,
+    &#episode_attributes .expand-close,
+    &#tv_show_attributes .expand-close,
+    &#tv_show_seasons .expand-close,
+    &#tv_show_cast_persons .expand-close,
+    &#tv_show_crew_persons .expand-close,
+    &#video_attributes .expand-close,
+    &#movie_attributes .expand-close,
+    &#movie_sources .expand-close,
+    &#movie_cast_persons .expand-close,
+    &#movie_crew_persons .expand-close,
+    &#episode_sources .expand-close {
+        float: right;
+        line-height: 28px;
+    }
+
+    button.add_variable_attribute,
+    .fr {
+        float: right;
+        margin: 0 0 0 6px;
+    }
+
+    .masvideos-metaboxes {
+        border-bottom: 1px solid #eee;
+    }
+
+    .masvideos-metabox-sortable-placeholder {
+        border-color: #bbb;
+        background-color: #f5f5f5;
+        margin-bottom: 9px;
+        border-width: 1px;
+        border-style: dashed;
+    }
+
+    .masvideos-metabox {
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        margin: 0 !important;
+
+        select {
+            font-weight: 400;
+        }
+
+        &:last-of-type {
+            border-bottom: 0;
+        }
+
+        .handlediv {
+            width: 27px;
+
+            &::before {
+                content: '\f142' !important;
+                cursor: pointer;
+                display: inline-block;
+                font: 400 20px/1 'Dashicons';
+                line-height: 0.5 !important;
+                padding: 8px 10px;
+                position: relative;
+                right: 12px;
+                top: 0;
+            }
+        }
+
+        &.closed {
+            @include border-radius(3px);
+
+            .handlediv::before {
+                content: '\f140' !important;
+            }
+
+            h3 {
+                border: 0;
+            }
+        }
+
+        h3 {
+            margin: 0 !important;
+            padding: 0.75em 0.75em 0.75em 1em !important;
+            font-size: 1em !important;
+            overflow: hidden;
+            zoom: 1;
+            cursor: move;
+
+            button, a.delete {
+                float: right;
+            }
+
+            a.delete {
+                color: red;
+                font-weight: normal;
+                line-height: 26px;
+                text-decoration: none;
+                position: relative;
+                visibility: hidden;
+            }
+
+            strong {
+                font-weight: normal;
+                line-height: 26px;
+                font-weight: 700;
+            }
+
+            select {
+                font-family: sans-serif;
+                max-width: 20%;
+                margin: 0.25em 0.25em 0.25em 0;
+            }
+
+            .handlediv {
+                background-position: 6px 5px !important;
+                visibility: hidden;
+                height: 26px;
+            }
+
+            &.fixed {
+                cursor: pointer !important;
+            }
+        }
+
+        h3:hover, &.ui-sortable-helper {
+            a.delete, .handlediv {
+                visibility: visible;
+            }
+        }
+
+        table {
+            width: 100%;
+            position: relative;
+            background-color: #fdfdfd;
+            padding: 1em;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+
+            td {
+                text-align: left;
+                padding: 0 6px 1em 0;
+                vertical-align: top;
+                border: 0;
+
+                label {
+                    text-align: left;
+                    display: block;
+                    line-height: 21px;
+                }
+
+                input {
+                    float: left;
+                    min-width: 200px;
+                }
+
+                input,
+                textarea {
+                    width: 100%;
+                    margin: 0;
+                    display: block;
+                    font-size: 14px;
+                    padding: 4px;
+                    color: #555;
+                }
+
+                textarea.short {
+                    width: 50%;
+                }
+
+                select:not( .short ),
+                .select2-container {
+                    width: 100% !important;
+                }
+
+                // input.short {
+                //     width: 200px;
+                // }
+
+                input.checkbox {
+                    width: 16px;
+                    min-width: inherit;
+                    vertical-align: text-bottom;
+                    display: inline-block;
+                    float: none;
+                }
+
+                .form-field {
+                    margin-top: 0;
+                }
+            }
+
+            td.attribute_name {
+                width: 200px;
+            }
+
+            .plus,
+            .minus {
+                margin-top: 6px;
+            }
+
+            .fl {
+                float: left;
+            }
+
+            .fr {
+                float: right;
+            }
+        }
+    }
+}
+
+.variations-pagenav {
+    float: right;
+    line-height: 24px;
+
+    .displaying-num {
+        color: #777;
+        font-size: 12px;
+        font-style: italic;
+    }
+
+    a {
+        padding: 0 10px 3px;
+        background: rgba(0, 0, 0, 0.05);
+        font-size: 16px;
+        font-weight: 400;
+        text-decoration: none;
+    }
+
+    a.disabled,
+    a.disabled:active,
+    a.disabled:focus,
+    a.disabled:hover {
+        color: #a0a5aa;
+        background: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    .variations-defaults {
+    float: left;
+    select {
+        margin: 0.25em 0.25em 0.25em 0;
+    }
+ }
+
+.variations-defaults {
+    float: left;
+    select {
+        margin: 0.25em 0.25em 0.25em 0;
+    }
+}
+
+.masvideos_variable_attributes {
+    background-color: #fdfdfd;
+    border-top: 1px solid #eee;
+
+    .data {
+        @include clearfix;
+        padding: 1em 2em;
+    }
+
+    .upload_image_button {
+        display: block;
+        width: 64px;
+        height: 64px;
+        float: left;
+        margin-right: 20px;
+        position: relative;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+
+        &::before {
+            content: '\f128';
+            font-family: 'Dashicons';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            line-height: 64px;
+            font-size: 64px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        &.remove {
+            img {
+                display: block;
+            }
+
+            &::before {
+                content: '\f335';
+                display: none;
+            }
+
+            &:hover::before {
+                display: block;
+            }
+        }
+    }
+
+    .options {
+        border: 1px solid #eee;
+        border-width: 1px 0;
+        padding: 0.25em 0;
+
+        label {
+            display: inline-block;
+            padding: 4px 1em 2px 0;
+        }
+
+        input[type=checkbox] {
+            margin: 0 5px 0 .5em!important;
+            vertical-align: middle;
+        }
+    }
+}
+
+.form-row {
+    label {
+        display: inline-block;
+    }
+
+    .masvideos-help-tip {
+        float: right;
+    }
+
+    input[type=text],
+    input[type=number],
+    select,
+    textarea {
+        width: 100%;
+        vertical-align: middle;
+        margin: 2px 0 0;
+        padding: 5px;
+    }
+
+    select {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    &.dimensions_field {
+        .wrap {
+            clear:left;
+            display: block;
+        }
+        input {
+            width: 33%;
+            float: left;
+            vertical-align: middle;
+
+            &:last-of-type {
+                margin-right: 0;
+                width: 34%;
+            }
+        }
+    }
+
+    &.form-row-first,
+    &.form-row-last {
+        width: 48%;
+        float: right;
+    }
+
+    &.form-row-first {
+        clear: both;
+        float: left;
+    }
+
+    &.form-row-full {
+        clear: both;
+    }
+}
+
+.masvideos #tabs-wrap table a.remove {
+    margin-left: 4px;
+}
+
+.masvideos #tabs-wrap table p {
+    margin: 0 0 4px !important;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.masvideos #tabs-wrap table p a.add {
+    float: left;
+}
+
+#wp-excerpt-editor-container {
+    background: #fff;
+}
+
+#episode_variation-parent #parent_id,
+#tv_show_variation-parent #parent_id,
+#video_variation-parent #parent_id,
+#movie_variation-parent #parent_id {
+    width: 100%;
+}
+
+#postimagediv img {
+    border: 1px solid #d5d5d5;
+    max-width: 100%;
+}
+
+#masvideos-person-images .inside,
+#masvideos-episode-images .inside,
+#masvideos-tv-show-images .inside,
+#masvideos-video-images .inside,
+#masvideos-movie-images .inside {
+    margin: 0;
+    padding: 0;
+
+    .add_person_images,
+    .add_video_images,
+    .add_movie_images,
+    .add_tv_show_images,
+    .add_episode_images {
+        padding: 12px 9px;
+    }
+
+    #person_images_container,
+    #video_images_container,
+    #movie_images_container,
+    #tv_show_images_container,
+    #episode_images_container {
+        padding: 0 0 0 9px;
+
+        ul {
+            @include clearfix();
+            margin: 0;
+            padding: 0;
+
+            li.image,
+            li.add,
+            li.masvideos-metabox-sortable-placeholder {
+                width: 80px;
+                float: left;
+                cursor: move;
+                border: 1px solid #d5d5d5;
+                margin: 9px 9px 0 0;
+                background: #f7f7f7;
+                @include border-radius(2px);
+                position: relative;
+                box-sizing: border-box;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+            }
+
+            li.masvideos-metabox-sortable-placeholder {
+                border: 3px dashed #dddddd;
+                position: relative;
+
+                &::after {
+                    @include icon_dashicons( '\f161' );
+                    font-size: 2.618em;
+                    line-height: 72px;
+                    color: #ddd;
+                }
+            }
+
+            ul.actions {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                padding: 2px;
+                display: none;
+
+                li {
+                    float: right;
+                    margin: 0 0 0 2px;
+
+                    a {
+                        width: 1em;
+                        height: 1em;
+                        margin: 0;
+                        height: 0;
+                        display: block;
+                        overflow: hidden;
+
+                        &.tips {
+                            cursor: pointer;
+                        }
+                    }
+
+                    a.delete {
+                        @include ir();
+                        font-size: 1.4em;
+
+                        &::before {
+                            @include icon_dashicons( '\f153' );
+                            color: #999;
+                            background: #fff;
+                            border-radius: 50%;
+                            height: 1em;
+                            width: 1em;
+                            line-height: 1em;
+                        }
+
+                        &:hover::before {
+                            color: red;
+                        }
+                    }
+                }
+            }
+
+            li:hover ul.actions {
+                display: block;
+            }
+        }
+    }
+}
+
+#masvideos-person-data,
+#masvideos-episode-data,
+#masvideos-tv-show-data,
+#masvideos-video-data,
+#masvideos-movie-data {
+    .handle {
+        padding: 10px;
+
+        span {
+            display: block;
+            vertical-align: middle;
+            line-height: 24px;
+
+            span {
+                display: inline;
+                line-height: inherit;
+                vertical-align: baseline;
+            }
+        }
+
+        select {
+            margin: 0;
+        }
+
+        label {
+            padding-right: 1em;
+            font-size: 12px;
+            vertical-align: baseline;
+        }
+
+        label:first-child {
+            margin-right: 1em;
+            border-right: 1px solid #dfdfdf;
+        }
+
+        input, select {
+            margin-top: -3px 0 0;
+            vertical-align: middle;
+        }
+
+        select {
+            margin-left: 0.5em;
+        }
+    }
+
+    > .handlediv {
+        margin-top: 4px;
+    }
+
+    .wrap {
+        margin: 0;
+    }
+}
+
+#masvideos-person-data,
+#masvideos-episode-data,
+#masvideos-tv-show-data,
+#masvideos-video-data,
+#masvideos-movie-data {
+    .panel-wrap {
+        background: #fff;
+    }
+
+    .masvideos_options_panel,
+    .masvideos-metaboxes-wrapper {
+        float: left;
+        width: 80%;
+
+        .masvideos-radios {
+            display: block;
+            float: left;
+            margin-left: 150px;
+
+            li {
+                display: block;
+                padding: 0 0 10px;
+
+                input {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+
+#masvideos-person-data,
+#masvideos-episode-data,
+#masvideos-tv-show-data,
+#masvideos-video-data,
+#masvideos-movie-data,
+.masvideos {
+    .panel-wrap {
+        overflow: hidden;
+    }
+
+    ul.masvideos-tabs {
+        margin: 0;
+        width: 20%;
+        float: left;
+        line-height: 1em;
+        padding: 0 0 10px;
+        position: relative;
+        background-color: #fafafa;
+        border-right: 1px solid #eee;
+        box-sizing: border-box;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 9999em;
+            position: absolute;
+            bottom: -9999em;
+            left: 0;
+            background-color: #fafafa;
+            border-right: 1px solid #eee;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            display: block;
+            position: relative;
+
+            a {
+                margin: 0;
+                padding: 10px;
+                display: block;
+                box-shadow: none;
+                text-decoration: none;
+                line-height: 20px !important;
+                border-bottom: 1px solid #eee;
+
+                span {
+                    margin-left: 0.618em;
+                    margin-right: 0.618em;
+                }
+
+                &::before {
+                    @include iconbeforedashicons( '\f107' );
+                }
+            }
+
+            &.general_options a::before {
+                content: '\f107';
+            }
+
+            &.linked_movie_options a::before,
+            &.linked_video_options a::before {
+                content: '\f103';
+            }
+
+            &.cast_options a::before,
+            &.crew_options a::before {
+                content: '\f110';
+            }
+
+            &.source_options a::before {
+                content: "\f325";
+            }
+
+            &.attribute_options a::before {
+                content: '\f175';
+            }
+
+            &.advanced_options a::before {
+                font-family: 'Dashicons';
+                content: '\f111';
+            }
+
+            &.active a {
+                color: #555;
+                position: relative;
+                background-color: #eee;
+            }
+        }
+    }
+}
+
+#masvideos-person-data,
+#masvideos-person-type-options,
+#masvideos-episode-data,
+#masvideos-episode-type-options,
+#masvideos-tv-show-data,
+#masvideos-tv-show-type-options,
+#masvideos-video-data,
+#masvideos-video-type-options,
+#masvideos-movie-data,
+#masvideos-movie-type-options {
+    .inside {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.masvideos_options_panel p,
+.masvideos_options_panel fieldset.form-field,
+.masvideos_options_panel .form-field.media-attachment-video,
+.masvideos_options_panel .form-field.media-video-url,
+.masvideos_options_panel .form-field.media-embed-video {
+    margin: 0 0 9px;
+    font-size: 12px;
+    padding: 5px 9px;
+    line-height: 24px;
+
+    &::after {
+        content: '.';
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+
+.masvideos_options_panel {
+    min-height: 175px;
+    box-sizing: border-box;
+
+    .downloadable_files {
+        padding: 0 9px 0 162px;
+        position: relative;
+        margin: 9px 0;
+
+        label {
+            position: absolute;
+            left: 0;
+            margin: 0 0 0 12px;
+            line-height: 24px;
+        }
+    }
+
+    p {
+        margin: 9px 0;
+    }
+
+    p.form-field,
+    fieldset.form-field,
+    .form-field.media-attachment-video,
+    .form-field.media-video-url,
+    .form-field.media-embed-video {
+        padding: 5px 20px 5px 162px !important; /** Padding for aligning labels left - 12px + 150 label width **/
+    }
+
+    .form-field.media-attachment-video .wp-video,
+    .form-field.media-video-url .wp-video,
+    .form-field.media-embed-video .wp-video {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .form-field.media-attachment-video {
+        .wp-video {
+            div.wp-video-shortcode:not(.mejs-container-fullscreen),
+            .wp-video-shortcode:not(.mejs-container-fullscreen) video {
+                max-width: 640px;
+                max-height: 360px;
+            }
+        }
+    }
+
+    .form-field.media-video-url {
+        .wp-video {
+            div.wp-video-shortcode:not(.mejs-container-fullscreen),
+            .wp-video-shortcode:not(.mejs-container-fullscreen) iframe {
+                max-width: 640px;
+                max-height: 360px;
+            }
+        }
+
+        .media-video-url-box {
+            float: none;
+        }
+    }
+
+    .form-field.media-embed-video {
+        textarea {
+            float: none;
+        }
+
+        .wp-video {
+            max-width: 640px;
+            min-height: 260px;
+
+            iframe body {
+                overflow: hidden;
+            }
+        }
+
+        iframe {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    label,
+    legend {
+        float: left;
+        width: 150px;
+        padding: 0;
+        margin: 0 0 0 -150px;
+
+        .req {
+            font-weight: 700;
+            font-style: normal;
+            color: red;
+        }
+    }
+
+    .description {
+        padding: 0;
+        margin: 0 0 0 7px;
+        clear: none;
+        display: inline;
+    }
+
+    .description-block {
+        margin-left: 0;
+        display: block;
+    }
+
+    textarea,
+    input,
+    select {
+        margin: 0;
+    }
+
+    textarea {
+        float: left;
+        height: 3.5em;
+        line-height: 1.5em;
+        vertical-align: top;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='number'],
+    input[type='password'] {
+        width: 50%;
+        float: left;
+    }
+
+    input.button {
+        width: auto;
+        margin-left: 8px;
+    }
+
+    select {
+        float: left;
+    }
+
+    input[type='text'].short,
+    input[type='email'].short,
+    input[type='number'].short,
+    input[type='password'].short,
+    textarea.short,
+    .short {
+        width: 50%;
+    }
+
+    .sized {
+        width: auto !important;
+        margin-right: 6px;
+    }
+
+    .options_group {
+        border-top: 1px solid white;
+        border-bottom: 1px solid #eee;
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        fieldset {
+            margin: 9px 0;
+            font-size: 12px;
+            padding: 5px 9px;
+            line-height: 24px;
+
+            label {
+                width: auto;
+                float: none;
+            }
+
+            ul {
+                float: left;
+                width: 50%;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    margin: 0;
+                    width: auto;
+
+                    input {
+                        width: auto;
+                        float: none;
+                        margin-right: 4px;
+                    }
+                }
+            }
+
+            ul.masvideos-radios label {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .dimensions_field .wrap {
+        display: block;
+        width: 50%;
+
+        input {
+            width: 30.75%;
+            margin-right: 3.8%;
+        }
+
+        .last {
+            margin-right: 0;
+        }
+    }
+
+    &.padded {
+        padding: 1em;
+    }
+
+    .select2-container {
+        float: left;
+    }
+
+    p.form-field.hide {
+        display: none;
+    }
+
+    .form-field-radio {
+        .description {
+            display: block;
+            clear: both;
+            margin-left: 0;
+        }
+    }
+
+    input[type='checkbox'] + .description {
+        display: inline;
+        clear: none;
+        margin-left: 7px;
+    }
+}
+
+/**
+* Small screen optimisation
+*/
+@media only screen and (max-width: 1280px) {
+    #order_data {
+        .order_data_column {
+            width: 48%;
+
+            &:first-child {
+                width: 100%;
+            }
+        }
+    }
+    .masvideos_options_panel {
+        .description {
+            display: block;
+            clear: both;
+            margin-left: 0;
+        }
+
+        .short,
+        input[type='text'].short,
+        input[type='email'].short,
+        input[type='number'].short,
+        input[type='password'].short,
+        .dimensions_field .wrap {
+            width: 80%;
+        }
+
+        .form-field.media-embed-video iframe {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+
+    .masvideos_variations,
+    .masvideos_options_panel {
+        .downloadable_files {
+            padding: 0;
+            clear: both;
+
+            label {
+                position: static;
+            }
+
+            table {
+                margin: 0 12px 24px;
+                width: 94%;
+
+                .sort {
+                    visibility: hidden;
+                }
+            }
+        }
+
+        .masvideos_variable_attributes .downloadable_files table {
+            margin: 0 0 1em;
+            width: 100%;
+        }
+    }
+}
+
+/**
+* Optimisation for screens 900px and smaller
+*/
+@media only screen and (max-width: 900px) {
+    #masvideos-person-data ul.person_data_tabs,
+    #masvideos-person-data .masvideos-tabs-back,
+    #masvideos-episode-data ul.episode_data_tabs,
+    #masvideos-episode-data .masvideos-tabs-back,
+    #masvideos-tv-show-data ul.tv_show_data_tabs,
+    #masvideos-tv-show-data .masvideos-tabs-back,
+    #masvideos-video-data ul.video_data_tabs,
+    #masvideos-video-data .masvideos-tabs-back,
+    #masvideos-movie-data ul.movie_data_tabs,
+    #masvideos-movie-data .masvideos-tabs-back {
+        width: 10%;
+    }
+
+    #masvideos-person-data .masvideos-metaboxes-wrapper,
+    #masvideos-person-data .masvideos_options_panel,
+    #masvideos-episode-data .masvideos-metaboxes-wrapper,
+    #masvideos-episode-data .masvideos_options_panel,
+    #masvideos-tv-show-data .masvideos-metaboxes-wrapper,
+    #masvideos-tv-show-data .masvideos_options_panel,
+    #masvideos-video-data .masvideos-metaboxes-wrapper,
+    #masvideos-video-data .masvideos_options_panel,
+    #masvideos-movie-data .masvideos-metaboxes-wrapper,
+    #masvideos-movie-data .masvideos_options_panel {
+        width: 90%;
+    }
+
+    #masvideos-person-data ul.person_data_tabs li a,
+    #masvideos-episode-data ul.episode_data_tabs li a,
+    #masvideos-tv-show-data ul.tv_show_data_tabs li a,
+    #masvideos-video-data ul.video_data_tabs li a,
+    #masvideos-movie-data ul.movie_data_tabs li a {
+        position: relative;
+        text-indent: -999px;
+        padding: 10px;
+
+        &::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-indent: 0;
+            text-align: center;
+            line-height: 40px;
+            width: 100%;
+            height: 40px;
+        }
+    }
+
+    .masvideos_options_panel .form-field.media-embed-video iframe {
+        height: 100%;
+    }
+}
+
+/**
+ * Optimisation for screens 782px and smaller
+ */
+@media only screen and (max-width: 782px) {
+    #wp-excerpt-media-buttons a {
+        font-size: 16px;
+        line-height: 37px;
+        height: 39px;
+        padding: 0 20px 0 15px;
+    }
+
+    #wp-excerpt-editor-tools {
+        padding-top: 20px;
+        padding-right: 15px;
+        overflow: hidden;
+        margin-bottom: -1px;
+    }
+
+    #masvideos-person-data .checkbox,
+    #masvideos-episode-data .checkbox,
+    #masvideos-tv-show-data .checkbox,
+    #masvideos-video-data .checkbox,
+    #masvideos-movie-data .checkbox {
+        width: 25px;
+    }
+
+    .variations-pagenav {
+        float: none;
+        text-align: center;
+        font-size: 18px;
+
+        .displaying-num {
+            font-size: 16px;
+        }
+
+        a {
+            padding: 8px 20px 11px;
+            font-size: 18px;
+        }
+
+        select {
+            padding: 0 20px;
+        }
+    }
+
+    .variations-defaults {
+        float: none;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .masvideos_options_panel {
+        fieldset.form-field-radio {
+            input[type='radio'] {
+                width: 25px !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .masvideos_options_panel {
+        label,
+        legend {
+            float: none;
+            width: auto;
+            display: block;
+            margin: 0;
+        }
+
+        fieldset.form-field,
+        p.form-field,
+        .form-field.media-attachment-video,
+        .form-field.media-video-url,
+        .form-field.media-embed-video {
+            padding: 5px 20px !important;
+        }
+    }
+
+    #masvideos-person-data,
+    #masvideos-episode-data,
+    #masvideos-tv-show-data,
+    #masvideos-video-data,
+    #masvideos-movie-data {
+        .masvideos_options_panel,
+        .masvideos-metaboxes-wrapper {
+            .masvideos-radios {
+                margin-left: 0;
+            }
+        }
+    }
+}
+/**
+* Select2 elements.
+*/
+.select2-drop,
+.select2-dropdown {
+    z-index: 999999 !important;
+}
+.select2-results {
+    line-height: 1.5em;
+    .select2-results__option, .select2-results__group {
+        margin: 0;
+        padding: 8px;
+    }
+    .description {
+        display: block;
+        color: #999;
+        padding-top: 4px;
+    }
+}
+.select2-dropdown {
+    border-color: #ddd;
+}
+.select2-dropdown--below {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.select2-dropdown--above {
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
+}
+.select2-container {
+    .select2-selection__rendered.ui-sortable li {
+        cursor: move;
+    }
+    .select2-selection {
+        border-color: #ddd;
+    }
+    .select2-search__field {
+        min-width: 150px;
+    }
+    .select2-selection--single {
+        height: 32px;
+        .select2-selection__rendered {
+            line-height: 32px;
+            padding-right: 24px;
+        }
+        .select2-selection__arrow {
+            right: 3px;
+            height: 30px;
+        }
+    }
+    .select2-selection--multiple  {
+        min-height: 28px;
+        border-radius: 0;
+        line-height: 1.5;
+        li {
+            margin: 0;
+        }
+        .select2-selection__choice {
+            padding: 2px 6px;
+            .description {
+                display: none;
+            }
+        }
+        .select2-selection__rendered {
+            margin-bottom: 5px;
+        }
+    }
+    .select2-selection__clear {
+        color: #999;
+        margin-top: -1px;
+    }
+    .select2-search--inline .select2-search__field {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        padding: 3px 0;
+    }
+}
+
+.column-thumb {
+    width: 60px;
+
+    @media only screen and (max-width: 782px) {
+        display: none !important;
+
+        &:before {
+            position: relative !important;
+            float: left;
+        }
+    }
+}
+
+.post-type-person,
+.post-type-video,
+.post-type-movie,
+.post-type-tv_show,
+.post-type-episode {
+    .edit-post-sidebar .components-panel .edit-post-meta-boxes-area.is-side {
+        #poststuff .postbox .handle {
+            font-size: 13px;
+            color: #191e23;
+            cursor: pointer;
+
+            &:hover {
+                background: #f8f9f9
+            }
+        }
+
+        #poststuff .postbox:last-child > .inside,
+        #poststuff .postbox:last-child .handle,
+        #poststuff .postbox:not(.closed) .handle {
+            border-bottom: 0;
+        }
+
+        .postbox {
+            .handlediv {
+                position: relative;
+                z-index: 1;
+            }
+
+            .toggle-indicator:before {
+                content: "\f343";
+                font-size: 18px;
+                color: #191e23;
+            }
+
+            &.closed .toggle-indicator:before {
+                content: "\f347";
+            }
+        }
+    }
+}
+
+.wp-editor-tools .wp-editor-tabs .wp-switch-editor {
+    height: auto;
+}
+
+.masvideos-progress-form-wrapper,
+.masvideos-exporter-wrapper,
+.masvideos-importer-wrapper {
+    text-align: center;
+    max-width: 700px;
+    margin: 40px auto;
+
+    .error {
+        text-align: left;
+    }
+
+    .masvideos-progress-steps {
+        padding: 0 0 24px;
+        margin: 0;
+        list-style: none outside;
+        overflow: hidden;
+        color: #ccc;
+        width: 100%;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+
+        li {
+            width: 25%;
+            float: left;
+            padding: 0 0 0.8em;
+            margin: 0;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #ccc;
+            line-height: 1.4em;
+        }
+
+        li::before {
+            content: "";
+            border: 4px solid #ccc;
+            border-radius: 100%;
+            width: 4px;
+            height: 4px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -6px;
+            margin-bottom: -8px;
+            background: #fff;
+        }
+
+        li.active {
+            border-color: #a16696;
+            color: #a16696;
+
+            &::before {
+                border-color: #a16696;
+            }
+        }
+
+        li.done {
+            border-color: #a16696;
+            color: #a16696;
+
+            &::before {
+                border-color: #a16696;
+                background: #a16696;
+            }
+        }
+    }
+
+    .button {
+        font-size: 1.25em;
+        padding: 0.5em 1em !important;
+        line-height: 1.5em !important;
+        margin-right: 0.5em;
+        margin-bottom: 2px;
+        height: auto !important;
+        border-radius: 4px;
+        background-color: #bb77ae;
+        border-color: #a36597;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
+        text-shadow: 0 -1px 1px #a36597, 1px 0 1px #a36597, 0 1px 1px #a36597, -1px 0 1px #a36597;
+        margin: 0;
+        opacity: 1;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: #a36597;
+            border-color: #a36597;
+            -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
+        }
+    }
+
+    .error .button {
+        font-size: 1em;
+    }
+
+    .masvideos-actions {
+        overflow: hidden;
+        border-top: 1px solid #eee;
+        margin: 0;
+        padding: 23px 24px 24px;
+        line-height: 3em;
+
+        .button {
+            float: right;
+        }
+
+        .masvideos-importer-toggle-advanced-options {
+            color: #999;
+        }
+    }
+
+    .masvideos-exporter,
+    .masvideos-importer,
+    .masvideos-progress-form-content {
+        background: #fff;
+        overflow: hidden;
+        padding: 0;
+        margin: 0 0 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
+        color: #555;
+        text-align: left;
+
+        header {
+            border-bottom: 1px solid #eee;
+            margin: 0;
+            padding: 24px 24px 0;
+        }
+
+        section {
+            padding: 24px 24px 0;
+        }
+
+        h2 {
+            margin: 0 0 24px;
+            color: #555;
+            font-size: 24px;
+            font-weight: normal;
+            line-height: 1em;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.75em;
+            font-size: 16px;
+            color: #555;
+            margin: 0 0 24px;
+        }
+
+        .form-row {
+            margin-top: 24px;
+        }
+
+        .spinner {
+            display: none;
+        }
+
+        .masvideos-importer-options th,
+        .masvideos-importer-options td,
+        .masvideos-exporter-options th,
+        .masvideos-exporter-options td {
+            vertical-align: top;
+            line-height: 1.75em;
+            padding: 0 0 24px 0;
+
+            label {
+                color: #555;
+                font-weight: normal;
+            }
+
+            input[type="checkbox"] {
+                margin: 0 4px 0 0;
+                padding: 7px;
+            }
+
+            input[type="text"],
+            input[type="number"] {
+                padding: 7px;
+                height: auto;
+                margin: 0;
+            }
+
+            .masvideos-importer-file-url-field-wrapper {
+                border: 1px solid #ddd;
+                -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+                box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+                background-color: #fff;
+                color: #32373c;
+                outline: 0;
+                line-height: 1;
+                display: block;
+
+                code {
+                    background: none;
+                    font-size: smaller;
+                    padding: 0;
+                    margin: 0;
+                    color: #999;
+                    padding: 7px 0 0 7px;
+                    display: inline-block;
+                }
+
+                input {
+                    font-family: Consolas, Monaco, monospace;
+                    border: 0;
+                    margin: 0;
+                    outline: 0;
+                    box-shadow: none;
+                    display: inline-block;
+                    min-width: 100%;
+                }
+            }
+        }
+
+        .masvideos-exporter-options th,
+        .masvideos-importer-options th {
+            width: 35%;
+            padding-right: 20px;
+        }
+
+        progress {
+            width: 100%;
+            height: 42px;
+            margin: 0 auto 24px;
+            display: block;
+            -webkit-appearance: none;
+            border: none;
+            display: none;
+            background: #f5f5f5;
+            border: 2px solid #eee;
+            border-radius: 4px;
+            padding: 0;
+            box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2);
+        }
+
+        progress::-webkit-progress-bar {
+            background: transparent none;
+            border: 0;
+            border-radius: 4px;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        progress::-webkit-progress-value {
+            border-radius: 3px;
+            box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+            background: #a46497;
+            background: linear-gradient(to bottom, #a46497, #66405f), #a46497;
+            transition: width 1s ease;
+        }
+
+        progress::-moz-progress-bar {
+            border-radius: 3px;
+            box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+            background: #a46497;
+            background: linear-gradient(to bottom, #a46497, #66405f), #a46497;
+            transition: width 1s ease;
+        }
+
+        progress::-ms-fill {
+            border-radius: 3px;
+            box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+            background: #a46497;
+            background: linear-gradient(to bottom, #a46497, #66405f), #a46497;
+            transition: width 1s ease;
+        }
+
+        &.masvideos-exporter__exporting,
+        &.masvideos-importer__importing {
+
+            .spinner {
+                display: block;
+            }
+
+            progress {
+                display: block;
+            }
+
+            .masvideos-actions,
+            .masvideos-exporter-options {
+                display: none;
+            }
+        }
+
+        .masvideos-importer-mapping-table-wrapper,
+        .masvideos-importer-error-log {
+            padding: 0;
+        }
+
+        .masvideos-importer-mapping-table,
+        .masvideos-importer-error-log-table {
+            margin: 0;
+            border: 0;
+            box-shadow: none;
+            width: 100%;
+            table-layout: fixed;
+
+            td,
+            th {
+                border: 0;
+                padding: 12px;
+                vertical-align: middle;
+                word-wrap: break-word;
+
+                select {
+                    width: 100%;
+                }
+            }
+
+            tbody tr:nth-child(odd) td,
+            tbody tr:nth-child(odd) th {
+                background: #fbfbfb;
+            }
+
+            th {
+                font-weight: bold;
+            }
+
+            td:first-child,
+            th:first-child {
+                padding-left: 24px;
+            }
+
+            td:last-child,
+            th:last-child {
+                padding-right: 24px;
+            }
+
+            .masvideos-importer-mapping-table-name {
+                width: 50%;
+
+                .description {
+                    color: #999;
+                    margin-top: 4px;
+                    display: block;
+
+                    code {
+                        background: none;
+                        padding: 0;
+                        white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+                        word-wrap: break-word; /* IE */
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+
+        .masvideos-importer-done {
+            text-align: center;
+            padding: 48px 24px;
+            font-size: 1.5em;
+            line-height: 1.75em;
+
+            &::before {
+
+                @include icon_dashicons( "\e015" );
+                color: #a16696;
+                position: static;
+                font-size: 100px;
+                display: block;
+                float: none;
+                margin: 0 0 24px;
+            }
+        }
+    }
+}
