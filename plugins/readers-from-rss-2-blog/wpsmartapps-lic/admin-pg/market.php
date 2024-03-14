@@ -1,0 +1,1 @@
+<br><script type="text/javascript" src="http://www.wpsmartapps.com/wsa-plugin/market/api.php"></script>
