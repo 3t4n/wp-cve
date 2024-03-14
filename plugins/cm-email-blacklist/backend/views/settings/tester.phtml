@@ -1,0 +1,75 @@
+<?php
+ob_start();
+if ( !empty( $_POST ) && !empty( $_POST[ 'domain' ] ) && !empty( $_POST[ 'tester' ] ) && !empty( $_POST[ 'test_it' ] ) ) {
+	$domain			 = sanitize_text_field($_POST[ 'domain' ]);
+	$domain_array	 = explode( '@', $domain );
+	if ( count( $domain_array ) !== 1 ) {
+		$domain = $domain_array[ 1 ];
+	}
+	$regex = '/^ (?: [a-z0-9] (?:[a-z0-9\-]* [a-z0-9])? \. )*  #Subdomains
+   [a-z0-9] (?:[a-z0-9\-]* [a-z0-9])?            #Domain
+   \. [a-z]{2,6} $                               #Top-level domain
+/ix';
+	if ( !preg_match( $regex, trim( strtolower( $domain ) ) ) ) {
+		$result	 = false;
+		$reason	 = 'Not a valid domain name';
+	} else {
+		include_once CMEB_PATH . '/lib/models/Validate.php';
+		$validator = new CMEB_Validate();
+
+		$result				 = $validator->isValid( $domain );
+		//$whiteListed		 = $validator->isWhiteListed();
+		//$freeDomainListed	 = $validator->isFreeDomainListed();
+
+		//echo $result.'--->'.$whiteListed.'--->'.$freeDomainListed;
+		
+		$reason = '';
+		
+		/*
+		if ( $whiteListed == true ) {
+			// Domain is whitelisted
+			$reason = CMEB_Settings::getOption( CMEB_Settings::OPTION_BECAUSE_WHITE );
+		} elseif ( $freeDomainListed == true ) {
+			// Domain is in the Free domains list
+			$reason = CMEB_Settings::getOption( CMEB_Settings::OPTION_BECAUSE_FREE_DOMAIN );
+		} else {
+			// Domain is neither blacklisted nor whitelisted
+			$reason = CMEB_Settings::getOption( CMEB_Settings::OPTION_BECAUSE_NONE );
+		}
+		*/
+
+		/*
+		if ( !$result ) {
+			if ( $whiteListed == true ) {
+				$reason = CMEB_Settings::getOption( CMEB_Settings::OPTION_BECAUSE_WHITE );
+			} elseif ( $freeDomainListed ) {
+				$reason = CMEB_Settings::getOption( CMEB_Settings::OPTION_BECAUSE_FREE_DOMAIN );
+			} else {
+				$reason = CMEB_Settings::getOption( CMEB_Settings::OPTION_BECAUSE_NONE );
+			}
+		} else {
+			$reason = '';
+		}
+		*/
+
+	}
+}
+?>
+<p class="clear">
+	<h3>Domain Tester</h3>
+	<?php if(isset($result)): ?>
+		<div>
+			The result for this domain (<?php echo strip_tags( $domain ); ?>) is:
+			<strong><?php echo $result == true ? '<font color="green">VALID</font>' : '<font color="red">INVALID</font>'; ?></strong>
+			<br />
+			<?php echo $reason; ?>
+			<br />
+		</div>
+	<?php endif; ?>
+	Type a domain and check what is the result for it: <input type="hidden" name ='test_it' value="1"/>
+	<input type="text" name="domain" placeholder="domain.name.com" style="text-transform:lowercase" value="<?php echo esc_attr( (!empty( $domain->domain )) ? $domain->domain : $domain  ) ?>"/>
+	<input type="submit" class="button" name="tester" value="Check" />
+</p>
+<?php
+ob_end_flush();
+?>

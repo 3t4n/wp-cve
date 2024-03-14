@@ -1,0 +1,63 @@
+<?php
+include_once CMEB_PATH. '/backend/classes/SettingsView.php';
+$settingsView = new CMEB_SettingsView();
+
+$tabs = array(
+    'installation'=>'Installation Guide',
+    'cmeb_general'=>'General Settings',
+    'email_blacklist' => 'User Email Blacklist',
+    'whitelist'=>'Domain Whitelist',
+    'free_domains'=>'Free Domains',
+    'labels'=>'Labels',
+    'tester'=>'Domain Tester',
+    'cmeb_upgrade'=>'Upgrade',
+   );
+$tabs = apply_filters('cmeb_settings_pages', $tabs);
+
+if( !function_exists('cmeb_settings_radio') )
+{
+
+    function cmeb_settings_radio($name, $options, $currentValue)
+    {
+        $result = '';
+        foreach($options as $value => $text)
+        {
+            $result .= sprintf('<div style="margin-bottom:0.5em;"><input type="radio" name="%s" id="%s_%s" value="%s"%s />'
+                    . '<label for="%s_%s"> %s</label></div>', $name, $name, $value, $value, ( $currentValue == $value ? ' checked="checked"' : ''), $name, $value, $text
+            );
+        }
+        return $result;
+    }
+
+}
+?>
+
+<div class="clear"></div>
+<?php do_action('CMED_show_messages'); ?>
+<?php
+if( !empty($messages)  && empty($_POST['tester'])):
+    foreach($messages as $message):
+        ?><div class="updated"><p><?php echo $message; ?></p></div><?php
+    endforeach;
+endif;
+?>
+
+<?php require('settings/top.phtml'); ?>
+
+<form method="post" enctype="multipart/form-data" id="cm-product-catalog-settings-form">
+    <?php wp_nonce_field('cmeb_settings'); ?>
+    <div id="tabs">
+        <ul><?php foreach($tabs as $id => $name): ?>
+                <li><a href="#tab_<?php echo $id; ?>"><?php echo $name; ?></a></li>
+            <?php endforeach; ?></ul>
+
+
+        <?php foreach($tabs as $id => $name): ?>
+            <div id="tab_<?php echo $id; ?>" class="tab-content">
+                <?php require('settings/' . $id . '.phtml'); ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <input type="submit" class="cmeb-button button-primary" value="Update" />
+</form>
+<?php

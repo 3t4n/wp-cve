@@ -1,0 +1,75 @@
+<?php ob_start();
+include_once CMEB_PATH . '/lib/models/WhiteList.php';
+if (!empty($_POST) &&isset($_POST['cmeb_white']) || isset($_GET['cmeb_white'])) {
+    try {
+        CMEB_WhiteList::_processAdminRequest();
+    } catch (Exception $e) {
+        $message = $e->getMessage();
+    }
+}
+$domains = CMEB_WhiteList::getUserWhitelist();
+?>
+<script>
+    function editDomainW(id) {
+        var row = jQuery('#domain-row-' + id);
+        var domainContainer = row.find('.domainText');
+        if (domainContainer.find('input').length > 0)
+            return false;
+       var input = jQuery('<input />').attr('type', 'text').attr('name', 'white_domain[]').css('text-transform', 'lowercase');
+        var input2 = jQuery('<input />').attr('type', 'hidden').attr('name', 'white_id[]').attr('value',id);
+        var inputValue = domainContainer.text();
+        var submit = jQuery('<button />').attr('type', 'submit').attr('value', 'edit').attr('name', 'cmeb_white').append('Apply');
+        domainContainer.empty().append(input.val(inputValue)).append(input2.val(id)).append(submit);
+
+    }
+    function deleteDomainW(id) {
+        var domainContainer = jQuery('#domain-row-' + id + ' .domainText');
+        var domainName = '';
+        if (domainContainer.find('input').length > 0)
+            domainName = domainContainer.find('input[name=domain]').val();
+        else
+            domainName = domainContainer.text();
+        if (confirm('Are you sure you want to delete domain: ' + domainName + '?')){
+            //jQuery(location).attr('href', url);
+            window.location.href="?page=cmeb_menu&cmeb_white=delete&white_id="+id+"#tab-whitelist";
+        }
+      
+    }
+</script>
+<h3>Domain Whitelist</h3>
+<?php if (!empty($message)): ?>
+    <div class="updated below-h2"><p><?php echo $message; ?></p></div>
+<?php endif; ?>
+Only domains appearing in the list will be permitted to register. Emails coming from other domains will be rejected. You can use full domain names (e.g. "gmail.com") or wildcards (e.g. "*mail.com").<br /><br />
+<strong>Add new domain: </strong>
+    <input type="text" style="text-transform:lowercase" name="white_domain" placeholder="domain.name.com" />
+    <button type="submit" name="cmeb_white" value="add" style="cursor:pointer;">Add</button>
+<br/><br />
+<table class="wp-list-table widefat">
+    <thead>
+        <tr valign="top">
+            <th scope="col" style = " text-align: left; padding-left:10px ">Domain name</th>
+            <th scope="col" style = " text-align: left; padding-left:10px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        if (!empty($domains)):
+            foreach ($domains as $domain):
+                ?>
+                <tr id="domain-row-<?php echo $domain->id; ?>"><td>
+                            <span class="domainText"><?php echo $domain->domain; ?></span></td>
+                    <td><a href="javascript:void(0)" onclick="editDomainW(<?php echo $domain->id; ?>)">[Edit]</a>
+                        <a href="javascript:void(0)" onclick="deleteDomainW(<?php echo $domain->id; ?>)">[Delete]</a></td>
+                </tr>
+            <?php
+            endforeach;
+        else:
+            ?>
+            <tr><td colspan="2">There are no domains whitelisted</td></tr>
+        <?php
+        endif;
+        ?>
+    </tbody>
+</table>
+<?php  ob_end_flush();

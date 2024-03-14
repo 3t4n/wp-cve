@@ -1,0 +1,84 @@
+<?php
+ob_start();
+include_once CMEB_PATH . '/lib/models/EmailBlacklist.php';
+
+if ( !empty( $_POST ) && isset( $_POST[ 'cmeb_email_black' ] ) || isset( $_GET[ 'cmeb_email_black' ] ) ) {
+	try {
+		CMEB_EmailBlacklist::_processAdminRequest();
+	} catch ( Exception $e ) {
+		$message = $e->getMessage();
+	}
+}
+$emails = CMEB_EmailBlacklist::getEmailsBlacklist();
+?>
+<script>
+    function editEmailBlack( id ) {
+        var row = jQuery( '#email-row-' + id );
+        var emailContainer = row.find( '.emailText' );
+        if ( emailContainer.find( 'input' ).length > 0 ) {
+            return false;
+		}
+        var input = jQuery( '<input />' ).attr( 'type', 'text' ).attr( 'name', 'black_email[]' ).css( 'text-transform', 'lowercase' );
+        var input2 = jQuery( '<input />' ).attr( 'type', 'hidden' ).attr( 'name', 'black_id[]' ).attr( 'value', id );
+        var inputValue = emailContainer.text();
+        var submit = jQuery( '<button />' ).attr( 'type', 'submit' ).attr( 'value', 'edit' ).attr( 'name', 'cmeb_email_black' ).append( 'Apply' );
+        emailContainer.empty().append( input.val( inputValue ) ).append( input2.val( id ) ).append( submit );
+    }
+    function deleteEmailBlack( id ) {
+        var emailContainer = jQuery( '#email-row-' + id + ' .emailText' );
+        var emailName = '';
+        if ( emailContainer.find( 'input' ).length > 0 ) {
+            emailName = emailContainer.find( 'input[name=email]' ).val();
+		} else {
+            emailName = emailContainer.text();
+		}
+        if ( confirm( 'Are you sure you want to delete email: ' + emailName + '?' ) ) {
+            //jQuery(location).attr('href', url);
+            window.location.href = "?page=cmeb_menu&cmeb_email_black=delete&black_id=" + id + "#tab-email-blacklist";
+        }
+    }
+</script>
+<h3>User Email Blacklist</h3>
+<?php if ( !empty( $message ) ) : ?>
+	<div class="updated below-h2">
+		<p><?php echo $message; ?></p>
+	</div>
+<?php endif; ?>
+<p>You should use full specific email address <em>(e.g. email@address.com)</em>.<br />
+In the Free version you can only add single emails while in Pro version you can add *@domain.com</p>
+<strong>Add email address:</strong>
+<input type="text" style="text-transform: lowercase;" name="black_email" placeholder="email@address.com" />
+<button type="submit" name="cmeb_email_black" value="add" style="cursor:pointer;">Add</button>
+<br />
+<br />
+<table class="wp-list-table widefat">
+	<thead>
+		<tr valign="top">
+			<th scope="col"style="text-align: left; padding-left: 10px;">Email address</th>
+			<th scope="col"style="text-align: left; padding-left: 10px;">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php if ( !empty( $emails ) ) : ?>
+			<?php foreach ( $emails as $email ) : ?>
+				<tr id="email-row-<?php echo $email->id; ?>">
+					<td>
+						<span class="emailText"><?php echo $email->email; ?></span>
+					</td>
+					<td>
+						<a href="javascript:void(0)" onclick="editEmailBlack(<?php echo $email->id; ?>)">[Edit]</a>
+						<a href="javascript:void(0)" onclick="deleteEmailBlack(<?php echo $email->id; ?>)">[Delete]</a>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<tr>
+				<td colspan="2">
+					<p>There are no blacklisted e-mails.</p>
+				</td>
+			</tr>
+		<?php endif; ?>
+	</tbody>
+</table>
+<?php
+ob_end_flush();

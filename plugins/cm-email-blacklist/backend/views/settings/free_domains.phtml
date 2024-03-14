@@ -1,0 +1,40 @@
+<?php
+ob_start();
+include_once CMEB_PATH . '/lib/models/FreeDomains.php';
+
+$domains = CMEB_FreeDomains::getFreeDomainsList();
+
+if (!empty($_POST['updateFD'])) {
+    try {
+        CMEB_FreeDomains::_processAdminRequest();
+    } catch (Exception $e) {
+        $message = $e->getMessage();
+    }
+}
+$last_update = get_option(CMEB_FreeDomains::LAST_UPDATE);
+?>
+<style>
+    #free-domains-list {	-webkit-column-count: 6;
+                         -moz-column-count: 6;
+                         column-count: 6;
+                         -webkit-column-gap: 10px;
+                         -moz-column-gap: 10px;
+                         column-gap: 10px;}
+    </style>
+        <input type="hidden" name="cmeb_action" value="update" />
+        <button type = 'submit' class="button button-primary widget-control-save right" name="updateFD" value = 'update'> Update Free domain list</button>
+    
+    <h3>Free Domains List</h3>
+    <?php echo $last_update ?>
+    </br></br>
+    This list is updated from SpamAssassin - http://svn.apache.org/repos/asf/spamassassin/trunk/rules/20_freemail_domains.cf<br /><br />
+    If you wish to whitelist domains listed in the free domains list, you can either add them to the  "Whitelist" or disable "Free Domains" check in plugin General Setting tab.
+    </p>
+    
+<ul id="free-domains-list">
+    <?php foreach ($domains as $domain): ?>
+        <li><?php echo $domain->domain; ?></li>
+    <?php endforeach; ?>
+</ul>
+<?php
+ob_end_flush();
