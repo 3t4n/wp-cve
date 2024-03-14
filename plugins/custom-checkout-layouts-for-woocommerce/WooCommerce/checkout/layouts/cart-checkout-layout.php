@@ -1,0 +1,15 @@
+<div class="cclw_cart_table">
+   <?php include_once CCLW_PLUGIN_DIR . 'WooCommerce/checkout/cclw_includes/cclw_review_order_section.php'; ?> 
+</div>
+
+<div class="two-column-layout-left">
+  
+	<?php include_once CCLW_PLUGIN_DIR . 'WooCommerce/checkout/cclw_includes/cclw_billing_details_section.php';	?>
+
+</div>
+<div class="two-column-layout-right">
+  
+	<?php include_once CCLW_PLUGIN_DIR . 'WooCommerce/checkout/cclw_includes/cclw_payment_section.php'; ?>
+	
+</div>
+		
