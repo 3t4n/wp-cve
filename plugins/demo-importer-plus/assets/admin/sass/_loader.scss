@@ -1,0 +1,30 @@
+@keyframes svgLoadAnimate {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.svg-animated-loader {
+    position: relative;
+    overflow: hidden;
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+
+    &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to right, transparent, rgba(#fff, .7), transparent);
+        animation: svgLoadAnimate infinite 1s ease;
+    }
+}
