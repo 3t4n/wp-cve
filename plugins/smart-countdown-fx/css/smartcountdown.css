@@ -1,0 +1,101 @@
+.widget_smartcountdown {
+	font-size: 12px; /* Important: has to be equal to SCD_BASE_FONT_SIZE */
+}
+.widget_smartcountdown .textwidget {
+	font-size: inherit;
+}
+.scd-all-wrapper {
+	width: 100%;
+	font-size: inherit;
+}
+/* some themes define line-height for elements, have to reset it for countdown */
+.scd-title-col, .scd-title-row, .scd-digits {
+	line-height: 1.2em;
+}
+.scd-title-col {
+	clear: both;
+	margin: 0.5em 0;
+}
+.scd-title-row {
+	float: left;
+	margin: 0 0.5em;
+}
+.scd-counter-col {
+	display: inline-block; /* !important - this style is required to center the whole counter block
+	but was breaking hide_countup_counter option, "important" modificator on child element was overriding
+	parent's hide() call. Should be corrected in 1.3.5 and not needed any more */
+	clear: both;
+}
+.scd-counter-row {
+	float: left;
+	margin: 0 0.5em;
+}
+.scd-unit-vert {
+	clear: both;
+	margin: 0.5em 0;
+}
+.scd-unit-horz {
+	float: left;
+	margin: 0 0.5em;
+}
+.scd-digits-col {
+	clear: both;
+	text-align: center;
+}
+.scd-digits-row {
+	float: left;
+	text-align: right;
+}
+.scd-label-col {
+	clear: both;
+	text-align: center;
+	margin: 0.1em 0; /* place labels closer - workaround */
+}
+.scd-label-row {
+	float: left;
+	text-align: left;
+	margin: 0 0.5em;
+}
+.scd-digit {
+	display: inline-block;
+	position: relative;
+	/*overflow: hidden;*/
+}
+.scd-digit div, .scd-digit img {
+	position: absolute;
+	display: block;
+}
+.scd-digit img {
+	margin: 0!important;
+	padding: 0!important;
+	display: block!important;
+}
+.scd-digit div {
+	font-size: inherit;
+}
+
+.spinner {
+	/* background url added dynamically in helper script */
+	background-size: 16px 16px;
+	display: none;
+	/* float: right; */
+	opacity: .7;
+	filter: alpha(opacity=70);
+	width: 16px;
+	height: 16px;
+	margin: 5px 5px 0;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */

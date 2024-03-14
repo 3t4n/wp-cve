@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config
+	name="Sliding text with overflow"
+	description="Scalable. Overflow visible with fade-in/fade-out">
+	<!-- for italic fonts use sliding_text_fade_italic.xml -->
+	<digit scope="*">
+		<styles>
+			<style name="font-size" unit="px" value="60" scalable="1" />
+			<style name="height" unit="em" value="1" scalable="0" />
+			<style name="width" unit="em" value="0.6" scalable="0" />
+			<style name="line-height" unit="em" value="1.0" />
+			<style name="overflow" unit="" value="visible" />
+		</styles>
+		<modes>
+			<mode name="down">
+				<group duration="300" transition="sine:in">
+					<element 
+						tag="div"
+						content_type="txt"
+						value_type="next">
+						
+						<styles>
+							<top>70%</top>
+							<left>-10000px</left>
+							<right>0</right>
+							<margin>0 auto</margin>
+							<text-align>center</text-align>
+						</styles>	
+						<tweens>
+							<top>70,0</top>
+							<opacity>0,1</opacity>
+							<left>0,0</left>
+						</tweens>
+					</element>
+					<element 
+						tag="div"
+						content_type="txt"
+						value_type="prev">
+						
+						<styles>
+							<top>0</top>
+							<left>0</left>
+							<right>0</right>
+							<margin>0 auto</margin>
+							<text-align>center</text-align>
+						</styles>	
+						<tweens>
+							<top>0,-70</top>
+							<opacity>1,0</opacity>
+						</tweens>
+					</element>
+				</group>
+				<group duration="0" transition="linear">
+					<element 
+						tag="div"
+						content_type="txt"
+						value_type="prev">
+						<!-- make sure that there are no orphan rests of the previous digit -->
+						<styles>
+							<left>-10000px</left>
+							<top>-10000px</top>
+						</styles>			
+					</element>
+				</group>
+			</mode>
+			<mode name="up">
+				<group duration="300" transition="sine:in">
+					<element 
+						tag="div"
+						content_type="txt"
+						value_type="next">
+						
+						<styles>
+							<top>-70%</top>
+							<left>-10000px</left>
+							<right>0</right>
+							<margin>0 auto</margin>
+							<text-align>center</text-align>
+						</styles>	
+						<tweens>
+							<top>-70,0</top>
+							<opacity>0,1</opacity>
+							<left>0,0</left>
+						</tweens>
+					</element>
+					<element 
+						tag="div"
+						content_type="txt"
+						value_type="prev">
+						
+						<styles>
+							<top>0</top>
+							<left>0</left>
+							<right>0</right>
+							<margin>0 auto</margin>
+							<text-align>center</text-align>
+						</styles>		
+						<tweens>
+							<top>0,70</top>
+							<opacity>1,0</opacity>
+						</tweens>
+					</element>
+				</group>
+				<group duration="0" transition="linear">
+					<element 
+						tag="div"
+						content_type="txt"
+						value_type="prev">
+						<!-- make sure that there are no orphan rests of the previous digit -->
+						<styles>
+							<left>-10000px</left>
+							<top>-10000px</top>
+						</styles>			
+					</element>
+				</group>
+			</mode>
+		</modes>
+	</digit>
+</config>

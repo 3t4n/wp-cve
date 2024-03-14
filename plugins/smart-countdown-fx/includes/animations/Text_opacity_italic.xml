@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config
+	name="Text opacity"
+	description="Text opacity effect. Scalable, font CSS options (style, family, weight) may be defined in Digits Style(s)">
+	<!--
+		This profile uses italic font for digits. The only way to make opacity work on italic digits (they are
+		partially outside parent div) is to set overflow visible and make each digit div wider by setting
+		negative right and compensate it with negative left margin, so that the distance between digits and
+		labels remain visually normal
+	-->
+	<digit scope="*">
+		<styles>
+			<style name="font-size" unit="px" value="50" scalable="1" />
+			<style name="line-height" unit="em" value="1.0" />
+			<style name="height" unit="em" value="1" scalable="0" />
+			<style name="width" unit="em" value="0.6" scalable="0" />
+			<style name="overflow" unit="" value="visible" />
+			<style name="font-style" unit="" value="italic" />
+		</styles>
+		<modes>
+		<mode name="down">
+			<group duration="400">
+				<element 
+					tag="div"
+					content_type="txt"
+					value_type="prev">
+					
+					<styles>
+						<left>0</left>
+						<right>-0.2em</right>
+						<margin>0 auto 0 -0.2em</margin>
+						<text-align>center</text-align>
+					</styles>	
+					<tweens>
+						<opacity>1,0</opacity>
+					</tweens>
+				</element>
+				<element 
+					tag="div"
+					content_type="txt"
+					value_type="next">
+					
+					<styles>
+						<opacity>0</opacity>
+						<top>-10000px</top>
+						<left>0</left>
+						<right>-0.2em</right>
+						<margin>0 auto 0 -0.2em</margin>
+						<text-align>center</text-align>
+					</styles>	
+					<tweens>
+						<opacity>0,1</opacity>
+						<top>0,0</top>
+					</tweens>
+				</element>
+			</group>
+		</mode>
+		<mode name="up">
+			<group duration="400">
+				<element 
+					tag="div"
+					content_type="txt"
+					value_type="prev">
+					
+					<styles>
+						<left>0</left>
+						<right>-0.2em</right>
+						<margin>0 auto 0 -0.2em</margin>
+						<text-align>center</text-align>
+					</styles>	
+					<tweens>
+						<opacity>1,0</opacity>
+					</tweens>
+				</element>
+				<element 
+					tag="div"
+					content_type="txt"
+					value_type="next">
+					
+					<styles>
+						<opacity>0</opacity>
+						<top>-10000px</top>
+						<left>0</left>
+						<right>-0.2em</right>
+						<margin>0 auto 0 -0.2em</margin>
+						<text-align>center</text-align>
+					</styles>	
+					<tweens>
+						<opacity>0,1</opacity>
+						<top>0,0</top>
+					</tweens>
+				</element>
+			</group>
+		</mode>
+		</modes>
+	</digit>
+</config>
