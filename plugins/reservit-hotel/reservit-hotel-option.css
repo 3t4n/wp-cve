@@ -1,0 +1,96 @@
+/*
+*      Reservit Hotel option CSS  
+*      Version: 1.2
+*      By Reservit
+*
+*      Contact: http://www.reservit.com/hebergement
+*      Created: 2017
+*
+*      Copyright (c) 2017, Reservit. All rights reserved.
+*
+*      Licensed under the GPLv2 license - https://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+.span_output{
+    margin-left: 10px;
+}
+
+.picto-item {
+  position: relative;  /*the .picto-item become references*/
+  cursor: help;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /*margin: 0 .2em;
+  width: 1.2em;
+  height: 1.2em;*/
+  color: #214277;
+  font-size: 0.7rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.picto-item:hover {
+  color: #132849;
+}
+
+/* generation of :after on hover and focus:*/
+
+.picto-item:hover:after,
+.picto-item:focus:after {
+  content: attr(aria-label);  /* display aria-label */
+  position: absolute;
+  bottom: 135%;
+  left: 50%;
+	transform: translateX(-50%); /* horizontal centering  */
+  z-index: 1; /* to be display hover the relative items */
+  padding: 3px;
+  background: #222;
+  color: #43bfd2;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  max-width: 50vw;
+  width: 50vw;
+}
+
+/* generation of a :before for the arrow */
+
+[aria-label]:hover:before,
+[aria-label]:focus:before {
+  content: "▼";
+  position: absolute;
+  top: -1em;
+	left: 50%;
+	transform: translateX(-50%); /* horizontal centering  */
+  font-size: 10px;
+  color: #222;
+}
+
+/* no outline on :focus */
+[aria-label]:focus {
+  outline: none;
+}
+
+#reservit_home_header {
+  background-color: #222;
+  height: 10vh;
+  position: relative;
+  text-align: center;
+}
+
+#reservit_home_header img{
+  position: relative;
+  top: 50%;
+  transform: translatey(-50%);
+  
+}
+
+.ul_option {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+
+hr {
+  border-top: 2px solid black;
+}
