@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'godaddy/godaddy-payments',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '5377bdd18aa2d04c50eb995c3b8ce0180e44b341',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'firebase/php-jwt' => array(
+            'pretty_version' => 'v6.5.0',
+            'version' => '6.5.0.0',
+            'reference' => 'e94e7353302b0c11ec3cfff7180cd0b1743975d2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../firebase/php-jwt',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'godaddy/godaddy-payments' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '5377bdd18aa2d04c50eb995c3b8ce0180e44b341',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'skyverge/wc-plugin-framework' => array(
+            'pretty_version' => '5.12.1',
+            'version' => '5.12.1.0',
+            'reference' => 'c78046e2a97463afbc64a2b847dedfdc87bf38d7',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../skyverge/wc-plugin-framework',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
