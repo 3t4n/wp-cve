@@ -1,0 +1,1 @@
+!function(n,e,i,s){e.wp=e.wp||{},e.wp.dev4press=e.wp.dev4press||{},e.wp.dev4press.wizard={init:function(){n(".gdbbx-wizard-connect-switch").change(function(){var e="yes"===n(this).val(),i=n(this).data("connect");e?n("#"+i).slideDown("slow"):n("#"+i).slideUp("fast")})}},e.wp.dev4press.wizard.init()}(jQuery,window,document);

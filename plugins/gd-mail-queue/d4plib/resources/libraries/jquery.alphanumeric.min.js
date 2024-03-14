@@ -1,0 +1,5 @@
+/* jQuery Alphanumeric
+ *
+ * https://github.com/johnantoni/jquery.alphanumeric
+*/
+!function(l){l.fn.alphanumeric=function(n){for(var e,r,a=l(this),c="aàáâãäåæbcçdeèéêëfghiìíîïjklmnñoðòóôõöpqrstuùúûüvwxyýÿz",t=l.extend({ichars:"!@#$%^&*()+=[]\\';,/{}|\":<>?~`.- _¡°¬´¨²€ƒ^‰¥£¢¦§¨ø",nchars:"",allow:""},n),i=t.allow.split(""),h=0;h<i.length;h++)-1!=t.ichars.indexOf(i[h])&&(i[h]="\\"+i[h]);return t.nocaps&&(t.nchars+=c.toUpperCase()),t.allcaps&&(t.nchars+=c),t.allow=i.join("|"),r=new RegExp(t.allow,"gi"),e=(t.ichars+t.nchars).replace(r,""),a.keypress(function(n){var r=String.fromCharCode(n.charCode?n.charCode:n.which);-1==e.indexOf(r)||n.ctrlKey||n.preventDefault()}).blur(function(){for(var n=a.val(),r=0;r<n.length;r++)if(-1!=e.indexOf(n[r]))return a.val(""),!1;return!1}),a},l.fn.numeric=function(n){var r="aàáâãäåæbcçdeèéêëfghiìíîïjklmnñoðòóôõöpqrstuùúûüvwxyýÿz",e=r.toUpperCase();return this.each(function(){l(this).alphanumeric(l.extend({nchars:r+e},n))})},l.fn.alpha=function(n){return this.each(function(){l(this).alphanumeric(l.extend({nchars:"1234567890"},n))})}}(jQuery);
