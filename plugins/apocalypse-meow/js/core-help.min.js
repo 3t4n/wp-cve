@@ -1,0 +1,1 @@
+!function(){const e=document.getElementById("meow-data");e?new Vue({el:"#vue-help",data:JSON.parse(e.textContent)||{},mounted:function(){window.addEventListener("load",(function(){Prism.highlightAll()}))}}):console.warn("Missing #meow-data element.")}();
