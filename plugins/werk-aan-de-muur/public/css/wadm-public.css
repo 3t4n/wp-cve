@@ -1,0 +1,207 @@
+/* Global artwork styling */
+#wadm {
+	line-height: 1.2;
+}
+
+#wadm .wadm-artworks {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+#wadm p {
+	padding: 0;
+	margin: 0;
+	line-height: inherit;
+}
+
+#wadm .wadm-artworks .wadm-artwork a {
+	box-shadow: none; /* reset weird default wordpress border */
+	border-bottom: 0;
+}
+
+#wadm .wadm-artworks li.wadm-artwork {
+	max-width: 500px;
+	margin: 0 auto 10px auto;
+	position: relative;
+	padding: 0 0 55px 0;
+	list-style-type: none;
+	text-indent: 0;
+}
+
+@media (min-width: 768px) {
+	#wadm .wadm-artworks {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		-webkit-justify-content: space-between;
+		justify-content: space-between;
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+		-webkit-align-items: flex-end;
+		align-items: flex-end;
+	}
+
+	#wadm .wadm-artworks li.wadm-artwork {
+		margin-bottom: 20px;
+		margin-left: 0; /* do not leave margin on auto; conflicts with flexbox */
+		margin-right: 0;
+		-webkit-box-flex: 1;
+		-webkit-flex: 0 1 auto;
+		-ms-flex: 0 1 auto;
+		flex: 0 1 auto;
+		min-width: 0%; /* somehow this is needed for IE11 to behave correctly */
+		max-width: none;
+	}
+
+	#wadm .wadm-artworks:not(.per-column-1) li:only-child {
+		max-width: calc(33.333% - 20px);
+	}
+
+	#wadm .wadm-artworks li.wadm-artwork:not(:last-child) {
+		margin-right: 20px;
+	}
+
+	#wadm .wadm-artworks.per-column-4 {
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+	}
+
+	#wadm .wadm-artworks.per-column-4 li.wadm-artwork {
+		margin-right: 0;
+		-webkit-flex-basis: 48%;
+		-ms-flex: 0 1 48%;
+		flex-basis: 48%;
+	}
+}
+
+@media (min-width: 992px) {
+	#wadm .wadm-artworks.per-column-4 {
+		-webkit-flex-wrap: nowrap;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+	}
+
+	#wadm .wadm-artworks.per-column-4 li.wadm-artwork {
+		-webkit-flex-basis: auto;
+		-ms-flex: 0 1 auto;
+		flex-basis: auto;
+	}
+
+	#wadm .wadm-artworks li.wadm-artwork:not(:last-child),
+	#wadm .wadm-artworks.per-column-4 li.wadm-artwork:not(:last-child) {
+		margin-right: 30px;
+	}
+}
+
+#wadm .wadm-artworks .wadm-artwork hr {
+	display: none;
+}
+
+/* Artwork art and related buttons */
+#wadm .wadm-artworks .wadm-artwork .wadm-artwork-art {
+	position: relative;
+}
+
+#wadm .wadm-artworks img {
+	max-width: 100%;
+	max-height: 400px;
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+}
+
+/* Artwork meta information */
+#wadm .wadm-artworks .wadm-artwork-meta {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	position: absolute;
+	width: 100%;
+	padding-top: 10px;
+}
+
+#wadm .wadm-artworks .wadm-artwork-title {
+	text-align: left;
+	font-size: 16px;
+	font-weight: normal;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 0 0%;
+	-ms-flex: 1 0 0%;
+	flex: 1 0 0%; /* don't use unitless value; breaks IE10/11 */
+	min-width: 0;
+	width: auto;
+}
+
+#wadm .wadm-artworks .wadm-artwork-title a > * {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#wadm .wadm-artworks .wadm-artwork-title .secondary-item {
+	font-weight: 300;
+	font-size: 14px;
+	margin-top: 5px;
+}
+
+#wadm .wadm-artworks .wadm-artwork-price {
+	width: auto;
+}
+
+#wadm .wadm-artworks .wadm-artwork .wadm-artwork-price a {
+	text-align: right;
+	font-weight: 300;
+	font-size: 12px;
+	margin-top: 2px;
+	display: block;
+}
+
+#wadm .wadm-artworks .wadm-artwork .wadm-artwork-price a > span {
+	font-weight: bold;
+	font-size: 14px;
+	display: block;
+	margin-bottom: 7px;
+	white-space: nowrap; /* don't separate eurosign and amount */
+}
+
+/** Pagination */
+.wadm-pagination {
+	text-align: center;
+}
+
+/** Single artwork */
+#wadm .wadm-single-artwork {
+	margin-bottom: 1em;
+}
+
+#wadm .wadm-single-artwork .wadm-artwork-price {
+	margin-top: 0.5em;
+	text-align: right;
+	line-height: 20px;
+}
+
+#wadm .wadm-single-artwork .wadm-artwork-price a {
+	text-decoration: none;
+	border-bottom: 0;
+}
+
+#wadm .wadm-single-artwork .wadm-artwork-price-primary-line {
+	font-size: 16px;
+}
+
+#wadm .wadm-single-artwork .wadm-artwork-price-secondary-line {
+	color: #555;
+	font-size: 12px;
+}
