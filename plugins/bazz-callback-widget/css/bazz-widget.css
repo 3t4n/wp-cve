@@ -1,0 +1,289 @@
+/* placeholders */
+.bazz-widget ::-webkit-input-placeholder {color: #FFFFFF !important;font-style: normal !important;}
+.bazz-widget :-moz-placeholder {color: #FFFFFF !important;opacity: 1;font-style: normal !important;}
+.bazz-widget ::-moz-placeholder {color: #FFFFFF !important;opacity: 1;font-style: normal !important;}
+.bazz-widget :-ms-input-placeholder {color: #FFFFFF !important;font-style: normal !important;}
+.bazz-widget :placeholder-shown {color: #FFFFFF !important;font-style: normal !important;}
+/* /placeholders */
+
+.bazz-widget {
+	box-sizing: border-box;
+	position: fixed !important;
+	font-family: helvetica, sans-serif !important;
+	width: 65px;
+	height: 65px;
+	border-radius: 35px;
+	transition: width 0.5s;
+	background-color: #00AFF2;
+	text-align: right;
+	line-height: 1;
+	z-index: 9997;
+}
+	.bazz-widget * {
+		box-sizing: border-box;
+	}
+	.bazz-widget.opened {
+		width: 500px;
+	}
+	.bazz-widget-close {
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		top: -10px;
+		left: -10px;
+		display: none;
+		cursor: pointer;
+		border-radius: 50%;
+		border: 3px solid #FFFFFF;
+		background: url('../images/bazz-close-button.png') no-repeat center center;
+		background-color: #00AFF2;
+		background-size: 22px;
+		font-size: 0px;
+		z-index: 9998;
+	}
+		.bazz-widget.opened .bazz-widget-close {
+			display: block;
+		}
+	.bazz-widget-form {
+		display: none;
+		width: 100%;
+		text-align: center;
+		overflow: hidden;
+		height: 65px;
+		transition: margin 0.3s ease-in-out;
+		/*padding-top: 13px;*/
+		position: relative;
+	}
+		.bazz-widget.opened .bazz-widget-form {
+			/*display: block;*/
+		}
+		.bazz-widget-form label {
+			display: inline-block;
+			width: 32%;
+			color: #FFFFFF;
+			text-align: left;
+			vertical-align: middle;
+			line-height: 1.2;
+			font-size: 16px;
+			font-weight: normal;
+			margin: 0 !important;
+		}
+			.bazz-widget-form label .bazz_time {
+				position: static;
+			}
+			.bazz-widget-form label.countdown {
+				width: 25%;
+				margin-left: 2%;
+			}
+		.bazz-widget-form input {
+			display: inline-block !important;
+			width: 32% !important;
+			text-align: left;
+			vertical-align: middle !important;
+			height: 30px !important;
+			border-radius: 20px !important;
+			padding: 0 !important;
+			color: #FFFFFF !important;
+			font-family: helvetica,sans-serif !important;
+			font-size: 16px !important;
+			font-weight: 400;
+			letter-spacing: 0;
+			line-height: 1;
+			text-transform: none;
+			margin: 0 !important;
+		}
+		.bazz-widget-form input[type="tel"] {
+			background: transparent !important;
+			border: 1px solid #FFFFFF;
+			padding-left: 6px !important;
+			padding-right: 6px !important;
+		}
+		.bazz-widget-form input[type="tel"]:focus,
+		.bazz-widget-form input[type="text"]:focus {
+			border-color: #FFFFFF;
+		}
+		.bazz-widget-form-submit {
+			width: 25%;
+			margin-left: 2%;
+			border-width: 1px;
+			border-style: solid;
+			text-align: center;
+			font-family: helvetica,sans-serif !important;
+			font-size: 16px;
+			border-radius: 20px;
+			height: 30px;
+			color: #FFFFFF !important;
+			display: inline-block;
+			text-decoration: none !important;
+			vertical-align: middle;
+			line-height: 28px;
+			top: auto;
+			bottom: auto;
+			left: auto;
+			right: auto;
+			position: static;
+		}
+		.bazz-widget-form input[hidden] {
+			display: none !important;
+		}
+	.bazz-widget .bazz-widget-button {
+		width: 65px;
+		height: 65px;
+		border: none;
+		text-align: center;
+		border-radius: 35px;
+		position: relative;
+		padding: 0;
+		cursor: pointer;
+		z-index: 2;
+	}
+	.bazz-widget i {
+		font-style: normal;
+		font-family: helvetica,sans-serif !important;
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		-ms-backface-visibility: hidden;
+		-o-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-transition: -webkit-transform 0.5s;
+	    -moz-transition: -moz-transform 0.5s;
+	    -ms-transition: -moz-transform 0.5s;
+	    -o-transition: -o-transform 0.5s;
+	    transition: transform 0.5s;
+	    -webkit-transform-style: preserve-3d;
+	    -moz-transform-style: preserve-3d;
+	    -ms-transform-style: preserve-3d;
+	    -o-transform-style: preserve-3d;
+	    transform-style: preserve-3d; 
+	}
+		.bazz-widget.opened .bazz-widget-button,
+		.bazz-widget.opened .bazz-widget-inner-circle,
+		.bazz-widget.opened .bazz-widget-inner-border{
+			display: none;
+		}
+		.bazz-widget i:first-child {
+			background: url('../images/trubka.png') no-repeat center center;
+		}
+		.bazz-widget i:last-child {
+			-webkit-transform: rotateY( 180deg );
+			-moz-transform: rotateY( 180deg );
+			-ms-transform: rotateY(180deg);
+			-o-transform: rotateY( 180deg );
+			transform: rotateY( 180deg );
+			color: #FFFFFF;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 1.2;
+			word-wrap: break-word;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			 align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+		.bazz-widget-inner-circle {
+			width: 65px;
+			height: 65px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			border-radius: 100px;
+			opacity: 0.3;
+			z-index: 1;
+			transition: all 1s ease-in-out;
+		}
+		.bazz-widget-inner-border {
+			width: 65px;
+			height: 65px;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			border-radius: 200px;
+			border-width: 1px;
+			border-style: solid;
+			z-index: 1;
+			opacity: 1;
+		}
+	.bazz-widget-your-name {
+		color: #FFFFFF !important;
+		text-decoration: none !important;
+		border-bottom: 1px dashed #fff;
+		line-height: 1.2;
+		height: auto;
+		width: auto;
+		top: auto;
+		bottom: auto;
+		left: auto;
+		right: auto;
+		position: static;
+	}
+	.bazz-widget-form-top,
+	.bazz-widget-form-bottom {
+		width: 100%;
+		height: 65px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: margin 0.3s ease-in-out;
+		position: relative;
+	}
+	.bazz-widget-form-top.overflow {
+		margin-top: -65px;
+	}
+	.bazz-widget-form-bottom {
+		
+	}
+		.bazz-widget-form-bottom label {
+			width: 45%;
+			vertical-align: middle;
+		}
+		.bazz-widget-form-bottom input {
+			width: 40%;
+			vertical-align: middle;
+			padding: 0 6px !important; 
+			background: transparent !important;
+			border: 1px solid #FFFFFF;
+		}
+		.bazz-widget-name-close {
+			width: 34px;
+			height: 34px;
+			display: inline-block;
+			background: url('../images/ok.png') no-repeat center center #00AFF2;
+			background-size: 24px;
+			border-radius: 50%;
+			border-width: 1px;
+			border-style: solid;
+			margin-left: 10px;
+			vertical-align: middle;
+			top: auto;
+			bottom: auto;
+			left: auto;
+			right: auto;
+			position: static;
+		}
+		.bazz-widget-form-info {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			font-size: 9px;
+			text-align: center;
+			width: 100%;
+			line-height: 1;
+			padding-bottom: 2px;
+			color: #666 !important;
+		}
+@media only screen and (max-width : 575px) {
+	.bazz-widget {
+		display: none;
+	}
+}
