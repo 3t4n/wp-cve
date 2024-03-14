@@ -1,0 +1,51 @@
+{
+    "name": "epignosis/talentlms-wordpress",
+    "description": "This plugin integrates Talentlms with Wordpress. Promote your TalentLMS content through your WordPress site.",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "talentlms"
+    ],
+    "homepage": "https://www.talentlms.com",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "@ypanagopoulos"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "composer/installers": "v2.2.0"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "roave/security-advisories": "dev-latest",
+        "squizlabs/php_codesniffer": "3.*",
+        "phpstan/phpstan": "1.9.4",
+        "szepeviktor/phpstan-wordpress": "1.1.6",
+        "phpunit/phpunit": "^9",
+        "php-stubs/woocommerce-stubs": "v7.3.0",
+        "php-stubs/wordpress-stubs": "v6.1.0",
+        "phpcompatibility/php-compatibility": "9.3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TalentlmsIntegration\\": "src/",
+            "TalentlmsIntegrationTests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "composer/installers": false,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": false
+        }
+    },
+    "scripts": {
+        "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
+        "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+    }
+}
