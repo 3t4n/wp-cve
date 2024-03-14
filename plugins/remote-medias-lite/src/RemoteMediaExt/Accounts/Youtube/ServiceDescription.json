@@ -1,0 +1,98 @@
+{
+    "name": "Youtube",
+    "apiVersion": "3",
+    "description": "This API allows to connect to Youtube API",
+    "operations": {
+        "BaseRequest": {
+            "uri": "https://www.googleapis.com/youtube/v3",
+            "httpMethod": "GET",
+            "class": "WPRemoteMediaExt\\Guzzle\\Service\\Command\\OperationCommand",
+            "parameters": {
+                "key": {
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                }
+            }
+        },
+        "ListChannels": {
+            "extends": "BaseRequest",
+            "uri": "channels",
+            "summary": "List Channels. See https://developers.google.com/youtube/v3/docs/channels/list",
+            "parameters": {
+                "part": {
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                },
+                "categoryId": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "forUsername": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "id": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "mine": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "maxResults": {
+                    "type": "integer",
+                    "description": "Acceptable values are 0 to 50, inclusive",
+                    "location": "query"
+                },
+                "pageToken": {
+                    "type": "string",
+                    "location": "query"
+                }
+            }
+        },
+        "ListPlaylistItems": {
+            "extends": "BaseRequest",
+            "uri": "playlistItems",
+            "summary": "Returns a collection of playlist items that match the API request parameters. https://developers.google.com/youtube/v3/docs/playlistItems/list",
+            "parameters": {
+                "part": {
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                },
+                "id": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "playlistId": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "maxResults": {
+                    "type": "integer",
+                    "description": "Acceptable values are 0 to 50, inclusive",
+                    "location": "query"
+                },
+                "pageToken": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "videoId": {
+                    "type": "string",
+                    "description": "The videoId parameter specifies that the request should return only the playlist items that contain the specified video.",
+                    "location": "query"
+                }
+            }
+        }
+    },
+    "models": {
+        "YoutubeOutput": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "xml"
+            }
+        }
+    }
+}

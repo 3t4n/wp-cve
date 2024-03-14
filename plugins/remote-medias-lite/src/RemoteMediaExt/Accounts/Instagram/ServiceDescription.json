@@ -1,0 +1,74 @@
+{
+    "name": "Instagram",
+    "apiVersion": "Beta",
+    "description": "This access public data from Instagram pages",
+    "operations": {
+        "UserRequest": {
+            "httpMethod": "GET",
+            "uri": "{username}/?__a=1",
+            "summary": "Access the data for a specific user",
+            "responseClass": "WPRemoteMediaExt\\RemoteMediaExt\\Accounts\\Instagram\\ResponseJson",
+            "parameters": {
+                "username": {
+                    "type": "string",
+                    "location": "uri",
+                    "description": "Username of the instagram account",
+                    "required": true
+                },
+                "max_id": {
+                    "type": "string",
+                    "location": "query",
+                    "description": "Id of last media. Will return the 20 next media after this id if provided."
+                }
+            }
+        },
+        "GraphQL": {
+            "httpMethod": "GET",
+            "uri": "graphql/query/",
+            "summary": "Access the graphql data",
+            "responseClass": "WPRemoteMediaExt\\RemoteMediaExt\\Accounts\\Instagram\\ResponseJson",
+            "parameters": {
+                "query_hash": {
+                    "type": "string",
+                    "location": "query",
+                    "description": "query hash",
+                    "required": true
+                },
+                "variables": {
+                    "type": "string",
+                    "location": "query",
+                    "description": "query json url encoded",
+                    "required": true
+                }
+            }
+        },
+        "MainPage": {
+            "httpMethod": "GET",
+            "uri": "{username}/",
+            "summary": "Access the page for a specific user",
+            "responseClass": "WPRemoteMediaExt\\RemoteMediaExt\\Accounts\\Instagram\\ResponseMainPage",
+            "parameters": {
+                "username": {
+                    "type": "string",
+                    "location": "uri",
+                    "description": "Username of the instagram account",
+                    "required": true
+                }
+            }
+        },
+        "ProfilePageContainer": {
+            "httpMethod": "GET",
+            "uri": "{uri}",
+            "summary": "Access the page for a specific user",
+            "responseClass": "WPRemoteMediaExt\\RemoteMediaExt\\Accounts\\Instagram\\ResponseProfilePageContainer",
+            "parameters": {
+                "uri": {
+                    "type": "string",
+                    "location": "uri",
+                    "description": "ProfilePageContainer uri path",
+                    "required": true
+                }
+            }
+        }
+    }
+}

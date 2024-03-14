@@ -1,0 +1,1 @@
+<div class="updated notice"><p><?php _e('Remote Media Libraries is provided with love from us.', 'remote-medias-lite');?></p></div>
