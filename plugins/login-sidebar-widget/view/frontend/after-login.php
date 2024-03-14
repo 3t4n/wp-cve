@@ -1,0 +1,1 @@
+<div class="logged-in"><?php echo $link_with_username;?> | <a href="<?php echo wp_logout_url( apply_filters( 'lwws_logout_redirect', $logout_redirect_page, $current_user->ID ) ); ?>" title="<?php _e('Logout','login-sidebar-widget');?>" <?php do_action( 'lwws_logout_link_a_tag' ); ?>><?php _e('Logout','login-sidebar-widget');?></a></div>
