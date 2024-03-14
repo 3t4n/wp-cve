@@ -1,0 +1,44 @@
+<!-- education -->
+	<?php 
+	$education_options = get_option( 'resumecv_education_options');
+	if ( resumecv_data($education_options,'show') == 'enable') {
+		$education_items = resumecv_data($education_options,'education_items'); 
+		
+	
+	?>
+		<div class="sidebar-right__content">
+			<?php
+				resumecv_output('<h3 class="sidebar-right__h"><span>',resumecv_data($education_options,'title'),'</span></h3>');
+			?>
+			<div class="timeline">
+				<?php
+					if ($education_items) {
+						foreach ($education_items as $item) {
+				?>
+				
+				<div class="rcv-education">	
+					<div class="rcv-education-time">					
+						<div class="rcv-education-time__content">					
+							<?php resumecv_output('<span class="rcv-education__year">',resumecv_data($item,'start_year'),'</span>'); ?>
+							<?php resumecv_output('<span class="rcv-education__year">','-','</span>'); ?>
+							<?php resumecv_output('<span class="rcv-education__year">',resumecv_data($item,'end_year'),'</span>'); ?>
+						</div>
+					</div>
+					<div class="rcv-education__content">
+						<?php resumecv_output('<h3 class="rcv-education__program">',resumecv_data($item,'program'),'</h3>'); ?>
+						<?php resumecv_output('<div class="rcv-education__school">',resumecv_data($item,'school_name'),'</div>'); ?>
+						<?php resumecv_output('<div class="rcv-education__school">',resumecv_data($item,'school_address'),'</div>'); ?>
+						
+						<?php resumecv_output('<div class="rcv-education__description">',resumecv_data($item,'position_description'),'</div>'); ?>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<?php
+						}
+					}
+				?>
+				
+			</div>
+		</div>
+	<?php } ?>
+	<!-- education -->
