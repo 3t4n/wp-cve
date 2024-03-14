@@ -1,0 +1,792 @@
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+}
+.awp-close-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+.awp-close-icon:before,
+.awp-close-icon:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    top: 14px;
+}
+.awp-close-icon:before {
+    transform: rotate(45deg);
+}
+.awp-close-icon:after {
+    transform: rotate(-45deg);
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Reset box sizing for the toolbar */
+#acwp-toolbar * {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+}
+
+/* helpers */
+.acwp-hide {
+    display: none;
+}
+
+/* Primary toggle button */
+#acwp-toolbar-btn-wrap {
+    border: 1.5px solid #1E7AB9;
+    z-index: 9500;
+    position: fixed;
+    margin-top: -100vh;
+    /* top: 120px;
+    left: 20px; */
+    border-radius: 50%;
+    -webkit-transition: all 1200ms ease;
+       -moz-transition: all 1200ms ease;
+        -ms-transition: all 1200ms ease;
+         -o-transition: all 1200ms ease;
+            transition: all 1200ms ease;
+}
+#acwp-toolbar-btn {
+    margin:  0;
+    padding: 0;
+    cursor:  pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    width: 48px;
+    height: 48px;
+    background: #1E7AB9;
+    text-align: center;
+    color: #fff;
+    border: 4px solid #fff;
+    border-radius:50%;
+    -webkit-box-shadow: 6px 8px 16px rgba(0,0,0,0.2);
+       -moz-box-shadow: 6px 8px 16px rgba(0,0,0,0.2);
+        -ms-box-shadow: 6px 8px 16px rgba(0,0,0,0.2);
+         -o-box-shadow: 6px 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 6px 8px 16px rgba(0,0,0,0.2);
+}
+#acwp-toolbar-btn.acwp-noanimation {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+/* Primary toggle button - Hover & focus modes */
+#acwp-toolbar-btn:hover, 
+#acwp-toolbar-btn:focus {
+    border-color: orangered;
+}
+
+/* Primary toggle button - Active mode */
+#acwp-toolbar-btn-wrap.show {
+    margin-top: 0;
+}
+
+/* Primary toggle button - SVG Icon */
+body.acwp-contrast #acwp-toolbar-btn svg,
+#acwp-toolbar-btn svg {
+    height: auto;
+    display: inline-block;
+    width: 36px;
+    top: 2px;
+    position: relative;
+    background-color: transparent;
+}
+
+/* Primary toggle button - Right side */
+#acwp-toolbar-btn-wrap.acwp-right {
+    left: auto;
+    right: 10px
+}
+
+/* Toolbar close button */
+#acwp-close-toolbar {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    outline: none;
+    color: #fff;
+    z-index: 250;
+}
+#acwp-toolbar-module > #acwp-close-toolbar{
+    color: #000;
+    top: 0;
+    right: 0;
+}
+
+/* Toolbar close button - Focus mode */
+body.acwp-keyboard #acwp-close-toolbar:focus{
+    border: 1px solid orangered;
+}
+
+/* Toolbar close button - Right side */
+body.rtl #acwp-close-toolbar{
+    right: auto;
+    left: 10px
+}
+body.rtl #acwp-toolbar-module > #acwp-close-toolbar{
+    color: #000;
+    right: auto;
+    left: 0;
+}
+
+/* Toolbar footer */
+.acwp-footer {
+    border-top:1px solid #efefef
+}
+
+/* Toolbar footer links */
+.acwp-footer a {
+    color: #3c8dbc;
+    text-decoration: none;
+}
+
+/* Toolbar footer links - Focus & hover modes */
+.acwp-footer a:hover, .acwp-footer a:focus {
+    color: #3c8dbc;
+    text-decoration: underline;
+}
+
+/* Toolbar footer list */
+.acwp-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/**
+ * Toolbar footer list
+ * 
+ * @style columns
+ */
+body.acwp-contrast #acwp-toolbar.acwp-style-columns .acwp-footer ul {
+    background-color: #ccc;
+}
+
+/* Toolbar footer list item */
+.acwp-footer ul li {
+    margin: 0;
+    padding: 8px 20px;
+    line-height: 18px;
+    font-size: 15px;
+    border-bottom: 1px solid #efefef;
+}
+.acwp-footer ul li a {
+    color: #333;
+}
+.acwp-footer ul li a:hover,
+.acwp-footer ul li a:focus {
+    text-decoration: underline;
+    color: #333;
+}
+/* Toolbar footer list copyrights item */
+.acwp-footer ul li:last-child {
+    padding-bottom:0;
+    border:0;
+    background:#efefef;
+    text-align:center;
+    font-size:13px
+}
+.acwp-footer ul li:last-child i.material-icons{
+    line-height:18px;
+    font-size:13px;
+    position:relative;
+    top:2px
+}
+
+/**
+ * Toolbar footer list item
+ * 
+ * @style columns
+ */
+#acwp-toolbar.acwp-style-columns .acwp-footer ul li {
+    text-align: center;
+    padding: 4px 12px;
+    border-radius: 5px;
+}
+
+/**
+ * Toggler
+ * 
+ * @style default
+ */
+#acwp-toolbar.acwp-style-default .acwp-toggler {
+    border-bottom:1px solid rgba(36,36,36,0.1)
+}
+
+
+.acwp-toggler:last-child{
+    border-bottom:0
+}
+.acwp-toggler.acwp-toggler-decfont{
+    border-bottom:1px solid rgba(36,36,36,0.1)
+}
+#acwp-toolbar.acwp-style-columns .acwp-toggler label{
+    display: block;
+    text-align: center;
+    padding: 18px 12px;
+    font-size: 15px;
+    background: white;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+.acwp-toggler label > * {
+    pointer-events: none;
+}
+#acwp-toolbar.acwp-style-default .acwp-toggler label{
+    display:flex;
+    width:100%;
+    margin:0;
+    cursor:pointer;
+    background:white;
+    padding: 8px 16px;
+    font-weight:400;
+    font-size:1em;
+    outline:none;
+    align-items: center;
+}
+.acwp-toggler label:hover, 
+.acwp-toggler label:focus {
+    outline: none;
+    background: whitesmoke;
+}
+#acwp-toolbar.acwp-style-default .acwp-toggler label > i.material-icons,
+#acwp-toolbar.acwp-style-default .acwp-toggler label > span{
+    display:inline-block;
+    line-height:34px;
+    color: #333;
+}
+#acwp-toolbar.acwp-style-columns .acwp-toggler label > i.material-icons,
+#acwp-toolbar.acwp-style-columns .acwp-toggler label > span{
+    display:block;
+    float: none;
+    margin: 0;
+}
+
+.acwp-toggler label > span{
+	flex-grow: 1;
+}
+.acwp-toggler label > i.material-icons{
+    float:left;
+    margin-right:8px
+}
+body.rtl .acwp-toggler label > i.material-icons{
+    float:right;
+    margin-right:auto;
+    margin-left:8px
+}
+.acwp-toggler label input{
+    display:none
+}
+.acwp-switcher{
+    position:relative;
+    display:inline-block;
+    height:34px;
+    width:60px;
+    float:right
+}
+body.rtl .acwp-switcher{
+    float:left
+}
+.acwp-switch{
+    background-color:rgba(36,36,36,0.22);
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    border-radius:500px;
+    cursor:pointer;
+    transition-property:background-color;
+    transition-duration:.2s;
+    box-shadow:inset 0 0 2px rgba(36,36,36,0.07)
+}
+.acwp-switch:before{
+    content:'';
+    background-color:#fff;
+    position:absolute;
+    width:30px;
+    height:30px;
+    left:2px;
+    bottom:2px;
+    border-radius:50%;
+    transition-property:transform, box-shadow;
+    transition-duration:.2s;
+    -webkit-transform:translateX(0px);
+    -moz-transform:translateX(0px);
+    -ms-transform:translateX(0px);
+    -o-transform:translateX(0px);
+    transform:translateX(0px)
+}
+body.rtl .acwp-switch:before{
+    -webkit-transform:translateX(26px);
+    -moz-transform:translateX(26px);
+    -ms-transform:translateX(26px);
+    -o-transform:translateX(26px);
+    transform:translateX(26px)
+}
+input:checked+.acwp-switch{
+    background-color:#3c8dbc !important
+}
+input:checked+.acwp-switch:before{
+    -webkit-transform:translateX(26px);
+    -moz-transform:translateX(26px);
+    -ms-transform:translateX(26px);
+    -o-transform:translateX(26px);
+    transform:translateX(26px)
+}
+body.rtl input:checked+.acwp-switch:before{
+    -webkit-transform:translateX(0px);
+    -moz-transform:translateX(0px);
+    -ms-transform:translateX(0px);
+    -o-transform:translateX(0px);
+    transform:translateX(0px)
+}
+.acwp-toolbar{
+    display:none;
+    position:fixed;
+    z-index:99999;
+    outline:none;
+    -webkit-transition: all 1200ms ease;
+    -moz-transition: all 1200ms ease;
+    -ms-transition: all 1200ms ease;
+    -o-transition: all 1200ms ease;
+    transition: all 1200ms ease;
+}
+.acwp-toolbar.acwp-noanimation {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+.acwp-toolbar:focus{
+    outline:none
+}
+.acwp-toolbar.acwp-toolbar-active{
+    display:block
+}
+/* .acwp-toolbar.acwp-right{
+    left:auto;
+    right:20px
+} */
+#acwp-toolbar-module{
+    position:relative;
+    background-color:white;
+    width:380px;
+    border:8px solid #efefef;
+    -webkit-box-shadow:0 2px 12px 1px rgba(36,36,36,0.33);
+    -moz-box-shadow:0 2px 12px 1px rgba(36,36,36,0.33);
+    -ms-box-shadow:0 2px 12px 1px rgba(36,36,36,0.33);
+    -o-box-shadow:0 2px 12px 1px rgba(36,36,36,0.33);
+    box-shadow:0 2px 12px 1px rgba(36,36,36,0.33)
+}
+body.acwp-contrast #acwp-toolbar.acwp-style-default .acwp-toggler label,
+body.acwp-contrast #acwp-toolbar-module {
+    background-color: black;
+    border-color: #ccc;
+}
+body.acwp-contrast #acwp-toolbar .acwp-heading,
+body.acwp-contrast #acwp-toolbar .acwp-heading p.acwp-title {
+    background-color: #333;
+}
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) .acwp-switch {
+    background-color: #666;
+}
+body.acwp-contrast #acwp-toolbar.acwp-style-default .acwp-toggler label > i.material-icons, 
+body.acwp-contrast #acwp-toolbar.acwp-style-default .acwp-toggler label > span {
+    color: #fff;
+}
+#acwp-toolbar.acwp-style-columns #acwp-toolbar-module {
+    background-color: #efefef;
+    border-radius: 5px;
+    overflow: hidden;
+}
+body.acwp-contrast #acwp-toolbar.acwp-style-columns #acwp-toolbar-module {
+    background-color: #ccc;
+}
+.incresed #acwp-toolbar-module{
+    width:616px
+}
+.acwp-heading{
+    background: #1E7AB9;
+    padding: 8px 16px;
+}
+p.acwp-title {
+    color: #fff;
+}
+#acwp-toolbar.acwp-style-columns .acwp-heading {
+    border-radius: 5px;
+}
+.acwp-heading p.acwp-title {
+    margin:0;
+    padding:0;
+    font-size:32px
+}
+.acwp-heading p{
+    margin:0
+}
+body.acwp-keyboard #acwp-toolbar.acwp-style-columns .acwp-toggler-keyboard label,
+body.acwp-decfont #acwp-toolbar.acwp-style-columns .acwp-toggler-decfont label,
+body.acwp-incfont #acwp-toolbar.acwp-style-columns .acwp-toggler-incfont label,
+body.acwp-animations #acwp-toolbar.acwp-style-columns .acwp-toggler-animations label,
+body.acwp-contrast #acwp-toolbar.acwp-style-columns .acwp-toggler-contrast label,
+body.acwp-readable #acwp-toolbar.acwp-style-columns .acwp-toggler-readable label,
+body.acwp-marktitles #acwp-toolbar.acwp-style-columns .acwp-toggler-marktitles label,
+body.acwp-underline #acwp-toolbar.acwp-style-columns .acwp-toggler-underline label {
+    border:2px solid #333;
+    box-shadow: inset 4px 8px 24px rgba(36, 36, 36, .25);
+    -webkit-box-shadow: inset 4px 8px 24px rgba(36, 36, 36, .25);
+    -moz-box-shadow: inset 4px 8px 24px rgba(36, 36, 36, .25);
+    -ms-box-shadow: inset 4px 8px 24px rgba(36, 36, 36, .25);
+}
+
+body.acwp-animations *{
+    -webkit-transition:none !important;
+    -moz-transition:none !important;
+    -o-transition:none !important;
+    transition:none !important;
+    -webkit-animation:none !important;
+    -o-animation:none !important;
+    animation:none !important
+}
+body.acwp-underline:not(.acwp-underline-hardcss) #acwp-close-toolbar,
+body.acwp-underline:not(.acwp-underline-hardcss) a,
+body.acwp-underline:not(.acwp-underline-hardcss) button{
+    text-decoration:underline;
+    background: #FFE901;
+    color: #000;
+    -webkit-box-shadow: 0 0 0 2px #FFE901;
+       -moz-box-shadow: 0 0 0 2px #FFE901;
+        -ms-box-shadow: 0 0 0 2px #FFE901;
+            box-shadow: 0 0 0 2px #FFE901;
+}
+body.acwp-underline.acwp-underline-hardcss a,
+body.acwp-underline.acwp-underline-hardcss button {
+    text-decoration:underline !important;
+    background: #FFE901 !important;
+    color: #000 !important;
+    -webkit-box-shadow: 0 0 0 2px #FFE901 !important;
+       -moz-box-shadow: 0 0 0 2px #FFE901 !important;
+        -ms-box-shadow: 0 0 0 2px #FFE901 !important;
+            box-shadow: 0 0 0 2px #FFE901 !important;
+}
+
+body.acwp-marktitles:not(.acwp-titles-hardcss):not(.acwp-titles-custom) #acwp-toolbar .acwp-heading,
+body.acwp-marktitles:not(.acwp-titles-hardcss):not(.acwp-titles-custom) #acwp-toolbar p.acwp-title,
+body.acwp-marktitles:not(.acwp-titles-hardcss):not(.acwp-titles-custom) h1,
+body.acwp-marktitles:not(.acwp-titles-hardcss):not(.acwp-titles-custom) h2,
+body.acwp-marktitles:not(.acwp-titles-hardcss):not(.acwp-titles-custom) h3 {
+    background-color:yellow;
+    color:black
+}
+body.acwp-marktitles.acwp-titles-hardcss:not(.acwp-titles-custom) h1,
+body.acwp-marktitles.acwp-titles-hardcss:not(.acwp-titles-custom) h2,
+body.acwp-marktitles.acwp-titles-hardcss:not(.acwp-titles-custom) h3{
+    background-color:yellow !important;
+    color:black !important
+}
+body.acwp-marklinks:not(.acwp-links-hardcss):not(.acwp-links-custom) a,body.acwp-marklinks:not(.acwp-links-hardcss):not(.acwp-links-custom) button{
+    background-color:yellow;
+    color:black
+}
+body.acwp-marklinks.acwp-links-hardcss:not(.acwp-links-custom) a,body.acwp-marklinks.acwp-links-hardcss:not(.acwp-links-custom) button{
+    background-color:yellow !important;
+    color:black !important
+}
+body.acwp-contrast:not(.acwp-contrast-hardcss):not(.acwp-contrast-js):not(.acwp-contrast-bgimages) *{
+    background-image:none
+}
+body.acwp-contrast.acwp-contrast-hardcss:not(.acwp-contrast-js):not(.acwp-contrast-bgimages) *{
+    background-image:none !important
+}
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js){
+    background-color:black;
+    color:white
+}
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #acwp-toolbar.acwp-style-columns .acwp-toggler label,
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) *,
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #footer,
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #site-footer,
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #header,
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #site-header,
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) .singular .featured-media::before{
+    background-color:black;
+    color:white
+}
+body.acwp-contrast #acwp-toolbar.acwp-style-columns .acwp-toggler label {
+    border-color: black;
+}
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #acwp-toolbar.acwp-style-columns .acwp-togglers > .acwp-toggler {
+    background-color: #ccc;
+}
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #acwp-toolbar.acwp-style-columns .acwp-toggler label > i.material-icons, 
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #acwp-toolbar.acwp-style-columns .acwp-toggler label > span {
+    color: yellow;
+}
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) a,body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button,body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) label{
+    color:yellow
+}
+body.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) .material-icons{
+    background:none
+}
+body.acwp-contrast-hardcss.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-js) *{
+    background-color:black !important;
+    color:white !important
+}
+body.acwp-contrast-hardcss.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-js) a,body.acwp-contrast-hardcss.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-js) button,body.acwp-contrast-hardcss.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-js) label{
+    color:yellow !important
+}
+body.acwp-monochrome,body.acwp-monochrome *{
+    filter:grayscale(100%)
+}
+body.acwp-readable:not(.acwp-readable-hardcss):not(.acwp-readable-custom):not(.acwp-readable-tahoma),body.acwp-readable:not(.acwp-readable-hardcss):not(.acwp-readable-custom):not(.acwp-readable-tahoma) *:not(.fa):not(.material-icons){
+    font-family:'Arial', sans-serif
+}
+body.acwp-readable-hardcss.acwp-readable:not(.acwp-readable-custom):not(.acwp-readable-tahoma),body.acwp-readable-hardcss.acwp-readable:not(.acwp-readable-custom):not(.acwp-readable-tahoma) *:not(.fa):not(.material-icons){
+    font-family:'Arial', sans-serif !important
+}
+body.acwp-readable:not(.acwp-readable-hardcss):not(.acwp-readable-custom):not(.acwp-readable-arial),body.acwp-readable:not(.acwp-readable-hardcss):not(.acwp-readable-custom):not(.acwp-readable-arial) *:not(.fa):not(.material-icons){
+    font-family:'Tahoma', sans-serif
+}
+body.acwp-readable-hardcss.acwp-readable:not(.acwp-readable-custom):not(.acwp-readable-arial),body.acwp-readable-hardcss.acwp-readable:not(.acwp-readable-custom):not(.acwp-readable-arial) *:not(.fa):not(.material-icons){
+    font-family:'Tahoma', sans-serif !important
+}
+
+
+#acwp-toolbar.acwp-style-columns .acwp-togglers {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 6px -2px;
+}
+
+#acwp-toolbar.acwp-style-columns .acwp-togglers > .acwp-toggler {
+    flex-grow: 1;
+    width: 50%;
+}
+
+
+body.acwp-keyboard.acwp-decfont #acwp-toolbar.acwp-style-columns .acwp-toggler-decfont label:focus,
+body.acwp-keyboard.acwp-contrast.acwp-decfont:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) #acwp-toolbar.acwp-style-columns .acwp-toggler-decfont label:focus,
+body.acwp-keyboard.acwp-incfont #acwp-toolbar.acwp-style-columns .acwp-toggler-incfont label:focus,
+body.acwp-keyboard.acwp-contrast.acwp-incfont:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js)  #acwp-toolbar.acwp-style-columns .acwp-toggler-incfont label:focus,
+
+body.acwp-keyboard a:not([disabled]):focus,
+body.acwp-contrast.acwp-keyboard:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) a:not([disabled]):focus,
+
+body.acwp-keyboard button:not([disabled]):focus,
+body.acwp-contrast.acwp-keyboard:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]):focus,
+
+body.acwp-keyboard input[type=text]:not([disabled]):focus,
+body.acwp-contrast.acwp-keyboard:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) input[type=text]:not([disabled]):focus,
+
+body.acwp-keyboard input[type=search]:not([disabled]):focus,
+body.acwp-contrast.acwp-keyboard:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) input[type=search]:not([disabled]):focus,
+
+body.acwp-keyboard [tabindex]:not([disabled]):not([tabindex="-1"]):focus,
+body.acwp-contrast.acwp-keyboard:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) [tabindex]:not([disabled]):not([tabindex="-1"]):focus,
+
+body.acwp-keyboard #acwp-toolbar.acwp-style-columns .acwp-toggler label:focus,
+body.acwp-keyboard.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) #acwp-toolbar.acwp-style-columns .acwp-toggler label:focus,
+
+body.acwp-contrast.acwp-keyboard:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) #acwp-toolbar.acwp-style-columns .acwp-toggler-keyboard label:focus,
+body.acwp-keyboard #acwp-toolbar.acwp-style-columns .acwp-toggler-keyboard label:focus,
+
+body.acwp-keyboard.acwp-marktitles #acwp-toolbar.acwp-style-columns .acwp-toggler-marktitles label:focus,
+body.acwp-keyboard.acwp-contrast.acwp-marktitles:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) #acwp-toolbar.acwp-style-columns .acwp-toggler-marktitles label:focus,
+
+body.acwp-keyboard.acwp-underline #acwp-toolbar.acwp-style-columns .acwp-toggler-underline label:focus,
+body.acwp-keyboard.acwp-contrast.acwp-underline:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) #acwp-toolbar.acwp-style-columns .acwp-toggler-underline label:focus,
+
+body.acwp-keyboard.acwp-readable #acwp-toolbar.acwp-style-columns .acwp-toggler-readable label:focus,
+body.acwp-keyboard.acwp-contrast.acwp-readable:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) #acwp-toolbar.acwp-style-columns .acwp-toggler-readable label:focus,
+
+body.acwp-keyboard.acwp-contrast:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js)  #acwp-toolbar.acwp-style-columns .acwp-toggler-contrast label:focus,
+
+body.acwp-keyboard.acwp-animations #acwp-toolbar.acwp-style-columns .acwp-toggler-animations label:focus,
+body.acwp-keyboard.acwp-contrast.acwp-animations:not(.acwp-contrast-custom):not(.acwp-contrast-hardcss):not(.acwp-contrast-js) button:not([disabled]) #acwp-toolbar.acwp-style-columns .acwp-toggler-animations label:focus
+{
+    outline:none;
+    border:2px solid orangered
+}
+
+@media (max-height: 867px){
+    .acwp-toggler label>i.material-icons,.acwp-toggler label>span{
+        line-height:24px
+    }
+    .acwp-switcher{
+        height:24px;
+        width:50px
+    }
+    .acwp-switch::before{
+        width:20px;
+        height:20px
+    }
+}
+@media (max-height: 768px){
+    .acwp-heading{
+        padding: 8px 16px;
+    }
+    .acwp-heading p.acwp-title {
+        font-size:24px
+    }
+}
+@media (max-height: 600px){
+    .acwp-heading{
+        padding:6px 16px
+    }
+    .acwp-togglers h2{
+        font-size:1em
+    }
+    #acwp-toolbar-module{
+        border-width:4px
+    }
+    .acwp-footer ul li:last-child{
+        padding-top:0
+    }
+}
+@media (max-height: 558px){
+    .acwp-footer a {
+        font-size: 14px
+    }
+    #acwp-toolbar .acwp-toggler label>i.material-icons,
+    #acwp-toolbar.acwp-style-default .acwp-toggler label>i.material-icons,
+    #acwp-toolbar .acwp-toggler label>span,
+    #acwp-toolbar.acwp-style-default .acwp-toggler label>span{
+        font-size: 14px;
+        line-height:20px
+    }
+    .acwp-switcher{
+        height:20px;
+        width:46px
+    }
+    .acwp-footer ul li{
+        padding:2px 20px
+    }
+    .acwp-switch::before{
+        width:16px;
+        height:16px
+    }
+    .acwp-togglers h2{
+        line-height:1
+    }
+    .acwp-heading p.acwp-title {
+        font-size:18px
+    }
+}
+@media (max-height: 481px){
+    #acwp-close-toolbar{
+        top:4px;
+        right:4px
+    }
+}
+@media (max-height: 468px){
+    .acwp-togglers h2{
+        display:none
+    }
+    .acwp-heading{
+        padding: 4px 16px
+    }
+    .acwp-footer ul li{
+        padding:0 20px
+    }
+    .acwp-heading p.acwp-title{
+        font-size:16px
+    }
+    #acwp-close-toolbar{
+        top:0px;
+        right:0px
+    }
+}
+@media (max-height: 386px){
+    .acwp-heading p.acwp-title{
+        font-size:14px
+    }
+    .acwp-toggler label>i.material-icons,.acwp-toggler label>span{
+        font-size:12px;
+        line-height:18px
+    }
+    .acwp-switcher{
+        height:18px;
+        width:44px
+    }
+    .acwp-switch::before{
+        width:14px;
+        height:14px
+    }
+}
+
+@media (max-width: 768px) {
+    .incresed #acwp-toolbar-module {
+        width: 548px;
+    }
+}
+@media (max-width: 600px) {
+    .incresed #acwp-toolbar-module {
+        width: 420px;
+    }
+}
+@media (max-width: 481px) {
+    .incresed #acwp-toolbar-module {
+        width: 396px;
+    }
+}
+@media (max-width: 400px){
+    #acwp-toolbar-module{
+        width:320px
+    }
+    .incresed #acwp-toolbar-module {
+        width: 100%;
+    }
+}
+@media (max-width: 321px){
+    #acwp-toolbar-module{
+        width:300px
+    }
+}
