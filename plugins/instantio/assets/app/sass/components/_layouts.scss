@@ -1,0 +1,104 @@
+/* layouts  */
+.ins-checkout-modern {
+  &.popup {
+    height: 100%;
+    width: 100%;
+
+    .ins-checkout-layout.popup {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  &.slide {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .ins-checkout-layout {
+    container-name: ins_slide;
+    container-type: inline-size;
+    background-color: $background;
+    height: 100vh;
+    z-index: 9999;
+    position: relative;
+    box-shadow: 1px -9px 16px -13px;
+    width: var(--ins_panel_width_1200);
+
+    &.slide {
+      position: fixed;
+      right: 0;
+      top: 0;
+      transition: 0.8s;
+      transform: translate(100%, 0) !important;
+      -webkit-transition: 0.8s;
+      -moz-transition: 0.8s;
+      -ms-transition: 0.8s;
+      -o-transition: 0.8s;
+
+      .ins-cart-item-wrap {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+      }
+    }
+
+    &.active {
+      visibility: visible;
+      z-index: 9999;
+      transition: 0.6s;
+      transform: translate(0, 0%) !important;
+    }
+
+    .ins-cart-item-wrap {
+      overflow: auto;
+      max-height: 300px;
+    }
+
+    .ins-cart-inner.step-1 {
+      padding: 16px !important;
+      padding-bottom: 0 !important;
+    }
+  }
+}
+/* layouts  */
+
+// single
+
+.ins-checkout-popup {
+  .ins-checkout-layout {
+    .ins-single-layout-wrap {
+      .ins-content {
+        &.ins-show {
+          height: auto !important;
+        }
+      }
+      .ins_single_layout_checkout_area {
+        .ins-checkout {
+          .ins-cart-inner {
+            #customer_details {
+              .ins-cart-content-inner {
+                .ins-cart-content-wrap {
+                }
+              }
+            }
+            &.payment {
+              .ins-payment-wrap {
+              }
+              .ins-cart-btns {
+                &.ins_single_layout_btn {
+                  background: transparent !important;
+                  border: none !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
