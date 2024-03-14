@@ -1,0 +1,244 @@
+/*
+	Plugin Name: SoundCloud Shortcode
+	Description: WP Admin styling for the SoundCloud plugin settings
+	Author: Lawrie Malen @ Very New Media
+	Author URI: https://www.verynewmedia.com/
+*/
+
+/*
+	ADMIN AREA
+*/
+
+.soundcloud-admin-wrapper {
+	color: #2A3350;
+}
+
+.soundcloud-admin-wrapper .soundcloud-title {
+	display: flex;
+	align-items: center;
+}
+
+.soundcloud-admin-wrapper .soundcloud-title span {
+	padding-left: 10px;
+}
+
+.soundcloud-admin-wrapper section, .soundcloud-admin-wrapper p {
+	font-size: 1rem;
+}
+
+.soundcloud-admin-wrapper > h2.title {
+	margin-bottom: 1.250em;
+}
+
+.soundcloud-admin-wrapper .wrapper {
+	margin-bottom: 1.250em;
+	background-color: #FFFFFF;
+	border-radius: 0.250em;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.06), 
+		0 2px 2px rgba(0,0,0,0.06), 
+		0 4px 4px rgba(0,0,0,0.06), 
+		0 8px 8px rgba(0,0,0,0.06),
+		0 16px 16px rgba(0,0,0,0.06);
+}
+
+.soundcloud-admin-wrapper .padded-section {
+	padding: 1.250em;
+}
+
+.soundcloud-admin-wrapper h3.section-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0.875em 1.250em;
+	font-size: 1.250em;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.soundcloud-admin-wrapper h3.section-title.border-bottom {
+	border-bottom: 1px solid #F1F1F1;
+}
+
+/*
+	FORM
+*/
+
+.soundcloud-admin-wrapper form {
+	position: relative;
+}
+
+.soundcloud-admin-wrapper form th,
+.soundcloud-admin-wrapper form td {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.soundcloud-admin-wrapper form th {
+	font-weight: 500;
+	border-bottom: 1px solid #DBDBDB;
+}
+
+.soundcloud-admin-wrapper form th span {
+	display: block;
+	padding-top: 8px;
+}
+
+.soundcloud-admin-wrapper form td {
+	border-bottom: 1px solid #DBDBDB;
+}
+
+/*
+	INPUTS
+*/
+
+.soundcloud-admin-wrapper form input[type="text"] {
+	margin: 0;
+	padding: 8px 10px;
+	background-color: #FFFFFF;
+	border: 1px solid #DBDBDB;
+	border-radius: 6px;
+	font-size: inherit;
+	line-height: initial;
+	color: inherit;
+	box-shadow: none;
+	transition: all 0.5s ease;
+	resize: none;
+	-webkit-appearance: none;
+}
+
+.soundcloud-admin-wrapper form input[type="radio"] {
+	position: absolute;
+	clip: rect(0,0,0,0);
+}
+
+.soundcloud-admin-wrapper form label {
+	padding: 8px 0;
+	line-height: initial;
+}
+
+.soundcloud-admin-wrapper form label.radio-label {
+	position: relative;
+	display: inline-block;
+	padding-left: 1.875rem;
+}
+
+.soundcloud-admin-wrapper form label.radio-label::before {
+	content: '';
+	position: absolute;
+	top: 8px;
+	left: 0;
+	width: 1.250rem;
+	height: 1.250rem;
+	background-color: #DFE6E9;
+	border-radius: 50%;
+}
+
+.soundcloud-admin-wrapper form label.radio-label::after {
+	content: '';
+	position: absolute;
+	top: calc(8px + 0.250rem);
+	left: 0.250rem;
+	width: 0.750rem;
+	height: 0.750rem;
+	background-color: #BDC3C7;
+	border-radius: 50%;
+}
+
+.soundcloud-admin-wrapper form input[type="radio"]:checked + .radio-label {
+	font-weight: 700;
+}
+
+.soundcloud-admin-wrapper form input[type="radio"]:checked + .radio-label::before {
+	background-color: #FFFFFF;
+}
+
+.soundcloud-admin-wrapper form input[type="radio"]:checked + .radio-label::after {
+	background-color: #FF5500;
+}
+
+.soundcloud-admin-wrapper form .hex-wrapper {
+	display: flex;
+}
+
+.soundcloud-admin-wrapper form .hex-wrapper .hex {
+	padding: 8px;
+	background-color: #DFE6E9;
+	font-size: 1.250rem;
+	font-weight: 600;
+}
+
+.soundcloud-admin-wrapper form .hex-wrapper input {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.soundcloud-admin-wrapper form .hex-wrapper .desc {
+	padding-top: 12px;
+	padding-left: 10px;
+}
+
+/*
+	COLOR PREVIEW
+ */
+
+.soundcloud-admin-wrapper form .sc-preview {
+	display: inline-block;
+	margin-top: 16px;
+	padding: 10px;
+	border: 1px solid #E5E5E5;
+	background-color: #F5F5F5;
+	border-radius: 5px;
+}
+
+.soundcloud-admin-wrapper form .sc-preview svg {
+	display: block;
+}
+
+.soundcloud-admin-wrapper form .sc-preview svg .waveform rect {
+	-webkit-transform: scaleY(0%);
+	transform: scaleY(0%);
+	-webkit-transform-origin: bottom left;
+	transform-origin: bottom left;
+	-webkit-animation-name: sc-bars;
+	animation-name: sc-bars;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-delay: var(--delay);
+	animation-delay: var(--delay);
+}
+
+@-webkit-keyframes sc-bars {
+	0% { -webkit-transform: scaleY(0%); transform: scaleY(0%); }
+	100% { -webkit-transform: scaleY(100%); transform: scaleY(100%); }
+}
+
+@keyframes sc-bars {
+	0% { -webkit-transform: scaleY(0%); transform: scaleY(0%); }
+	100% { -webkit-transform: scaleY(100%); transform: scaleY(100%); }
+}
+
+/*
+	BUTTONS
+*/
+
+.soundcloud-admin-wrapper .button-primary {
+	min-width: 10em;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.250rem;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	line-height: 1.313;
+	color: #FFFFFF;
+	background-color: #FF5500;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.soundcloud-admin-wrapper .button-primary:hover {
+	background-color: #E15F41;
+}
