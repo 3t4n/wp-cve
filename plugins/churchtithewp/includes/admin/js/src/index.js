@@ -1,0 +1,15 @@
+import "./misc-functions.js";
+import "./stripe-connect-field.js";
+import "./transaction.js";
+import "./arrangement.js";
+import "./transactions-in-arrangement.js";
+import "./shortcode-how-to.js";
+import "./health-check-as-help-lightbox.js";
+import "./health-check-components/ssl.js";
+import "./health-check-components/stripe-connect.js";
+import "./health-check-components/stripe-webhook.js";
+import "./health-check-components/wp-mail.js";
+import "./health-check-components/simple-text.js";
+import "./health-check-components/setting.js";
+import "./health-check-components/do-wizard.js";
+import "./health-check-components/complete-wizard.js";
