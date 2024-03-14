@@ -1,0 +1,455 @@
+/* compile */
+
+/**
+ * Check credentials in the settings page
+ */
+
+.woo-stock-sync-check-credentials-indicator {
+	display: inline-block;
+	width: auto;
+	height: 30px;
+  line-height: 30px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin-left: 10px;
+	padding-left: 21px;
+  vertical-align: top;
+}
+
+.woo-stock-sync-check-credentials-processing { background-image: url("../img/wpspin_light.gif"); }
+.woo-stock-sync-check-credentials-success { background-image: url("../img/yes.png"); }
+.woo-stock-sync-check-credentials-fail { background-image: url("../img/no.png"); }
+
+/**
+ * API credentials table
+ */
+td.forminp-wss_credentials_table  {
+  & > table {
+    th,
+    td {
+      width: auto;
+      margin-bottom: 9px;
+      padding: 15px 10px;
+    }
+
+    td.min,
+    th.min {
+      width: 2%;
+      white-space: nowrap;
+      margin-right: 5px;
+    }
+
+    input {
+      max-width: 100%;
+    }
+
+    tfoot {
+      a {
+        display: inline-block;
+      }
+    }
+
+    .pro-sites {
+      line-height: 30px;
+      display: inline-block;
+      margin-left: 10px;
+      color: #646970;
+      font-size: 12px;
+    }
+  }
+}
+
+/**
+ * API check modal
+ */
+.wss-api-check-dialog-container {
+  .ui-dialog-titlebar-close {
+    text-indent: -9999px !important;
+    
+    &:before {
+      display: none !important;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  #wss-api-check-app {
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+  
+      th {
+        text-align: left;
+        width: 100px;
+      }
+  
+      td {
+        text-align: left;
+      }
+  
+      .error {
+        color: #c92a2a;
+  
+        pre {
+          display: block;
+          width: 400px;
+          overflow-x: scroll;
+        }
+      }
+  
+      &.wss-checks-table {
+        th {
+          width: 75%;
+        }
+      }
+  
+      .wss-check-status {
+        background-repeat: no-repeat;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+  
+        &.pending {
+          background-image: url("../img/wpspin_light.gif");
+        }
+  
+        &.error {
+          background-image: url("../img/no.png");
+        }
+  
+        &.ok {
+          background-image: url("../img/yes.png");
+        }
+      }
+    }
+  
+    .wss-api-check-ok {
+      color: #087f5b;
+    }
+  }
+}
+
+/**
+ * Error modal
+ */
+ #wss-error-dialog {
+  table.wss-error-data-table {
+    * {
+      box-sizing: border-box;
+    }
+  
+    width: 100%;
+  
+    th {
+      padding: 5px 10px 5px 0;
+    }
+  
+    td {
+      padding: 5px 0 5px 10px;
+    }
+  
+    th, td {
+      text-align: left;
+    }
+  
+    th {
+      vertical-align: baseline;
+    }
+  
+    td {
+      pre {
+        background: #f1f3f5;
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        overflow: auto;
+        margin: 0;
+        width: 0;
+        min-width: 100%;
+        height: 200px;
+      }
+    }
+  }
+
+  .wss-actions {
+    button.button {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+/**
+ * Sync update app
+ */
+$border-color: #dee2e6;
+
+.wss-app {
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+
+    p {
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 32px;
+    }
+
+    .processing {
+      h2 {
+        color: #1864ab;
+      }
+    }
+
+    .completed {
+      h2 {
+        color: #2b8a3e;
+      }
+    }
+  }
+
+  .sites {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+
+    .site {
+      background: #ffffff;
+      border: 1px solid $border-color;
+      margin: 0 20px 20px 0;
+      background: #ffffff;
+
+      .site-header {
+        display: flex;
+        border-bottom: 1px solid $border-color;
+
+        .title {
+          flex: auto;
+          padding: 10px 20px;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .status {
+          flex: none;
+          padding: 10px 20px;
+
+          .icon {
+            display: block;
+            width: 16px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-position: left top;
+          }
+
+          &.process .icon { background-image: url("../img/wpspin_light.gif"); }
+          &.completed .icon { background-image: url("../img/yes.png"); }
+        }
+      }
+
+      .content {
+        padding: 10px 20px;
+
+        table {
+          th, td {
+            text-align: left;
+            padding: 5px 10px;
+          }
+
+          th {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Stock Sync report page
+ */
+#woo-stock-sync-report {
+  .last-updated {
+    line-height: 30px;
+    margin: 10px 0;
+  }
+
+  .tablenav {
+    .wss-product-search {
+      float: left;
+    }
+  }
+
+  table {
+    background: #ffffff;
+
+    th, td {
+      vertical-align: middle;
+    }
+
+    .button {
+      line-height: 24px;
+      min-height: 24px;
+      padding: 0 5px;
+    }
+  }
+}
+
+/**
+ * Log table
+ */
+.wss-log-table {
+  margin-bottom: 20px;
+
+  tr.type-error {
+    background: #ffe3e3;
+  }
+}
+
+.wss-descs {
+  margin: 0 0 10px;
+
+  .desc {
+    margin-right: 10px;
+
+    .wss-sync-result {
+      margin-right: 3px;
+    }
+  }
+}
+
+.wss-sync-result {
+  border-radius: 8px;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  vertical-align: text-top;
+
+  &.sync-result-info {background: #1971c2;}
+  &.sync-result-success {background: #2f9e44;}
+  &.sync-result-warning {background: #f08c00;}
+  &.sync-result-error {background: #e03131;}
+  &.sync-result-na {background: #ced4da;}
+}
+
+/**
+ * Tools page
+ */
+#woo-stock-sync-tools {
+  .tools {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    .tool {
+      flex: auto;
+      max-width: 300px;
+      margin: 0 20px 20px 0;
+      background: #ffffff;
+      border: 1px solid $border-color;
+      padding: 20px;
+
+      .title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .desc {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+/**
+ * Icons
+ */
+.wss-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  vertical-align: text-top;
+
+  &.process {
+    background-image: url("../img/wpspin_light.gif");
+  }
+
+  &.warning {
+    background-image: url("../img/warning.png");
+  }
+
+  &.completed {
+    background-image: url("../img/yes.png");
+  }
+}
+
+/**
+ * Tabs
+ */
+ .wss-tabs {
+  .dashicons-external {
+    font-size: 12px;
+    height: 12px;
+    width: 12px;
+  }
+}
+
+/**
+ * Alert
+ */
+.wss-alert {
+  background: #fff9db;
+  border: 1px solid #ffe066;
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+
+/**
+ * License status label (Pro only)
+ */
+.markup-license-status-label {
+  color: #ffffff;
+  padding: 5px 7px;
+  font-size: 13px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.markup-license-status-label.license-ok {
+  background: #2b8a3e;
+  color: #ffffff;
+}
+
+.markup-license-status-label.license-disabled {
+  background: #c92a2a;
+}
+
+.markup-license-status-label.license-unknown {
+  background: #212529;
+}
+
+.markup-license-error {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.markup-license-last-checked {
+  color: #666666;
+  margin-top: 10px;
+}
+
