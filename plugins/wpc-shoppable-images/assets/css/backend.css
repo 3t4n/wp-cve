@@ -1,0 +1,328 @@
+.post-type-wpc_shoppable_image #postimagediv {
+    display: none;
+}
+
+#wpcsi-image-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    border: 1px solid #c3c4c7;
+}
+
+.wpcsi-image-add {
+    text-align: center;
+}
+
+.wpcsi-image-add a {
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid #c3c4c7;
+    margin-top: -1px;
+    text-decoration: none;
+}
+
+.wpcsi-image-add a:before {
+    content: '\f128';
+    font-family: dashicons;
+    display: inline-block;
+    line-height: 1;
+    font-weight: 400;
+    font-style: normal;
+    speak: never;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    vertical-align: top;
+    text-align: center;
+    transition: color .1s ease-in;
+    margin-right: 10px;
+}
+
+#wpcsi-image {
+    display: inline-block;
+    width: auto;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 0;
+    padding: 0;
+}
+
+#wpcsi-image.preview-laptop {
+    max-width: 1200px;
+}
+
+#wpcsi-image.preview-tablet {
+    max-width: 800px;
+}
+
+#wpcsi-image.preview-mobile {
+    max-width: 500px;
+}
+
+#wpcsi-image:not(.has-image) {
+    display: none;
+}
+
+#wpcsi-image:not(.has-image) + #wpcsi-item-meta {
+    display: none;
+}
+
+#wpcsi-image img {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    cursor: crosshair;
+}
+
+#wpcsi-image .wpcsi-tag {
+    display: block;
+    position: absolute !important;
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: move;
+}
+
+#wpcsi-image .wpcsi-tag span {
+    display: block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 24px;
+    background: #fff;
+    color: #111111;
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#wpcsi-image .wpcsi-tag:before {
+    content: '';
+    display: block;
+    width: 10000px;
+    height: 1px;
+    transform: translate3d(-50%, 11px, 0);
+    background-color: rgba(0, 0, 0, .5);
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#wpcsi-image .wpcsi-tag:after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 10000px;
+    transform: translate3d(11px, -50%, 0);
+    background-color: rgba(0, 0, 0, .5);
+    border-right: 1px solid rgba(255, 255, 255, .5);
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#wpcsi-image .wpcsi-tag.active span {
+    background: red;
+    color: #fff;
+}
+
+#wpcsi-image .wpcsi-tag.active:before, #wpcsi-image .wpcsi-tag.active:after {
+    opacity: 1;
+    visibility: visible;
+}
+
+#wpcsi-item-meta {
+    margin-top: 20px;
+}
+
+#wpcsi-item-meta .item-meta {
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#wpcsi-item-meta .item-meta.active {
+    border-color: #2271b1;
+}
+
+#wpcsi-item-meta .item-meta.active .item-remove i {
+    color: #2271b1;
+}
+
+#wpcsi-item-meta .item-meta:last-child {
+    margin-bottom: 0;
+}
+
+#wpcsi-item-meta .item-meta .item-remove {
+    text-decoration: none;
+}
+
+#wpcsi-item-meta .item-meta .item-remove i {
+    padding: 3px;
+    color: #999;
+    background: #fff;
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+#wpcsi-item-meta .item-meta .content-text ~ .show-type-products {
+    display: none;
+}
+
+#wpcsi-item-meta .item-meta .content-products ~ .show-type-text {
+    display: none;
+}
+
+#wpcsi-item-meta .item-meta .header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#wpcsi-item-meta .item-meta .content {
+    display: none;
+    background: #fff;
+}
+
+#wpcsi-item-meta .item-meta.active .header {
+    background: #2271b1;
+    color: #fff;
+}
+
+#wpcsi-item-meta .item-meta.active .content {
+    display: block;
+}
+
+.wpcsi_configuration_table {
+    width: 100%;
+}
+
+.wpcsi_configuration_table td, .wpcsi_configuration_table th {
+    padding: 10px 20px;
+    border-bottom: 1px dashed #f1f1f1;
+}
+
+.wpcsi_configuration_table .wpcsi_configuration_th {
+    width: 200px;
+    font-weight: 600;
+}
+
+.wpcsi_configuration_table tr:last-child td {
+    border-bottom: none;
+}
+
+.wpcsi_configuration_table .select2-container, .wpcsi_configuration_table textarea {
+    width: 100% !important;
+}
+
+.wpcsi_configuration_table label {
+    margin-right: 10px;
+}
+
+.wpcsi_configuration_table .item-remove {
+    color: #b32d2e;
+}
+
+.wpcsi-shortcode-col-wrap {
+    margin-top: 12px;
+}
+
+.wpcsi-shortcode-col-wrap input {
+    width: 100%;
+    background: inherit;
+    color: inherit;
+    font-size: 12px;
+    padding: 4px 8px;
+    margin: 0;
+}
+
+#wpcsi-preview {
+    margin-top: 12px;
+}
+
+.wpcsi-ruler {
+    height: 20px;
+    width: 100%;
+    display: block;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #c3c4c7;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+}
+
+.wpcsi-ruler .wpcsi-ruler-item {
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    min-width: 320px;
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    box-sizing: border-box;
+    border-width: 0 1px;
+    border-style: solid;
+    border-color: #c3c4c7;
+    top: 0;
+    left: 50%;
+    padding: 0 10px;
+    text-align: right;
+    transform: translateX(-50%);
+}
+
+.wpcsi-ruler .wpcsi-ruler-item:hover {
+    color: #ffffff;
+    background-color: #2271b1;
+}
+
+.wpcsi-ruler .wpcsi-ruler-320 {
+    width: 320px;
+    text-align: center;
+    z-index: 9;
+}
+
+.wpcsi-ruler .wpcsi-ruler-375 {
+    width: 375px;
+    z-index: 8;
+}
+
+.wpcsi-ruler .wpcsi-ruler-425 {
+    width: 425px;
+    z-index: 7;
+}
+
+.wpcsi-ruler .wpcsi-ruler-768 {
+    width: 768px;
+    z-index: 6;
+}
+
+.wpcsi-ruler .wpcsi-ruler-1024 {
+    width: 1024px;
+    z-index: 5;
+}
+
+.wpcsi-ruler .wpcsi-ruler-1440 {
+    width: 1440px;
+    z-index: 4;
+}
