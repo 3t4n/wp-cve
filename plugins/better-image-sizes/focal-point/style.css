@@ -1,0 +1,73 @@
+.focal-point-area{
+	position: relative;
+	display: none;
+	max-width: 800px;
+	margin: 10px 0;
+	font-size: 0;
+	line-height: 1;
+	cursor: pointer;
+}
+.focal-point-area:after{
+	content: '';
+	pointer-events: none;
+	user-select: none;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	--halfs-color: rgba(255,255,255,.2);
+	--thirds-color: rgba(255,255,255,.5);
+	background-image:
+		repeating-linear-gradient( to right, var(--halfs-color), var(--halfs-color) 1px, transparent 1px, transparent 50%),
+		repeating-linear-gradient( to bottom, var(--halfs-color), var(--halfs-color) 1px, transparent 1px, transparent 50%),
+		repeating-linear-gradient( to right, var(--thirds-color), var(--thirds-color) 1px, transparent 1px, transparent 33.33%),
+		repeating-linear-gradient( to bottom, var(--thirds-color), var(--thirds-color) 1px, transparent 1px, transparent 33.33%);
+	opacity: 0;
+	transition: opacity .3s ease;
+}
+.focal-point-area.dragging:after{
+	opacity: 1;
+}
+.focal-point-area img{
+	pointer-events: none;
+	user-select: none;
+	width: 100%;
+	height: auto;
+}
+.focal-point-handle{
+	user-select: none;
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	left: 50%;
+	margin-top: -15px;
+	margin-left: -15px;
+	cursor: grab;
+}
+.focal-point-area.dragging,
+.focal-point-area.dragging .focal-point-handle{
+	cursor: none;
+}
+.focal-point-previews{
+	aspect-ratio: 1;
+	max-width: 500px;
+	pointer-events: none;
+	user-select: none;
+	display: none;
+	grid-template-columns: 6fr 2fr;
+	grid-template-rows: 6fr 2fr;
+	grid-gap: 4px;
+}
+.focal-point-previews div{
+	position: relative;
+}
+.focal-point-previews img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
