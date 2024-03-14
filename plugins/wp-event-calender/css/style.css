@@ -1,0 +1,283 @@
+/********** Setting the fonts section ***************/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+.jflatTimeline, .jflatTimeline input, .jflatTimeline, textarea{
+	font-family : 'Open Sans';
+}
+
+
+
+/********** Normal Styles ***************/
+
+.jflatTimeline{
+	width : 70%;
+	margin : 10px auto;
+	-moz-box-sizing : border-box;
+	-webkit-box-sizing : border-box;
+	box-sizing : border-box;	
+}
+
+/********** Style for the month year bar ***************/
+
+.jflatTimeline .month-year-bar{
+	background-color : #cc4d4d;
+	display : table;
+	width : 100%;
+	color : #ffffff;
+	font-size : 25px;
+	font-weight : 300;
+	padding : 5px;
+	-moz-box-sizing : border-box;
+	-webkit-box-sizing : border-box;
+	box-sizing : border-box;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor : default;
+}
+
+.jflatTimeline .month-year-bar .prev, 
+.jflatTimeline .month-year-bar .next{
+	padding :  0 12px;
+	font-size : 30px;
+	cursor : pointer;
+}
+
+
+.jflatTimeline .month-year-bar .year{
+	float : left;
+}
+
+.jflatTimeline .month-year-bar .month{
+	float : right;
+	margin-right:10px;
+}
+
+/********** Style for the bar containing dates ***************/
+
+.jflatTimeline .dates-bar{
+	border : solid 1px #e7e7e7;
+	display : block;
+	width : 100%;
+	-moz-box-sizing : border-box;
+	-webkit-box-sizing : border-box;
+	box-sizing : border-box;	
+	padding : 0 50px;
+	position : relative;
+	font-size : 0;
+	white-space : nowrap;
+	overflow : hidden;
+		-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	text-align:left;
+}
+
+.jflatTimeline .dates-bar a{
+	display: block;
+	height: 70px;
+	width: 70px;
+	color : #a2a2a2;
+	text-align : center;
+	display : inline-block;
+	border-right : 1px solid #E7E7E7;
+	-moz-box-sizing : border-box;
+	-webkit-box-sizing : border-box;
+	box-sizing : border-box;
+	cursor : pointer;
+	transition : color .2s, transform .2s;
+	-webkit-transition : color .2s, transform .2s;
+	-moz-transition : color .2s, transform .2s;
+	z-index : 0;
+}
+
+.jflatTimeline .dates-bar a:hover{
+	color : #686666;
+}
+
+.jflatTimeline .dates-bar a span{
+	transition : color .2s, transform .2s;
+	-webkit-transition : color .2s, -webkit-transform .2s;
+	-moz-transition : color .2s, -moz-transform .2s;
+}
+
+.jflatTimeline .dates-bar a.noevent{
+	display : none;
+	width : 100%;
+	color: #7B7B7B;
+    font-size: 19px;
+    line-height: 70px;
+}
+
+.jflatTimeline .dates-bar a.selected{
+	color : #696969;
+}
+
+.jflatTimeline .dates-bar a.selected>span.date{
+	transform : scale(1.2, 1.2);
+	-moz-transform : scale(1.2, 1.2);
+	-webkit-transform : scale(1.2, 1.2);
+}
+
+.jflatTimeline .dates-bar a.prev,
+.jflatTimeline .dates-bar a.next{
+	position : absolute;
+	top : 0;
+	width : 50px;
+	min-width : 0;
+	font-size : 20px;
+	background-color : white;
+	font-size : 30px;
+	line-height : 70px;
+	z-index : 2;
+	display : inline-block;
+}
+
+.jflatTimeline .dates-bar .month span{
+    display: inline-block;
+    min-width: 60px;
+    text-align: center;
+}
+
+.jflatTimeline .dates-bar a.prev{
+	left : 0;
+}
+.jflatTimeline .dates-bar a.next{
+	right : 0;
+	border-left : solid 1px #e7e7e7;
+}
+
+.jflatTimeline .dates-bar a span.date{
+display: block;
+font-size: 30px;
+line-height: 40px;
+margin-top: 3px;
+}
+
+
+.jflatTimeline .dates-bar a span.month{
+	font-size : 13px;
+}
+
+/********** Whole style for timeline-wrap ***************/
+
+.jflatTimeline .timeline-wrap{
+	width : 100%;
+	-moz-box-sizing : border-box;
+	-webkit-box-sizing : border-box;
+	box-sizing : border-box;
+	border : solid 1px #e7e7e7;
+	border-top : 0;
+}
+
+.jflatTimeline .timeline-wrap .event{
+	overflow : auto;
+	border-bottom : solid 1px #e7e7e7;
+	display: none;
+}
+
+.jflatTimeline .timeline-wrap .event.selected{
+	display : block;
+}
+
+.jflatTimeline .timeline-wrap .event .date{
+background: url("img/date_icon.png") no-repeat scroll 0 4px;
+color: #3F3F3F;
+display: block;
+font-size: 14px;
+margin-left: 15px;
+padding: 0 15px 15px 20px;
+}
+
+.jflatTimeline .timeline-wrap .event .date i{
+	padding : 0 10px 0 0;
+}
+
+.jflatTimeline .timeline-wrap .event>div{
+	-moz-box-sizing : border-box;
+	-webkit-box-sizing : border-box;
+	box-sizing : border-box;
+	padding : 15px 15px 0;
+	width : 100%;
+	display : table;
+}
+
+.jflatTimeline .timeline-wrap .event div.right{
+	-moz-box-sizing : border-box;
+	-webkit-box-sizing : border-box;
+	box-sizing : border-box;
+	padding : 15px;
+	padding-right : 0;
+}
+
+
+.jflatTimeline .timeline-wrap .event h3{
+	font-size : 20px;
+	text-transform : uppercase;
+	margin : 5px 0 ;
+	color : #3E3E3E;
+}
+
+.jflatTimeline .timeline-wrap .event p{
+	font-size : 13px;
+	color : #707070;
+	line-height : 21px;
+}
+
+.jflatTimeline .timeline-wrap .event .layout3 img{
+	width : 100%;
+}
+
+/********** Make it responsive ***************/
+
+
+
+.jflatTimeline.s_screen .timeline-wrap .event div.layout1>div{
+	float : none;
+	width : 100%;
+}
+
+
+.jflatTimeline.s_screen .timeline-wrap .event div.layout2>div{
+	float : none;
+	width : 100%;
+}
+
+@media screen and (max-width:500px) {
+
+}
+
+@media screen and (min-width:501px) and (max-width:639px) {
+
+
+}
+
+a.event_calender_wp_next, a.event_calender_wp_prev {background: url("img/nav.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+display: block;
+float: left;
+height: 20px;
+margin-left: 10px;
+margin-top: 12px;
+width: 10px;cursor:pointer}
+
+div.year span, div.month-year-bar div.month span {display:block;float:left}
+a.event_calender_wp_next {background-position: -11px 0;}
+a.event_calender_wp_prev {margin-right: 10px;}
+
+div.dates-bar a.event_calender_wp_next, div.dates-bar a.event_calender_wp_prev {background: url(img/nav_black.png) no-repeat scroll 0 0 #fff;
+
+margin: 0;
+padding: 0;
+position: absolute;
+top: 0;z-index:999;width:50px;}
+div.dates-bar a.event_calender_wp_next{background-position: -77px 0;
+border-left: 1px solid #DDDDDD;
+border-right: 0 solid;
+right: 0;}
+div.dates-bar a.event_calender_wp_prev {left: 0;}
