@@ -1,0 +1,585 @@
+
+
+/************************************************************************
+*  Button Modal
+************************************************************************/
+
+
+.tgx-modal{
+    z-index:999;
+    display:none;
+    padding-top:100px;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background-color:rgb(0,0,0);
+    background-color:rgba(0,0,0,0.4);
+  }
+  .tgx-modal-content{
+    margin:auto;
+    background-color:#fff;
+    position:relative;
+    padding: 10px 40px;
+    outline:0;
+    width:600px;
+  }
+  
+  .modal-container *:before,
+  .modal-container *:after {
+    z-index: -1;
+  }
+  
+  .modal-container .booking-button,
+  .modal-container .button-normal {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      padding: 13px 30px;
+      font-size: 14px;
+      font-weight: 600;
+      border:1px solid #ddd;
+  }
+  
+  .modal-container .button-normal {
+      display: inline-block;
+      border: 1px solid #ddd;
+      padding: 10px 30px;
+  }
+  
+  
+  
+  
+  .tgx-container {
+      padding: 5px 5px 20px;
+  }
+  
+  
+  
+  /*Hover effect 1*/
+  .modal-container  .btn-hover-lfr:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ed485f;
+    -webkit-transform: translateX(-101%);
+            transform: translateX(-101%);
+            transition: all 0.3s ease;
+  }
+  
+  .modal-container .btn-hover-lfr:hover:before {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  
+  
+  /*Hover effect 2*/
+  .modal-container .btn-hover-afl:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -50px;
+    bottom: 0;
+    left: 0;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid #552a00;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            transition: all 0.3s ease;
+  }
+  
+  .modal-container .btn-hover-afl:hover:before {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  
+  
+  
+  /*Hover effect 3*/
+  .modal-container .btn-hover-bfm:before, 
+  .modal-container .btn-hover-bfm:after,
+  .modal-container .btn-hover-bfm span:before,
+  .modal-container .btn-hover-bfm span:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 25.25%;
+    height: 0;
+    background-color: #4e1108;
+    transition: all 0.3s ease;
+  }
+  .modal-container .btn-hover-bfm:before {
+    left: 0;
+  }
+  .modal-container .btn-hover-bfm:after {
+    left: 50%;
+  }
+  .modal-container .btn-hover-bfm span:before, 
+  .modal-container .btn-hover-bfm span:after {
+    top: auto;
+    bottom: 0;
+  }
+  .modal-container .btn-hover-bfm span:before {
+    left: 25%;
+  }
+  .modal-container .btn-hover-bfm span:after {
+    left: 75%;
+  }
+  .modal-container .btn-hover-bfm:hover {
+    color: #e0c6c3;
+  }
+  .modal-container .btn-hover-bfm:hover:before, 
+  .modal-container .btn-hover-bfm:hover:after,
+  .modal-container .btn-hover-bfm:hover span:before,
+  .modal-container .btn-hover-bfm:hover span:after {
+    height: 80px;
+  }
+  
+  /*Hover effect 4*/
+  .modal-container .btn-hover-piramid:before, 
+  .modal-container .btn-hover-piramid:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-bottom: 80px solid #3e5f57;
+    transition: all 0.3s ease;
+  }
+  .modal-container .btn-hover-piramid:before {
+    right: -52px;
+    border-right: 50px solid transparent;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  .modal-container .btn-hover-piramid:after {
+    left: -52px;
+    border-left: 50px solid transparent;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  .modal-container .btn-hover-piramid:hover {
+    color: #d9e7e4;
+  }
+  .modal-container .btn-hover-piramid:hover:before {
+    -webkit-transform: translateX(-37%);
+            transform: translateX(-37%);
+  }
+  .modal-container .btn-hover-piramid:hover:after {
+    -webkit-transform: translateX(37%);
+            transform: translateX(37%);
+  }
+  
+  /*Hover effect 5*/
+  .modal-container .btn-hover-door:before, 
+  .modal-container .btn-hover-door:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #763858;
+    transition: all 0.3s ease;
+  }
+  .modal-container .btn-hover-door:before {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  .modal-container .btn-hover-door:after {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  .modal-container .btn-hover-door:hover {
+    color: #f0d7e4;
+  }
+  .modal-container .btn-hover-door:hover:before {
+    -webkit-transform: translateY(-49%);
+            transform: translateY(-49%);
+  }
+  .modal-container .btn-hover-door:hover:after {
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+  
+  
+  
+  
+  /*Hover effect 6*/
+  .modal-container .btn-hover-ctm:before, 
+  .modal-container .btn-hover-ctm:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+  .modal-container .btn-hover-ctm:before {
+    right: -50px;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid #50111c;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+  .modal-container .btn-hover-ctm:after {
+    left: -50px;
+    border-left: 50px solid transparent;
+    border-top: 80px solid #50111c;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  .modal-container .btn-hover-ctm:hover {
+    color: #e1c7cb;
+  }
+  .modal-container .btn-hover-ctm:hover:before {
+    -webkit-transform: translateX(-49%);
+            transform: translateX(-49%);
+  }
+  .modal-container .btn-hover-ctm:hover:after {
+    -webkit-transform: translateX(49%);
+            transform: translateX(49%);
+  }
+  
+  
+  
+  /*Hover effect 7*/
+  
+  .modal-container .btn-hover-fourcorner:before, 
+  .modal-container .btn-hover-fourcorner:after,
+  .modal-container .btn-hover-fourcorner span:before,
+  .modal-container .btn-hover-fourcorner span:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #40215e;
+    transition: all 0.3s ease;
+  }
+  .modal-container .btn-hover-fourcorner:before {
+    -webkit-transform: translate(-100%, -100%);
+            transform: translate(-100%, -100%);
+  }
+  .modal-container .btn-hover-fourcorner:after {
+    -webkit-transform: translate(-100%, 100%);
+            transform: translate(-100%, 100%);
+  }
+  .modal-container .btn-hover-fourcorner span:before {
+    -webkit-transform: translate(100%, -100%);
+            transform: translate(100%, -100%);
+  }
+  .modal-container .btn-hover-fourcorner span:after {
+    -webkit-transform: translate(100%, 100%);
+            transform: translate(100%, 100%);
+  }
+  .modal-container .btn-hover-fourcorner:hover {
+    color: #dacde7;
+  }
+  .modal-container .btn-hover-fourcorner:hover:before {
+    -webkit-transform: translate(-49%, -49%);
+            transform: translate(-49%, -49%);
+  }
+  .modal-container .btn-hover-fourcorner:hover:after {
+    -webkit-transform: translate(-49%, 49%);
+            transform: translate(-49%, 49%);
+  }
+  .modal-container .btn-hover-fourcorner:hover span:before {
+    -webkit-transform: translate(49%, -49%);
+            transform: translate(49%, -49%);
+  }
+  .modal-container .btn-hover-fourcorner:hover span:after {
+    -webkit-transform: translate(50%, 50%);
+            transform: translate(50%, 50%);
+  }
+  
+  
+  
+  
+  
+  /*Hover effect 8*/
+  .modal-container .btn-hover-slice:after {
+    content: '';
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent #322829 transparent transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+  
+  }
+  .modal-container .btn-hover-slice:before {
+    content: '';
+    width: 0;
+    height: 0;
+    -webkit-transform: rotate(360deg);
+    border-style: solid;
+    border-width: 0 0 0 0;
+    border-color: transparent transparent transparent #322829;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .modal-container .btn-hover-slice:before, 
+  .modal-container .btn-hover-slice:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0 solid;
+    transition: all 0.3s ease;
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+  .modal-container .btn-hover-slice:before {
+    bottom: 0;
+    left: 0;
+    border-color: transparent transparent transparent #322829;
+  }
+  .modal-container .btn-hover-slice:after {
+    top: 0;
+    right: 0;
+    border-color: transparent #322829 transparent transparent;
+  }
+  .modal-container .btn-hover-slice:hover {
+    color: #d4d0d1;
+  }
+  .modal-container .btn-hover-slice:hover:before, 
+  .modal-container .btn-hover-slice:hover:after {
+    border-width: 58px 262.5px;
+  }
+  
+  
+  
+  /*Btn border line*/
+  
+  .modal-container .btn-border-modal .booking-button{
+      border: 1px solid transparent;
+      padding: 0;
+  
+  }
+   .modal-container .click-btn.btn-border-modal button:hover{
+       border-color: transparent !important;
+  
+   }
+  
+   .modal-container .btn-line a {
+    display: inline-block;
+    position: relative;
+    padding: 10px 18px;
+    border: 1px solid #51BBE5;
+    -webkit-transition: .7s all;
+    -moz-transition: .7s all;
+    -ms-transition: .7s all;
+    -o-transition: .7s all;
+    transition: .7s all;
+  }
+  .modal-container .btn-line a p {
+    color: #fff;
+  }
+   .modal-container .btn-line a:hover {
+    border: 1px solid transparent !important;
+  }
+   .modal-container .btn-line a:hover span.top {
+    width: 100%;
+  }
+   .modal-container .btn-line a:hover span.right {
+    height: 100%;
+  }
+   .modal-container .btn-line a:hover span.bottom {
+    width: 100%;
+  }
+   .modal-container .btn-line a:hover span.left {
+    height: 100%;
+  }
+   .modal-container .btn-line a p {
+    font-size: 16px;
+    margin-bottom: 0;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  .modal-container .btn-line a:hover p{
+      transition: all 0.3s ease;
+  
+  }
+  
+  .modal-container .btn-line a span {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    background: #fff;
+  }
+   .modal-container .btn-line a span.top {
+    top: 0;
+    left: 0px;
+    width: 0;
+    height: 1px;
+  }
+   .modal-container .btn-line a span.right {
+    top: 0px;
+    right: -1px;
+    width: 1px;
+    height: 0;
+  }
+   .modal-container .btn-line a span.bottom {
+    bottom: 0;
+    right: 0px;
+    width: 0;
+    height: 1px;
+  }
+   .modal-container .btn-line a span.left {
+    bottom: 0px;
+    left: -1px;
+    width: 1px;
+    height: 0;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  @media (max-width:600px){
+    .tgx-modal-content{
+      margin:0 10px;
+      width:auto!important;
+    }
+    .tgx-modal{
+      padding-top:30px;
+    }
+  .tgx-dropdown-hover.tgx-mobile .tgx-dropdown-content,
+  .tgx-dropdown-click.tgx-mobile .tgx-dropdown-content{
+    position:relative;
+  }  
+  .tgx-hide-small{display:none!important}.tgx-mobile{display:block;width:100%!important}.tgx-bar-item.tgx-mobile,.tgx-dropdown-hover.tgx-mobile,.tgx-dropdown-click.tgx-mobile{text-align:center}
+  .tgx-dropdown-hover.tgx-mobile,.tgx-dropdown-hover.tgx-mobile .tgx-btn,.tgx-dropdown-hover.tgx-mobile .tgx-button,.tgx-dropdown-click.tgx-mobile,.tgx-dropdown-click.tgx-mobile .tgx-btn,.tgx-dropdown-click.tgx-mobile .tgx-button{width:100%}}
+  @media (max-width:768px){.tgx-modal-content{width:500px}.tgx-modal{padding-top:50px}}
+  @media (min-width:993px){.tgx-hide-large{display:none!important}.tgx-sidebar.tgx-collapse{display:block!important}}
+  @media (max-width:992px) and (min-width:601px){.tgx-hide-medium{display:none!important}}
+  @media (max-width:992px){.tgx-sidebar.tgx-collapse{display:none}.tgx-main{margin-left:0!important;margin-right:0!important}}
+  
+  .tgx-display-topright{
+      position: absolute;
+      right: 15px;
+      top: 5px;
+      cursor: pointer;
+      font-size: 30px;
+      color: #444;
+  }
+  
+  .tgx-animate-zoom {
+     animation:animatezoom 0.6s;
+  }
+     @keyframes animatezoom{
+          from{
+            transform:scale(0);
+          } 
+          to{
+              transform:scale(1);
+          }
+      }
+  
+  .tgx-animate-spin{
+      animation:w3-spin 2s ;
+      }
+      @keyframes w3-spin{
+          0%{
+              transform:rotate(0deg);
+          }
+          100%{
+              transform:rotate(360deg);
+          }
+      }
+  
+  
+  
+  .tgx-animate-opacity{
+      animation:opac 0.8s
+  }
+      @keyframes opac{
+          from{
+              opacity:0;
+          } 
+          to{
+              opacity:1;
+          }
+      }
+  
+  .tgx-animate-top{
+      position:relative;
+      animation:animatetop 0.4s;
+      }
+      @keyframes animatetop{
+          from{
+              top:-300px;
+              opacity:0;
+          } 
+          to{
+              top:0;
+              opacity:1;
+          }
+      }
+  
+  
+  .tgx-animate-left{
+      position:relative;
+      animation:animateleft 0.4s;
+      }
+  
+      @keyframes animateleft{
+          from{
+              left:-300px;
+              opacity:0;
+          } 
+          to{
+              left:0;
+              opacity:1;
+          }
+      }
+  .tgx-animate-right{
+      position:relative;
+      animation:animateright 0.4s;
+      }
+      @keyframes animateright{
+          from{
+              right:-300px;
+              opacity:0;
+          } 
+          to{
+              right:0;
+              opacity:1;
+          }
+      }
+  
+  .tgx-animate-bottom{
+      position:relative;
+      animation:animatebottom 0.4s
+      }
+      @keyframes animatebottom{
+          from{
+              bottom:-300px;
+              opacity:0;
+          } 
+          to{
+              bottom:0;
+              opacity:1;
+          }
+      }
+  
+  
+  

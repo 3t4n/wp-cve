@@ -1,0 +1,343 @@
+/************************************************************************
+*  Video Popup css
+************************************************************************/
+
+.wk-video-popup-wrapper {
+  position: relative;
+
+// Style 1 
+ .video.style-1{
+  i {
+      width: 120px;
+      height: 120px;
+      line-height: 120px;
+      text-align: center;
+      font-size: 24px;
+      background-color: red;
+      color: #fff;
+      border-radius: 50%;
+    }
+
+ }
+
+
+// Style 2  play icon with text
+  .play-icon-text.style-2 {
+    color: red;
+  }
+
+
+// Style 3 ripple effect
+.play-btn.style-3{
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(red 60%, #ffffff 62%);
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  box-shadow: 0px 0px 25px 3px rgba(255, 255, 255, 0.8);
+  &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translateX(-40%) translateY(-50%);
+      transform: translateX(-40%) translateY(-50%);
+      transform-origin: center center;
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 25px solid #fff;
+      z-index: 100;
+      -webkit-transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s;
+      -webkit-animation: pulsate1 2s;
+      animation: pulsate1 2s;
+      -webkit-animation-direction: forwards;
+      animation-direction: forwards;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-timing-function: steps;
+      animation-timing-function: steps;
+      opacity: 1;
+      border-radius: 50%;
+      border: 5px solid rgba(255, 255, 255, 0.75);
+      top: -25%;
+      left: -25%;
+      background: rgba(198, 16, 0, 0);
+    }
+}
+
+
+//====== Ripple effect 4 =====
+.video-popup-4.style-4 {
+  position: relative;
+   .video-play-button {
+      z-index: 10;
+      transform: translateX(0) translateY(0);
+      box-sizing: content-box;
+      display: inline-block;
+      border-radius: 50%;
+      padding: 18px 20px 18px 28px;
+      &:before {
+          content: "";
+          position: absolute;
+          z-index: 0;
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          display: block;
+          width: 80px;
+          height: 80px;
+          background: red;
+          border-radius: 50%;
+          animation: pulse-border 1500ms ease-out infinite;
+        }
+        img {
+          position: relative;
+          z-index: 3;
+          max-width: 100%;
+          width: auto;
+          height: auto;
+        }
+        span {
+          display: block;
+          position: relative;
+          z-index: 3;
+          width: 0;
+          height: 0;
+          border-left: 32px solid #fff;
+          border-top: 22px solid transparent;
+          border-bottom: 22px solid transparent;
+        }
+    }
+}
+
+
+
+//====== Style 5 transform effect =====
+.video-popup-5.style-5 {
+  position: relative;
+  display:inline-block;
+  .stroke-dotted {
+      opacity: 0;
+      stroke-dasharray: 4,5;
+      stroke-width: 1px;
+      transform-origin: 50% 50%;
+      animation: spin 4s infinite linear;
+      transition: opacity 1s ease, stroke-width 1s ease;
+  }
+  .stroke-solid {
+      stroke-dashoffset: 0;
+      stroke-dashArray: 300;
+      stroke-width: 4px;
+      transition: stroke-dashoffset 1s ease, opacity 1s ease;
+  }
+  .icon {
+      transform-origin: 50% 50%;
+      transition: transform 200ms ease-out;
+    }
+      #play{
+          cursor: pointer;
+          top: 50%;
+          transform: translateY(0) translateX(0);
+          &:hover{
+            .stroke-dotted {
+              stroke-width: 4px;
+              opacity: 1;
+            }
+            .stroke-solid {
+                opacity: 0;
+                stroke-dashoffset: 300;
+              }
+            .icon {
+              transform: scale(1.05);
+            }
+
+           } 
+     }
+
+}
+}
+
+@-webkit-keyframes pulsate1 {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+    box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75), 0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: none;
+  }
+}
+@keyframes pulsate1 {
+  0% {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 1;
+    box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75), 0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1);
+    opacity: 0;
+    box-shadow: none;
+  }
+}
+
+
+@keyframes pulse-border {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+.YouTubePopUp-Wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  z-index: 9999999999999;
+}
+.YouTubePopUp-animation {
+  opacity: 0;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: YouTubePopUp;
+  animation-name: YouTubePopUp;
+}
+@-webkit-keyframes YouTubePopUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes YouTubePopUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body.logged-in .YouTubePopUp-Wrap {
+ //For WordPress 
+  top: 32px;
+  z-index: 99998;
+}
+.YouTubePopUp-Content {
+  max-width: 680px;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+}
+.YouTubePopUp-Content iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+  display: block !important;
+  height: 480px !important;
+  border: none !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+.YouTubePopUp-Hide {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: YouTubePopUpHide;
+  animation-name: YouTubePopUpHide;
+}
+@-webkit-keyframes YouTubePopUpHide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes YouTubePopUpHide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.YouTubePopUp-Close {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  bottom: 528px;
+  right: 0px;
+  margin: auto 0;
+  width: 24px;
+  height: 24px;
+  background: url(../images/close.png) no-repeat;
+  background-size: 24px 24px;
+  -webkit-background-size: 24px 24px;
+  -moz-background-size: 24px 24px;
+  -o-background-size: 24px 24px;
+}
+.YouTubePopUp-Close:hover {
+  opacity: 0.5;
+}
+@media all and (max-width: 768px) and (min-width: 10px) {
+  .YouTubePopUp-Content {
+    max-width: 90%;
+  }
+}
+@media all and (max-width: 600px) and (min-width: 10px) {
+  .YouTubePopUp-Content iframe {
+    height: 320px !important;
+  }
+  .YouTubePopUp-Close {
+    bottom: 362px;
+  }
+}
+@media all and (max-width: 480px) and (min-width: 10px) {
+  .YouTubePopUp-Content iframe {
+    height: 220px !important;
+  }
+  .YouTubePopUp-Close {
+    bottom: 262px;
+  }
+}
