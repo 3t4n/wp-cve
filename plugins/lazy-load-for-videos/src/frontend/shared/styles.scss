@@ -1,0 +1,174 @@
+$white: #fff;
+$z-index-base: 2;
+
+ @keyframes pulse {
+	 0% { transform: scale(1); }
+	 35% { transform: scale(1.1); }
+	 60% { transform: scale(1.05); }
+	 100% { transform: scale(1); }
+ }
+
+// Editor
+[data-type="core-embed/youtube"],
+[data-type="core-embed/vimeo"] {
+	clear: both;
+ }
+
+.container-youtube,
+.container-vimeo {
+	font-size: 0;
+	line-height: 0;
+
+	noscript {
+		display: block;
+		font-size: 1rem;
+		line-height: 1.2em;
+		text-align: left;
+    }
+}
+
+.preview-lazyload {
+	  opacity: 1;
+	  position: relative;
+	  transition: opacity 0.25s;
+}
+
+.js-lazyload--not-loaded .preview-lazyload {
+	opacity: 0;
+}
+
+.entry-content a.preview-lazyload, a.preview-lazyload {
+	background-color: transparent;
+	border: 0;
+	height: 315px;
+	width: 100%;
+	max-width: 100%;
+	display: inline-block;
+	margin-top: 0;
+	box-sizing: border-box;
+}
+
+.entry-content a.preview-lazyload, a.preview-lazyload, .lazy-load-info-extra {
+	text-decoration: none;
+	color: #fff;
+	font-family: Arial, serif;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+a.lazy-load-vimeo {
+	text-decoration: none;
+}
+
+.lazy-load-div {
+	display: table;
+	height: 100%;
+	width: 100%;
+
+	&::before {
+		// NOTE: Don't set a content, color text-shadow value here as we set it in frontend/class-frontend-init-styles.php and the browser would otherwise ignore that inline CSS style.
+		// Without content value, the before pseudo-element won't become visible.
+		font-size: 50px;
+		font-family: Arial, sans-serif;
+
+		opacity: 0.7;
+		z-index: $z-index-base + 1;
+		
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+	&:hover {
+		opacity: 0.95;
+	}
+
+	&:hover::before {
+		opacity: 0.9;
+	}
+}
+
+.css_white_pulse, .css_black_pulse {
+	.lazy-load-div::before {
+	    font-size: 70px;
+	    animation: pulse 3s infinite linear;
+	}
+}
+
+a.lazy-load-youtube:hover, .lazy-load-vimeo:hover {
+	text-decoration: none;
+}
+
+.lazy-load-div,
+.lazy-load-info,
+.lazy-load-info-extra {
+	max-width: 100%;
+	color: #fff;
+}
+
+.lazy-load-div,
+.titletext,
+.overlaytext {
+	opacity: 0.8;
+}
+
+.lazy-load-div {
+	position: absolute;
+	top: 0;
+}
+
+.lazy-load-info, .lazy-load-info-extra {
+	position: relative;
+	padding: 7px 15px;
+}
+
+.lazy-load-info {
+	pointer-events: none;
+}
+
+.lazy-load-info-extra {
+	display: none;
+	position: absolute;
+	bottom: 0;
+}
+
+.preview-lazyload ~ .lazy-load-info-extra {
+	display: block;
+}
+
+.container-youtube embed, .container-youtube iframe, .container-youtube object, .container-youtube video,
+.container-vimeo embed, .container-vimeo iframe, .container-vimeo object, .container-vimeo video {
+	margin-bottom: 0!important;
+}
+.entry-content a.lazy-load-youtube, a.lazy-load-youtube, .lazy-load-vimeo {
+	margin-bottom: 0!important;
+	iframe {
+		margin-bottom: 0!important;
+	}
+}
+
+a.lazy-load-youtube {
+    // Prevent plugins such as BBPress from making this link "inline"
+    display: block !important;
+}
+
+/** Fix styling issue caused by block editor in certain themes. We're manually calculating the ratio in JS instead of relying on the WordPress "padding-top" hack. */
+.wp-embed-responsive .wp-block-embed[class*="wp-embed-aspect-"] {
+    position: relative;
+
+    .container-lazyload {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.lazy-load-block-play {
+	cursor: pointer;
+}
+
+.lazy-load-block-play .preview-lazyload {
+	pointer-events: none;
+}
