@@ -1,0 +1,492 @@
+@default-margin: 20px;
+
+
+
+/* Nutrition label outside container */
+#zrdn-nutrition-label {
+  .nutrition-facts {
+    margin: @default-margin;
+  }
+}
+
+//focus-within fixes a chrome bug that slows down scrolling
+//https://css-tricks.com/fixing-smooth-scrolling-with-find-on-page/
+html:focus-within{scroll-behavior:smooth}
+
+#zrdn-recipe-container {
+  /* styling with zrdn markup */
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
+  /* SPECIFIC ELEMENT STYLES */
+
+  .zrdn-block-divider {
+    border-bottom: 1px solid black;
+  }
+
+  .zrdn-recipe-image {
+    img {
+      width: 100%;
+      height: inherit;
+    }
+  }
+
+  /* Author */
+
+  .zrdn-author {
+    .zrdn-avatar + div {
+      margin-left: 25px;
+    }
+
+    div + div {
+      margin-left: 5px;
+    }
+
+    display: flex;
+    align-items: center;
+
+    .zrdn-avatar {
+      img {
+        border-radius: 50%;
+        width: 60px;
+        height: inherit;
+      }
+    }
+  }
+
+  .zrdn-category {
+    .zrdn-recipe-label {
+      display: none;
+      min-width: 130px;
+      font-weight: 700;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+
+    a, div, span {
+      padding-right: @default-margin;
+    }
+
+    .zrdn-cuisine-category-divider {
+      padding: 0
+    }
+
+  }
+
+  /* custom print button */
+
+  .zrdn-actions {
+    display: flex;
+    align-items: center;
+
+    .zrdn-print-link {
+      vertical-align: top;
+      display: inline-block;
+      margin-right: 5px;
+
+      a img {
+        height: 15px;
+      }
+    }
+  }
+
+  /*Video*/
+
+  .zrdn-video .zrdn-element_video_url {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+
+  /* Yield */
+
+  .zrdn-details {
+    div + div {
+      padding-right: 0.5*@default-margin;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+
+    .zrdn-details-item {
+      flex-basis: 50%;
+      display: flex;
+    }
+
+    .zrdn-recipe-label, .zrdn-value {
+      flex-basis: 50%;
+      white-space: nowrap;
+    }
+
+    .zrdn-recipe-label {
+      font-weight: 700;
+      padding-right: 10px;
+    }
+
+    .zrdn-yield-container {
+      .zrdn-yield-label {
+        padding-right: 0.5*@default-margin
+      }
+
+      display: flex;
+      align-items: center;
+
+      .zrdn-yield {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  /* Ingredients */
+
+  ul, ol {
+    margin-left: @default-margin;
+
+    &.nobullets {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+
+      li {
+        list-style: none;
+      }
+    }
+  }
+
+  @default-bullet-color: #E35899;
+
+  ol, ul {
+    li {
+      margin-top: 8px;
+    }
+
+    &.zrdn-numbered li, &.zrdn-bullets li {
+      counter-increment: inst;
+      display: block;
+      position: relative;
+    }
+
+    &.zrdn-numbered li:before {
+      content: counter(inst);
+      position: absolute;
+      left: -30px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 12px;
+      top: 9px;
+    }
+
+    &.zrdn-bullets li:before {
+      content: '';
+      position: absolute;
+      left: -30px;
+      top: 9px;
+    }
+
+    &.zrdn-square li:before {
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+    }
+
+    &.zrdn-round li:before {
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+
+    &.zrdn-bordered li:before {
+      border: 2px solid @default-bullet-color;
+      color: @default-bullet-color;
+      background-color: transparent;
+      height: 26px;
+      width: 26px;
+      line-height: 20px;
+      font-size: 17px;
+      top: 0;
+    }
+
+    &.zrdn-solid li:before {
+      background-color: @default-bullet-color;
+      color: #fff;
+      height: 24px;
+      width: 24px;
+      line-height: 23px;
+      font-size: 17px;
+    }
+
+    &.zrdn-counter li:before {
+      font-size: 19px;
+      top: 3px;
+      color: @default-bullet-color;
+    }
+  }
+
+  /* Notes */
+
+  #zrdn-notes {
+
+  }
+
+  /* nutrition in text */
+
+  .zrdn-nutrition_text {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.8em;
+
+    .zrdn-text-nutrition-item {
+      margin: 0 10px 10px 0;
+      border: 2px solid #666;
+      padding: 5px;
+      color: #666;
+      min-width: 100px;
+
+      .zrdn-nutrition-title {
+        font-size: 18px;
+      }
+
+      .zrdn-nutrition-value {
+        font-size: 27px;
+        line-height: 36px;
+        border-bottom: 1px solid #666;
+      }
+
+      .zrdn-nutrition-percentage {
+        font-size: 22px;
+      }
+
+      > div {
+        text-align: center;
+      }
+    }
+
+    .zrdn-text-nutrition-explanation {
+      font-style: italic;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+  }
+
+  /* TAGS */
+
+  .zrdn-tags {
+    .zrdn-tags-container {
+      display: flex;
+      flex-wrap: wrap;
+
+      .zrdn-tag-item:first-child,
+      .zrdn-tag-item + .zrdn-tag-item {
+        margin-right: 0.5 * @default-margin;
+      }
+    }
+  }
+
+  /*Social*/
+
+  .zrdn-social-container {
+    display: flex;
+
+    .zrdn-share + .zrdn-share {
+      margin-left: @default-margin;
+    }
+
+    .zrdn-share {
+
+    }
+  }
+
+  /* permalink, print only*/
+
+  .zrdn-printed-permalink {
+    display: none;
+  }
+}
+
+  /* Nutrition Label CSS */
+  #zrdn-nutrition-label {
+    width: 100%;
+
+    .nutrition-container {
+      font-family: sans-serif;
+      font-size: 12px;
+      line-height: 1.4;
+      margin: auto auto;
+
+      th, tr {
+         background: #fff;
+         text-transform: none;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .nutrition-facts {
+      border: 1px solid black;
+      //float: left;
+      width: 280px;
+      padding: 8px;
+      margin:0;
+      table {
+        border-collapse: collapse;
+      }
+    }
+
+    .nutrition-facts__title {
+      &::before {
+        display: none;
+      }
+
+      margin: 0 0 4px 0;
+    }
+
+    .nutrition-serving-size {
+      white-space: normal;
+    }
+
+    h4.nutrition-facts__title {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    h5.nutrition-facts__title, h5.nutrition-facts__title span {
+      font-size: 22px;
+      font-weight: normal;
+    }
+
+    .nutrition-facts__header {
+      border-bottom: @default-margin solid black;
+      padding: 0 0 4px 0;
+      margin: 0 0 8px 0;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .nutrition-facts__table {
+      width: 100%;
+      margin: 0;
+
+      thead tr {
+        th, td {
+          border: 0;
+        }
+      }
+
+      th, td {
+        font-weight: normal;
+        text-align: left;
+        padding: 4px 0;
+        border: 0;
+        border-top: 1px solid black;
+        white-space: nowrap;
+        font-size:12px;
+      }
+
+      td {
+        &:last-child {
+          text-align: right;
+        }
+      }
+
+      .blank-cell {
+        width: 16px;
+        border-top: 0;
+      }
+
+      .thick-row {
+        th, td {
+          border-top-width: 5px;
+        }
+      }
+    }
+
+    .small-info {
+      font-size: 12px;
+    }
+
+    .copyright {
+      font-size: 12px;
+      margin-top: @default-margin;
+    }
+
+    .nutrition-facts__table--small {
+    @extend . nutrition-facts__table;
+      border-bottom: 1px solid #999;
+      margin: 0 0 8px 0;
+
+      thead {
+        tr {
+          border-bottom: 1px solid black;
+        }
+      }
+
+      td {
+        &:last-child {
+          text-align: left;
+        }
+      }
+
+      th, td {
+        border: 0;
+        padding: 0;
+      }
+    }
+
+    .nutrition-facts__table--grid {
+      .nutrition-facts__table;
+      margin: 0 0 8px 0;
+
+      td {
+        font-size:12px;
+        &:last-child {
+          text-align: left;
+
+          &::before {
+            content: "•";
+            font-weight: bold;
+            margin: 0 4px 0 0;
+          }
+        }
+      }
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .thick-end {
+      border-bottom: @default-margin solid black;
+    }
+
+    .thin-end {
+      border-bottom: 1px solid black;
+    }
+  }
+
+/* END SPECIFIC ELEMENT STYLES */
+
