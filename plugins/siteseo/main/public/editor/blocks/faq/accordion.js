@@ -1,0 +1,1 @@
+!function(){for(var e=document.querySelectorAll(".siteseo-wrap-faq-question"),t=0;t<e.length;t++)e[t].addEventListener("click",(function(e){var t=this.nextElementSibling,r=this.querySelector(".siteseo-accordion-button");t.classList.toggle("siteseo-hide"),"true"===r.getAttribute("aria-expanded")?r.setAttribute("aria-expanded","false"):r.setAttribute("aria-expanded","true")}))}();
