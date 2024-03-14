@@ -1,0 +1,68 @@
+=== WP Post Nav Example Hooks and Filters ===
+
+Below you will find a list with examples of all included developer filters that can be used within WP Post Nav.
+
+/*Filter the available post types.*/
+function my_example_remove_post_type( $array ){
+    
+    /*add a new item to the array to remove it. 
+    To remove the pre-filtered attachement (why would you want to show post nav on attachment pages?????) 
+    you remove all post types and return an empty array.*/
+
+    $array = array (
+      'attachment' => 'attachment',
+      'post' => 'post'
+    );
+    
+    return $array;
+}
+add_filter('wp-post-nav-post-type', 'my_example_remove_post_type');
+
+/*Use the built in WordPress get_the_excerpt function*/
+add_filter('wp-post-nav-excerpt', '__return_false');
+
+//Translations without a plugin
+//wrap in a conditional if required
+$type = get_post_type();
+if ($type = 'post') {
+  function wp_post_nav_translate( $translated_text, $text, $domain ) {
+    switch ( $translated_text ) {
+      
+      case 'Category: ' :
+        $translated_text = __( 'Something You Like: ', 'wp-post-nav' );
+        break;
+      case 'Previous Post' :
+       $translated_text = __( 'Something Else: ', 'wp-post-nav' );
+      break;
+       case 'Next Post' :
+       $translated_text = __( 'Something Else: ', 'wp-post-nav' );
+      break;
+    }
+    return $translated_text;
+  }
+  add_filter( 'gettext', 'wp_post_nav_translate', 20, 3 );
+}
+//Text MUST be exact for this to work
+
+//THIS FILTER IS INCLUDED BUT WILL NOT DO ANYTHING UNTIL A FUTURE UPDATE
+/*add an additional setting*/
+function add_extra_option($settings) {
+  if ( class_exists('WPSEO_Primary_Term')) {
+
+    $settings['post_types']['fields'][] = array (
+        'label' => 'Use Yoast SEO Primary Category?',
+        'id' => 'wp_post_nav_yoast_seo',
+        'type' => 'checkbox',
+        'section' => 'general_settings',
+        'options' => array(
+          'Yes' => 'Yes',
+        ),
+        'default'=> '',
+        'after' => '',
+        'desc' => 'You are using Yoast SEO.  Check this option to enable same category to use the primary assigned category',
+      );
+    
+    return $settings;
+  }
+}
+add_filter('wp-post-nav-settings', 'add_extra_option');

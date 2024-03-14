@@ -1,0 +1,406 @@
+/*
+ * The front end CSS file of WP Post Nav
+ *
+ * @link:      https://en-gb.wordpress.org/plugins/wp-post-nav/
+ * @since      0.0.1
+ * @package    wp_post_nav
+ */
+
+/*default css*/
+.wp-post-nav {
+    position: relative;
+    margin:0;  
+}
+
+.wp-post-nav #post-nav-previous-default {
+    height: auto;
+    width: 45vw;
+    line-height: 19px;
+    position: fixed;
+    bottom: 50%;
+    left: -45vw;
+    transform: translateY(50%);
+    z-index: 100;
+    align-items:center;
+    -webkit-align-items: center;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    margin:0;
+    padding:20px;
+    list-style-type:none;
+}
+
+.wp-post-nav #post-nav-previous-default #post-nav-previous-button {
+    padding:10px;
+    text-align: center;
+    align-items:center;
+    position:absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.wp-post-nav #post-nav-previous-default #post-nav-previous-button:before {
+    content: url('../images/left-arrow.png');
+    bottom: 50%;
+    position: fixed;
+    transform: translateY(55%);
+    right: 20%;
+}
+
+.wp-post-nav #post-nav-previous-default:hover {
+    left: 0;
+}
+
+.wp-post-nav #post-nav-next-default {
+    height: auto;
+    width: 45vw;
+    line-height: 19px;
+    position: fixed;
+    bottom: 50%;
+    right: -45vw;
+    transform: translateY(50%);
+    z-index: 100;
+    align-items:center;
+    -webkit-align-items: center;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    margin:0;
+    padding:20px;
+    list-style-type:none;
+}
+
+.wp-post-nav #post-nav-next-default #post-nav-next-button {
+    padding:10px;
+    text-align: center;
+    align-items:center;
+    position:absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.wp-post-nav #post-nav-next-default #post-nav-next-button:after {
+    content: url('../images/right-arrow.png');
+    bottom: 50%;
+    position: fixed;
+    transform: translateY(55%);
+    left: 20%;
+}
+
+.wp-post-nav #post-nav-next-default:hover {
+    right: 0;
+}
+
+.wp-post-nav .post-nav-image img,
+.wp-post-nav .avatar {
+        width:auto;
+        height:150px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+        display:block;
+        margin-bottom:10px;
+}
+
+.wp-post-nav .post-nav-title {
+    text-align:center;
+    margin-bottom:20px;
+    text-transform:capitalize;
+}
+
+.wp-post-nav .post-nav-category {
+    margin-bottom:10px;
+}
+
+.wp-post-nav #attachment-post-nav-previous-default {
+    height: auto;
+    width: 10vw;
+    line-height: 19px;
+    position: fixed;
+    top: 50%;
+    left: -10vw;
+    transform: translateY(-50%);
+    z-index: 100;
+    align-items:center;
+    -webkit-align-items: center;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    margin:0;
+    padding:20px;
+    list-style-type:none;
+}
+
+.wp-post-nav #attachment-post-nav-previous-default:after {
+    content: url('../images/left-arrow.png');
+    padding:10px;
+    text-align: center;
+    align-items:center;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.wp-post-nav #attachment-post-nav-previous-default:hover {
+    left: 0;
+}
+
+@media only screen and (max-width: 48em) {
+        .wp-post-nav {
+            margin:0;
+        }
+
+        .wp-post-nav #post-nav-previous-default {
+            height: 10vh;
+            width: 45vw;
+            line-height: 19px;
+            bottom: 5vh;
+            left: 0;
+            z-index: 100;
+            padding:10px;
+        }
+
+        .wp-post-nav #post-nav-previous-default:before {
+            content: url('../images/left-arrow.png');
+            position:fixed;
+            bottom:50%;
+            right:0;
+            margin-right:10px;
+            transform:translateY(70%);
+        }
+
+        .wp-post-nav #post-nav-previous-default #post-nav-previous-button {
+            display:none;     
+        }
+
+        .wp-post-nav #post-nav-next-default {
+            height: 10vh;
+            width: 45vw;
+            line-height: 19px;
+            bottom: 5vh;
+            right: 0;
+            z-index: 100;
+            padding:10px;
+        }
+
+        .wp-post-nav #post-nav-next-default:before {
+            content: url('../images/right-arrow.png');
+            position:fixed;
+            bottom:50%;
+            transform:translateY(70%);
+        }
+
+        .wp-post-nav #post-nav-next-default #post-nav-next-button {
+            display:none;   
+        }
+
+        .wp-post-nav .post-nav-image,
+        .wp-post-nav .post_nav_image .avatar,
+        .wp-post-nav .post-nav-category,
+        .wp-post-nav .post-nav-excerpt {
+                display:none;
+        }
+
+        .wp-post-nav #post-nav-next-default .post-nav-title {
+            text-align:center;
+            font-size:12px;
+            text-transform:capitalize;
+            margin-bottom:3%;
+            margin-top:12%;
+            margin-left:20px;
+        }
+
+        .wp-post-nav #post-nav-previous-default .post-nav-title {
+            text-align:center;
+            font-size:12px;
+            text-transform:capitalize;
+            margin-bottom:3%;
+            margin-top:12%;
+            margin-right:20px;
+        }
+}
+
+/*css for the switched state*/
+.wp-post-nav #post-nav-previous-switched {
+    height: auto;
+    width: 45vw;
+    line-height: 19px;
+    position: fixed;
+    bottom: 50%;
+    right: -45vw;
+    transform: translateY(50%);
+    z-index: 100;
+    align-items:center;
+    -webkit-align-items: center;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    margin:0;
+    padding:20px;
+    list-style-type:none;
+    
+}
+
+.wp-post-nav #post-nav-previous-switched #post-nav-previous-button {
+    padding:10px;
+    text-align: center;
+    align-items:center;
+    position:absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.wp-post-nav #post-nav-previous-switched #post-nav-previous-button:before {
+    content: url('../images/right-arrow.png');
+    bottom: 50%;
+    position: fixed;
+    transform: translateY(55%);
+    left: 20%;
+}
+
+.wp-post-nav #post-nav-previous-switched:hover {
+    right: 0;
+}
+
+.wp-post-nav #post-nav-next-switched {
+    height: auto;
+    width: 45vw;
+    line-height: 19px;
+    position: fixed;
+    bottom: 50%;
+    left: -45vw;
+    transform: translateY(50%);
+    z-index: 100;
+    align-items:center;
+    -webkit-align-items: center;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    margin:0;
+    padding:20px;
+    list-style-type:none;
+}
+
+.wp-post-nav #post-nav-next-switched #post-nav-next-button {
+    padding:10px;
+    text-align: center;
+    align-items:center;
+    position:absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.wp-post-nav #post-nav-next-switched #post-nav-next-button:after {
+    content: url('../images/left-arrow.png');
+    bottom: 50%;
+    position: fixed;
+    transform: translateY(55%);
+    right: 20%;
+}
+
+.wp-post-nav #post-nav-next-switched:hover {
+    left: 0;
+}
+
+.wp-post-nav #attachment-post-nav-previous-switched {
+    height: auto;
+    width: 10vw;
+    line-height: 19px;
+    position: fixed;
+    top: 50%;
+    left: -10vw;
+    transform: translateY(-50%);
+    z-index: 100;
+    align-items:center;
+    -webkit-align-items: center;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    margin:0;
+    padding:20px;
+    list-style-type:none;
+}
+
+.wp-post-nav #attachment-post-nav-previous-switched:after {
+    content: url('../images/left-arrow.png');
+    padding:10px;
+    text-align: center;
+    align-items:center;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.wp-post-nav #attachment-post-nav-previous-switched:hover {
+    left: 0;
+}
+
+@media only screen and (max-width: 48em) {
+        
+        .wp-post-nav #post-nav-previous-switched {
+            height: 10vh;
+            width: 45vw;
+            line-height: 19px;
+            bottom: 5vh;
+            left: 55vw;
+            z-index: 100;
+            padding:10px;
+        }
+
+        .wp-post-nav #post-nav-previous-switched:before {
+            content: url('../images/right-arrow.png');
+            position:fixed;
+            bottom:50%;
+            left:10px;
+            margin-left:10px;
+            transform:translateY(70%);
+        }
+
+        .wp-post-nav #post-nav-previous-switched #post-nav-previous-button {
+            display:none;     
+        }
+
+        .wp-post-nav #post-nav-next-switched {
+            height: 10vh;
+            width: 45vw;
+            line-height: 19px;
+            bottom: 5vh;
+            left: 0;
+            z-index: 100;
+            padding:10px;
+        }
+
+        .wp-post-nav #post-nav-next-switched:before {
+            content: url('../images/left-arrow.png');
+            position:fixed;
+            bottom:50%;
+            right:10px;
+            margin-right:10px;
+            transform:translateY(70%);
+        }
+
+        .wp-post-nav #post-nav-next-switched #post-nav-next-button {
+            display:none;   
+        }
+
+        .wp-post-nav #post-nav-next-switched .post-nav-title {
+            text-align:center;
+            font-size:12px;
+            text-transform:capitalize;
+            margin-bottom:3%;
+            margin-top:10%;
+            margin-right:20px;
+        }
+
+        .wp-post-nav #post-nav-previous-switched .post-nav-title {
+            text-align:center;
+            font-size:12px;
+            text-transform:capitalize;
+            margin-bottom:3%;
+            margin-top:10%;
+            margin-left:20px;
+        }
+
+        .wp-post-nav #post-nav-previous-switched:hover {
+            left:55vw;
+        }
+
+        .wp-post-nav #post-nav-next-switched:hover {
+            right:55vw;
+        }
+}
