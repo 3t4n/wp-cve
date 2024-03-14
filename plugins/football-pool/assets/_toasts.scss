@@ -1,0 +1,67 @@
+#fp-toasts {
+	min-height: 0;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 400px;
+	z-index: 10;
+
+	.toast {
+		background: #d6d8d9;
+		border-radius: 3px;
+		box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+		color: rgba(0, 0, 0, 0.6);
+		cursor: default;
+		margin-bottom: 20px;
+		opacity: 0;
+		position: relative;
+		padding: 10px;
+		transform: translateY(15%);
+		transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+		width: 100%;
+		will-change: opacity, transform;
+		z-index: 1100;
+	}
+
+	.toast.success {
+		background: $success-color;
+	}
+
+	.toast.warning {
+		background: $warning-color;
+	}
+
+	.toast.info {
+		background: $info-color;
+	}
+
+	.toast.error {
+		background: $error-color;
+	}
+
+	.toast.show {
+		opacity: 1;
+		transform: translateY(0);
+		transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+	}
+
+	.toast.hide {
+		height: 0;
+		margin: 0;
+		opacity: 0;
+		overflow: hidden;
+		padding: 0 30px;
+		transition: all 0.5s ease-in-out;
+	}
+
+	.toast .close {
+		cursor: pointer;
+		font-size: 24px;
+		height: 16px;
+		margin-top: -10px;
+		position: absolute;
+		right: 14px;
+		top: 50%;
+		width: 16px;
+	}
+}

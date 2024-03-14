@@ -1,0 +1,98 @@
+/*!
+ * Football Pool WordPress plugin
+ *
+ * @copyright Copyright (c) 2012-2022 Antoine Hurkmans
+ * @link https://wordpress.org/plugins/football-pool/
+ * @license https://plugins.svn.wordpress.org/football-pool/trunk/LICENSE
+ */
+
+@mixin flexbox() {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin flex($values) {
+	-webkit-box-flex: $values;
+	-moz-box-flex:  $values;
+	-webkit-flex:  $values;
+	-ms-flex:  $values;
+	flex:  $values;
+}
+
+@mixin order($val) {
+	-webkit-box-ordinal-group: $val;
+	-moz-box-ordinal-group: $val;
+	-ms-flex-order: $val;
+	-webkit-order: $val;
+	order: $val;
+}
+
+/* some vars */
+$pie-chart-icon-size: 40px;
+$mobile-width: 767px;
+$desktop-width: 980px;
+
+$error-color: #f44336;
+$error-color-bg: #ffbfbf;
+$error-color-border: #f44336;
+$warning-color: #ffa533;
+$warning-color-bg: #fff8e5;
+$warning-color-border: #ffa533;
+$info-color: #e5f5fa;
+$info-color-border: #00a0d2;
+$success-color: #26d68a;
+
+/* the partials */
+@import "icons";
+@import "matchtable";
+@import "prediction_form";
+@import "ranking";
+@import "charts";
+@import "widgets";
+@import "tournament_info";
+@import "statistics";
+@import "shortcodes";
+@import "toasts";
+
+/* generic styles */
+td.numeric { text-align: right; }
+span.username { color: black; font-weight: bolder; }
+
+.nopointer { cursor: default!important; }
+label { cursor: pointer; }
+
+.fp-notice.updated, .fp-notice.error {
+	display: inherit;
+	text-align: center;
+	line-height: inherit;
+	overflow: hidden;
+	padding: 10px;
+}
+.fp-notice.updated {
+	background: $info-color;
+	-webkit-box-shadow: 0 0 5px $info-color-border;
+	-moz-box-shadow:    0 0 5px $info-color-border;
+	box-shadow:         0 0 5px $info-color-border;
+}
+.fp-notice.error {
+	background: $error-color-bg;
+	-webkit-box-shadow: 0 0 5px $error-color-border;
+	-moz-box-shadow:    0 0 5px $error-color-border;
+	box-shadow:         0 0 5px $error-color-border;
+}
+
+.ranking-select-wrapper { margin-bottom: 1em; clear: both; }
+.ranking-select-block { margin-bottom: 1em; }
+
+/* media queries */
+/* mobile */
+@media ( max-width: $mobile-width ) {}
+/* tablet */
+@media ( min-width: ($mobile-width + 1) ) and ( max-width: ($desktop-width - 1) ) {}
+/* desktop */
+@media ( min-width: $desktop-width ) {}
+/* everything but mobile portrait */
+@media ( min-width: ($mobile-width + 1) ) {}

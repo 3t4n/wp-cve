@@ -1,0 +1,244 @@
+div.bonus {
+	/*border-bottom: 1px solid #000;*/
+	background-color: #f9f9f9;
+	margin-bottom: 2em;
+
+	ul.multi-select {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	p, li {
+		clear: both;
+	}
+
+	p.answer {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul.multi-select {
+		label {
+			margin-bottom: 10px;
+		}
+
+		//input[type=radio], input[type=checkbox] {
+		//	float: left;
+		//}
+
+		span {
+		}
+
+		/* handle the multi-select option with user input */
+		//label + span {
+		//	float: left;
+		//}
+
+		label + span input[type=text] {
+			width: auto;
+		}
+
+		label.user-input span {
+		}
+	}
+
+	a img {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+
+	p {
+		font-weight: bolder
+	}
+
+	.answer {
+		padding: .5em;
+		margin: 0 0 2px;
+	}
+
+	.points, .answer, .closing-time {
+		font-weight: normal;
+	}
+
+	.bonus-card-footer {
+		@include flexbox();
+		vertical-align: top;
+		padding: 0;
+
+		div {
+			@include flex(1);
+			flex-flow: row;
+			justify-content: space-between;
+			flex-grow: 4;
+			margin-right: 1em;
+		}
+
+		div:last-child {
+			margin-right: 0;
+		}
+
+		* {
+			vertical-align: top;
+			/*border: 1px solid tomato;*/
+		}
+
+		.question-stats-link {
+			text-align: right;
+			flex-basis: content;
+			flex-grow: 1;
+
+			a {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+				margin-left: 1rem;
+
+				img {
+					-webkit-box-shadow: none;
+					box-shadow: none;
+					max-height: $pie-chart-icon-size;
+				}
+			}
+		}
+
+		.points, .closing-time {
+			color: #aaa;
+			font-size: 75%;
+		}
+
+		.points {
+			text-align: right;
+
+			a {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+				margin-left: 1rem;
+
+				img {
+					-webkit-box-shadow: none;
+					box-shadow: none;
+				}
+			}
+		}
+
+	}
+}
+
+div.bonus.open {
+	.bonus-ajax-loader {
+		padding: 0;
+		margin: 0;
+		/* add some room for the predictions-ajax-loader.png */
+		min-height: 24px;
+		max-height: 24px;
+	}
+}
+
+div.bonus, p.bonus, input[type="text"].bonus {
+	width: 100%;
+}
+
+div.bonus.userview {
+	margin-top: 1em;
+	padding-bottom: .5em;
+
+	span {
+		color: #000;
+	}
+
+	p.question {
+		font-weight: bolder;
+	}
+}
+
+p.bonus.image {
+	background: none;
+}
+
+.bonus span.reminder {
+	color: #ccc;
+	font-weight: bolder;
+}
+
+span.extra {
+	font-size: 80%;
+	color: #666;
+}
+
+/*
+p.bonus .no-answer:after {
+	content: '...';
+	font-weight: normal;
+}
+*/
+
+/* example 4 column layout for question with ID 1
+#q1 ul.multi-select li { float: left; width: 25%; }
+*/
+
+.fp-prediction-form input.prediction {
+	width: 3em;
+	text-align: right;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+$saving-color: #fecd37;
+$saving-bg-color: #fefcf6; //#fef5da;
+
+.fp-form {
+	// adding a 'saving' indication on the form elements when an AJAX call is active
+	.bonus.saving .bonus-ajax-loader, .match-card.saving .user-score {
+		&:after {
+			content: url(images/predictions-ajax-loader.png);
+		}
+	}
+	/*
+	.multi-select.dropdown select.saving,
+	input[type="radio"].saving + label,
+	input[type="checkbox"].saving + label,
+	input[type="text"].bonus.saving,
+	textarea.bonus.saving,
+	*/
+	input.prediction.saving,
+	div.bonus.saving {
+		background-color: $saving-bg-color;
+		border: 2px dashed $saving-color;
+		color: $saving-color;
+		//outline-offset: 2px;
+		//outline: $saving-color dashed 2px;
+
+		&:focus {
+			outline: none;
+		}
+	}
+	/* add transparent border to prevent the 'flickering' */
+	div.bonus {
+		border: 2px solid transparent;
+	}
+}
+
+/* end saving animations */
+
+div.buttonblock {
+	margin: 1em 0 3em;
+}
+
+@media ( max-width: $mobile-width ) {
+	/* bonus question footer */
+	div.bonus div.bonus-card-footer {
+		display: block;
+
+		div, .bonus div.closing-time, .bonus div.points {
+			display: block;
+			padding: 0;
+			text-align: inherit;
+		}
+
+		img.pie-chart-icon {
+			max-height: $pie-chart-icon-size;
+		}
+	}
+}

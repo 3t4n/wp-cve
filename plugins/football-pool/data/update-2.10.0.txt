@@ -1,0 +1,52 @@
+ALTER TABLE `{$prefix}predictions` CHANGE `home_score` `home_score` TINYINT UNSIGNED NULL, CHANGE `away_score` `away_score` TINYINT UNSIGNED NULL;
+
+DROP TABLE `{$prefix}scorehistory_s1_t1`;
+DROP TABLE `{$prefix}scorehistory_s1_t2`;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}scorehistory_s1_t1` (
+  `ranking_id` INT UNSIGNED NOT NULL,
+  `score_order` INT UNSIGNED NOT NULL DEFAULT '0',
+  `type` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  `score_date` DATETIME NOT NULL,
+  `source_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `score` INT UNSIGNED NOT NULL,
+  `full` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `toto` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_diff_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `joker_used` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `total_score` INT UNSIGNED NOT NULL DEFAULT '0',
+  `ranking` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`ranking_id`,`type`,`source_id`,`user_id`),
+  KEY `ix_ranking_score_order_user` (`ranking_id`,`score_order`,`user_id`) USING BTREE,
+  KEY `ix_user_id` (`user_id`) USING BTREE,
+  KEY `ix_ranking_id` (`ranking_id`) USING BTREE,
+  KEY `ix_ranking` (`ranking`) USING BTREE,
+  KEY `ix_score_order` (`score_order`) USING BTREE,
+  KEY `ix_joker_used` (`joker_used`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}scorehistory_s1_t2` (
+  `ranking_id` INT UNSIGNED NOT NULL,
+  `score_order` INT UNSIGNED NOT NULL DEFAULT '0',
+  `type` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  `score_date` DATETIME NOT NULL,
+  `source_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `score` INT UNSIGNED NOT NULL,
+  `full` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `toto` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_diff_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `joker_used` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `total_score` INT UNSIGNED NOT NULL DEFAULT '0',
+  `ranking` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`ranking_id`,`type`,`source_id`,`user_id`),
+  KEY `ix_ranking_score_order_user` (`ranking_id`,`score_order`,`user_id`) USING BTREE,
+  KEY `ix_user_id` (`user_id`) USING BTREE,
+  KEY `ix_ranking_id` (`ranking_id`) USING BTREE,
+  KEY `ix_ranking` (`ranking`) USING BTREE,
+  KEY `ix_score_order` (`score_order`) USING BTREE,
+  KEY `ix_joker_used` (`joker_used`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

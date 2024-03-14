@@ -1,0 +1,482 @@
+/*!
+ * Football Pool WordPress plugin
+ *
+ * @copyright Copyright (c) 2012-2022 Antoine Hurkmans
+ * @link https://wordpress.org/plugins/football-pool/
+ * @license https://plugins.svn.wordpress.org/football-pool/trunk/LICENSE
+ */
+
+$icomoon-font-path: "../fonts";
+@import "../icons";
+
+/*
+The WP 5.7 admin color scheme
+https://make.wordpress.org/core/2021/02/23/standardization-of-wp-admin-colors-in-wordpress-5-7/
+*/
+$white: #fff;
+$black: #000;
+$gray-0: #f6f7f7;
+$gray-2: #f0f0f1;
+$gray-5: #dcdcde;
+$gray-10: #c3c4c7;
+$gray-20: #a7aaad;
+$gray-30: #8c8f94;
+$gray-40: #787c82;
+$gray-50: #646970;
+$gray-60: #50575e;
+$gray-70: #3c434a;
+$gray-80: #2c3338;
+$gray-90: #1d2327;
+$gray-100: #101517;
+$blue-0: #f0f6fc;
+$blue-5: #c5d9ed;
+$blue-10: #9ec2e6;
+$blue-20: #72aee6;
+$blue-30: #4f94d4;
+$blue-40: #3582c4;
+$blue-50: #2271b1;
+$blue-60: #135e96;
+$blue-70: #0a4b78;
+$blue-80: #043959;
+$blue-90: #01263a;
+$blue-100: #00131c;
+$red-0: #fcf0f1;
+$red-5: #facfd2;
+$red-10: #ffabaf;
+$red-20: #ff8085;
+$red-30: #f86368;
+$red-40: #e65054;
+$red-50: #d63638;
+$red-60: #b32d2e;
+$red-70: #8a2424;
+$red-80: #691c1c;
+$red-90: #451313;
+$red-100: #240a0a;
+$yellow-0: #fcf9e8;
+$yellow-5: #f5e6ab;
+$yellow-10: #f2d675;
+$yellow-20: #f0c33c;
+$yellow-30: #dba617;
+$yellow-40: #bd8600;
+$yellow-50: #996800;
+$yellow-60: #755100;
+$yellow-70: #614200;
+$yellow-80: #4a3200;
+$yellow-90: #362400;
+$yellow-100: #211600;
+$green-0: #edfaef;
+$green-5: #b8e6bf;
+$green-10: #68de7c;
+$green-20: #1ed14b;
+$green-30: #00ba37;
+$green-40: #00a32a;
+$green-50: #008a20;
+$green-60: #007017;
+$green-70: #005c12;
+$green-80: #00450c;
+$green-90: #003008;
+$green-100: #001c05;
+
+/* menu and screen icons */
+//.toplevel_page_footballpool-options.wp-has-current-submenu.wp-menu-open,
+//.toplevel_page_footballpool-options {
+//	div.wp-menu-image {
+//		background: url(images/admin-menu-16.png) 0 -33px no-repeat;
+//	}
+//}
+
+body.admin-color-fresh .toplevel_page_footballpool-options.wp-not-current-submenu:hover div.wp-menu-image {
+	background-repeat: no-repeat; background-attachment: scroll; background-position: 0 0;
+}
+
+/* bonus questions */
+.football-pool_page_footballpool-bonus {
+	th.manage-column {
+		.column-question { width: 340px; }
+		.column-answer { width: 180px; }
+		.column-points { width: 50px; }
+	}
+}
+	
+/* matches */
+input.score {
+	width: 3em;
+}
+.matchinfo {
+	.home, .away { font-size: 120%; font-weight: bolder; }
+}
+
+/* help page scroller */
+.fp-admin {
+	.back-to-top {
+		text-decoration: none;
+		position: fixed;
+		right: 2rem;
+		bottom: 2rem;
+		border-radius: 100%;
+		background: $gray-90;
+		color: $white;
+		padding: 0.5rem;
+		border: none;
+		cursor: pointer;
+		opacity: 100%;
+		transition: opacity 0.5s;
+		width: 1em;
+		height: 1em;
+	}
+
+	.back-to-top:hover {
+		opacity: 60%;
+		text-decoration: none;
+		color: $white;
+		//color: $gray-90;
+		//background: $white;
+		//border: 1px solid $gray-90;
+	}
+
+	.hidden {
+		opacity: 0%;
+	}
+
+	.progress-bar {
+		height: .5rem;
+		background: $blue-5;
+		position: fixed;
+		z-index: 2;
+		bottom: 0;
+		left: 0;
+	}
+}
+
+table.help {
+	th {
+		color: $white;
+		text-align: left;
+		text-decoration: underline;
+	}
+	th, td { padding-right: 1em; }
+	/* zebra table */
+	tr:nth-of-type(odd) {
+		background-color: $gray-0;
+	}
+	/* header */
+	tr:nth-of-type(1) {
+		background-color: $blue-30;
+	}
+}
+
+img.screenshot {
+	box-shadow: 5px 5px 5px $gray-50;
+	margin: 10px 0 0 20px;
+	border: 1px solid $gray-5;
+}
+
+body.wp-admin.football-pool {
+	table .sidebar-name {
+		cursor: default;
+	}
+
+	table:not(.help, .fp-options, .fp-radio-list) tbody tr:not(.type-row, .date-row):hover {
+		background-color: $blue-0;
+	}
+
+	table.user-answers thead tr {
+		background-color: $blue-30;
+		th { color: $white; }
+	}
+
+	table.form-table td:nth-child(2) { width: 310px; }
+
+	th.manage-column { vertical-align: top; }
+
+	label.radio {
+		font-weight: normal;
+		display: block;
+		padding-left: 22px;
+		text-indent: -22px;
+		margin-bottom: 5px;
+	}
+
+	input.date-y { width: 4em; }
+	input.date-m { width: 2.5em; }
+	input.date-d { width: 2.5em; }
+	input.date-h { width: 2.5em; }
+	input.date-i { width: 2.5em; }
+
+	td.date-title { text-align: right; }
+
+	.placeholder, .hint { font-style: italic; color: $gray-5; }
+
+	.email-addresses {
+		margin-bottom: 20px;
+
+		textarea { width: 500px; height: 100px; }
+		label { margin-right: 20px; }
+	}
+	.email-addresses.players textarea { border: 1px solid $green-30; }
+	.email-addresses.not-players textarea { border: 1px solid $red-30; }
+
+	div.donate {
+		text-align: right;
+
+		form { margin-left: 2em; }
+	}
+
+	code.block { display: block; margin: 0 0 15px; }
+	code.inline { display: inline; }
+	pre code.bash {
+		color: $gray-2;
+		text-shadow: 0 1px $gray-20;
+		font-family: Consolas, "Liberation Mono", Courier, monospace;
+		direction: ltr;
+		text-align: left;
+		white-space: pre;
+		word-spacing: normal;
+		word-break: normal;
+		-moz-tab-size: 4;
+		tab-size: 4;
+		-webkit-hyphens: none;
+		-moz-hyphens: none;
+		-ms-hyphens: none;
+		hyphens: none;
+		background-color: $gray-60;
+	}
+
+	pre code {
+		display: block;
+		padding: 0.4em 0.5em 0.3em 0.5em;
+		margin: .5em 0 1.1em 0;
+		overflow: auto;
+		border-radius: 0.3em;
+		font-size: 1em;
+	}
+
+	pre.code-block {
+		margin: 1em 0 1em;
+		display: block;
+		overflow: auto;
+	}
+
+	td.time.UTC input[type="text"] { width: 130px; }
+	td.time.local { width: 130px; }
+
+	.matches-bulk-action-buttons {
+		float: right;
+		/*margin-right: 90px;*/
+	}
+	.no-matches-notice {
+		text-align: right;
+
+		img { max-width: 100%; }
+	}
+
+	.tablenav.no-pages { display: none; }
+
+	div.row-actions span.item-id { color: $gray-60; }
+}
+
+table.fp-radio-list { border-collapse: collapse; }
+.fp-radio-list {
+	label { display: block; padding-right: 5em; }
+	td { padding: 5px 4px; vertical-align: top; }
+	tr.csv-file:hover { background-color: $blue-30; color: $white; }
+	tr.csv-file:hover a { color: $white; }
+	input[type=radio] { margin-right: 1.5em; }
+	th { text-align: left; font-weight: normal; font-style: italic; }
+}
+
+div.import.culture-select { text-align: right; }
+
+div.fp-admin .button { margin-right: 3px; }
+
+.fp-multi-select { width: 300px; }
+
+div.help.important {
+	margin: 5px 15px;
+	background-color: $yellow-5;
+	border-color: $yellow-30;
+	padding: 0 .6em;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+div.help-page {
+	h2 {
+		padding: 3em 0 .5em;
+	}
+	h2:first-of-type {
+		padding-top: 1em;
+	}
+	h3 {
+		padding: 2em 0 .5em;
+		font-size: 110%;
+	}
+	h2 + h3 {
+		padding-top: 0;
+	}
+	.widefat.help ul li {
+		margin-left: 2em;
+		list-style-type: disc;
+	}
+}
+
+div.ranking-definition {
+	label {
+		font-weight: normal;
+		font-size: 1em;
+	}
+
+	div {
+		padding: 0 3px;
+
+		input[type="checkbox"] {
+			margin-right: 5px;
+		}
+	}
+
+	div.matchtype {
+		margin: 1.5em 0 2px;
+		padding-top: .5em;
+		padding-bottom: .5em;
+		background-color: $gray-5;
+
+		label {
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+	}
+
+	h4 {
+		font-size: 150%;
+		margin-top: 2em;
+	}
+}
+
+.contextual-help-tabs-wrap p em {
+	font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
+}
+
+div.ranking-log-rest {
+	display: none;
+}
+.cboxContent div.ranking-log-rest {
+	display: block;
+}
+
+div.ranking-log span {
+	padding-right: 10px;
+}
+
+/* score calculation */
+#ajax-loader {
+	display: none; margin-right: 8px; float: left;
+	background-image: url(images/ajax-loader-blue.gif);
+	width: 16px;
+	height: 16px;
+}
+#fp-calc-progress {
+	display: none;
+
+	.animation { text-align: center; }
+	.error { color: $red-30; }
+}
+#calculation-timer {
+	margin-top: 30px;
+	font-style: italic;
+}
+
+.fp-calc-progress {
+	.ui-progressbar {
+		height: 15px;
+	}
+
+	#fp-calc-progressbar {
+		margin-top: 15px;
+	}
+}
+
+#step-0-form {
+	input[type="radio"] { margin-right: 5px; }
+
+	.calculation-type-select {
+		margin: 1em 0 0;
+
+		label {
+			display: block;
+			margin-bottom: 4px;
+			font-weight: bold;
+			cursor: pointer;
+			padding-left: 30px;
+			text-indent: -30px;
+
+			span { font-style: italic; font-weight: normal; }
+		}
+	}
+
+	.submit { }
+}
+
+.fp-admin {
+	h2 span[class^="fp-icon-"], h2 span[class*=" fp-icon-"] {
+		margin-left: 2em;
+		cursor: pointer;
+	}
+
+	img.league-image { max-height: 40px; }
+}
+
+.football-pool_page_footballpool-rankings {
+	th.column-name {
+		width: 30%;
+	}
+	th.column-calculate {
+		width: 10%;
+	}
+	th.column-log {
+		width: 30%;
+	}
+	th.column-single_calculation {
+		width: 15%;
+	}
+}
+
+.toplevel_page_footballpool-options {
+	h1 .fp-icon-navicon {
+		margin-left: .5em;
+		cursor: pointer;
+	}
+	.match-time-offset {
+		width: 150px!important;
+	}
+	.ranking-select {
+		width: 100%!important;
+	}
+	.league-select {
+		width: 100%!important;
+	}
+}
+
+#fp-options-menu {
+	display: none;
+}
+
+table.fp-options {
+	td, th {
+		vertical-align: top;
+	}
+
+	tr {
+		border-top: 1px solid $gray-5;
+	}
+
+	tr.no-border {
+		border: none;
+	}
+
+	tr:last-child {
+		border-bottom: 1px solid $gray-5;
+	}
+}
+

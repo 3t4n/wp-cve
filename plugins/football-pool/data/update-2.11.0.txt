@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS `{$prefix}predictions_audit_log` (
+  `log_date` DATETIME NOT NULL ,
+  `user_id` INT UNSIGNED NOT NULL ,
+  `type` TINYINT UNSIGNED NOT NULL ,
+  `source_id` INT UNSIGNED NOT NULL ,
+  `result_code` TINYINT UNSIGNED NOT NULL ,
+  `log_value` VARCHAR(200) NOT NULL ,
+  INDEX `ix_log_date` (`log_date`),
+  INDEX `ix_user_id` (`user_id`),
+  INDEX `ix_source_id` (`source_id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `{$prefix}teams` ADD `is_favorite` TINYINT UNSIGNED NOT NULL DEFAULT '0' AFTER `is_active`;

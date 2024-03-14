@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS `{$prefix}rankings_updatelog`;
+DROP TABLE IF EXISTS `{$prefix}user_updatelog_matches`;
+DROP TABLE IF EXISTS `{$prefix}user_updatelog_questions`;
+DROP TABLE IF EXISTS `{$prefix}scorehistory_s1_t1`;
+RENAME TABLE `{$prefix}scorehistory` TO `{$prefix}scorehistory_s1_t1`;
+ALTER TABLE `{$prefix}scorehistory_s1_t1` ADD PRIMARY KEY( `ranking_id`, `type`, `source_id`, `user_id`);
+ALTER TABLE `{$prefix}scorehistory_s1_t1` DROP INDEX `scoreDate`;
+ALTER TABLE `{$prefix}scorehistory_s1_t1` DROP INDEX `scoreDate_2`;
+ALTER TABLE `{$prefix}scorehistory_s1_t1` DROP INDEX `totalScore`;
+ALTER TABLE `{$prefix}scorehistory_s1_t1` DROP INDEX `type`;
+ALTER TABLE `{$prefix}scorehistory_s1_t1` ADD INDEX( `ranking_id`, `score_order`, `user_id`);
+INSERT INTO `{$prefix}seasons` ( `name` ) VALUES ( 'Season 1' );

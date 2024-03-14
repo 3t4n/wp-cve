@@ -1,0 +1,208 @@
+CREATE TABLE IF NOT EXISTS `{$prefix}bonusquestions` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `question` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `answer` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `points` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `answer_before_date` DATETIME NOT NULL,
+  `score_date` DATETIME DEFAULT NULL,
+  `match_id` INT UNSIGNED DEFAULT NULL,
+  `question_order` SMALLINT UNSIGNED NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `ix_question_order` (`question_order`) USING BTREE
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}bonusquestions_type` (
+  `question_id` INT UNSIGNED NOT NULL,
+  `type` INT UNSIGNED NOT NULL,
+  `options` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `image` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `max_answers` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`question_id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}bonusquestions_useranswers` (
+  `question_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `answer` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `correct` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  `points` INT NOT NULL DEFAULT '0',
+  PRIMARY KEY (`question_id`,`user_id`),
+  KEY `ix_question_id` (`question_id`) USING BTREE,
+  KEY `ix_user_id` (`user_id`) USING BTREE
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}groups` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}leagues` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `user_defined` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+  `image` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}league_users` (
+  `user_id` INT UNSIGNED NOT NULL DEFAULT '0',
+  `league_id` INT UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`),
+  KEY `ix_user_league` (`user_id`,`league_id`) USING BTREE,
+  KEY `league_id` (`league_id`) USING BTREE
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}matches` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `stadium_id` INT UNSIGNED NOT NULL,
+  `home_team_id` INT NOT NULL,
+  `away_team_id` INT NOT NULL,
+  `home_score` TINYINT UNSIGNED DEFAULT NULL,
+  `away_score` TINYINT UNSIGNED DEFAULT NULL,
+  `play_date` DATETIME NOT NULL,
+  `matchtype_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_away_team` (`away_team_id`) USING BTREE,
+  KEY `ix_home_team` (`home_team_id`) USING BTREE,
+  KEY `ix_stadium` (`stadium_id`) USING BTREE,
+  KEY `ix_matchtype` (`matchtype_id`) USING BTREE
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}matchtypes` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `visibility` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}predictions` (
+  `user_id` INT UNSIGNED NOT NULL DEFAULT '0',
+  `match_id` INT UNSIGNED NOT NULL DEFAULT '0',
+  `home_score` TINYINT UNSIGNED DEFAULT NULL,
+  `away_score` TINYINT UNSIGNED DEFAULT NULL,
+  `has_joker` TINYINT NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`,`match_id`) USING BTREE,
+  KEY `ix_user` (`user_id`) USING BTREE,
+  KEY `ix_match` (`match_id`) USING BTREE
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}predictions_audit_log` (
+  `log_date` DATETIME NOT NULL ,
+  `user_id` INT UNSIGNED NOT NULL ,
+  `type` TINYINT UNSIGNED NOT NULL ,
+  `source_id` INT UNSIGNED NOT NULL ,
+  `result_code` TINYINT UNSIGNED NOT NULL ,
+  `log_value` VARCHAR(200) NOT NULL ,
+  INDEX `ix_log_date` (`log_date`),
+  INDEX `ix_user_id` (`user_id`),
+  INDEX `ix_source_id` (`source_id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}rankings` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `user_defined` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+  `calculate` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}rankings_bonusquestions` (
+  `ranking_id` INT NOT NULL,
+  `question_id` INT NOT NULL,
+  PRIMARY KEY (`ranking_id`,`question_id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}rankings_matches` (
+  `ranking_id` INT NOT NULL,
+  `match_id` INT NOT NULL,
+  PRIMARY KEY (`ranking_id`,`match_id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}scorehistory_s1_t1` (
+  `ranking_id` INT UNSIGNED NOT NULL,
+  `score_order` INT UNSIGNED NOT NULL DEFAULT '0',
+  `type` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  `score_date` DATETIME NOT NULL,
+  `source_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `score` INT UNSIGNED NOT NULL,
+  `full` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `toto` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_diff_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `joker_used` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `total_score` INT UNSIGNED NOT NULL DEFAULT '0',
+  `ranking` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`ranking_id`,`type`,`source_id`,`user_id`),
+  KEY `ix_ranking_score_order_user` (`ranking_id`,`score_order`,`user_id`) USING BTREE,
+  KEY `ix_user_id` (`user_id`) USING BTREE,
+  KEY `ix_ranking_id` (`ranking_id`) USING BTREE,
+  KEY `ix_ranking` (`ranking`) USING BTREE,
+  KEY `ix_score_order` (`score_order`) USING BTREE,
+  KEY `ix_joker_used` (`joker_used`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}scorehistory_s1_t2` (
+  `ranking_id` INT UNSIGNED NOT NULL,
+  `score_order` INT UNSIGNED NOT NULL DEFAULT '0',
+  `type` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  `score_date` DATETIME NOT NULL,
+  `source_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `score` INT UNSIGNED NOT NULL,
+  `full` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `toto` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `goal_diff_bonus` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `joker_used` SMALLINT UNSIGNED NOT NULL DEFAULT '0',
+  `total_score` INT UNSIGNED NOT NULL DEFAULT '0',
+  `ranking` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`ranking_id`,`type`,`source_id`,`user_id`),
+  KEY `ix_ranking_score_order_user` (`ranking_id`,`score_order`,`user_id`) USING BTREE,
+  KEY `ix_user_id` (`user_id`) USING BTREE,
+  KEY `ix_ranking_id` (`ranking_id`) USING BTREE,
+  KEY `ix_ranking` (`ranking`) USING BTREE,
+  KEY `ix_score_order` (`score_order`) USING BTREE,
+  KEY `ix_joker_used` (`joker_used`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}seasons` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}shoutbox` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT UNSIGNED NOT NULL DEFAULT '0',
+  `shout_text` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `date_entered` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ix_date_entered` (`date_entered`) USING BTREE
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}stadiums` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `photo` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `comments` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  PRIMARY KEY (`id`)
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `{$prefix}teams` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `photo` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `flag` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `link` VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `group_id` INT UNSIGNED NOT NULL DEFAULT '0',
+  `group_order` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  `is_real` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+  `is_active` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+  `is_favorite` TINYINT UNSIGNED NOT NULL DEFAULT '0',
+  `comments` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  PRIMARY KEY (`id`),
+  KEY `ix_group` (`group_id`) USING BTREE,
+  KEY `ix_group_order` (`group_order`) USING BTREE
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
