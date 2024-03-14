@@ -1,0 +1,2590 @@
+/**
+ * Youzify Account Style.
+ */
+
+/**
+ * Table of Contents
+ *
+ * 0.0 - General
+ * 1.0 - Form
+ * 2.0 - Form Messages
+ * 3.0 - Widget
+ *     3.1 - Services Widget
+ *     3.2 - Skills Widget
+ *     3.3 - Portfolio Widget
+ * 4.0 - Uploader
+ * 5.0 - Box Note
+ * 6.0 - Sidebar
+ * 7.0 - Xprofile Fields.
+ *
+ **/
+
+/**
+ * 0.0 - General
+ **/
+ .youzify-account-page * ,
+ .youzify-account-page *:after,
+ .youzify-account-page *:before {
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+     -webkit-tap-highlight-color: transparent;
+     -webkit-tap-highlight-color: rgba(0,0,0,0);
+ }
+ 
+ .youzify-account-page a:hover {
+     text-decoration: none;
+ }
+ 
+ .youzify-page-main-content {
+     margin: auto;
+     padding: 35px 0 0;
+     max-width: 1170px;
+     position: relative;
+ }
+ 
+ .youzify-head-buttons .youzify-head-buttons-inner:after,
+ .youzify-head-buttons:after,
+ .youzify-page-main-content:after {
+     content: "";
+     clear: both;
+     display: table;
+ }
+ 
+ /**
+  * 1.0 - Form
+  **/
+ .youzify_upload_file {
+     width: 0.1px;
+     height: 0.1px;
+     opacity: 0;
+     overflow: hidden;
+     position: absolute;
+     z-index: -1;
+ }
+ 
+ #youzify-export-data .youzify-section-content,
+ .youzify-section-content > .uk-option-item {
+     padding: 45px;
+     background: var(--yzfy-card-bg-color);
+     border-bottom: 1px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .youzify-section-content > .uk-option-item:last-of-type {
+     border-bottom: none;
+ }
+ 
+ .youzify .youzify-wg-item:after,
+ #ukai-header:after,
+ .uk-option-item:after,
+ .youzify-wg-opts:after {
+     content: "";
+     clear: both;
+     display: table;
+ }
+ 
+ .youzify:after,
+ .youzify .youzify-wg-skills-item:before,
+ .youzify .youzify-wg-skills-item:after,
+ .youzify-wg-portfolio-item:after,
+ .youzify-section-content:after,
+ .youzify-wg-container:after,
+ .youzify-info-msg:after,
+ .youzify-app-account:after {
+     content: "";
+     display: table;
+     clear: both;
+ }
+ 
+ .option-infos {
+     float: left;
+     width: 30%;
+ }
+ 
+ .option-content {
+     float: left;
+     width: 70%;
+ }
+ 
+ .option-content div.mce-panel {
+     width: 99.99%;
+ /*.option-content div.mce-edit-area {*/
+     /*border-right: 1px solid #e5e5e5;*/
+ }
+ 
+ .rtl .option-infos,
+ .rtl .option-content {
+     float: right;
+ }
+ 
+ #youzify .uk-option-item .option-infos label {
+     display: flex;
+     color: var(--yzfy-option-label-color);
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+ }
+ 
+ #youzify-export-data .youzify-section-content h2,
+ .uk-option-item .option-content label {
+     color: var(--yzfy-option-label-color);
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+ }
+ 
+ #youzify-export-data .youzify-section-content p,
+ .uk-option-item .option-desc {
+     display: block;
+     color: var(--yzfy-option-description-color);
+     margin: 5px 0 0;
+     font-size: var(--yzfy-primary-font-size);
+     line-height: 24px;
+     margin-right: 15px;
+ }
+ 
+ #youzify-export-data .youzify-section-content p {
+     font-size: var(--yzfy-big-font-size);
+ }
+ 
+ .rtl .uk-option-item .option-desc {
+     margin-left: 15px;
+     margin-right: 0;
+ }
+ 
+ .uk-option-item .option-desc a {
+     color: #81a7b9;
+     font-size: 11px;
+     font-weight: 600;
+     text-decoration: none;
+ }
+ 
+ #youzify .option-content input:not([type=radio]):not(.uk-upload-button):not(.wp-color-picker):not(.wp-picker-clear):not(.ed_button ) {
+     width: 100%;
+     color: var(--yzfy-option-input-color);
+     display: block;
+     height: 45px;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 400;
+     box-shadow: none;
+     line-height: 18px;
+     padding: 8px 15px;
+     border: 2px solid var(--yzfy-card-secondary-bg-color);
+     background-color: var(--yzfy-option-input-bg-color);
+ }
+ 
+ .youzify .uk-upload-photo .uk-photo-url {
+     width: auto !important;
+ }
+ 
+ .youzify .option-content textarea {
+     width: 100%;
+     color: #9a9a9a;
+     font-size: var(--yzfy-primary-font-size);
+     line-height: 24px;
+     min-height: 125px;
+     padding: 12px 15px;
+     background-color: var(--yzfy-card-bg-color);
+     border: 2px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ /** Color Picker Field **/
+ 
+ .youzify-account-page .wp-picker-container input[type=text].wp-color-picker{
+     padding: 0 8px;
+     font-size: var(--yzfy-primary-font-size);
+ }
+ 
+ /* Select Field */
+ .youzify.youzify-account-page .nice-select {
+     min-height: 45px;
+ }
+ 
+ .youzify.youzify-account-page .nice-select .current {
+     line-height: 45px;
+     height: 45px;
+     text-align: left;
+ }
+ 
+ 
+ .youzify.youzify-account-page .nice-select .option {
+     padding: 2px 20px;
+ }
+ 
+ /* Select Field */
+ .youzify.youzify-account-page .nice-select,
+ .youzify.youzify-account-page .nice-select .list {
+     width: 100%;
+ }
+ 
+ .youzify.youzify-account-page .nice-select:after {
+     right: 20px;
+     width: 7px;
+     height: 7px;
+     margin-top: -5px;
+ }
+ 
+ .rtl .youzify.youzify-account-page .nice-select:after {
+     left: 14px;
+     right: initial;
+ }
+ 
+ .youzify-select-field {
+     position: relative;
+ }
+ 
+ .youzify .youzify-select-field select {
+     border: 0;
+     outline: 0;
+     width: 100%;
+     color: #949494;
+     cursor: pointer;
+     font-size: var(--yzfy-primary-font-size);
+     height: 45px;
+     line-height: 45px;
+     border-radius: 3px;
+     padding: 0 20px;
+     display: inline-block;
+     background-color: #f6f6f6;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+ }
+ 
+ .youzify-select-field select::-ms-expand {
+     display: none;
+ }
+ 
+ /* Radio Field */
+ 
+ .youzify-label-radio {
+ position: relative;
+     display: inline-block;
+     margin-bottom: 15px;
+     padding-left: 30px;
+     cursor: pointer;
+     margin-right: 15px;
+ }
+ 
+ .youzify-label-radio input[type="radio"] {
+     position: absolute;
+     z-index: -1;
+     opacity: 0;
+ }
+ 
+ .youzify_field_indication {
+     left: 0;
+     top: -0;
+     width: 20px;
+     height: 20px;
+     position: absolute;
+     background: #e6e6e6;
+ }
+ 
+ .youzify_field_indication:after {
+     position: absolute;
+     display: none;
+     content: '';
+ }
+ 
+ .youzify-label-radio .youzify_field_indication {
+     border-radius: 50%;
+ }
+ 
+ .youzify-label-radio .youzify_field_indication:after {
+     top: 7px;
+     left: 7px;
+     width: 6px;
+     height: 6px;
+     border-radius: 50%;
+     background: #fff;
+ }
+ 
+ .youzify-label-radio input:checked ~ .youzify_field_indication:after {
+     display: block;
+ }
+ 
+ .youzify-label-radio input:checked ~ .youzify_field_indication {
+     background: #89afc1;
+ }
+ 
+ .youzify .youzify-settings-actions {
+     padding: 0 50px;
+     overflow: hidden;
+     line-height: 91px;
+     border-top: 1px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .youzify .action-button {
+     border: none;
+     color: #ffffff;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     letter-spacing: 0;
+     border-radius: 4px;
+     padding: 12px 20px;
+     background: #a3e05c;
+     text-transform: uppercase;
+ }
+ 
+ .youzify .action-button:hover {
+     color: #82A1AF;
+     background: #eeeeee;
+ }
+ 
+ .youzify .uk-option-item input:focus,
+ .youzify .uk-option-item select:focus,
+ .youzify .uk-option-item textarea:focus,
+ .youzify .uk-option-item button:focus {
+     outline: none;
+ }
+ 
+ .youzify .uk-option-item input::-webkit-input-placeholder {
+     color: #AFAFAF;
+     text-align: center;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ .youzify .uk-option-item input::-moz-placeholder {
+     color: #AFAFAF;
+     text-align: center;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ .youzify .uk-option-item input:-moz-placeholder {
+     color: #AFAFAF;
+     text-align: center;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ .youzify .option-option input::-ms-input-placeholder {
+     color: #AFAFAF;
+     text-align: center;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ .youzify .uk-option-item textarea::-webkit-input-placeholder {
+     color: #AFAFAF;
+     font-size:10px;
+     text-align: center;
+     letter-spacing: 1px;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ .youzify .uk-option-item textarea:-moz-placeholder {
+     color: #AFAFAF;
+     text-align: center;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ .youzify .uk-option-item textarea::-moz-placeholder {
+     color: #AFAFAF;
+     text-align: center;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ .youzify .option-option textarea::-ms-input-placeholder {
+     color: #AFAFAF;
+     font-size:10px;
+     text-align: center;
+     letter-spacing: 1px;
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ /** User Network Box **/
+ 
+ .youzify .youzify-connect-btn a {
+     color: #898989;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     border-radius: 3px;
+     padding: 15px 25px;
+     background-color: #eee;
+ }
+ 
+ .youzify .youzify-connect-btn i {
+     font-size: var(--yzfy-big-font-size);
+     margin-right: 8px;
+ }
+ 
+ .youzify .youzify-connect-btn.youzify-connect-btn-instagram a {
+   color: #fff;
+   background: #d6249f;
+   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+ }
+ 
+ .youzify-user-provider-box {
+     padding: 12px 25px;
+     border-radius: 3px;
+     background-color: #f4f3f3;
+     border-left: 5px solid #eaeaea;
+ }
+ 
+ .rtl .youzify-user-provider-box {
+         border-left: none;
+     border-right: 5px solid #eaeaea;
+ }
+ 
+ .youzify-user-provider-box .youzify-user-provider-img {
+     width: 50px;
+     height: 50px;
+     border-radius: 100%;
+     background-size: cover;
+ }
+ 
+ .youzify-user-provider-box .youzify-user-provider-img,
+ .youzify-user-provider-box .youzify-user-provider-data {
+     display: inline-block;
+     vertical-align: middle;
+ }
+ 
+ .youzify-user-provider-box .youzify-user-provider-data {
+     margin-left: 8px;
+ }
+ 
+ .rtl .youzify-user-provider-box .youzify-user-provider-data {
+     margin-left: 0;
+     margin-right: 8px;
+ }
+ 
+ .youzify-user-provider-data .youzify-user-provider-data-name {
+     color: #898989;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+ }
+ 
+ .youzify-user-provider-data .youzify-user-provider-status {
+     color: #fff;
+     margin-top: 8px;
+     font-size: 10px;
+     font-weight: 600;
+     padding: 3px 8px;
+     line-height: 13px;
+     border-radius: 2px;
+     display: inline-block;
+     background-color: #a3e05c;
+     text-transform: uppercase;
+ }
+ 
+ .youzify-user-provider-box .youzify-user-provider-unlink {
+     float: right;
+     cursor: pointer;
+ }
+ 
+ .rtl .youzify-user-provider-box .youzify-user-provider-unlink {
+     float: left;
+ }
+ 
+ .youzify-user-provider-box .youzify-user-provider-unlink i {
+     width: 40px;
+     height: 40px;
+     color: #898989;
+     font-size: 18px;
+     margin-top: 6px;
+     text-align: center;
+     line-height: 40px;
+     border-radius: 100%;
+     background-color: #fff;
+ }
+ 
+ .youzify-user-provider-box .youzify-user-provider-unlink.loading i:before {
+     content: "\f110" !important;
+     -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+     -o-transition: all 0.5s ease;
+     transition: all 0.5s ease;
+ }
+ 
+ .youzify-user-provider-box .youzify-user-provider-unlink.loading i {
+     -webkit-animation: fa-spin 2s infinite linear;
+     animation: fa-spin 2s infinite linear;
+ }
+ 
+ 
+ .youzify-user-provider-connected .youzify-connect-btn {
+     display: none;
+ }
+ 
+ .youzify .youzify-wg-opts {
+     margin: 0;
+     padding: 35px;
+     background-color: var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .youzify .youzify-no-content {
+     margin: 0;
+     font-size: var(--yzfy-primary-font-size);
+     color: #9E9E9E;
+     background: var(--yzfy-card-bg-color);
+     padding: 18px 35px;
+     border-left: 8px solid #a8a8af;
+ }
+ 
+ .youzify-save-options:hover {
+     color: #fff;
+     background-color: #a3e05c;
+ }
+ 
+ /* # Delete Item */
+ 
+ .youzify-account-page .youzify-export-item .option-content,
+ .youzify-account-page .youzify-export-item .option-infos {
+     float: none;
+     width: 100%;
+ }
+ 
+ #youzify-data-export a,
+ #bp-data-export button,
+ .youzify-account-page .youzify-export-item .ukai-button-item a {
+     color: #fff;
+     border: none;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     margin-top: 15px;
+     padding: 12px 15px;
+     background: #76a4b9;
+     display: inline-block;
+ }
+ 
+ 
+ #youzify-data-export a i,
+ #bp-data-export button i,
+ .youzify-account-page .youzify-export-item .ukai-button-item a i {
+     margin-right: 8px;
+ }
+ 
+ .rtl #youzify-data-export a i,
+ .rtl #bp-data-export button i,
+ .rtl .youzify-account-page .youzify-export-item .ukai-button-item a i {
+     margin-right: 0;
+     margin-left: 8px;
+ }
+ 
+ #youzify-export-data .youzify-section-content ul {
+     margin: 15px 0;
+     padding: 0 20px;
+     border-left: 5px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ #youzify-export-data .youzify-section-content ul li {
+     color: #898989;
+     font-size: var(--yzfy-big-font-size);
+     line-height: 28px;
+ }
+ 
+ /* # Delete Item */
+ 
+ .youzify-account-page .youzify-delete-item {
+     top: 8px;
+     margin: 0;
+     right: 8px;
+     padding: 0;
+     width: 25px;
+     height: 25px;
+     line-height: 0;
+     cursor: pointer;
+     line-height: 23px;
+     position: absolute;
+     text-align: center;
+     background-color: var(--yzfy-card-secondary-bg-color);
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+ }
+ 
+ .rtl .youzify-account-page .youzify-delete-item {
+     left: 8px;
+     right: initial;
+ }
+ 
+ .youzify-account-page .youzify-wg-item:hover > .youzify-delete-item {
+     opacity: 1;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+ }
+ 
+ .youzify-account-page .youzify-delete-item:hover {
+     background-color: #f97979;
+ }
+ 
+ .youzify-account-page .youzify-delete-item:before {
+     color: #fff;
+     cursor: pointer;
+     font-size: var(--yzfy-big-font-size);
+     content: "\f2ed";
+     text-rendering: auto;
+     display: inline-block;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     font-family: "Font Awesome 5 Free" !important;
+ }
+ 
+ /**
+  * 3.1 & 3.2 - Skills & Services Widget
+  **/
+ 
+ .youzify .youzify-wg-skills-options .youzify-wg-item,
+ .youzify .youzify-wg-services-options .youzify-wg-item {
+     padding: 30px 0;
+     position: relative;
+     margin-bottom: 35px;
+     background-color: var(--yzfy-card-bg-color);
+ }
+ 
+ .youzify-wg-skills-options .youzify-wg-item {
+     border-left: 8px solid #81d1e4;
+ }
+ 
+ .rtl .youzify-wg-skills-options .youzify-wg-item {
+     border-left: none;
+     border-right: 8px solid #81d1e4;
+ }
+ 
+ .youzify-wg-services-options .youzify-wg-item {
+     border-left: 8px solid #fd8178;
+ }
+ 
+ .rtl .youzify-wg-services-options .youzify-wg-item {
+     border-left: none;
+     border-right: 8px solid #fd8178;
+ }
+ 
+ .youzify .youzify-wg-skills-options .youzify-wg-item:last-of-type,
+ .youzify .youzify-wg-services-options .youzify-wg-item:last-of-type {
+     margin-bottom: 0
+ }
+ 
+ .youzify .youzify-wg-skills-options .youzify-wg-item .uk-option-item,
+ .youzify .youzify-wg-services-options .youzify-wg-item .uk-option-item {
+     width: 33.33%;
+     float: left;
+ }
+ 
+ .rtl .youzify .youzify-wg-skills-options .youzify-wg-item .uk-option-item,
+ .rtl .youzify .youzify-wg-services-options .youzify-wg-item .uk-option-item {
+     float: right;
+ }
+ 
+ .youzify-wg-services-options .uk-option-item .youzify-option-inner,
+ .youzify-wg-skills-options .uk-option-item .youzify-option-inner {
+     width: 100%;
+     padding: 0 35px;
+ }
+ 
+ .youzify-wg-skills-options .uk-option-item input {
+     width: 100%;
+ }
+ 
+ .youzify-wg-skills-options .option-infos,
+ .youzify-wg-skills-options .option-content,
+ .youzify-wg-services-options .option-infos,
+ .youzify-wg-services-options .option-content {
+     float: none;
+     width: 100%;
+ }
+ 
+ .youzify-wg-skills-options .option-infos,
+ .youzify-wg-services-options .option-infos {
+     margin-bottom: 12px;
+ }
+ 
+ .youzify-wg-services-options .youzify-wg-item textarea {
+     height: 45px;
+     min-height: initial;
+     padding: 8px 15px;
+ }
+ 
+ .youzify-wg-services-options .uk-option-item .option-infos label,
+ .youzify-wg-skills-options .uk-option-item .option-infos label {
+     color: #8e8e8e;
+ }
+ 
+ /**
+  * 3.3 - Portfolio Widget
+  **/
+ 
+ .youzify .youzify-cphoto-options {
+     padding: 35px 17.5px 0;
+ }
+ 
+ .youzify .youzify-cphoto-options .youzify-wg-item {
+     list-style-type: none;
+     margin-bottom: 35px;
+     text-align: center;
+     position: relative;
+     width: 33.33%;
+     float: left;
+ }
+ 
+ .rtl .youzify .youzify-cphoto-options .youzify-wg-item {
+     float: right;
+ }
+ 
+ .youzify .youzify-cphoto-options .youzify-no-content {
+     margin: 0 17.5px 35px;
+ }
+ 
+ .youzify-cphoto-options .youzify-wg-container {
+     padding:0;
+     overflow: hidden;
+     margin: 0 17.5px;
+     background-color: #fff;
+ }
+ 
+ .youzify-cphoto-options .youzify-uploader-item .youzify-photo-preview {
+     width: 140px;
+     height: 140px;
+     max-width: 100%;
+     position: relative;
+     margin: 0 auto 30px;
+     background-size: cover;
+     background-position: center;
+ }
+ 
+ .youzify-cphoto-content {
+     border-top: 1px solid var(--yzfy-card-secondary-bg-color);
+     padding: 30px;
+     background-color: var(--yzfy-card-bg-color);
+ }
+ 
+ .youzify-cphoto-options .youzify-wg-item .uk-option-item {
+     margin-bottom: 18px;
+ }
+ 
+ .youzify-cphoto-options .youzify-wg-item .uk-option-item:last-of-type {
+     margin-bottom: 0;
+ }
+ 
+ .youzify-cphoto-options .youzify-wg-item .option-content {
+     float: none;
+     width: 100%;
+ }
+ 
+ .youzify-cphoto-options .youzify-wg-item .option-content input {
+     text-align: center;
+     width: 100% !important;
+ }
+ 
+ .youzify-cphoto-options .youzify-upload-photo {
+     margin: 0;
+     padding: 0;
+     color: #fff;
+     width: 100%;
+     display: block;
+     cursor: pointer;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     line-height: 45px;
+     text-align: center;
+ }
+ 
+ .youzify-cphoto-options .youzify-wg-item .youzify-delete-item {
+     right: 25px;
+ }
+ 
+ .rtl .youzify-cphoto-options .youzify-wg-item .youzify-delete-item {
+     right: initial;
+     left: 25px;
+ }
+ 
+ .youzify-wg-slideshow-options .youzify-upload-photo {
+     background-color: #72d0a8;
+ }
+ 
+ .youzify-wg-portfolio-options .youzify-upload-photo {
+     background-color: #fb7a54;
+ }
+ 
+ /*
+  * Uploader
+  */
+ 
+ .youzify .option-content .youzify-upload-photo {
+     color: #fff;
+     height: initial;
+     border: none;
+     padding: 0 20px;
+     font-size: var(--yzfy-primary-font-size);
+     cursor: pointer;
+     font-weight: 600;
+     min-width: 150px;
+     box-shadow: none;
+     line-height: 42px;
+     text-align: center;
+     background: #8eaab7;
+     display: inline-block;
+ }
+ 
+ .youzify-uploader-item .youzify-photo-preview {
+     width: 135px;
+     height: 135px;
+     display: block;
+     margin-top: 20px;
+     text-align: center;
+     position: relative;
+     background-size: cover;
+     background-position: center;
+ }
+ 
+ .youzify-uploader-item .youzify-delete-photo {
+     bottom: 0;
+     right: 0;
+     opacity: 0;
+     color: #fff;
+     width: 40px;
+     height: 40px;
+     display: none;
+     z-index: 99999;
+     font-size: var(--yzfy-big-font-size);
+     cursor: pointer;
+     line-height: 30px;
+     position: absolute;
+     border: 4px solid #fff;
+     background-color: #8eaab7;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+ }
+ 
+ .youzify-delete-photo.youzify-show-trash {
+     display: block;
+ }
+ 
+ .youzify-uploader-item .youzify-delete-photo:hover {
+     color: #ffeb3b;
+ }
+ 
+ .youzify-uploader-item .youzify-photo-preview:hover > .youzify-delete-photo {
+     opacity: 1;
+ }
+ 
+ .youzify-upload-photo {
+     position: relative;
+ }
+ 
+ .youzify-upload-photo:before {
+     content: "";
+     position: absolute;
+     z-index: -1;
+     left: 0;
+     right: 100%;
+     bottom: 0;
+     background: rgba(0,0,0,0.08);
+     height: 3px;
+     -webkit-transition-property: all;
+     transition-property: all;
+     -webkit-transition-duration: 0.3s;
+     transition-duration: 0.3s;
+     -webkit-transition-timing-function: ease-in-out;
+     transition-timing-function: ease-in-out;
+ }
+ 
+ .youzify-upload-photo:hover:before {
+     z-index: 999;
+     right: 0;
+ }
+ 
+ /* Photo Loader*/
+ 
+ .youzify-load-photo {
+     position: absolute;
+     top: 50%;
+     width: 100%;
+     transform: translateY(-50%);
+ }
+ 
+ .youzify-load-photo i {
+     width: 50px;
+     height: 50px;
+     color: #8c8b8b;
+     font-size: 16px;
+     background: #fff;
+     line-height: 50px;
+     -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+     -ms-border-radius: 50%;
+     -o-border-radius: 50%;
+     border-radius: 50%;
+ }
+ 
+ .youzify-load-sccuess i {
+     color: #a6de65;
+ }
+ 
+ .youzify-load-error i {
+     color: #f5756c;
+ }
+ 
+ /**
+  * Delete Photos
+  **/
+ 
+ .youzify-capabilities-account-item,
+ .youzify-delete-account-item {
+     padding: 50px;
+ }
+ 
+ .youzify-delete-account-item #message {
+     background-color: #f9f9f9;
+ }
+ 
+ .youzify-capabilities-account-item label,
+ .youzify-delete-account-item label {
+     color: #898989;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+ }
+ 
+ .youzify-delete-account-item .submit {
+     margin-top: 25px;
+ }
+ 
+ .youzify-delete-account-item #delete-account-button:disabled {
+     background-color: #898989;
+ }
+ 
+ .youzify-delete-account-item #delete-account-button {
+     border: none;
+     color: #fff;
+     font-size: 12px;
+     font-weight: 600;
+     padding: 12px 25px;
+     letter-spacing: 0.03em;
+     background-color: #f8483e;
+     text-transform: uppercase;
+ }
+ 
+ /**
+  * Account Photos
+  **/
+ 
+ .youzify-uploader-change-item {
+     padding: 35px 50px;
+ }
+ 
+ .youzify-uploader-change-item form {
+     display: none;
+ }
+ 
+ .youzify-uploader-change-item h2 {
+     color: #89afc1;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     line-height: 26px;
+     margin-bottom: 5px;
+ }
+ 
+ .youzify-uploader-change-item p a {
+     color: #898989;
+     font-weight: 600;
+     text-decoration: underline;
+ }
+ 
+ .youzify-uploader-change-item p {
+     color: #8a8a8a;
+     font-size: var(--yzfy-primary-font-size);
+     line-height: 26px;
+ }
+ /**
+  * Cover Image
+  **/
+ .youzify-change-cover-item .bp-cover-image {
+     margin-top: 15px;
+ }
+ 
+ /**
+  * 6.0 - Sidebar
+  **/
+ 
+ .youzify .youzify-settings-sidebar {
+     width: 26%;
+     float: left;
+ }
+ 
+ .rtl .youzify .youzify-settings-sidebar {
+     float: right;
+ }
+ 
+ .youzify-account-header {
+     margin-bottom: 35px;
+     background-color: var(--yzfy-card-bg-color);
+ }
+ 
+ .youzify-account-header .youzify-account-img {
+     width: 50px;
+     height: 50px;
+     flex-shrink: 0;
+     max-width: 100%;
+     position: relative;
+     background-size: cover;
+     background-color: #D7D7D7;
+     background-position: center;
+ }
+ 
+/* .youzify-account-header .youzify-account-img img {
+     width: 100%;
+     height: 100%;
+ }*/
+ 
+ .youzify-account-change-photo {
+     position: absolute;
+     bottom: 4px;
+     right: 10px;
+ }
+ 
+ .youzify-account-change-photo i {
+     width: 40px;
+     height: 40px;
+     color: #ffffff;
+     font-size: 18px;
+     cursor: pointer;
+     line-height: 40px;
+     text-align: center;
+     background: #ffc107;
+     background: url(../images/dotted-bg.png),linear-gradient(to left, #F9D423 , #FF9800);
+     background: url(../images/dotted-bg.png),-webkit-linear-gradient(right, #F9D423 , #FF9800);
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-img,
+ .youzify-account-head .youzify-account-head-content {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .youzify-account-head .youzify-account-head-content {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+ }
+ 
+ .youzify-account-head {
+     padding: 25px 15px 25px 25px;
+     display: flex;
+     align-items: center;
+     gap: 12px;
+    justify-content: space-between;
+ }
+ 
+ .youzify-account-head-container {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc( 100% - 60px );
+ }
+
+ .youzify-account-head h2 {
+     width: 100%;
+     color: var(--yzfy-heading-color);
+     margin: 0 0 5px;
+     font-size: var(--yzfy-big-font-size);
+     font-weight: 600;
+     line-height: 24px;
+     text-transform: uppercase;
+ }
+
+.youzify-account-head h2,
+.youzify-account-head span {
+
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
+ .youzify-account-head span {
+     margin: 0;
+     color: #8b8b94;
+     display: block;
+     font-size: var(--yzfy-primary-font-size);
+ }
+ 
+ span.youzify-switch-mode {
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+span.youzify-switch-mode i {
+    font-size: 20px;
+    color: #4a4d51;
+}
+
+span.youzify-switch-mode[data-mode="dark"]:hover {
+    background: #f0f1ff;
+}
+
+span.youzify-switch-mode[data-mode="light"]:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+ 
+span.youzify-switch-mode[data-mode="light"] i {
+    color: #ffd634;
+}
+ 
+.youzify-head-buttons {
+     text-align: center;
+     background: var(--yzfy-card-bg-color);
+     border-top: 1px solid var(--yzfy-card-secondary-bg-color);
+     border-bottom: 1px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .youzify-head-buttons a {
+     width: 100%;
+     padding: 11px;
+     border-radius: 3px;
+     background: #fff;
+ }
+ 
+ .youzify-head-buttons a i {
+     color: #fff;
+     font-size: 18px;
+ }
+ 
+ .youzify-head-buttons .youzify-head-buttons-inner {
+     padding: 5px;
+ }
+ 
+ .youzify-head-buttons .youzify-button-item {
+     width: 20%;
+     float: left;
+     display: block;
+     padding: 4px;
+ }
+ 
+ .youzify-button-item a {
+     background-image:url(../images/dotted-bg.png);
+ }
+ 
+ .youzify-button-item.youzify-home-button a {
+     background-color: #4fc8ff;
+ }
+ 
+ .youzify-button-item.youzify-profile-button a {
+     background-color: #ffc107;
+ }
+ 
+ .youzify-button-item.youzify-networks-button a {
+     background-color: #975dfd;
+ }
+ 
+ .youzify-button-item.youzify-avatar-button a {
+     background-color: #8ed43d;
+ }
+ 
+ .youzify-button-item.youzify-cover-button a {
+     background-color: #f76697;
+ }
+ 
+ .youzify-button-item.youzify-logout-button a {
+     background: #fd603f;
+     background-image: url(../images/dotted-bg.png),linear-gradient(to left,#fd603f,#fe384f);
+     background-image: url(../images/dotted-bg.png),-webkit-linear-gradient(right,#fd603f,#fe384f);
+ }
+ 
+ .youzify-account-header [data-youzify-tooltip]:after,
+ .youzify-account-header .youzify-tooltip:after {
+     font-size: var(--yzfy-primary-font-size);
+ }
+ 
+ .youzify .account-infos .user-links a {
+     color: #fff;
+     padding: 0 8px;
+     font-size: 10px;
+     display: inline-block;
+     letter-spacing: 0.05em;
+     background-color: #89C4F3;
+     text-transform: uppercase;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus {
+     padding: 10px;
+     border-radius: 0;
+     display: none;
+     background: var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus.youzify-show-account-menus {
+     display: block !important;
+ }
+ 
+ .youzify-account-menus .youzify-menu-head {
+     position: relative;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus h2 {
+     margin: 0;
+     display: block;
+     color: #91adbb;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     line-height: 24px;
+     padding: 18px 30px;
+     letter-spacing: 0.03em;
+     text-transform: uppercase;
+ }
+ 
+ .youzify-account-menus .youzify-menu-head i {
+     position: absolute;
+     top: 22px;
+     right: 20px;
+     color: #a3c2d6;
+     cursor: pointer;
+     -webkit-transition: all 0.5s ease-in-out;
+     -moz-transition: all 0.5s ease-in-out;
+     -o-transition: all 0.5s ease-in-out;
+     transition: all 0.5s ease-in-out;
+ }
+ 
+ .rtl .youzify-account-menus .youzify-menu-head i {
+     right: initial;
+     left: 20px;
+ }
+ 
+ .youzify-account-icon {
+     background-color: rgba(0, 0, 0, 0.13);
+     height: 40px;
+     width: 40px;
+     float: left;
+ }
+ 
+ /**
+  * Settings
+  */
+ .youzify-account-settings-menu {
+     background-color: var(--yzfy-card-bg-color);
+     border-radius: 3px;
+     padding: 0;
+     overflow: hidden;
+     margin-bottom: 35px;
+ }
+ 
+ .youzify-account-settings-menu .youzify-account-menu {
+     cursor: pointer;
+     padding: 20px 10px 20px 20px;
+     border-bottom: 1px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .youzify-account-settings-menu .youzify-account-menu:hover {
+     background-color: var(--yzfy-card-secondary-bg-color);
+     -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+     -o-transition: all 0.5s ease;
+     transition: all 0.5s ease;
+ }
+ 
+ .youzify-account-settings-menu .youzify-menu-icon {
+     margin: 0;
+     width: 45px;
+     height: 50px;
+     text-align: left;
+     line-height: 50px;
+ }
+ 
+ .youzify-account-settings-menu .youzify-menu-icon i {
+     color: #fff;
+     width: 35px;
+     height: 35px;
+     cursor: pointer;
+     line-height: 35px;
+     text-align: center;
+     border-radius: 100%;
+ }
+ 
+ .youzify-account-settings-menu .youzify-arrow-bottom {
+     padding: 3px;
+     float: right;
+     cursor: pointer;
+     margin-top: 20px;
+     margin-right: 6px;
+     display: inline-block;
+     border: solid #898989;
+     border-width: 0 1px 1px 0;
+     transform: rotate(45deg);
+     -webkit-transform: rotate(45deg);
+ }
+ 
+ .youzify-account-settings-menu .youzify-menu-head {
+     width: calc( 100% - 65px);
+ }
+ 
+ .youzify-account-settings-menu .youzify-menu-icon,
+ .youzify-account-settings-menu .youzify-menu-head {
+     display: inline-block;
+     vertical-align: middle;
+ }
+ 
+ .youzify-account-settings-menu .youzify-menu-head .youzify-menu-title,
+ .youzify-account-settings-menu .youzify-menu-head .youzify-menu-description {
+     display: block;
+ }
+ 
+ .youzify-account-settings-menu .youzify-menu-head .youzify-menu-title {
+     cursor: pointer;
+     color: var(--yzfy-menu-link-color);
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+ }
+ 
+ .youzify-account-settings-menu .youzify-menu-head .youzify-menu-description {
+     color: #8e8e8e;
+     font-size: var(--yzfy-primary-font-size);
+     margin-top: 5px;
+     font-weight: 400;
+     line-height: 20px;
+ }
+ 
+ .rtl .youzify-account-icon {
+     float: right;
+ }
+ 
+ .youzify-account-link-item {
+     text-align: center;
+ }
+ 
+ .youzify .editfield label[for*="adminsonly"] .field-visibility-text:before,
+ .youzify-account-profile-settings {
+     background: #FFCA6E;
+     background: url(../images/dotted-bg.png),linear-gradient(to left, #F9D423 , #FF4E50);
+     background: url(../images/dotted-bg.png),-webkit-linear-gradient(right, #F9D423 , #FF4E50);
+ }
+ 
+ .youzify .editfield label[for*="loggedin"] .field-visibility-text:before,
+ .youzify-account-account-settings {
+     background: #56ab2f;
+     background: url( ../images/dotted-bg.png ), linear-gradient(to right, #56ab2f , #a8e063);
+     background: url( ../images/dotted-bg.png ),-webkit-linear-gradient(left, #56ab2f , #a8e063);
+ }
+ 
+ .youzify-account-widgets-settings {
+     background: #c154fe;
+     background: url(../images/dotted-bg.png),linear-gradient(to left, #c154fe , #673AB7);
+     background: url(../images/dotted-bg.png),-webkit-linear-gradient(right, #c154fe , #673AB7);
+ }
+ 
+ .youzify .editfield label[for*="public"] .field-visibility-text:before,
+ .youzify-account-view-profile {
+     background-color: #1ac6dc;
+     background-image: url( ../images/dotted-bg.png ),linear-gradient(to left, #24C6DC 0%, #514A9D 100%);
+     background-image: url( ../images/dotted-bg.png ),-webkit-linear-gradient(right, #24C6DC 0%, #514A9D 100%);
+ }
+ 
+ .youzify .editfield label[for*="friends"] .field-visibility-text:before {
+     background: #FF7376;
+     background: url(../images/dotted-bg.png),linear-gradient(to left, #fa6d9d , #ff1e6b);
+     background: url(../images/dotted-bg.png),-webkit-linear-gradient(right, #fa6d9d , #ff1e6b);
+ }
+ 
+ .youzify-account-logout {
+     background: #FF512F;
+     background: url( ../images/dotted-bg.png ),linear-gradient(to left, #FF512F , #DD2476);
+     background: url( ../images/dotted-bg.png ),-webkit-linear-gradient(right, #FF512F , #DD2476);
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus ul {
+     padding: 15px 25px;
+     border-top: 1px solid var(--yzfy-card-secondary-bg-color);
+     padding: 15px 25px;
+     background: var(--yzfy-card-bg-color);
+     border-radius: 3px;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus ul li {
+     line-height: 36px;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus ul li i {
+     width: 25px;
+     height: 25px;
+     color: var(--yzfy-menu-icons-color);
+     font-size: var(--yzfy-big-font-size);
+     line-height: 25px;
+     text-align: center;
+     margin-right: 15px;
+ }
+ 
+ .rtl .youzify-settings-sidebar .youzify-account-menus ul li i {
+     margin-left: 15px;
+     margin-right: 0;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus ul li a {
+     color: var(--yzfy-menu-link-color);
+     font-size: 12.5px;
+     font-weight: 600;
+     display: inline-block;
+     -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+     -o-transition: all 0.5s ease;
+     transition: all 0.5s ease;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus ul li a:hover {
+     padding-left: 8px;
+     color: #89b6d2;
+     text-decoration: none;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus .youzify-active-menu {
+     color: #89b6d2;
+     text-decoration: none;
+ }
+ 
+ .youzify .settings-main-content {
+     width: 74%;
+     float: right;
+     margin-bottom: 35px;
+ }
+ 
+ .rtl .youzify .settings-main-content {
+     float: left;
+ }
+ 
+ .settings-main-content .settings-inner-content {
+     margin-left: 35px;
+     background-color: var(--yzfy-card-bg-color);
+ }
+ 
+ .rtl .settings-main-content .settings-inner-content {
+     margin-left: 0;
+     margin-right: 35px;
+ }
+ 
+ .settings-inner-content .options-section-title {
+     padding: 0 45px;
+     line-height: 85px;
+     border-bottom: 1px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .settings-inner-content .options-section-title h2 {
+     display: inline-block;
+     line-height: inherit;
+     font-weight: 400;
+     font-size: 18px;
+     color: var(--yzfy-heading-color);
+     margin: 0;
+ }
+ 
+ .settings-inner-content .options-section-title h2 i {
+     width: 48px;
+     height: 48px;
+     color: var(--yzfy-icon-text-color);
+     font-size: 20px;
+     line-height: 48px;
+     text-align: center;
+     margin-right: 16px;
+     background: var(--yzfy-icon-bg-color);
+ }
+ 
+ .rtl .settings-inner-content .options-section-title h2 i {
+     margin-left: 16px;
+     margin-right: 0;
+ }
+ 
+ .youzify-account-form-actions{
+     float: right;
+ }
+ 
+ .rtl .youzify-account-form-actions {
+     float: left;
+ }
+ 
+ .youzify-account-item-button {
+     color: #fff;
+     padding: 0 20px;
+     cursor: pointer;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     min-height: 45px;
+     min-width: 135px;
+     line-height: 45px;
+     position: relative;
+     text-align: center;
+     margin-right: 10px;
+     display: inline-block;
+ }
+ 
+ .rtl .youzify-account-item-button {
+     margin-right: 0;
+     margin-left: 10px;
+ }
+ 
+ .youzify-account-item-button:hover {
+     color: #fff;
+ }
+ 
+ #youzify-skill-button {
+     background-color: #81d1e4;
+ }
+ 
+ #youzify-service-button {
+     background-color: #fd8178;
+ }
+ 
+ #youzify-portfolio-button {
+     background-color: #f98a69;
+ }
+ 
+ #youzify-slideshow-button {
+     background-color: #72d0a8;
+ }
+ 
+ .youzify-settings-sidebar .account-infos {
+     margin-bottom: 35px;
+     background-color: #fff;
+ }
+ 
+ /**
+  * 7.0 - Xprofile Fields
+  **/
+ 
+ .youzify .editfield {
+     border-bottom: 1px solid var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .youzify .editfield:last-of-type {
+     border: none;
+ }
+ 
+ .youzify .editfield fieldset {
+     border: none;
+     margin: 25px;
+     padding: 15px 25px;
+ }
+ 
+ 
+ #youzify .editfield fieldset > label,
+ #youzify .editfield fieldset legend {
+     margin: 0;
+     padding: 0;
+     border: none;
+     color: var(--yzfy-option-label-color);
+     display: block;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+ }
+ 
+ #youzify .editfield fieldset > label {
+     margin-bottom: 15px;
+ }
+ 
+ #youzify .editfield legend .bp-required-field-label,
+ #youzify .editfield label .bp-required-field-label {
+     color: #8c8c8c;
+     font-size: 10px;
+     margin-left: 5px;
+     font-weight: 400;
+     line-height: 12px;
+     border-radius: 2px;
+     padding: 2px 7px 3px;
+     display: inline-block;
+     text-transform: uppercase;
+     background-color: var(--yzfy-card-secondary-bg-color);
+ }
+ 
+ .rtl .youzify .editfield legend .bp-required-field-label,
+ .rtl .youzify .editfield label .bp-required-field-label {
+     margin-left: 0;
+     margin-right: 5px;
+ }
+ 
+ #youzify .editfield textarea,
+ #youzify .editfield input:not([type=radio]):not([type=checkbox]):not( .ed_button ) {
+     width: 100%;
+     color: var(--yzfy-option-input-color);
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 500;
+     padding: 12px 15px;
+     border: 1px solid var(--yzfy-card-secondary-bg-color);
+     box-shadow: none !important;
+     background-color: var(--yzfy-option-input-bg-color);
+ }
+ 
+ .youzify .editfield select option {
+     padding: 5px 0;
+ }
+ 
+ .youzify .editfield select {
+     border: 0;
+     outline: 0;
+     width: 100%;
+     color: #949494;
+     cursor: pointer;
+     font-size: var(--yzfy-primary-font-size);
+     height: 45px;
+     line-height: 45px;
+     border-radius: 3px;
+     padding: 0 20px;
+     display: inline-block;
+     background-color: #f6f6f6;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+ }
+ 
+ .youzify .editfield .input-options label {
+     color: #898989;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     margin-right: 8px;
+ }
+ 
+ #youzify .editfield select[multiple=multiple] {
+     height: auto;
+     padding: 0;
+     margin: 0;
+ }
+ 
+ #youzify .editfield select[multiple=multiple] option {
+     padding: 8px 12px;
+ }
+ 
+ .youzify .editfield select[multiple=multiple]:before {
+     content: '';
+     display: none;
+ }
+ 
+ .youzify .editfield .input-options.datebox-selects label {
+     display: inline-block;
+ }
+ 
+ .youzify .editfield .input-options.datebox-selects select,
+ .youzify .editfield .input-options.datebox-selects .nice-select {
+     margin-right: 12px;
+     width: initial;
+ }
+ 
+ .youzify .editfield .input-options.datebox-selects .nice-select .list {
+     width: initial;
+ }
+ 
+ .youzify .editfield.field_type_radio .description,
+ .youzify .editfield.field_type_checkbox .description,
+ .youzify .editfield.field_type_datebox .description {
+     margin: 0 0 15px 0;
+ }
+ 
+ .youzify .editfield.field_type_textarea .wp-editor-container {
+     border: 1px solid #eee;
+ }
+ 
+ .youzify-membership .wp-core-ui .quicktags-toolbar input.button.button-small,
+ .youzify .wp-core-ui .quicktags-toolbar input.button.button-small {
+     width: initial;
+     line-height:0;
+ }
+ 
+ .youzify .editfield .description {
+     display: block;
+     color: var(--yzfy-option-description-color);
+     font-size: var(--yzfy-primary-font-size);
+     margin: 15px 0 0;
+     line-height: 18px;
+     margin-right: 15px;
+ }
+ 
+ .rtl .youzify .editfield .description {
+     margin-right: 0;
+     margin-left: 15px;
+ }
+ 
+ .youzify .editfield .field-visibility-settings {
+     display: none;
+ }
+ 
+ .youzify .editfield .field-visibility-settings fieldset {
+     margin: 15px 0;
+     border: 1px solid #eee;
+     padding: 10px 15px 18px;
+ }
+ 
+ .youzify .editfield .field-visibility-settings fieldset legend {
+     padding: 0 12px;
+ }
+ 
+ .youzify .editfield label .field-visibility-text {
+     color: #929292;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     line-height: 18px;
+     padding-right: 15px;
+ }
+ 
+ .rtl .youzify .editfield label .field-visibility-text {
+     padding-right: 5px;
+     padding-left: 15px;
+ }
+ 
+ .youzify .editfield label[for*="public"] .field-visibility-text:before {
+     content: '\f57e';
+ }
+ 
+ .youzify .editfield label[for*="adminsonly"] .field-visibility-text:before {
+     content: '\f023';
+ }
+ 
+ .youzify .editfield label[for*="loggedin"] .field-visibility-text:before {
+     content: '\f0c0';
+ }
+ 
+ .youzify .editfield label[for*="friends"] .field-visibility-text:before {
+     content: '\f2b5';
+ }
+ 
+ .youzify .editfield label .field-visibility-text:before {
+     color: #898989;
+     cursor: pointer;
+     font-weight: 600;
+     font-size: inherit;
+     text-rendering: auto;
+     display: inline-block;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     font-family: "Font Awesome 5 Free" !important;
+ }
+ 
+ .youzify .editfield label .field-visibility-text:before {
+     width: 30px;
+     color: #fff;
+     height: 30px;
+     line-height: 30px;
+     text-align: center;
+     margin: 0 8px 0 4px;
+     border-radius: 100%;
+     background-color: #eaeaea;
+ }
+ 
+ .rtl .youzify .editfield label .field-visibility-text:before {
+     margin: 0 0 0 8px;
+ }
+ 
+ .youzify .editfield .clear-value {
+     color: #fff;
+     font-size: 11px;
+     padding: 0 15px;
+     margin-top: 15px;
+     font-weight: 600;
+     line-height: 28px;
+     text-align: center;
+     display: inline-block;
+     letter-spacing: 0.03em;
+     text-transform: uppercase;
+ }
+ 
+ .youzify .editfield .checkbox-options label,
+ .youzify .editfield .radio-button-options label {
+     color: #929292;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     line-height: 18px;
+     margin-right: 20px;
+     display: inline-block;
+ }
+ 
+ .youzify .editfield .checkbox-options label input,
+ .youzify .editfield .radio-button-options label input {
+     width: initial;
+     margin-right: 7px;
+ }
+ 
+ .rtl .youzify .editfield .checkbox-options label input,
+ .rtl .youzify .editfield .radio-radio-button-options label input {
+     margin-left: 7px;
+     margin-right: 0;
+ }
+ 
+ .rtl .youzify .editfield .checkbox-options label,
+ .rtl .youzify .editfield .radio-button-options label {
+     margin-right: 0;
+     margin-left: 20px;
+ }
+ 
+ /**
+  * Checkboxes.
+  */
+ .youzify .editfield .checkbox-options label {
+     color: #929292;
+     font-size: var(--yzfy-primary-font-size);
+     display: inline-block;
+     margin: 0 20px 10px 0;
+ }
+ 
+ .youzify .editfield .checkbox-options label input {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   -ms-appearance: none;
+   -o-appearance: none;
+   appearance: none;
+   position: relative;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   height: 22px;
+   width: 22px;
+   transition: all 0.15s ease-out 0s;
+   background: #f1f1f1;
+   border: none;
+   box-shadow: none !important;
+   color: #fff;
+   cursor: pointer;
+   display: inline-block;
+   margin-right: 0.5rem;
+   outline: none;
+ }
+ 
+ .youzify .editfield .checkbox-options input:hover {
+   background: #cccaca;
+ }
+ 
+ .youzify .editfield .checkbox-options input:active {
+     outline: none;
+ }
+ 
+ .youzify .editfield .checkbox-options input:checked {
+   background: #8dafbe;
+   outline: none;
+ }
+ 
+ .youzify .editfield .checkbox-options input:checked::before {
+     width: 22px;
+     position: absolute;
+     content: '✔';
+     margin: 0;
+     display: block;
+     font-size: 12px;
+     line-height: 22px;
+     text-align: center;
+     color: #fff;
+ }
+ 
+ .youzify .editfield .checkbox-options input:checked::after {
+   background: #40e0d0;
+   content: '';
+   display: block;
+   position: relative;
+   z-index: 100;
+ }
+ 
+ .youzify .editfield .field-visibility-settings-notoggle,
+ .youzify .editfield .field-visibility-settings-toggle {
+     color: #8a8a8a;
+     font-size: var(--yzfy-primary-font-size);
+     margin-top: 15px;
+     padding: 12px 25px;
+     background-color: var(--yzfy-card-secondary-bg-color);
+     border-left: 5px solid #b4b3b3;
+ }
+ 
+ .rtl .youzify .editfield .field-visibility-settings-notoggle,
+ .rtl .youzify .editfield .field-visibility-settings-toggle {
+     border-left: none;
+     border-right: 5px solid #b4b3b3;
+ }
+ 
+ .youzify .editfield label input {
+     vertical-align: middle;
+ }
+ 
+ .youzify .editfield .field-visibility-settings input {
+     opacity: 1;
+     width: initial;
+     height: initial;
+     position: initial;
+     margin-right: 3px;
+ }
+ 
+ .youzify .editfield .field-visibility-settings .field-visibility-settings-close {
+     color: #fff;
+     border: none;
+     font-size: 11px;
+     font-weight: 600;
+     padding: 8px 15px;
+     text-align: center;
+     display: inline-block;
+     letter-spacing: 0.03em;
+     background-color: #89afc1;
+     text-transform: uppercase;
+ }
+ 
+ .youzify .editfield .field-visibility-settings-notoggle .current-visibility-level,
+ .youzify .editfield .field-visibility-settings-toggle .current-visibility-level,
+ .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link {
+     padding: 0;
+     text-align: center;
+     line-height: 30px;
+     font-weight: 600;
+     border-radius: 50px;
+     display: inline-block;
+ }
+ 
+ .youzify .editfield .field-visibility-settings-notoggle .current-visibility-level,
+ .youzify .editfield .field-visibility-settings-toggle .current-visibility-level {
+     font-size: var(--yzfy-primary-font-size);
+     margin-left: 8px;
+     min-width: 115px;
+     background-color: var(--yzfy-card-bg-color);
+     border: 1px solid var(--yzfy-primary-border-color);
+ }
+ 
+ .rtl .youzify .editfield .field-visibility-settings-notoggle .current-visibility-level,
+ .rtl .youzify .editfield .field-visibility-settings-toggle .current-visibility-level {
+     margin-left: 0;
+     margin-right: 8px;
+ }
+ 
+ .youzify .editfield .field-visibility-settings-notoggle .visibility-toggle-link,
+ .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link {
+     color: #fff;
+     border: none;
+     font-size: 11px;
+     min-width: 100px;
+     margin-left: 8px;
+     letter-spacing: 0.03em;
+     background-color: #89afc1;
+     text-transform: uppercase;
+ }
+ 
+ .rtl .youzify .editfield .field-visibility-settings-notoggle .visibility-toggle-link,
+ .rtl .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link {
+     margin-left: 0;
+     margin-right: 8px;
+ }
+ 
+ .youzify .editfield .clear-value,
+ .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link,
+ .youzify .editfield .field-visibility-settings-notoggle .visibility-toggle-link,
+ .youzify .editfield .field-visibility-settings .field-visibility-settings-close {
+     background-color: #7ea3b5;
+     background-image: url(../images/dotted-bg.png),linear-gradient(to left, #00BCD4 0%, #7ea3b5 100%);
+     background-image: url(../images/dotted-bg.png),-webkit-linear-gradient(right, #00BCD4 0%, #7ea3b5 100%);
+ }
+ 
+ .youzify .editfield .field-visibility-settings-notoggle .visibility-toggle-link i,
+ .youzify .editfield .field-visibility-settings .field-visibility-settings-close i,
+ .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link i {
+     font-size: 12px;
+     margin-right: 5px;
+ }
+ 
+ .rtl .youzify .editfield .field-visibility-settings-notoggle .visibility-toggle-link i,
+ .rtl .youzify .editfield .field-visibility-settings .field-visibility-settings-close i,
+ .rtl .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link i {
+     margin-right: 0;
+     margin-left: 5px;
+ }
+ 
+ /**
+  * Messages
+  */
+ .youzify-account-page #message {
+     margin-left: 35px;
+     background-color: var(--yzfy-card-bg-color);
+ }
+ 
+ .youzify-account-page .youzify-delete-account-item #message {
+     margin-left: 0;
+     background: #f5f5f5;
+ }
+ 
+ /**
+  * Deactivator Plugin.
+  */
+ .youzify-bp-deactivator-active,
+ .youzify-bp-deactivator-inactive {
+     color: #fff;
+     display: block;
+     font-weight: 600;
+     text-align: center;
+     padding: 30px 15px;
+     text-transform: uppercase;
+ 
+ }
+ 
+ .youzify-bp-deactivator-active {
+     background: #8fcf45;
+ }
+ 
+ .youzify-bp-deactivator-inactive {
+     background: #f44336;
+ }
+ 
+ /**
+  * Block Members
+  */
+ .youzify-section-content tr {
+     border-top: 1px solid #eee;
+     border-bottom: 1px solid #eee;
+ }
+ 
+ #youzify-block-member .youzify-section-content form {
+     margin-bottom: 35px;
+ }
+ 
+ .youzify-section-content form .users-blocked tr td strong {
+     display: block;
+     margin-bottom: 0;
+ }
+ 
+ #youzify-block-member .youzify-section-content table:last-of-type {
+     margin-bottom: 0;
+ }
+ 
+ #youzify-block-member .youzify-section-content form table {
+     margin-bottom: 35px;
+ }
+ 
+ #youzify-block-member .youzify-section-content {
+     padding: 35px 55px;
+ }
+ 
+ .youzify-section-content input[type="submit"] {
+     border: none;
+     cursor: pointer;
+     font-size: var(--yzfy-primary-font-size);
+     font-weight: 600;
+     min-width: 135px;
+     line-height: 24px;
+     padding: 9px 20px;
+     position: relative;
+     text-align: center;
+     display: inline-block;
+     vertical-align: middle;
+     background-color: #a3e05c;
+ }
+ 
+ .youzify-section-content .users-blocked tr:first-of-type td {
+     padding: 0;
+ }
+ 
+ .youzify-section-content .users-blocked tr:nth-of-type(2),
+ .youzify-section-content .users-blocked tr:first-of-type {
+     border: none;
+ }
+ 
+ .youzify-section-content .users-blocked tr td strong {
+     font-weight: 600;
+ }
+ 
+ .youzify-section-content .users-blocked tr td {
+     font-size: var(--yzfy-big-font-size);
+     color: #898989;
+     padding: 15px 0;
+ }
+ .youzify-section-content .users-blocked tr td a {
+     font-size: var(--yzfy-big-font-size);
+     color: #898989;
+     font-weight: 600;
+ 
+ }
+ 
+ .youzify-section-content .users-blocked tr td.actions {
+     text-align: center;
+ }
+ 
+ .youzify-section-content .users-blocked tr td.actions a {
+     background: #eee;
+     padding: 5px 15px;
+     border-radius: 3px;
+     font-size: var(--yzfy-primary-font-size);
+ }
+ 
+ /**
+  * Copyright
+  */
+ 
+ .youzify-copyright {
+     float: right;
+ }
+ 
+ .rtl .youzify-copyright {
+     float: left;
+ }
+ 
+ .youzify-copyright p {
+     margin: 0;
+     padding: 0;
+     color: #a2a0a0;
+     font-size: var(--yzfy-primary-font-size);
+     line-height: inherit;
+ }
+ 
+ .youzify-copyright p a {
+     color: #7091a0;
+     font-weight: 600;
+     margin-left: 4px;
+     text-decoration: none;
+ }
+ 
+ /**
+  * More CSS
+  */
+ 
+ #youzify .option-content input:not([type=radio]):not(.uk-upload-button):not(.wp-color-picker):not(.wp-picker-clear),
+ #youzify .editfield input:not([type=radio]):not([type=checkbox]),
+ .settings-inner-content .options-section-title h2,
+ .youzify .option-content input:not([type=radio]),
+ .youzify-settings-sidebar .youzify-account-menus ul li a,
+ .youzify-cphoto-options .youzify-upload-photo,
+ .youzify-settings-sidebar .youzify-account-menus h2,
+ .youzify .option-content textarea,
+ .youzify .option-content select,
+ .uk-option-item .option-desc,
+ .youzify-uploader-change-item h2,
+ .youzify-account-header ul li a,
+ .youzify .action-button,
+ .youzify-account-head span,
+ .uk-option-item label,
+ .youzify-account-head h2,
+ .youzify-account-item-button,
+ .youzify-no-content {
+     font-family: var(--yzfy-font-family), sans-serif;
+ }
+ 
+ #youzify-data-export a,
+ #bp-data-export button,
+ .youzify-account-page .youzify-export-item .ukai-button-item a,
+ .youzify .option-content input:not([type=radio]),
+ .youzify fieldset input:not([type=radio]),
+ .youzify .option-content .youzify-upload-photo,
+ .youzify .account-infos .user-links a,
+ .youzify-cphoto-options .youzify-wg-container,
+ .youzify-wg-services-options .youzify-wg-item,
+ .youzify .option-content textarea,
+ .youzify-account-page .youzify-delete-item,
+ .youzify-form-msg .youzify_msg,
+ .youzify-save-options,
+ .youzify-upload-photo,
+ .youzify-scrolltotop,
+ .youzify-no-content {
+     border-radius: 2px;
+     -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+     -ms-border-radius: 2px;
+     -o-border-radius: 2px;
+ }
+ 
+ .youzify .editfield .field-visibility-settings .field-visibility-settings-close,
+ .youzify-uploader-change-item .bp-uploader-progress div.error,
+ .youzify-uploader-change-item #avatar-crop-actions a.button,
+ .youzify .editfield .field-visibility-settings-toggle,
+ .youzify-uploader-change-item div.bp-cover-image-status p,
+ .youzify .editfield .field-visibility-settings-notoggle,
+ .youzify .editfield .field-visibility-settings-toggle,
+ .settings-inner-content .options-section-title h2 i,
+ .youzify-uploader-change-item div.bp-avatar-status p,
+ .youzify-uploader-change-item #bp-delete-cover-image,
+ .settings-main-content .settings-inner-content,
+ .youzify-delete-account-item #delete-account-button,
+ .youzify-uploader-change-item #bp-browse-button,
+ .youzify-uploader-change-item #bp-delete-avatar,
+ .youzify .editfield .clear-value,
+ .youzify-account-header ul li a,
+ .youzify .action-button,
+ .youzify .youzify-wg-item,
+ .youzify-account-header,
+ .youzify-account-item-button,
+ .youzify-account-menus {
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     -ms-border-radius: 3px;
+     -o-border-radius: 3px;
+ }
+ 
+ .youzify-settings-sidebar .youzify-account-menus ul li i,
+ .youzify-cphoto-options .youzify-photo-preview,
+ .youzify-uploader-item .youzify-delete-photo,
+ .youzify-settings-sidebar .youzify-account-img,
+ .youzify-settings-sidebar .youzify-account-img img,
+ .youzify-account-change-photo i {
+     border-radius: 100%;
+     -webkit-border-radius: 100%;
+     -moz-border-radius: 100%;
+     -ms-border-radius: 100%;
+     -o-border-radius: 100%;
+ }
+ 
+ .youzify .youzify-wg-skills-options .youzify-wg-item,
+ .youzify-cphoto-options .youzify-wg-container,
+ .youzify-wg-services-options .youzify-wg-item {
+     box-shadow: 0 0 20px var(--yzfy-card-bg-color);
+     -moz-box-shadow: 0 0 20px var(--yzfy-card-bg-color);
+     -webkit-box-shadow: 0 0 20px var(--yzfy-card-bg-color);
+ }
+ 
+ #youzify-slideshow .youzify-settings-actions,
+ #youzify-portfolio .youzify-settings-actions,
+ #youzify-services .youzify-settings-actions,
+ #youzify-slideshow .options-section-title,
+ #youzify-portfolio .options-section-title,
+ #youzify-services .options-section-title,
+ #youzify-skills .youzify-settings-actions,
+ #youzify-skills .options-section-title {
+     border: none;
+ }
+ 
+ /**
+  * Profile Completness Notice.
+  */
+ 
+ .yzpc-notice-content {
+     padding: 0;
+     color: #8b8b94;
+     font-weight: 600;
+     font-size: var(--yzfy-primary-font-size);
+     border-radius: 3px;
+     margin-bottom: 14px;
+     display: inline-block;
+ }
+ 
+ .yzpc-notice-content i {
+     width: 30px;
+     color: #fff;
+     height: 30px;
+     margin-right: 10px;
+     line-height: 30px;
+     border-radius: 3px;
+     text-align: center;
+     background-color: #fe434b;
+ }
+ 
+ /**
+  * Media Queries
+  */
+ @media screen and ( max-width: 1024px ) {
+ 
+     .youzify-account-page #message {
+         margin-left: 0;
+     }
+ 
+     .youzify-page-main-content {
+         padding: 35px 35px 0 35px;
+     }
+ 
+     .rtl .youzify .youzify-settings-sidebar,
+     .rtl .youzify .settings-main-content,
+     .youzify .youzify-settings-sidebar,
+     .youzify .settings-main-content {
+         width: 100%;
+         float: none;
+     }
+     .rtl .settings-main-content .settings-inner-content,
+     .settings-main-content .settings-inner-content {
+         margin: 0;
+     }
+ 
+     .youzify-account-header ul li a {
+         margin: auto;
+         max-width: 200px;
+     }
+ 
+     .youzify-account-settings-menu,
+     .youzify .settings-main-content,
+     .youzify-account-header,
+     .option-infos {
+         margin-bottom: 15px;
+     }
+ 
+     /*  Services & Skills */
+ 
+     .youzify .youzify-wg-skills-options .youzify-wg-item .uk-option-item,
+     .youzify .youzify-wg-services-options .youzify-wg-item .uk-option-item {
+         float: none;
+         width: 100%;
+         margin-bottom: 35px;
+     }
+ 
+     .youzify .youzify-wg-skills-options .youzify-wg-item:last-of-type,
+     .youzify .youzify-wg-skills-options .uk-option-item:last-of-type,
+     .youzify .youzify-wg-services-options .uk-option-item:last-of-type,
+     .youzify .youzify-wg-services-options .youzify-wg-item:last-of-type {
+         margin-bottom: 0;
+     }
+ 
+     .youzify-wg-services-options .youzify-wg-item textarea {
+         height: initial;
+     }
+ 
+     /* Portfolio & Slideshow */
+     .youzify .youzify-cphoto-options .youzify-wg-item {
+         width: 50%;
+     }
+ 
+     .youzify .youzify-delete-item {
+         opacity: 1;
+     }
+ 
+     .youzify-uploader-item .youzify-delete-photo {
+         opacity: 1;
+     }
+ 
+ }
+ 
+ @media screen and ( max-width: 480px ) {
+ 
+     .youzify-capabilities-account-item,
+     .youzify-delete-account-item,
+     .youzify-uploader-change-item {
+         padding: 25px;
+     }
+ 
+     .youzify .editfield .field-visibility-settings label {
+         display: block;
+         padding: 8px 0;
+     }
+ 
+     .youzify .editfield input:not([type=radio]):not([type=checkbox]) {
+         width: 100%;
+     }
+ 
+     .youzify .editfield fieldset {
+         padding: 15px 0;
+     }
+ 
+     .youzify .editfield .field-visibility-settings-notoggle,
+     .youzify .editfield .field-visibility-settings-toggle {
+         padding: 12px 15px;
+     }
+ 
+     .youzify .editfield .field-visibility-settings-notoggle .visibility-toggle-link,
+     .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link {
+         margin-left: 0;
+         margin-top: 15px;
+     }
+ 
+     .youzify-page-main-content {
+         padding: 25px 25px 0 25px;
+     }
+ 
+     .rtl .youzify-account-form-actions,
+     .youzify-account-form-actions {
+         float: none;
+         display: -webkit-box;
+         display: -moz-box;
+         display: box;
+         -webkit-box-orient: vertical;
+         -moz-box-orient: vertical;
+         box-orient: vertical;
+     }
+ 
+     .settings-inner-content .youzify-save-options,
+     .youzify-account-item-button {
+         width: 100%;
+         margin: auto;
+         display: block;
+         line-height: 50px;
+     }
+ 
+     .youzify-account-item-button {
+         margin-top: 15px;
+         -webkit-box-ordinal-group: 3;
+         -moz-box-ordinal-group: 3;
+         box-ordinal-group: 3;
+     }
+ 
+     .settings-inner-content .options-section-title .youzify-save-options {
+         margin-top: 20px;
+         -webkit-box-ordinal-group: 2;
+         -moz-box-ordinal-group: 2;
+         box-ordinal-group: 2;
+     }
+ 
+     .settings-inner-content .options-section-title {
+         padding: 25px;
+         line-height: 35px;
+         text-align: center;
+         border-top: 8px solid #aecfde;
+     }
+ 
+     .settings-inner-content .options-section-title h2 {
+         display: block;
+         font-size: 16px;
+         text-align: center;
+     }
+ 
+     .rtl .settings-inner-content .options-section-title h2 i,
+     .settings-inner-content .options-section-title h2 i {
+         display: table;
+         font-size: var(--yzfy-big-font-size);
+         margin: 0 auto 13px;
+     }
+ 
+     .youzify-section-content > .uk-option-item {
+         padding: 25px;
+     }
+ 
+     .option-infos,
+     .option-content {
+         width: 100%;
+     }
+ 
+     .youzify .youzify-settings-actions {
+         padding: 25px;
+         line-height: initial;
+     }
+ 
+     .youzify .uk-upload-photo .uk-photo-url,
+     .youzify .option-content input {
+         width: 100%;
+     }
+ 
+     .youzify .uk-upload-photo .uk-upload-button,
+     .uk-upload-photo .uk-upload-button {
+         margin: 15px 0 0 !important;
+         display: inherit;
+     }
+ 
+     .youzify .uk-option-item select {
+         display: flex;
+     }
+ 
+     .youzify .youzify-wg-opts {
+         padding: 25px;
+     }
+ 
+     #youzify .option-content
+     input:not([type=radio]):not(.uk-upload-button):not(.youzify-picker-input):not(.wp-picker-clear) {
+         height: 45px;
+         margin-bottom: 0;
+         width: 100% !important;
+     }
+ 
+     .uk-photo-preview {
+         margin: 20px auto 0;
+     }
+ 
+     /* Skills & Services */
+     .youzify-wg-services-options .uk-option-item .youzify-option-inner,
+     .youzify-wg-skills-options .uk-option-item .youzify-option-inner {
+         padding: 0 25px;
+     }
+ 
+     .youzify .youzify-wg-services-options .youzify-wg-item,
+     .youzify .youzify-wg-skills-options .youzify-wg-item,
+     .youzify .youzify-cphoto-options .youzify-wg-item {
+         margin-bottom: 25px;
+     }
+ 
+     .youzify .youzify-wg-skills-options .youzify-wg-item,
+     .youzify .youzify-wg-services-options .youzify-wg-item {
+         border-left: none;
+     }
+ 
+     .youzify-wg-skills-options .youzify-wg-item {
+         border-top: 8px solid #81d1e4;
+     }
+ 
+     .youzify-wg-services-options .youzify-wg-item {
+         border-top: 8px solid #fd8178;
+     }
+ 
+     /* Portfolio & Slideshow */
+     .youzify .youzify-cphoto-options .youzify-wg-item {
+         width: 100%;
+         float: none;
+     }
+ 
+     .youzify .youzify-cphoto-options .youzify-wg-item:last-of-type,
+     .youzify .youzify-cphoto-options .youzify-no-content {
+         margin: 0;
+     }
+ 
+     .youzify-cphoto-options .youzify-wg-container {
+         margin: 0;
+     }
+ 
+     .youzify-cphoto-options .youzify-wg-item .youzify-delete-item {
+         right: 10px;
+     }
+ 
+     .rtl .youzify-copyright,
+     .youzify-copyright {
+         float: none;
+         margin-top: 20px;
+         text-align: center;
+     }
+ 
+     .youzify-copyright p {
+         line-height: 28px;
+     }
+ 
+     .youzify-uploader-item {
+         margin-top: 15px;
+         text-align: center;
+     }
+ 
+     .youzify-uploader-item .youzify-photo-preview {
+         margin:25px auto 0;
+     }
+ 
+     .youzify.youzify-account-page .nice-select {
+         width: 100%;
+         height: auto;
+         max-width: 100%;
+     }
+ 
+     .youzify-user-provider-box {
+         padding: 25px;
+         text-align: center;
+     }
+ 
+     .youzify-user-provider-box .youzify-user-provider-img {
+         margin: 0 auto 15px;
+     }
+ 
+     .youzify-user-provider-box .youzify-user-provider-data,
+     .youzify-user-provider-box .youzify-user-provider-img {
+         display: block;
+     }
+ 
+     .rtl .youzify-user-provider-box .youzify-user-provider-unlink,
+     .youzify-user-provider-box .youzify-user-provider-unlink {
+         float: none;
+         margin-top: 15px;
+     }
+ 
+     .rtl .youzify .editfield .input-options.datebox-selects label {
+         margin-bottom: 15px;
+         display: block;
+     }
+ 
+     .rtl .youzify .editfield .input-options.datebox-selects .nice-select,
+     .rtl .youzify .editfield .input-options.datebox-selects select {
+         margin-right: 0;
+         margin-bottom: 20px;
+     }
+ 
+ }
+ 
+ @media screen and ( max-width: 375px ) {
+ 
+     .youzify-capabilities-account-item,
+     .youzify-delete-account-item {
+         padding: 18px;
+     }
+ 
+     .youzify .editfield .field-visibility-settings-notoggle,
+     .youzify .editfield .field-visibility-settings-toggle {
+         text-align: center;
+         padding: 20px;
+     }
+ 
+     .youzify .editfield .field-visibility-settings-notoggle .visibility-toggle-link,
+     .youzify .editfield .field-visibility-settings-toggle .visibility-toggle-link,
+     .youzify .editfield .field-visibility-settings-notoggle .current-visibility-level,
+     .youzify .editfield .field-visibility-settings-toggle .current-visibility-level {
+         width: 100%;
+         padding: 5px;
+         display: block;
+         margin: 13px 0 0 0;
+     }
+ 
+     .youzify-account-page #message {
+         margin-bottom: 25px !important;
+     }
+ 
+ }
