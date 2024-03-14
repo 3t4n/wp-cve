@@ -1,0 +1,1 @@
+jQuery(document).ready((function(t){t("[data-piotnetforms-dropdown-trigger]").click((function(o){o.preventDefault(),t(this).closest("[data-piotnetforms-dropdown]").find("[data-piotnetforms-dropdown-content]").toggle()}))}));
