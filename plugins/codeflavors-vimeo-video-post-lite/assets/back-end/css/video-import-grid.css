@@ -1,0 +1,314 @@
+/**
+ * Query messages
+ */
+#cvm-query-messages{
+	margin:1em 0;
+	font-size:1.2em;
+	border-top:1px #EEEEEE solid;
+	padding-top:1em;
+}
+	#cvm-query-messages .loading{
+		font-style:italic;
+		color:#999999;
+		background:url(../images/loading-small.gif) no-repeat left center;
+		padding-left:20px;
+	}
+
+.vimeo-error{
+	color:#FF0000;	
+}
+
+.filter-views{
+	float:left;
+	width:100%;
+	clear:both;
+	padding-bottom:20px;
+}
+
+
+
+/* Single video result display */
+.cvm-video{
+	margin-bottom:1.5em;
+	overflow:hidden;
+	padding:0;
+	border:1px #CCCCCC solid;
+	display:block;
+	position:relative;
+}
+	/* Video added to import queue */
+	.cvm-video.status-queued{
+		background:#CCCCCC;
+		border:1px #0085ba solid;
+	}
+	/* Video imported successfully */
+	.cvm-video.status-done{
+		border:1px #000000 solid;
+		background:#FFFFFF;
+	}
+	/* Video is currently saving */
+	.cvm-video.status-saving{}
+	/* Video import issued an error */
+	.cvm-video.status-error{
+		border-color:#FF0000;
+	}
+	
+		/**
+		 * Loader cover
+		 */
+		.cvm-video .loading{
+			position:absolute;
+			z-index:200;
+			width:100%;
+			height:100%;
+			background-image: url(../images/loading.gif);
+			background-position:center center;
+			background-repeat:no-repeat;
+			top:0;
+			left:0;
+			background-color:rgba(0, 0, 0, 0.7);
+		}
+	
+	
+		.cvm-video .details{
+			padding:.5em;
+		}	
+			.cvm-video .details h4{
+				margin:.2em 0 0;
+			}
+				.cvm-video .details h4 a{
+					white-space: nowrap;
+					text-overflow: ellipsis;	
+					overflow:hidden;
+					display:block;
+				}
+			
+			.cvm-video .details .meta{
+				font-size:.9em;	
+				white-space: nowrap;
+			}	
+				.cvm-video .details .meta span.publish-date{
+					padding-right: 10px;
+				}
+				.cvm-video .details .meta span.views{
+					padding-left:3px;
+				}
+				.cvm-video .details .meta span.views::before{
+					font: 14px/14px dashicons;
+					content: "\f177";
+					padding-right:2px;
+					color:#999999;
+				}
+				.cvm-video .details .meta span.likes{
+					padding-left:3px;
+				}
+				.cvm-video .details .meta span.likes::before{
+					font: 12px/12px dashicons;
+					content: "\f529";
+					padding-right:2px;
+					color:#999999;
+				}
+				.cvm-video .details .meta span.comments{
+					padding-left:3px;
+				}		
+				.cvm-video .details .meta span.comments::before{
+					font: 12px/10px dashicons;
+					content: "\f101";
+					padding-right:2px;
+					color:#999999;
+				}
+			
+	.cvm-video .cvm-thumbnail{
+		text-align:center;
+		border:1px #CCCCCC none;
+		display:block;
+		position:relative;
+	}
+		.cvm-video .cvm-thumbnail img{
+			max-width:100%;
+			width:100%;
+		}
+		.cvm-video .cvm-thumbnail span.duration{
+			position:absolute;
+			background:#CCCCCC;
+			left:2px;
+			top:2px;
+			padding:.1em .5em;
+		}
+		.cvm-video .cvm-thumbnail span.private{
+		    background: rgba(255,77,77,.75) none repeat scroll 0 0;
+		    border-radius: 5px;
+		    height: 25px;
+		    position: absolute;
+		    right: 4px;
+		    top: 4px;
+		    width: 25px;
+		    cursor:pointer;
+		}
+			.cvm-video .cvm-thumbnail span.private.embed{
+				top:33px;
+			}
+			.cvm-video .cvm-thumbnail span.private.embed.top{
+				top:3px;
+			}
+			.cvm-video .cvm-thumbnail span.private::after{
+				color: #ffffff;
+				content: "\f160";
+				font: 20px/23px "dashicons";
+			}
+			.cvm-video .cvm-thumbnail span.private.embed::after{
+				content: "\f475";
+				font: 20px/25px "dashicons";
+			}
+		
+	.cvm-video div.actions{
+		width:100%;
+		height: 50px;
+		overflow:hidden;
+		padding:10px 0 0;
+	}	
+		.cvm-video div.actions span.success{
+			
+		}
+		.cvm-video div.actions span.error{
+			color:#FF0000;
+			font-size:.9em;
+			text-align:justify;
+		}
+		.cvm-video div.actions span.success{
+			color:#008000;
+			font-size:1em;
+			text-align:justify;
+			line-height:2em;
+			padding-left:1em;
+		}
+
+.cvm_video.load-videos{
+	
+}
+	.cvm_video.load-videos a{
+		display: block;
+	    position: relative;
+	    text-decoration: none;
+	    z-index: 1;
+	}
+	.cvm_video.load-videos a::after{
+		background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	    border: 5px dashed rgba(0, 0, 0, 0.1);
+	    bottom: 0;
+	    box-sizing: border-box;
+	    content: "";
+	    display: block;
+	    left: 0;
+	    padding: 0;
+	    position: absolute;
+	    right: 0;
+	    text-shadow: none;
+	    top: 0;
+	}
+	.cvm_video.load-videos .thumbnail::after{
+		padding-top:75%;
+		content: "";
+		display:block;
+	}
+		.cvm_video.load-videos .thumbnail span::after{
+			background: rgba(153, 153, 153, 0.1) none repeat scroll 0 0;
+		    border-radius: 50%;
+		    color: rgb(153, 153, 153);
+		    content: "\f132";
+		    display: inline-block;
+		    font: 74px/115px dashicons;
+		    height: 100px;
+		    left: 50%;
+		    margin-left: -50px;
+		    padding: 0;
+		    position: absolute;
+		    text-align: center;
+		    text-indent: -4px;
+		    text-shadow: none;
+		    top: 30%;
+		    vertical-align: middle;
+		    width: 100px;
+		    z-index: 4;
+		}
+		
+		.cvm_video.load-videos .thumbnail.loading span::after{
+			/*
+			content: "\f463";
+			font: 74px/100px dashicons;
+			*/
+			background:url(../images/loading-big.gif) center center no-repeat;
+			content:'';
+		}
+		
+		.cvm_video.load-videos .thumbnail.vimeo-error span::after{
+			content: "\f158";
+			font: 74px/100px dashicons;
+		}
+		
+		.cvm_video.load-videos .thumbnail.finished span::after{
+			content: "\f529";
+			font: 74px/100px dashicons;
+		}
+		
+		.cvm_video.load-videos h2{
+			background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+		    box-shadow: none;
+		    font-weight: 400;
+		    margin-top: -18px!important;
+		    padding-bottom: 48px!important;
+		    padding-top: 0!important;
+		    position: relative;
+		    text-align: center;
+		    top: 0;
+		}
+
+.no-results{
+	display: block;
+    padding: 0 20px;
+    border-top: 1px #CCCCCC solid;
+    width: 100%;
+    clear: both;
+    font-style: italic;
+}
+	.no-results p{		
+    	font-size:1em;
+	}	
+		.no-results strong{
+		    font-size: 1.6em;
+		    margin-bottom: 10px;
+		    display: block;
+		    font-style:normal;
+		}
+		
+@media only screen and (max-width: 650px) {
+	.cvm_video.load-videos .thumbnail span::after{
+		font: 60px/90px dashicons!important;
+	    height: 80px;
+	    left: 50%;
+	    margin-left: -40px;
+	    text-indent: 0;
+	    top: 30%;
+	    width: 80px;
+	}
+	
+	.cvm-video.load-videos .thumbnail.vimeo-error span::after,
+	.cvm-video.load-videos .thumbnail.loading span::after,
+	.cvm-video.load-videos .thumbnail.finished span::after{
+		font: 60px/80px dashicons!important;
+	}
+	
+	#cvm_load_feed_form label{
+		display:block;
+		font-size:1.2em;
+		margin:4px 0 4px;
+		padding-left:4px;
+	}
+	
+	#cvm_load_feed_form input[type=submit]{
+		clear:both;
+		display:block;
+		margin:6px 0;
+	}
+	
+}
