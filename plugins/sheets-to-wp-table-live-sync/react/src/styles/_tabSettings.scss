@@ -1,0 +1,167 @@
+.edit-tab-content {
+
+    &.tab-settings {
+
+        .hide-tab-group-title-wrap {
+            margin-bottom: 30px;
+
+            label {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 16px;
+                color: #1E1E1E;
+            }
+
+            input[type="checkbox"] {
+                position: relative;
+                width: 19px;
+                outline: 0;
+                height: 19px;
+                outline: none;
+                line-height: 0;
+                cursor: pointer;
+                box-shadow: none;
+                background: none;
+                border-radius: 5px;
+                margin: 0 0.6em 0 0;
+                padding: 0 !important;
+                vertical-align: text-top;
+                box-sizing: border-box;
+                -webkit-appearance: none;
+                border: 2px solid #34a0fa;
+
+                &:checked {
+                    background-color: #34a0fa;
+                }
+
+                &:checked::before {
+                    content: "";
+                    right: 50%;
+                    top: 50%;
+                    width: 4px;
+                    z-index: 2;
+                    height: 10px;
+                    border: solid #fff;
+                    position: absolute;
+                    margin: -1px 0 0 0;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg) translate(-50%, -50%);
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                    border: 2px solid #34a0fa;
+                }
+            }
+        }
+
+        .tab-positions-wrap {
+
+            h4 {
+                display: flex;
+                color: #666873;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 16px;
+                font-style: normal;
+                align-items: center;
+                margin: 0px 0 15px 0;
+            }
+
+            .tab-position-group {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-left: -10px;
+                margin-right: -10px;
+                margin-bottom: -20px;
+                justify-content: flex-start;
+            }
+
+            .tab-position {
+                cursor: pointer;
+                width: -moz-fit-content;
+                width: fit-content;
+                border-radius: 4px;
+                white-space: nowrap;
+                padding: 10px 20px;
+                text-align: right;
+                align-items: center;
+                // margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 20px;
+                position: relative;
+                display: inline-flex;
+                background: #ffffff;
+                flex-flow: row-reverse;
+                border: 1px solid #ecf2f6;
+                justify-content: flex-start;
+                transition: all 0.3s ease;
+
+                span {
+                    display: flex;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #1e1e1e;
+                    line-height: 19px;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    svg {
+                        margin-left: 7px;
+                    }
+                }
+
+                .control__indicator {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 7px;
+                    position: relative;
+                    border-radius: 11px;
+                    box-sizing: border-box;
+                    border: 2px solid #ccd5dc;
+
+                    &::after {
+                        content: "";
+                        left: 50%;
+                        top: 50%;
+                        opacity: 0;
+                        width: 16px;
+                        height: 16px;
+                        z-index: -99999;
+                        visibility: hidden;
+                        border-radius: 8px;
+                        position: absolute;
+                        box-sizing: border-box;
+                        border: 4px solid #34a0fa;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                &:hover {
+                    box-shadow: rgb(240, 242, 248) 0px 0px 0px 5px;
+                }
+
+                &.active,
+                {
+                border-color: #34a0fa;
+
+                span {
+                    color: #34a0fa;
+                }
+
+                .control__indicator {
+
+                    &::after {
+                        opacity: 1;
+                        z-index: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+    }
+}
+}

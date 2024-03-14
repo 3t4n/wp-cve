@@ -1,0 +1,163 @@
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for overlay effect */
+}
+
+// Loader 
+.plugin-list-loader {
+    position: relative;
+    margin: 0px auto;
+    width: 50px;
+    height:50px;
+    
+    .circular-loader {
+        -webkit-animation: rotate 2s linear infinite;
+                animation: rotate 2s linear infinite;
+        height: 100%;
+        -webkit-transform-origin: center center;
+            -ms-transform-origin: center center;
+                transform-origin: center center;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: auto;
+      }
+      
+      .loader-path {
+        stroke-dasharray: 150,200;
+        stroke-dashoffset: -10;
+        -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+                animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+        stroke-linecap: round;
+      }
+      
+      @-webkit-keyframes rotate {
+        100% {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
+      
+      @keyframes rotate {
+        100% {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes dash {
+        0% {
+          stroke-dasharray: 1,200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -35;
+        }
+        100% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -124;
+        }
+      }
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 1,200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -35;
+        }
+        100% {
+          stroke-dasharray: 89,200;
+          stroke-dashoffset: -124;
+        }
+      }
+      @-webkit-keyframes color {
+        0% {
+          stroke: #ffffff;
+        }
+        40% {
+          stroke: #ffffff;
+        }
+        66% {
+          stroke: #ffffff;
+        }
+        80%, 90% {
+          stroke: #ffffff;
+        }
+      }
+      @keyframes color {
+        0% {
+          stroke: #ffffff;
+        }
+        40% {
+          stroke: #ffffff;
+        }
+        66% {
+          stroke: #ffffff;
+        }
+        80%, 90% {
+          stroke: #ffffff;
+        }
+      }
+      
+}
+// END 
+
+
+// Plugin list design 
+.plugin-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+
+    .other_products_section {
+        .plugin-card-top {
+            min-height: 200px;
+        }
+    }
+    .plugin-card {
+      background: transparent;
+      border: none;
+      margin: 10px;
+      flex: calc(50% - 20px); 
+      max-width: calc(50% - 20px); 
+      box-sizing: border-box;
+
+        .plugin-card-top {
+            background: white;
+            border: 1px solid #dcdcde;
+            border-bottom: none;
+            height: 22vh;
+            // height: 35vh;
+
+            a.thickbox.open-plugin-details-modal {
+                text-decoration: none;
+            }
+
+            .name.column-name h3 {
+              font-size: 15px;
+          }
+
+        }
+
+        @media (max-width: 1366px) {
+          .plugin-card-top {
+              height: 35vh;
+          }
+        }
+        .plugin-card-bottom {
+            border: 1px solid #dcdcde;
+            border-top: none;
+        }
+    }
+}
