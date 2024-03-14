@@ -1,0 +1,31 @@
+
+# Replace to WebP
+<IfModule mod_setenvif.c>
+  # WebP版があるかもしれない画像へのリクエストは全てVaryレスポンスヘッダを返す
+    SetEnvIf Request_URI "\.(jpe?g|png|gif)$" _image_request
+</IfModule>
+<IfModule mod_rewrite.c>
+  # Rewriteモジュールを有効にする
+    RewriteEngine On
+  # ブラウザから送信されるAcceptリクエストヘッダがimage/webpを含む場合のみ
+  # 後続のRewriteRuleを適用する
+    RewriteCond %{HTTP_ACCEPT} image/webp
+  # WebP版のファイルがある場合のみ後続のRewriteRuleを適用する
+  # SCRIPT_FILENAMEを使うことでサブディレクトリの補完が不要に
+    RewriteCond %{SCRIPT_FILENAME}.webp -f
+  # *.jpg、*.pngファイルを*.webpファイルに内部的にルーティングする
+  # Content-Typeはimage/webpにする
+  # リダイレクト先は $0.webp でも可
+    RewriteRule .(jpe?g|png|gif)$ %{SCRIPT_FILENAME}.webp [T=image/webp]
+</IfModule>
+<IfModule mod_headers.c>
+  # 環境変数_image_requestが真の(上記SetEnvIfが設定された)場合、
+  # VaryレスポンスヘッダにAcceptを追加する
+    Header append Vary Accept env=_image_request
+</IfModule>
+<IfModule mod_mime.c>
+  # 拡張子.webpファイルはContent-Typeとしてimage/webpを返す
+    AddType image/webp .webp
+</IfModule>
+
+# /Replace to WebP

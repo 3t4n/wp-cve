@@ -1,0 +1,118 @@
+.button-wrapper + .button-wrapper{
+	margin-top: 8px;
+}
+.button-wrapper button{
+	position: relative;
+	display: block;
+	padding: 0.2em 1.2em;
+	width: 100%;
+	max-width: 200px;
+	font-size: 12px;
+	line-height: 1.7em;
+	text-align: center;
+	white-space: nowrap;
+	background: transparent;
+	border: 1px dotted rgba(0,0,0,0.3);
+	opacity: 0.65;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.button-wrapper button:hover{
+	color: white;
+	background: black;
+}
+.button-wrapper button[disabled],
+.button-wrapper button[disabled]:hover{
+	color: #999;
+	background: transparent;
+}
+.button-wrapper button[disabled]::after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: block;
+	width: 1em;
+	height: 1em;
+	background: conic-gradient(rgba(112,122,255,0) 60deg, #707aff 260deg, #2f3dfd 360deg);
+	border-radius: 50%;
+	        mask-image: radial-gradient(circle, transparent 47%, black 49%);
+	-webkit-mask-image: radial-gradient(circle, transparent 47%, black 49%);
+	animation: spin 0.6s linear infinite;
+}
+@keyframes spin{
+	0%{
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100%{
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+.button-wrapper .result-message{
+	max-width: 200px;
+	color: #222dce;
+	text-align: right;
+	opacity: 0.65;
+}
+
+
+.modal-back{
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5%;
+	background: rgba(0,0,0,0.65);
+	cursor: pointer;
+}
+
+.scroll-wrapper{
+	max-height: 100%;
+	border-radius: 5px;
+	box-shadow: 4px 4px 16px rgba(0,0,0,0.65);
+	overflow: auto;
+}
+.scroll-wrapper::-webkit-scrollbar{
+	width: 10px;
+	height: 10px;
+}
+.scroll-wrapper::-webkit-scrollbar-track{
+	border-radius: 5px;
+	background: white;
+	box-shadow: inset 0 0 8px rgba(0,0,0,0.2);
+}
+.scroll-wrapper::-webkit-scrollbar-corner{
+	background: transparent;
+}
+.scroll-wrapper::-webkit-scrollbar-thumb{
+	background-color: rgba(139,139,187,0.4);
+	border-radius: 5px;
+	box-shadow: 0 0 0 1px rgba(255,255,255,0.3);
+} 
+
+.info-table{
+	background: white;
+	border-collapse: collapse;
+	cursor: default;
+}
+.info-table th, .info-table td{
+	display: table-cell;
+	padding: 0.8em;
+	line-height: 1.2em;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	border: 1px solid #999;
+}
+.info-table th{
+	font-size: 1.1em;
+	background: #f1f2ff;
+	border-bottom: 4px double #999;
+}
+.info-table input{
+	color: inherit;
+}
