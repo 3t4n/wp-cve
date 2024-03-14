@@ -1,0 +1,1 @@
+elementorCommon.elements.$window.on("elementor/nested-element-type-loaded",(()=>{class e extends elementor.modules.elements.types.NestedElementBase{getType(){return"thim-ekits-course-item-section"}}return elementor.elementsManager.registerElementType(new e)}));
