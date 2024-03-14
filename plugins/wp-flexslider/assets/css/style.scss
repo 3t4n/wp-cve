@@ -1,0 +1,63 @@
+@mixin clearfix() {
+    *zoom: 1;
+
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// Drop shadows
+@mixin box-shadow($shadow) {
+    box-shadow: $shadow;
+    -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+    // -moz-box-shadow: @shadow;
+}
+.flexslider{
+    border-width: 0;
+    a{
+        @include box-shadow(none !important);
+    }
+    .slides{
+        li{
+            margin-left: 0;
+            margin-right: 0;
+        }
+        img{
+            max-width: 100%;
+        }
+    } 
+}
+.flex-direction-nav{
+    li{
+        list-style: none;
+    }
+    a{
+        text-shadow: none;
+    }
+    a:before{
+        line-height: 1
+    }
+}
+.flex-slide{
+    position: relative;
+}
+
+.flex-caption {
+    right: 0;
+    padding: 10px;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    // text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+    position: absolute;
+    .gallery-content{
+        opacity: .7;
+    }
+}

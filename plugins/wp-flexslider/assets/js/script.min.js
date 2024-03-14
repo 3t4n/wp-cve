@@ -1,0 +1,1 @@
+!function(e){"use strict";e(document).ready(function(){var n=e(".wp-flexslider");n.length&&e.fn.flexslider&&n.each(function(){var n=e(this),t=n.data("flex-settings");t&&n.flexslider(t)})})}(window.jQuery);
