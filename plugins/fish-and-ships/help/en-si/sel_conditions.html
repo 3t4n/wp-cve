@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Conditional selection methods - Fish and Ships for WooCommerce</title>
+<link rel="stylesheet" href="../../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Conditional selection methods</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<a href="main.html" data-fns-tip="main">Main</a>
+					<strong><a href="sel_conditions.html" data-fns-tip="sel_conditions">Selection conditions</a></strong>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Shipping costs</a>
+					<a href="group_by.html" data-fns-tip="group_by">Group-by</a>
+					<a href="special_actions.html" data-fns-tip="special_actions">Special Actions</a>
+					<a href="other_fields.html" data-fns-tip="other_fields">Other fields & logs</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Help and Support</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+
+<!-- translators: here start text content -->
+<h2>15 conditional selection methods on shipping rules</h2>
+<div class="float_img">
+	<a href="../img/selection-options.png" target="_blank">
+		<img src="../img/selection-options.png" width="313" height="410" alt="The selection conditions" />
+	</a>
+</div>
+<p>Fish and Ships for WooCommerce comes with a large range of <strong>selection methods</strong>, these are:</p>
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>Price:</h3></td>
+		<td>
+			<p>Price products will be taken <strong>before taxes</strong>. If there is a sale price, it will be taken.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title">
+			<h3>Weight:</h3>
+		</td>
+		<td>
+			<p>If the products haven't weight set, 0 will be taken.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Volume:</h3></td>
+		<td>
+			<p>The taken value will be the multiplication of <strong>Width x Height x Length</strong>. If size has not been seet, 0 will be taken.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Cart items:</h3></td>
+		<td>
+			<p>The <strong>product quantity</strong> in the cart will be taken. Note that the group-by criteria can be confusing! If you set to non-group then products will be taken one by one, and quantity becomes always&nbsp;1 (see <a href="group_by.html" class="wc_fns_nav_popup" data-fns-tip="group_by">group-by</a>).</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Min dimension, <br />Mid dimension, <br />Max dimension:</h3></td>
+		<td>
+			<p>Each of them will consider, respectively, the <strong>small, middle and large dimension</strong> of the products. It does not matter if the sizes have been entered from small to large, or from large to small, in a product of: 10x15x1 or 15x1x10, the dimension will always be 15, the middle 10, and the small 1. This method always take the products one by one, regardless of the grouping method chosen. If a product have not size set, the value 0 will be taken.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Length+Width +Height&nbsp;<span class="pro">[PRO]</span>:</h3></td>
+		<td>
+			<p>The value taken will be the sum of the dimensions. In a product of: 10x15x1, it will be: <strong>10+15+1 = 26</strong>. This method always take the products one by one, regardless of the grouping method chosen. If a product have not size set, the value 0 will be taken.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>User role&nbsp;<span class="pro">[PRO]</span>:</h3></td>
+		<td>
+			<p>Get more info <a href="https://www.wp-centrics.com/hide-shipping-methods-on-woocommerce/" target="_blank">here</a>.</p>
+		</td>
+	</tr>
+</tbody></table>
+				
+				
+<h2>Greater than / Greater than or equal to &amp; Less than / Less than or equal to</h2>
+				
+<p>The methods: dimensions, weight, volume, price and number of products in cart display fields of minimum and maximum value.</p>
+
+<p>For all this criteria, you can choose how the MIN and MAX values will be compared, switching to the appropiate symbol on every rule as you need.</p>
+
+<p>In the following table, we are set MIN comparison as <strong>GREATER THAN OR EQUAL TO</strong> 5€, and MAX comparison as <strong>LESS THAN OR EQUAL TO</strong> 30€</p>
+				
+<p><img src="../img/min-max-new-1-euros.png" width="700" height="101" alt="GREATER THAN OR EQUAL TO" /></p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:700px">
+	<tbody>
+	<tr>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 4.99€</td>
+		<td class="rule grouped match"><span class="dashicons dashicons-yes-alt"></span> <strong>5.00€</strong></td>
+		<td class="rule grouped last_right match"><span class="dashicons dashicons-yes-alt"></span> <strong>30.00€</strong></td>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 30.01€</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>In the second table, we are set MIN comparison as <strong>GREATER THAN</strong> 30€, and MAX comparison as <strong>LESS THAN</strong> 100€, there is: the equal values will not match this rule:</p>
+
+<p><img src="../img/min-max-new-2-euros.png" width="700" height="101" alt="GREATER THAN" /></p>
+<table class="wp-list-table widefat striped tags" style="max-width:700px">
+	<tbody>
+	<tr>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 30.00€</td>
+		<td class="rule grouped match"><span class="dashicons dashicons-yes-alt"></span> <strong>30.01€</strong></td>
+		<td class="rule grouped last_right match"><span class="dashicons dashicons-yes-alt"></span> <strong>99.99€</strong></td>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 100.00€</td>
+	</tr>
+	</tbody>
+</table>				
+
+<p>Note that <strong>30.00€</strong> match on rule #1 because the MAX field comparison is <strong>LESS THAN OR EQUAL TO</strong>, and not match rule #2 because the MIN does the comparison with <strong>GREATER THAN</strong>.</p>
+
+<p>On the other side, <strong>100€</strong> not match rule #2 because the MAX field comparison is <strong>LESS THAN</strong>.</p>
+				
+<br>
+
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>In Category,<br /> NOT In Category <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>The <strong>selected categories</strong> will be taken, not <strong>his childs</strong>. You should include it also if you want it matches. <br />This method always take the products one by one, regardless of the grouping method chosen.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Tagged as, <br /> NOT Tagged as <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p><strong>Product tags</strong> will be taken. <br />This method always take the products one by one, regardless of the grouping method chosen.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>In shipping class, <br /> NOT In shipping class:</h3></td>
+		<td>
+<p><strong>Shipping class</strong> will be taken. <br />This method always take the products one by one, regardless of the grouping method chosen.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Volumetric <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>For the <strong>volumetric weight</strong> two calculations will be done: by weight and volume, and the highest value will be taken. When selecting volumetric weight, a new field appears below the rules table so that you can enter the <strong>volumetric weight factor</strong>, you should get it from your transport agency:</p>
+		</td>
+	</tr>
+</tbody></table>
+
+			<p class="img">
+			<a href="../img/volumetric-mks.png" target="_blank"><img src="../img/volumetric-mks.png" width="659" height="245" alt="Volumetric weight factor" /></a></p>
+			<p>How it works? Let's say a volumetric weight factor of 50 kg/meter<sup>3</sup>. Our shop example is configured to work with centimeters and grams, converted, is: 0.05 grams per cubic centimeter, (here you have <a href="https://www.convertworld.com/en/density/" target="_blank">an online conversor units</a> for volume/weight):</p>
+			
+			<table class="wp-list-table widefat striped tags" style="max-width:800px">
+				<thead>
+				<tr>
+					<th>Product</th>
+					<th>Weight</th>
+					<th>Size</th>
+					<th>Volume</th>
+					<th>Volumetric weight</th>
+					<th class="align_center">Taken value</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Coat</td>
+					<td class="align_center">1500 g.</td>
+					<td>50x50x14 cm</td>
+					<td>35000 cm<sup>3</sup></td>
+					<td class="grouped last_right">35000 * 0.05 = <br /><strong>1750 g.</strong></td>
+					<td class="align_center"><strong>1750 g.</strong></td>
+				</tr>
+				<tr>
+					<td>Laptop</td>
+					<td class="grouped last_right"><strong>2500 g.</strong></td>
+					<td>40x46x18 cm</td>
+					<td>33120 cm<sup>3</sup></td>
+					<td class="align_center">33120 * 0.05 = <br />1656 g.</td>
+					<td class="align_center"><strong>2500 g.</strong></td>
+				</tr>
+				</tbody>
+			</table>
+			<p>On lightweight products, the taken value will be the calculated volumetric weight. In heavy products, the weight value will be taken. <strong>Always the highest value</strong>.</p>
+<h2>And ... now?</h2>
+<p>We just saw the selection methods. Now, by learning how shipping costs work, we can make a basic use of Fish and Ships:</p>
+<p class="fns_do_actions"><a href="shipping_costs.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="shipping_costs">Shipping costs</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>

@@ -1,0 +1,428 @@
+
+/*************************************************
+  Logs & Freemium panes, Shipping boxes tab
+*************************************************/
+
+/* logs panel */
+
+#wc_fns_debug_mode {
+	margin-top:0 !important;
+}
+#fnslogs .fns-open-log {
+	font-weight:bold;
+}
+#fnslogs .thin {
+	width:15%;
+	white-space:nowrap;
+}
+#fnslogs .thin strong {
+	color:#dc3232;
+}
+#fnslogs .fns-log-details p {
+	margin:0 0 0.2em 0;
+}
+#fnslogs .fns-log-details {
+	font-family:Consolas, monospace;
+}
+#fnslogs .fns-log-details strong {
+	font-size:1.05em;
+}
+#fnslogs span.close {
+	display:none;
+}
+#fnslogs .fns-open-log span.close {
+	display:inline;
+}
+#fnslogs .fns-open-log span.open {
+	display:none;
+}
+#fnslogs .fix_stripped {
+	display:none;
+}
+
+#fnslogs .log_content td {
+	background:#e0f5fe;
+}
+
+#fnslogs .tablenav-pages {
+	font-size: 13px;
+}
+#fnslogs .tablenav-pages .button {
+	min-width: 30px;
+	text-align: center;
+	margin: 0 2px;
+}
+#fnslogs .fns-logs-pp {
+	margin-left: 10px;
+}
+#fnslogs .displaying-num {
+	margin-right: 10px;
+}
+#fnslogs .paging-input {
+	margin-right: 4px;
+}
+#fnslogs .fns-log-opener:hover,
+#fnslogs .fns-log-opener-all:hover {
+	text-decoration: underline;
+}
+#fnslogs .fns-log-opener .dashicons-before::before {
+	transition: all 0.25s ease-in-out;
+}
+#fnslogs p.opened .fns-log-opener .dashicons-before::before {
+	transform: rotate(90deg);
+}
+
+#fnslogs .wrapper {
+	height: 1px;
+	overflow: hidden;
+}
+
+/* table loading */
+
+#wrapper-shipping-rules-table-fns {
+	max-width:1400px;
+}
+@media screen and (max-width: 820px) {
+	#wrapper-shipping-rules-table-fns {
+		overflow:auto;
+	}
+	#wrapper-shipping-rules-table-fns table {
+		width:820px;
+	}
+}
+#logs_wrapper .fns-loglist-loading,
+#wrapper-shipping-rules-table-fns .overlay {
+	background:rgba(0,0,0,0.7);
+	opacity:1;
+	position:absolute;
+	z-index:100;
+	left:-20px; 
+	right:0;
+	top:0;
+	bottom:0;
+}
+#logs_wrapper .fns-loglist-loading .wc-fns-spinner,
+#wrapper-shipping-rules-table-fns .wc-fns-spinner {
+	position:fixed;
+	left:50%;
+	top:50%;
+	margin-top: -10px;
+	margin-left: -10px;
+}
+#logs_wrapper {
+	position:relative;
+}
+#logs_wrapper .fns-loglist-loading {
+	left: 0;
+}
+#logs_wrapper .fns-loglist-loading .wc-fns-spinner {
+	position: absolute;
+}	
+#fnslogs .loading_log td {
+	background:rgba(0,0,0,0.7);
+	text-align:center;
+}
+#fnslogs .loading_log .wc-fns-spinner {
+	float:none;
+}
+#fnslogs .loading_log .fns-log-details {
+	padding:20px 0;
+	min-height:60px;
+	box-sizing:border-box;
+}
+
+#fns_logs_reload .dashicons {
+	vertical-align: -0.3em;
+}
+table#fnslogs #fns_logs_reload {
+	position:absolute;
+	right: 5px;
+	top: 6px;
+}
+
+
+
+/* freemium panel */
+#wc-fns-freemium-panel {
+	position:absolute;
+	z-index:1;
+	right:20px;
+	max-width:400px;
+	border:#ccd0d4 1px solid;
+	background:#fff;
+	border-radius:5px;
+	padding:0 20px 10px;
+	box-sizing:border-box;
+}
+	body.rtl #wc-fns-freemium-panel {
+		left: 20px;
+		right: auto;
+	}
+	#wc-fns-freemium-panel h2 {
+		text-align:center;
+		margin:0 -20px 0.5em;
+		line-height:1em;
+		padding:0.5em 0;
+		background:#007cba;
+		color:#fff;
+	}
+	#wc-fns-freemium-panel .wrap_content {
+		max-height:300px;
+		overflow:auto;
+		margin-right:-20px;
+		padding-right:20px;
+	}
+	#wc-fns-freemium-panel .close_panel,
+	#wc-fns-freemium-panel .open_panel {
+		position:absolute;
+		right:10px;
+		text-decoration:none;
+		color:#999;
+	}
+	#wc-fns-freemium-panel .close_panel:hover,
+	#wc-fns-freemium-panel .open_panel:hover {
+		color:#0073aa;
+	}
+	#wc-fns-freemium-panel.free-version .close_panel,
+	#wc-fns-freemium-panel.free-version .open_panel,
+	#wc-fns-freemium-panel.opened .open_panel,
+	#wc-fns-freemium-panel.closed .close_panel {
+		display:none;
+	}
+	#wc-fns-freemium-panel div.wc_fns_hide_serial,
+	#wc-fns-freemium-panel div.wc_fns_change_serial {
+		padding:1px 0;
+	}
+	#wc-fns-freemium-panel div.wc_fns_hide_serial {
+		display:none;
+	}
+	#wc-fns-freemium-panel div.wc_fns_change_serial p,
+	#wc-fns-freemium-panel div.wc_fns_hide_serial p {
+		margin:0.25em 0;
+	}
+	#wc-fns-freemium-panel .input_serial {
+		width:15em;
+	}
+	#wc-fns-freemium-panel p.center {
+		text-align:center;
+	}
+	#wc-fns-freemium-panel strong {
+		color:#00669b;
+	}
+	#wc-fns-freemium-panel .check_registration p,
+	#wc-fns-freemium-panel .check_registration h3,
+	#wc-fns-freemium-panel .check_registration img {
+		display:inline-block;
+		vertical-align:middle;
+	}
+	#wc-fns-freemium-panel .check_registration img {
+		margin-left:10px;
+	}
+	#wc-fns-freemium-panel .check_registration img.left {
+		margin-left:0;
+		margin-right:10px;
+	}
+	
+	/* closed */
+	#wc-fns-freemium-panel h2 span.closed {
+		display:none;
+	}
+	#wc-fns-freemium-panel.pro-version.closed {
+		width:114px !important;
+	}
+	#wc-fns-freemium-panel.pro-version.closed h2 span.closed {
+		display:inline-block;
+	}
+	#wc-fns-freemium-panel.pro-version.closed h2 span.opened {
+		display:none;
+	}
+	#wc-fns-freemium-panel.pro-version.closed p,
+	#wc-fns-freemium-panel.pro-version.closed h3 {
+		display:none;
+	}
+	#wc-fns-freemium-panel.pro-version.closed .check_registration img {
+		margin-right:10px;
+	}
+	
+#wc-fns-table_envelope {
+	margin-right:420px;
+}
+body.rtl #wc-fns-table_envelope {
+	margin-left:420px;
+	margin-right:0;
+}
+body.wc-fish-and-ships-pro-closed #wc-fns-table_envelope {
+	margin-right:140px;
+}
+body.rtl.wc-fish-and-ships-pro-closed #wc-fns-table_envelope {
+	margin-right:0;
+	margin-left:140px;
+}
+@media screen and (max-width: 1270px) {
+	#wc-fns-freemium-panel {
+		width:350px;
+	}
+	#wc-fns-table_envelope {
+		margin-right:370px;
+	}
+	body.rtl #wc-fns-table_envelope {
+		margin-left:370px;
+		margin-right:0;
+	}
+	.woocommerce #wc-fns-table_envelope table.form-table select,
+	.woocommerce #wc-fns-table_envelope table.form-table input[type=text] {
+		width:100%;
+		max-width:400px;
+	}
+}
+@media screen and (max-width: 1200px) {
+	#wc-fns-freemium-panel {
+		width:300px;
+	}
+	#wc-fns-table_envelope {
+		margin-right:320px;
+	}
+	body.rtl #wc-fns-table_envelope {
+		margin-left:320px;
+		margin-right:0;
+	}
+	#wc-fns-table_envelope th.titledesc {
+		width:30%;
+	}
+}
+@media screen and (max-width: 850px) {
+	#wc-fns-freemium-panel {
+		width:auto;
+		max-width:none;
+		position:relative;
+		margin-top:0;
+		right:auto;
+		padding-bottom:0;
+	}
+	#wc-fns-freemium-panel.pro-version.closed {
+		position:absolute;
+		right:20px;
+	}
+	#wc-fns-table_envelope {
+		margin-right:0;
+	}
+	body.rtl #wc-fns-table_envelope {
+		margin-left:0;
+	}
+	body.rtl #wc-fns-freemium-panel {
+		left:auto;
+	}
+	#wc-fns-freemium-panel.free-version.closed .open_panel,
+	#wc-fns-freemium-panel.free-version.opened .close_panel {
+		display:block;
+		top:8px;
+		color:#fff;
+		opacity:0.8;
+	}
+	#wc-fns-freemium-panel.free-version.closed .open_panel:hover,
+	#wc-fns-freemium-panel.free-version.opened .close_panel:hover {
+		opacity:1;
+	}
+	#wc-fns-freemium-panel.free-version.closed .can_close {
+		display:none;
+	}
+	#wc-fns-freemium-panel.free-version.closed p {
+		margin-right:200px;
+	}
+	#wc-fns-freemium-panel.free-version.closed p.go_button {
+		position:absolute;
+		right:12px;
+		bottom:0;
+		margin-right:0;
+	}
+	#wc-fns-freemium-panel.pro-version.opened p.center {
+		margin-bottom:1em;
+	}
+}
+@media screen and (max-width: 782px) {
+	#wc-fns-table_envelope .form-table th.titledesc {
+		width:auto;
+	}
+	.woocommerce #wc-fns-table_envelope table.form-table select,
+	.woocommerce #wc-fns-table_envelope table.form-table input[type=text] {
+		max-width:none;
+	}
+}
+@media screen and (min-width: 1470px) {
+	#wc-fns-freemium-panel {
+		right:auto;
+		left:850px;
+	}
+	body.rtl #wc-fns-freemium-panel {
+		right:850px;
+		left:auto;
+	}
+
+	#wc-fns-freemium-panel.pro-version.closed {
+		left:1136px;
+	}
+	body.rtl #wc-fns-freemium-panel.pro-version.closed {
+		left:auto;
+		right:1136px;
+	}
+	#wc-fns-table_envelope {
+		width:820px;
+		margin-right:0;
+	}
+}
+
+/*************************************************
+  Shipping Boxes settings
+*************************************************/
+
+.fns-sb-bigger p {
+	font-size: 1.15em;
+	margin-bottom: 0em;
+}
+#fns_sb_table tbody tr {
+	cursor: move;
+}
+#fns_sb_table input {
+	max-width: 100%;
+}
+#fns_sb_table .fns-sb-num {
+	text-align: right;
+	width: 13%;
+}
+#fns_sb_table .fns-sb-num input {
+	width: 60px;
+	max-width: 100%;
+	text-align: right;
+	position: relative;
+}
+#fns_sb_table .fns-sb-id {
+	width: 30px;
+}
+#fns_sb_table .fns-sb-actions {
+	text-align: right;
+	width: 15%;
+}
+#fns_sb_table tfoot td {
+	text-align: right;
+}
+
+.fns_sb_action_table {
+	min-width: 600px;
+}
+	.fns_sb_action_table .fns-sb-num,
+	.fns_sb_action_table .fns-sb-qty {
+		text-align: right;
+	}
+	.fns_sb_action_table .fns-sb-num input,
+	.fns_sb_action_table .fns-sb-qty input {
+		width: 60px;
+		max-width: 100%;
+		text-align: right;
+		position: relative;
+	}
+	.fns_sb_action_table .fns-sb-qty {
+		width: 70px;
+	}
+	.fns_sb_action_table .fns-sb-qty input {
+		width: 40px;
+	}

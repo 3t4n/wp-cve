@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Main Help - Fish and Ships for WooCommerce</title>
+<link rel="stylesheet" href="../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Main help</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<strong><a href="main.html" data-fns-tip="main">Main</a></strong>
+					<a href="sel_conditions.html" data-fns-tip="sel_conditions">Selection conditions</a>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Shipping costs</a>
+					<a href="group_by.html" data-fns-tip="group_by">Group-by</a>
+					<a href="special_actions.html" data-fns-tip="special_actions">Special Actions</a>
+					<a href="other_fields.html" data-fns-tip="other_fields">Other fields & logs</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Help and Support</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+
+<!-- translators: here start text content -->
+<div class="help_note" style="margin-top:2em;">
+<p><strong>Note:</strong><br />
+This documentation assumes that you already know how <strong>WooCommerce Shipping Zones</strong> works, if not, please read this article first: <a href="https://docs.woocommerce.com/document/setting-up-shipping-zones/" target="_blank">Setting up Shipping Zones</a></p>
+</div>
+
+<h2>Briefly, in a nutshell</h2>
+
+<p>Fish and Ships is a plugin to calculate shipping costs easily and flexibly for stores that run under <strong>WooCommerce</strong>.</p>
+
+<p><strong>Rule based</strong>, they are analyzed consecutively, from up to down.</p>
+
+<p>Each rule is divided into <strong>three sections</strong>: Selection Conditions, Shipping Costs, and Special Actions. If the selection conditions are met, the costs of the selection will be applied and the special actions, if any, will be triggered.</p>
+
+<p>Whether a rule applies or not, the following rules will be analyzed:</p>
+
+<p class="img"><a href="img/main-1.png" target="_blank"><img src="img/main-1.png" width="918" height="295" alt="Rules order execution" /></a></p>
+
+<h3>A video introduction</h3>
+<p>There is a 7 minutes introductory video on YouTube, it will give you a general idea of how Fish and Ships works:</p>
+<p><a href="https://www.youtube.com/watch?v=sjQKbt2Nn7k" target="_blank" title="Watch video on YouTube" class="fns-video-link"><img src="img/video_preview.gif" width="260" height="145" alt="video on YouTube"></a></p>
+				
+<h3>A simple example</h3>
+<p>Let's imagine a clothing store. We want to set the shipping costs based on the overall weight and volume of the cart. These are the conditions for the calculations:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th></th>
+		<th>Maximum weight:</th>
+		<th>Maximum volume:</th>
+		<th style="width:45%">Cost</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>#1</td>
+		<td>Up to 4 lbs</td>
+		<td>Any volume</td>
+		<td>$5</td>
+	</tr>
+	<tr>
+		<td>#2</td>
+		<td>4 lbs or more</td>
+		<td>Up to 1000 in<sup>3</sup></td>
+		<td>$10</td>
+	</tr>
+	<tr>
+		<td>#3</td>
+		<td>4 lbs or more</td>
+		<td>Between 1000 and 2500 in<sup>3</sup></td>
+		<td>$15</td>
+	</tr>
+	<tr>
+		<td>#4</td>
+		<td>Any weight</td>
+		<td>More than 2500 in<sup>3</sup></td>
+		<td><strong class="abort">$30</strong>. This carrier becomes too expensive, and we don't want to offer this shipping method.</td>
+	</tr>
+	</tbody>
+	</table>
+
+<p>Each exposed condition can be transformed into a rule. Rules <strong>#2</strong> and <strong>#3</strong> need two conditions: one for weight and another one for volume (note that they have a <strong>WHERE</strong> and an <strong>AND</strong>):</p>
+
+<p class="img"><a href="img/main-3.png" target="_blank"><img src="img/main-3.png" width="1670" height="555" alt="Rules for the clothes shop" /></a></p>
+<p>Let's imagine this shopping cart:</p>
+<table class="wp-list-table widefat fixed striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th>Volume</th>
+		<th class="align_center">Total weight:</th>
+		<th class="align_center">Total volume:</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt</td>
+		<td>2</td>
+		<td>0.5 lbs</td>
+		<td>150 in<sup>3</sup></td>
+		<td rowspan="2" class="grouped">3 lbs</td>
+		<td rowspan="2" class="grouped last_right">975 in<sup>3</sup></td>
+	</tr>
+	<tr>
+		<td>Trousers</td><td>1</td><td>2 lbs</td><td>675 in<sup>3</sup></td>
+	</tr>
+	</tbody>
+</table>
+<p>Weighing less than 4 lbs, only the rule <strong>#1</strong> meets:</p>
+<table class="wp-list-table widefat fixed striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th class="align_center">Total weight:</th>
+		<th class="align_center">Total volume:</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Rule #2</th>
+		<th class="align_center">Rule #3</th>
+		<th class="align_center">Rule #4</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt</td>
+		<td rowspan="2" class="grouped">3 lbs</td>
+		<td rowspan="2" class="grouped last_right">975 in<sup>3</sup></td>
+		<td rowspan="2" class="gray_grouped rule match">
+			max. 4 lbs: <br /><span class="dashicons dashicons-yes-alt"></span>
+		</td>
+		<td rowspan="2" class="gray_grouped rule">
+			min. 4 lbs: <br /><span class="dashicons dashicons-dismiss"></span><br />
+			max. 1000 in<sup>3</sup>: <br /><span class="dashicons dashicons-yes-alt"></span>
+		</td>
+		<td rowspan="2" class="gray_grouped rule">
+			min. 4 lbs: <br /><span class="dashicons dashicons-dismiss"></span><br />
+			min. 1000 in<sup>3</sup>: <br /><span class="dashicons dashicons-dismiss"></span>
+		</td>
+		<td rowspan="2" class="gray_grouped rule">
+			min. 2500 in<sup>3</sup> <br /><span class="dashicons dashicons-dismiss"></span><br />
+		</td>
+	</tr>
+	<tr>
+		<td>Trousers</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="3">Shipping Costs:</th>
+		<td class="align_center"><strong>$5</strong></td>
+		<td class="align_center">(not applicable)</td>
+		<td class="align_center">(not applicable)</td>
+		<td class="align_center">(not applicable)</td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Total cost: <strong>$5</strong></p>
+
+<h3>Let's add a second pants</h3>
+<table class="wp-list-table widefat fixed striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th>Volume</th>
+		<th class="align_center">Total weight:</th>
+		<th class="align_center">Total volume:</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt</td>
+		<td>2</td>
+		<td>0.5 lbs</td>
+		<td>150 in<sup>3</sup></td>
+		<td rowspan="2" class="grouped">5 lbs</td>
+		<td rowspan="2" class="grouped last_right">1650 in<sup>3</sup></td>
+	</tr>
+	<tr>
+		<td>Trousers</td><td>2</td><td>2 lbs</td><td>675 in<sup>3</sup></td>
+	</tr>
+	</tbody>
+</table>
+<p>The new weight prevents meet Rule #1, and the new volume, prevents meet Rule #2:</p>
+<table class="wp-list-table widefat fixed striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th class="align_center">Total weight:</th>
+		<th class="align_center">Total volume:</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Rule #2</th>
+		<th class="align_center">Rule #3</th>
+		<th class="align_center">Rule #4</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt</td>
+		<td rowspan="2" class="grouped">5 lbs</td>
+		<td rowspan="2" class="grouped last_right">1650 in<sup>3</sup></td>
+		<td rowspan="2" class="gray_grouped rule">
+			max. 4 lbs: <br /><span class="dashicons dashicons-dismiss"></span>
+		</td>
+		<td rowspan="2" class="gray_grouped rule">
+			min. 4 lbs: <br /><span class="dashicons dashicons-yes-alt"></span><br />
+			max. 1000 in<sup>3</sup>: <br /><span class="dashicons dashicons-dismiss"></span>
+		</td>
+		<td rowspan="2" class="gray_grouped rule match">
+			min. 4 lbs: <br /><span class="dashicons dashicons-yes-alt"></span><br />
+			min. 1000 in<sup>3</sup>: <br /><span class="dashicons dashicons-yes-alt"></span>
+		</td>
+		<td rowspan="2" class="gray_grouped rule">
+			min. 2500 in<sup>3</sup>: <br /><span class="dashicons dashicons-dismiss"></span><br />
+		</td>
+	</tr>
+	<tr>
+		<td>Trousers</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="3">Shipping Costs:</th>
+		<td class="align_center">(not applicable)</td>
+		<td class="align_center">(not applicable)</td>
+		<td class="align_center"><strong>$15</strong></td>
+		<td class="align_center">(not applicable)</td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Total cost: <strong>$15</strong></p>
+
+<h3>Let's add a bulky product</h3>
+<table class="wp-list-table widefat fixed striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th>Volume</th>
+		<th class="align_center">Total weight:</th>
+		<th class="align_center">Total volume:</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt</td>
+		<td>2</td>
+		<td>0.5 lbs</td>
+		<td>150 in<sup>3</sup></td>
+		<td rowspan="3" class="grouped">8 lbs</td>
+		<td rowspan="3" class="grouped last_right">3650 in<sup>3</sup></td>
+	</tr>
+	<tr>
+		<td>Trousers</td><td>2</td><td>2 lbs</td><td>675 in<sup>3</sup></td>
+	</tr>
+	<tr>
+		<td>Coat</td><td>1</td><td>3 lbs</td><td>2000 in<sup>3</sup></td>
+	</tr>
+	</tbody>
+</table>
+<p>The new volume, will make rule <strong>#4</strong> fulfill:</p>
+<table class="wp-list-table widefat fixed striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th class="align_center">Total weight:</th>
+		<th class="align_center">Total volume:</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Rule #2</th>
+		<th class="align_center">Rule #3</th>
+		<th class="align_center">Rule #4</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt</td>
+		<td rowspan="3" class="grouped">8 lbs</td>
+		<td rowspan="3" class="grouped last_right">3650 in<sup>3</sup></td>
+		<td rowspan="3" class="gray_grouped rule">
+			max. 4 lbs: <br /><span class="dashicons dashicons-dismiss"></span>
+		</td>
+		<td rowspan="3" class="gray_grouped rule">
+			min. 4 lbs: <br /><span class="dashicons dashicons-yes-alt"></span><br />
+			max. 1000 in<sup>3</sup>: <br /><span class="dashicons dashicons-dismiss"></span>
+		</td>
+		<td rowspan="3" class="gray_grouped rule">
+			min. 4 lbs: <br /><span class="dashicons dashicons-yes-alt"></span><br />
+			min. 1000 in<sup>3</sup>: <br /><span class="dashicons dashicons-yes-alt"></span>
+		</td>
+		<td rowspan="3" class="gray_grouped rule stop">
+			min. 2500 in<sup>3</sup>: <br /><span class="dashicons dashicons-yes-alt"></span><br />
+		</td>
+	</tr>
+	<tr>
+		<td>Trousers</td>
+	</tr>
+	<tr>
+		<td>Coat</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="3">Shipping Costs:</th>
+		<td class="align_center off">(not applicable)</td>
+		<td class="align_center off">(not applicable)</td>
+		<td class="align_center off">$15</td>
+		<td class="align_center"><strong class="abort">[ABORT]</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Despite Rule #3 still being fulfilled, Rule #4 take the Special Action <strong class="abort">Abort shipping method</strong>, voiding any other rules. This shipping method <strong>will not be offered to the customer</strong>.</p>
+
+<h2>So far... easy?</h2>
+
+<p>We hope yes ... at <strong>wp-centrics</strong> we have been working hard to develop a simple yet powerful tool ... Maybe it not seem enough yet ... please read the next section about selection methods, to start seeing its full potential:</p>
+
+<p class="fns_do_actions"><a href="sel_conditions.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="sel_conditions">Selection conditions</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>

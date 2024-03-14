@@ -1,0 +1,878 @@
+/*!
+ * Fish and Ships admin CSS 
+ *
+ * @package Fish and Ships
+ * @since 1.1.12
+ * @version 1.5
+ */
+
+/*************************************************
+  Common elements
+*************************************************/
+
+/* info tips */
+.wc_fns_info_tip {
+    max-width: 20em;
+    line-height: 1.8em;
+    position: absolute;
+    white-space: normal;
+    background: #007cba;
+    margin: 1.5em 1px 0 -1em;
+    z-index: 9999998;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    padding: .618em 1em;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+	min-width: 180px;
+}
+
+.wc_fns_info_tip::after {
+    content: "";
+    display: block;
+    border: 8px solid #007cba;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    margin: -1em 0 0 -3px;
+}
+
+/* ajaxified selectors */
+.wc-fns-ajax-fields {
+	padding-top:5px;
+	display:inline-block;
+}
+#wrapper-shipping-rules-table-fns .wc-fns-ajax-fields .wc-fns-spinner {
+	position:relative;
+	left:auto;
+	top:auto;	
+}
+
+.wc-fns-spinner {
+	display:inline-block;
+	background-color:#78848f;
+	width:18px;
+	height:18px;
+	opacity:.7;
+	float:right;
+	margin:5px 11px 0;
+	border-radius:100%;
+	position:relative
+}
+.wc-fns-spinner::before{
+	content:"";
+	position:absolute;
+	background-color:#fff;
+	top:3px;
+	left:3px;
+	width:4px;
+	height:4px;
+	border-radius:100%;
+	transform-origin:6px 6px;
+	animation:wc-fns-spinner__animation 1s linear infinite
+}
+@keyframes wc-fns-spinner__animation{
+	0%{transform:rotate(0deg)}to{transform:rotate(1turn)}
+}
+body div.ui-widget-overlay.fns-loading .wc-fns-spinner {
+	position:fixed;
+	left:50%;
+	top:50%;
+}
+
+.fns-no-top-padding th,
+.fns-no-top-padding td {
+	padding-top: 0;
+}
+.fns-no-bottom-padding th,
+.fns-no-bottom-padding td {
+	padding-bottom: 0;
+}
+
+/* external table fields */
+
+.fns-currency-secondary td,
+.fns-currency-secondary th {
+	padding-top: 0;
+}
+
+.fns-pro-icon {
+	display: inline-block;
+    font-size: 10px;
+    background: #aaa;
+    color: #fff;
+    border-radius: 4px;
+    line-height: 1.3em;
+    padding: 0 0.25em;
+    vertical-align: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: 600;
+	
+	&.darker {
+		background: #888;
+	}
+}
+
+/*************************************************
+  .css-conditions-table-fns
+*************************************************/
+.conditions-table-fns {
+	margin-bottom:15px;
+	min-width:600px;
+}
+.css-conditions-table-fns .fns-rule-placeholder {
+	background:#bb77ae !important; /* Orange */
+}
+
+.css-conditions-table-fns .ui-sortable-helper {
+	background:#ff0 !important; /* Yellow */
+}
+
+/* multicurrency checkbox & tabs */
+#wc-fns-table_envelope .fns-mc-unavailable {
+	opacity: 0.5;
+}
+#fns_dialog .nav-tab-wrapper,
+#wrapper-shipping-rules-table-fns .nav-tab-wrapper {
+	border-bottom: 0;
+	z-index: 2;
+	position: relative;
+	display: none;
+}
+#fns_dialog .nav-tab-wrapper,
+#wrapper-shipping-rules-table-fns.mc-tabs-fns .nav-tab-wrapper {
+	display: block;
+}
+
+#fns_dialog .nav-tab-active,
+#wrapper-shipping-rules-table-fns .nav-tab-active {
+	border-bottom-color: #fff;
+	background: #fff;
+}
+
+/* The currency fields switching */
+#fns_dialog table .currency-switcher-fns-wrapper,
+#wrapper-shipping-rules-table-fns .currency-switcher-fns-wrapper {
+	position: relative;
+}
+#fns_dialog table .currency-fns-field,
+#wrapper-shipping-rules-table-fns .currency-fns-field {
+	display: none;
+}
+#fns_dialog table.locked .currency-fns-field,
+#shipping-rules-table-fns.locked .currency-fns-field {
+	opacity: 0;
+}
+#fns_dialog table .currency-fns-field.currency-main,
+#wrapper-shipping-rules-table-fns .currency-fns-field.currency-main {
+	display: inline;
+}
+#fns_dialog table .currency-fns-field.currency-active,
+#wrapper-shipping-rules-table-fns .currency-fns-field.currency-active {
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	display: inline-block;
+}
+#fns_dialog table .currency-fns-field.currency-active.wc_fns_focus_tip,
+#wrapper-shipping-rules-table-fns .currency-fns-field.currency-active.wc_fns_focus_tip {
+	z-index: 3;
+}
+
+#fns_dialog table.locked .currency-fns-field.currency-active,
+#shipping-rules-table-fns.locked .currency-fns-field.currency-active {
+	opacity: 1;
+}
+
+#shipping-rules-table-fns {
+	position: relative;
+}
+#shipping-rules-table-fns input.wc_fns_datepicker {
+	width: 7.5em;
+}
+#shipping-rules-table-fns.ltr-text-direction {
+	direction: ltr;
+}
+#shipping-rules-table-fns.ltr-text-direction input {
+	margin: 0 0 0 8px;
+}
+#shipping-rules-table-fns.ltr-text-direction.widefat thead tr th {
+	text-align: left;
+}
+#shipping-rules-table-fns tr {
+	background: none;
+}
+#shipping-rules-table-fns tr.odd {
+	background: rgba(0,0,0,0.03);
+}
+
+/* Extra rules */
+#shipping-rules-table-fns .fns-ruletype-title th {
+	/*color: #fff;
+	padding: 4px;*/
+	text-align: center;
+	border-top: 1px solid #ccd0d4;
+	padding: 8px 10px;
+}
+#shipping-rules-table-fns .fns-footer-extra td {
+	text-align: center;
+}
+#shipping-rules-table-fns .fns-ruletype-title,
+#shipping-rules-table-fns .fns-ruletype-container-extra {
+	background-image: url(../img/bars.png);
+	background-repeat: repeat;
+	background-position: top center;
+}
+#shipping-rules-table-fns .fns-ruletype-title {
+	background-image: url(../img/bars-title.png);
+	background-position: bottom center; 
+}
+#shipping-rules-table-fns .fns-ruletype-title tr {
+	background-color: transparent !important;
+}
+#shipping-rules-table-fns .fns-ruletype-title .dashicons {
+	line-height: 1em;
+}
+#shipping-rules-table-fns .fns-ruletype-container-extra tr.odd {
+    background: rgba(34,113,177,0.06);
+}
+#shipping-rules-table-fns .fns-extra-rule-helper {
+	display: none;
+}
+#shipping-rules-table-fns .fns-extra-rule-helper .dashicons {
+	margin-top: -0.15em;
+	color: #2271b1;
+}
+#shipping-rules-table-fns .fns-ruletype-container-extra .shipping-costs-column > * {
+	display: none;
+}
+#shipping-rules-table-fns .fns-ruletype-container-extra .fns-extra-rule-helper {
+	display: block;
+}
+#shipping-rules-table-fns .fns-ruletype-container-extra  .selection_wrapper, 
+#shipping-rules-table-fns .fns-ruletype-container-extra  .action_wrapper {
+    border-color: #ccd;
+}	
+#shipping-rules-table-fns .add-rule-extra {
+	background: #fff url(../img/bars-button.png);
+	background-size: 70px;
+	text-shadow: rgba(0, 0, 0, 0.2) 0 0 1px;
+}
+#shipping-rules-table-fns .add-rule-extra:hover {
+	background-color: #edf3f7;
+}
+
+
+#fns_dialog table.locked::before,
+#shipping-rules-table-fns.locked::before {
+	display: block;
+	content: ' ';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(255,255,255,0.7);
+	z-index: 1;
+}
+
+/* columns */
+.css-conditions-table-fns.widefat tbody th,
+.css-conditions-table-fns.widefat tbody td {
+	padding-top:3px;
+	transition:background 0.5s ease-out;
+	border-top:1px solid #ccd0d4;
+}
+.css-conditions-table-fns.widefat tbody.fns-ruletype-container-normal tr:first-child th,
+.css-conditions-table-fns.widefat tbody.fns-ruletype-container-normal tr:first-child td {
+	border-top:0;
+}
+.css-conditions-table-fns .action_wrapper.animate-bg,
+.css-conditions-table-fns .selection_wrapper.animate-bg,
+.css-conditions-table-fns.widefat tbody .animate-bg td,
+.css-conditions-table-fns.widefat tbody .animate-bg th {
+	background:#fcd200; /* Light orange */
+}
+.css-conditions-table-fns.widefat tbody .animate-bg td .selection_wrapper.animate-bg {
+	transition:none;
+	background:none;
+}
+
+.css-conditions-table-fns.widefat tbody th.check-column {
+	padding-top:14px;
+}
+
+/* some WC versions not load this CSS classes, let's put here in any case*/
+table.css-conditions-table-fns tbody td.column-handle {
+    cursor: move;
+    width: 17px;
+    text-align: center;
+    vertical-align: text-top;
+}
+table.css-conditions-table-fns tbody td.column-handle::before {
+    content: "\f333";
+    font-family: Dashicons;
+    text-align: center;
+    line-height: 1;
+    color: #999;
+    display: block;
+    width: 17px;
+    height: 100%;
+    margin: 4px 0 0 0;
+}
+
+/* I don't know why WooCommerce guys sets the font size of the tips only for eagle-eyed people */
+body.wc-fish-and-ships #tiptip_content, 
+body.wc-fish-and-ships .chart-tooltip,
+body.wc-fish-and-ships .wc_error_tip,
+.wc_fns_info_tip {
+	font-size:12px;
+	min-width: 180px;
+}
+
+#fns_dialog .currency-fns-field.fns-error-inside,
+#shipping-rules-table-fns .currency-fns-field.fns-error-inside {
+	z-index: 3 !important;
+}
+
+.css-conditions-table-fns .order-number {
+	font-weight:bold;
+	color:#0073aa;
+	text-align:right;
+	padding-right:10px;
+	padding-left:0;
+	line-height:28px;
+}
+.css-conditions-table-fns .order-number,
+.css-conditions-table-fns .order-number-head {
+	width:30px;
+	box-sizing:border-box;
+}
+.css-conditions-table-fns .selection-rules-column {
+	width:60%;
+}
+.css-conditions-table-fns .shipping-costs-column,
+.css-conditions-table-fns .special-actions-column {
+	width:20%;
+}
+.css-conditions-table-fns .fns-footer-header {
+	display:none;
+}
+div.add-selector,
+div.add-action {
+	margin-top:5px;
+}
+
+/* and / or logic operator */
+.css-conditions-table-fns .field-logical_operator {
+	margin-left: 15px;
+	display: none;
+}
+.css-conditions-table-fns .logical_operator_radio {
+	margin-left: 10px;
+	margin-right: 0;
+}
+.css-conditions-table-fns input.disabled {
+	opacity:0.5;
+}
+
+/* costs */
+.css-conditions-table-fns .wc-fns-cost-method {
+	vertical-align:top;
+}
+/* composite fields: */
+.css-conditions-table-fns .cost_composite .field_wrapper {
+	display:block;
+	margin-top:5px;
+}
+.css-conditions-table-fns .cost_composite .field_wrapper::before {
+	content: '+';
+	display:inline-block;
+	width:1em;
+}
+.css-conditions-table-fns .cost_composite .field_wrapper:first-child::before {
+	content:' ';
+}
+.css-conditions-table-fns .cost_composite {
+	display:none;
+}
+
+/* actions */
+.css-conditions-table-fns .fns_open_fields_popup {
+	margin-top:3px !important;
+}
+.css-conditions-table-fns .action_details {
+	margin-right:-20px;
+}
+.css-conditions-table-fns .action-min_max-max {
+	margin-left:15px;
+}
+
+/* icon enharcement */
+.wc-fns-export .dashicons, .wc-fns-import .dashicons,
+.css-conditions-table-fns .dashicons {
+	font-size:1.4em;
+	line-height:1.75em;
+	margin-left:-0.25em;
+}
+.css-conditions-table-fns .column-handle {
+	font-size:1.5em;
+}
+
+a.button.wc-fns-export {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* selectors */
+.css-conditions-table-fns .selection_wrapper,
+.css-conditions-table-fns .action_wrapper  {
+	margin-bottom:3px;
+	padding-bottom:7px;
+	border-bottom:1px solid #ddd;
+	position:relative;
+	padding-right:20px;
+	transition:background 0.5s ease-out;
+}
+.css-conditions-table-fns .selection_wrapper {
+	padding-left:60px;
+}
+
+.css-conditions-table-fns .selection_details {
+	display:inline;
+	vertical-align:top;
+}
+.css-conditions-table-fns .dropdown-submenu-wrapper,
+.css-conditions-table-fns select.wc-fns-selection-method,
+.css-conditions-table-fns .envelope-fields,
+.css-conditions-table-fns .selection-rules-column .field {
+	margin-top:5px;
+	margin-right:15px; /* horizontal spaces between fields */
+}
+.css-conditions-table-fns .dropdown-submenu-wrapper {
+	display: inline-block;
+}
+
+.dropdown-submenu-wrapper .only_pro {
+	color: #aaa;
+}
+#shipping-rules-table-fns.locked .dropdown-submenu-wrapper .dropdown-field {
+	z-index: 0;
+}
+
+.css-conditions-table-fns .dropdown-submenu-wrapper li,
+.css-conditions-table-fns select.wc-fns-selection-method option,
+.css-conditions-table-fns select.wc-fns-actions option {
+	display: none;
+}
+.css-conditions-table-fns .dropdown-submenu-wrapper li.dropdown-has-childs,
+.css-conditions-table-fns .fns-ruletype-container-normal .dropdown-submenu-wrapper li.normal,
+.css-conditions-table-fns .fns-ruletype-container-normal select.wc-fns-selection-method option.normal,
+.css-conditions-table-fns .fns-ruletype-container-normal select.wc-fns-actions option.normal,
+
+.css-conditions-table-fns .fns-ruletype-container-extra .dropdown-submenu-wrapper li.extra,
+.css-conditions-table-fns .fns-ruletype-container-extra select.wc-fns-selection-method option.extra,
+.css-conditions-table-fns .fns-ruletype-container-extra select.wc-fns-actions option.extra {
+	display: block;
+}
+
+/* options have now scope */
+
+.css-conditions-table-fns .envelope-fields .field {
+	margin-top:0px;
+}
+.css-conditions-table-fns .envelope-fields {
+	display:inline-block;
+	margin-right:0px;
+}
+.css-conditions-table-fns .field {
+	display:inline-block;
+	vertical-align:top;
+	margin-top:5px;
+}
+.css-conditions-table-fns .units {
+	margin:0 0 0 3px;
+}
+.css-conditions-table-fns .selection_wrapper .helper {
+	display:inline-block;
+	position:absolute;
+	left:0;
+}
+.css-conditions-table-fns .selection_wrapper .helper,
+.css-conditions-table-fns .order-number {
+	line-height:3em;
+}
+.css-conditions-table-fns .selection_wrapper .delete,
+.css-conditions-table-fns .action_wrapper .delete {
+	position:absolute;
+	right:0;
+	top:0;
+	line-height:18px;
+}
+.css-conditions-table-fns .field-group_by {
+	display:none;
+}
+.css-conditions-table-fns .field-cant-group_by {
+	display:block;
+}
+.css-conditions-table-fns .field-multiple,
+.css-conditions-table-fns .field-multiple select {
+	width:400px;
+}
+	@media screen and (max-width: 1500px) {
+		.css-conditions-table-fns .field-multiple,
+		.css-conditions-table-fns .field-multiple select {
+			width:350px;
+		}
+	}
+	@media screen and (max-width: 1450px) {
+		.css-conditions-table-fns .field-multiple,
+		.css-conditions-table-fns .field-multiple select {
+			width:300px;
+		}
+	}
+	@media screen and (max-width: 1350px) {
+		.css-conditions-table-fns .field-multiple {
+			display:block;
+		}
+		.css-conditions-table-fns .field-multiple,
+		.css-conditions-table-fns .field-multiple select {
+			width:100%;
+		}
+	}
+
+/* v1.1.4+ comparisons */
+
+.css-conditions-table-fns .with_icons_label_wrap {
+	display: inline-block;
+	margin-right: 5px;
+	margin-top: -0.5em;
+	vertical-align: middle;
+}
+.css-conditions-table-fns .label {
+	display: block;
+	margin-right: 0.5em;
+}
+.css-conditions-table-fns .comp_icon {
+	width: 0.9em;
+	height: 1.35em;
+	display: inline-block;
+	background: url("../img/comparison.svg") no-repeat 0 top;
+	background-size: 3.6em;
+	margin-right: 0.2em;
+	cursor: pointer !important;
+	vertical-align: middle;
+}
+.css-conditions-table-fns .comp_icon::after {
+	display: none;
+}
+.css-conditions-table-fns .icon_greater {
+	background-position: -0.9em top;
+}
+.css-conditions-table-fns .icon_le {
+	background-position: -1.8em top;
+}
+.css-conditions-table-fns .icon_less {
+	background-position: -2.7em top;
+}
+
+.css-conditions-table-fns .comp_icon.on {
+	opacity: 1;
+	filter: invert(51%) sepia(44%) saturate(671%) hue-rotate(154deg) brightness(89%) contrast(100%);
+}
+.css-conditions-table-fns .comp_icon {
+	opacity: 0.2;
+}
+.css-conditions-table-fns .comp_icon:hover {
+	opacity: 0.5;
+}
+.css-conditions-table-fns .comp_icon.on:hover {
+	opacity: 1;
+}
+
+
+/*************************************************
+  Wizard
+*************************************************/
+
+#activity-panel-tab-restart-fns {
+	display: none;
+	line-height: 1.1em;
+	
+	&:hover .dashicons-flag {
+		color: #bb65aa;
+	}
+}
+.woocommerce-embed-page .notice.wc-fns-wizard,
+.notice.wc-fns-wizard {
+	padding: 0 0 10px;
+    position: relative;
+    font-size: 13px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+body.woocommerce_page_wc-settings .notice.wc-fns-wizard {
+	margin-top: 40px !important;
+}
+
+.notice.wc-fns-wizard h3 {
+    position: relative;
+    margin: -1px -1px 5px;
+    padding: 15px 18px 14px 60px;
+    border: 1px solid #bb77ae;
+	border-top-color: #9d588f;
+	border-right-color: #683a5e;
+    border-bottom: none;
+    line-height: 1.4;
+    font-size: 15px;
+    color: #fff;
+    background: #9d588f url(../img/bg-wizard.jpg) no-repeat center top;
+	background-image: url(../img/bg-wizard.jpg), linear-gradient(117deg, rgba(157,88,143,1) 0%, rgba(104,58,94,1) 100%);
+
+	background-size: cover;
+}
+
+body.rtl .notice.wc-fns-wizard h3 {
+    padding: 15px 60px 14px 18px;
+}
+.notice.wc-fns-wizard h3::before {
+    background: #fff;
+    border-radius: 50%;
+    color: #9d588f;
+    content: "\f227";
+    font: normal 20px/1.6 dashicons;
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    speak: none;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body.rtl .notice.wc-fns-wizard h3::before {
+	right:15px;
+	left:auto;
+}
+
+.notice.wc-fns-wizard .notice-dismiss {
+	z-index:1;
+	color:#fff;
+	text-decoration:none;
+	opacity:0.8;
+	vertical-align:bottom;
+}
+.notice.wc-fns-wizard .notice-dismiss::before {
+	display:inline-block;
+	vertical-align:bottom;
+}
+.notice.wc-fns-wizard .notice-dismiss:hover {
+	opacity:1;
+	color:#fff;
+}
+.notice.wc-fns-wizard .notice-dismiss::before,
+.notice.wc-fns-wizard .notice-dismiss:hover::before {
+	color:#fff;
+}
+
+.notice.wc-fns-wizard.wc-fns-five-stars h3::before {
+    content: "\f155";
+    color: #ffe400;
+    background: #491c40;
+}
+
+.notice.wc-fns-wizard p {
+	padding:0 20px;
+	margin:0.75em 0 0.5em 0;
+}
+.notice.wc-fns-wizard .case p {
+	padding: 0;
+}
+.notice.wc-fns-wizard p.big {
+	font-size: 15px;
+	line-height: 25px;
+	margin: 0 0 1em 0;
+}
+.notice.wc-fns-wizard strong {
+	color: #9d588f;
+}
+
+.notice.wc-fns-wizard p.fns-add-sel-p {
+	padding: 10px 0 20px;
+}
+
+.woocommerce-layout .notice.wc-fns-wizard a.button:link,
+.woocommerce-layout .notice.wc-fns-wizard a.button:visited {
+	color:#0071a1;
+}
+.woocommerce-layout .notice.wc-fns-wizard a.button:hover {
+	color:#016087
+}
+.button-wc-fns-colors,
+.wp-core-ui .button-wc-fns-colors,
+.notice.wc-fns-wizard .button-primary {
+    background: #ae5a9d;
+    border-color: #874c7c;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 0 #a36597;
+    color: #fff;
+    text-shadow: 0 -1px 1px #a36597, 1px 0 1px #a36597, 0 1px 1px #a36597, -1px 0 1px #a36597;
+}
+.wp-core-ui .button-wc-fns-colors:active,
+.wp-core-ui .button-wc-fns-colors:focus,
+.wp-core-ui .button-wc-fns-colors:hover,
+.notice.wc-fns-wizard .button-primary:active,
+.notice.wc-fns-wizard .button-primary:focus,
+.notice.wc-fns-wizard .button-primary:hover {
+	color: #fff;
+    background: #bb65aa;
+    border-color: #bb65aa;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 0 #a36597;
+}
+.button-wc-fns-colors.disabled,
+.wp-core-ui .button-wc-fns-colors.disabled,
+.notice.wc-fns-wizard .button-primary.disabled {
+	text-shadow: none;
+}
+
+/* video preview */
+.fns-hidden-videos {
+	display: none;
+	
+	p {
+		margin: 0 !important;
+		padding-top: 15px !important;
+	}
+}
+.notice.wc-fns-wizard p.fns-space-up {
+	margin-top: 20px;
+}
+.fns-video-link {
+	display: inline-block;
+	text-align: center;
+	font-weight: 500;
+	color: #666;
+	text-decoration: none;
+	margin-right: 20px;
+	font-size: 14px;
+	position: relative;
+}
+	.fns-video-link span {
+		display: inline-block;
+		margin-top: 5px;
+	}
+	.fns-video-link:before {
+		content: "\f19b";
+		font-family: dashicons;
+		display: inine-block;
+		font-weight: 400;
+		font-style: normal;
+
+		position: absolute;
+		margin-left: -25px;
+		margin-top: 40px;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+
+		color: #444;
+		font-size: 35px;
+		background: rgba(255,255,255,0.75);
+		border-radius: 50%;
+	}
+	.fns-video-link:hover:before {
+		background:#fff;
+		color: rgb(200,0,0);
+	}
+	.fns-video-link:hover {
+		color: #ae5a9d;
+	}
+	.fns-video-link img {
+		display: block;
+	}
+
+.fns-yt-on-button {
+	line-height: 0.1em;
+	vertical-align: -0.33em;
+	margin-right: 0.5em;
+}
+a:hover .fns-yt-on-button {
+	color: #f00;
+}
+
+/* show the wizard if WC admin plugin hides it */
+body.show_wc_fns_wizard.woocommerce-embed-page #wpbody-content .woocommerce-layout__notice-list .wc-fns-wizard {
+	margin-top:15px;
+}
+
+body.show_wc_fns_wizard .woocommerce-layout__notice-list-hide {
+	display:block !important;
+	padding-top:10px;
+}
+body.show_wc_fns_wizard .woocommerce-layout__notice-list-hide > div {
+	display:none;
+}
+body.show_wc_fns_wizard .woocommerce-layout__notice-list-hide > div.wc-fns-wizard {
+	display:block !important;
+}
+@media screen and (max-width: 782px) {
+	body.show_wc_fns_wizard .woocommerce-layout__notice-list-hide {
+		padding-top:100px;
+	}
+}
+
+.wc-fns-inline-code {
+	font-family: monospace;
+	font-weight: bold;
+	color: #bb77ae;
+}
+.wc-fns-block-code {
+	display: block;
+	background: rgba(0,0,0,0.05);
+	padding: 10px 15px;
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+/* errors */
+.wc-fns-error-text {
+	color:#dc3232;
+	font-weight:bold;
+}
+
+.fns_slider_wrap {
+
+	display: flex;
+    align-items: center;
+	padding-left: 5px;
+	margin-bottom: 10px;
+
+	.label {
+		width: 140px;
+		margin: 0 10px 0 0;
+	}
+	.slider {
+		width: 300px;
+	}
+	p {
+		margin: 0 0 0 10px;
+	}
+	input {
+		border: 0;
+		width: 2em;
+		text-align: right;
+		background: none;
+		min-height: 0;
+		line-height: 1em;
+		padding: 0 !important;
+	}
+}
+
+@import 'admin-fns-panes.less';
+@import 'admin-fns-popups.less';

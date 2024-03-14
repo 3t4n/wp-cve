@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Agrupar els productes per - Fish and Ships for WooCommerce</title>
+<link rel="stylesheet" href="../../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Agrupar els productes (del cistell) per</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<a href="main.html" data-fns-tip="main">Ajut principal</a>
+					<a href="sel_conditions.html" data-fns-tip="sel_conditions">Condicions de selecció</a>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Costos d'enviament</a>
+					<strong><a href="group_by.html" data-fns-tip="group_by">Agrupar per</a></strong>
+					<a href="special_actions.html" data-fns-tip="special_actions">Accions Especials</a>
+					<a href="other_fields.html" data-fns-tip="other_fields">Altres camps i registres (logs)</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Ajut i Suport</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+
+<!-- translators: here start text content -->
+<h2>Agrupar els productes canvia els costos d'enviament</h2>
+<p>Podem analitzar els productes del cistell <strong>agrupats sota diferents criteris</strong>, tant per determinar si una regla es aplicable, com per a calcular el cost d’enviament.</p>
+<p class="img"><a href="../img/group-by-4.png" target="_blank"><img src="../img/group-by-4.png" width="634" height="205" alt="Cart items group-by options" /></a></p>
+<p>Els possibles criteris d’agrupament, son:</p>
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>Cap [no agrupar]:</h3></td>
+		<td>
+<p>Cada producte serà analitzat <strong>individualment</strong>, inclús si son la mateixa referència</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Per ID / SKU:</h3></td>
+		<td>
+<p>Els productes amb la <strong>mateixa referència</strong> seran agrupats</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Per producte [agrupar variacions]:</h3></td>
+		<td>
+<p>Cada producte <strong>incloses les seves variacions</strong> serà agrupat</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Per classe d'enviament:</h3></td>
+		<td>
+<p>Tots els productes <strong>d’una mateixa classe d’enviament</strong> (shipping class) seran agrupats</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Tots agrupats com un:</h3></td>
+		<td>
+<p>Tot el cistell conformarà <strong>un sol grup</strong></p>
+		</td>
+	</tr>
+</tbody></table>
+
+<h2>Un altre exemple senzill</h2>
+<p>Anem a demostrar, com els diferents criteris d’agrupació influeixen en el processament el cistell, per al càlcul els costos d’enviament:</p>
+<p>Imagina que volem carregar <strong>1€</strong> de costos d’enviament als productes que pesen <strong>500 g. de pes</strong>, o més:</p>
+<p class="img"><a href="../img/group-by-1b-mks.png" target="_blank"><img src="../img/group-by-1b-mks.png" width="930" height="182" alt="Set 1€ for half pound of weight" /></a></p>
+<p>Plantegem el següent cistell:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producte</th>
+		<th>Quantitat</th>
+		<th>Pes</th>
+		<th>Classe d'enviament</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Samarreta (variació talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>2</td>
+		<td>280 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Disc dur extern</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Informàtica</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2>Criteri Cap [no agrupar]</h2>
+
+<p>Cada element serà analitzat per separat:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producte</th>
+		<th>Quantitat</th>
+		<th>Pes</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Preu</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Samarreta (variació talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Disc dur extern</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th>Cost de la regla #1:</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td class="rule stop"><span class="dashicons dashicons-dismiss"></span></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Fixa't que inclús les dues samarretes de la talla L, son analitzades per separat. <strong class="abort">Aquesta regla no serà tinguda en compte</strong>, doncs cap producte passa el criteri de selecció.</p>
+<p><strong>Important:</strong> Si cap regla actua, perquè no hi ha ni un sol producte passi els criteris de selecció, el sistema d'enviament <strong>es desactivarà</strong> per a aquest cistell.</p>
+
+<h2>Criteri Per ID / SKU</h2>
+<p>Amb el criteri Per ID / SKU les variacions segueixen sent analitzades per separat, però agrupats els productes que son <strong>idèntics</strong>:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producte</th>
+		<th>Quantitat</th>
+		<th>Pes</th>
+		<th class="align_center">Pes agrupat</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Preu</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Samarreta (variació talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td class="align_center">225 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td rowspan="2" class="grouped last_right">560 g.</td>
+		<td class="rule match gray_grouped" rowspan="2">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="2" class="rule gray_grouped last_right">1€ * 2 = <br /><strong>2€</strong></td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="align_center">360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Disc dur extern</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="5">Cost de la regla #1:</th>
+		<td class="rule"><strong>2€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Fixa't que només els productes que passen el criteri de selecció <strong>influeixen en el càlcul</strong> del cost de la regla.</p>
+<p>Només que un producte passi la selecció, la regla ja serà aplicable, i <strong>activarà</strong> el mètode d’enviament per aquest cistell.</p>
+
+<h2>Criteri Per producte [agrupar variacions]</h2>
+
+<p>Amb el criteri Per producte [agrupar variacions] els productes que son iguals, <strong>incloses les variacions</strong>, son agrupats:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producte</th>
+		<th>Quantitat</th>
+		<th>Pes</th>
+		<th class="align_center">Pes agrupat</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Preu</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Samarreta (variació talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td rowspan="3" class="grouped last_right">785 g.</td>
+		<td class="rule match gray_grouped" rowspan="3">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="3" class="rule gray_grouped last_right">1€ * 3 = <br /><strong>3€</strong></td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="align_center">360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Disc dur extern</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="5">Cost de la regla #1:</th>
+		<td class="rule"><strong>3€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+<p>Fixa't que la samarreta talla S, que per si sola no passa el criteri de selecció, però si ho fa agrupada amb les altres dues de la talla L</p>
+
+<h2>Criteri Per classe d'enviament</h2>
+
+<p>Amb el criteri Per classe d'enviament (shipping class), <strong>tota la roba</strong> serà analitzada com un sol grup, i el disc dur com un segon grup:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producte</th>
+		<th>Quantitat</th>
+		<th>Pes</th>
+		<th>Classe d'enviament</th>
+		<th class="align_center">Pes agrupat</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Preu</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Samarreta (variació talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Roba</td>
+		<td rowspan="4" class="grouped last_right">1145 g.</td>
+		<td class="rule match gray_grouped" rowspan="4">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="4" class="rule gray_grouped last_right">1€ * 4 = <br /><strong>4€</strong></td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Disc dur extern</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Informàtica</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="6">Cost de la regla #1:</th>
+		<td class="rule"><strong>4€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<h2>Criteri Tots agrupats com un</h2>
+<p>I per acabar, amb el criteri Tots agrupats com un, <strong>tot el cistell</strong> actua com un sol grup:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producte</th>
+		<th>Quantitat</th>
+		<th>Pes</th>
+		<th>Classe d'enviament</th>
+		<th class="align_center">Pes agrupat</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Preu</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Samarreta (variació talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Roba</td>
+		<td rowspan="5" class="grouped last_right">1570 g.</td>
+		<td class="rule match gray_grouped" rowspan="5">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="5" class="rule gray_grouped last_right">1€ * 5 = <br /><strong>5€</strong></td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Samarreta (variació talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Roba</td>
+	</tr>
+	<tr>
+		<td>Disc dur extern</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Informàtica</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="6">Cost de la regla #1:</th>
+		<td class="rule"><strong>5€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<h2>I per als altres mètodes de selecció?</h2>
+
+<table class="wp-list-table widefat tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th style="background:#f9f9f9;"><p>Els productes poden agrupar-se, <strong>de la mateixa manera</strong> com hem vist amb el pes, per a:</p></th>
+		<th class="left_border"  style="background:#f9f9f9;"><p>I <strong>no poden fer-ho</strong> (actuaran sempre com elements separats) per als següents:</p></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td style="width:50%;" class="bg_white">
+			<ul>
+			<li>Preu</li>
+			<li>Pes</li>
+			<li>Volum</li>
+			<li>Nre. productes cistell</li>
+			<li>Càlcul volumètric <span class="pro">[PRO]</span></li>
+			</ul>
+		</td>
+		<td class="left_border bg_white">
+			<ul>
+			<li>Dimensió mínima</li>
+			<li>Dimensió mitjana</li>
+			<li>Dimensió màxima</li>
+			<li>Llarg+Ample+Alt <span class="pro">[PRO]</span></li>
+			</ul>
+			
+			<ul>
+			<li>A la classe d'enviament / NO A la classe d'enviament</li>
+			<li>A la categoria / NO A la categoria <span class="pro">[PRO]</span></li>
+			<li>Etiquetat (tagged) com / NO Etiquetat com <span class="pro">[PRO]</span></li>
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>Perquè no poden agrupar-se? Doncs els relatius a mida, no tindria sentit sumar les cotes dels productes. Els relatius a taxonomies, poden pertànyer a diferents, per tant no poden ser considerats conjuntament, i es farà en qualsevol cas, <strong>producte per producte</strong>.</p>
+
+<h2>Diferents criteris d’agrupament per cada condició <span class="pro">[PRO]</span></h2>
+<p>En la versió PRO, pot establir-se una agrupació <strong>diferent per a cada condició</strong>.</p>
+<p>Imagina que volem establir un cost fix de <strong>10€</strong> d’enviament si el client compra més de 4 productes, descartant aquells que pesin més de 500 g.:</p>
+<p>Primer cal desmarcar la opció d’agrupar globalment:</p>
+<p class="img"><a href="../img/group-by-3.png" target="_blank"><img src="../img/group-by-3.png" width="686" height="56" alt="Uncheck global group-by" /></a></p>
+<p>I aquesta seria la taula de regles de enviament, amb les opcions d’agrupament <strong>diferenciades</strong>:</p>
+<p class="img"><a href="../img/group-by-2-mks.png" target="_blank"><img src="../img/group-by-2-mks.png" width="1047" height="306" alt="Shipping rules with diferentiate grouping options" /></a></p>
+<h2>Tot el control</h2>
+<p>Les accions especials permeten modificar la execució de les regles o trametre missatges als teus clients:</p>
+<p class="fns_do_actions"><a href="special_actions.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="special_actions">Accions Especials</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>

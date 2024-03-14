@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Métodes de selecció condicionals - Fish and Ships for WooCommerce</title>
+<link rel="stylesheet" href="../../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Métodes de selecció condicionals</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<a href="main.html" data-fns-tip="main">Ajut principal</a>
+					<strong><a href="sel_conditions.html" data-fns-tip="sel_conditions">Condicions de selecció</a></strong>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Costos d'enviament</a>
+					<a href="group_by.html" data-fns-tip="group_by">Agrupar per</a>
+					<a href="special_actions.html" data-fns-tip="special_actions">Accions Especials</a>
+					<a href="other_fields.html" data-fns-tip="other_fields">Altres camps i registres (logs)</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Ajut i Suport</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+
+<!-- translators: here start text content -->
+<h2>15 métodes de selecció condicionals a les regles d'enviament</h2>
+<div class="float_img">
+	<a href="../img/selection-options.png" target="_blank">
+		<img src="../img/selection-options.png" width="313" height="410" alt="The selection conditions" />
+	</a>
+</div>
+<p>Fish and Ships per a WooCommerce duu una àmplia col·lecció de <strong>mètodes de selecció</strong>, aquests son:</p>
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>Preu:</h3></td>
+		<td>
+			<p>Es tindrà en compte el preu dels productes <strong>abans</strong> d’impostos. Si estan rebaixats, es prendrà aquest preu.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title">
+			<h3>Pes:</h3>
+		</td>
+		<td>
+			<p>Si els productes no tenen pes establert, el valor a considerar serà 0.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Volum:</h3></td>
+		<td>
+			<p>El valor a comparar serà la multiplicació de <strong>Ample x Alt x Llarg</strong>. Si no té mida introduïda, el valor serà 0.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Nre. productes cistell:</h3></td>
+		<td>
+			<p>Es considerarà la <strong>quantitat de productes</strong> al cistell. Tingues en compte que el mètode d’agrupament pot generar confusió! Si tries no agrupar els productes i considerar-los un a un, el valor a considerar serà sempre&nbsp;1 (veure <a href="group_by.html" class="wc_fns_nav_popup" data-fns-tip="group_by">group-by</a>).</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Dimensió mínima, <br />
+			Dimensió mitjana, <br />
+			Dimensió màxima:</h3></td>
+		<td>
+			<p>Cada un d’ells, considerarà, respectivament, <strong>la cota mínima, mitja i màxima</strong> dels productes. Es indiferent si les mides han estat entrades de petit a gran, o de gran a petit, en un producte de: 10x15x1 o 15x1x10, la mida gran serà sempre 15, la mitjana 10, i la petita&nbsp;1. Aquest mètode considera sempre els productes un a un, independentment del mètode d’agrupació triat. Si un producte no té entrades mides, el valor a considerar serà zero.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Llarg+Ample +Alt&nbsp;<span class="pro">[PRO]</span>:</h3></td>
+		<td>
+			<p>El valor a considerar serà la suma de les cotes. En un producte de: 10x15x1, serà: <strong>10+15+1 = 26</strong>. Aquest mètode considera sempre els productes un a un, independentment del mètode d’agrupació triat. Si un producte no té entrades mides, el valor serà zero.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>User role&nbsp;<span class="pro">[PRO]</span>:</h3></td>
+		<td>
+			<p>Get more info <a href="https://www.wp-centrics.com/hide-shipping-methods-on-woocommerce/" target="_blank">here</a>.</p>
+		</td>
+	</tr>
+</tbody></table>
+
+<h2>Major que / Major o igual que &amp; Menor que / Menor o igual que</h2>
+				
+<p>Tots els mètodes de: dimensions, pes, volum, preu i nombre de productes al cistell, despleguen uns camps de valor mínim i màxim.</p>
+
+<p>Per a tots aquests criteris, pots seleccionar com els valors MIN i MAX seran comparats, podent triar per a cada regla el símbol que necessitis.</p>
+
+<p>A la taula següent, hem establert la comparació MIN com a <strong>MAJOR O IGUAL QUE</strong> 5€, i la comparació MAX com a <strong>MENOR O IGUAL QUE</strong> 30€:</p>
+				
+<p><img src="../img/min-max-new-1-euros.png" width="700" height="101" alt="MAJOR O IGUAL QUE" /></p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:700px">
+	<tbody>
+	<tr>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 4.99€</td>
+		<td class="rule grouped match"><span class="dashicons dashicons-yes-alt"></span> <strong>5.00€</strong></td>
+		<td class="rule grouped last_right match"><span class="dashicons dashicons-yes-alt"></span> <strong>30.00€</strong></td>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 30.01€</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>A la segona taula, hem establert la comparació MIN com <strong>MAJOR QUE</strong> 30€, i la comparació MAX com <strong>MENOR QUE</strong> 100€, així que: els valors iguals no compliràn amb aquesta regla:</p>
+
+<p><img src="../img/min-max-new-2-euros.png" width="700" height="101" alt="MAJOR QUE" /></p>
+<table class="wp-list-table widefat striped tags" style="max-width:700px">
+	<tbody>
+	<tr>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 30.00€</td>
+		<td class="rule grouped match"><span class="dashicons dashicons-yes-alt"></span> <strong>30.01€</strong></td>
+		<td class="rule grouped last_right match"><span class="dashicons dashicons-yes-alt"></span> <strong>99.99€</strong></td>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 100.00€</td>
+	</tr>
+	</tbody>
+</table>				
+
+<p>Nota que <strong>30.00€</strong> compleix la regla #1 perquè el camp MAX fa la comparació <strong>MENOR O IGUAL QUE</strong>, i no compleix la regla #2 perque MIN fa la comparació amb <strong>MAJOR QUE</strong>.</p>
+
+<p>D'altra banda, <strong>100€</strong> no compleix la regla #2 perquè el camp MAX fa la comparació <strong>MENOR QUE</strong>.</p>
+				
+<br>
+
+
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>A la categoria,<br /> 
+		NO A la categoria<span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>Es tindran en compte les categories de producte <strong>especificades</strong> (product categories), i <strong>no els seus fills</strong>. Si vols que siguin considerats, hauràs d'incloure'ls també. <br />Aquest mètode considera sempre els productes un a un, independentment del mètode d’agrupació triat.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Etiquetat (tagged) com, <br /> 
+		NO Etiquetat com <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>Es tenen en compte les <strong>etiquetes de producte</strong> (product tags). <br />Aquest mètode considera sempre els productes un a un, independentment del mètode d’agrupació triat.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>A la classe d'enviament, <br /> 
+			NOT A la classe d'enviament:</h3></td>
+		<td>
+<p>Es tenen en compte les <strong>classes d'enviament</strong> (shipping classes). <br />Aquest mètode considera sempre els productes un a un, independentment del mètode d’agrupació triat.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Volumètric <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>Amb el càlcul de <strong>pes volumètric</strong> es fa un doble càlcul: per <strong>pes i per volum</strong>, i s’agafa el valor més alt. Al seleccionar pes volumètric, apareix a sota de la taula de regles un nou camp, per a que introduïm el <strong>factor de pes volumètric</strong>, que has d'obtenir de l'agència de transport:</p>
+		</td>
+	</tr>
+</tbody></table>
+
+			<p class="img">
+			<a href="../img/volumetric-mks" target="_blank"><img src="../img/volumetric-mks.png" width="659" height="245" alt="Volumetric weight factor" /></a></p>
+			<p>Com funciona? Imagina un factor de pes volumètric de 50 quilos per metre cúbic. La  botiga del nostre exemple està configurada per treballar en centímetres i grams, convertit, es: 0.05 grams per centímetre cúbic, (aquí tens <a href="https://www.convertworld.com/ca/densitat/" target="_blank">un conversor d'unitats online</a> per a volum/pes):</p>
+			
+			<table class="wp-list-table widefat striped tags" style="max-width:800px">
+				<thead>
+				<tr>
+					<th>Producte</th>
+					<th>Pes</th>
+					<th>Mides</th>
+					<th>Volum</th>
+					<th>Pes volumètric</th>
+					<th class="align_center">Valor a considerar</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Abric</td>
+					<td class="align_center">1500 g.</td>
+					<td>50x50x14 cm</td>
+					<td>35000 cm<sup>3</sup></td>
+					<td class="grouped last_right">35000 * 0.05 = <br /><strong>1750 g.</strong></td>
+					<td class="align_center"><strong>1750 g.</strong></td>
+				</tr>
+				<tr>
+					<td>Portàtil</td>
+					<td class="grouped last_right"><strong>2500 g.</strong></td>
+					<td>40x46x18 cm</td>
+					<td>33120 cm<sup>3</sup></td>
+					<td class="align_center">33120 * 0.05 = <br />1656 g.</td>
+					<td class="align_center"><strong>2500 g.</strong></td>
+				</tr>
+				</tbody>
+			</table>
+			<p>En els productes lleugers, el valor a considerar serà el pes volumètric calculat. En els productes pesats, serà considerat el pes real del producte. <strong>Sempre el de major valor</strong>.</p>
+
+<h2>I... ara?</h2>
+<p>Acabem de veure els mètodes de selecció. Ara, aprenent com funcionen els càlculs de costos ja podràs fer un ús bàsic de Fish and Ships:</p>
+<p class="fns_do_actions"><a href="shipping_costs.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="shipping_costs">Costos d'enviament</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>

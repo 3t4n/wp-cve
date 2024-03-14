@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Accions Especials a les regles d'enviament - Fish and Ships for WooCommerce</title>
+<link rel="stylesheet" href="../../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Accions Especials a les regles d'enviament</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<a href="main.html" data-fns-tip="main">Ajut principal</a>
+					<a href="sel_conditions.html" data-fns-tip="sel_conditions">Condicions de selecció</a>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Costos d'enviament</a>
+					<a href="group_by.html" data-fns-tip="group_by">Agrupar per</a>
+					<strong><a href="special_actions.html" data-fns-tip="special_actions">Accions Especials</a></strong>
+					<a href="other_fields.html" data-fns-tip="other_fields">Altres camps i registres (logs)</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Ajut i Suport</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+
+<!-- translators: here start text content -->
+<h2>Les regles executen accions</h2>
+<div class="float_img">
+	<a href="../img/special-actions.png" target="_blank">
+		<img src="../img/special-actions.png" width="313" height="298" alt="The special actions for rules" />
+	</a>
+</div>
+<p>Les accions especials <strong>permeten modificar el comportament</strong> de la taula de regles i/o <strong>complementar la informació que rep el nostre client</strong> en base al seu cistell i els seus costos d’enviament. </p>
+<p>Aquesta informació pot usar-se per a que el nostre client <strong>entengui</strong> el perquè dels costos, o perquè no li podem fer determinat enviament on viu, <strong>animar-lo a ficar més productes al cistell</strong>, informar del termini de lliurament o del nom de la empresa de paqueteria, etc.</p>
+<p>Les accions especials <strong>van associades sempre a una regla</strong>, i seran executades si com a mínim un producte compleix els criteris de selecció de la regla on pertanyen.</p>
+<p>A continuació expliquem quines hi ha:</p>
+
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h2>Anul·lar mètode d'enviament:</h2></td>
+		<td>
+<p>Aquesta acció fa que tot el mètode d’enviament quedi <strong>desactivat</strong>, tant es que altres regles siguin aplicables.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Saltar N regles: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Aquesta acció farà que <strong>saltem</strong> (ignorem) N regles per sota. S’utilitza per establir lògica d’execució condicional, per exemple: si s’aplica la regla A, mai pot aplicar-se la B (que està just dessota)</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Elimina costs previs: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Ignorarà tots els costos calculats de les <strong>regles anteriors</strong> i començarà a comptar de nou els costos, començant per la regla actual.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Stop (ignora les regles de sota):</h2></td>
+		<td>
+<p>Les regles següents <strong>no seran analitzades</strong>, però no s’avorta el mètode d’enviament i serà ofert al client per al cistell actual.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Mín/Max costos regla: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Establirem el mínim i màxim cost <strong>per aquesta regla</strong> (no per les altres). Molt útil quan s’aplica el càlcul de costos d’enviament basats en % (percentatge) o * [qty]</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Prod. coincidents salten les regles de sota: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Aquells productes que han passat els criteris de selecció per la regla actual, <strong>no seran considerats</strong> per a les regles següents</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Mostra missatge d'avís: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Podem introduir un <strong>missatge per al nostre client</strong> del mateix estil que els missatges de WooCommerce (els colors dependran del theme que tinguem instal·lat). Get more info <a href="https://www.wp-centrics.com/math-expressions-on-shipping-rate-calculations/" target="_blank">here</a>.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Canviar nom métode: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Podem <strong>canviar el nom</strong> del mètode d’enviament. Per exemple: informar del nom d'una empresa de paqueteria, segons certes condicions de les regles.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Afegir subtítol (text a sota): <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Ens permet afegir una <strong>informació extra</strong> sota el nom del mètode d’enviament. Per exemple: el termini de lliurament.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Aplicar cupó automàticament: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Podem <strong>aplicar un cupó de descompte automàticament</strong>, personalitzar els missatges d'aplicació i retirada, i més. Pots obtindre més informació <a href="https://www.wp-centrics.com/auto-apply-coupons-cart-based-on-woocommerce/" target="_blank">aquí</a>.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Math expression: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Get more info <a href="https://www.wp-centrics.com/auto-apply-coupons-cart-based-on-woocommerce/" target="_blank">here</a>.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Shipping boxes: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Shipping boxes bin packer (flat rate shipping boxes). Get more info <a href="https://www.wp-centrics.com/shipping-boxes-flat-rate/" target="_blank">here</a>.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h2>Hide other shipping methods: <span class="pro">[PRO]</span></h2></td>
+		<td>
+<p>Get more info <a href="https://www.wp-centrics.com/hide-shipping-methods-on-woocommerce/" target="_blank">here</a>.</p>
+		</td>
+	</tr>
+</tbody></table>
+
+<h2>Un altre exemple</h2>
+<p>Imagina que sota certes condicions, <strong>volem informar al nostre client</strong> que els costos d'enviament inclouen una assegurança, es trametran sobre determinada companyia, i arribarà a casa seva en 24 hores:</p>
+<p class="img"><a href="../img/special-actions-1.png" target="_blank">
+	<img src="../img/special-actions-1.png" width="986" height="410" alt="Setting custom messages on shipping method" />
+</a></p>
+<p>I aquest es el resultat: (l'aspecte dependrà del theme instal·lat), Fish and Ships imprimirà els missatges de manera estàndard del WooCommerce:</p>
+<p class="img"><a href="../img/special-actions-2.png" target="_blank">
+	<img src="../img/special-actions-2.png" width="986" height="450" alt="Custom messages on customer cart" />
+</a></p>
+<h2>...últims detalls</h2><p>Ens queda per veure la resta de camps, fora de la taula de regles, i el sistema de logs:</p>
+<p class="fns_do_actions"><a href="other_fields.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="other_fields">Altres camps i registres (logs)</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>

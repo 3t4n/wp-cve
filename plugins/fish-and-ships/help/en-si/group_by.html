@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Group the products by - Fish and Ships for WooCommerce</title>
+<link rel="stylesheet" href="../../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Group (the cart) products by</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<a href="main.html" data-fns-tip="main">Main</a>
+					<a href="sel_conditions.html" data-fns-tip="sel_conditions">Selection conditions</a>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Shipping costs</a>
+					<strong><a href="group_by.html" data-fns-tip="group_by">Group-by</a></strong>
+					<a href="special_actions.html" data-fns-tip="special_actions">Special Actions</a>
+					<a href="other_fields.html" data-fns-tip="other_fields">Other fields & logs</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Help and Support</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+
+<!-- translators: here start text content -->
+<h2>Grouping products will change the shipping costs</h2>
+
+<p>We can analyze cart products <strong>grouped under different criteria</strong>, to determine if it matches over one rule and thus is applicable to shipping cost calculation.</p>
+
+<p class="img"><a href="../img/group-by-4.png" target="_blank"><img src="../img/group-by-4.png" width="634" height="205" alt="Cart items group-by options" /></a></p>
+<p>The possible criteria for grouping are:</p>
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>None [no grouping]:</h3></td>
+		<td>
+<p>Each product will be analyzed <strong>individually</strong>, even if they have the same reference</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Per ID / SKU:</h3></td>
+		<td>
+<p>The products with the <strong>same reference</strong> will be grouped</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Per product [group variations]:</h3></td>
+		<td>
+<p>Every product <strong>variations included</strong> will be grouped</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Per shipping class:</h3></td>
+		<td>
+<p>All products with <strong>the same shipping class</strong> will be grouped</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>All grouped as one:</h3></td>
+		<td>
+<p>The whole cart products <strong>will make up a only group</strong></p>
+		</td>
+	</tr>
+</tbody></table>
+
+<h2>Another simple example</h2>
+
+<p>Let's show, how the different grouping criteria, switch how the cart is processed to calculate the shipping costs:</p>
+
+<p>Let's say we want to charge <strong>1€</strong> shipping costs for products that <strong>weigh 500 g.</strong>, or more:</p>
+
+<p class="img"><a href="../img/group-by-1b-mks.png" target="_blank"><img src="../img/group-by-1b-mks.png" width="930" height="182" alt="Set 1€ for half pound of weight" /></a></p>
+<p>Let's consider this cart:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th>Shipping class</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt (size S variation)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>2</td>
+		<td>280 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>External hard drive</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Computers</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2>Grouping None [no grouping]</h2>
+
+<p>Each cart item will be analyzed separately:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Cost</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt (size S variation)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>External hard drive</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th>Rule #1 cost:</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td class="rule stop"><span class="dashicons dashicons-dismiss"></span></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Note that even the two shirts L-sized are analyzed separately. <strong class="abort">This rule will not be taken</strong> because no product matches the selection criterion.</p>
+
+<p><strong>Important:</strong> If no rules to apply, because no product matches the selection criteria, the shipping method will be disabled for that cart.</p>
+
+<h2>Grouping Per ID / SKU</h2>
+
+<p>With the ID / SKU criterion, the variations are still analyzed separately, but grouped the products that are <strong>identical </strong>:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th class="align_center">Grouped weight</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Cost</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt (size S variation)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td class="align_center">225 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td rowspan="2" class="grouped last_right">560 g.</td>
+		<td class="rule match gray_grouped" rowspan="2">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="2" class="rule gray_grouped last_right">1€ * 2 = <br /><strong>2€</strong></td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="align_center">360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>External hard drive</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="5">Rule #1 cost:</th>
+		<td class="rule"><strong>2€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Note that only products that matches the selection criteria <strong>impact on the cost</strong> of the rule.</p>
+
+<p>If one or more product (group in this case) matches the selection, the rule applies, and it will <strong>enable</strong> the shipping method for that cart.</p>
+
+<h2>Grouping Per product [group variations]</h2>
+
+<p>With the Per product [group variations] criterion, products that are the same, <strong>including variations</strong>, are grouped together:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th class="align_center">Grouped weight</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Cost</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt (size S variation)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td rowspan="3" class="grouped last_right">785 g.</td>
+		<td class="rule match gray_grouped" rowspan="3">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="3" class="rule gray_grouped last_right">1€ * 3 = <br /><strong>3€</strong></td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="align_center">360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>External hard drive</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="5">Rule #1 cost:</th>
+		<td class="rule"><strong>3€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+<p>Note that the shirt S-sized itself does not match the selection criterion, but if it is grouped with the other two L-sized, it does.</p>
+
+<h2>Grouping Per shipping class</h2>
+
+<p>With the Per shipping class criterion, <strong>all clothing</strong> will be analyzed as a single group, and the hard disk as a second group:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th>Shipping class</th>
+		<th class="align_center">Grouped weight</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Cost</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt (size S variation)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Clothes</td>
+		<td rowspan="4" class="grouped last_right">1145 g.</td>
+		<td class="rule match gray_grouped" rowspan="4">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="4" class="rule gray_grouped last_right">1€ * 4 = <br /><strong>4€</strong></td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>External hard drive</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Computers</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="6">Rule #1 cost:</th>
+		<td class="rule"><strong>4€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<h2>Grouping All grouped as one</h2>
+<p>And finally, with the criterion All grouped as one, <strong>the whole cart</strong> will be grouped as one:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Weight</th>
+		<th>Shipping class</th>
+		<th class="align_center">Grouped weight</th>
+		<th class="align_center">Rule #1</th>
+		<th class="align_center">Cost</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Shirt (size S variation)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Clothes</td>
+		<td rowspan="5" class="grouped last_right">1570 g.</td>
+		<td class="rule match gray_grouped" rowspan="5">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="5" class="rule gray_grouped last_right">1€ * 5 = <br /><strong>5€</strong></td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>Shirt (size L variation)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Clothes</td>
+	</tr>
+	<tr>
+		<td>External hard drive</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Computers</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="6">Rule #1 cost:</th>
+		<td class="rule"><strong>5€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<h2>And ... what about the other selection methods?</h2>
+
+<table class="wp-list-table widefat tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th style="background:#f9f9f9;"><p>Products can be grouped, <strong>in the same way</strong> as we have seen with weight, to:</p></th>
+		<th class="left_border" style="background:#f9f9f9;"><p>And <strong>can't be grouped</strong> (always take the products one by one) the next ones:</p></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td style="width:50%;">
+			<ul>
+			<li>Price</li>
+			<li>Weight</li>
+			<li>Volume</li>
+			<li>Cart items</li>
+			<li>Volumetric calculation <span class="pro">[PRO]</span></li>
+			</ul>
+		</td>
+		<td class="left_border">
+			<ul>
+			<li>Min dimension</li>
+			<li>Mid dimension</li>
+			<li>Max dimension</li>
+			<li>Length+Width+Height <span class="pro">[PRO]</span></li>
+			</ul>
+			
+			<ul>
+			<li>In shipping class / NOT In shipping class</li>
+			<li>In category / NOT In category <span class="pro">[PRO]</span></li>
+			<li>Tagged as / NOT Tagged as <span class="pro">[PRO]</span></li>
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>Why can't they be grouped? Well, relative to size, it would not make sense to sum the dimensions of the products. And about taxonomies, different products may belong to different taxonomies, so they cannot be considered together. <strong>In any case, it will be taken product per product</strong>.</p>
+
+<h2>Different grouping criteria on each condition <span class="pro">[PRO]</span></h2>
+<p>In the PRO version, a <strong>different grouping for each condition</strong> can be set.</p>
+<p>Let's say we want to set a flat shipping cost of <strong>10€</strong> if the cart has more than 4 products, discarding those weighing more than 500g.:</p>
+<p>You must first uncheck the option to group globally:</p>
+<p class="img"><a href="../img/group-by-3.png" target="_blank"><img src="../img/group-by-3.png" width="686" height="56" alt="Uncheck global group-by" /></a></p>
+<p>And this would be the shipping rules table, with <strong>differentiated</strong> grouping options:</p>
+<p class="img"><a href="../img/group-by-2-mks.png" target="_blank"><img src="../img/group-by-2-mks.png" width="1047" height="306" alt="Shipping rules with diferentiate grouping options" /></a></p>
+<h2>All the control</h2>
+<p>Special Actions allow you to modify the execution of the rules or send messages to your customers:</p>
+<p class="fns_do_actions"><a href="special_actions.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="special_actions">Special Actions</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>

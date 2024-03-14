@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Metodi di selezione condizionale - Fish and Ships per WooCommerce</title>
+<link rel="stylesheet" href="../../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Metodi di selezione condizionale</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<a href="main.html" data-fns-tip="main">Principale</a>
+					<strong><a href="sel_conditions.html" data-fns-tip="sel_conditions">Condizioni di selezione</a></strong>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Costi di spedizione</a>
+					<a href="group_by.html" data-fns-tip="group_by">Raggruppa per</a>
+					<a href="special_actions.html" data-fns-tip="special_actions">Azioni speciali</a>
+					<a href="other_fields.html" data-fns-tip="other_fields">Altri campi e registri</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Aiuto e supporto</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+
+<!-- translators: here start text content -->
+<h2>15 metodi di selezione condizionale sulle regole di spedizione</h2>
+<div class="float_img">
+	<a href="../img/selection-options.png" target="_blank">
+		<img src="../img/selection-options.png" width="313" height="410" alt="The selection conditions" />
+	</a>
+</div>
+<p>Fish and Ships for WooCommerce dispone di un vasta scelta di<strong>metodi di selezione</strong>, questi sono:</p>
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>Prezzo:</h3></td>
+		<td>
+			<p>I prezzi dei prodotti sono considerati <strong>prima delle tasse</strong>. Se c'e' un prezzo di vendita, sarà considerato.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title">
+			<h3>Peso:</h3>
+		</td>
+		<td>
+			<p>Se i prodotti non hanno un peso impostato, 0 sarà considerato.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Volume:</h3></td>
+		<td>
+			<p>Il valore considerato sarà il prodotto di <strong>Larghezza x Altezza x Lunghezza</strong>. Se non è stata impostata una dimensione, 0 sarà considerato.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Articoli nel carrello:</h3></td>
+		<td>
+			<p>Sara' considerata la <strong>quantità dei prodotti</strong> nel carrello . Osserva che il criterio di raggruppamento-per puo' essere confusionario ! Se non imposti il raggruppamento allora i prodotti saranno tutti considerati singolarmente, e la quantità diventerà sempre&nbsp;1 (see <a href="group_by.html" class="wc_fns_nav_popup" data-fns-tip="group_by">raggruppa-per</a>).</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Dimensione min., <br />Dimensione Med., <br />Dimensione Max:</h3></td>
+		<td>
+			<p>Ognuna di loro considererà, rispettivamente, la <strong>dimensione piccola, media e grande</strong> dei prodotti. Non importa se le dimensioni sono state immesse dalla piccola alla grande, o dalla grande alla piccola, in in un prodotto di: 10x15x1 or 15x1x10, la dimensione grande sarà sempre  15, the media  10, and the piccola 1. Questo metodo considera sempre i prodotti singolarmente, senza considerare il metodo di raggruppamento scelto. Se un prodotto non ha una dimensione impostata, verrà considerato il valore 0.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Lunghezza+Larghezza+Altezza &nbsp;<span class="pro">[PRO]</span>:</h3></td>
+		<td>
+			<p>Il valore considerato sarà la somma delle tre dimensioni. in un prodotto di: 10x15x1, it will be: <strong>10+15+1 = 26</strong>. Questo metodo considera sempre i prodotti singolarmente, senza curarsi del metodo di raggruppamento scelto. Se un prodotto non ha dimensioni impostate, sarà considerato il valore 0.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>User role&nbsp;<span class="pro">[PRO]</span>:</h3></td>
+		<td>
+			<p>Get more info <a href="https://www.wp-centrics.com/hide-shipping-methods-on-woocommerce/" target="_blank">here</a>.</p>
+		</td>
+	</tr>
+</tbody></table>
+
+
+<h2>Maggiore di / Maggiore o uguale a  &amp; Minore di / Minore di o uguale a</h2>
+
+<p>I metodi: dimensioni, peso, volume, prezzo e numero dei prodotti nel carrello mostrano i campi di valore minimo e massimo.</p>
+
+<p>Per tutti questi criteri, puoi scegliere come i valori MIN and MAX  saranno confrontati, passando al simbolo appropriato di ogni regola di cui hai bisogno.</p>
+
+<p>Nella seguente tabella, abbiamo impostato il confronto MIN come <strong>MAGGIORE DI O UGUALE A</strong> 5€, e il confronto MAX as <strong>MINORE DI O UGUALE A</strong> 30€</p>
+
+<p><img src="../img/min-max-new-1-euros.png" width="700" height="101" alt="GREATER THAN OR EQUAL TO" /></p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:700px">
+	<tbody>
+	<tr>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 4.99€</td>
+		<td class="rule grouped match"><span class="dashicons dashicons-yes-alt"></span> <strong>5.00€</strong></td>
+		<td class="rule grouped last_right match"><span class="dashicons dashicons-yes-alt"></span> <strong>30.00€</strong></td>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 30.01€</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>Nella seconda tabella, abbiamo impostato il confronto MIN come <strong>MAGGIORE DI</strong> 30€, e il confronto MAX come <strong>MINORE DI</strong> 100€, ecco che: i valori uguali non soddisfano questa regola:</p>
+
+<p><img src="../img/min-max-new-2-euros.png" width="700" height="101" alt="GREATER THAN" /></p>
+<table class="wp-list-table widefat striped tags" style="max-width:700px">
+	<tbody>
+	<tr>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 30.00€</td>
+		<td class="rule grouped match"><span class="dashicons dashicons-yes-alt"></span> <strong>30.01€</strong></td>
+		<td class="rule grouped last_right match"><span class="dashicons dashicons-yes-alt"></span> <strong>99.99€</strong></td>
+		<td class="rule"><span class="dashicons dashicons-dismiss"></span> 100.00€</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>Osserva che <strong>30.00€</strong> soddisfa la regola 1 #1 perchè il campo MAX di confronto <strong>MINORE DI O UGUALE A</strong>, e non soddisfa la regola #2 perchè il  MIN fa il confronto con <strong>MAGGIORE DI</strong>.</p>
+
+<p>Dall'altro lato, <strong>100€</strong> non soddisfa la regola #2 il campo MAX di confronto è <strong>MINORE DI</strong>.</p>
+
+<br>
+
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>In Categoria,<br /> NOT In Categoria <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>Le<strong>Categorie selezionate</strong> verranno considerate, non le <strong>sue figlie</strong>. Dovresti includerle se vuoi che corrispondano. <br />Questo metodo considera i prodotti singolarmente, senza curarsi del metodo di raggruppamento scelto.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Taggato come , <br /> NOT Taggato come <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>Saranno considerati<strong>I Tag di prodotto</strong> . <br />Questo metodo considera sempre i prodotti singolarmente, senza curarsi del metodo di raggruppamento scelto.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Nella classe di spedizione, <br /> NOT nella classe di spedizione:</h3></td>
+		<td>
+<p>Sarà considerata<strong>La Classe di spedizione</strong>. <br />Questo metodo considera sempre i prodotti singolarmente, senza curarsi del metodo di raggruppamento scelto.</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Volumetrico <span class="pro">[PRO]</span>:</h3></td>
+		<td>
+<p>Per il<strong>peso volumetrico</strong> verranno fatti due calcoli: per peso e per volume, e sara' considerato il valore più alto. Quando si sceglie il peso volumetrico, appare un nuovo campo sotto la tabella delle regole di modo che tu possa inserire il <strong>fattore di peso volumetrico</strong>, che dovrai ottenere dal tuo spedizioniere:</p>
+		</td>
+	</tr>
+</tbody></table>
+
+			<p class="img">
+			<a href="../img/volumetric-mks.png" target="_blank"><img src="../img/volumetric-mks.png" width="659" height="245" alt="Volumetric weight factor" /></a></p>
+			<p>Come funziona? Diciamo che un fattore di peso volumetrico di 50 kg/metro<sup>3</sup>. Il nostro negozio esempio è configurato per lavorare con centimetri e grammi, convertito, è: 0.05 grammi per centimetro cubico, (qui trovi <a href="https://www.convertworld.com/en/density/" target="_blank">un convrtitore di unità online</a> per volume/peso):</p>
+
+			<table class="wp-list-table widefat striped tags" style="max-width:800px">
+				<thead>
+				<tr>
+					<th>Prodotto</th>
+					<th>Peso</th>
+					<th>Dimensione</th>
+					<th>Volume</th>
+					<th>Peso volumetrico</th>
+					<th class="align_center">Valori considerati</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Cappotto</td>
+					<td class="align_center">1500 g.</td>
+					<td>50x50x14 cm</td>
+					<td>35000 cm<sup>3</sup></td>
+					<td class="grouped last_right">35000 * 0.05 = <br /><strong>1750 g.</strong></td>
+					<td class="align_center"><strong>1750 g.</strong></td>
+				</tr>
+				<tr>
+					<td>Portatile</td>
+					<td class="grouped last_right"><strong>2500 g.</strong></td>
+					<td>40x46x18 cm</td>
+					<td>33120 cm<sup>3</sup></td>
+					<td class="align_center">33120 * 0.05 = <br />1656 g.</td>
+					<td class="align_center"><strong>2500 g.</strong></td>
+				</tr>
+				</tbody>
+			</table>
+			<p>Per i prodotti leggeri, i valori considerati saranno considerati con peso volumetrico. Nei prodotti pesanti, verrà considerato il valore di peso. <strong>Sempre quello più grande</strong>.</p>
+<h2>E ... ora?</h2>
+<p>Abbiamo appena visto i metodi di selezione. Ora, iniziando ad imparare come funzionano i costi di spedizione, possiamo fare un uso basico di Fish and Ships:</p>
+<p class="fns_do_actions"><a href="shipping_costs.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="shipping_costs">Shipping costs</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>

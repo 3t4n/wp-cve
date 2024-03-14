@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Agrupar los productos por - Fish and Ships for WooCommerce</title>
+<link rel="stylesheet" href="../../assets/css/help-alone.css?v=1.0.2" media="all" />
+<link rel="stylesheet" href="../../assets/css/dashicons.css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0" />
+</head>
+
+<body>
+	<h1>Agrupar los productos (de la cesta) por</h1>
+	<div id="content">
+		<div class="wc_fns_cont_cols clearfix">
+			<div class="wc_fns_col_menu">
+				<nav class="wc_fns_nav_popup">
+					<a href="main.html" data-fns-tip="main">Ayuda principal</a>
+					<a href="sel_conditions.html" data-fns-tip="sel_conditions">Condiciones de selección</a>
+					<a href="shipping_costs.html" data-fns-tip="shipping_costs">Costes de envío</a>
+					<strong><a href="group_by.html" data-fns-tip="group_by">Agrupar por</a></strong>
+					<a href="special_actions.html" data-fns-tip="special_actions">Acciones Especiales</a>
+					<a href="other_fields.html" data-fns-tip="other_fields">Otros campos y registros (logs)</a>
+					<a href="pro.html" data-fns-tip="pro">Free vs Pro</a>
+					<a href="help.html" data-fns-tip="help">Ayuda y Soporte</a>
+				</nav>
+			</div>
+			<div class="wc_fns_col_content">
+				<nav class="lang_switch"></nav>
+<!-- translators: here start text content -->
+<h2>Agrupar los productos cambia los costes de envío</h2>
+<p>Podemos analizar los productos de la cesta <strong>agrupados bajo diferentes criterios</strong>, tanto para determinar si una regla es aplicable, como para calcular el coste de envío.</p>
+<p class="img"><a href="../img/group-by-4.png" target="_blank"><img src="../img/group-by-4.png" width="634" height="205" alt="Cart items group-by options" /></a></p>
+<p>Los  posibles criterios de agrupación, son:</p>
+<table class="methods striped"><tbody>
+	<tr>
+		<td class="td_title"><h3>Nada [no agrupar]:</h3></td>
+		<td>
+<p>Cada producto será analizado <strong>individualmente</strong>, incluso si son la misma referencia</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Por ID / SKU:</h3></td>
+		<td>
+<p>Los productos con la <strong>misma referencia</strong> serán agrupados</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Por producto [agrupar variaciones]:</h3></td>
+		<td>
+<p>Cada producto <strong>incluidas sus variaciones</strong> será agrupado</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Por clase de envío:</h3></td>
+		<td>
+<p>Todos los productos <strong>de una misma clase de envío</strong> (shipping class) serán agrupados</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="td_title"><h3>Todos agrupados como uno:</h3></td>
+		<td>
+<p>Toda la cesta conformará <strong>un solo grupo</strong></p>
+		</td>
+	</tr>
+</tbody></table>
+
+<h2>Otro ejemplo sencillo</h2>
+<p>Vamos a demostrar, cómo los diferentes criterios de agrupación influyen en el procesado de la cesta, para el cálculo de los costes de envío:</p>
+<p>Imagina que queremos cargar <strong>1€</strong> de costes de envío a los productos que pesen <strong>500 g.</strong>, o más:</p>
+<p class="img"><a href="../img/group-by-1b-mks.png" target="_blank"><img src="../img/group-by-1b-mks.png" width="930" height="182" alt="Set 1€ for half pound of weight" /></a></p>
+<p>Planteamos la siguiente cesta:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producto</th>
+		<th>Cantidad</th>
+		<th>Peso</th>
+		<th>Clase de envío</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Camiseta (variación talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>2</td>
+		<td>280 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Disco duro externo</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Informática</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2>Criterio Nada [no agrupar]</h2>
+
+<p>Cada elemento será analizado por separado:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producto</th>
+		<th>Cantidad</th>
+		<th>Peso</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Precio</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Camiseta (variación talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Disco duro externo</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th>Coste de la regla #1:</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td class="rule stop"><span class="dashicons dashicons-dismiss"></span></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Fíjate que incluso las dos camisetas de la talla L, son analizadas por separado. <strong class="abort">Esta regla no actuará</strong>, puesto ningún producto pasa el criterio de selección.</p>
+<p><strong>Importante:</strong> Si ninguna regla actúa, porque no hay ni un solo producto que pase la selección, el sistema de envío <strong>es desactivará</strong> para esta cesta.</p>
+
+<h2>Criterio Por ID / SKU</h2>
+<p>Con el criterio Por ID / SKU las variaciones siguen siendo analizadas por separado, pero agrupados los productos que son <strong>idénticos</strong>:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producto</th>
+		<th>Cantidad</th>
+		<th>Peso</th>
+		<th class="align_center">Peso agrupado</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Precio</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Camiseta (variación talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td class="align_center">225 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td rowspan="2" class="grouped last_right">560 g.</td>
+		<td class="rule match gray_grouped" rowspan="2">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="2" class="rule gray_grouped last_right">1€ * 2 = <br /><strong>2€</strong></td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="align_center">360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Disco duro externo</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="5">Coste de la regla #1:</th>
+		<td class="rule"><strong>2€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<p>Fíjate que solo los productos que pasan el criterio de selección <strong>influyen en el cálculo</strong> del coste de la regla.</p>
+<p>Sólo que un producto pase la selección, la regla ya será aplicable, y <strong>activará</strong> el método de envío para esta cesta.</p>
+
+<h2>Criterio Por producto [agrupar variaciones]</h2>
+
+<p>Con el criterio Por producto [agrupar variaciones] los productos que son iguales, <strong>incluidas las variaciones</strong>, son agrupados:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producto</th>
+		<th>Cantidad</th>
+		<th>Peso</th>
+		<th class="align_center">Peso agrupado</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Precio</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Camiseta (variación talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td rowspan="3" class="grouped last_right">785 g.</td>
+		<td class="rule match gray_grouped" rowspan="3">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="3" class="rule gray_grouped last_right">1€ * 3 = <br /><strong>3€</strong></td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td class="align_center">360 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	<tr>
+		<td>Disco duro externo</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="5">Coste de la regla #1:</th>
+		<td class="rule"><strong>3€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+<p>Fíjate que la camiseta talla S, por sí sola no pasa el criterio de selección, pero sí lo hace agrupada con las otras dos de la talla L.</p>
+
+<h2>Criterio Por clase de envío</h2>
+
+<p>Con el criterio Por clase de envío (shipping class), <strong>toda la ropa</strong> será analizada como un solo grupo, y el disco duro como un segundo grupo:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producto</th>
+		<th>Cantidad</th>
+		<th>Peso</th>
+		<th>Clase de envío</th>
+		<th class="align_center">Peso agrupado</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Precio</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Camiseta (variación talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Ropa</td>
+		<td rowspan="4" class="grouped last_right">1145 g.</td>
+		<td class="rule match gray_grouped" rowspan="4">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="4" class="rule gray_grouped last_right">1€ * 4 = <br /><strong>4€</strong></td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Disco duro externo</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Informática</td>
+		<td class="align_center">425 g.</td>
+		<td class="rule">Min. 500 g.: <br /><span class="dashicons dashicons-dismiss"></span></td>
+		<td class="align_center">/</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="6">Coste de la regla #1:</th>
+		<td class="rule"><strong>4€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<h2>Criterio Todos agrupados como uno</h2>
+<p>Y, por último, con el criterio Todos agrupados como uno, <strong>toda la cesta</strong> actúa como un solo grupo:</p>
+
+<table class="wp-list-table widefat striped tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th>Producto</th>
+		<th>Cantidad</th>
+		<th>Peso</th>
+		<th>Clase de envío</th>
+		<th class="align_center">Peso agrupado</th>
+		<th class="align_center">Regla #1</th>
+		<th class="align_center">Precio</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>Camiseta (variación talla S)</td>
+		<td>1</td>
+		<td>225 g.</td>
+		<td>Ropa</td>
+		<td rowspan="5" class="grouped last_right">1570 g.</td>
+		<td class="rule match gray_grouped" rowspan="5">Min. 500 g.: <br /><span class="dashicons dashicons-yes-alt"></span></td>
+		<td rowspan="5" class="rule gray_grouped last_right">1€ * 5 = <br /><strong>5€</strong></td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Camiseta (variación talla L)</td>
+		<td>1</td>
+		<td>280 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Polo</td>
+		<td>1</td>
+		<td>360 g.</td>
+		<td>Ropa</td>
+	</tr>
+	<tr>
+		<td>Disco duro externo</td>
+		<td>1</td>
+		<td>425 g.</td>
+		<td>Informática</td>
+	</tr>
+	</tbody>
+	<tfoot>
+	<tr>
+		<th colspan="6">Coste de la regla #1:</th>
+		<td class="rule"><strong>5€</strong></td>
+	</tr>
+	</tfoot>
+</table>
+
+<h2>¿Y para los otros métodos de selección?</h2>
+
+<table class="wp-list-table widefat tags" style="max-width:800px">
+	<thead>
+	<tr>
+		<th style="background:#f9f9f9;"><p>Los  productos pueden agruparse, <strong>de la misma manera</strong> que con el peso, para:</p></th>
+		<th class="left_border"  style="background:#f9f9f9;"><p>Y <strong>no pueden hacerlo</strong> (actuarán siempre como elementos separados) para los siguientes:</p></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td style="width:50%;" class="bg_white">
+			<ul>
+			<li>Precio</li>
+			<li>Peso</li>
+			<li>Volumen</li>
+			<li>Núm. productos cesta</li>
+			<li>Cálculo volumétrico <span class="pro">[PRO]</span></li>
+			</ul>
+		</td>
+		<td class="left_border bg_white">
+			<ul>
+			<li>Dimensión mínima</li>
+			<li>Dimensión media</li>
+			<li>Dimensión máxima</li>
+			<li>Largo+Ancho+Alto <span class="pro">[PRO]</span></li>
+			</ul>
+			
+			<ul>
+			<li>En la clase de envío / NO En la clase de envío</li>
+			<li>En la categoría / NO En la categoría <span class="pro">[PRO]</span></li>
+			<li>Etiquetado (tagged) como / NO Etiquetado como <span class="pro">[PRO]</span></li>
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<p>¿Por qué  no pueden agruparse? Los relativos a medida, no tendría sentido sumar las cotas de los productos. Los relativos a taxonomías, pueden pertenecer a distintas, por lo tanto, no pueden ser considerados conjuntamente, y se hará, en cualquier caso, <strong>producto por producto</strong>.</p>
+
+<h2>Diferentes criterios de agrupación para cada condición <span class="pro">[PRO]</span></h2>
+<p>En la versión PRO, puede establecerse una agrupación <strong>distinta para cada condición</strong>.</p>
+<p>Imaginemos que queremos establecer un coste fijo de <strong>10€</strong> de envío si el cliente compra más de 4 productos, descartando aquellos que pesen más de 500 g.:</p>
+<p>Primero es necesario desmarcar la opción de agrupar globalmente:</p>
+<p class="img"><a href="../img/group-by-3.png" target="_blank"><img src="../img/group-by-3.png" width="686" height="56" alt="Uncheck global group-by" /></a></p>
+<p>Y esta sería la tabla de reglas de envío, con las opciones de agrupación <strong>diferenciadas</strong>:</p>
+<p class="img"><a href="../img/group-by-2-mks.png" target="_blank"><img src="../img/group-by-2-mks.png" width="1047" height="306" alt="Shipping rules with diferentiate grouping options" /></a></p>
+<h2>Todo el control</h2>
+<p>Las acciones especiales permiten modificar la ejecución de las reglas o emitir mensajes a tus clientes:</p>
+<p class="fns_do_actions"><a href="special_actions.html" class="button-rounded wc_fns_nav_popup" data-fns-tip="special_actions">Acciones Especiales</a></p>
+
+<!-- translators: here ends text content -->
+			</div><!-- /wc_fns_col_content -->
+		</div>
+	</div>
+	<p class="signature"><a href="https://www.wp-centrics.com/" target="_blank">wp-centrics Fish and Ships</a></p>
+</body>
+</html>
