@@ -1,0 +1,53 @@
+@supports (--css: variables) {
+	input[type="range"].wcpt__multirange {
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+		vertical-align: top;
+		-webkit-appearance: none;
+		height: auto !important;
+    border: none !important;
+	}
+
+	input[type="range"].wcpt__multirange:focus {
+		outline: none !important;
+	}
+
+	input[type="range"].wcpt__multirange.original {
+		position: absolute;
+	}
+
+	input[type="range"].wcpt__multirange.original::-webkit-slider-thumb {
+		position: relative;
+		z-index: 2;
+	}
+
+	input[type="range"].wcpt__multirange.original::-moz-range-thumb {
+		transform: scale(1); /* FF doesn't apply position it seems */
+		z-index: 1;
+	}
+
+	input[type="range"].wcpt__multirange::-moz-range-track {
+		border-color: transparent; /* needed to switch FF to "styleable" control */
+	}
+
+	input[type="range"].wcpt__multirange.ghost {
+		position: relative;
+		background: var(--track-background);
+		--track-background: linear-gradient(to right,
+    var(--default-color) var(--low), var(--range-color) 0,
+    var(--range-color) var(--high), var(--default-color) 0
+   ) no-repeat 0 45% / 100% 40%;
+		--range-color: #2196F3;
+		--default-color: #c5c5c5;
+	}
+
+	input[type="range"].wcpt__multirange.ghost::-webkit-slider-runnable-track {
+		background: var(--track-background);
+	}
+
+	input[type="range"].wcpt__multirange.ghost::-moz-range-track {
+		background: var(--track-background);
+	}
+
+}
