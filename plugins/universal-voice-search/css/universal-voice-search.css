@@ -1,0 +1,621 @@
+/**
+ * Universal Voice Search
+ *
+ * Copyright (c) 2019 speak2web
+ */
+
+.my-icon-wrapper i {
+    position: relative;
+    z-index: 10;
+}
+
+#pulse,
+#pulse-rate {
+    position: absolute;
+    top: -4px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+#pulse-rate {
+    opacity: .5;
+    animation-name: listen;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: listen;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes listen {
+    0% {
+        transform: scale(1.0);
+    }
+
+    20% {
+        transform: scale(1.2);
+    }
+
+    40% {
+        transform: scale(1.4);
+    }
+
+    50% {
+        transform: scale(1.6);
+    }
+
+    60% {
+        transform: scale(1.4);
+    }
+
+    80% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+@-webkit-keyframes listen {
+    0% {
+        -webkit-transform: scale(1.0);
+    }
+
+    20% {
+        -webkit-transform: scale(1.2);
+    }
+
+    40% {
+        -webkit-transform: scale(1.4);
+    }
+
+    50% {
+        -webkit-transform: scale(1.6);
+    }
+
+    60% {
+        -webkit-transform: scale(1.4);
+    }
+
+    80% {
+        -webkit-transform: scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: scale(1.0);
+    }
+}
+
+.universal-voice-search-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.universal-voice-search-wrapper input {
+    margin: 0;
+}
+
+.universal-voice-search-button {
+    position: absolute !important;
+    margin-left: 5px;
+    top: 0;
+    right: 0;
+    float: right;
+    height: 30px !important;
+    width: 30px !important;
+    margin: 0;
+    border: 0;
+    padding: 0 !important;
+    background: none !important;
+    background-color: #FFFFFF !important;
+    border-radius: 50% !important;
+    font: 0/0 a !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.uvs-mic-image {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.search-submit {
+    background: none !important;
+    pointer-events: none;
+}
+
+.search-submit:before {
+    display: none !important;
+}
+
+.universal-voice-search-button.listening,
+#uvsWidgetMic.listening {
+    font-size: 0;
+    background-color: red !important;
+    border: 0;
+    border-radius: 50% !important;
+    outline: none !important;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, .3);
+        box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, .3);
+    }
+
+    65% {
+        -webkit-box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, .3);
+        box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, .3);
+    }
+
+    90% {
+        -webkit-box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, 0);
+        box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, 0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, .3);
+        box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, .3);
+    }
+
+    65% {
+        -webkit-box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, .3);
+        box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, .3);
+    }
+
+    90% {
+        -webkit-box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, 0);
+        box-shadow: 0px 0px 5px 13px rgba(173, 0, 0, 0);
+    }
+}
+
+.uvs-mic-band {
+    -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
+    -ms-transform: matrix(1, 0, 0, 1, 0, 0);
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.uvs-hide-element {
+    display: none !important;
+}
+
+.uvs-response-controller {
+    position: fixed;
+    margin: auto;
+    top: 43%;
+    right: 25px;
+    width: 40px;
+    height: auto;
+    background-color: #000000;
+    border-radius: 25px;
+    padding: 10px;
+    z-index: 9999 !important;
+}
+
+.uvs-speaker-icon {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.uvs-sanitize-form-wrapper:after {
+    z-index: -1 !important;
+}
+
+/*#######################################################################################*/
+/*############################## Floating mic -  Widget #################################*/
+/*#######################################################################################*/
+.uvs-widget-wrapper {
+    position: fixed !important;
+    z-index: 1100 !important;
+}
+
+.uvs-widget-wrapper a#uvsWidgetToggleButton {
+    border: 4px solid rgba(0, 0, 0, .21) !important;
+    margin-top: 0 !important;
+}
+
+a#uvsWidgetToggleButton.singleClick {
+    background: #bd0404 !important;
+}
+
+span#uvsWidgetPulseEffect.singleClick {
+    background: #2e040a !important;
+    margin-top: 0 !important;
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    opacity: .7;
+    transform: scale(1);
+    border-radius: 50%;
+    animation-name: listening;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: listening;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes listening {
+    0% {
+        transform: scale(.8);
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+
+    60% {
+        transform: scale(1.2);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.8);
+    }
+}
+
+@-webkit-keyframes listening {
+    0% {
+        -webkit-transform: scale(.8);
+    }
+
+    20% {
+        -webkit-transform: scale(1);
+    }
+
+    40% {
+        -webkit-transform: scale(1.2);
+    }
+
+    50% {
+        -webkit-transform: scale(1.4);
+    }
+
+    60% {
+        -webkit-transform: scale(1.2);
+    }
+
+    80% {
+        -webkit-transform: scale(1);
+    }
+
+    100% {
+        -webkit-transform: scale(.8);
+    }
+}
+
+.uvs-widget-button {
+    display: block !important;
+    border-radius: 50% !important;
+    text-align: center !important;
+    color: #f0f0f0 !important;
+    margin: 25px auto 0 !important;
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28) !important;
+    cursor: pointer !important;
+    -webkit-transition: all .1s ease-out !important;
+    transition: all .1s ease-out !important;
+    position: relative !important;
+    z-index: 998 !important;
+    overflow: hidden !important;
+    background: #42a5f5 !important;
+}
+
+.uvs-widget-button>.uvs-widget-icon {
+    font-size: 2em !important;
+    line-height: 55px !important;
+    -webkit-transition: all .2s ease-out !important;
+    -webkit-transition: all .2s ease-in-out !important;
+    transition: all .2s ease-in-out !important;
+}
+
+.uvs-widget-button:not(:last-child) {
+    width: 0 !important;
+    height: 0 !important;
+    margin: 20px auto 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    line-height: 40px !important;
+}
+
+.uvs-widget-button:not(:last-child).uvs-widget-visible {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 15px auto 10 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.uvs-widget-button:nth-last-child(1) {
+    -webkit-transition-delay: 25ms !important;
+    transition-delay: 25ms !important;
+}
+
+.uvs-widget-button:not(:last-child):nth-last-child(2) {
+    -webkit-transition-delay: 20ms !important;
+    transition-delay: 20ms !important;
+}
+
+.uvs-widget-button:not(:last-child):nth-last-child(3) {
+    -webkit-transition-delay: 40ms !important;
+    transition-delay: 40ms !important;
+}
+
+.uvs-widget-button:not(:last-child):nth-last-child(4) {
+    -webkit-transition-delay: 60ms !important;
+    transition-delay: 60ms !important;
+}
+
+.uvs-widget-button:not(:last-child):nth-last-child(5) {
+    -webkit-transition-delay: 80ms !important;
+    transition-delay: 80ms !important;
+}
+
+.uvs-widget-button:last-child:active,
+.uvs-widget-button:last-child:focus,
+.uvs-widget-button:last-child:hover {
+    box-shadow: 0 0 6px rgba(0, 0, 0, .16), 0 6px 12px rgba(0, 0, 0, .32) !important;
+}
+
+/*Chatbox*/
+.uvs-widget-chat-wrapper {
+    position: fixed !important;
+    width: 400px !important;
+    font-size: 12px !important;
+    line-height: 0px !important;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+    font-weight: 500 !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smoothing: antialiased !important;
+    display: none;
+    box-shadow: 1px 1px 100px 2px rgba(0, 0, 0, 0.22) !important;
+    border: 4px solid rgba(0, 0, 0, 0.21) !important;
+    border-radius: 0px !important;
+}
+
+.uvs-widget-chat-wrapper.uvs-widget-visible {
+    display: block !important;
+}
+
+.uvs-widget-search {
+    position: relative !important;
+    margin: 10px 0 5px 0 !important;
+    width: 50% !important;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    line-height: 30px !important;
+    font-weight: 500 !important;
+    color: #4b4b4b !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smoothing: antialiased !important;
+    border: none !important;
+    outline: none !important;
+    display: inline-block !important;
+}
+
+.uvs-widget-search.uvs-widget-search-text {
+    height: 30px !important;
+    resize: none !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    border: none !important;
+    border-bottom: 1px solid #eee !important;
+    background: transparent !important;
+}
+
+.uvs-widget-field {
+    width: 100% !important;
+    display: inline-block !important;
+    text-align: center !important;
+    background: #fff !important;
+    border-top: 1px solid #eee !important;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-radius: 0 !important;
+}
+
+.uvs-widget-field a {
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+#uvsWidgetMic {
+    float: left !important;
+    width: 15% !important;
+    margin: 0 !important;
+}
+
+.uvs-widget-wrapper #uvsWidgetMic>img {
+    vertical-align: middle !important;
+    opacity: unset !important;
+}
+
+#uvsWidgetSearchBtn {
+    float: right;
+    background: rgba(0, 0, 0, 0) !important;
+    width: 15% !important;
+    margin: 5px 0px 0px 0px !important;
+}
+
+.uvs-widget-field .uvs-widget-button {
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: none !important;
+    margin: 5px !important;
+    background-color: transparent !important;
+}
+
+.uvs-widget-search {
+    float: left !important;
+}
+
+/*Element state*/
+.uvs-widget-active {
+    -webkit-transform: rotate(360deg) !important;
+    transform: rotate(360deg) !important;
+    -webkit-transition: all 1s ease-in-out !important;
+    transition: all 1s ease-in-out !important;
+}
+
+.uvs-widget-float {
+    box-shadow: 0 0 6px rgba(0, 0, 0, .16), 0 6px 12px rgba(0, 0, 0, .32) !important;
+}
+
+.uvs-widget-search {
+    width: 68% !important;
+}
+
+.uvs-widget-form-submit-btn {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+    font-size: 0.9em !important;
+    padding: 6px 6px !important;
+    text-decoration: none !important;
+    text-shadow: 0px 1px 0px #154682 !important;
+}
+
+.uvs-toggle-btn-mic {
+    background: url(../images/uvs-widget-mic.svg) center !important;
+    background-repeat: no-repeat !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 4px !important;
+}
+
+.uvs-toggle-btn-close {
+    background: url(../images/uvs-close-icon.svg) center !important;
+    background-repeat: no-repeat !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 4px !important;
+}
+
+.uvs-widget-form {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.uvs-widget-form button[type=submit] {
+    background: url(../images/uvs-widget-search-icon.svg) no-repeat center !important;
+    border: none !important;
+    color: transparent !important;
+    width: 32px !important;
+    height: 32px !important;
+    background-size: 24px 24px !important;
+}
+
+/* SMARTPHONES PORTRAIT */
+@media only screen and (min-width: 300px) {
+    .uvs-widget-chat-wrapper {
+        width: 250px !important;
+    }
+}
+
+/* SMARTPHONES LANDSCAPE */
+@media only screen and (min-width: 480px) {
+    .uvs-widget-chat-wrapper {
+        width: 300px !important;
+    }
+}
+
+/* TABLETS PORTRAIT */
+@media only screen and (min-width: 768px) {
+    .uvs-widget-chat-wrapper {
+        width: 300px !important;
+    }
+}
+
+/* TABLET LANDSCAPE / DESKTOP */
+@media only screen and (min-width: 1024px) {
+    .uvs-widget-chat-wrapper {
+        width: 300px !important;
+    }
+}
+
+/* Mic Position Css */
+.uvs-widget-wrapper-middle-right {
+    top: 45% !important;
+    right: 5px !important;
+}
+
+.uvs-widget-wrapper-middle-left {
+    top: 45% !important;
+    left: 5px !important;
+}
+
+.uvs-widget-wrapper-top-right {
+    top: 10% !important;
+    right: 5px !important;
+}
+
+.uvs-widget-wrapper-top-left {
+    top: 10% !important;
+    left: 5px !important;
+}
+
+.uvs-widget-wrapper-bottom-right {
+    bottom: 10% !important;
+    right: 5px !important;
+}
+
+.uvs-widget-wrapper-bottom-left {
+    bottom: 10% !important;
+    left: 5px !important;
+}
+
+.uvs-widget-chat-wrapper-middle-right {
+    top: 45% !important;
+    right: 65px !important;
+}
+
+.uvs-widget-chat-wrapper-middle-left {
+    top: 45% !important;
+    left: 65px !important;
+}
+
+.uvs-widget-chat-wrapper-top-right {
+    top: 10% !important;
+    right: 65px !important;
+}
+
+.uvs-widget-chat-wrapper-top-left {
+    top: 10% !important;
+    left: 65px !important;
+}
+
+.uvs-widget-chat-wrapper-bottom-right {
+    bottom: 10% !important;
+    right: 65px !important;
+}
+
+.uvs-widget-chat-wrapper-bottom-left {
+    bottom: 10% !important;
+    left: 65px !important;
+}
