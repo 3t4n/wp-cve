@@ -1,0 +1,418 @@
+<?php
+
+
+namespace BigCommerce\Accounts;
+
+
+use Bigcommerce\Api\Client;
+use Bigcommerce\Api\Resource;
+use Bigcommerce\Api\Resources\Address;
+use Bigcommerce\Api\Resources\Order;
+use Bigcommerce\Api\Resources\OrderProduct;
+use BigCommerce\Import\Processors\Default_Customer_Group;
+use BigCommerce\Logging\Error_Log;
+use BigCommerce\Settings\Sections\Troubleshooting_Diagnostics;
+use BigCommerce\Taxonomies\Channel\Channel;
+use BigCommerce\Taxonomies\Channel\Connections;
+
+/**
+ * Class Customer
+ *
+ * Handle customer specific data and resources e.g. address, profile, orders amount and other
+ */
+class Customer {
+	const CUSTOMER_ID_META = 'bigcommerce_customer_id';
+
+	private $wp_user_id = 0;
+
+	public function __construct( $wp_user_id ) {
+		$this->wp_user_id = $wp_user_id;
+	}
+
+	/**
+     * Get customer addresses
+	 * @return array
+	 */
+	public function get_addresses() {
+		$customer_id = $this->get_customer_id();
+		if ( empty( $customer_id ) ) {
+			return [];
+		}
+
+		try {
+			$addresses = Client::getCustomerAddresses( $customer_id ) ?: [];
+			$addresses = array_map( function ( Address $address ) {
+				return get_object_vars( $address->getCreateFields() );
+			}, $addresses );
+
+			return $addresses;
+		} catch ( \Exception $e ) {
+			return [];
+		}
+	}
+
+    /**
+     * Delete customer address by address id
+     *
+     * @param $address_id
+     *
+     * @return bool
+     */
+	public function delete_address( $address_id ) {
+		$customer_id = $this->get_customer_id();
+		if ( ! $customer_id ) {
+			return false;
+		}
+		try {
+			Client::deleteResource( sprintf( '/customers/%d/addresses/%d', $customer_id, $address_id ) );
+
+			return true;
+		} catch ( \Exception $e ) {
+			return false;
+		}
+	}
+
+    /**
+     * Create customer address
+     *
+     * @param $address
+     *
+     * @return bool
+     */
+	public function add_address( $address ) {
+		$customer_id = $this->get_customer_id();
+		if ( ! $customer_id ) {
+			return false;
+		}
+		try {
+			$result = Client::createCustomerAddress( $customer_id, $address );
+
+			return ! empty( $result );
+		} catch ( \Exception $e ) {
+			return false;
+		}
+	}
+
+    /**
+     * Update customer address by id
+     *
+     * @param $address_id
+     * @param $address
+     *
+     * @return bool
+     */
+	public function update_address( $address_id, $address ) {
+		$customer_id = $this->get_customer_id();
+		if ( ! $customer_id ) {
+			return false;
+		}
+		try {
+			Client::updateResource( sprintf( '/customers/%d/addresses/%d', $customer_id, $address_id ), $address );
+
+			return true;
+		} catch ( \Exception $e ) {
+			return false;
+		}
+	}
+
+    /**
+     * Get amount of orders for the customer
+     *
+     * @return int
+     */
+	public function get_order_count() {
+		$customer_id = $this->get_customer_id();
+		if ( ! $customer_id ) {
+			return 0;
+		}
+		try {
+			$count = Client::getOrdersCount( [
+				'customer_id' => $customer_id,
+			] );
+
+			return (int) $count;
+		} catch ( \Exception $e ) {
+			return 0;
+		}
+	}
+
+	/**
+	 * Get the most recent orders on the account. Each will include
+	 * at least one product (useful for finding featured images),
+	 * but is not guaranteed to include all.
+	 *
+	 * WARNING: This function is heavy on API calls. One call for the
+	 * order list, plus another for each order in the list.
+	 *
+	 * @param int $page
+	 * @param int $limit
+	 *
+	 * @return array
+	 * @todo Optimize for scalability
+	 *
+	 */
+	public function get_orders( $page = 1, $limit = 12 ) {
+		$customer_id = $this->get_customer_id();
+		if ( ! $customer_id ) {
+			return [];
+		}
+
+		try {
+			$orders = Client::getOrders( [
+				'customer_id' => $customer_id,
+				'sort'        => 'date_created:desc',
+				'limit'       => $limit,
+				'page'        => $page,
+			] ) ?: [];
+			$orders = array_map( function ( Order $order ) {
+				$products = $this->get_order_products( $order->id ) ?: [];
+
+				$order = get_object_vars( $order->getCreateFields() );
+
+				$order['products'] = $products;
+
+				return $order;
+			}, $orders );
+
+			return $orders;
+		} catch ( \Exception $e ) {
+			return [];
+		}
+	}
+
+    /**
+     * Get customer order details by order id
+     *
+     * @param $order_id
+     * @return array|false
+     */
+	public function get_order_details( $order_id ) {
+		$order = Client::getOrder( $order_id );
+		if ( empty( $order ) || $order->customer_id != $this->get_customer_id() ) {
+			return false;
+		}
+		$data                       = $this->flatten_resource( $order );
+		$data['products']           = $this->get_order_products( $order_id );
+		$data['shipping_addresses'] = $this->get_order_shipping_addresses( $order_id );
+		$data['shipments']          = $order->shipments() ?: [];
+		$data['coupons']            = $order->coupons() ?: [];
+
+		return $data;
+	}
+
+    /**
+     * Retrieve order products list
+     *
+     * @param $order_id
+     *
+     * @return mixed|void
+     */
+	private function get_order_products( $order_id ) {
+		$products = Client::getOrderProducts( $order_id ) ?: [];
+		$products = array_filter( $products, function ( OrderProduct $product ) {
+			$parent_product = $product->parent_order_product_id;
+
+			return empty( $parent_product );
+		} );
+		$products = array_map( [ $this, 'flatten_resource' ], $products );
+
+		/**
+		 * Filters order products
+		 *
+		 * @param array    $products Products.
+		 * @param int      $order_id Order ID.
+		 * @param Customer $customer The Customer object.
+		 */
+		return apply_filters( 'bigcommerce/order/products', $products, $order_id, $this );
+	}
+
+    /**
+     * Get order shipping address
+     *
+     * @param $order_id
+     *
+     * @return mixed|void
+     */
+	private function get_order_shipping_addresses( $order_id ) {
+		$addresses = Client::getOrderShippingAddresses( $order_id ) ?: [];
+		$addresses = array_map( [ $this, 'flatten_resource' ], $addresses );
+
+		/**
+		 * Filters order shipping addresses
+		 *
+		 * @param array    $addresses The shipping addresses.
+		 * @param int      $order_id  Order ID.
+		 * @param Customer $customer  The Customer object.
+		 */
+		return apply_filters( 'bigcommerce/order/shipping_addresses', $addresses, $order_id, $this );
+	}
+
+	private function flatten_resource( Resource $resource ) {
+		$item       = get_object_vars( $resource->getCreateFields() );
+		$item['id'] = $resource->id;
+
+		return $item;
+	}
+
+    /**
+     * Get customer profile data
+     *
+     * @return array|mixed|void
+     */
+	public function get_profile() {
+		$customer_id = $this->get_customer_id();
+		if ( ! $customer_id ) {
+			return [];
+		}
+		/**
+		 * Filter the base fields found in a customer profile
+		 *
+		 * @param array $fields
+		 */
+		$empty_profile = apply_filters( 'bigcommerce/customer/empty_profile', [
+			'first_name'        => '',
+			'last_name'         => '',
+			'company'           => '',
+			'email'             => '',
+			'phone'             => '',
+			'customer_group_id' => 0,
+		] );
+		try {
+			$profile = Client::getCustomer( $customer_id );
+			if ( ! $profile ) {
+				return $empty_profile;
+			}
+
+			return array_filter( get_object_vars( $profile->getCreateFields() ), function ( $key ) use ( $empty_profile ) {
+				return array_key_exists( $key, $empty_profile );
+			}, ARRAY_FILTER_USE_KEY );
+		} catch ( \Exception $e ) {
+			return $empty_profile;
+		}
+	}
+
+    /**
+     * Update customer profile data
+     * @param $profile
+     *
+     * @return bool
+     */
+	public function update_profile( $profile ) {
+		$customer_id = $this->get_customer_id();
+		if ( ! $customer_id ) {
+			return false;
+		}
+		try {
+			Client::updateCustomer( $customer_id, $profile );
+
+			return true;
+		} catch ( \Exception $e ) {
+			return false;
+		}
+	}
+
+	/**
+	 * @return int The ID of the customer account linked to this user
+	 */
+	public function get_customer_id() {
+		$customer_id = get_user_option( self::CUSTOMER_ID_META, $this->wp_user_id );
+
+		return (int) $customer_id;
+	}
+
+	/**
+	 * @param int $customer_id The customer ID to link to this user
+	 *
+	 * @return void
+	 */
+	public function set_customer_id( $customer_id ) {
+		update_user_option( $this->wp_user_id, self::CUSTOMER_ID_META, $customer_id );
+	}
+
+	/**
+	 * Get the customer group ID assigned to the user.
+	 * Value will be fetched from cache if available,
+	 * otherwise from the API.
+	 *
+	 * @return int|null
+	 */
+	public function get_group_id() {
+		$customer_id = is_user_logged_in() || defined( 'DOING_CRON' ) ? get_user_option( self::CUSTOMER_ID_META, $this->wp_user_id ) : 0;
+		if ( ! $customer_id ) {
+			$default_guest_group = $this->get_guests_default_group();
+			$default_guest_group = ! empty( $default_guest_group ) ? reset( $default_guest_group ) : null;
+			/**
+			 * This filter is documented in src/BigCommerce/Accounts/Customer.php
+			 */
+			return apply_filters( 'bigcommerce/customer/group_id', $default_guest_group ?: null, $this );
+		}
+		$transient_key = sprintf( 'bccustomergroup%d', $customer_id );
+		$group_id      = get_transient( $transient_key );
+
+		if ( empty( $group_id ) ) {
+			// Couldn't find in cache, retrieve from the API
+			$profile    = $this->get_profile();
+			$group_id   = isset( $profile['customer_group_id'] ) ? absint( $profile['customer_group_id'] ) : 0;
+			$expiration = get_option( Troubleshooting_Diagnostics::USERS_TRANSIENT, 12 * HOUR_IN_SECONDS ); // TODO: a future webhook to flush this cache when the customer's group changes
+			if ( $group_id === 0 ) {
+				$default_group = get_option( Default_Customer_Group::DEFAULT_GROUP, 0 );
+				$value = $default_group ?: 'zero';
+
+				set_transient( $transient_key, $value, $expiration ); // workaround for storing empty values in cache
+			} else {
+				set_transient( $transient_key, $group_id, $expiration );
+			}
+		}
+
+		if ( $group_id === 'zero' ) {
+			$group_id = get_option( Default_Customer_Group::DEFAULT_GROUP, 0 );
+		}
+
+		/**
+		 * Filter the group ID associated with the customer
+		 *
+		 * @param int|null $group_id The customer's group ID. Null for guest users.
+		 * @param Customer $customer The Customer object
+		 */
+		$group_id = apply_filters( 'bigcommerce/customer/group_id', $group_id, $this );
+
+		return absint( $group_id );
+	}
+
+	/**
+	 * @return array|null
+	 */
+	public function get_guests_default_group() {
+		$args  = [
+			'is_group_for_guests' => true,
+		];
+		$query = '?' . http_build_query( $args );
+
+		$customer_groups = Client::getCustomerGroups( $query );
+
+		if ( empty( $customer_groups ) ) {
+			do_action( 'bigcommerce/log', Error_Log::INFO, __( 'Customer groups are empty', 'bigcommerce' ), [] );
+			return null;
+		}
+		$connections = new Connections();
+		$channel     = $connections->current();
+		$channel_id  = get_term_meta( $channel->term_id, Channel::CHANNEL_ID, true );
+		return array_filter( array_map( function ( $group ) use ( $channel_id ) {
+			// Exit if group is not default
+			if ( ( int ) $group->channel_id !== ( int ) $channel_id ) {
+				return;
+			}
+
+			return $group->id;
+		}, $customer_groups ) );
+	}
+
+	/**
+	 * Get the customer group associated with this customer
+	 *
+	 * @return Customer_Group
+	 */
+	public function get_group() {
+		return new Customer_Group( $this->get_group_id() );
+	}
+}
