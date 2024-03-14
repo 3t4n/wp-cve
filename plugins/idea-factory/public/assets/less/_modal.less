@@ -1,0 +1,158 @@
+.idea-factory-modal-open {
+    overflow: hidden;
+}
+.idea-factory-modal {
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: @zindex-modal;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+
+    &.fade .idea-factory-modal-dialog {
+        .translate(0, -25%);
+        .transition-transform(~"0.3s ease-out");
+    }
+    &.in .idea-factory-modal-dialog { .translate(0, 0) }
+}
+.idea-factory-modal-open .idea-factory-modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.idea-factory-modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+}
+
+.idea-factory-modal-content {
+    position: relative;
+    background-color: @modal--content-bg;
+    border: 1px solid @modal--content-fallback-border-color; //old browsers fallback (ie8 etc)
+    border: 1px solid @modal--content-border-color;
+    border-radius: @modal--border-radius;
+    .box-shadow(0 3px 9px rgba(0,0,0,.5));
+    background-clip: padding-box;
+    // Remove focus outline from opened modal
+    outline: 0;
+}
+
+.idea-factory-modal-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: @modal--backdrop-bg;
+    // Fade for backdrop
+    &.fade { .opacity(0); }
+    &.in { .opacity(@modal--backdrop-opacity); }
+}
+
+.idea-factory-modal-header {
+    padding: @modal--title_padding;
+    border-bottom: 1px solid @modal--header-border-color;
+    min-height: (@modal--title_padding + @modal--title-line-height);
+}
+.idea-factory-modal-header .close {
+    margin-top: -2px;
+}
+
+.idea-factory-modal-title {
+	margin: 0;
+	line-height: @modal--title-line-height;
+}
+
+.idea-factory-modal-body {
+    position: relative;
+    padding: @modal--innerpadding;
+}
+
+.idea-factory-modal-footer {
+    padding-top: @modal--innerpadding;
+    text-align: left; // right align buttons
+    &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
+
+    // Properly space out buttons
+    .btn + .btn {
+        margin-left: 5px;
+        margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+    }
+    // but override that for button groups
+    .btn-group .btn + .btn {
+        margin-left: -1px;
+    }
+    // and override it for block buttons as well
+    .btn-block + .btn-block {
+        margin-left: 0;
+    }
+
+    input[type="submit"] {
+        font-size:@input--font_size;
+        outline: none;
+        border:none;
+
+        &:active,
+        &:focus {
+            outline:none;
+            border:none;
+        }
+    }
+
+}
+.idea-factory-modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}
+
+@media (min-width: 768px) {
+
+    .idea-factory-modal-dialog {
+        width: @modal--md;
+        margin: 80px auto 30px;
+    }
+    .idea-factory-modal-content {
+        .box-shadow(0 5px 15px rgba(0,0,0,.5));
+    }
+
+    .idea-factory-modal-sm { width: @modal--sm; }
+}
+
+@media (min-width: 992px) {
+    .idea-factory-modal-lg { width: @modal--lg; }
+}
+
+// CLOSE
+.close {
+    float: right;
+    font-size: @close--font_size;
+    font-weight: normal;
+    line-height: 1;
+    color: @close--font_color;
+    background:none;
+    border:none;
+    position:absolute;
+    top:8px;
+    right:10px;
+    .opacity(.2);
+
+    &:hover,
+    &:focus {
+        color: @close--font_color;
+        background:none;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: none;
+        outline:none;
+        border:none;
+        .opacity(.5);
+    }
+
+}
