@@ -1,0 +1,977 @@
+/*   ==================================================
+              product category tab
+    ================================================== */
+
+.meafe-product-grid-wrapper {
+    width: 100%;
+
+    .swiper-container {
+        overflow: hidden;
+    }
+    
+    .meafe-product-innerwrapper {
+
+        .meafe-products-wrapper {
+            margin-top: 48px;
+
+            .meafe-products {
+                .meafe-products-inner {
+                    .meafe-entry-media {
+                        position: relative;
+
+                        .outofstock,
+                        .onsale {
+                            position: absolute;
+                            top: 8px;
+                            left: 8px;
+                            font-size: 12px;
+                            line-height: 1.6em;
+                            letter-spacing: 0.1em;
+                            color: #ffffff;
+                            padding: 4px 12px;
+                            background: #f84d4d;
+                        }
+
+                        .meafe-grid-post-link {
+                            display: block;
+
+                            img {
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+
+                    .star-rating {
+                        font-size: 15px;
+                        margin-bottom: 4px;
+                        width: 7.3em;
+                        overflow: hidden;
+                        position: relative;
+                        height: 1.618em;
+                        line-height: 1.618;
+                        font-family: star;
+                        font-weight: 400;
+
+                        &::before {
+                            content: "\73\00a0\00a0\73\00a0\00a0\73\00a0\00a0\73\00a0\00a0\73";
+                            color: #F2B405;
+                        }
+
+                        span {
+                            color: #F2B405;
+                            overflow: hidden;
+                            float: left;
+                            top: 0;
+                            left: 0;
+                            position: absolute;
+                            padding-top: 1.5em;
+
+                            &::before {
+                                content: "\53\00a0\00a0\53\00a0\00a0\53\00a0\00a0\53\00a0\00a0\53";
+                                top: 0;
+                                position: absolute;
+                                left: 0;
+                                color: #f2b405;
+                            }
+                        }
+
+                    }
+
+                    .meafe-entry-wrapper {
+                        .category--wrapper {
+                            display: inline-block;
+                            letter-spacing: 0.1em;
+                            font-size: 14px;
+                            color: #878787;
+                            line-height: 1.6em;
+                            margin-bottom: 4px;
+                            transition: all 0.235s ease-in-out;
+
+                            &:hover {
+                                color: #547c0e;
+                            }
+                        }
+
+                        .meafe-entry-title {
+                            margin-bottom: 9.5px;
+                            font-size: 20px;
+                            line-height: 1.5em;
+
+                            .meafe-grid-post-link {
+                                color: #000000;
+                                transition: all 0.235s ease-in-out;
+
+                                &:hover {
+                                    color: #547c0e;
+                                }
+                            }
+                        }
+
+                        .product-footer {
+                            display: flex;
+                            align-items: center;
+                            flex-wrap: wrap;
+
+                            .price {
+                                margin-bottom: 0;
+                                font-size: 20px;
+                                font-weight: bold;
+                                line-height: 1;
+                                color: #547C0E;
+
+                                del {
+                                    font-size: 16px;
+                                    color: #878787;
+                                    line-height: 1;
+                                    font-weight: normal;
+                                }
+
+                                ins {
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                    line-height: 1;
+                                    margin-left: 4px;
+                                    background: unset;
+                                }
+                            }
+
+                            .outofstock {
+                                color: #f84d4d;
+                                font-size: 16px;
+                                margin-left: 8px;
+                                display: inline-flex;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                }
+
+                .meafa-navigation-wrap {
+                    .nav {
+                        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.03);
+                        width: 45px;
+                        height: 45px;
+                        display: flex;
+                        font-size: 21px;
+                        align-items: center;
+                        justify-content: center;
+                        transition: all 0.235s ease-in-out;
+                        background: #ffffff;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        border-radius: 100px;
+                        cursor: pointer;
+                        z-index: 1;
+
+                        @media (min-width: 1448px) {
+                            width: 64px;
+                            height: 64px;
+                            font-size: 24px;
+                        }
+
+                        &:hover {
+                            background-color: #547c0e;
+
+                            svg {
+                                path {
+                                    fill: #fff;
+                                }
+                            }
+                        }
+
+                        &.meafa-navigation-prev {
+                            left: 0;
+                        }
+
+                        &.meafa-navigation-next {
+                            right: 0;
+                        }
+
+                        @media (min-width: 767px) and (max-width:1448px) {
+                            &.meafa-navigation-prev {
+                                top: 33%;
+                            }
+
+                            &.meafa-navigation-next {
+                                top: 33%;
+                            }
+                        }
+
+                        @media (min-width: 1448px) {
+                            &.meafa-navigation-prev {
+                                left: -90px;
+                            }
+
+                            &.meafa-navigation-next {
+                                right: -90px;
+                            }
+                        }
+
+                        &.swiper-button-disabled{
+                            opacity: 0.3;
+                        }
+                    }
+                }
+
+                .meafa-swiper-pagination {
+                    text-align: center;
+                    margin-top: 56px;
+
+                    .swiper-pagination-bullet {
+                        background: #e9eedf;
+                        width: 12px;
+                        height: 12px;
+                        border: 0;
+                        border-radius: 100px;
+                        transition: all 0.235s ease-in-out;
+
+                        &:not(:first-child) {
+                            margin-left: 8px;
+                        }
+
+                        &:hover {
+                            background: #4e7302;
+                        }
+                    }
+                    
+                    .swiper-pagination-bullet-active {
+                        background: #4e7302;
+                    }
+                }
+
+                &:not(.swiper-enabled) {
+                    display: flex;
+                    grid-gap: 30px;
+                    flex-direction: column;
+                    align-items: center;
+
+                    @media (min-width: 575px) {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        align-items: flex-start;
+                    }
+
+                    .meafe-products-inner {
+                        max-width: 100%;
+
+                        @media (min-width: 575px) {
+                            flex: calc(50% - 15px);
+                            max-width: calc(50% - 15px);
+                        }
+
+                        @media (min-width: 768px) {
+                            flex: calc(25% - 23px);
+                            max-width: calc(25% - 23px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.layout-1 {
+        .meafe-product-innerwrapper {
+
+            .meafe-products-wrapper {
+                .meafe-products {
+                    .meafe-products-inner {
+                        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0);
+                        background: #ffffff;
+
+                        .meafe-entry-media {
+
+                            .outofstock,
+                            .onsale {
+                                left: unset;
+                                right: 0;
+                                border-radius: 0;
+                            }
+
+                        }
+
+                        .add-to-cart .button,
+                        .quickview-icon .button,
+                        .yith-wcwl-add-to-wishlist .yith-wcwl-add-button .add_to_wishlist {
+                            padding: 10px;
+                            border-radius: 100px;
+                            min-height: unset;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        .yith-wcwl-add-to-wishlist .yith-wcwl-add-button .add_to_wishlist::before,
+                        .quickview-icon .yith-wcqv-button::before,
+                        .add-to-cart .button::before {
+                            content: "";
+                            display: block;
+                            width: 20px;
+                            height: 20px;
+                            -webkit-mask-size: contain;
+                            mask-size: contain;
+                            -webkit-mask-repeat: no-repeat;
+                            mask-repeat: no-repeat;
+                        }
+
+                        .add-to-cart {
+
+                            z-index: 2;
+
+                            .button {
+                                font-size: 0;
+                                width: 100%;
+                                border: 1px solid #EEEEEE;
+                                background: transparent;
+
+                                &::before {
+                                    background-color: #000000;
+                                    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.875 17.5C7.56536 17.5 8.125 16.9404 8.125 16.25C8.125 15.5596 7.56536 15 6.875 15C6.18464 15 5.625 15.5596 5.625 16.25C5.625 16.9404 6.18464 17.5 6.875 17.5Z' fill='black'/%3E%3Cpath d='M15.625 17.5C16.3154 17.5 16.875 16.9404 16.875 16.25C16.875 15.5596 16.3154 15 15.625 15C14.9346 15 14.375 15.5596 14.375 16.25C14.375 16.9404 14.9346 17.5 15.625 17.5Z' fill='black'/%3E%3Cpath d='M17.8438 4.71797C17.7559 4.61057 17.6453 4.52406 17.5199 4.46474C17.3945 4.40542 17.2575 4.37476 17.1187 4.375H5.23008L4.99063 3.01641C4.96509 2.87169 4.88938 2.7406 4.7768 2.64616C4.66421 2.55172 4.52195 2.49997 4.375 2.5H1.875C1.70924 2.5 1.55027 2.56585 1.43306 2.68306C1.31585 2.80027 1.25 2.95924 1.25 3.125C1.25 3.29076 1.31585 3.44973 1.43306 3.56694C1.55027 3.68415 1.70924 3.75 1.875 3.75H3.85078L5.63438 13.8586C5.65991 14.0033 5.73562 14.1344 5.8482 14.2288C5.96079 14.3233 6.10305 14.375 6.25 14.375H16.25C16.4158 14.375 16.5747 14.3092 16.6919 14.1919C16.8092 14.0747 16.875 13.9158 16.875 13.75C16.875 13.5842 16.8092 13.4253 16.6919 13.3081C16.5747 13.1908 16.4158 13.125 16.25 13.125H6.77422L6.55391 11.875H15.9937C16.2105 11.8747 16.4205 11.7996 16.5882 11.6623C16.7559 11.525 16.871 11.3339 16.9141 11.1215L18.0391 5.49648C18.0662 5.36035 18.0627 5.2199 18.0289 5.08527C17.9952 4.95064 17.9319 4.82518 17.8438 4.71797Z' fill='black'/%3E%3C/svg%3E%0A");
+                                    mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.875 17.5C7.56536 17.5 8.125 16.9404 8.125 16.25C8.125 15.5596 7.56536 15 6.875 15C6.18464 15 5.625 15.5596 5.625 16.25C5.625 16.9404 6.18464 17.5 6.875 17.5Z' fill='black'/%3E%3Cpath d='M15.625 17.5C16.3154 17.5 16.875 16.9404 16.875 16.25C16.875 15.5596 16.3154 15 15.625 15C14.9346 15 14.375 15.5596 14.375 16.25C14.375 16.9404 14.9346 17.5 15.625 17.5Z' fill='black'/%3E%3Cpath d='M17.8438 4.71797C17.7559 4.61057 17.6453 4.52406 17.5199 4.46474C17.3945 4.40542 17.2575 4.37476 17.1187 4.375H5.23008L4.99063 3.01641C4.96509 2.87169 4.88938 2.7406 4.7768 2.64616C4.66421 2.55172 4.52195 2.49997 4.375 2.5H1.875C1.70924 2.5 1.55027 2.56585 1.43306 2.68306C1.31585 2.80027 1.25 2.95924 1.25 3.125C1.25 3.29076 1.31585 3.44973 1.43306 3.56694C1.55027 3.68415 1.70924 3.75 1.875 3.75H3.85078L5.63438 13.8586C5.65991 14.0033 5.73562 14.1344 5.8482 14.2288C5.96079 14.3233 6.10305 14.375 6.25 14.375H16.25C16.4158 14.375 16.5747 14.3092 16.6919 14.1919C16.8092 14.0747 16.875 13.9158 16.875 13.75C16.875 13.5842 16.8092 13.4253 16.6919 13.3081C16.5747 13.1908 16.4158 13.125 16.25 13.125H6.77422L6.55391 11.875H15.9937C16.2105 11.8747 16.4205 11.7996 16.5882 11.6623C16.7559 11.525 16.871 11.3339 16.9141 11.1215L18.0391 5.49648C18.0662 5.36035 18.0627 5.2199 18.0289 5.08527C17.9952 4.95064 17.9319 4.82518 17.8438 4.71797Z' fill='black'/%3E%3C/svg%3E%0A");
+                                }
+                            }
+
+                            .added_to_cart {
+                                position: absolute;
+                                top: 50%;
+                                width: 150px;
+                                left: 50%;
+                                transform: translate(-25%, -200%);
+                                text-align: center;
+                                padding: 8px 16px;
+                                background-color: #000000;
+                                color: #fff;
+                                border-radius: 8px;
+
+                                &:hover {
+                                    background-color: #547c0e;
+                                }
+                            }
+                        }
+
+                        .quickview-icon {
+                            .yith-wcqv-button {
+                                font-size: 0;
+                                width: 100%;
+                                background: transparent;
+                                border: 1px solid #EEEEEE;
+
+                                &::before {
+                                    background-color: #000000;
+                                    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z' fill='black'/%3E%3Cpath d='M19.1735 9.32031C18.1399 7.72188 16.7988 6.36406 15.2957 5.39336C13.6328 4.31836 11.7969 3.75 9.98673 3.75C8.32579 3.75 6.69258 4.22461 5.13243 5.16055C3.54141 6.11484 2.1 7.50898 0.848048 9.30391C0.706714 9.50676 0.628875 9.74705 0.624424 9.99425C0.619973 10.2414 0.689109 10.4844 0.823048 10.6922C1.85469 12.3066 3.18242 13.6664 4.66211 14.6238C6.32813 15.7031 8.1211 16.25 9.98673 16.25C11.8113 16.25 13.6512 15.6863 15.307 14.6203C16.8094 13.6527 18.1477 12.2898 19.1774 10.6781C19.3067 10.4751 19.3751 10.2393 19.3744 9.99865C19.3737 9.75797 19.3039 9.52255 19.1735 9.32031ZM10 13.75C9.25833 13.75 8.5333 13.5301 7.91662 13.118C7.29993 12.706 6.81929 12.1203 6.53546 11.4351C6.25163 10.7498 6.17737 9.99584 6.32206 9.26841C6.46676 8.54098 6.82391 7.8728 7.34836 7.34835C7.8728 6.8239 8.54099 6.46675 9.26842 6.32206C9.99585 6.17736 10.7498 6.25162 11.4351 6.53545C12.1203 6.81928 12.706 7.29993 13.118 7.91661C13.5301 8.5333 13.75 9.25832 13.75 10C13.7489 10.9942 13.3534 11.9474 12.6504 12.6504C11.9474 13.3534 10.9942 13.7489 10 13.75Z' fill='black'/%3E%3C/svg%3E ");
+                                    mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z' fill='black'/%3E%3Cpath d='M19.1735 9.32031C18.1399 7.72188 16.7988 6.36406 15.2957 5.39336C13.6328 4.31836 11.7969 3.75 9.98673 3.75C8.32579 3.75 6.69258 4.22461 5.13243 5.16055C3.54141 6.11484 2.1 7.50898 0.848048 9.30391C0.706714 9.50676 0.628875 9.74705 0.624424 9.99425C0.619973 10.2414 0.689109 10.4844 0.823048 10.6922C1.85469 12.3066 3.18242 13.6664 4.66211 14.6238C6.32813 15.7031 8.1211 16.25 9.98673 16.25C11.8113 16.25 13.6512 15.6863 15.307 14.6203C16.8094 13.6527 18.1477 12.2898 19.1774 10.6781C19.3067 10.4751 19.3751 10.2393 19.3744 9.99865C19.3737 9.75797 19.3039 9.52255 19.1735 9.32031ZM10 13.75C9.25833 13.75 8.5333 13.5301 7.91662 13.118C7.29993 12.706 6.81929 12.1203 6.53546 11.4351C6.25163 10.7498 6.17737 9.99584 6.32206 9.26841C6.46676 8.54098 6.82391 7.8728 7.34836 7.34835C7.8728 6.8239 8.54099 6.46675 9.26842 6.32206C9.99585 6.17736 10.7498 6.25162 11.4351 6.53545C12.1203 6.81928 12.706 7.29993 13.118 7.91661C13.5301 8.5333 13.75 9.25832 13.75 10C13.7489 10.9942 13.3534 11.9474 12.6504 12.6504C11.9474 13.3534 10.9942 13.7489 10 13.75Z' fill='black'/%3E%3C/svg%3E ");
+                                }
+                            }
+                        }
+
+                        .yith-wcwl-add-to-wishlist {
+                            margin-top: 0;
+
+                            .yith-wcwl-wishlistaddedbrowse,
+                            .yith-wcwl-wishlistexistsbrowse {
+                                position: absolute;
+                                top: 50%;
+                                display: none;
+                                width: 200px;
+                                left: 50%;
+                                transform: translate(-80%, -145%);
+                                text-align: center;
+                            }
+
+                            .yith-wcwl-add-button {
+                                .add_to_wishlist {
+                                    font-size: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: #fff;
+                                    border: 1px solid #F84D4D;
+
+                                    i,
+                                    span {
+                                        display: none;
+                                    }
+
+                                    &::before {
+                                        background: #F84D4D;
+                                        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 17.5C9.7491 17.4997 9.5041 17.4239 9.29688 17.2824C6.22695 15.1984 4.89766 13.7695 4.16445 12.8762C2.60195 10.9719 1.85391 9.0168 1.875 6.89961C1.89961 4.47344 3.84609 2.5 6.21406 2.5C7.93594 2.5 9.12852 3.46992 9.82305 4.27773C9.84505 4.30307 9.87223 4.32338 9.90276 4.3373C9.93329 4.35122 9.96645 4.35842 10 4.35842C10.0336 4.35842 10.0667 4.35122 10.0972 4.3373C10.1278 4.32338 10.155 4.30307 10.177 4.27773C10.8715 3.46914 12.0641 2.5 13.7859 2.5C16.1539 2.5 18.1004 4.47344 18.125 6.9C18.1461 9.01758 17.3973 10.9727 15.8355 12.8766C15.1023 13.7699 13.773 15.1988 10.7031 17.2828C10.4959 17.4241 10.2509 17.4998 10 17.5Z' fill='white'/%3E%3C/svg%3E ");
+                                        mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 17.5C9.7491 17.4997 9.5041 17.4239 9.29688 17.2824C6.22695 15.1984 4.89766 13.7695 4.16445 12.8762C2.60195 10.9719 1.85391 9.0168 1.875 6.89961C1.89961 4.47344 3.84609 2.5 6.21406 2.5C7.93594 2.5 9.12852 3.46992 9.82305 4.27773C9.84505 4.30307 9.87223 4.32338 9.90276 4.3373C9.93329 4.35122 9.96645 4.35842 10 4.35842C10.0336 4.35842 10.0667 4.35122 10.0972 4.3373C10.1278 4.32338 10.155 4.30307 10.177 4.27773C10.8715 3.46914 12.0641 2.5 13.7859 2.5C16.1539 2.5 18.1004 4.47344 18.125 6.9C18.1461 9.01758 17.3973 10.9727 15.8355 12.8766C15.1023 13.7699 13.773 15.1988 10.7031 17.2828C10.4959 17.4241 10.2509 17.4998 10 17.5Z' fill='white'/%3E%3C/svg%3E ");
+                                    }
+                                }
+                            }
+                        }
+
+
+                        .add-to-cart,
+                        .quickview-icon,
+                        .yith-wcwl-add-to-wishlist .yith-wcwl-add-button {
+                            transition: all 0.235s ease-in-out;
+                            transform: scale(1);
+
+                            &:hover {
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        .meafe-entry-wrapper {
+                            padding: 24px;
+                            transition: all 0.235s ease-in-out;
+                            position: relative;
+                            overflow: hidden;
+
+                            .product-meta {
+                                display: flex;
+                                position: absolute;
+                                bottom: -100px;
+                                left: 50%;
+                                align-items: center;
+                                grid-gap: 16px;
+                                opacity: 0;
+                                visibility: hidden;
+                                transition: all 0.235s ease-in-out;
+                                width: calc(100% - 48px);
+                                transform: translatex(-50%);
+
+                            }
+
+                        }
+
+                        &:hover {
+                            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.03);
+
+                            .meafe-entry-wrapper {
+                                .product-meta {
+                                    bottom: 24px;
+                                    opacity: 1;
+                                    visibility: visible;
+
+                                }
+                            }
+                        }
+                    }
+
+                    &.cart_exist {
+                        .meafe-products-inner {
+                            &:hover {
+                                .meafe-entry-wrapper {
+                                    padding-bottom: 86px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    &.layout-2 {
+        .meafe-product-innerwrapper {
+            .meafe-products-wrapper {
+
+                .meafe-products {
+                    .meafe-products-inner {
+                        .meafe-entry-media {
+
+                            .outofstock,
+                            .onsale {
+                                border-radius: 4px 0px 0px 4px;
+                                left: unset;
+                                right: 8px;
+                                top: 8px;
+                                border-radius: 4px;
+                                padding: 4px 8px;
+                            }
+
+                            img {
+                                border-radius: 8px;
+                            }
+
+
+
+                        }
+
+                        .quickview-icon {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%) scale(1);
+                            padding: 8px 16px 8px 16px;
+                            background-color: #fff;
+                            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.03);
+                            border-radius: 8px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            opacity: 0;
+                            visibility: hidden;
+                            transition: all 0.235s ease-in-out;
+
+                            .view-text {
+                                font-size: 16px;
+                                font-weight: 500;
+                                line-height: 1.8;
+                                padding-left: 7px;
+                            }
+
+                            .yith-wcqv-button {
+                                font-size: 0;
+                                padding: 0;
+                                width: 100%;
+                                min-height: unset;
+                                background: transparent;
+
+
+                                &::before {
+                                    content: "";
+                                    display: block;
+                                    width: 16px;
+                                    height: 15px;
+                                    background-color: #000000;
+                                    -webkit-mask-size: contain;
+                                    mask-size: contain;
+                                    -webkit-mask-repeat: no-repeat;
+                                    mask-repeat: no-repeat;
+                                    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.9894 3.5C5.55378 3.5 3.05534 4.90969 1.08847 7.72906C1.03233 7.81042 1.00156 7.9066 1.00006 8.00544C0.998556 8.10428 1.02639 8.20135 1.08003 8.28438C2.59128 10.65 5.05628 12.5 7.9894 12.5C10.8906 12.5 13.4063 10.6444 14.9203 8.27344C14.9727 8.19203 15.0006 8.09727 15.0006 8.00047C15.0006 7.90366 14.9727 7.8089 14.9203 7.7275C13.4028 5.38375 10.8688 3.5 7.9894 3.5Z' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E ");
+                                    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.9894 3.5C5.55378 3.5 3.05534 4.90969 1.08847 7.72906C1.03233 7.81042 1.00156 7.9066 1.00006 8.00544C0.998556 8.10428 1.02639 8.20135 1.08003 8.28438C2.59128 10.65 5.05628 12.5 7.9894 12.5C10.8906 12.5 13.4063 10.6444 14.9203 8.27344C14.9727 8.19203 15.0006 8.09727 15.0006 8.00047C15.0006 7.90366 14.9727 7.8089 14.9203 7.7275C13.4028 5.38375 10.8688 3.5 7.9894 3.5Z' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E ");
+                                }
+                            }
+
+
+                        }
+
+                        .wishlist-icon {
+                            position: absolute;
+                            top: 8px;
+                            left: 8px;
+                        }
+
+                        .yith-wcwl-add-to-wishlist {
+
+                            margin-top: 0;
+
+                            .yith-wcwl-wishlistaddedbrowse,
+                            .yith-wcwl-wishlistexistsbrowse {
+                                position: absolute;
+                                top: 50%;
+                                width: 200px;
+                                display: none;
+                                left: 50%;
+                                transform: translate(15%, 32%);
+                                text-align: center;
+                            }
+
+                            .yith-wcwl-add-button {
+
+                                .add_to_wishlist {
+                                    font-size: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: transparent;
+                                    padding: 10px;
+                                    border-radius: 0;
+                                    position: relative;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-radius: 100px;
+
+                                    i,
+                                    span {
+                                        display: none;
+                                    }
+
+                                    &::before {
+                                        content: "";
+                                        display: block;
+                                        width: 15px;
+                                        height: 15px;
+                                        background-color: #F84D4D;
+                                        -webkit-mask-size: contain;
+                                        mask-size: contain;
+                                        -webkit-mask-repeat: no-repeat;
+                                        mask-repeat: no-repeat;
+                                        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.0288 2.5C9.00001 2.5 8.00001 4.5 8.00001 4.5C8.00001 4.5 7.00001 2.5 4.97126 2.5C3.32251 2.5 2.01689 3.87937 2.00001 5.52531C1.96564 8.94187 4.71033 11.3716 7.71876 13.4134C7.8017 13.4699 7.8997 13.5 8.00001 13.5C8.10033 13.5 8.19832 13.4699 8.28126 13.4134C11.2894 11.3716 14.0341 8.94187 14 5.52531C13.9831 3.87937 12.6775 2.5 11.0288 2.5V2.5Z' stroke='%23F84D4D' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                                        mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.0288 2.5C9.00001 2.5 8.00001 4.5 8.00001 4.5C8.00001 4.5 7.00001 2.5 4.97126 2.5C3.32251 2.5 2.01689 3.87937 2.00001 5.52531C1.96564 8.94187 4.71033 11.3716 7.71876 13.4134C7.8017 13.4699 7.8997 13.5 8.00001 13.5C8.10033 13.5 8.19832 13.4699 8.28126 13.4134C11.2894 11.3716 14.0341 8.94187 14 5.52531C13.9831 3.87937 12.6775 2.5 11.0288 2.5V2.5Z' stroke='%23F84D4D' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                                    }
+                                }
+                            }
+                        }
+
+                        .yith-wcwl-add-to-wishlist .yith-wcwl-add-button {
+                            transition: all 0.235s ease-in-out;
+                            transform: scale(1);
+
+                            &:hover {
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        .add-to-cart {
+                            .button {
+                                font-size: 0;
+                                padding: 10px;
+                                width: 100%;
+                                min-height: unset;
+                                background: transparent;
+                                transition: all 0.235s ease-in-out;
+                                transform: scale(1);
+                                background-color: #fff;
+                                border: 1px solid #EEEEEE;
+                                border-radius: 100px;
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                &::before {
+                                    content: "";
+                                    display: block;
+                                    width: 20px;
+                                    height: 20px;
+                                    background-color: #000000;
+                                    -webkit-mask-size: contain;
+                                    mask-size: contain;
+                                    -webkit-mask-repeat: no-repeat;
+                                    mask-repeat: no-repeat;
+                                    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.875 17.5C7.56536 17.5 8.125 16.9404 8.125 16.25C8.125 15.5596 7.56536 15 6.875 15C6.18464 15 5.625 15.5596 5.625 16.25C5.625 16.9404 6.18464 17.5 6.875 17.5Z' fill='black'/%3E%3Cpath d='M15.625 17.5C16.3154 17.5 16.875 16.9404 16.875 16.25C16.875 15.5596 16.3154 15 15.625 15C14.9346 15 14.375 15.5596 14.375 16.25C14.375 16.9404 14.9346 17.5 15.625 17.5Z' fill='black'/%3E%3Cpath d='M17.8438 4.71797C17.7559 4.61057 17.6453 4.52406 17.5199 4.46474C17.3945 4.40542 17.2575 4.37476 17.1187 4.375H5.23008L4.99063 3.01641C4.96509 2.87169 4.88938 2.7406 4.7768 2.64616C4.66421 2.55172 4.52195 2.49997 4.375 2.5H1.875C1.70924 2.5 1.55027 2.56585 1.43306 2.68306C1.31585 2.80027 1.25 2.95924 1.25 3.125C1.25 3.29076 1.31585 3.44973 1.43306 3.56694C1.55027 3.68415 1.70924 3.75 1.875 3.75H3.85078L5.63438 13.8586C5.65991 14.0033 5.73562 14.1344 5.8482 14.2288C5.96079 14.3233 6.10305 14.375 6.25 14.375H16.25C16.4158 14.375 16.5747 14.3092 16.6919 14.1919C16.8092 14.0747 16.875 13.9158 16.875 13.75C16.875 13.5842 16.8092 13.4253 16.6919 13.3081C16.5747 13.1908 16.4158 13.125 16.25 13.125H6.77422L6.55391 11.875H15.9937C16.2105 11.8747 16.4205 11.7996 16.5882 11.6623C16.7559 11.525 16.871 11.3339 16.9141 11.1215L18.0391 5.49648C18.0662 5.36035 18.0627 5.2199 18.0289 5.08527C17.9952 4.95064 17.9319 4.82518 17.8438 4.71797Z' fill='black'/%3E%3C/svg%3E%0A");
+                                    mask-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.875 17.5C7.56536 17.5 8.125 16.9404 8.125 16.25C8.125 15.5596 7.56536 15 6.875 15C6.18464 15 5.625 15.5596 5.625 16.25C5.625 16.9404 6.18464 17.5 6.875 17.5Z' fill='black'/%3E%3Cpath d='M15.625 17.5C16.3154 17.5 16.875 16.9404 16.875 16.25C16.875 15.5596 16.3154 15 15.625 15C14.9346 15 14.375 15.5596 14.375 16.25C14.375 16.9404 14.9346 17.5 15.625 17.5Z' fill='black'/%3E%3Cpath d='M17.8438 4.71797C17.7559 4.61057 17.6453 4.52406 17.5199 4.46474C17.3945 4.40542 17.2575 4.37476 17.1187 4.375H5.23008L4.99063 3.01641C4.96509 2.87169 4.88938 2.7406 4.7768 2.64616C4.66421 2.55172 4.52195 2.49997 4.375 2.5H1.875C1.70924 2.5 1.55027 2.56585 1.43306 2.68306C1.31585 2.80027 1.25 2.95924 1.25 3.125C1.25 3.29076 1.31585 3.44973 1.43306 3.56694C1.55027 3.68415 1.70924 3.75 1.875 3.75H3.85078L5.63438 13.8586C5.65991 14.0033 5.73562 14.1344 5.8482 14.2288C5.96079 14.3233 6.10305 14.375 6.25 14.375H16.25C16.4158 14.375 16.5747 14.3092 16.6919 14.1919C16.8092 14.0747 16.875 13.9158 16.875 13.75C16.875 13.5842 16.8092 13.4253 16.6919 13.3081C16.5747 13.1908 16.4158 13.125 16.25 13.125H6.77422L6.55391 11.875H15.9937C16.2105 11.8747 16.4205 11.7996 16.5882 11.6623C16.7559 11.525 16.871 11.3339 16.9141 11.1215L18.0391 5.49648C18.0662 5.36035 18.0627 5.2199 18.0289 5.08527C17.9952 4.95064 17.9319 4.82518 17.8438 4.71797Z' fill='black'/%3E%3C/svg%3E%0A");
+                                }
+                            }
+
+                            .added_to_cart {
+                                position: absolute;
+                                top: 50%;
+                                width: 150px;
+                                left: 50%;
+                                transform: translate(-25%, -200%);
+                                text-align: center;
+                                padding: 8px 16px;
+                                background-color: #000000;
+                                color: #fff;
+                                border-radius: 8px;
+
+                                &:hover {
+                                    .button {
+                                        background-color: #547c0e;
+                                    }
+
+                                }
+                            }
+
+                            &:hover {
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        .meafe-entry-wrapper {
+                            padding: 24px;
+                            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.03);
+                            border-radius: 8px;
+                            max-width: calc(100% - 16px);
+                            margin: -50px auto 0;
+                            position: relative;
+
+                            .meafe-entry-content {
+                                margin-bottom: 16px;
+
+                                p {
+                                    &:last-child {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+
+                            .product-footer-wrapper {
+                                display: flex;
+                                align-items: center;
+                                flex-wrap: wrap;
+                                grid-gap: 16px;
+                                justify-content: space-between;
+
+
+                            }
+
+                        }
+
+                        &:hover {
+                            .meafe-entry-media {
+                                .quickview-icon {
+                                    visibility: visible;
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.layout-3 {
+        .meafe-product-innerwrapper {
+
+            .meafe-products-wrapper {
+                .meafe-products {
+                    .meafe-products-inner {
+                        background: #FFFFFF;
+                        overflow: hidden;
+                        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.03);
+
+                        .meafe-entry-media {
+
+                            .outofstock,
+                            .onsale {
+                                border-radius: 4px;
+                                left: 8px;
+                                top: 8px;
+                                padding: 4px 8px;
+                            }
+
+
+
+                        }
+
+                        .quickview-icon {
+                            position: absolute;
+                            top: 8px;
+                            right: 8px;
+
+
+                            .yith-wcqv-button {
+                                font-size: 0;
+                                padding: 10px;
+                                min-height: unset;
+                                width: 100%;
+                                background-color: #fff;
+                                border-radius: 100px;
+                                display: flex;
+                                transition: all 0.235s ease-in-out;
+                                align-items: center;
+                                justify-content: center;
+                                background: transparent;
+
+                                &::before {
+                                    content: "";
+                                    display: block;
+                                    width: 16px;
+                                    height: 15px;
+                                    background-color: #000000;
+                                    -webkit-mask-size: contain;
+                                    mask-size: contain;
+                                    -webkit-mask-repeat: no-repeat;
+                                    mask-repeat: no-repeat;
+                                    -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.9894 3.5C5.55378 3.5 3.05534 4.90969 1.08847 7.72906C1.03233 7.81042 1.00156 7.9066 1.00006 8.00544C0.998556 8.10428 1.02639 8.20135 1.08003 8.28438C2.59128 10.65 5.05628 12.5 7.9894 12.5C10.8906 12.5 13.4063 10.6444 14.9203 8.27344C14.9727 8.19203 15.0006 8.09727 15.0006 8.00047C15.0006 7.90366 14.9727 7.8089 14.9203 7.7275C13.4028 5.38375 10.8688 3.5 7.9894 3.5Z' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E ");
+                                    mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.9894 3.5C5.55378 3.5 3.05534 4.90969 1.08847 7.72906C1.03233 7.81042 1.00156 7.9066 1.00006 8.00544C0.998556 8.10428 1.02639 8.20135 1.08003 8.28438C2.59128 10.65 5.05628 12.5 7.9894 12.5C10.8906 12.5 13.4063 10.6444 14.9203 8.27344C14.9727 8.19203 15.0006 8.09727 15.0006 8.00047C15.0006 7.90366 14.9727 7.8089 14.9203 7.7275C13.4028 5.38375 10.8688 3.5 7.9894 3.5Z' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z' stroke='black' stroke-miterlimit='10'/%3E%3C/svg%3E ");
+                                }
+                            }
+                        }
+
+                        .quickview-icon {
+                            transition: all 0.235s ease-in-out;
+                            transform: scale(1);
+
+                            &:hover {
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        .yith-wcwl-add-to-wishlist {
+                            margin-top: 0;
+
+                            .yith-wcwl-wishlistaddedbrowse,
+                            .yith-wcwl-wishlistexistsbrowse {
+                                position: absolute;
+                                top: 50%;
+                                width: 200px;
+                                display: none;
+                                left: 50%;
+                                transform: translate(-50%, -145%);
+                                text-align: center;
+                            }
+
+                            .yith-wcwl-add-button {
+                                transition: all 0.235s ease-in-out;
+
+                                .add_to_wishlist {
+                                    font-size: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    padding: 10px;
+                                    transform: scale(1);
+                                    border-radius: 100px;
+                                    position: relative;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    i,
+                                    span {
+                                        display: none;
+                                    }
+
+                                    &::before {
+                                        content: "";
+                                        display: block;
+                                        width: 15px;
+                                        transition: all 0.235s ease-in-out;
+                                        height: 15px;
+                                        background: #F84D4D;
+                                        -webkit-mask-size: contain;
+                                        mask-size: contain;
+                                        -webkit-mask-repeat: no-repeat;
+                                        mask-repeat: no-repeat;
+                                        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.0288 2.5C9.00001 2.5 8.00001 4.5 8.00001 4.5C8.00001 4.5 7.00001 2.5 4.97126 2.5C3.32251 2.5 2.01689 3.87937 2.00001 5.52531C1.96564 8.94187 4.71033 11.3716 7.71876 13.4134C7.8017 13.4699 7.8997 13.5 8.00001 13.5C8.10033 13.5 8.19832 13.4699 8.28126 13.4134C11.2894 11.3716 14.0341 8.94187 14 5.52531C13.9831 3.87937 12.6775 2.5 11.0288 2.5V2.5Z' stroke='%23F84D4D' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                                        mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.0288 2.5C9.00001 2.5 8.00001 4.5 8.00001 4.5C8.00001 4.5 7.00001 2.5 4.97126 2.5C3.32251 2.5 2.01689 3.87937 2.00001 5.52531C1.96564 8.94187 4.71033 11.3716 7.71876 13.4134C7.8017 13.4699 7.8997 13.5 8.00001 13.5C8.10033 13.5 8.19832 13.4699 8.28126 13.4134C11.2894 11.3716 14.0341 8.94187 14 5.52531C13.9831 3.87937 12.6775 2.5 11.0288 2.5V2.5Z' stroke='%23F84D4D' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+                                    }
+                                }
+
+                                &:hover {
+                                    transform: scale(1.1);
+                                }
+                            }
+                        }
+
+                        .add-to-cart {
+                            position: absolute;
+                            bottom: -100px;
+                            opacity: 0;
+                            visibility: hidden;
+                            transition: all 0.235s ease-in-out;
+                            margin-top: 24px;
+                            display: block;
+                            width: calc(100% - 48px);
+                            background-color: transparent;
+                            border-radius: 8px;
+
+                            .added_to_cart,
+                            .button {
+                                width: 100%;
+                                font-weight: 500;
+                                font-size: 16px;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -webkit-line-clamp: 1;
+                                line-clamp: 1;
+                                overflow: hidden;
+                                padding: 8px 16px;
+                                background-color: #000000;
+                                color: #fff;
+                                border-radius: 8px;
+                                line-height: 1.9;
+                                text-overflow: ellipsis;
+
+                                &:hover {
+                                    background-color: #547c0e;
+                                }
+                            }
+
+                            .button {
+                                &.added {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        .meafe-entry-wrapper {
+                            padding: 24px;
+                            position: relative;
+                            transition: all 0.235s ease-in-out;
+
+                            .meafe-entry-content {
+                                margin-bottom: 16px;
+
+                                p {
+                                    &:last-child {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+
+                            .product-footer-wrapper {
+                                display: flex;
+                                align-items: center;
+                                flex-wrap: wrap;
+                                grid-gap: 16px;
+                                justify-content: space-between;
+
+
+                            }
+
+
+                        }
+
+                        &:hover {
+                            .meafe-entry-wrapper {
+                                .add-to-cart {
+                                    bottom: 24px;
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+                        }
+                    }
+
+                    &.cart_exist {
+                        .meafe-products-inner {
+                            &:hover {
+                                .meafe-entry-wrapper {
+                                    padding-bottom: 86px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// alignment center
+.meafe-product-grid-content-align-center {
+    .meafe-products-inner {
+        text-align: center;
+
+        .product-footer {
+            justify-content: center;
+        }
+
+    }
+
+    .layout-1 {
+        .product-meta {
+            justify-content: center;
+        }
+    }
+}
+
+// alignment left
+.meafe-product-grid-content-align-left {
+    .meafe-products-inner {
+        text-align: left;
+
+        .product-footer {
+            justify-content: flex-start;
+        }
+
+    }
+}
+
+// alignment right
+.meafe-product-grid-content-align-right {
+    .meafe-products-inner {
+        text-align: right;
+
+        .product-footer {
+            justify-content: flex-end
+        }
+    }
+
+    .layout-1 {
+        .product-meta {
+            justify-content: flex-end
+        }
+    }
+}
