@@ -1,0 +1,55 @@
+{
+    "name": "wpfluent/wpfluent",
+    "type": "project",
+    "description": "The WPGlue Framework for WordPress.",
+    "keywords": [
+        "WordPress",
+        "framework",
+        "WPFluent"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sheikh Heera",
+            "email": "heera.sheikh77@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/wpfluent/framework"
+        }
+    ],
+    "require": {
+        "wpfluent/framework": "^2.3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "WPPayForm\\App\\": "app/",
+            "WPPayForm\\Framework\\": "vendor/wpfluent/framework/src/WPFluent"
+        },
+        "classmap": [
+            "database/"
+        ],
+        "files": [
+            "boot/wppayform-globals.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        },
+        "wpfluent": {
+            "namespace": {
+                "current": "WPPayForm"
+            }
+        }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "WPPayForm\\App\\ComposerScript::postUpdate"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
