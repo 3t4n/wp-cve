@@ -1,0 +1,383 @@
+.table-responsive {
+	overflow-x: auto;
+	min-height: 0.01%;
+	max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+	.table-responsive {
+		width: 100%;
+		margin-bottom: 15px;
+		overflow-y: hidden;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+	}
+}
+
+table.reservations {
+	table-layout: fixed !important;
+	min-width: 600px;
+	margin: 0;
+}
+
+table.reservations td {
+	text-align: center;
+	padding: 0.5em;
+	height: 6em;
+	vertical-align: middle !important;
+}
+
+table.reservations th {
+	text-align: center
+}
+
+.container-reservations .navigator {
+	position: sticky;
+	left: 0;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: flex;
+	/* display: none; */
+	flex-direction: row;
+}
+
+.container-reservations .navigator div:last-child {
+	margin-left: auto;
+}
+
+.container-reservations .navigator a.button {
+	margin: 0 5px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer !important;
+	background-image: none;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: inherit;
+	line-height: 1.428571;
+	border-radius: 4px;
+	user-select: none;
+	color: #3c4043;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: transparent;
+	border: 1px solid rgb(218, 220, 224);
+	text-decoration: none;
+	box-shadow: none;
+	padding: 5px 12px;
+}
+
+.container-reservations a.button:hover,
+.container-reservations a.button--active {
+	background-color: #f1f3f4 !important;
+}
+
+.container-reservations a.button--active img {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+
+table.reservations a.button {
+	margin: 0;
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer !important;
+	background-image: none;
+	/* border: 1px solid #ffffff; */
+	border-width: 0;
+	white-space: nowrap;
+	padding: 6px 12px;
+	/* font-size: 14px; */
+	font-size: inherit;
+	line-height: 1.428571;
+	border-radius: 4px;
+	user-select: none;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #b8b3b3;
+	/* border-color: #b8b3b3; */
+	text-decoration: none;
+	box-shadow: none;
+}
+
+table.reservations a {
+	cursor: pointer;
+}
+
+table.reservations td.blocked {
+	background-color: #b8b3b3 !important;
+	color: #fff;
+/*    border-top: 0 none;
+	border-bottom: 0 none;*/
+}
+
+table.reservations .cr-tooltip {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	/* border-bottom: 1px dotted black; */
+}
+
+table.reservations .cr-tooltip .cr-tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: #c6c2c2;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	/* Position the tooltip text - see examples below! */
+	position: absolute;
+	z-index: 1;
+	width: 120px;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -60px;
+	/* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+table.reservations .cr-tooltip:hover .cr-tooltiptext {
+	visibility: visible;
+}
+
+/*  add reservation block  */
+.cr-dialog-reserve {
+	border: 0 !important;
+	padding: 0 !important;
+	position: relative;
+}
+	.cr-dialog-reserve .cr-ui-button {
+		margin: 0 !important;
+		display: inline-block !important;
+		margin-bottom: 0 !important;
+		margin-left: 5px !important;
+		font-weight: normal !important;
+		text-align: center !important;
+		vertical-align: middle !important;
+		touch-action: manipulation !important;
+		cursor: pointer !important;
+		background-image: none !important;
+		/* border: 1px solid #ffffff; */
+		border-width: 0 !important;
+		white-space: nowrap !important;
+		padding: 6px 12px !important;
+		/* font-size: 14px !important; */
+		/* line-height: 1.428571 !important; */
+		border-radius: 4px !important;
+		user-select: none !important;
+		color: #ffffff !important;
+		/* text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); */
+		background-color: #b8b3b3 !important;
+		/* border-color: #b8b3b3; */
+		text-decoration: none !important;
+		box-shadow: none !important;
+		/* font-family: initial !important; */
+		text-transform: initial !important;
+	}
+
+	.cr-dialog-reserve .ui-dialog-titlebar {
+		border-top-left-radius: 6px !important;
+		border-top-right-radius: 6px !important;
+	}
+	.cr-dialog-reserve .ui-dialog-buttonpane {
+		border-bottom-left-radius: 6px !important;
+		border-bottom-right-radius: 6px !important;
+	}
+	.cr-dialog-reserve .table.table-striped {
+		margin-bottom: 2px;
+	}
+	.cr-dialog-reserve .table.table-striped td {
+		vertical-align: middle;
+	}
+	.cr-dialog-reserve .table.table-striped td:nth-child(2) {
+		border-right-width: 0;
+		padding-right: 1em;
+	}
+	.cr-dialog-reserve .table.table-striped td:nth-child(1) {
+		padding-left: 1em;
+	}
+	.cr-dialog-reserve .ui-dialog-buttonpane {
+		border-top-width: 0 !important;
+	}
+	.cr-dialog-reserve .partner-select {
+		width: 100%;
+		padding-top: 0;
+	}
+	.cr-dialog-reserve .partner-row .partners-info {
+		padding: 0;
+		margin: 0;
+	}
+
+i.cr-help{
+	display: inline-block;
+	font-size: .8em;
+}
+
+/*  add reservation form  */
+form.resform {
+	position: relative;
+}
+	form.resform select {
+		color: #333;
+		margin: 0;
+	}
+	form.resform #cr-show-login {
+		cursor: pointer;
+		width: 100%;
+	}
+	form.resform .date {
+		width: 100%;
+	}
+
+
+.ui-widget-overlay {
+	opacity: .50 !important;
+	filter: Alpha(Opacity=50) !important;
+	background: rgb(50, 50, 50) !important;
+}
+
+.cr-login-form input {
+	width: 100%;
+}
+
+.cr-dialog-alert {}
+
+.cr-dialog-alert .error {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #721c24;
+	/* background-color: #f8d7da; */
+	/* border-color: #f5c6cb; */
+	min-height: 80px;
+	line-height: 1.2;
+	text-align: center;
+}
+
+/* .cr-dialog-reserve .loading {
+	background-image: url("images/spinner.gif")
+} */
+
+@media only screen and (max-width: 1200px) {
+	table.reservations a.button {
+		padding: 2px 4px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	table.reservations {
+		font-size: 0.9em;
+	}
+
+	table.reservations a.button {
+		padding: 1px 2px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.container-reservations {
+		height: 500px !important;
+		max-height: 500px !important;
+		/* width: 400px !important; */
+		/* max-width: 400px !important; */
+		overflow: scroll !important;
+	}
+
+	table.reservations {
+		font-size: 0.9em;
+	}
+
+	table.reservations thead th {
+		/* position: -webkit-sticky; */
+		/* for Safari */
+		position: sticky;
+		top: 0;
+	}
+
+	table.reservations tbody th {
+		/* position: -webkit-sticky; */
+		/* for Safari */
+		position: sticky;
+		left: 0;
+	}
+
+	table.reservations thead th:first-child {
+		left: 0;
+		z-index: 1;
+	}
+
+	table.reservations td,
+	table.reservations th {
+		white-space: nowrap;
+		word-break: keep-all;
+		background: #F8F8F8;
+	}
+
+	.cr-dialog-reserve .cr-ui-button,
+	table.reservations a.button {
+		padding: 2px !important;
+	}
+}
+
+@media only screen and (max-width: 575px) {
+	table.reservations {
+		font-size: 0.8em;
+	}
+	.cr-dialog-reserve i.cr-help{
+		display: none;
+	}
+}
+
+
+/* Preloader */
+.cr-preloader {
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 20px);
+  top: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border: 4px solid #555;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: cssload-spin 950ms infinite linear;
+  -o-animation: cssload-spin 950ms infinite linear;
+  -ms-animation: cssload-spin 950ms infinite linear;
+  -webkit-animation: cssload-spin 950ms infinite linear;
+  -moz-animation: cssload-spin 950ms infinite linear; }
+@keyframes cssload-spin {
+  100% {
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+	transform: rotate(360deg); } }
+@-webkit-keyframes cssload-spin {
+  100% {
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg); } }
+
+.cr-preloader-overlay {
+  display: none;
+  background: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100000; }
+.cr-preloader-overlay.in-relative-block {
+  position: absolute; }
+.cr-preloader-overlay.visible {
+  display: block; }
+.cr-preloader-overlay#plo-error-dialog {
+	background: rgba(0, 0, 0, 0.2);
+	display: block;}

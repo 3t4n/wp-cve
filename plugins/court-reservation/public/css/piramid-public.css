@@ -1,0 +1,328 @@
+/*   styles for the piramid shortcode   */
+/*   Preloader   */
+.cr-preloader {
+	display: inline-block;
+	position: absolute;
+	left: calc(50% - 20px);
+	top: calc(50% - 20px);
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+	border: 4px solid #555;
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	animation: cssload-spin 950ms infinite linear;
+	-o-animation: cssload-spin 950ms infinite linear;
+	-ms-animation: cssload-spin 950ms infinite linear;
+	-webkit-animation: cssload-spin 950ms infinite linear;
+	-moz-animation: cssload-spin 950ms infinite linear;
+}
+
+@keyframes cssload-spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes cssload-spin {
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+.cr-preloader-overlay {
+	display: none;
+	background: rgba(255, 255, 255, 0.5);
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100000;
+}
+
+.cr-preloader-overlay.in-relative-block {
+	position: absolute;
+}
+
+.cr-preloader-overlay.visible {
+	display: block;
+}
+
+.cr-preloader-overlay#plo-error-dialog {
+	background: rgba(0, 0, 0, 0.2);
+	display: block;
+}
+
+
+
+/*
+* Piramid
+*/
+.cr-piramid {}
+
+.cr-players-list {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+
+.flex-break {
+	flex-basis: 100%;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+}
+
+.cr-player-item {
+	flex-basis: 110px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	max-width: 110px;
+	padding: .5em .5em;
+	height: 40px;
+	margin: .2em;
+	background-color: #AAA;
+	border: 0 none;
+	color: #333;
+	transition: background-color .3s linear;
+}
+
+.cr-player-item:disabled {
+	pointer-events: none;
+	background-color: #cac5c5;
+}
+
+.cr-player-item:active,
+.cr-player-item:focus {
+	background-color: #F5DA71;
+	color: #333;
+}
+
+.cr-player-item:hover,
+.cr-player-item.current {
+	background-color: #bbb7b7;
+	color: #333;
+}
+
+.cr-player-item.dummy {
+	background-color: #eee !important;
+
+}
+
+.cr-player-item .position {
+	min-width: 24px;
+	flex-basis: 24px;
+	align-self: center;
+
+	height: 24px;
+	line-height: 21px;
+	background-color: #fff;
+	border: 1px solid #333;
+	border-radius: 50%;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.cr-player-item .name {
+	max-width: calc(100% - 30px);
+	flex-basis: calc(100% - 30px);
+	align-self: center;
+
+	color: #fff;
+	font-size: 12px;
+	line-height: 16px;
+
+	overflow: hidden;
+	overflow-wrap: normal;
+	word-break: keep-all;
+	text-overflow: ellipsis;
+}
+
+/*   Challenges list   */
+.cr-challenges-section {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.cr-challenges-block {
+	flex-basis: 49%;
+	position: relative;
+	width: 50%;
+}
+
+.cr-challenges-list {
+	list-style: none;
+	margin: 0;
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.cr-challenges-list p {
+	margin: 0;
+}
+
+.cr-challenges-list a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.cr-challenges-list a:hover {
+	text-decoration: underline;
+}
+
+.cr-challenges-list a:link,
+.cr-challenges-list a:visited,
+.cr-challenges-list a:active {
+	color: #fff;
+}
+
+.cr-challenge-item {
+	background-color: #AAA;
+	color: #fff;
+	padding: .5em .3em .6em;
+	margin: .5em 0;
+}
+
+.cr-challenge-row {
+	display: flex;
+	justify-content: space-between;
+	padding: .2em 0;
+}
+
+.cr-challenge-row.main {
+	font-weight: 700;
+}
+
+.cr-challenge-row.additional {}
+
+.cr-challenge-cell {
+	align-self: center;
+	padding: 0 .5em;
+}
+
+.cr-challenge-cell.player {
+	flex-basis: 25%;
+}
+
+.cr-challenge-cell.vs {
+	flex-basis: 30px;
+}
+
+.cr-challenge-cell.descr {
+	flex-basis: 45%;
+}
+
+
+/*   Dialogs   */
+.cr-piramid-dialog {
+	line-height: 1.5em;
+}
+
+.cr-dialog-confirm {
+	position: relative;
+}
+
+.cr-dialog-create-challenge {}
+
+.cr-form fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	min-width: 0;
+}
+
+.cr-form fieldset label {
+	cursor: pointer;
+}
+
+.cr-form fieldset .cr-input-field {
+	margin: .5em 0;
+}
+
+.cr-form fieldset input[type="radio"] {
+	cursor: pointer;
+}
+
+.cr-form ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/*   Form Accept Challenge  */
+.cr-accept-challenge-form fieldset {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.cr-accept-challenge-form fieldset label {
+	align-self: center;
+	flex-basis: 35%;
+}
+
+.cr-accept-challenge-form fieldset .cr-input-field {
+	align-self: center;
+	flex-basis: 65%;
+}
+
+/*   Form Enter Results  */
+.cr-row {
+	display: flex;
+	justify-content: center;
+	/*flex-wrap: wrap;*/
+}
+
+.cr-row .cr-col {
+	align-self: center;
+}
+
+.cr-row .cr-col:nth-child(1),
+.cr-row .cr-col:nth-child(3) {
+	width: 45%;
+	flex-basis: 45%;
+}
+
+.cr-row .cr-col:nth-child(2) {
+	width: 5%;
+	flex-basis: 5%;
+}
+
+.cr-ta-center {
+	text-align: center;
+}
+
+.cr-enter-results-form {}
+
+.cr-enter-results-form fieldset {}
+
+.cr-enter-results-form fieldset label {
+	width: 50%;
+	flex-basis: 50%;
+}
+
+.cr-enter-results-form fieldset .cr-input-field {
+	width: 50%;
+	flex-basis: 50%;
+	/* not works in chrome 88.0.4324.190 */
+}
+
+
+/* @media screen and (max-width: 576px) {
+	.cr-player-item{
+		flex-basis: 100%!important;
+		max-width: 100%!important;
+	}
+	.cr-challenges-block{
+		flex-basis: 100%;
+		width: 100%;
+	}
+} */
