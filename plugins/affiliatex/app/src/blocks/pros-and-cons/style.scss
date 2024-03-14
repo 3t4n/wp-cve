@@ -1,0 +1,237 @@
+.affiliate-blocks-option-list{
+    text-align: center;
+    .eDZTlK{
+        margin: 0 auto;
+    }
+}
+
+.wp-block-affiliatex-pros-and-cons{
+    .affx-pros-cons-inner-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+        width: 100%;
+        .affx-pros-inner,
+        .affx-cons-inner{
+            width: 50%;
+        }
+    
+        .affiliatex-title{
+            margin: 0;
+        }    
+        
+        ul.affiliatex-list{
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            li{
+                margin-bottom: 12px;
+                display: flex;
+                &:before{
+                    font-family: "Font Awesome 5 Free";
+                    padding-right: 15px;
+                    margin-right: 0;
+                }
+                
+                &:last-child{
+                    margin-bottom: 0;
+                }
+
+            }
+            &.bullet{
+                list-style: none;
+                li{
+                    list-style-type: disc;
+                    list-style-position: inside;
+                    list-style-type: none;
+                    &:before{
+                        content: "";
+                        width: 8px;
+                        height: 8px;
+                        flex: 0 0 8px;
+                        margin-right: 10px;
+                        border-radius: 50%;
+                        padding: 0;
+                        max-width: 8px;
+                        margin-top: 0.5em;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    
+        ol.affiliatex-list{
+            counter-reset: number;  
+            width: 100%;
+            box-sizing: border-box;
+            li{
+                display: flex;
+                // align-items: center;
+                list-style-type: none;
+                margin-bottom: 20px;
+                padding: 0;
+                &:before{
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 2px solid;
+                    border-radius: 100%;
+                    counter-increment: number;
+                    content: counter(number);
+                    font-weight: 400;
+                    line-height: 1;
+                    margin-right: 10px;
+                    min-height: 1.53em;
+                    min-width: 1.53em;
+                    text-align: center;
+                    position: relative;
+                    align-self: flex-start;
+                    font-family: inherit;
+                }
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    
+        .affiliatex-pros,
+        .affiliatex-cons{
+            // display: flex;
+            // flex-wrap: wrap;
+            // min-height: calc(100% - 50px);
+            width: 100%;
+            flex: 1;
+        }
+
+        .affiliatex-icon:after{
+            display: none;
+        }
+    
+        &.layout-type-2,
+        &.layout-type-3,
+        &.layout-type-4{
+            .affx-pros-inner{
+                margin-right: 10px;
+                width: calc(50% - 10px);
+            }
+            .affx-cons-inner{
+                margin-left: 10px;
+                width: calc(50% - 10px);
+            }
+        }
+    
+        &.layout-type-4{
+            .affiliatex-list{
+                padding: 0 !important;
+                li{
+                    margin: 10px 0;
+                }
+            }
+    
+            .affiliatex-pros,
+            .affiliatex-cons{
+                p{
+                    margin: 10px 0;
+                    width: 100%;
+                }
+            }
+            
+        }
+
+        &.layout-type-2{
+            .pros-icon-title-wrap,
+            .cons-icon-title-wrap{
+                overflow: hidden;
+            }
+        }
+    
+        &.layout-type-3{
+            margin-top: 30px;
+            height: unset;
+            .affx-pros-inner, .affx-cons-inner{
+                display: flex;
+                flex-direction: column;
+                height: unset;
+            }
+
+            .affiliatex-title{
+                margin: 0;
+                text-align: center;
+                &.affiliatex-icon:before{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 100%;
+                    color: #ffffff;
+                    padding: 5px;
+                    margin-top: -28px;
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+            
+            .affiliatex-block-pros,
+            .affiliatex-block-cons{
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                
+            }
+    
+            .pros-title-icon,
+            .cons-title-icon {
+                display: flex;
+                margin-top: -35px;
+                width: auto;
+            }
+    
+            .pros-title-icon>div,
+            .cons-title-icon>div{
+                border-radius: 100%;
+                color: #ffffff !important;
+                padding: 17px !important;
+                line-height: 0;
+            }
+        }
+    }  
+}
+
+@media only screen and (max-width: 767px) {
+    .wp-block-affiliatex-pros-and-cons {
+        .affx-pros-cons-inner-wrapper{
+            .affx-pros-inner,
+            .affx-cons-inner{
+                margin-bottom: 30px;
+                width: 100%;
+            }
+
+            &.layout-type-2,
+            &.layout-type-4{
+                .affx-pros-inner{
+                    margin-bottom: 30px;
+                    margin-right: 0;
+                    width: 100%;
+                }
+                .affx-cons-inner{
+                    margin-bottom: 30px;
+                    margin-left: 0;
+                    width: 100%;
+                }
+            }
+
+            &.layout-type-3{
+                .affx-pros-inner{
+                    margin-bottom: 40px;
+                    margin-right: 0;
+                    width: 100%;
+                }
+                .affx-cons-inner{
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    width: 100%;
+                }
+            }
+        } 
+    }
+}

@@ -1,0 +1,143 @@
+.affx-notice-wrapper {
+	.affx-notice-inner-wrapper {
+		overflow: hidden;
+		.affiliatex-notice-title {
+			// display: flex;
+			align-items: center;
+			margin: 0;
+			width: 100%;
+		}
+		.affiliatex-notice-content ul,
+		.affiliatex-notice-content ol {
+			margin: 0;
+			padding: 0;
+			list-style-position: inside;
+			li {
+				display: flex;
+				flex-wrap: nowrap;
+				margin-bottom: 10px;
+				&:before {
+					margin-right: 10px;
+					margin-top: 2px;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+		.affiliatex-notice-content {
+			p {
+				margin: 0;
+			}
+
+			ul.bullet {
+				li {
+					display: list-item;
+					list-style: inside disc;
+					position: relative;
+				}
+			}
+			ol{
+				counter-reset: order-list;
+				li{
+					counter-increment: order-list;
+					&::before{
+						content: counter(order-list);
+						font-family: inherit;
+						font-weight: inherit;
+						min-height: 30px;
+						min-width: 30px;
+						display: inline-flex;
+						justify-content: center;
+						align-items: center;
+						border: 1px solid;
+						border-radius: 50%;
+					}
+				}
+			}
+		}
+
+		&.layout-type-1 {
+			.affiliatex-notice-content ol {
+				counter-reset: number;
+				li {
+					list-style-type: none;
+					// padding-left: 40px;
+					position: relative;
+					&:before {
+						display: inline-flex !important;
+						align-items: center;
+						justify-content: center;
+						border: 2px solid;
+						border-radius: 100%;
+						counter-increment: number;
+						content: counter(number);
+						font-weight: 400;
+						line-height: 1;
+						margin-right: 10px;
+						min-height: 1.53em;
+						min-width: 1.53em;
+						text-align: center;
+						// position: absolute;
+						left: 0;
+						align-self: flex-start;
+						margin-top: 2px;
+					}
+				}
+			}
+		}
+
+		&.layout-type-2 {
+			.affiliatex-notice-title {
+				display: block;
+				&:before {
+					display: block;
+					margin: 0 0 10px;
+				}
+			}
+		}
+		&.layout-type-3 {
+			display: flex;
+			flex-wrap: nowrap;
+			width: 100%;
+			.affx-notice-inner {
+				width: 100%;
+			}
+			.affiliatex-notice-title:before {
+				display: none;
+			}
+			.affiliatex-notice-icon {
+				line-height: 1.3;
+				&:before {
+					margin-right: 15px;
+				}
+			}
+			&.border-none {
+				border-width: 0 !important;
+			}
+			&.border-top {
+				border-right-width: 0 !important;
+				border-left-width: 0 !important;
+				border-bottom-width: 0 !important;
+			}
+			&.border-bottom {
+				border-right-width: 0 !important;
+				border-left-width: 0 !important;
+				border-top-width: 0 !important;
+			}
+			&.border-left {
+				border-right-width: 0 !important;
+				border-top-width: 0 !important;
+				border-bottom-width: 0 !important;
+			}
+			&.border-right {
+				border-top-width: 0 !important;
+				border-left-width: 0 !important;
+				border-bottom-width: 0 !important;
+			}
+		}
+	}
+	.affiliatex-title {
+		display: inline-block;
+	}
+}

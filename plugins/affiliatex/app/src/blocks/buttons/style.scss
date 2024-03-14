@@ -1,0 +1,144 @@
+.affx-btn-wrapper {
+	.affx-btn-inner {
+		display: flex;
+		.affiliatex-button {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			svg {
+				display: flex;
+				align-items: center;
+				margin: 0 2px;
+			}
+			&.icon-left {
+				.button-icon {
+					padding-right: 10px;
+					width: unset;
+				}
+			}
+			&.icon-right {
+				.button-icon {
+					padding-left: 10px;
+				}
+			}
+			&.right-price-tag,
+			&.left-price-tag {
+				display: inline-flex;
+				padding: 2px;
+				.btn-label,
+				.affiliatex-btn {
+					padding: 8px 15px;
+					flex: 1;
+					text-align: center;
+				}
+				.price-tag {
+					color: #2670ff;
+					background: #fff;
+					position: relative;
+					z-index: 1;
+					&::before {
+						content: "";
+						width: 31.25px;
+						height: 31.25px;
+						background: #fff;
+						position: absolute;
+						top: 7px;
+						bottom: 0;
+						z-index: -1;
+					}
+				}
+				&.icon-left {
+					.button-icon {
+						order: 1;
+					}
+				}
+				&.icon-right {
+					.button-icon {
+						order: 4;
+					}
+				}
+			}
+			&.right-price-tag {
+				.btn-label,
+				.affiliatex-btn {
+					order: 2;
+				}
+				.price-tag {
+					order: 3;
+					padding: 8px 8px 8px 0;
+					margin-left: 22px;
+					border-top-right-radius: var(--border-top-right-radius);
+					border-bottom-right-radius: var(
+						--border-bottom-right-radius
+					);
+					&::before {
+						right: 100%;
+						transform: translateX(50%) rotate(45deg);
+						border-bottom-left-radius: 4px;
+					}
+				}
+			}
+			&.left-price-tag {
+				.btn-label,
+				.affiliatex-btn {
+					order: 3;
+				}
+				.price-tag {
+					order: 2;
+					padding: 8px 0 8px 8px;
+					margin-right: 22px;
+					border-top-left-radius: var(--border-top-left-radius);
+					border-bottom-left-radius: var(--border-bottom-left-radius);
+					&::before {
+						left: 100%;
+						transform: translateX(-50%) rotate(45deg);
+						border-top-right-radius: 4px;
+					}
+				}
+			}
+		}
+		.btn-is-small {
+			min-width: 80px;
+			padding: 5px 10px;
+			&.btn-is-fixed {
+				width: 80px;
+			}
+		}
+
+		.btn-is-medium {
+			min-width: 100px;
+			padding: 10px 20px;
+			&.btn-is-fixed {
+				width: 100px;
+			}
+		}
+
+		.btn-is-large {
+			min-width: 140px;
+			padding: 15px 30px;
+			&.btn-is-fixed {
+				width: 140px;
+			}
+		}
+
+		.btn-is-xlarge {
+			min-width: 200px;
+			padding: 20px 40px;
+			&.btn-is-fixed {
+				width: 200px;
+			}
+		}
+
+		.btn-is-flex-large,
+		.btn-is-flex-small,
+		.btn-is-flex-medium,
+		.btn-is-flex-xlarge {
+			width: auto !important;
+		}
+
+		.btn-is-fullw {
+			width: 100% !important;
+		}
+	}
+}
