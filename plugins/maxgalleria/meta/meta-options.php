@@ -1,0 +1,1 @@
+<?php do_action(MAXGALLERIA_ACTION_TEMPLATE_OPTIONS) ?>
