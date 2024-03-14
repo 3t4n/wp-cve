@@ -1,0 +1,455 @@
+@charset "UTF-8";
+[class^='wrsl-'] *, [class^='wrsl-'] *:before, [class^='wrsl-'] *:after,
+[id^='wrsl-'] *,
+[id^='wrsl-'] *:before,
+[id^='wrsl-'] *:after,
+[class^='wrslb-'] *,
+[class^='wrslb-'] *:before,
+[class^='wrslb-'] *:after,
+[id^='wrslb-'] *,
+[id^='wrslb-'] *:before,
+[id^='wrslb-'] *:after,
+.wrsl-modal *,
+.wrsl-modal *:before,
+.wrsl-modal *:after,
+#wrsl-builder *,
+#wrsl-builder *:before,
+#wrsl-builder *:after {
+  box-sizing: border-box; }
+
+/* links */
+.wrsl-widget-container a {
+  transition-property: all;
+  transition-duration: 0.3s; }
+
+.wrsl-carousel-container {
+  display: block;
+  position: relative; }
+  .wrsl-carousel-container div.wrsl-carousel {
+    visibility: visible;
+    margin: 0; }
+  .wrsl-carousel-container.carousel-loaded div.wrsl-carousel {
+    visibility: visible; }
+
+.wrsl-carousel-preloader {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99; }
+  .wrsl-carousel-preloader.hide-preloader {
+    display: none; }
+
+.wrsl-carousel-controller, .wrsl-carousel-controller-bottom-left, .wrsl-carousel-controller-bottom-center, .wrsl-carousel-controller-bottom-right, .wrsl-carousel-controller-top-left, .wrsl-carousel-controller-top-center, .wrsl-carousel-controller-top-right, .wrsl-carousel-controller-center, .wrsl-carousel-controller-center-hover {
+  display: block; }
+  .wrsl-carousel-controller .wrsl-carousel-to-prev, .wrsl-carousel-controller-bottom-left .wrsl-carousel-to-prev, .wrsl-carousel-controller-bottom-center .wrsl-carousel-to-prev, .wrsl-carousel-controller-bottom-right .wrsl-carousel-to-prev, .wrsl-carousel-controller-top-left .wrsl-carousel-to-prev, .wrsl-carousel-controller-top-center .wrsl-carousel-to-prev, .wrsl-carousel-controller-top-right .wrsl-carousel-to-prev, .wrsl-carousel-controller-center .wrsl-carousel-to-prev, .wrsl-carousel-controller-center-hover .wrsl-carousel-to-prev,
+  .wrsl-carousel-controller .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-bottom-left .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-bottom-center .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-bottom-right .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-top-left .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-top-center .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-top-right .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-center .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-center-hover .wrsl-carousel-to-next {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #fafafa;
+    background: #262626;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha)";
+    filter: alpha(opacity=75);
+    opacity: 0.75; }
+    .wrsl-carousel-controller .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-bottom-left .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-bottom-center .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-bottom-right .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-top-left .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-top-center .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-top-right .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-center .wrsl-carousel-to-prev:hover, .wrsl-carousel-controller-center-hover .wrsl-carousel-to-prev:hover,
+    .wrsl-carousel-controller .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-bottom-left .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-bottom-center .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-bottom-right .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-top-left .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-top-center .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-top-right .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-center .wrsl-carousel-to-next:hover,
+    .wrsl-carousel-controller-center-hover .wrsl-carousel-to-next:hover {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha)";
+      filter: alpha(opacity=100);
+      opacity: 1; }
+
+.wrsl-carousel-controller-bottom-left {
+  margin-top: 15px;
+  text-align: left; }
+
+.wrsl-carousel-controller-bottom-center {
+  margin-top: 15px;
+  text-align: center; }
+
+.wrsl-carousel-controller-bottom-right {
+  margin-top: 15px;
+  text-align: right; }
+
+.wrsl-carousel-controller-top-left {
+  margin-bottom: 15px;
+  text-align: left; }
+
+.wrsl-carousel-controller-top-center {
+  margin-bottom: 15px;
+  text-align: center; }
+
+.wrsl-carousel-controller-top-right {
+  margin-bottom: 15px;
+  text-align: right; }
+
+.wrsl-carousel-controller-center, .wrsl-carousel-controller-center-hover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%; }
+  .wrsl-carousel-controller-center .wrsl-carousel-to-prev, .wrsl-carousel-controller-center-hover .wrsl-carousel-to-prev,
+  .wrsl-carousel-controller-center .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-center-hover .wrsl-carousel-to-next {
+    position: absolute;
+    left: 0;
+    z-index: 5;
+    padding: 20px 15px;
+    margin: -25px 0 0 0; }
+  
+  .wrsl-carousel-controller-center .wrsl-carousel-to-next,
+  .wrsl-carousel-controller-center-hover .wrsl-carousel-to-next {
+    left: auto;
+    right: 0; }
+
+.wrsl-carousel-controller-center-hover {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.3s; }
+  .wrsl-carousel-container:hover .wrsl-carousel-controller-center-hover {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha)";
+    filter: alpha(opacity=100);
+    opacity: 1; }
+
+.wrsl-prosingle, .wrsl-prosingle-style-1, .wrsl-prosingle-style-2, .wrsl-prosingle-style-3, .wrsl-prosingle-style-4 {
+  display: block;
+  position: relative;
+  background-color: #f5f5f5; }
+  .wrsl-prosingle .wrsl-prosingle-header, .wrsl-prosingle-style-1 .wrsl-prosingle-header, .wrsl-prosingle-style-2 .wrsl-prosingle-header, .wrsl-prosingle-style-3 .wrsl-prosingle-header, .wrsl-prosingle-style-4 .wrsl-prosingle-header {
+    padding: 20px; }
+  .wrsl-prosingle .wrsl-prosingle-body, .wrsl-prosingle-style-1 .wrsl-prosingle-body, .wrsl-prosingle-style-2 .wrsl-prosingle-body, .wrsl-prosingle-style-3 .wrsl-prosingle-body, .wrsl-prosingle-style-4 .wrsl-prosingle-body {
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2; }
+  .wrsl-prosingle .wrsl-prosingle-heading, .wrsl-prosingle-style-1 .wrsl-prosingle-heading, .wrsl-prosingle-style-2 .wrsl-prosingle-heading, .wrsl-prosingle-style-3 .wrsl-prosingle-heading, .wrsl-prosingle-style-4 .wrsl-prosingle-heading {
+    font-size: 16px;
+    font-weight: 400; }
+  .wrsl-prosingle .wrsl-prosingle-excerpt, .wrsl-prosingle-style-1 .wrsl-prosingle-excerpt, .wrsl-prosingle-style-2 .wrsl-prosingle-excerpt, .wrsl-prosingle-style-3 .wrsl-prosingle-excerpt, .wrsl-prosingle-style-4 .wrsl-prosingle-excerpt {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 7px; }
+  .wrsl-prosingle.wrsl-text-left, .wrsl-text-left.wrsl-prosingle-style-1, .wrsl-text-left.wrsl-prosingle-style-2, .wrsl-text-left.wrsl-prosingle-style-3, .wrsl-text-left.wrsl-prosingle-style-4 {
+    text-align: left; }
+  .wrsl-prosingle.wrsl-text-right, .wrsl-text-right.wrsl-prosingle-style-1, .wrsl-text-right.wrsl-prosingle-style-2, .wrsl-text-right.wrsl-prosingle-style-3, .wrsl-text-right.wrsl-prosingle-style-4 {
+    text-align: right; }
+  .wrsl-prosingle.wrsl-text-center, .wrsl-text-center.wrsl-prosingle-style-1, .wrsl-text-center.wrsl-prosingle-style-2, .wrsl-text-center.wrsl-prosingle-style-3, .wrsl-text-center.wrsl-prosingle-style-4 {
+    text-align: center; }
+  .wrsl-prosingle.wrsl-text-justify, .wrsl-text-justify.wrsl-prosingle-style-1, .wrsl-text-justify.wrsl-prosingle-style-2, .wrsl-text-justify.wrsl-prosingle-style-3, .wrsl-text-justify.wrsl-prosingle-style-4 {
+    text-align: justify; }
+  .wrsl-prosingle .wrsl-prosingle-salesbadge, .wrsl-prosingle-style-1 .wrsl-prosingle-salesbadge, .wrsl-prosingle-style-2 .wrsl-prosingle-salesbadge, .wrsl-prosingle-style-3 .wrsl-prosingle-salesbadge, .wrsl-prosingle-style-4 .wrsl-prosingle-salesbadge {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10; }
+    .wrsl-prosingle .wrsl-prosingle-salesbadge .onsale, .wrsl-prosingle-style-1 .wrsl-prosingle-salesbadge .onsale, .wrsl-prosingle-style-2 .wrsl-prosingle-salesbadge .onsale, .wrsl-prosingle-style-3 .wrsl-prosingle-salesbadge .onsale, .wrsl-prosingle-style-4 .wrsl-prosingle-salesbadge .onsale {
+      display: inline-block;
+      position: relative;
+      top: auto;
+      left: auto;
+      padding: 4px 12px;
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 100px;
+      -moz-border-radius: 100px;
+      -webkit-border-radius: 100px; }
+  .wrsl-prosingle .wrsl-prosingle-thumbnail img, .wrsl-prosingle-style-1 .wrsl-prosingle-thumbnail img, .wrsl-prosingle-style-2 .wrsl-prosingle-thumbnail img, .wrsl-prosingle-style-3 .wrsl-prosingle-thumbnail img, .wrsl-prosingle-style-4 .wrsl-prosingle-thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto; }
+  .wrsl-prosingle .wrsl-prosingle-ratings, .wrsl-prosingle-style-1 .wrsl-prosingle-ratings, .wrsl-prosingle-style-2 .wrsl-prosingle-ratings, .wrsl-prosingle-style-3 .wrsl-prosingle-ratings, .wrsl-prosingle-style-4 .wrsl-prosingle-ratings {
+    display: block;
+    margin-top: 7px; }
+    .wrsl-prosingle .wrsl-prosingle-ratings .star-rating, .wrsl-prosingle-style-1 .wrsl-prosingle-ratings .star-rating, .wrsl-prosingle-style-2 .wrsl-prosingle-ratings .star-rating, .wrsl-prosingle-style-3 .wrsl-prosingle-ratings .star-rating, .wrsl-prosingle-style-4 .wrsl-prosingle-ratings .star-rating {
+      display: inline-block; }
+  .wrsl-prosingle .wrsl-prosingle-price, .wrsl-prosingle-style-1 .wrsl-prosingle-price, .wrsl-prosingle-style-2 .wrsl-prosingle-price, .wrsl-prosingle-style-3 .wrsl-prosingle-price, .wrsl-prosingle-style-4 .wrsl-prosingle-price {
+    display: block;
+    margin-top: 7px; }
+    .wrsl-prosingle .wrsl-prosingle-price .price ins, .wrsl-prosingle-style-1 .wrsl-prosingle-price .price ins, .wrsl-prosingle-style-2 .wrsl-prosingle-price .price ins, .wrsl-prosingle-style-3 .wrsl-prosingle-price .price ins, .wrsl-prosingle-style-4 .wrsl-prosingle-price .price ins {
+      background: none; }
+  .wrsl-prosingle .wrsl-prosingle-body div + .wrsl-prosingle-button, .wrsl-prosingle-style-1 .wrsl-prosingle-body div + .wrsl-prosingle-button, .wrsl-prosingle-style-2 .wrsl-prosingle-body div + .wrsl-prosingle-button, .wrsl-prosingle-style-3 .wrsl-prosingle-body div + .wrsl-prosingle-button, .wrsl-prosingle-style-4 .wrsl-prosingle-body div + .wrsl-prosingle-button {
+    margin-top: 12px; }
+  .wrsl-prosingle .wrsl-prosingle-body .button, .wrsl-prosingle-style-1 .wrsl-prosingle-body .button, .wrsl-prosingle-style-2 .wrsl-prosingle-body .button, .wrsl-prosingle-style-3 .wrsl-prosingle-body .button, .wrsl-prosingle-style-4 .wrsl-prosingle-body .button {
+    margin-top: 3px; }
+    .wrsl-prosingle .wrsl-prosingle-body .button + .added_to_cart, .wrsl-prosingle-style-1 .wrsl-prosingle-body .button + .added_to_cart, .wrsl-prosingle-style-2 .wrsl-prosingle-body .button + .added_to_cart, .wrsl-prosingle-style-3 .wrsl-prosingle-body .button + .added_to_cart, .wrsl-prosingle-style-4 .wrsl-prosingle-body .button + .added_to_cart {
+      margin-top: 3px; }
+  .wrsl-prosingle .wrsl-prosingle-img-button .button, .wrsl-prosingle-style-1 .wrsl-prosingle-img-button .button, .wrsl-prosingle-style-2 .wrsl-prosingle-img-button .button, .wrsl-prosingle-style-3 .wrsl-prosingle-img-button .button, .wrsl-prosingle-style-4 .wrsl-prosingle-img-button .button {
+    margin-top: 0px; }
+  .wrsl-prosingle .wrsl-prosingle-button, .wrsl-prosingle-style-1 .wrsl-prosingle-button, .wrsl-prosingle-style-2 .wrsl-prosingle-button, .wrsl-prosingle-style-3 .wrsl-prosingle-button, .wrsl-prosingle-style-4 .wrsl-prosingle-button {
+    display: block; }
+    .wrsl-prosingle .wrsl-prosingle-button .button, .wrsl-prosingle-style-1 .wrsl-prosingle-button .button, .wrsl-prosingle-style-2 .wrsl-prosingle-button .button, .wrsl-prosingle-style-3 .wrsl-prosingle-button .button, .wrsl-prosingle-style-4 .wrsl-prosingle-button .button {
+      display: inline-block;
+      padding: 5px 15px;
+      font-size: 14px;
+      font-weight: 400;
+      background-color: #454545;
+      box-shadow: none;
+      border: none;
+      border-color: transparent;
+      color: #fff;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-weight: 700; }
+      .wrsl-prosingle .wrsl-prosingle-button .button:hover, .wrsl-prosingle-style-1 .wrsl-prosingle-button .button:hover, .wrsl-prosingle-style-2 .wrsl-prosingle-button .button:hover, .wrsl-prosingle-style-3 .wrsl-prosingle-button .button:hover, .wrsl-prosingle-style-4 .wrsl-prosingle-button .button:hover {
+        background-color: #323232;
+        color: #fff; }
+      .wrsl-prosingle .wrsl-prosingle-button .button:focus, .wrsl-prosingle-style-1 .wrsl-prosingle-button .button:focus, .wrsl-prosingle-style-2 .wrsl-prosingle-button .button:focus, .wrsl-prosingle-style-3 .wrsl-prosingle-button .button:focus, .wrsl-prosingle-style-4 .wrsl-prosingle-button .button:focus {
+        box-shadow: none;
+        border: none; }
+      .wrsl-prosingle .wrsl-prosingle-button .button.btn-small, .wrsl-prosingle-style-1 .wrsl-prosingle-button .button.btn-small, .wrsl-prosingle-style-2 .wrsl-prosingle-button .button.btn-small, .wrsl-prosingle-style-3 .wrsl-prosingle-button .button.btn-small, .wrsl-prosingle-style-4 .wrsl-prosingle-button .button.btn-small {
+        padding: 2px 10px;
+        font-size: 12px; }
+      .wrsl-prosingle .wrsl-prosingle-button .button.btn-large, .wrsl-prosingle-style-1 .wrsl-prosingle-button .button.btn-large, .wrsl-prosingle-style-2 .wrsl-prosingle-button .button.btn-large, .wrsl-prosingle-style-3 .wrsl-prosingle-button .button.btn-large, .wrsl-prosingle-style-4 .wrsl-prosingle-button .button.btn-large {
+        padding: 10px 25px;
+        font-size: 16px; }
+    .wrsl-prosingle .wrsl-prosingle-button .added_to_cart, .wrsl-prosingle-style-1 .wrsl-prosingle-button .added_to_cart, .wrsl-prosingle-style-2 .wrsl-prosingle-button .added_to_cart, .wrsl-prosingle-style-3 .wrsl-prosingle-button .added_to_cart, .wrsl-prosingle-style-4 .wrsl-prosingle-button .added_to_cart {
+      display: inline-block;
+      padding: 5px 15px;
+      background: #262626;
+      color: #fafafa;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition-property: all;
+      transition-duration: 0.3s; }
+      .wrsl-prosingle .wrsl-prosingle-button .added_to_cart:hover, .wrsl-prosingle-style-1 .wrsl-prosingle-button .added_to_cart:hover, .wrsl-prosingle-style-2 .wrsl-prosingle-button .added_to_cart:hover, .wrsl-prosingle-style-3 .wrsl-prosingle-button .added_to_cart:hover, .wrsl-prosingle-style-4 .wrsl-prosingle-button .added_to_cart:hover {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha)";
+        filter: alpha(opacity=75);
+        opacity: 0.75; }
+      .wrsl-prosingle .wrsl-prosingle-button .added_to_cart:focus, .wrsl-prosingle-style-1 .wrsl-prosingle-button .added_to_cart:focus, .wrsl-prosingle-style-2 .wrsl-prosingle-button .added_to_cart:focus, .wrsl-prosingle-style-3 .wrsl-prosingle-button .added_to_cart:focus, .wrsl-prosingle-style-4 .wrsl-prosingle-button .added_to_cart:focus {
+        box-shadow: none;
+        border: none; }
+  .wrsl-prosingle .add_to_cart_button:before, .wrsl-prosingle-style-1 .add_to_cart_button:before, .wrsl-prosingle-style-2 .add_to_cart_button:before, .wrsl-prosingle-style-3 .add_to_cart_button:before, .wrsl-prosingle-style-4 .add_to_cart_button:before {
+    transition-property: all;
+    transition-duration: 0.3s; }
+  .wrsl-prosingle .add_to_cart_button.loading:before, .wrsl-prosingle-style-1 .add_to_cart_button.loading:before, .wrsl-prosingle-style-2 .add_to_cart_button.loading:before, .wrsl-prosingle-style-3 .add_to_cart_button.loading:before, .wrsl-prosingle-style-4 .add_to_cart_button.loading:before {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    content: "";
+    animation: fa-spin 2s infinite linear;
+    display: inline-block;
+    margin-right: 8px; }
+  .wrsl-prosingle .star-rating, .wrsl-prosingle-style-1 .star-rating, .wrsl-prosingle-style-2 .star-rating, .wrsl-prosingle-style-3 .star-rating, .wrsl-prosingle-style-4 .star-rating {
+    width: 90px;
+    height: 16px;
+    background: url(../img/star.png) repeat-x left 0;
+    background-size: 18px 48px;
+    overflow: hidden; }
+  .wrsl-prosingle .star-rating span, .wrsl-prosingle-style-1 .star-rating span, .wrsl-prosingle-style-2 .star-rating span, .wrsl-prosingle-style-3 .star-rating span, .wrsl-prosingle-style-4 .star-rating span {
+    background: url(../img/star.png) repeat-x left -32px;
+    height: 0;
+    padding-top: 16px;
+    overflow: hidden;
+    float: left;
+    background-size: 18px 48px; }
+  .wrsl-prosingle.wrsl-with-overlay, .wrsl-with-overlay.wrsl-prosingle-style-1, .wrsl-with-overlay.wrsl-prosingle-style-2, .wrsl-with-overlay.wrsl-prosingle-style-3, .wrsl-with-overlay.wrsl-prosingle-style-4 {
+    overflow: hidden; }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s all ease-in-out;
+      text-align: center; }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-overlay, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-overlay, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-overlay, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-overlay, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-overlay {
+      display: block;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%); }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-body {
+      background: rgba(0, 0, 0, 0.65) !important; }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-heading {
+      opacity: 0;
+      color: #fff;
+      transform: translate3d(0, 10px, 0);
+      transition: 0.2s all ease-in-out 0.1s; }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-heading a, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-heading a, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-heading a, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-heading a, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-heading a {
+      color: #fff; }
+    .wrsl-prosingle.wrsl-with-overlay .button, .wrsl-with-overlay.wrsl-prosingle-style-1 .button, .wrsl-with-overlay.wrsl-prosingle-style-2 .button, .wrsl-with-overlay.wrsl-prosingle-style-3 .button, .wrsl-with-overlay.wrsl-prosingle-style-4 .button {
+      margin-top: 15px;
+      position: relative;
+      opacity: 0;
+      background: none;
+      border: 2px solid #fff;
+      position: relative;
+      transform: translate3d(0, 10px, 0);
+      transition: transform 0.2s ease-in-out 0.2s, opacity 0.2s ease-in-out 0.25s; }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-button, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-button, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-button, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-button, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-button {
+      margin-top: 0px; }
+      .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-button .added_to_cart, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-button .added_to_cart, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-button .added_to_cart, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-button .added_to_cart, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-button .added_to_cart {
+        margin-top: 15px; }
+    .wrsl-prosingle.wrsl-with-overlay .excerpt, .wrsl-with-overlay.wrsl-prosingle-style-1 .excerpt, .wrsl-with-overlay.wrsl-prosingle-style-2 .excerpt, .wrsl-with-overlay.wrsl-prosingle-style-3 .excerpt, .wrsl-with-overlay.wrsl-prosingle-style-4 .excerpt {
+      display: none; }
+    .wrsl-prosingle.wrsl-with-overlay .meta-info, .wrsl-with-overlay.wrsl-prosingle-style-1 .meta-info, .wrsl-with-overlay.wrsl-prosingle-style-2 .meta-info, .wrsl-with-overlay.wrsl-prosingle-style-3 .meta-info, .wrsl-with-overlay.wrsl-prosingle-style-4 .meta-info {
+      display: none; }
+    .wrsl-prosingle.wrsl-with-overlay:hover .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-1:hover .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-2:hover .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-3:hover .wrsl-prosingle-body, .wrsl-with-overlay.wrsl-prosingle-style-4:hover .wrsl-prosingle-body {
+      visibility: visible;
+      opacity: 1; }
+    .wrsl-prosingle.wrsl-with-overlay:hover .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-1:hover .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-2:hover .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-3:hover .wrsl-prosingle-heading, .wrsl-with-overlay.wrsl-prosingle-style-4:hover .wrsl-prosingle-heading {
+      transform: translate3d(0, 0, 0);
+      opacity: 1; }
+    .wrsl-prosingle.wrsl-with-overlay:hover .button, .wrsl-with-overlay.wrsl-prosingle-style-1:hover .button, .wrsl-with-overlay.wrsl-prosingle-style-2:hover .button, .wrsl-with-overlay.wrsl-prosingle-style-3:hover .button, .wrsl-with-overlay.wrsl-prosingle-style-4:hover .button {
+      transform: translate3d(0, 0, 0);
+      opacity: 1; }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-price .price del, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-price .price del, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-price .price del, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-price .price del, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-price .price del {
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha)";
+      filter: alpha(opacity=65);
+      opacity: 0.65; }
+    .wrsl-prosingle.wrsl-with-overlay .wrsl-prosingle-price .price ins, .wrsl-with-overlay.wrsl-prosingle-style-1 .wrsl-prosingle-price .price ins, .wrsl-with-overlay.wrsl-prosingle-style-2 .wrsl-prosingle-price .price ins, .wrsl-with-overlay.wrsl-prosingle-style-3 .wrsl-prosingle-price .price ins, .wrsl-with-overlay.wrsl-prosingle-style-4 .wrsl-prosingle-price .price ins {
+      background: none; }
+  .wrsl-prosingle.wrsl-invert, .wrsl-invert.wrsl-prosingle-style-1, .wrsl-invert.wrsl-prosingle-style-2, .wrsl-invert.wrsl-prosingle-style-3, .wrsl-invert.wrsl-prosingle-style-4 {
+    border: none;
+    color: rgba(255, 255, 255, 0.85); }
+    .wrsl-prosingle.wrsl-invert .wrsl-prosingle-heading, .wrsl-invert.wrsl-prosingle-style-1 .wrsl-prosingle-heading, .wrsl-invert.wrsl-prosingle-style-2 .wrsl-prosingle-heading, .wrsl-invert.wrsl-prosingle-style-3 .wrsl-prosingle-heading, .wrsl-invert.wrsl-prosingle-style-4 .wrsl-prosingle-heading {
+      color: #fff; }
+    .wrsl-prosingle.wrsl-invert .wrsl-prosingle-excerpt, .wrsl-invert.wrsl-prosingle-style-1 .wrsl-prosingle-excerpt, .wrsl-invert.wrsl-prosingle-style-2 .wrsl-prosingle-excerpt, .wrsl-invert.wrsl-prosingle-style-3 .wrsl-prosingle-excerpt, .wrsl-invert.wrsl-prosingle-style-4 .wrsl-prosingle-excerpt {
+      color: rgba(255, 255, 255, 0.9); }
+    .wrsl-prosingle.wrsl-invert a, .wrsl-invert.wrsl-prosingle-style-1 a, .wrsl-invert.wrsl-prosingle-style-2 a, .wrsl-invert.wrsl-prosingle-style-3 a, .wrsl-invert.wrsl-prosingle-style-4 a {
+      color: #fff; }
+      .wrsl-prosingle.wrsl-invert a:hover, .wrsl-invert.wrsl-prosingle-style-1 a:hover, .wrsl-invert.wrsl-prosingle-style-2 a:hover, .wrsl-invert.wrsl-prosingle-style-3 a:hover, .wrsl-invert.wrsl-prosingle-style-4 a:hover {
+        color: #fff; }
+    .wrsl-prosingle.wrsl-invert .wrsl-prosingle-button .added_to_cart, .wrsl-invert.wrsl-prosingle-style-1 .wrsl-prosingle-button .added_to_cart, .wrsl-invert.wrsl-prosingle-style-2 .wrsl-prosingle-button .added_to_cart, .wrsl-invert.wrsl-prosingle-style-3 .wrsl-prosingle-button .added_to_cart, .wrsl-invert.wrsl-prosingle-style-4 .wrsl-prosingle-button .added_to_cart {
+      background: #fafafa;
+      color: #262626; }
+      .wrsl-prosingle.wrsl-invert .wrsl-prosingle-button .added_to_cart:hover, .wrsl-invert.wrsl-prosingle-style-1 .wrsl-prosingle-button .added_to_cart:hover, .wrsl-invert.wrsl-prosingle-style-2 .wrsl-prosingle-button .added_to_cart:hover, .wrsl-invert.wrsl-prosingle-style-3 .wrsl-prosingle-button .added_to_cart:hover, .wrsl-invert.wrsl-prosingle-style-4 .wrsl-prosingle-button .added_to_cart:hover {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha)";
+        filter: alpha(opacity=75);
+        opacity: 0.75; }
+
+.wrsl-prosingle-style-1.wrsl-with-overlay .wrsl-prosingle-price .price .amount, .wrsl-prosingle-style-1.wrsl-invert .wrsl-prosingle-price .price .amount {
+  font-weight: 700;
+  color: #fafafa; }
+
+.wrsl-prosingle-style-1.wrsl-with-overlay .wrsl-prosingle-price .price del .amount, .wrsl-prosingle-style-1.wrsl-invert .wrsl-prosingle-price .price del .amount {
+  font-weight: 400;
+  color: #999; }
+
+.wrsl-prosingle-style-1.wrsl-with-overlay .wrsl-prosingle-button .button, .wrsl-prosingle-style-1.wrsl-invert .wrsl-prosingle-button .button {
+  background: none;
+  border: 2px solid #fafafa;
+  color: #fafafa; }
+  .wrsl-prosingle-style-1.wrsl-with-overlay .wrsl-prosingle-button .button:hover, .wrsl-prosingle-style-1.wrsl-invert .wrsl-prosingle-button .button:hover {
+    background: #fafafa;
+    color: #262626; }
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(359deg); } }
+
+.wrsl-prosingle-style-2 .wrsl-prosingle-salesbadge .onsale {
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  background: none;
+  border: 2px solid #262626;
+  color: #262626;
+  transition-property: all;
+  transition-duration: 0.3s; }
+
+.wrsl-prosingle-style-2 .wrsl-prosingle-thumbnail {
+  overflow: hidden; }
+  .wrsl-prosingle-style-2 .wrsl-prosingle-thumbnail img {
+    display: block;
+    transition-property: transform;
+    transition-duration: 7.5s; }
+  .wrsl-prosingle-style-2 .wrsl-prosingle-thumbnail:hover img {
+    transform: scale(1.15); }
+
+.wrsl-prosingle-style-2 .wrsl-prosingle-price .price .amount {
+  font-weight: 700;
+  color: #262626; }
+
+.wrsl-prosingle-style-2 .wrsl-prosingle-price .price del .amount {
+  font-weight: 400;
+  color: #999; }
+
+.wrsl-prosingle-style-2 .button {
+  background: none;
+  border: 2px solid #262626;
+  color: #262626; }
+  .wrsl-prosingle-style-2 .button:hover {
+    background: #262626;
+    color: #fafafa; }
+
+.wrsl-prosingle-style-2.wrsl-with-overlay .wrsl-prosingle-salesbadge {
+  text-shadow: none;
+  z-index: 5; }
+
+.wrsl-prosingle-style-2.wrsl-with-overlay .wrsl-prosingle-price .price .amount {
+  font-weight: 700;
+  color: #fafafa; }
+
+.wrsl-prosingle-style-2.wrsl-with-overlay .wrsl-prosingle-price .price del .amount {
+  font-weight: 400;
+  color: #999; }
+
+.wrsl-prosingle-style-2.wrsl-with-overlay .button {
+  background: none;
+  border: 2px solid #fafafa;
+  color: #fafafa;
+  text-shadow: none; }
+  .wrsl-prosingle-style-2.wrsl-with-overlay .button:hover {
+    background: #fafafa;
+    color: #262626; }
+
+.wrsl-prosingle-style-2.wrsl-with-overlay:hover .wrsl-prosingle-salesbadge .onsale {
+  border-color: #fafafa;
+  color: #fafafa; }
+
+.wrsl-prosingle-style-2.wrsl-invert .wrsl-prosingle-price .price .amount {
+  font-weight: 700;
+  color: #fafafa; }
+
+.wrsl-prosingle-style-2.wrsl-invert .wrsl-prosingle-price .price del .amount {
+  font-weight: 400;
+  color: #999; }
+
+.wrsl-prosingle-style-2.wrsl-invert .wrsl-prosingle-button .button {
+  background: none;
+  border: 2px solid #fafafa;
+  color: #fafafa; }
+  .wrsl-prosingle-style-2.wrsl-invert .wrsl-prosingle-button .button:hover {
+    background: #fafafa;
+    color: #262626; }
+
+
+/* MISC */
+.wrsl-clear {
+  display: table;
+  content: " ";
+  clear: both; }
