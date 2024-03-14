@@ -1,0 +1,48 @@
+version: '3.4'
+
+services:
+  php:
+    build:
+      context: .
+      target: php
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - SHOP_ID=${SHOP_ID}
+      - SECRET_KEY=${SECRET_KEY}
+      - PUBLIC_KEY=${PUBLIC_KEY}
+      - SHOP_ID_MARKETPLACE=${SHOP_ID_MARKETPLACE}
+      - SECRET_KEY_MARKETPLACE=${SECRET_KEY_MARKETPLACE}
+      - SHOP_ID_OWNED_BY_MARKETPLACE=${SHOP_ID_OWNED_BY_MARKETPLACE}
+      - ENVIRONMENT=${ENVIRONMENT}
+      - BANK_CARD_PAN=${BANK_CARD_PAN}
+      - BANK_CARD_CVV=${BANK_CARD_CVV}
+      - BANK_CARD_EXP=${BANK_CARD_EXP}
+
+  nginx:
+    build:
+      context: .
+      target: nginx
+    depends_on:
+      - php
+    ports:
+      - "80:80"
+
+  selenium:
+    image: selenium/standalone-firefox:latest
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    shm_size: "2g"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  selenium-video:
+    image: selenium/video:ffmpeg-4.3.1-20220812
+    volumes:
+      - ./videos:/videos
+
+  phptools:
+    build:
+      context: .
+      target: phptools
