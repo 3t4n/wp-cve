@@ -1,0 +1,4 @@
+<h3>Contests</h3>
+<p>When visitors participates or casts a vote in a contest we collect the data shown in the participation and vote form, and also the visitor’s IP address and browser user agent string to help spam detection and assure contest functionality.</p>
+<p>If you have an account and you log in to this site and submit a participation or cast a vote, we will also collect your user ID.</p>
+<p>If you submit a participation or cast a vote, the participation or the vote and its metadata are retained indefinitely. This is so we can recognize participations and count votes for each contest.</p>
