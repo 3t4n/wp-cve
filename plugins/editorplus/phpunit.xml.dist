@@ -1,0 +1,27 @@
+<phpunit
+	bootstrap="phpunit/bootstrap.php"
+	backupGlobals="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	>
+	<testsuites>
+		<testsuite name="Editorplus Test Suite">
+			<directory prefix="test-" suffix=".php">./phpunit/</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+			<directory>./</directory>
+			<exclude>
+				<directory suffix=".php">./dist</directory>
+				<directory suffix=".php">./node_modules</directory>
+				<directory suffix=".php">./vendor</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+	<php>
+		<const name="PHPUNIT_PLUGIN_TEST" value="true"/>
+	</php>
+</phpunit>
