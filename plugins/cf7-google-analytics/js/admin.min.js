@@ -1,0 +1,1 @@
+"use strict";!function(n){n(document).ready(function(){n(document).on("click",".cf7-ga-notice .notice-dismiss",function(c){var i=n(this).parents(".cf7-ga-notice").data("version");n.ajax({url:ajaxurl,data:{action:"cf7_ga_dismiss_notice_"+i}})})})}(jQuery);
