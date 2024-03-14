@@ -1,0 +1,83 @@
+{
+	"name": "wpdesk/flexible-shipping-fedex",
+	"authors": [
+		{
+			"name": "Krzysiek",
+			"email": "krzysiek@wpdesk.net"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"WPDesk\\FlexibleShippingFedex\\": "src/Plugin",
+		  	"WPDesk\\FlexibleShippingFedex\\ApiStatus\\": "src/ApiStatus"
+		},
+		"classmap": [
+			"vendor_prefixed"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"vendor/wpdesk/wp-basic-requirements",
+			"tests/unit",
+			"tests/integration"
+		]
+	},
+	"config": {
+	  "autoloader-suffix": "FSFedex",
+	  "platform-check": false,
+	  "sort-packages": true,
+		"platform": {
+			"php": "7.4"
+		},
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"kylekatarnls/update-helper": true,
+			"wpdesk/wp-codeception": true,
+			"wpdesk/wp-wpdesk-composer": true,
+			"cweagans/composer-patches": true
+		}
+	},
+	"prefer-stable": true,
+	"minimum-stability": "stable",
+	"require": {
+		"php": ">=7.4",
+	  	"wpdesk/wp-wpdesk-helper-override": "^1.1.0"
+	},
+	"require-dev": {
+		"10up/wp_mock": "*",
+		"octolize/wp-octolize-tracker": "^1.2",
+		"phpunit/phpunit": "<7",
+		"wpdesk/fedex-shipping-service": "^2.6.0",
+		"wpdesk/wp-codeception": "^2.4.5",
+		"wpdesk/wp-fedex-shipping-method": "^1.1.1",
+		"wpdesk/wp-fedex-tracker": "^1.0.2",
+		"wpdesk/wp-logs": "^1.7",
+		"wpdesk/wp-plugin-flow-free": "^1.0.2",
+		"wpdesk/wp-wpdesk-composer": "^2.14.5",
+		"wpdesk/wp-wpdesk-rating-petition": "^1.1",
+		"wpdesk/wp-wpdesk-tracker-deactivation": "^1.0",
+	  	"octolize/wp-shipping-extensions": "^1.2.0"
+	},
+	"extra": {
+		"text-domain": "flexible-shipping-fedex",
+		"translations-folder": "lang",
+		"translation-file-headers": {
+			"Project-Id-Version": "Flexible Shipping Fedex",
+			"Last-Translator": "Grzegorz Rola <grola@wpdesk.pl>",
+			"X-Poedit-WPHeader": "flexible-shipping-fedex.php"
+		},
+		"po-files": {
+		  	"pl_PL": "pl_PL.po",
+		  	"de_DE": "de_DE.po"
+		},
+	    "php-requires": "7.4",
+		"prefix_psr": true
+	},
+	"scripts": {
+		"test": "echo composer is alive",
+		"phpcs": "phpcs",
+		"phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+		"phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+		"docs": "apigen generate"
+	}
+}

@@ -1,0 +1,94 @@
+<?php
+
+namespace FedExVendor\FedEx\PickupService\ComplexType;
+
+use FedExVendor\FedEx\AbstractComplexType;
+/**
+ * ExpressFreightPickupDetail
+ *
+ * @author      Jeremy Dunn <jeremy@jsdunn.info>
+ * @package     PHP FedEx API wrapper
+ * @subpackage  Pickup Service
+ *
+ * @property string $ServiceCode
+ * @property string $Service
+ * @property string $BookingNumber
+ * @property Dimensions $Dimensions
+ * @property \FedEx\PickupService\SimpleType\TruckType|string $TruckType
+ * @property \FedEx\PickupService\SimpleType\TrailerSizeType|string $TrailerSize
+ */
+class ExpressFreightPickupDetail extends \FedExVendor\FedEx\AbstractComplexType
+{
+    /**
+     * Name of this complex type
+     *
+     * @var string
+     */
+    protected $name = 'ExpressFreightPickupDetail';
+    /**
+     * FOR FEDEX INTERNAL USE ONLY: The service code will be provided for transportation network management.
+     *
+     * @param string $serviceCode
+     * @return $this
+     */
+    public function setServiceCode($serviceCode)
+    {
+        $this->values['ServiceCode'] = $serviceCode;
+        return $this;
+    }
+    /**
+     * This includes service type values like FEDEX_1_DAY_FREIGHT
+     *
+     * @param string $service
+     * @return $this
+     */
+    public function setService($service)
+    {
+        $this->values['Service'] = $service;
+        return $this;
+    }
+    /**
+     * Set BookingNumber
+     *
+     * @param string $bookingNumber
+     * @return $this
+     */
+    public function setBookingNumber($bookingNumber)
+    {
+        $this->values['BookingNumber'] = $bookingNumber;
+        return $this;
+    }
+    /**
+     * Set Dimensions
+     *
+     * @param Dimensions $dimensions
+     * @return $this
+     */
+    public function setDimensions(\FedExVendor\FedEx\PickupService\ComplexType\Dimensions $dimensions)
+    {
+        $this->values['Dimensions'] = $dimensions;
+        return $this;
+    }
+    /**
+     * Set TruckType
+     *
+     * @param \FedEx\PickupService\SimpleType\TruckType|string $truckType
+     * @return $this
+     */
+    public function setTruckType($truckType)
+    {
+        $this->values['TruckType'] = $truckType;
+        return $this;
+    }
+    /**
+     * Set TrailerSize
+     *
+     * @param \FedEx\PickupService\SimpleType\TrailerSizeType|string $trailerSize
+     * @return $this
+     */
+    public function setTrailerSize($trailerSize)
+    {
+        $this->values['TrailerSize'] = $trailerSize;
+        return $this;
+    }
+}

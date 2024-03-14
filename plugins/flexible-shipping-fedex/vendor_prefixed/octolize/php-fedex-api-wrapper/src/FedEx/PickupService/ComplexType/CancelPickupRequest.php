@@ -1,0 +1,250 @@
+<?php
+
+namespace FedExVendor\FedEx\PickupService\ComplexType;
+
+use FedExVendor\FedEx\AbstractComplexType;
+/**
+ * CancelPickupRequest
+ *
+ * @author      Jeremy Dunn <jeremy@jsdunn.info>
+ * @package     PHP FedEx API wrapper
+ * @subpackage  Pickup Service
+ *
+ * @property WebAuthenticationDetail $WebAuthenticationDetail
+ * @property ClientDetail $ClientDetail
+ * @property UserDetail $UserDetail
+ * @property TransactionDetail $TransactionDetail
+ * @property VersionId $Version
+ * @property \FedEx\PickupService\SimpleType\PickupServiceLevelType|string $ServiceLevel
+ * @property \FedEx\PickupService\SimpleType\CarrierCodeType|string $CarrierCode
+ * @property \FedEx\PickupService\SimpleType\PickupType|string $PickupType
+ * @property string $PickupConfirmationNumber
+ * @property string $ScheduledDate
+ * @property string $EndDate
+ * @property string $Location
+ * @property string $Remarks
+ * @property Payment $ShippingChargesPayment
+ * @property string $Reason
+ * @property string $ContactName
+ * @property string $PhoneNumber
+ * @property string $PhoneExtension
+ * @property RestrictionsAndPrivilegesPolicyDetail $RestrictionsAndPrivileges
+ */
+class CancelPickupRequest extends \FedExVendor\FedEx\AbstractComplexType
+{
+    /**
+     * Name of this complex type
+     *
+     * @var string
+     */
+    protected $name = 'CancelPickupRequest';
+    /**
+     * Descriptive data to be used in authentication of the sender's identity (and right to use FedEx web services).
+     *
+     * @param WebAuthenticationDetail $webAuthenticationDetail
+     * @return $this
+     */
+    public function setWebAuthenticationDetail(\FedExVendor\FedEx\PickupService\ComplexType\WebAuthenticationDetail $webAuthenticationDetail)
+    {
+        $this->values['WebAuthenticationDetail'] = $webAuthenticationDetail;
+        return $this;
+    }
+    /**
+     * Set ClientDetail
+     *
+     * @param ClientDetail $clientDetail
+     * @return $this
+     */
+    public function setClientDetail(\FedExVendor\FedEx\PickupService\ComplexType\ClientDetail $clientDetail)
+    {
+        $this->values['ClientDetail'] = $clientDetail;
+        return $this;
+    }
+    /**
+     * Set UserDetail
+     *
+     * @param UserDetail $userDetail
+     * @return $this
+     */
+    public function setUserDetail(\FedExVendor\FedEx\PickupService\ComplexType\UserDetail $userDetail)
+    {
+        $this->values['UserDetail'] = $userDetail;
+        return $this;
+    }
+    /**
+     * Set TransactionDetail
+     *
+     * @param TransactionDetail $transactionDetail
+     * @return $this
+     */
+    public function setTransactionDetail(\FedExVendor\FedEx\PickupService\ComplexType\TransactionDetail $transactionDetail)
+    {
+        $this->values['TransactionDetail'] = $transactionDetail;
+        return $this;
+    }
+    /**
+     * Set Version
+     *
+     * @param VersionId $version
+     * @return $this
+     */
+    public function setVersion(\FedExVendor\FedEx\PickupService\ComplexType\VersionId $version)
+    {
+        $this->values['Version'] = $version;
+        return $this;
+    }
+    /**
+     * Set ServiceLevel
+     *
+     * @param \FedEx\PickupService\SimpleType\PickupServiceLevelType|string $serviceLevel
+     * @return $this
+     */
+    public function setServiceLevel($serviceLevel)
+    {
+        $this->values['ServiceLevel'] = $serviceLevel;
+        return $this;
+    }
+    /**
+     * Set CarrierCode
+     *
+     * @param \FedEx\PickupService\SimpleType\CarrierCodeType|string $carrierCode
+     * @return $this
+     */
+    public function setCarrierCode($carrierCode)
+    {
+        $this->values['CarrierCode'] = $carrierCode;
+        return $this;
+    }
+    /**
+     * Set PickupType
+     *
+     * @param \FedEx\PickupService\SimpleType\PickupType|string $pickupType
+     * @return $this
+     */
+    public function setPickupType($pickupType)
+    {
+        $this->values['PickupType'] = $pickupType;
+        return $this;
+    }
+    /**
+     * Set PickupConfirmationNumber
+     *
+     * @param string $pickupConfirmationNumber
+     * @return $this
+     */
+    public function setPickupConfirmationNumber($pickupConfirmationNumber)
+    {
+        $this->values['PickupConfirmationNumber'] = $pickupConfirmationNumber;
+        return $this;
+    }
+    /**
+     * The local date which the pickup was originally scheduled to be picked up on. The date provided is the local to the client of the request. The date specification does not include any time zone designators.
+     *
+     * @param string $scheduledDate
+     * @return $this
+     */
+    public function setScheduledDate($scheduledDate)
+    {
+        $this->values['ScheduledDate'] = $scheduledDate;
+        return $this;
+    }
+    /**
+     * Set EndDate
+     *
+     * @param string $endDate
+     * @return $this
+     */
+    public function setEndDate($endDate)
+    {
+        $this->values['EndDate'] = $endDate;
+        return $this;
+    }
+    /**
+     * Set Location
+     *
+     * @param string $location
+     * @return $this
+     */
+    public function setLocation($location)
+    {
+        $this->values['Location'] = $location;
+        return $this;
+    }
+    /**
+     * Set Remarks
+     *
+     * @param string $remarks
+     * @return $this
+     */
+    public function setRemarks($remarks)
+    {
+        $this->values['Remarks'] = $remarks;
+        return $this;
+    }
+    /**
+     * Set ShippingChargesPayment
+     *
+     * @param Payment $shippingChargesPayment
+     * @return $this
+     */
+    public function setShippingChargesPayment(\FedExVendor\FedEx\PickupService\ComplexType\Payment $shippingChargesPayment)
+    {
+        $this->values['ShippingChargesPayment'] = $shippingChargesPayment;
+        return $this;
+    }
+    /**
+     * The reason for canceling the pickup request.
+     *
+     * @param string $reason
+     * @return $this
+     */
+    public function setReason($reason)
+    {
+        $this->values['Reason'] = $reason;
+        return $this;
+    }
+    /**
+     * Identifies the name of the person that requested pickup cancellation.
+     *
+     * @param string $contactName
+     * @return $this
+     */
+    public function setContactName($contactName)
+    {
+        $this->values['ContactName'] = $contactName;
+        return $this;
+    }
+    /**
+     * Identifies the phone number of the person that requested pickup cancellation.
+     *
+     * @param string $phoneNumber
+     * @return $this
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->values['PhoneNumber'] = $phoneNumber;
+        return $this;
+    }
+    /**
+     * Identifies the phone extension of the person that requested pickup cancellation.
+     *
+     * @param string $phoneExtension
+     * @return $this
+     */
+    public function setPhoneExtension($phoneExtension)
+    {
+        $this->values['PhoneExtension'] = $phoneExtension;
+        return $this;
+    }
+    /**
+     * FOR FEDEX INTERNAL USE ONLY: Restrictions and privileges associated with an entity based on one or more identifiers (for example, account number or unique user id). These restrictions and privileges can be used to determine whether an entity is enabled to perform various operations.
+     *
+     * @param RestrictionsAndPrivilegesPolicyDetail $restrictionsAndPrivileges
+     * @return $this
+     */
+    public function setRestrictionsAndPrivileges(\FedExVendor\FedEx\PickupService\ComplexType\RestrictionsAndPrivilegesPolicyDetail $restrictionsAndPrivileges)
+    {
+        $this->values['RestrictionsAndPrivileges'] = $restrictionsAndPrivileges;
+        return $this;
+    }
+}
