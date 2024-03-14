@@ -1,0 +1,54 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+/**
+ * Environment for all styles (variables, additions, etc).
+ */
+/*--------------------------------------------------------------*/
+/*--------------------------------------------------------------*/
+.wp-block-separator {
+	--cnvs-wp-block-separator-color: #dee2e6;
+}
+
+/*--------------------------------------------------------------*/
+.editor-styles-wrapper .wp-block-separator {
+	opacity: 1;
+}
+
+.editor-styles-wrapper .wp-block-separator:not(.has-text-color) {
+	color: var(--cnvs-wp-block-separator-color);
+}
+
+.editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-double, .editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-dotted, .editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-dashed {
+	position: relative;
+	display: block;
+	height: 10px !important;
+	background-color: transparent !important;
+	border-bottom: none !important;
+}
+
+.editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-double:after, .editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-dotted:after, .editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-dashed:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin-top: -1px;
+	border-bottom: 2px solid;
+}
+
+.editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-double:after {
+	border-bottom-width: 4px !important;
+	border-bottom-style: double !important;
+	margin-top: -2px;
+}
+
+.editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-dotted:after {
+	border-bottom-style: dotted !important;
+}
+
+.editor-styles-wrapper .wp-block-separator.is-style-cnvs-separator-dashed:after {
+	border-bottom-style: dashed !important;
+}

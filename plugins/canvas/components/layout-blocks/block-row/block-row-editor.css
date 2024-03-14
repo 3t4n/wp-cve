@@ -1,0 +1,138 @@
+/**
+ * All of the CSS for your block editor functionality should be
+ * included in this file.
+ */
+/*--------------------------------------------------------------*/
+.cnvs-block-row-inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+}
+
+.cnvs-block-row-inner > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="canvas/column"],
+.cnvs-block-row-inner > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="canvas/column"] > .cnvs-block-column {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.cnvs-block-row-inner > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="canvas/column"] {
+	-ms-flex-preferred-size: 50%;
+	flex-basis: 50%;
+	-webkit-box-flex: 0;
+	-ms-flex-positive: 0;
+	flex-grow: 0;
+	min-width: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
+.cnvs-block-column-inner > div > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-list-appender:not(:first-child) {
+	display: none;
+}
+
+.cnvs-block-column {
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.cnvs-block-column-inner {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-flex: 100%;
+	-ms-flex: 100%;
+	flex: 100%;
+	width: 100%;
+}
+
+.cnvs-block-column-inner > div {
+	-webkit-box-flex: 100%;
+	-ms-flex: 100%;
+	flex: 100%;
+	width: 100%;
+}
+
+.cnvs-block-column-resizer {
+	position: absolute;
+	right: -2.5px;
+	top: -5px;
+	bottom: -5px;
+	width: 3px;
+	border-radius: 3px;
+	background-color: #017cba;
+	cursor: col-resize;
+	opacity: 0;
+	z-index: 10;
+	-webkit-transition: .3s opacity;
+	transition: .3s opacity;
+}
+
+.cnvs-block-column-resizer:after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -5px;
+	right: -5px;
+	bottom: 0;
+}
+
+[data-type="canvas/column"]:hover > .canvas-component-custom-blocks > .cnvs-block-column-resizer {
+	opacity: 1;
+}
+
+.cnvs-block-column-resizer > span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 14px;
+	height: 14px;
+	margin-top: -7px;
+	margin-left: -7px;
+	border-radius: 10px;
+	border: 2px solid #fff;
+	background-color: #017cba;
+}
+
+.cnvs-block-row-inner .block-editor-block-list__layout .block-editor-block-list__block {
+	max-width: none;
+}
+
+.components-popover.block-editor-block-list__block-popover
+.components-popover__content
+.block-editor-block-contextual-toolbar[data-type="canvas/column"] {
+	margin-left: 0;
+}
+
+/**
+ * Columns act as as a "passthrough container"
+ * and therefore has its vertical margins/padding removed via negative margins
+ * therefore we need to compensate for this here by doubling the spacing on the
+ * vertical to ensure there is equal visual spacing around the inserter. Note there
+ * is no formal API for a "passthrough" Block so this is an edge case override
+ */
+[data-type="canvas/row"] .block-list-appender {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.cnvs-block-row-inner > .block-editor-inner-blocks.has-overlay::after {
+	left: 0;
+	right: 0;
+}

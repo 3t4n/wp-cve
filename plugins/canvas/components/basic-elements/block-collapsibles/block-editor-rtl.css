@@ -1,0 +1,62 @@
+/**
+ * All of the CSS for your block editor functionality should be
+ * included in this file.
+ */
+/*--------------------------------------------------------------*/
+.cnvs-block-collapsible {
+	--cnvs-collapsible-border-top: 1px solid #e9ecef;
+}
+
+/*--------------------------------------------------------------*/
+.cnvs-block-collapsibles > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="canvas/collapsible"] + [data-type="canvas/collapsible"] > .canvas-component-custom-blocks {
+	margin-top: -33px;
+}
+
+.cnvs-block-collapsibles > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="canvas/collapsible"] + [data-type="canvas/collapsible"] > .canvas-component-custom-blocks .cnvs-block-collapsible {
+	border-top: var(--cnvs-collapsible-border-top);
+}
+
+[data-type="canvas/collapsible"].is-selected {
+	z-index: 120;
+}
+
+[data-type="canvas/collapsible"]:not(.is-selected) > .block-editor-block-list__insertion-point {
+	display: none;
+}
+
+.cnvs-block-collapsible .cnvs-block-collapsible-title {
+	position: relative;
+	padding: 0.75rem 0;
+	padding-left: 20px;
+}
+
+.cnvs-block-collapsible .cnvs-block-collapsible-toggle {
+	position: absolute;
+	left: 10px;
+	top: 0;
+	height: 100%;
+	color: inherit;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
+	outline: none;
+	background: transparent;
+	-webkit-transition: .2s transform;
+	transition: .2s transform;
+}
+
+.cnvs-block-collapsible .cnvs-block-collapsible-toggle:focus, .cnvs-block-collapsible .cnvs-block-collapsible-toggle:hover {
+	color: inherit;
+	border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-shadow: none;
+	outline: none;
+	background: transparent;
+}
+
+.cnvs-block-collapsible.cnvs-block-collapsible-opened > .cnvs-block-collapsible-title > .cnvs-block-collapsible-toggle > span {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}

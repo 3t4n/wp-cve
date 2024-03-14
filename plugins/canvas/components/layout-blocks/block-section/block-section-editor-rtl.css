@@ -1,0 +1,186 @@
+/**
+ * All of the CSS for your block editor functionality should be
+ * included in this file.
+ */
+/*--------------------------------------------------------------*/
+.cnvs-block-section-content {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.cnvs-block-section > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	-webkit-column-gap: 40px;
+	-moz-column-gap: 40px;
+	column-gap: 40px;
+	row-gap: 3rem;
+}
+
+@media (min-width: 1240px) {
+	.cnvs-block-section > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		-webkit-column-gap: 60px;
+		-moz-column-gap: 60px;
+		column-gap: 60px;
+	}
+}
+
+.cnvs-block-section > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout [data-type="canvas/section-content"],
+.cnvs-block-section > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout [data-type="canvas/section-sidebar"] {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.cnvs-block-section > .cnvs-block-section-inner {
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: 760px) {
+	.cnvs-block-section > .cnvs-block-section-inner {
+		max-width: 720px;
+	}
+}
+
+@media (min-width: 1020px) {
+	.cnvs-block-section > .cnvs-block-section-inner {
+		max-width: 1000px;
+	}
+}
+
+@media (min-width: 1120px) {
+	.cnvs-block-section > .cnvs-block-section-inner {
+		max-width: 1080px;
+	}
+}
+
+@media (min-width: 1240px) {
+	.cnvs-block-section > .cnvs-block-section-inner {
+		max-width: 1200px;
+	}
+}
+
+.cnvs-block-section > .cnvs-block-section-inner > .block-editor-inner-blocks {
+	width: 100%;
+}
+
+.cnvs-block-section > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block {
+	width: 100%;
+}
+
+@media (min-width: 1120px) {
+	.cnvs-block-section-sidebar-position-left > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout,
+	.cnvs-block-section-sidebar-position-right > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		grid-template-columns: minmax(0, 1fr) 300px;
+	}
+}
+
+@media (min-width: 1120px) {
+	.cnvs-block-section-sidebar-position-left > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		grid-template-columns: 300px minmax(0, 1fr);
+	}
+	.cnvs-block-section-sidebar-position-right > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="canvas/section-content"] {
+		-webkit-box-ordinal-group: 2;
+		-ms-flex-order: 1;
+		order: 1;
+	}
+}
+
+.cnvs-block-section-layout-align-full {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	overflow: hidden;
+}
+
+.cnvs-block-section-layout-align-full > .cnvs-block-section-inner {
+	max-width: 100% !important;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.cnvs-block-section-layout-align-full > .cnvs-block-section-inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.cnvs-block-section-layout-align-full .wp-block[data-type="canvas/section-content"] {
+	max-width: 100% !important;
+	width: 100% !important;
+	padding-right: 0;
+	padding-left: 0;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.cnvs-block-section-layout-align-full .wp-block[data-type="canvas/section-content"] .block-editor-block-list__layout {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.cnvs-block-section-layout-align-full .wp-block[data-type="canvas/section-content"] .wp-block {
+	max-width: 100% !important;
+	width: 100% !important;
+	padding-right: 0;
+	padding-left: 0;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.wp-block[data-type="canvas/section-sidebar"] .canvas-component-custom-blocks,
+.wp-block[data-type="canvas/section-sidebar"] .cnvs-block-section-sidebar {
+	height: 100%;
+}
+
+.wp-block[data-type="canvas/section-sidebar"] .cnvs-block-section-sidebar {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.cnvs-block-section-sidebar-sticky-top [data-type="canvas/section-sidebar"] .cnvs-block-section-sidebar-inner {
+	position: sticky;
+	top: 50px;
+}
+
+.cnvs-block-section-sidebar-sticky-bottom [data-type="canvas/section-sidebar"] .cnvs-block-section-sidebar-inner {
+	position: sticky;
+	bottom: 20px;
+	margin-top: auto;
+}
+
+@-moz-document url-prefix() {
+	.cnvs-block-section-sidebar-sticky-bottom [data-type="canvas/section-sidebar"] .cnvs-block-section-sidebar-inner {
+		position: sticky;
+		top: 50px;
+		bottom: initial;
+		margin-top: initial;
+	}
+}
+
+.cnvs-block-section-sidebar-sticky-top-last-block .cnvs-block-section-sidebar-inner > .block-editor-inner-blocks > .block-editor-block-list__layout > :last-child {
+	position: sticky;
+	top: 50px;
+}
+
+[data-canvas-section-sticky="top-last-block"] .cnvs-block-section-sidebar-inner,
+[data-canvas-section-sticky="top-last-block"] .cnvs-block-section-sidebar-inner > .block-editor-inner-blocks,
+[data-canvas-section-sticky="top-last-block"] .cnvs-block-section-sidebar-inner > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	height: 100%;
+}
+
+.cnvs-block-section-with-background-color {
+	padding: 0;
+}
+
+.cnvs-block-section-notice .components-notice {
+	text-align: right;
+}

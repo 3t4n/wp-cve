@@ -1,0 +1,129 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+/**
+ * Environment for all styles (variables, additions, etc).
+ */
+/*--------------------------------------------------------------*/
+/*--------------------------------------------------------------*/
+.is-style-cnvs-heading-numbered {
+	--cnvs-heading-numbered-background: #ced4da;
+	--cnvs-heading-numbered-color: white;
+	--cnvs-heading-numbered-border-radius: 50%;
+}
+
+/*--------------------------------------------------------------*/
+.editor-styles-wrapper {
+	counter-reset: h2;
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-2"] {
+	counter-increment: h2;
+	counter-reset: h3;
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-3"] {
+	counter-increment: h3;
+	counter-reset: h4;
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-4"] {
+	counter-increment: h4;
+	counter-reset: h5;
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-5"] {
+	counter-increment: h5;
+	counter-reset: h6;
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-6"] {
+	counter-increment: h6;
+}
+
+.editor-styles-wrapper .is-style-cnvs-heading-numbered:before {
+	margin-right: 1rem;
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-2"].is-style-cnvs-heading-numbered:before {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	float: left;
+	height: 1.25em;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 1.25em;
+	flex: 0 0 1.25em;
+	padding-left: 0.34em;
+	padding-right: 0.34em;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	white-space: nowrap;
+	border-radius: var(--cnvs-heading-numbered-border-radius);
+	background: var(--cnvs-heading-numbered-background);
+	color: var(--cnvs-heading-numbered-color);
+	content: counter(h2);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-3"].is-style-cnvs-heading-numbered:before {
+	content: counter(h3);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-2"] ~ .wp-block[data-heading="cnvs-heading-numbered-3"].is-style-cnvs-heading-numbered:before {
+	content: counter(h2) "." counter(h3);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-4"].is-style-cnvs-heading-numbered:before {
+	content: counter(h4);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-3"] ~ .wp-block[data-heading="cnvs-heading-numbered-4"].is-style-cnvs-heading-numbered:before {
+	content: counter(h3) "." counter(h4);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-2"] ~ .wp-block[data-heading="cnvs-heading-numbered-3"] ~ .wp-block[data-heading="cnvs-heading-numbered-4"].is-style-cnvs-heading-numbered:before {
+	content: counter(h2) "." counter(h3) "." counter(h4);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-5"].is-style-cnvs-heading-numbered:before {
+	content: counter(h5);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-4"] ~ .wp-block[data-heading="cnvs-heading-numbered-5"].is-style-cnvs-heading-numbered:before {
+	content: counter(h4) "." counter(h5);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-3"] ~ .wp-block[data-heading="cnvs-heading-numbered-4"] ~ .wp-block[data-heading="cnvs-heading-numbered-5"].is-style-cnvs-heading-numbered:before {
+	content: counter(h3) "." counter(h4) "." counter(h5);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-2"] ~ .wp-block[data-heading="cnvs-heading-numbered-3"] ~ .wp-block[data-heading="cnvs-heading-numbered-4"] ~ .wp-block[data-heading="cnvs-heading-numbered-5"].is-style-cnvs-heading-numbered:before {
+	content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-6"].is-style-cnvs-heading-numbered:before {
+	content: counter(h6);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-5"] ~ .wp-block[data-heading="cnvs-heading-numbered-6"].is-style-cnvs-heading-numbered:before {
+	content: counter(h5) "." counter(h6);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-4"] ~ .wp-block[data-heading="cnvs-heading-numbered-5"] ~ .wp-block[data-heading="cnvs-heading-numbered-6"].is-style-cnvs-heading-numbered:before {
+	content: counter(h4) "." counter(h5) "." counter(h6);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-3"] ~ .wp-block[data-heading="cnvs-heading-numbered-4"] ~ .wp-block[data-heading="cnvs-heading-numbered-5"] ~ .wp-block[data-heading="cnvs-heading-numbered-6"].is-style-cnvs-heading-numbered:before {
+	content: counter(h3) "." counter(h4) "." counter(h5) "." counter(h6);
+}
+
+.editor-styles-wrapper .wp-block[data-heading="cnvs-heading-numbered-2"] ~ .wp-block[data-heading="cnvs-heading-numbered-3"] ~ .wp-block[data-heading="cnvs-heading-numbered-4"] ~ .wp-block[data-heading="cnvs-heading-numbered-5"] ~ .wp-block[data-heading="cnvs-heading-numbered-6"].is-style-cnvs-heading-numbered:before {
+	content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6);
+}
