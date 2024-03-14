@@ -1,0 +1,1 @@
+<?php	$text = isset($text) && !empty($text) ? $text : '';	_e($text);?>
