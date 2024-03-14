@@ -1,0 +1,1393 @@
+/*! @license
+*
+* Buttons
+* Copyright 2012-2014 Alex Wolfe and Rob Levin
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*        http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+div.wpape_gallery_button {}
+div.wpape_gallery_button .apebtn {
+  color: #666;
+  background-color: #EEE;
+  border-color: #EEE;
+  font-weight: 300;
+  font-size: 16px;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  text-decoration: none;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  padding: 0 40px;
+  margin: 0;
+  display: inline-block;
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+  transition-property: all;
+  transition-duration: .3s;
+  box-shadow: none;
+  /*
+  * Disabled State
+  *
+  * The disabled state uses the class .disabled, is-disabled,
+  * and the form attribute disabled="disabled".
+  * The use of !important is only added because this is a state
+  * that must be applied to all buttons when in a disabled state.
+  */
+}
+div.wpape_gallery_button .apebtn:visited {
+  color: #666;
+}
+div.wpape_gallery_button .apebtn:hover, div.wpape_gallery_button .apebtn:focus {
+  background-color: #f6f6f6;
+  text-decoration: none;
+  outline: none;
+}
+div.wpape_gallery_button .apebtn:active, div.wpape_gallery_button .apebtn.active, div.wpape_gallery_button .apebtn.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  background-color: #eeeeee;
+  border-color: #cfcfcf;
+  color: #d4d4d4;
+  transition-duration: 0s;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn.disabled, div.wpape_gallery_button .apebtn.is-disabled, div.wpape_gallery_button .apebtn:disabled {
+  top: 0 !important;
+  background: #EEE !important;
+  border: 1px solid #DDD !important;
+  text-shadow: 0 1px 1px white !important;
+  color: #CCC !important;
+  cursor: default !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  opacity: .8 !important;
+}
+div.wpape_gallery_button .apebtn-uppercase {
+  text-transform: uppercase;
+}
+div.wpape_gallery_button .apebtn-lowercase {
+  text-transform: lowercase;
+}
+div.wpape_gallery_button .apebtn-capitalize {
+  text-transform: capitalize;
+}
+div.wpape_gallery_button .apebtn-small-caps {
+  font-variant: small-caps;
+}
+div.wpape_gallery_button .apebtn-icon-txt-large {
+  font-size: 36px !important;
+}
+div.wpape_gallery_button .apebtn-width-small {
+  padding: 0 10px !important;
+}
+div.wpape_gallery_button .apebtn-primary,
+div.wpape_gallery_button .apebtn-primary-flat {
+  background-color: #1B9AF7;
+  border-color: #1B9AF7;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-primary:visited,
+div.wpape_gallery_button .apebtn-primary-flat:visited {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-primary:hover, div.wpape_gallery_button .apebtn-primary:focus,
+div.wpape_gallery_button .apebtn-primary-flat:hover,
+div.wpape_gallery_button .apebtn-primary-flat:focus {
+  background-color: #4cb0f9;
+  border-color: #4cb0f9;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-primary:active, div.wpape_gallery_button .apebtn-primary.active, div.wpape_gallery_button .apebtn-primary.is-active,
+div.wpape_gallery_button .apebtn-primary-flat:active,
+div.wpape_gallery_button .apebtn-primary-flat.active,
+div.wpape_gallery_button .apebtn-primary-flat.is-active {
+  background-color: #2798eb;
+  border-color: #2798eb;
+  color: #0880d7;
+}
+div.wpape_gallery_button .apebtn-plain,
+div.wpape_gallery_button .apebtn-plain-flat {
+  background-color: #FFF;
+  border-color: #FFF;
+  color: #1B9AF7;
+}
+div.wpape_gallery_button .apebtn-plain:visited,
+div.wpape_gallery_button .apebtn-plain-flat:visited {
+  color: #1B9AF7;
+}
+div.wpape_gallery_button .apebtn-plain:hover, div.wpape_gallery_button .apebtn-plain:focus,
+div.wpape_gallery_button .apebtn-plain-flat:hover,
+div.wpape_gallery_button .apebtn-plain-flat:focus {
+  background-color: white;
+  border-color: white;
+  color: #1B9AF7;
+}
+div.wpape_gallery_button .apebtn-plain:active, div.wpape_gallery_button .apebtn-plain.active, div.wpape_gallery_button .apebtn-plain.is-active,
+div.wpape_gallery_button .apebtn-plain-flat:active,
+div.wpape_gallery_button .apebtn-plain-flat.active,
+div.wpape_gallery_button .apebtn-plain-flat.is-active {
+  background-color: white;
+  border-color: white;
+  color: #e6e6e6;
+}
+div.wpape_gallery_button .apebtn-inverse,
+div.wpape_gallery_button .apebtn-inverse-flat {
+  background-color: #222;
+  border-color: #222;
+  color: #EEE;
+}
+div.wpape_gallery_button .apebtn-inverse:visited,
+div.wpape_gallery_button .apebtn-inverse-flat:visited {
+  color: #EEE;
+}
+div.wpape_gallery_button .apebtn-inverse:hover, div.wpape_gallery_button .apebtn-inverse:focus,
+div.wpape_gallery_button .apebtn-inverse-flat:hover,
+div.wpape_gallery_button .apebtn-inverse-flat:focus {
+  background-color: #3c3c3c;
+  border-color: #3c3c3c;
+  color: #EEE;
+}
+div.wpape_gallery_button .apebtn-inverse:active, div.wpape_gallery_button .apebtn-inverse.active, div.wpape_gallery_button .apebtn-inverse.is-active,
+div.wpape_gallery_button .apebtn-inverse-flat:active,
+div.wpape_gallery_button .apebtn-inverse-flat.active,
+div.wpape_gallery_button .apebtn-inverse-flat.is-active {
+  background-color: #222222;
+  border-color: #222222;
+  color: #090909;
+}
+div.wpape_gallery_button .apebtn-action,
+div.wpape_gallery_button .apebtn-action-flat {
+  background-color: #A5DE37;
+  border-color: #A5DE37;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-action:visited,
+div.wpape_gallery_button .apebtn-action-flat:visited {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-action:hover, div.wpape_gallery_button .apebtn-action:focus,
+div.wpape_gallery_button .apebtn-action-flat:hover,
+div.wpape_gallery_button .apebtn-action-flat:focus {
+  background-color: #b9e563;
+  border-color: #b9e563;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-action:active, div.wpape_gallery_button .apebtn-action.active, div.wpape_gallery_button .apebtn-action.is-active,
+div.wpape_gallery_button .apebtn-action-flat:active,
+div.wpape_gallery_button .apebtn-action-flat.active,
+div.wpape_gallery_button .apebtn-action-flat.is-active {
+  background-color: #a1d243;
+  border-color: #a1d243;
+  color: #8bc220;
+}
+div.wpape_gallery_button .apebtn-highlight,
+div.wpape_gallery_button .apebtn-highlight-flat {
+  background-color: #FEAE1B;
+  border-color: #FEAE1B;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-highlight:visited,
+div.wpape_gallery_button .apebtn-highlight-flat:visited {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-highlight:hover, div.wpape_gallery_button .apebtn-highlight:focus,
+div.wpape_gallery_button .apebtn-highlight-flat:hover,
+div.wpape_gallery_button .apebtn-highlight-flat:focus {
+  background-color: #fec04e;
+  border-color: #fec04e;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-highlight:active, div.wpape_gallery_button .apebtn-highlight.active, div.wpape_gallery_button .apebtn-highlight.is-active,
+div.wpape_gallery_button .apebtn-highlight-flat:active,
+div.wpape_gallery_button .apebtn-highlight-flat.active,
+div.wpape_gallery_button .apebtn-highlight-flat.is-active {
+  background-color: #f3ab26;
+  border-color: #f3ab26;
+  color: #e59501;
+}
+div.wpape_gallery_button .apebtn-caution,
+div.wpape_gallery_button .apebtn-caution-flat {
+  background-color: #FF4351;
+  border-color: #FF4351;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-caution:visited,
+div.wpape_gallery_button .apebtn-caution-flat:visited {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-caution:hover, div.wpape_gallery_button .apebtn-caution:focus,
+div.wpape_gallery_button .apebtn-caution-flat:hover,
+div.wpape_gallery_button .apebtn-caution-flat:focus {
+  background-color: #ff7680;
+  border-color: #ff7680;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-caution:active, div.wpape_gallery_button .apebtn-caution.active, div.wpape_gallery_button .apebtn-caution.is-active,
+div.wpape_gallery_button .apebtn-caution-flat:active,
+div.wpape_gallery_button .apebtn-caution-flat.active,
+div.wpape_gallery_button .apebtn-caution-flat.is-active {
+  background-color: #f64c59;
+  border-color: #f64c59;
+  color: #ff1022;
+}
+div.wpape_gallery_button .apebtn-black,
+div.wpape_gallery_button .apebtn-black-flat {
+  background-color: #000000;
+  border-color: #000000;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-black:visited,
+div.wpape_gallery_button .apebtn-black-flat:visited {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-black:hover, div.wpape_gallery_button .apebtn-black:focus,
+div.wpape_gallery_button .apebtn-black-flat:hover,
+div.wpape_gallery_button .apebtn-black-flat:focus {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-black:active, div.wpape_gallery_button .apebtn-black.active, div.wpape_gallery_button .apebtn-black.is-active,
+div.wpape_gallery_button .apebtn-black-flat:active,
+div.wpape_gallery_button .apebtn-black-flat.active,
+div.wpape_gallery_button .apebtn-black-flat.is-active {
+  background-color: black;
+  border-color: black;
+  color: black;
+}
+div.wpape_gallery_button .apebtn-dark,
+div.wpape_gallery_button .apebtn-dark-flat {
+  background-color: #585858;
+  border-color: #585858;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dark:visited,
+div.wpape_gallery_button .apebtn-dark-flat:visited {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dark:hover, div.wpape_gallery_button .apebtn-dark:focus,
+div.wpape_gallery_button .apebtn-dark-flat:hover,
+div.wpape_gallery_button .apebtn-dark-flat:focus {
+  background-color: #727272;
+  border-color: #727272;
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dark:active, div.wpape_gallery_button .apebtn-dark.active, div.wpape_gallery_button .apebtn-dark.is-active,
+div.wpape_gallery_button .apebtn-dark-flat:active,
+div.wpape_gallery_button .apebtn-dark-flat.active,
+div.wpape_gallery_button .apebtn-dark-flat.is-active {
+  background-color: #585858;
+  border-color: #585858;
+  color: #3f3f3f;
+}
+div.wpape_gallery_button .apebtn-block,
+div.wpape_gallery_button .apebtn-stacked {
+  display: block;
+  width: 100%;
+}
+div.wpape_gallery_button .apebtn-square {
+  border-radius: 0;
+}
+div.wpape_gallery_button .apebtn-box {
+  border-radius: 10px;
+}
+div.wpape_gallery_button .apebtn-rounded {
+  border-radius: 4px;
+}
+div.wpape_gallery_button .apebtn-pill {
+  border-radius: 200px;
+}
+div.wpape_gallery_button .apebtn-circle {
+  border-radius: 100%;
+}
+div.wpape_gallery_button .apebtn-circle,
+div.wpape_gallery_button .apebtn-box,
+div.wpape_gallery_button .apebtn-square {
+  padding: 0 !important;
+  width: 40px;
+}
+div.wpape_gallery_button .apebtn-circle.apebtn-giant,
+div.wpape_gallery_button .apebtn-box.apebtn-giant,
+div.wpape_gallery_button .apebtn-square.apebtn-giant {
+  width: 70px;
+}
+div.wpape_gallery_button .apebtn-circle.apebtn-jumbo,
+div.wpape_gallery_button .apebtn-box.apebtn-jumbo,
+div.wpape_gallery_button .apebtn-square.apebtn-jumbo {
+  width: 60px;
+}
+div.wpape_gallery_button .apebtn-circle.apebtn-large,
+div.wpape_gallery_button .apebtn-box.apebtn-large,
+div.wpape_gallery_button .apebtn-square.apebtn-large {
+  width: 50px;
+}
+div.wpape_gallery_button .apebtn-circle.apebtn-normal,
+div.wpape_gallery_button .apebtn-box.apebtn-normal,
+div.wpape_gallery_button .apebtn-square.apebtn-normal {
+  width: 40px;
+}
+div.wpape_gallery_button .apebtn-circle.apebtn-small,
+div.wpape_gallery_button .apebtn-box.apebtn-small,
+div.wpape_gallery_button .apebtn-square.apebtn-small {
+  width: 30px;
+}
+div.wpape_gallery_button .apebtn-circle.apebtn-tiny,
+div.wpape_gallery_button .apebtn-box.apebtn-tiny,
+div.wpape_gallery_button .apebtn-square.apebtn-tiny {
+  width: 24px;
+}
+div.wpape_gallery_button .apebtn-border, div.wpape_gallery_button .apebtn-border-thin, div.wpape_gallery_button .apebtn-border-thick {
+  background: none;
+  border-width: 2px;
+  border-style: solid;
+  line-height: 36px;
+}
+div.wpape_gallery_button .apebtn-border:hover, div.wpape_gallery_button .apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-border-thick:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+div.wpape_gallery_button .apebtn-border:active, div.wpape_gallery_button .apebtn-border-thin:active, div.wpape_gallery_button .apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.active, div.wpape_gallery_button .active.apebtn-border-thin, div.wpape_gallery_button .active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.is-active, div.wpape_gallery_button .is-active.apebtn-border-thin, div.wpape_gallery_button .is-active.apebtn-border-thick {
+  box-shadow: none;
+  text-shadow: none;
+  transition-property: all;
+  transition-duration: .3s;
+}
+div.wpape_gallery_button .apebtn-border-thin {
+  border-width: 1px;
+}
+div.wpape_gallery_button .apebtn-border-thick {
+  border-width: 3px;
+}
+div.wpape_gallery_button .apebtn-border, div.wpape_gallery_button .apebtn-border-thin, div.wpape_gallery_button .apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin,
+div.wpape_gallery_button .apebtn-border-thick {
+  /*
+  * Border Button Size Adjustment
+  *
+  * The line-height must be adjusted to compinsate for
+  * the width of the border.
+  */
+}
+div.wpape_gallery_button .apebtn-border.apebtn-primary, div.wpape_gallery_button .apebtn-primary.apebtn-border-thin, div.wpape_gallery_button .apebtn-primary.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-primary,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-primary {
+  color: #1B9AF7;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-primary:hover, div.wpape_gallery_button .apebtn-primary.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-primary.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-primary:focus, div.wpape_gallery_button .apebtn-primary.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-primary.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-primary:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-primary:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-primary:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-primary:focus {
+  background-color: rgba(76, 176, 249, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-primary:active, div.wpape_gallery_button .apebtn-primary.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-primary.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-primary.active, div.wpape_gallery_button .apebtn-primary.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-primary.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-primary.is-active, div.wpape_gallery_button .apebtn-primary.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-primary.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-primary:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-primary.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-primary.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-primary:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-primary.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-primary.is-active {
+  background-color: rgba(39, 152, 235, 0.7);
+  color: rgba(255, 255, 255, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-plain, div.wpape_gallery_button .apebtn-plain.apebtn-border-thin, div.wpape_gallery_button .apebtn-plain.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-plain,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-plain {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-plain:hover, div.wpape_gallery_button .apebtn-plain.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-plain.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-plain:focus, div.wpape_gallery_button .apebtn-plain.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-plain.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-plain:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-plain:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-plain:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-plain:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: rgba(27, 154, 247, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-plain:active, div.wpape_gallery_button .apebtn-plain.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-plain.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-plain.active, div.wpape_gallery_button .apebtn-plain.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-plain.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-plain.is-active, div.wpape_gallery_button .apebtn-plain.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-plain.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-plain:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-plain.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-plain.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-plain:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-plain.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-plain.is-active {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgba(27, 154, 247, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-inverse, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thin, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-inverse,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-inverse {
+  color: #222;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-inverse:hover, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-inverse:focus, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-inverse:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-inverse:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-inverse:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-inverse:focus {
+  background-color: rgba(60, 60, 60, 0.9);
+  color: rgba(238, 238, 238, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-inverse:active, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-inverse.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-inverse.active, div.wpape_gallery_button .apebtn-inverse.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-inverse.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-inverse.is-active, div.wpape_gallery_button .apebtn-inverse.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-inverse.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-inverse:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-inverse.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-inverse.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-inverse:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-inverse.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-inverse.is-active {
+  background-color: rgba(34, 34, 34, 0.7);
+  color: rgba(238, 238, 238, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-action, div.wpape_gallery_button .apebtn-action.apebtn-border-thin, div.wpape_gallery_button .apebtn-action.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-action,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-action {
+  color: #A5DE37;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-action:hover, div.wpape_gallery_button .apebtn-action.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-action.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-action:focus, div.wpape_gallery_button .apebtn-action.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-action.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-action:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-action:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-action:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-action:focus {
+  background-color: rgba(185, 229, 99, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-action:active, div.wpape_gallery_button .apebtn-action.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-action.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-action.active, div.wpape_gallery_button .apebtn-action.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-action.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-action.is-active, div.wpape_gallery_button .apebtn-action.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-action.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-action:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-action.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-action.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-action:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-action.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-action.is-active {
+  background-color: rgba(161, 210, 67, 0.7);
+  color: rgba(255, 255, 255, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-highlight, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thin, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-highlight,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-highlight {
+  color: #FEAE1B;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-highlight:hover, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-highlight:focus, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-highlight:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-highlight:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-highlight:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-highlight:focus {
+  background-color: rgba(254, 192, 78, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-highlight:active, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-highlight.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-highlight.active, div.wpape_gallery_button .apebtn-highlight.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-highlight.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-highlight.is-active, div.wpape_gallery_button .apebtn-highlight.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-highlight.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-highlight:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-highlight.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-highlight.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-highlight:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-highlight.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-highlight.is-active {
+  background-color: rgba(243, 171, 38, 0.7);
+  color: rgba(255, 255, 255, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-caution, div.wpape_gallery_button .apebtn-caution.apebtn-border-thin, div.wpape_gallery_button .apebtn-caution.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-caution,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-caution {
+  color: #FF4351;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-caution:hover, div.wpape_gallery_button .apebtn-caution.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-caution.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-caution:focus, div.wpape_gallery_button .apebtn-caution.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-caution.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-caution:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-caution:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-caution:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-caution:focus {
+  background-color: rgba(255, 118, 128, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-caution:active, div.wpape_gallery_button .apebtn-caution.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-caution.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-caution.active, div.wpape_gallery_button .apebtn-caution.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-caution.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-caution.is-active, div.wpape_gallery_button .apebtn-caution.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-caution.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-caution:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-caution.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-caution.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-caution:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-caution.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-caution.is-active {
+  background-color: rgba(246, 76, 89, 0.7);
+  color: rgba(255, 255, 255, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-black, div.wpape_gallery_button .apebtn-black.apebtn-border-thin, div.wpape_gallery_button .apebtn-black.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-black,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-black {
+  color: #000000;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-black:hover, div.wpape_gallery_button .apebtn-black.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-black.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-black:focus, div.wpape_gallery_button .apebtn-black.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-black.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-black:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-black:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-black:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-black:focus {
+  background-color: rgba(26, 26, 26, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-black:active, div.wpape_gallery_button .apebtn-black.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-black.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-black.active, div.wpape_gallery_button .apebtn-black.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-black.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-black.is-active, div.wpape_gallery_button .apebtn-black.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-black.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-black:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-black.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-black.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-black:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-black.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-black.is-active {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-dark, div.wpape_gallery_button .apebtn-dark.apebtn-border-thin, div.wpape_gallery_button .apebtn-dark.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-dark,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-dark {
+  color: #585858;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-dark:hover, div.wpape_gallery_button .apebtn-dark.apebtn-border-thin:hover, div.wpape_gallery_button .apebtn-dark.apebtn-border-thick:hover, div.wpape_gallery_button .apebtn-border.apebtn-dark:focus, div.wpape_gallery_button .apebtn-dark.apebtn-border-thin:focus, div.wpape_gallery_button .apebtn-dark.apebtn-border-thick:focus,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-dark:hover,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-dark:focus,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-dark:hover,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-dark:focus {
+  background-color: rgba(114, 114, 114, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+}
+div.wpape_gallery_button .apebtn-border.apebtn-dark:active, div.wpape_gallery_button .apebtn-dark.apebtn-border-thin:active, div.wpape_gallery_button .apebtn-dark.apebtn-border-thick:active, div.wpape_gallery_button .apebtn-border.apebtn-dark.active, div.wpape_gallery_button .apebtn-dark.active.apebtn-border-thin, div.wpape_gallery_button .apebtn-dark.active.apebtn-border-thick, div.wpape_gallery_button .apebtn-border.apebtn-dark.is-active, div.wpape_gallery_button .apebtn-dark.is-active.apebtn-border-thin, div.wpape_gallery_button .apebtn-dark.is-active.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-dark:active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-dark.active,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-dark.is-active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-dark:active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-dark.active,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-dark.is-active {
+  background-color: rgba(88, 88, 88, 0.7);
+  color: rgba(255, 255, 255, 0.5);
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-giant, div.wpape_gallery_button .apebtn-giant.apebtn-border-thin, div.wpape_gallery_button .apebtn-giant.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-giant,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-giant {
+  line-height: 66px;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-jumbo, div.wpape_gallery_button .apebtn-jumbo.apebtn-border-thin, div.wpape_gallery_button .apebtn-jumbo.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-jumbo,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-jumbo {
+  line-height: 56px;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-large, div.wpape_gallery_button .apebtn-large.apebtn-border-thin, div.wpape_gallery_button .apebtn-large.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-large,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-large {
+  line-height: 46px;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-normal, div.wpape_gallery_button .apebtn-normal.apebtn-border-thin, div.wpape_gallery_button .apebtn-normal.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-normal,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-normal {
+  line-height: 36px;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-small, div.wpape_gallery_button .apebtn-small.apebtn-border-thin, div.wpape_gallery_button .apebtn-small.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-small,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-small {
+  line-height: 26px;
+}
+div.wpape_gallery_button .apebtn-border.apebtn-tiny, div.wpape_gallery_button .apebtn-tiny.apebtn-border-thin, div.wpape_gallery_button .apebtn-tiny.apebtn-border-thick,
+div.wpape_gallery_button .apebtn-border-thin.apebtn-tiny,
+div.wpape_gallery_button .apebtn-border-thick.apebtn-tiny {
+  line-height: 20px;
+}
+div.wpape_gallery_button .apebtn-borderless {
+  background: none;
+  border: none;
+  padding: 0 8px !important;
+  color: #EEE;
+  font-size: 20.8px;
+  font-weight: 200;
+  /*
+  * Borderless Button Colors
+  *
+  * Create colors for buttons
+  * (.button-primary, .button-secondary, etc.)
+  */
+  /*
+  * Borderles Size Adjustment
+  *
+  * The font-size must be large to compinsate for
+  * the lack of a hit target.
+  */
+}
+div.wpape_gallery_button .apebtn-borderless:hover, div.wpape_gallery_button .apebtn-borderless:focus {
+  background: none;
+}
+div.wpape_gallery_button .apebtn-borderless:active, div.wpape_gallery_button .apebtn-borderless.active, div.wpape_gallery_button .apebtn-borderless.is-active {
+  box-shadow: none;
+  text-shadow: none;
+  transition-property: all;
+  transition-duration: .3s;
+  opacity: .3;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-primary {
+  color: #1B9AF7;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-plain {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-inverse {
+  color: #222;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-action {
+  color: #A5DE37;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-highlight {
+  color: #FEAE1B;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-caution {
+  color: #FF4351;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-black {
+  color: #000000;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-dark {
+  color: #585858;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-giant {
+  font-size: 36.4px;
+  height: 52.4px;
+  line-height: 52.4px;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-jumbo {
+  font-size: 31.2px;
+  height: 47.2px;
+  line-height: 47.2px;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-large {
+  font-size: 26px;
+  height: 42px;
+  line-height: 42px;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-normal {
+  font-size: 20.8px;
+  height: 36.8px;
+  line-height: 36.8px;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-small {
+  font-size: 15.6px;
+  height: 31.6px;
+  line-height: 31.6px;
+}
+div.wpape_gallery_button .apebtn-borderless.apebtn-tiny {
+  font-size: 12.48px;
+  height: 28.48px;
+  line-height: 28.48px;
+}
+div.wpape_gallery_button .apebtn-raised {
+  border-color: #e1e1e1;
+  border-style: solid;
+  border-width: 1px;
+  line-height: 38px;
+  background: linear-gradient(#f6f6f6, #e1e1e1);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+div.wpape_gallery_button .apebtn-raised:hover, div.wpape_gallery_button .apebtn-raised:focus {
+  background: linear-gradient(top, white, gainsboro);
+}
+div.wpape_gallery_button .apebtn-raised:active, div.wpape_gallery_button .apebtn-raised.active, div.wpape_gallery_button .apebtn-raised.is-active {
+  background: #eeeeee;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-primary {
+  border-color: #088ef0;
+  background: linear-gradient(#34a5f8, #088ef0);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-primary:hover, div.wpape_gallery_button .apebtn-raised.apebtn-primary:focus {
+  background: linear-gradient(top, #42abf8, #0888e6);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-primary:active, div.wpape_gallery_button .apebtn-raised.apebtn-primary.active, div.wpape_gallery_button .apebtn-raised.apebtn-primary.is-active {
+  border-color: #0880d7;
+  background: #2798eb;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-plain {
+  border-color: #f2f2f2;
+  background: linear-gradient(white, #f2f2f2);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-plain:hover, div.wpape_gallery_button .apebtn-raised.apebtn-plain:focus {
+  background: linear-gradient(top, white, #ededed);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-plain:active, div.wpape_gallery_button .apebtn-raised.apebtn-plain.active, div.wpape_gallery_button .apebtn-raised.apebtn-plain.is-active {
+  border-color: #e6e6e6;
+  background: white;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-inverse {
+  border-color: #151515;
+  background: linear-gradient(#2f2f2f, #151515);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-inverse:hover, div.wpape_gallery_button .apebtn-raised.apebtn-inverse:focus {
+  background: linear-gradient(top, #363636, #101010);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-inverse:active, div.wpape_gallery_button .apebtn-raised.apebtn-inverse.active, div.wpape_gallery_button .apebtn-raised.apebtn-inverse.is-active {
+  border-color: #090909;
+  background: #222222;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-action {
+  border-color: #9ad824;
+  background: linear-gradient(#afe24d, #9ad824);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-action:hover, div.wpape_gallery_button .apebtn-raised.apebtn-action:focus {
+  background: linear-gradient(top, #b5e45a, #94cf22);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-action:active, div.wpape_gallery_button .apebtn-raised.apebtn-action.active, div.wpape_gallery_button .apebtn-raised.apebtn-action.is-active {
+  border-color: #8bc220;
+  background: #a1d243;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-highlight {
+  border-color: #fea502;
+  background: linear-gradient(#feb734, #fea502);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-highlight:hover, div.wpape_gallery_button .apebtn-raised.apebtn-highlight:focus {
+  background: linear-gradient(top, #febc44, #f49f01);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-highlight:active, div.wpape_gallery_button .apebtn-raised.apebtn-highlight.active, div.wpape_gallery_button .apebtn-raised.apebtn-highlight.is-active {
+  border-color: #e59501;
+  background: #f3ab26;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-caution {
+  border-color: #ff2939;
+  background: linear-gradient(#ff5c69, #ff2939);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-caution:hover, div.wpape_gallery_button .apebtn-raised.apebtn-caution:focus {
+  background: linear-gradient(top, #ff6c77, #ff1f30);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-caution:active, div.wpape_gallery_button .apebtn-raised.apebtn-caution.active, div.wpape_gallery_button .apebtn-raised.apebtn-caution.is-active {
+  border-color: #ff1022;
+  background: #f64c59;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-black {
+  border-color: black;
+  background: linear-gradient(#0d0d0d, black);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-black:hover, div.wpape_gallery_button .apebtn-raised.apebtn-black:focus {
+  background: linear-gradient(top, #141414, black);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-black:active, div.wpape_gallery_button .apebtn-raised.apebtn-black.active, div.wpape_gallery_button .apebtn-raised.apebtn-black.is-active {
+  border-color: black;
+  background: black;
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-dark {
+  border-color: #4b4b4b;
+  background: linear-gradient(#656565, #4b4b4b);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-dark:hover, div.wpape_gallery_button .apebtn-raised.apebtn-dark:focus {
+  background: linear-gradient(top, #6c6c6c, #464646);
+}
+div.wpape_gallery_button .apebtn-raised.apebtn-dark:active, div.wpape_gallery_button .apebtn-raised.apebtn-dark.active, div.wpape_gallery_button .apebtn-raised.apebtn-dark.is-active {
+  border-color: #3f3f3f;
+  background: #585858;
+}
+div.wpape_gallery_button .apebtn-3d {
+  position: relative;
+  top: 0;
+  box-shadow: 0 7px 0 #bbbbbb, 0 8px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d:hover, div.wpape_gallery_button .apebtn-3d:focus {
+  box-shadow: 0 7px 0 #bbbbbb, 0 8px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d:active, div.wpape_gallery_button .apebtn-3d.active, div.wpape_gallery_button .apebtn-3d.is-active {
+  top: 5px;
+  transition-property: all;
+  transition-duration: .15s;
+  box-shadow: 0 2px 0 #bbbbbb, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-primary {
+  box-shadow: 0 7px 0 #0880d7, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-primary:hover, div.wpape_gallery_button .apebtn-3d.apebtn-primary:focus {
+  box-shadow: 0 7px 0 #077ace, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-primary:active, div.wpape_gallery_button .apebtn-3d.apebtn-primary.active, div.wpape_gallery_button .apebtn-3d.apebtn-primary.is-active {
+  box-shadow: 0 2px 0 #0662a6, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-plain {
+  box-shadow: 0 7px 0 #e6e6e6, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-plain:hover, div.wpape_gallery_button .apebtn-3d.apebtn-plain:focus {
+  box-shadow: 0 7px 0 #e0e0e0, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-plain:active, div.wpape_gallery_button .apebtn-3d.apebtn-plain.active, div.wpape_gallery_button .apebtn-3d.apebtn-plain.is-active {
+  box-shadow: 0 2px 0 #cccccc, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-inverse {
+  box-shadow: 0 7px 0 #090909, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-inverse:hover, div.wpape_gallery_button .apebtn-3d.apebtn-inverse:focus {
+  box-shadow: 0 7px 0 #030303, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-inverse:active, div.wpape_gallery_button .apebtn-3d.apebtn-inverse.active, div.wpape_gallery_button .apebtn-3d.apebtn-inverse.is-active {
+  box-shadow: 0 2px 0 black, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-action {
+  box-shadow: 0 7px 0 #8bc220, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-action:hover, div.wpape_gallery_button .apebtn-3d.apebtn-action:focus {
+  box-shadow: 0 7px 0 #84b91f, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-action:active, div.wpape_gallery_button .apebtn-3d.apebtn-action.active, div.wpape_gallery_button .apebtn-3d.apebtn-action.is-active {
+  box-shadow: 0 2px 0 #6b9619, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-highlight {
+  box-shadow: 0 7px 0 #e59501, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-highlight:hover, div.wpape_gallery_button .apebtn-3d.apebtn-highlight:focus {
+  box-shadow: 0 7px 0 #db8e01, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-highlight:active, div.wpape_gallery_button .apebtn-3d.apebtn-highlight.active, div.wpape_gallery_button .apebtn-3d.apebtn-highlight.is-active {
+  box-shadow: 0 2px 0 #b27401, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-caution {
+  box-shadow: 0 7px 0 #ff1022, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-caution:hover, div.wpape_gallery_button .apebtn-3d.apebtn-caution:focus {
+  box-shadow: 0 7px 0 #ff0618, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-caution:active, div.wpape_gallery_button .apebtn-3d.apebtn-caution.active, div.wpape_gallery_button .apebtn-3d.apebtn-caution.is-active {
+  box-shadow: 0 2px 0 #dc0010, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-black {
+  box-shadow: 0 7px 0 black, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-black:hover, div.wpape_gallery_button .apebtn-3d.apebtn-black:focus {
+  box-shadow: 0 7px 0 black, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-black:active, div.wpape_gallery_button .apebtn-3d.apebtn-black.active, div.wpape_gallery_button .apebtn-3d.apebtn-black.is-active {
+  box-shadow: 0 2px 0 black, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-dark {
+  box-shadow: 0 7px 0 #3f3f3f, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-dark:hover, div.wpape_gallery_button .apebtn-3d.apebtn-dark:focus {
+  box-shadow: 0 7px 0 #393939, 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+div.wpape_gallery_button .apebtn-3d.apebtn-dark:active, div.wpape_gallery_button .apebtn-3d.apebtn-dark.active, div.wpape_gallery_button .apebtn-3d.apebtn-dark.is-active {
+  box-shadow: 0 2px 0 #252525, 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+@keyframes glowing {
+  from {
+    box-shadow: 0 0 0 rgba(44, 154, 219, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(44, 154, 219, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(44, 154, 219, 0.3);
+  }
+}
+@keyframes glowing-primary {
+  from {
+    box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(27, 154, 247, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
+  }
+}
+@keyframes glowing-plain {
+  from {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+  }
+}
+@keyframes glowing-inverse {
+  from {
+    box-shadow: 0 0 0 rgba(34, 34, 34, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 34, 34, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(34, 34, 34, 0.3);
+  }
+}
+@keyframes glowing-action {
+  from {
+    box-shadow: 0 0 0 rgba(165, 222, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(165, 222, 55, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(165, 222, 55, 0.3);
+  }
+}
+@keyframes glowing-highlight {
+  from {
+    box-shadow: 0 0 0 rgba(254, 174, 27, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(254, 174, 27, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(254, 174, 27, 0.3);
+  }
+}
+@keyframes glowing-caution {
+  from {
+    box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
+  }
+}
+@keyframes glowing-black {
+  from {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+  }
+}
+@keyframes glowing-dark {
+  from {
+    box-shadow: 0 0 0 rgba(88, 88, 88, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(88, 88, 88, 0.8);
+  }
+  to {
+    box-shadow: 0 0 0 rgba(88, 88, 88, 0.3);
+  }
+}
+div.wpape_gallery_button .apebtn-glow {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-name: glowing;
+}
+div.wpape_gallery_button .apebtn-glow:active, div.wpape_gallery_button .apebtn-glow.active, div.wpape_gallery_button .apebtn-glow.is-active {
+  animation-name: none;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-primary {
+  animation-name: glowing-primary;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-plain {
+  animation-name: glowing-plain;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-inverse {
+  animation-name: glowing-inverse;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-action {
+  animation-name: glowing-action;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-highlight {
+  animation-name: glowing-highlight;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-caution {
+  animation-name: glowing-caution;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-black {
+  animation-name: glowing-black;
+}
+div.wpape_gallery_button .apebtn-glow.apebtn-dark {
+  animation-name: glowing-dark;
+}
+div.wpape_gallery_button .apebtn-dropdown {
+  position: relative;
+  overflow: visible;
+  display: inline-block;
+}
+div.wpape_gallery_button .apebtn-dropdown-list {
+  display: none;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  min-width: 100%;
+  list-style-type: none;
+  background: rgba(255, 255, 255, 0.95);
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d4d4d4;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-sizing: border-box;
+  /*
+  * Dropdown Below
+  *
+  */
+  /*
+  * Dropdown Above
+  *
+  */
+}
+div.wpape_gallery_button .apebtn-dropdown-list.is-below {
+  top: 100%;
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+}
+div.wpape_gallery_button .apebtn-dropdown-list.is-above {
+  bottom: 100%;
+  top: auto;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 -2px 7px rgba(0, 0, 0, 0.2);
+}
+div.wpape_gallery_button .apebtn-dropdown-list > li {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+div.wpape_gallery_button .apebtn-dropdown-list > li > a {
+  display: block;
+  line-height: 40px;
+  font-size: 12.8px;
+  padding: 5px 10px;
+  float: none;
+  color: #666;
+  text-decoration: none;
+}
+div.wpape_gallery_button .apebtn-dropdown-list > li > a:hover {
+  color: #5e5e5e;
+  background: #f6f6f6;
+  text-decoration: none;
+}
+div.wpape_gallery_button .apebtn-dropdown-divider {
+  border-top: 1px solid #e6e6e6;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-primary .apebtn-dropdown-list {
+  background: rgba(27, 154, 247, 0.95);
+  border-color: #0880d7;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-primary .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: #0888e6;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-primary .apebtn-dropdown-list > li > a {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-primary .apebtn-dropdown-list > li > a:hover {
+  color: #f2f2f2;
+  background: #088ef0;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-plain .apebtn-dropdown-list {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #e6e6e6;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-plain .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: #ededed;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-plain .apebtn-dropdown-list > li > a {
+  color: #1B9AF7;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-plain .apebtn-dropdown-list > li > a:hover {
+  color: #088ef0;
+  background: #f2f2f2;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-inverse .apebtn-dropdown-list {
+  background: rgba(34, 34, 34, 0.95);
+  border-color: #090909;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-inverse .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: #101010;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-inverse .apebtn-dropdown-list > li > a {
+  color: #EEE;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-inverse .apebtn-dropdown-list > li > a:hover {
+  color: #e1e1e1;
+  background: #151515;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-action .apebtn-dropdown-list {
+  background: rgba(165, 222, 55, 0.95);
+  border-color: #8bc220;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-action .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: #94cf22;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-action .apebtn-dropdown-list > li > a {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-action .apebtn-dropdown-list > li > a:hover {
+  color: #f2f2f2;
+  background: #9ad824;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-highlight .apebtn-dropdown-list {
+  background: rgba(254, 174, 27, 0.95);
+  border-color: #e59501;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-highlight .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: #f49f01;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-highlight .apebtn-dropdown-list > li > a {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-highlight .apebtn-dropdown-list > li > a:hover {
+  color: #f2f2f2;
+  background: #fea502;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-caution .apebtn-dropdown-list {
+  background: rgba(255, 67, 81, 0.95);
+  border-color: #ff1022;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-caution .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: #ff1f30;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-caution .apebtn-dropdown-list > li > a {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-caution .apebtn-dropdown-list > li > a:hover {
+  color: #f2f2f2;
+  background: #ff2939;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-black .apebtn-dropdown-list {
+  background: rgba(0, 0, 0, 0.95);
+  border-color: black;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-black .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: black;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-black .apebtn-dropdown-list > li > a {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-black .apebtn-dropdown-list > li > a:hover {
+  color: #f2f2f2;
+  background: black;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-dark .apebtn-dropdown-list {
+  background: rgba(88, 88, 88, 0.95);
+  border-color: #3f3f3f;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-dark .apebtn-dropdown-list .apebtn-dropdown-divider {
+  border-color: #464646;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-dark .apebtn-dropdown-list > li > a {
+  color: #FFF;
+}
+div.wpape_gallery_button .apebtn-dropdown.apebtn-dropdown-dark .apebtn-dropdown-list > li > a:hover {
+  color: #f2f2f2;
+  background: #4b4b4b;
+}
+div.wpape_gallery_button .apebtn-group {
+  position: relative;
+  display: inline-block;
+}
+div.wpape_gallery_button .apebtn-group:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+div.wpape_gallery_button .apebtn-group .apebtn,
+div.wpape_gallery_button .apebtn-group .apebtn-dropdown {
+  float: left;
+}
+div.wpape_gallery_button .apebtn-group .apebtn:not(:first-child):not(:last-child),
+div.wpape_gallery_button .apebtn-group .apebtn-dropdown:not(:first-child):not(:last-child) {
+  border-radius: 0;
+  border-right: none;
+}
+div.wpape_gallery_button .apebtn-group .apebtn:first-child,
+div.wpape_gallery_button .apebtn-group .apebtn-dropdown:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+div.wpape_gallery_button .apebtn-group .apebtn:last-child,
+div.wpape_gallery_button .apebtn-group .apebtn-dropdown:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+div.wpape_gallery_button .apebtn-wrap {
+  border: 1px solid #e3e3e3;
+  display: inline-block;
+  padding: 9px;
+  background: linear-gradient(#f2f2f2, #FFF);
+  border-radius: 200px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+div.wpape_gallery_button .apebtn-longshadow,
+div.wpape_gallery_button .apebtn-longshadow-right {
+  overflow: hidden;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-primary,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-primary {
+  text-shadow: 0px 0px #0880d7, 1px 1px #0880d7, 2px 2px #0880d7, 3px 3px #0880d7, 4px 4px #0880d7, 5px 5px #0880d7, 6px 6px #0880d7, 7px 7px #0880d7, 8px 8px #0880d7, 9px 9px #0880d7, 10px 10px #0880d7, 11px 11px #0880d7, 12px 12px #0880d7, 13px 13px #0880d7, 14px 14px #0880d7, 15px 15px #0880d7, 16px 16px #0880d7, 17px 17px #0880d7, 18px 18px #0880d7, 19px 19px #0880d7, 20px 20px #0880d7, 21px 21px #0880d7, 22px 22px #0880d7, 23px 23px #0880d7, 24px 24px #0880d7, 25px 25px #0880d7, 26px 26px #0880d7, 27px 27px #0880d7, 28px 28px #0880d7, 29px 29px #0880d7, 30px 30px #0880d7, 31px 31px #0880d7, 32px 32px #0880d7, 33px 33px #0880d7, 34px 34px #0880d7, 35px 35px #0880d7, 36px 36px #0880d7, 37px 37px #0880d7, 38px 38px #0880d7, 39px 39px #0880d7, 40px 40px #0880d7, 41px 41px #0880d7, 42px 42px #0880d7, 43px 43px #0880d7, 44px 44px #0880d7, 45px 45px #0880d7, 46px 46px #0880d7, 47px 47px #0880d7, 48px 48px #0880d7, 49px 49px #0880d7, 50px 50px #0880d7, 51px 51px #0880d7, 52px 52px #0880d7, 53px 53px #0880d7, 54px 54px #0880d7, 55px 55px #0880d7, 56px 56px #0880d7, 57px 57px #0880d7, 58px 58px #0880d7, 59px 59px #0880d7, 60px 60px #0880d7, 61px 61px #0880d7, 62px 62px #0880d7, 63px 63px #0880d7, 64px 64px #0880d7, 65px 65px #0880d7, 66px 66px #0880d7, 67px 67px #0880d7, 68px 68px #0880d7, 69px 69px #0880d7, 70px 70px #0880d7, 71px 71px #0880d7, 72px 72px #0880d7, 73px 73px #0880d7, 74px 74px #0880d7, 75px 75px #0880d7, 76px 76px #0880d7, 77px 77px #0880d7, 78px 78px #0880d7, 79px 79px #0880d7, 80px 80px #0880d7, 81px 81px #0880d7, 82px 82px #0880d7, 83px 83px #0880d7, 84px 84px #0880d7, 85px 85px #0880d7;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-primary:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-primary.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-primary.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-primary:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-primary.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-primary.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-plain,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-plain {
+  text-shadow: 0px 0px #e6e6e6, 1px 1px #e6e6e6, 2px 2px #e6e6e6, 3px 3px #e6e6e6, 4px 4px #e6e6e6, 5px 5px #e6e6e6, 6px 6px #e6e6e6, 7px 7px #e6e6e6, 8px 8px #e6e6e6, 9px 9px #e6e6e6, 10px 10px #e6e6e6, 11px 11px #e6e6e6, 12px 12px #e6e6e6, 13px 13px #e6e6e6, 14px 14px #e6e6e6, 15px 15px #e6e6e6, 16px 16px #e6e6e6, 17px 17px #e6e6e6, 18px 18px #e6e6e6, 19px 19px #e6e6e6, 20px 20px #e6e6e6, 21px 21px #e6e6e6, 22px 22px #e6e6e6, 23px 23px #e6e6e6, 24px 24px #e6e6e6, 25px 25px #e6e6e6, 26px 26px #e6e6e6, 27px 27px #e6e6e6, 28px 28px #e6e6e6, 29px 29px #e6e6e6, 30px 30px #e6e6e6, 31px 31px #e6e6e6, 32px 32px #e6e6e6, 33px 33px #e6e6e6, 34px 34px #e6e6e6, 35px 35px #e6e6e6, 36px 36px #e6e6e6, 37px 37px #e6e6e6, 38px 38px #e6e6e6, 39px 39px #e6e6e6, 40px 40px #e6e6e6, 41px 41px #e6e6e6, 42px 42px #e6e6e6, 43px 43px #e6e6e6, 44px 44px #e6e6e6, 45px 45px #e6e6e6, 46px 46px #e6e6e6, 47px 47px #e6e6e6, 48px 48px #e6e6e6, 49px 49px #e6e6e6, 50px 50px #e6e6e6, 51px 51px #e6e6e6, 52px 52px #e6e6e6, 53px 53px #e6e6e6, 54px 54px #e6e6e6, 55px 55px #e6e6e6, 56px 56px #e6e6e6, 57px 57px #e6e6e6, 58px 58px #e6e6e6, 59px 59px #e6e6e6, 60px 60px #e6e6e6, 61px 61px #e6e6e6, 62px 62px #e6e6e6, 63px 63px #e6e6e6, 64px 64px #e6e6e6, 65px 65px #e6e6e6, 66px 66px #e6e6e6, 67px 67px #e6e6e6, 68px 68px #e6e6e6, 69px 69px #e6e6e6, 70px 70px #e6e6e6, 71px 71px #e6e6e6, 72px 72px #e6e6e6, 73px 73px #e6e6e6, 74px 74px #e6e6e6, 75px 75px #e6e6e6, 76px 76px #e6e6e6, 77px 77px #e6e6e6, 78px 78px #e6e6e6, 79px 79px #e6e6e6, 80px 80px #e6e6e6, 81px 81px #e6e6e6, 82px 82px #e6e6e6, 83px 83px #e6e6e6, 84px 84px #e6e6e6, 85px 85px #e6e6e6;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-plain:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-plain.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-plain.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-plain:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-plain.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-plain.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-inverse,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-inverse {
+  text-shadow: 0px 0px #090909, 1px 1px #090909, 2px 2px #090909, 3px 3px #090909, 4px 4px #090909, 5px 5px #090909, 6px 6px #090909, 7px 7px #090909, 8px 8px #090909, 9px 9px #090909, 10px 10px #090909, 11px 11px #090909, 12px 12px #090909, 13px 13px #090909, 14px 14px #090909, 15px 15px #090909, 16px 16px #090909, 17px 17px #090909, 18px 18px #090909, 19px 19px #090909, 20px 20px #090909, 21px 21px #090909, 22px 22px #090909, 23px 23px #090909, 24px 24px #090909, 25px 25px #090909, 26px 26px #090909, 27px 27px #090909, 28px 28px #090909, 29px 29px #090909, 30px 30px #090909, 31px 31px #090909, 32px 32px #090909, 33px 33px #090909, 34px 34px #090909, 35px 35px #090909, 36px 36px #090909, 37px 37px #090909, 38px 38px #090909, 39px 39px #090909, 40px 40px #090909, 41px 41px #090909, 42px 42px #090909, 43px 43px #090909, 44px 44px #090909, 45px 45px #090909, 46px 46px #090909, 47px 47px #090909, 48px 48px #090909, 49px 49px #090909, 50px 50px #090909, 51px 51px #090909, 52px 52px #090909, 53px 53px #090909, 54px 54px #090909, 55px 55px #090909, 56px 56px #090909, 57px 57px #090909, 58px 58px #090909, 59px 59px #090909, 60px 60px #090909, 61px 61px #090909, 62px 62px #090909, 63px 63px #090909, 64px 64px #090909, 65px 65px #090909, 66px 66px #090909, 67px 67px #090909, 68px 68px #090909, 69px 69px #090909, 70px 70px #090909, 71px 71px #090909, 72px 72px #090909, 73px 73px #090909, 74px 74px #090909, 75px 75px #090909, 76px 76px #090909, 77px 77px #090909, 78px 78px #090909, 79px 79px #090909, 80px 80px #090909, 81px 81px #090909, 82px 82px #090909, 83px 83px #090909, 84px 84px #090909, 85px 85px #090909;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-inverse:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-inverse.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-inverse.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-inverse:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-inverse.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-inverse.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-action,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-action {
+  text-shadow: 0px 0px #8bc220, 1px 1px #8bc220, 2px 2px #8bc220, 3px 3px #8bc220, 4px 4px #8bc220, 5px 5px #8bc220, 6px 6px #8bc220, 7px 7px #8bc220, 8px 8px #8bc220, 9px 9px #8bc220, 10px 10px #8bc220, 11px 11px #8bc220, 12px 12px #8bc220, 13px 13px #8bc220, 14px 14px #8bc220, 15px 15px #8bc220, 16px 16px #8bc220, 17px 17px #8bc220, 18px 18px #8bc220, 19px 19px #8bc220, 20px 20px #8bc220, 21px 21px #8bc220, 22px 22px #8bc220, 23px 23px #8bc220, 24px 24px #8bc220, 25px 25px #8bc220, 26px 26px #8bc220, 27px 27px #8bc220, 28px 28px #8bc220, 29px 29px #8bc220, 30px 30px #8bc220, 31px 31px #8bc220, 32px 32px #8bc220, 33px 33px #8bc220, 34px 34px #8bc220, 35px 35px #8bc220, 36px 36px #8bc220, 37px 37px #8bc220, 38px 38px #8bc220, 39px 39px #8bc220, 40px 40px #8bc220, 41px 41px #8bc220, 42px 42px #8bc220, 43px 43px #8bc220, 44px 44px #8bc220, 45px 45px #8bc220, 46px 46px #8bc220, 47px 47px #8bc220, 48px 48px #8bc220, 49px 49px #8bc220, 50px 50px #8bc220, 51px 51px #8bc220, 52px 52px #8bc220, 53px 53px #8bc220, 54px 54px #8bc220, 55px 55px #8bc220, 56px 56px #8bc220, 57px 57px #8bc220, 58px 58px #8bc220, 59px 59px #8bc220, 60px 60px #8bc220, 61px 61px #8bc220, 62px 62px #8bc220, 63px 63px #8bc220, 64px 64px #8bc220, 65px 65px #8bc220, 66px 66px #8bc220, 67px 67px #8bc220, 68px 68px #8bc220, 69px 69px #8bc220, 70px 70px #8bc220, 71px 71px #8bc220, 72px 72px #8bc220, 73px 73px #8bc220, 74px 74px #8bc220, 75px 75px #8bc220, 76px 76px #8bc220, 77px 77px #8bc220, 78px 78px #8bc220, 79px 79px #8bc220, 80px 80px #8bc220, 81px 81px #8bc220, 82px 82px #8bc220, 83px 83px #8bc220, 84px 84px #8bc220, 85px 85px #8bc220;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-action:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-action.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-action.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-action:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-action.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-action.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-highlight,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-highlight {
+  text-shadow: 0px 0px #e59501, 1px 1px #e59501, 2px 2px #e59501, 3px 3px #e59501, 4px 4px #e59501, 5px 5px #e59501, 6px 6px #e59501, 7px 7px #e59501, 8px 8px #e59501, 9px 9px #e59501, 10px 10px #e59501, 11px 11px #e59501, 12px 12px #e59501, 13px 13px #e59501, 14px 14px #e59501, 15px 15px #e59501, 16px 16px #e59501, 17px 17px #e59501, 18px 18px #e59501, 19px 19px #e59501, 20px 20px #e59501, 21px 21px #e59501, 22px 22px #e59501, 23px 23px #e59501, 24px 24px #e59501, 25px 25px #e59501, 26px 26px #e59501, 27px 27px #e59501, 28px 28px #e59501, 29px 29px #e59501, 30px 30px #e59501, 31px 31px #e59501, 32px 32px #e59501, 33px 33px #e59501, 34px 34px #e59501, 35px 35px #e59501, 36px 36px #e59501, 37px 37px #e59501, 38px 38px #e59501, 39px 39px #e59501, 40px 40px #e59501, 41px 41px #e59501, 42px 42px #e59501, 43px 43px #e59501, 44px 44px #e59501, 45px 45px #e59501, 46px 46px #e59501, 47px 47px #e59501, 48px 48px #e59501, 49px 49px #e59501, 50px 50px #e59501, 51px 51px #e59501, 52px 52px #e59501, 53px 53px #e59501, 54px 54px #e59501, 55px 55px #e59501, 56px 56px #e59501, 57px 57px #e59501, 58px 58px #e59501, 59px 59px #e59501, 60px 60px #e59501, 61px 61px #e59501, 62px 62px #e59501, 63px 63px #e59501, 64px 64px #e59501, 65px 65px #e59501, 66px 66px #e59501, 67px 67px #e59501, 68px 68px #e59501, 69px 69px #e59501, 70px 70px #e59501, 71px 71px #e59501, 72px 72px #e59501, 73px 73px #e59501, 74px 74px #e59501, 75px 75px #e59501, 76px 76px #e59501, 77px 77px #e59501, 78px 78px #e59501, 79px 79px #e59501, 80px 80px #e59501, 81px 81px #e59501, 82px 82px #e59501, 83px 83px #e59501, 84px 84px #e59501, 85px 85px #e59501;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-highlight:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-highlight.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-highlight.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-highlight:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-highlight.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-highlight.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-caution,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-caution {
+  text-shadow: 0px 0px #ff1022, 1px 1px #ff1022, 2px 2px #ff1022, 3px 3px #ff1022, 4px 4px #ff1022, 5px 5px #ff1022, 6px 6px #ff1022, 7px 7px #ff1022, 8px 8px #ff1022, 9px 9px #ff1022, 10px 10px #ff1022, 11px 11px #ff1022, 12px 12px #ff1022, 13px 13px #ff1022, 14px 14px #ff1022, 15px 15px #ff1022, 16px 16px #ff1022, 17px 17px #ff1022, 18px 18px #ff1022, 19px 19px #ff1022, 20px 20px #ff1022, 21px 21px #ff1022, 22px 22px #ff1022, 23px 23px #ff1022, 24px 24px #ff1022, 25px 25px #ff1022, 26px 26px #ff1022, 27px 27px #ff1022, 28px 28px #ff1022, 29px 29px #ff1022, 30px 30px #ff1022, 31px 31px #ff1022, 32px 32px #ff1022, 33px 33px #ff1022, 34px 34px #ff1022, 35px 35px #ff1022, 36px 36px #ff1022, 37px 37px #ff1022, 38px 38px #ff1022, 39px 39px #ff1022, 40px 40px #ff1022, 41px 41px #ff1022, 42px 42px #ff1022, 43px 43px #ff1022, 44px 44px #ff1022, 45px 45px #ff1022, 46px 46px #ff1022, 47px 47px #ff1022, 48px 48px #ff1022, 49px 49px #ff1022, 50px 50px #ff1022, 51px 51px #ff1022, 52px 52px #ff1022, 53px 53px #ff1022, 54px 54px #ff1022, 55px 55px #ff1022, 56px 56px #ff1022, 57px 57px #ff1022, 58px 58px #ff1022, 59px 59px #ff1022, 60px 60px #ff1022, 61px 61px #ff1022, 62px 62px #ff1022, 63px 63px #ff1022, 64px 64px #ff1022, 65px 65px #ff1022, 66px 66px #ff1022, 67px 67px #ff1022, 68px 68px #ff1022, 69px 69px #ff1022, 70px 70px #ff1022, 71px 71px #ff1022, 72px 72px #ff1022, 73px 73px #ff1022, 74px 74px #ff1022, 75px 75px #ff1022, 76px 76px #ff1022, 77px 77px #ff1022, 78px 78px #ff1022, 79px 79px #ff1022, 80px 80px #ff1022, 81px 81px #ff1022, 82px 82px #ff1022, 83px 83px #ff1022, 84px 84px #ff1022, 85px 85px #ff1022;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-caution:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-caution.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-caution.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-caution:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-caution.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-caution.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-black,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-black {
+  text-shadow: 0px 0px black, 1px 1px black, 2px 2px black, 3px 3px black, 4px 4px black, 5px 5px black, 6px 6px black, 7px 7px black, 8px 8px black, 9px 9px black, 10px 10px black, 11px 11px black, 12px 12px black, 13px 13px black, 14px 14px black, 15px 15px black, 16px 16px black, 17px 17px black, 18px 18px black, 19px 19px black, 20px 20px black, 21px 21px black, 22px 22px black, 23px 23px black, 24px 24px black, 25px 25px black, 26px 26px black, 27px 27px black, 28px 28px black, 29px 29px black, 30px 30px black, 31px 31px black, 32px 32px black, 33px 33px black, 34px 34px black, 35px 35px black, 36px 36px black, 37px 37px black, 38px 38px black, 39px 39px black, 40px 40px black, 41px 41px black, 42px 42px black, 43px 43px black, 44px 44px black, 45px 45px black, 46px 46px black, 47px 47px black, 48px 48px black, 49px 49px black, 50px 50px black, 51px 51px black, 52px 52px black, 53px 53px black, 54px 54px black, 55px 55px black, 56px 56px black, 57px 57px black, 58px 58px black, 59px 59px black, 60px 60px black, 61px 61px black, 62px 62px black, 63px 63px black, 64px 64px black, 65px 65px black, 66px 66px black, 67px 67px black, 68px 68px black, 69px 69px black, 70px 70px black, 71px 71px black, 72px 72px black, 73px 73px black, 74px 74px black, 75px 75px black, 76px 76px black, 77px 77px black, 78px 78px black, 79px 79px black, 80px 80px black, 81px 81px black, 82px 82px black, 83px 83px black, 84px 84px black, 85px 85px black;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-black:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-black.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-black.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-black:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-black.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-black.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-dark,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-dark {
+  text-shadow: 0px 0px #3f3f3f, 1px 1px #3f3f3f, 2px 2px #3f3f3f, 3px 3px #3f3f3f, 4px 4px #3f3f3f, 5px 5px #3f3f3f, 6px 6px #3f3f3f, 7px 7px #3f3f3f, 8px 8px #3f3f3f, 9px 9px #3f3f3f, 10px 10px #3f3f3f, 11px 11px #3f3f3f, 12px 12px #3f3f3f, 13px 13px #3f3f3f, 14px 14px #3f3f3f, 15px 15px #3f3f3f, 16px 16px #3f3f3f, 17px 17px #3f3f3f, 18px 18px #3f3f3f, 19px 19px #3f3f3f, 20px 20px #3f3f3f, 21px 21px #3f3f3f, 22px 22px #3f3f3f, 23px 23px #3f3f3f, 24px 24px #3f3f3f, 25px 25px #3f3f3f, 26px 26px #3f3f3f, 27px 27px #3f3f3f, 28px 28px #3f3f3f, 29px 29px #3f3f3f, 30px 30px #3f3f3f, 31px 31px #3f3f3f, 32px 32px #3f3f3f, 33px 33px #3f3f3f, 34px 34px #3f3f3f, 35px 35px #3f3f3f, 36px 36px #3f3f3f, 37px 37px #3f3f3f, 38px 38px #3f3f3f, 39px 39px #3f3f3f, 40px 40px #3f3f3f, 41px 41px #3f3f3f, 42px 42px #3f3f3f, 43px 43px #3f3f3f, 44px 44px #3f3f3f, 45px 45px #3f3f3f, 46px 46px #3f3f3f, 47px 47px #3f3f3f, 48px 48px #3f3f3f, 49px 49px #3f3f3f, 50px 50px #3f3f3f, 51px 51px #3f3f3f, 52px 52px #3f3f3f, 53px 53px #3f3f3f, 54px 54px #3f3f3f, 55px 55px #3f3f3f, 56px 56px #3f3f3f, 57px 57px #3f3f3f, 58px 58px #3f3f3f, 59px 59px #3f3f3f, 60px 60px #3f3f3f, 61px 61px #3f3f3f, 62px 62px #3f3f3f, 63px 63px #3f3f3f, 64px 64px #3f3f3f, 65px 65px #3f3f3f, 66px 66px #3f3f3f, 67px 67px #3f3f3f, 68px 68px #3f3f3f, 69px 69px #3f3f3f, 70px 70px #3f3f3f, 71px 71px #3f3f3f, 72px 72px #3f3f3f, 73px 73px #3f3f3f, 74px 74px #3f3f3f, 75px 75px #3f3f3f, 76px 76px #3f3f3f, 77px 77px #3f3f3f, 78px 78px #3f3f3f, 79px 79px #3f3f3f, 80px 80px #3f3f3f, 81px 81px #3f3f3f, 82px 82px #3f3f3f, 83px 83px #3f3f3f, 84px 84px #3f3f3f, 85px 85px #3f3f3f;
+}
+div.wpape_gallery_button .apebtn-longshadow.apebtn-dark:active, div.wpape_gallery_button .apebtn-longshadow.apebtn-dark.active, div.wpape_gallery_button .apebtn-longshadow.apebtn-dark.is-active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-dark:active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-dark.active,
+div.wpape_gallery_button .apebtn-longshadow-right.apebtn-dark.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left {
+  overflow: hidden;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-primary {
+  text-shadow: 0px 0px #0880d7, -1px 1px #0880d7, -2px 2px #0880d7, -3px 3px #0880d7, -4px 4px #0880d7, -5px 5px #0880d7, -6px 6px #0880d7, -7px 7px #0880d7, -8px 8px #0880d7, -9px 9px #0880d7, -10px 10px #0880d7, -11px 11px #0880d7, -12px 12px #0880d7, -13px 13px #0880d7, -14px 14px #0880d7, -15px 15px #0880d7, -16px 16px #0880d7, -17px 17px #0880d7, -18px 18px #0880d7, -19px 19px #0880d7, -20px 20px #0880d7, -21px 21px #0880d7, -22px 22px #0880d7, -23px 23px #0880d7, -24px 24px #0880d7, -25px 25px #0880d7, -26px 26px #0880d7, -27px 27px #0880d7, -28px 28px #0880d7, -29px 29px #0880d7, -30px 30px #0880d7, -31px 31px #0880d7, -32px 32px #0880d7, -33px 33px #0880d7, -34px 34px #0880d7, -35px 35px #0880d7, -36px 36px #0880d7, -37px 37px #0880d7, -38px 38px #0880d7, -39px 39px #0880d7, -40px 40px #0880d7, -41px 41px #0880d7, -42px 42px #0880d7, -43px 43px #0880d7, -44px 44px #0880d7, -45px 45px #0880d7, -46px 46px #0880d7, -47px 47px #0880d7, -48px 48px #0880d7, -49px 49px #0880d7, -50px 50px #0880d7, -51px 51px #0880d7, -52px 52px #0880d7, -53px 53px #0880d7, -54px 54px #0880d7, -55px 55px #0880d7, -56px 56px #0880d7, -57px 57px #0880d7, -58px 58px #0880d7, -59px 59px #0880d7, -60px 60px #0880d7, -61px 61px #0880d7, -62px 62px #0880d7, -63px 63px #0880d7, -64px 64px #0880d7, -65px 65px #0880d7, -66px 66px #0880d7, -67px 67px #0880d7, -68px 68px #0880d7, -69px 69px #0880d7, -70px 70px #0880d7, -71px 71px #0880d7, -72px 72px #0880d7, -73px 73px #0880d7, -74px 74px #0880d7, -75px 75px #0880d7, -76px 76px #0880d7, -77px 77px #0880d7, -78px 78px #0880d7, -79px 79px #0880d7, -80px 80px #0880d7, -81px 81px #0880d7, -82px 82px #0880d7, -83px 83px #0880d7, -84px 84px #0880d7, -85px 85px #0880d7;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-primary:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-primary.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-primary.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-plain {
+  text-shadow: 0px 0px #e6e6e6, -1px 1px #e6e6e6, -2px 2px #e6e6e6, -3px 3px #e6e6e6, -4px 4px #e6e6e6, -5px 5px #e6e6e6, -6px 6px #e6e6e6, -7px 7px #e6e6e6, -8px 8px #e6e6e6, -9px 9px #e6e6e6, -10px 10px #e6e6e6, -11px 11px #e6e6e6, -12px 12px #e6e6e6, -13px 13px #e6e6e6, -14px 14px #e6e6e6, -15px 15px #e6e6e6, -16px 16px #e6e6e6, -17px 17px #e6e6e6, -18px 18px #e6e6e6, -19px 19px #e6e6e6, -20px 20px #e6e6e6, -21px 21px #e6e6e6, -22px 22px #e6e6e6, -23px 23px #e6e6e6, -24px 24px #e6e6e6, -25px 25px #e6e6e6, -26px 26px #e6e6e6, -27px 27px #e6e6e6, -28px 28px #e6e6e6, -29px 29px #e6e6e6, -30px 30px #e6e6e6, -31px 31px #e6e6e6, -32px 32px #e6e6e6, -33px 33px #e6e6e6, -34px 34px #e6e6e6, -35px 35px #e6e6e6, -36px 36px #e6e6e6, -37px 37px #e6e6e6, -38px 38px #e6e6e6, -39px 39px #e6e6e6, -40px 40px #e6e6e6, -41px 41px #e6e6e6, -42px 42px #e6e6e6, -43px 43px #e6e6e6, -44px 44px #e6e6e6, -45px 45px #e6e6e6, -46px 46px #e6e6e6, -47px 47px #e6e6e6, -48px 48px #e6e6e6, -49px 49px #e6e6e6, -50px 50px #e6e6e6, -51px 51px #e6e6e6, -52px 52px #e6e6e6, -53px 53px #e6e6e6, -54px 54px #e6e6e6, -55px 55px #e6e6e6, -56px 56px #e6e6e6, -57px 57px #e6e6e6, -58px 58px #e6e6e6, -59px 59px #e6e6e6, -60px 60px #e6e6e6, -61px 61px #e6e6e6, -62px 62px #e6e6e6, -63px 63px #e6e6e6, -64px 64px #e6e6e6, -65px 65px #e6e6e6, -66px 66px #e6e6e6, -67px 67px #e6e6e6, -68px 68px #e6e6e6, -69px 69px #e6e6e6, -70px 70px #e6e6e6, -71px 71px #e6e6e6, -72px 72px #e6e6e6, -73px 73px #e6e6e6, -74px 74px #e6e6e6, -75px 75px #e6e6e6, -76px 76px #e6e6e6, -77px 77px #e6e6e6, -78px 78px #e6e6e6, -79px 79px #e6e6e6, -80px 80px #e6e6e6, -81px 81px #e6e6e6, -82px 82px #e6e6e6, -83px 83px #e6e6e6, -84px 84px #e6e6e6, -85px 85px #e6e6e6;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-plain:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-plain.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-plain.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-inverse {
+  text-shadow: 0px 0px #090909, -1px 1px #090909, -2px 2px #090909, -3px 3px #090909, -4px 4px #090909, -5px 5px #090909, -6px 6px #090909, -7px 7px #090909, -8px 8px #090909, -9px 9px #090909, -10px 10px #090909, -11px 11px #090909, -12px 12px #090909, -13px 13px #090909, -14px 14px #090909, -15px 15px #090909, -16px 16px #090909, -17px 17px #090909, -18px 18px #090909, -19px 19px #090909, -20px 20px #090909, -21px 21px #090909, -22px 22px #090909, -23px 23px #090909, -24px 24px #090909, -25px 25px #090909, -26px 26px #090909, -27px 27px #090909, -28px 28px #090909, -29px 29px #090909, -30px 30px #090909, -31px 31px #090909, -32px 32px #090909, -33px 33px #090909, -34px 34px #090909, -35px 35px #090909, -36px 36px #090909, -37px 37px #090909, -38px 38px #090909, -39px 39px #090909, -40px 40px #090909, -41px 41px #090909, -42px 42px #090909, -43px 43px #090909, -44px 44px #090909, -45px 45px #090909, -46px 46px #090909, -47px 47px #090909, -48px 48px #090909, -49px 49px #090909, -50px 50px #090909, -51px 51px #090909, -52px 52px #090909, -53px 53px #090909, -54px 54px #090909, -55px 55px #090909, -56px 56px #090909, -57px 57px #090909, -58px 58px #090909, -59px 59px #090909, -60px 60px #090909, -61px 61px #090909, -62px 62px #090909, -63px 63px #090909, -64px 64px #090909, -65px 65px #090909, -66px 66px #090909, -67px 67px #090909, -68px 68px #090909, -69px 69px #090909, -70px 70px #090909, -71px 71px #090909, -72px 72px #090909, -73px 73px #090909, -74px 74px #090909, -75px 75px #090909, -76px 76px #090909, -77px 77px #090909, -78px 78px #090909, -79px 79px #090909, -80px 80px #090909, -81px 81px #090909, -82px 82px #090909, -83px 83px #090909, -84px 84px #090909, -85px 85px #090909;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-inverse:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-inverse.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-inverse.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-action {
+  text-shadow: 0px 0px #8bc220, -1px 1px #8bc220, -2px 2px #8bc220, -3px 3px #8bc220, -4px 4px #8bc220, -5px 5px #8bc220, -6px 6px #8bc220, -7px 7px #8bc220, -8px 8px #8bc220, -9px 9px #8bc220, -10px 10px #8bc220, -11px 11px #8bc220, -12px 12px #8bc220, -13px 13px #8bc220, -14px 14px #8bc220, -15px 15px #8bc220, -16px 16px #8bc220, -17px 17px #8bc220, -18px 18px #8bc220, -19px 19px #8bc220, -20px 20px #8bc220, -21px 21px #8bc220, -22px 22px #8bc220, -23px 23px #8bc220, -24px 24px #8bc220, -25px 25px #8bc220, -26px 26px #8bc220, -27px 27px #8bc220, -28px 28px #8bc220, -29px 29px #8bc220, -30px 30px #8bc220, -31px 31px #8bc220, -32px 32px #8bc220, -33px 33px #8bc220, -34px 34px #8bc220, -35px 35px #8bc220, -36px 36px #8bc220, -37px 37px #8bc220, -38px 38px #8bc220, -39px 39px #8bc220, -40px 40px #8bc220, -41px 41px #8bc220, -42px 42px #8bc220, -43px 43px #8bc220, -44px 44px #8bc220, -45px 45px #8bc220, -46px 46px #8bc220, -47px 47px #8bc220, -48px 48px #8bc220, -49px 49px #8bc220, -50px 50px #8bc220, -51px 51px #8bc220, -52px 52px #8bc220, -53px 53px #8bc220, -54px 54px #8bc220, -55px 55px #8bc220, -56px 56px #8bc220, -57px 57px #8bc220, -58px 58px #8bc220, -59px 59px #8bc220, -60px 60px #8bc220, -61px 61px #8bc220, -62px 62px #8bc220, -63px 63px #8bc220, -64px 64px #8bc220, -65px 65px #8bc220, -66px 66px #8bc220, -67px 67px #8bc220, -68px 68px #8bc220, -69px 69px #8bc220, -70px 70px #8bc220, -71px 71px #8bc220, -72px 72px #8bc220, -73px 73px #8bc220, -74px 74px #8bc220, -75px 75px #8bc220, -76px 76px #8bc220, -77px 77px #8bc220, -78px 78px #8bc220, -79px 79px #8bc220, -80px 80px #8bc220, -81px 81px #8bc220, -82px 82px #8bc220, -83px 83px #8bc220, -84px 84px #8bc220, -85px 85px #8bc220;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-action:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-action.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-action.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-highlight {
+  text-shadow: 0px 0px #e59501, -1px 1px #e59501, -2px 2px #e59501, -3px 3px #e59501, -4px 4px #e59501, -5px 5px #e59501, -6px 6px #e59501, -7px 7px #e59501, -8px 8px #e59501, -9px 9px #e59501, -10px 10px #e59501, -11px 11px #e59501, -12px 12px #e59501, -13px 13px #e59501, -14px 14px #e59501, -15px 15px #e59501, -16px 16px #e59501, -17px 17px #e59501, -18px 18px #e59501, -19px 19px #e59501, -20px 20px #e59501, -21px 21px #e59501, -22px 22px #e59501, -23px 23px #e59501, -24px 24px #e59501, -25px 25px #e59501, -26px 26px #e59501, -27px 27px #e59501, -28px 28px #e59501, -29px 29px #e59501, -30px 30px #e59501, -31px 31px #e59501, -32px 32px #e59501, -33px 33px #e59501, -34px 34px #e59501, -35px 35px #e59501, -36px 36px #e59501, -37px 37px #e59501, -38px 38px #e59501, -39px 39px #e59501, -40px 40px #e59501, -41px 41px #e59501, -42px 42px #e59501, -43px 43px #e59501, -44px 44px #e59501, -45px 45px #e59501, -46px 46px #e59501, -47px 47px #e59501, -48px 48px #e59501, -49px 49px #e59501, -50px 50px #e59501, -51px 51px #e59501, -52px 52px #e59501, -53px 53px #e59501, -54px 54px #e59501, -55px 55px #e59501, -56px 56px #e59501, -57px 57px #e59501, -58px 58px #e59501, -59px 59px #e59501, -60px 60px #e59501, -61px 61px #e59501, -62px 62px #e59501, -63px 63px #e59501, -64px 64px #e59501, -65px 65px #e59501, -66px 66px #e59501, -67px 67px #e59501, -68px 68px #e59501, -69px 69px #e59501, -70px 70px #e59501, -71px 71px #e59501, -72px 72px #e59501, -73px 73px #e59501, -74px 74px #e59501, -75px 75px #e59501, -76px 76px #e59501, -77px 77px #e59501, -78px 78px #e59501, -79px 79px #e59501, -80px 80px #e59501, -81px 81px #e59501, -82px 82px #e59501, -83px 83px #e59501, -84px 84px #e59501, -85px 85px #e59501;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-highlight:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-highlight.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-highlight.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-caution {
+  text-shadow: 0px 0px #ff1022, -1px 1px #ff1022, -2px 2px #ff1022, -3px 3px #ff1022, -4px 4px #ff1022, -5px 5px #ff1022, -6px 6px #ff1022, -7px 7px #ff1022, -8px 8px #ff1022, -9px 9px #ff1022, -10px 10px #ff1022, -11px 11px #ff1022, -12px 12px #ff1022, -13px 13px #ff1022, -14px 14px #ff1022, -15px 15px #ff1022, -16px 16px #ff1022, -17px 17px #ff1022, -18px 18px #ff1022, -19px 19px #ff1022, -20px 20px #ff1022, -21px 21px #ff1022, -22px 22px #ff1022, -23px 23px #ff1022, -24px 24px #ff1022, -25px 25px #ff1022, -26px 26px #ff1022, -27px 27px #ff1022, -28px 28px #ff1022, -29px 29px #ff1022, -30px 30px #ff1022, -31px 31px #ff1022, -32px 32px #ff1022, -33px 33px #ff1022, -34px 34px #ff1022, -35px 35px #ff1022, -36px 36px #ff1022, -37px 37px #ff1022, -38px 38px #ff1022, -39px 39px #ff1022, -40px 40px #ff1022, -41px 41px #ff1022, -42px 42px #ff1022, -43px 43px #ff1022, -44px 44px #ff1022, -45px 45px #ff1022, -46px 46px #ff1022, -47px 47px #ff1022, -48px 48px #ff1022, -49px 49px #ff1022, -50px 50px #ff1022, -51px 51px #ff1022, -52px 52px #ff1022, -53px 53px #ff1022, -54px 54px #ff1022, -55px 55px #ff1022, -56px 56px #ff1022, -57px 57px #ff1022, -58px 58px #ff1022, -59px 59px #ff1022, -60px 60px #ff1022, -61px 61px #ff1022, -62px 62px #ff1022, -63px 63px #ff1022, -64px 64px #ff1022, -65px 65px #ff1022, -66px 66px #ff1022, -67px 67px #ff1022, -68px 68px #ff1022, -69px 69px #ff1022, -70px 70px #ff1022, -71px 71px #ff1022, -72px 72px #ff1022, -73px 73px #ff1022, -74px 74px #ff1022, -75px 75px #ff1022, -76px 76px #ff1022, -77px 77px #ff1022, -78px 78px #ff1022, -79px 79px #ff1022, -80px 80px #ff1022, -81px 81px #ff1022, -82px 82px #ff1022, -83px 83px #ff1022, -84px 84px #ff1022, -85px 85px #ff1022;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-caution:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-caution.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-caution.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-black {
+  text-shadow: 0px 0px black, -1px 1px black, -2px 2px black, -3px 3px black, -4px 4px black, -5px 5px black, -6px 6px black, -7px 7px black, -8px 8px black, -9px 9px black, -10px 10px black, -11px 11px black, -12px 12px black, -13px 13px black, -14px 14px black, -15px 15px black, -16px 16px black, -17px 17px black, -18px 18px black, -19px 19px black, -20px 20px black, -21px 21px black, -22px 22px black, -23px 23px black, -24px 24px black, -25px 25px black, -26px 26px black, -27px 27px black, -28px 28px black, -29px 29px black, -30px 30px black, -31px 31px black, -32px 32px black, -33px 33px black, -34px 34px black, -35px 35px black, -36px 36px black, -37px 37px black, -38px 38px black, -39px 39px black, -40px 40px black, -41px 41px black, -42px 42px black, -43px 43px black, -44px 44px black, -45px 45px black, -46px 46px black, -47px 47px black, -48px 48px black, -49px 49px black, -50px 50px black, -51px 51px black, -52px 52px black, -53px 53px black, -54px 54px black, -55px 55px black, -56px 56px black, -57px 57px black, -58px 58px black, -59px 59px black, -60px 60px black, -61px 61px black, -62px 62px black, -63px 63px black, -64px 64px black, -65px 65px black, -66px 66px black, -67px 67px black, -68px 68px black, -69px 69px black, -70px 70px black, -71px 71px black, -72px 72px black, -73px 73px black, -74px 74px black, -75px 75px black, -76px 76px black, -77px 77px black, -78px 78px black, -79px 79px black, -80px 80px black, -81px 81px black, -82px 82px black, -83px 83px black, -84px 84px black, -85px 85px black;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-black:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-black.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-black.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-dark {
+  text-shadow: 0px 0px #3f3f3f, -1px 1px #3f3f3f, -2px 2px #3f3f3f, -3px 3px #3f3f3f, -4px 4px #3f3f3f, -5px 5px #3f3f3f, -6px 6px #3f3f3f, -7px 7px #3f3f3f, -8px 8px #3f3f3f, -9px 9px #3f3f3f, -10px 10px #3f3f3f, -11px 11px #3f3f3f, -12px 12px #3f3f3f, -13px 13px #3f3f3f, -14px 14px #3f3f3f, -15px 15px #3f3f3f, -16px 16px #3f3f3f, -17px 17px #3f3f3f, -18px 18px #3f3f3f, -19px 19px #3f3f3f, -20px 20px #3f3f3f, -21px 21px #3f3f3f, -22px 22px #3f3f3f, -23px 23px #3f3f3f, -24px 24px #3f3f3f, -25px 25px #3f3f3f, -26px 26px #3f3f3f, -27px 27px #3f3f3f, -28px 28px #3f3f3f, -29px 29px #3f3f3f, -30px 30px #3f3f3f, -31px 31px #3f3f3f, -32px 32px #3f3f3f, -33px 33px #3f3f3f, -34px 34px #3f3f3f, -35px 35px #3f3f3f, -36px 36px #3f3f3f, -37px 37px #3f3f3f, -38px 38px #3f3f3f, -39px 39px #3f3f3f, -40px 40px #3f3f3f, -41px 41px #3f3f3f, -42px 42px #3f3f3f, -43px 43px #3f3f3f, -44px 44px #3f3f3f, -45px 45px #3f3f3f, -46px 46px #3f3f3f, -47px 47px #3f3f3f, -48px 48px #3f3f3f, -49px 49px #3f3f3f, -50px 50px #3f3f3f, -51px 51px #3f3f3f, -52px 52px #3f3f3f, -53px 53px #3f3f3f, -54px 54px #3f3f3f, -55px 55px #3f3f3f, -56px 56px #3f3f3f, -57px 57px #3f3f3f, -58px 58px #3f3f3f, -59px 59px #3f3f3f, -60px 60px #3f3f3f, -61px 61px #3f3f3f, -62px 62px #3f3f3f, -63px 63px #3f3f3f, -64px 64px #3f3f3f, -65px 65px #3f3f3f, -66px 66px #3f3f3f, -67px 67px #3f3f3f, -68px 68px #3f3f3f, -69px 69px #3f3f3f, -70px 70px #3f3f3f, -71px 71px #3f3f3f, -72px 72px #3f3f3f, -73px 73px #3f3f3f, -74px 74px #3f3f3f, -75px 75px #3f3f3f, -76px 76px #3f3f3f, -77px 77px #3f3f3f, -78px 78px #3f3f3f, -79px 79px #3f3f3f, -80px 80px #3f3f3f, -81px 81px #3f3f3f, -82px 82px #3f3f3f, -83px 83px #3f3f3f, -84px 84px #3f3f3f, -85px 85px #3f3f3f;
+}
+div.wpape_gallery_button .apebtn-longshadow-left.apebtn-dark:active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-dark.active, div.wpape_gallery_button .apebtn-longshadow-left.apebtn-dark.is-active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+div.wpape_gallery_button .apebtn-giant {
+  font-size: 28px;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 70px;
+}
+div.wpape_gallery_button .apebtn-jumbo {
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 60px;
+}
+div.wpape_gallery_button .apebtn-large {
+  font-size: 20px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 50px;
+}
+div.wpape_gallery_button .apebtn-normal {
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 40px;
+}
+div.wpape_gallery_button .apebtn-small {
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 30px;
+}
+div.wpape_gallery_button .apebtn-tiny {
+  font-size: 9.6px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 24px;
+}
