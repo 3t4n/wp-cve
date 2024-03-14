@@ -1,0 +1,184 @@
+/* ICONS */
+
+@font-face {
+	font-family: 'cryptowp-icon';
+	src: url('../fonts/cryptowp.woff') format('woff'),
+		 url('../fonts/cryptowp.woff2') format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+
+.cryptowp-coin-increase .cryptowp-coin-percent:before, .cryptowp-coin-decrease .cryptowp-coin-percent:before {
+	display: inline-block;
+	font-family: 'cryptowp-icon';
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	margin-right: 4px;
+	speak: none;
+	text-decoration: inherit;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.cryptowp-coin-increase .cryptowp-coin-percent:before { content: '\e801'; }
+.cryptowp-coin-decrease .cryptowp-coin-percent:before { content: '\e800'; }
+
+/* HELPERS */
+
+.cryptowp-coin-inner:after, .cryptowp-columns:after {
+	clear: both;
+	content: '';
+	display: table;
+}
+
+/* STYLES */
+
+.cryptowp-coin { display: block; }
+
+.cryptowp-coins a.cryptowp-coin {
+	border-bottom: 0;
+	text-decoration: none;
+}
+
+.cryptowp-coin-icon img {
+	-o-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.cryptowp-coin-name, .cryptowp-coin-price { color: #111; }
+
+.cryptowp-grid .cryptowp-coin:hover .cryptowp-coin-icon img {
+	-ms-transform: scale(1.05) rotate(-5deg);
+	-moz-transform: scale(1.05) rotate(-5deg);
+	-webkit-transform: scale(1.05) rotate(-5deg);
+	-o-transform: scale(1.05) rotate(-5deg);
+	transform: scale(1.05) rotate(-5deg);
+}
+
+
+
+/*------------------------*\
+	$GRID
+\*------------------------*/
+
+/* LAYOUT */
+
+.cryptowp-grid .cryptowp-coin-icon {
+	float: left;
+	text-align: center;
+	width: 20%;
+}
+
+.cryptowp-grid .cryptowp-coin-icon + .cryptowp-coin-stats {
+	float: left;
+	padding-left: 15px;
+	width: 80%;
+}
+
+@media all and (min-width: 980px) {
+	.cryptowp-columns { margin-left: -15px; }
+	.cryptowp-columns .cryptowp-coin {
+		float: left;
+		padding-left: 15px;
+	}
+}
+
+@media all and (max-width: 980px) {
+	.cryptowp-columns .cryptowp-coin { width: 100% !important; }
+}
+
+/* COIN */
+
+.cryptowp-grid .cryptowp-coin:not(:last-child) { margin-bottom: 15px; }
+
+.cryptowp-grid .cryptowp-coin-inner {
+	background-color: #fff;
+	box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.1);
+	padding: 25px;
+}
+
+.cryptowp-grid .cryptowp-coin-name {
+	font-size: 18px;
+	line-height: 24px;
+	margin-bottom: 10px !important; /* sorry */
+}
+
+.cryptowp-grid .cryptowp-coin-price {
+	font-size: 31px;
+	font-weight: bold;
+	line-height: 1;
+	margin-bottom: 10px !important; /* sorry */
+}
+
+
+
+/*------------------------*\
+	$LIST
+\*------------------------*/
+
+/* LAYOUT */
+
+.cryptowp-list .cryptowp-coin-icon {
+	float: left;
+	text-align: center;
+	width: 7%;
+}
+
+.cryptowp-list .cryptowp-coin-icon img {
+	max-height: 25px;
+	max-width: 25px;
+}
+
+.cryptowp-list .cryptowp-coin-icon + .cryptowp-coin-stats {
+	float: left;
+	padding-left: 15px;
+	width: 93%;
+}
+
+/* COIN */
+
+.cryptowp-list .cryptowp-coin:not(:last-child) {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+	margin-bottom: 12px;
+	padding-bottom: 10px;
+}
+
+.cryptowp-list .cryptowp-coin-name,
+.cryptowp-list .cryptowp-coin-price,
+.cryptowp-list .cryptowp-coin-meta {
+	display: inline-block;
+	line-height: 1;
+	margin-bottom: 0;
+}
+
+.cryptowp-list .cryptowp-coin-name {
+	font-weight: bold;
+	margin-right: 7px;
+}
+
+.cryptowp-list .cryptowp-coin-meta {
+	float: right;
+	margin-top: 7px;
+}
+
+/* META */
+
+.cryptowp-widget .cryptowp-coins .cryptowp-coin-meta {
+	font-size: 13px;
+	line-height: 1;
+	margin-bottom: 0;
+}
+
+.cryptowp-coins .cryptowp-coin-meta span { margin-right: 7px; }
+
+.cryptowp-coin-symbol { color: #777; }
+
+.cryptowp-coin-increase .cryptowp-coin-percent { color: green; }
+
+.cryptowp-coin-decrease .cryptowp-coin-percent { color: red; }

@@ -1,0 +1,273 @@
+.cryptowp.wrap {
+	margin-bottom: -40px;
+	max-width: 1000px;
+}
+
+
+/*---------------------------*\
+	$ASSETS
+\*---------------------------*/
+
+/* DASHICONS */
+
+[class*="cryptowp-dashicons-"], .cryptowp-tick, .cryptowp-price-increase:before, .cryptowp-price-decrease:before {
+	display: inline-block;
+	font-family: "dashicons";
+	font-style: normal;
+	line-height: 1;
+	position: relative;
+		top: 2px;
+}
+
+.cryptowp-tick:after, .cryptowp-dashicons-arrow-down:after, .cryptowp-price-decrease:before { content: "\f140"; }
+.cryptowp-active .cryptowp-tick:after, .cryptowp-dashicons-arrow-up:after, .cryptowp-price-increase:before { content: "\f142"; }
+.cryptowp-dashicons-plus:after { content: "\f132"; }
+.cryptowp-dashicons-update:after { content: "\f463"; }
+.cryptowp-dashicons-close:after { content: "\f335"; }
+.cryptowp-dashicons-drag:after { content: "\f333"; }
+
+
+
+/*---------------------------*\
+	$DASHBOARD
+\*---------------------------*/
+
+/* HEAD */
+
+.cryptowp-head { margin-bottom: 10px; }
+
+.cryptowp-title { display: inline-block; }
+
+.cryptowp-actions {
+	margin-left: 13px;
+	margin-top: 13px;
+}
+
+.cryptowp-button {
+	background-color: #f7f7f7;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	color: #0073aa;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1;
+	margin-left: 7px;
+	padding: 4px 8px 6px;
+	position: relative;
+		top: -2px;
+}
+
+.cryptowp-button:hover { background-color: #f3eeee; }
+
+.cryptowp-button-icon {
+	padding-right: 23px;
+	top: -3px;
+}
+
+.cryptowp-button-icon .dashicons {
+	font-size: 17px;
+	height: auto;
+	line-height: 1;
+	position: absolute;
+		top: 3px;
+		right: 3px;
+	width: auto;
+}
+
+/* BUTTONS */
+
+.cryptowp-price-increase { color: green; }
+
+.cryptowp-price-decrease { color: red; }
+
+.cryptowp-save .button {
+	height: auto;
+	font-size: 17px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	padding: 9px 18px;
+}
+
+/* PANELS */
+
+.cryptowp-panel {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	display: none;
+	padding: 20px;
+}
+
+.cryptowp-panel h3 { margin-top: 0; }
+
+.cryptowp-panel-list-item {
+	display: block;
+	float: left;
+	line-height: 1;
+	margin-bottom: 16px;
+	margin-right: 10px;
+}
+
+.cryptowp-import-spinner {
+	display: none;
+	margin-top: 5px;
+}
+
+
+
+/*---------------------------*\
+	$COINS
+\*---------------------------*/
+
+.cryptowp-coins { margin-left: -1%; }
+
+.cryptowp-coins * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* ITEM */
+
+@media all and (min-width: 1100px) {
+	.cryptowp-coin {
+		float: left;
+		margin-left: 1%;
+		height: 251px;
+		width: 24%;
+	}
+}
+
+.cryptowp-coin {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	margin-bottom: 1%;
+	padding: 15px;
+	position: relative;
+}
+
+.crypto-coin-field { margin-bottom: 15px; }
+
+.crypto-coin-field label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.cryptowp-coin-hidden { display: none; }
+
+.cryptowp-coin .regular-text { width: 100%; }
+
+.cryptowp-coin-name .regular-text {
+	background-color: #fff;
+	border: 0;
+	box-shadow: none;
+	color: #111;
+	font-weight: bold;
+	width: 85%;
+}
+
+.cryptowp-coin-icon { text-align: center; }
+
+.cryptowp-coin-icon-image {
+	cursor: pointer;
+	height: 75px;
+	width: 75px;
+}
+
+/* FOOTER */
+
+.cryptowp-coin-footer p { margin-bottom: 0; }
+
+/* ACTIONS */
+
+.cryptowp-coin-drag {
+	color: #888;
+	cursor: move;
+	font-size: 27px;
+	position: absolute;
+		top: 15px;
+		right: 15px;
+}
+
+.cryptowp-coin-drag:hover { color: #666; }
+
+.cryptowp-coin:hover .cryptowp-coin-remove { display: block; }
+
+.cryptowp-coin-remove {
+	background-color: #a00;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	display: none;
+	font-size: 16px;
+	line-height: 22px;
+	height: 21px;
+	position: absolute;
+		top: 45px;
+		right: 18px;
+	text-align: center;
+	width: 21px;
+}
+
+.cryptowp-coin-remove:hover { background-color: #dc3232; }
+
+
+
+/*---------------------------*\
+	$UTILITIES
+\*---------------------------*/
+
+.cryptowp-clear:after, .cryptowp-coins:after {
+	content: '';
+	clear: both;
+	display: table;
+}
+
+.cryptowp-action.cryptowp-active { display: inline-block; }
+.cryptowp-panel.cryptowp-active { display: block; }
+
+.cryptowp-spacer { margin-bottom: 10px; }
+
+
+
+/*---------------------------*\
+	$EFFECTS
+\*---------------------------*/
+
+/* SPINNER */
+
+@-webkit-keyframes rotation {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(359deg); }
+}
+
+@-moz-keyframes rotation {
+	from { -moz-transform: rotate(0deg); }
+	to { -moz-transform: rotate(359deg); }
+}
+
+@-ms-keyframes rotation {
+	from { -ms-transform: rotate(0deg); }
+	to { -ms-transform: rotate(359deg); }
+}
+
+@-o-keyframes rotation {
+	from { -o-transform: rotate(0deg); }
+	to { -o-transform: rotate(359deg); }
+}
+
+@keyframes rotation {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(359deg); }
+}
+
+.cryptowp-spinner {
+	display: inline-block;
+	-webkit-animation: rotation 2s infinite linear;
+	-ms-animation: rotation 2s infinite linear;
+	-moz-animation: rotation 2s infinite linear;
+	-o-animation: rotation 2s infinite linear;
+	animation: rotation 2s infinite linear;
+}
