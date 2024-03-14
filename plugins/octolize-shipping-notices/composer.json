@@ -1,0 +1,87 @@
+{
+	"name": "wpdesk/octolize-shipping-notices",
+	"authors": [
+		{
+			"name": "Sebastian Pisula",
+			"email": "sebastian.pisula@octolize.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Octolize\\Shipping\\Notices\\": "src"
+		},
+		"classmap": [
+			"vendor_prefixed"
+		]
+	},
+	"autoload-dev": {
+
+	},
+	"config": {
+		"autoloader-suffix": "OctolizeShippingNotices",
+		"sort-packages": true,
+		"platform": {
+			"php": "7.4"
+		},
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"cweagans/composer-patches": true,
+			"wpdesk/wp-codeception": true,
+			"wpdesk/wp-wpdesk-composer": true,
+			"kylekatarnls/update-helper": true
+		}
+	},
+	"prefer-stable": true,
+	"minimum-stability": "stable",
+	"require": {
+		"php": ">=7.4",
+		"wpdesk/wp-wpdesk-helper-override": "^1.1.0"
+	},
+	"require-dev": {
+		"10up/wp_mock": "*",
+		"octolize/wp-octolize-tracker": "^1.2",
+		"phpunit/phpunit": "<7",
+		"wpdesk/wp-builder": "^2.0.0",
+		"wpdesk/wp-codeception": "^2.7.4",
+		"wpdesk/wp-logs": "^1.7.3",
+		"wpdesk/wp-plugin-flow-free": "^1.0.2",
+		"wpdesk/wp-wpdesk-composer": "^2.18.0",
+		"wpdesk/wp-wpdesk-rating-petition": "^1.3.0",
+		"octolize/wp-shipping-extensions": "^1.2.0"
+	},
+	"extra": {
+		"text-domain": "octolize-shipping-notices",
+		"translations-folder": "lang",
+		"translation-file-headers": {
+			"Project-Id-Version": "Octolize Shipping Notices",
+			"Last-Translator": "Sebastian Pisula <sebastian.pisula@octolize.com>",
+			"X-Poedit-WPHeader": "octolize-shipping-notices.php"
+		},
+		"po-files": {
+			"pl_PL": "pl_PL.po"
+		},
+		"minify-assets" : {
+		},
+		"php-requires": "7.4",
+		"prefix_psr": true
+	},
+	"scripts": {
+		"test": "echo composer is alive",
+		"phpcs": "phpcs",
+		"phpcbf": "phpcbf src",
+		"phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+		"phpunit-unit-coverage": "phpunit --configuration phpunit-unit.xml --coverage-html build-coverage",
+		"phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+		"docs": "apigen generate"
+	},
+	"repositories": {
+		"octolize": {
+			"type": "composer",
+			"url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
+		},
+		"wpdesk": {
+			"type": "composer",
+			"url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
+		}
+	}
+}
