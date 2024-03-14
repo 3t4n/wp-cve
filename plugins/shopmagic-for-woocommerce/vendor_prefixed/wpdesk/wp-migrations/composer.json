@@ -1,0 +1,53 @@
+{
+    "name": "wpdesk\/wp-migrations",
+    "type": "library",
+    "description": "Doctrine Migrations clone suited for WordPress purposes.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bart Jaskulski",
+            "email": "bartek.jaskulski@wpdesk.net"
+        }
+    ],
+    "require": {
+        "php": "^7.1|^8",
+        "ext-json": "*",
+        "psr\/log": "^1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ShopMagicVendor\\WPDesk\\Migrations\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ShopMagicVendor\\WPDesk\\Migrations\\Tests\\": "tests"
+        },
+        "classmap": [
+            "tests\/stubs"
+        ]
+    },
+    "require-dev": {
+        "szepeviktor\/phpstan-wordpress": "^1.1",
+        "wpdesk\/wp-code-sniffer": "^1.2",
+        "phpstan\/phpstan": "^1.10",
+        "phpstan\/extension-installer": "^1.3"
+    },
+    "scripts": {
+        "style:fix": "phpcbf",
+        "test:phpstan": "phpstan --configuration=phpstan.neon.dist --memory-limit=-1 analyze",
+        "test:phpcs": "phpcs",
+        "test:phpunit": ".\/tools\/phpunit --bootstrap tests\/bootstrap.php tests",
+        "test": [
+            "@test:phpcs",
+            "@test:phpstan",
+            "@test:phpunit"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect\/phpcodesniffer-composer-installer": true,
+            "phpstan\/extension-installer": true
+        }
+    }
+}
