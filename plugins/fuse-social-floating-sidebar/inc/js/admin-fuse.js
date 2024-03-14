@@ -1,0 +1,9 @@
+jQuery(document).ready(function($){
+    jQuery(document.body).on("click",".overlay_pro_upgrade",function(){
+        jQuery(".upgrade_take_screen").show();
+    });
+    $(document.body).on("click",".close-time",function(event){
+    	event.preventDefault();
+    	jQuery(".upgrade_take_screen").hide();
+	});
+});
