@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress:5.4.0
+    restart: always
+    volumes:
+      - .:/var/www/html/wp-content/plugins/mantis-ad-network
+      - ./dev/plugins/woocommerce:/var/www/html/wp-content/plugins/woocommerce
+    links:
+      - db
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: username
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_AUTH_KEY: 5d67f417c04b4cf971cd90e06f5faa4641c1a883
+      WORDPRESS_SECURE_AUTH_KEY: b6b5164d4aa776c4f18d745390a0b18b04e31475
+      WORDPRESS_LOGGED_IN_KEY: 0e33ac60dffd0c16a9d8b63042575c5bc408a888
+      WORDPRESS_NONCE_KEY: 57b6a652a21f0254cb367b871111b38e587ef9c3
+      WORDPRESS_AUTH_SALT: a8e538da4fdbce25b64bc6901c37bc85dc5cbb91
+      WORDPRESS_SECURE_AUTH_SALT: c322fe410fdeda91a693099b475aba825d67d707
+      WORDPRESS_LOGGED_IN_SALT: f3d64124c907f208fb4e76787f29ede285bc0dfa
+      WORDPRESS_NONCE_SALT: 1049ce12f1c33caba71f12b0a6c7d1c8817e5c23
+
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - ./dev/mysql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
