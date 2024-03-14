@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+/**
+*
+* -------------------------------------------
+*
+* Template : Active - A Bootstrap Pure CSS3 Tabs
+* Author : thecodrops
+* Author URI : http://thecodrops.com
+*
+* ------------------------------------------- 
+*
+*/
+
+
+/**
+ * Table of Contents
+ *
+ * 1.0 - Tabs Common Styles
+ * 2.0 - Tabs Content Design
+ *   2.1 - Member Design
+ *   2.2 - Gallery Design
+ * 3.0 - Tabs Alignment
+ * 4.0 - Style 1
+ * 5.0 - Style 2
+ * 6.0 - Style 3
+ * 7.0 - Style 4
+ * 8.0 - Style 5
+ * 9.0 - Style 6
+ * 10.0 - Style 7
+ * 11.0 - Style 8
+ * 12.0 - Style 9
+ * 13.0 - Style 10
+ * 14.0 - Style 11
+ * 15.0 - Animations
+ *
+**/
+
+
+/* ------------------------------
+	1.0 - Tabs Common Styles
+--------------------------------- */
+.tabs {position: relative;}
+.tabs input {position: absolute;display: none;}
+.tabs > label {position: relative;z-index: 1;box-sizing: border-box;-moz-box-sizing: border-box;margin: 0 10px 10px 0;cursor: pointer;color: #666;font-weight: 400;font-size: 13px;}
+.tabs > input:checked + label {color: #444;}
+.tabs > label i {margin-right: 5px;}
+.tabs .tab-content {position: relative;display: block;font-size: 13px;}
+.tabs .tab-content ul {padding-left: 15px;list-style-type: circle;display: inline-block;}
+.tabs .tab-content ul:last-child {margin-bottom: 0;}
+.tabs .tab-content h3 {margin-top: 0px;}
+.tabs .tab-content > div {position: absolute;top: 0;left: 0;width: 100%;box-sizing: border-box;opacity: 0;visibility: hidden;-webkit-transition: opacity 0.4s, -webkit-transform 0.5s;transition: opacity 0.4s, -webkit-transform 0.5s;}
+.tabs > .tab-item-1:checked ~ div.tab-content > .tab-item-1, 
+.tabs > .tab-item-2:checked ~ div.tab-content > .tab-item-2, 
+.tabs > .tab-item-3:checked ~ div.tab-content > .tab-item-3, 
+.tabs > .tab-item-4:checked ~ div.tab-content > .tab-item-4, 
+.tabs > .tab-item-5:checked ~ div.tab-content > .tab-item-5, 
+.tabs > .tab-item-6:checked ~ div.tab-content > .tab-item-6, 
+.tabs > .tab-item-7:checked ~ div.tab-content > .tab-item-7, 
+.tabs > .tab-item-8:checked ~ div.tab-content > .tab-item-8, 
+.tabs > .tab-item-9:checked ~ div.tab-content > .tab-item-9, 
+.tabs > .tab-item-10:checked ~ div.tab-content > .tab-item-10 {position: relative;z-index: 1;opacity: 1;visibility: visible;}
+
+@media (max-width: 767px) {
+    .tabs > input + label > span {display: none;}
+    .tabs-style-7 > input + label > i{position: initial;width: 36px;height: 36px;line-height: 36px;font-size: 15px;}
+    .tabs-style-7[class*="tabs-align-"] > input + label {margin: 0 0 5px 0;}
+}
+
+/* -----------------------------------
+    2. 0 - Tabs Content Design
+-------------------------------------- */
+* {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+p {color: inherit;}
+.mt15 {margin-top: 15px;}
+.margin-remove {margin: 0 !important;}
+.spacer1 {height: 10px;}
+.spacer2 {height: 20px;}
+.spacer3 {height: 30px;}
+.spacer4 {height: 40px;}
+iframe, img {width: 100%;border: 0;vertical-align: middle;}
+.button {display: inline-block;padding: 7px 15px;background-color: #fff;-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);color: #666;}
+.button:hover, 
+.button:focus {color: #444;}
+body .tabs .contact ul {list-style-type: none;padding-left: 0;}
+body .tabs .contact ul li + li {padding-top: 6px;margin-top: 6px;border-top: 1px solid rgba(0, 0, 0, 0.03);}
+
+/* --------------------------
+    2.1 - Member Design
+---------------------------- */
+.tabs .member-photo {position: relative;overflow: hidden;margin-bottom: 25px;}
+.tabs .member-photo:after {position: absolute;content: '';height: 100%;width: 100%;background: rgba(0,0,0,0.3);top: 0;opacity: 0;-webkit-transition: opacity 0.3s ease;transition: opacity 0.3s ease;}
+.tabs .member-icons {position: absolute;top: 0;right: -50px;-webkit-transition: right 0.5s ease;transition: right 0.5s ease;z-index: 111;}
+.tabs .member-icons a {display: block;width: 40px;height: 40px;line-height: 40px;background: #000;text-align: center;color: #fff;}
+.tabs .member .member-title {font-size: 13px;margin-bottom: 20px;}
+.tabs .progress {position: relative;height: 32px;}
+.tabs .progress-bar {line-height: 32px;text-align: right;padding-right: 15px;}
+.tabs span.progress-name {position: absolute;color: #fff;top: 50%;transform: translateY(-50%);left: 15px;}
+.tabs .member-photo:hover .member-icons {right: 0px;}
+.tabs .member-photo:hover:after {opacity: 1;}
+
+/* --------------------------
+    2.2 - Gallery Design
+---------------------------- */
+.tabs .gallery [class*="col-"]{margin-bottom: 30px;}
+.tabs .gallery-photo {position: relative;overflow: hidden;}
+.tabs .gallery-caption {position: absolute;bottom: -50px;width: 100%;text-align: center;background: rgba(0,0,0,0.7);color: #fff;padding: 5px 10px;letter-spacing: 0.5px;-webkit-transition: bottom 0.5s ease;transition: bottom 0.5s ease;}
+.tabs .gallery-photo:hover .gallery-caption {bottom: 0;}
+
+/* ------------------------
+   3.0 - Tabs Alignment
+--------------------------- */
+.tabs-align-left {text-align: left;}
+.tabs-align-center {text-align: center;}
+.tabs-align-right {text-align: right;}
+[class*="tabs-align-"] > .tab-content {text-align: left;}
+.tabs-style-5[class*="tabs-align-"] > input + label {float: none;margin-left: -5px;}
+
+/* ----------------------
+   4.0 - Style 1
+------------------------ */
+.tabs-style-1 > input + label {padding: 8px 15px;-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);margin: 0 10px 15px 0;}
+.tabs-style-1 > input:checked + label {background: #444;color: #fff;}
+.tabs-style-1 > .tab-content {padding: 30px 35px;-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);}
+
+/* ----------------------
+   5.0 - Style 2
+------------------------ */
+.tabs-style-2 > input + label {padding: 6px 15px;background-color: #f5f5f5;position: relative;margin-right: 25px;}
+.tabs-style-2 > input:checked + label {background-color: #000;color: #fff;}
+.tabs-style-2 > input + label:after {position: absolute;content: '';width: 10px;height: 100%;background-color: #f5f5f5;top: 0;right: -6px;transform: skew(-12deg);-webkit-box-shadow: 7px 0px 0px rgba(42, 42, 42, 0.07);box-shadow: 7px 0px 0px rgba(42, 42, 42, 0.07);}
+.tabs-style-2 > input:checked + label:after {background-color: #000;}
+.tabs-style-2 > .tab-content {margin-top: 15px;padding: 20px 25px;background-color: rgba(42,42,42,0.03);border: 3px solid #fff;-webkit-box-shadow: 3px 3px 0 0 rgba(42,42,42,0.03);box-shadow: 3px 3px 0 0 rgba(42,42,42,0.03);}
+.tabs-style-2 > .tab-content:after {content: '';position: absolute;width: 106px;height: 5px;background: rgb(255, 255, 255);top: 35px;transform: rotate(45deg);right: -25px;}
+
+/* ----------------------
+   6.0 - Style 3
+------------------------ */
+.tabs-style-3 > input + label {padding: 5px 15px;background-color: rgba(42,42,42,0.03);border: 4px solid #fff;-webkit-box-shadow: 0 0 0 4px rgba(42,42,42,0.03);box-shadow: 0 0 0 4px rgba(42,42,42,0.03);margin-right: 15px;}
+.tabs-style-3 > input:checked + label {background: #444;-webkit-box-shadow: 0 0 0 4px #444;box-shadow: 0 0 0 4px #444;color: #fff;}
+.tabs-style-3 > .tab-content {margin-top: 20px;padding: 20px 25px;-webkit-box-shadow: 0 0 0 4px rgba(42,42,42,0.03);box-shadow: 0 0 0 4px rgba(42,42,42,0.03);}
+
+/* ----------------------
+   7.0 - Style 4
+------------------------ */
+.tabs.tabs-style-4 {padding: 15px;border-radius: 5px;background: #f9f9f9;}
+.tabs-style-4 > input + label {padding: 8px 15px;background-color: rgba(42, 42, 42, 0.05);color: #666;border-radius: 5px;}
+.tabs-style-4 > input:checked + label {background: #444;color: #fff;position: relative;}
+.tabs-style-4 > input:checked + label:before {position: absolute;content: '';left: 12px;bottom: -14px;border: 7px solid transparent;border-top-color: #444;}
+.tabs-style-4 > .tab-content {padding: 20px 35px;border-top: 3px solid rgba(68, 68, 68, 0.06);margin-top: 10px;}
+.tabs-style-4 > .tab-content:after {content: '';position: absolute;width: 12px;height: 12px;border: 3px solid #ddd;border-radius: 50%;bottom: 0;transform: rotate(45deg);background: #444;right: 0;box-shadow: 0 0 62px 100px rgb(255, 255, 255);}
+
+/* ----------------------
+   8.0 - Style 5
+------------------------ */
+.tabs-style-5 > input + label {padding: 15px 25px;background-color: rgba(42, 42, 42, 0.05);float: left;margin: 0;border-top: 1px solid #ddd;}
+.tabs-style-5 > input:checked + label {background: #232323;color: #fff;border-top-color: #232323;}
+.tabs-style-5 > .tab-content {clear: both;padding: 30px 35px;background-color: #232323;color: #fff;}
+.tabs-style-5 > .tab-content h1, 
+.tabs-style-5 > .tab-content h2, 
+.tabs-style-5 > .tab-content h4, 
+.tabs-style-5 > .tab-content h3 {color: #fafafa;}
+.tabs-style-5 hr {border-top-color: rgba(238, 238, 238, 0.25);}
+
+/* ----------------------
+   9.0 - Style 6
+------------------------ */
+.tabs-style-6 > input + label {padding: 3px 12px;background-color: rgba(42,42,42,0.03);border: 2px solid #fff;-webkit-box-shadow: 0 0 0 2px rgba(42,42,42,0.03);box-shadow: 0 0 0 2px rgba(42,42,42,0.03);margin-right: 15px;border-radius: 20px;}
+.tabs-style-6 > input:checked + label {background: #444;-webkit-box-shadow: 0 0 0 2px #444;box-shadow: 0 0 0 2px #444;color: #fff;}
+.tabs-style-6 > .tab-content {margin-top: 20px;padding: 20px 25px;background-color: rgba(42,42,42,0.03);border: 2px solid #fff;border-radius: 20px;-webkit-box-shadow: 0 0 0 2px rgba(42,42,42,0.03);box-shadow: 0 0 0 2px rgba(42,42,42,0.03);}
+
+/* ----------------------
+   10.0 - Style 7
+------------------------ */
+.tabs-style-7 {background: #fff;padding: 20px;}
+.tabs-style-7 > input + label > span {padding: 8px 16px;border: 2px solid #eee;margin-right: 12px;color: #666;}
+.tabs-style-7 > input:checked + label > span {border: 2px solid #232323;color: #000;}
+.tabs-style-7 > label > i {position: absolute;top: -12px;left: -12px;background: #eee;border-radius: 50%;font-size: 10px;color: #666;width: 26px;height: 26px;line-height: 23px;text-align: center;border: 2px solid #fff;}
+.tabs-style-7 > input:checked + label > i {color: #fff;background: #232323;}
+.tabs-style-7 > .tab-content {margin-top: 20px;padding: 20px 25px;-webkit-box-shadow: 0 20px 50px 0 rgba(35, 35, 35, 0.05);box-shadow: 0 20px 50px 0 rgba(35, 35, 35, 0.05);}
+
+/* ----------------------
+   11.0 - Style 8
+------------------------ */
+.tabs-style-8 {background-color: #fff;padding: 15px;}
+.tabs-style-8 > input + label {padding: 0 8px 8px;color: #666;margin-bottom: -1px;font-size: 14px;}
+.tabs-style-8 > input:checked + label {position: relative;border-bottom: 1px solid #232323;}
+.tabs-style-8 > input:checked + label:before {position: absolute;content: '';left: 50%;bottom: -14px;border: 7px solid transparent;border-top-color: #232323;transform: translateX(-50%);}
+.tabs-style-8 > input:checked + label:after {position: absolute;content: '';left: 50%;bottom: -11px;border: 6px solid transparent;border-top-color: #fff;transform: translateX(-50%);}
+.tabs-style-8 > label i {margin-right: 0;display: block;text-align: center;margin-bottom: 7px;font-size: 19px;}
+.tabs-style-8 > .tab-content {padding: 28px 10px;border-top: 1px solid rgba(68, 68, 68, 0.06);}
+
+/* ----------------------
+   12.0 - Style 9
+------------------------ */
+.tabs-style-9 {background-color: #fff;padding: 15px;}
+.tabs-style-9 > input + label {position: relative;padding: 10px 12px;color: #666;margin-bottom: -1px;font-size: 14px;}
+.tabs-style-9 > input:checked + label:before {position: absolute;content: '';left: 0;top: 0;height: 12px;width: 12px;border-left: 1px solid #000;border-top: 1px solid #000;}
+.tabs-style-9 > input:checked + label:after {position: absolute;content: '';right: 0;bottom: 0;height: 12px;width: 12px;border-right: 1px solid #000;border-bottom: 1px solid #000;}
+.tabs-style-9 .tab-content {margin-top: 20px;position: relative;padding: 25px;}
+.tabs-style-9 .tab-content:before {position: absolute;content: '';left: 0;top: 0;height: 12px;width: 12px;border-left: 1px solid #000;border-top: 1px solid #000;}
+.tabs-style-9 .tab-content:after {position: absolute;content: '';right: 0;bottom: 0;height: 12px;width: 12px;border-right: 1px solid #000;border-bottom: 1px solid #000;}
+
+/* ----------------------
+   13.0 - Style 10
+------------------------ */
+.tabs-style-10 > input + label {padding: 7px 12px;background-color: rgba(42, 42, 42, 0.05);}
+.tabs-style-10 > input:checked + label {background: #000;color: #fff;border-radius: 5px 0 5px 0;}
+.tabs-style-10 > input:checked + label:before {position: absolute;content: '';left: -7px;top: -7px;height: 12px;width: 12px;border-left: 2px solid #000;border-top: 2px solid #000;}
+.tabs-style-10 > input:checked + label:after {position: absolute;content: '';right: -7px;bottom: -7px;height: 12px;width: 12px;border-right: 2px solid #000;border-bottom: 2px solid #000;}
+.tabs-style-10 > .tab-content {padding: 40px;margin-top: 10px;background-color: rgba(42,42,42,0.015);}
+.tabs-style-10 .tab-content:before {position: absolute;content: '';left: 5px;top: 5px;height: 12px;width: 12px;border-left: 2px solid #000;border-top: 2px solid #000;}
+.tabs-style-10 .tab-content:after {position: absolute;content: '';right: 5px;bottom: 5px;height: 12px;width: 12px;border-right: 2px solid #000;border-bottom: 2px solid #000;}
+
+/* ----------------------
+   14.0 - Style 11
+------------------------ */
+.tabs-style-11 > input + label {padding: 8px 15px;background-color: rgba(42, 42, 42, 0.03);margin: 0 10px 15px 0;}
+.tabs-style-11 > input:checked + label {background: #444;color: #fff;}
+.tabs-style-11 > .tab-content {padding: 30px 35px;background-color: rgba(42,42,42,0.03);}
+.tabs-style-11 > .tab-content:after {content: '';position: absolute;height: 100%;width: 10px;background: rgb(255, 255, 255);bottom: -77px;transform: rotate(45deg);right: 0;}
+
+/* ----------------------
+   15.0 - Animations
+------------------------ */
+.fade {opacity: 1;}
+/*Fade In*/
+[class*="fade-in-"] .tab-content {overflow: hidden;}
+
+/*Fade In Left*/
+.fade-in-left .tab-content > div {-webkit-transform: translateX(-100px);transform: translateX(-100px);}
+
+/*Fade In Right*/
+.fade-in-right .tab-content > div {-webkit-transform: translateX(100px);transform: translateX(100px);}
+
+/*Fade In Top*/
+.fade-in-top .tab-content > div {-webkit-transform: translateY(-100px);transform: translateY(-100px);}
+
+/*Fade In Bottom*/
+.fade-in-bottom .tab-content > div {-webkit-transform: translateY(100px);transform: translateY(100px);}
+
+/*Fade In Global*/
+[class*="fade-in-"] > .tab-item-1:checked ~ div.tab-content > .tab-item-1, [class*="fade-in-"] > .tab-item-2:checked ~ div.tab-content > .tab-item-2, [class*="fade-in-"] > .tab-item-3:checked ~ div.tab-content > .tab-item-3, [class*="fade-in-"] > .tab-item-4:checked ~ div.tab-content > .tab-item-4, [class*="fade-in-"] > .tab-item-5:checked ~ div.tab-content > .tab-item-5, [class*="fade-in-"] > .tab-item-6:checked ~ div.tab-content > .tab-item-6, [class*="fade-in-"] > .tab-item-7:checked ~ div.tab-content > .tab-item-7, [class*="fade-in-"] > .tab-item-8:checked ~ div.tab-content > .tab-item-8, [class*="fade-in-"] > .tab-item-9:checked ~ div.tab-content > .tab-item-9, [class*="fade-in-"] > .tab-item-10:checked ~ div.tab-content > .tab-item-10 {-webkit-transform: translateX(0px);transform: translateX(0px);}
+
+/*Scale*/
+.scale .tab-content > div {-webkit-transform: scale(0.7);transform: scale(0.7);}
+
+/*Scale Horizontal*/
+.scale-horizontal .tab-content > div {-webkit-transform: scale(0, 1);transform: scale(0, 1);}
+
+/*Scale vertical*/
+.scale-vertical .tab-content > div {-webkit-transform: scale(1,0);transform: scale(1, 0);}
+
+/*Scale Global*/
+[class*="scale"] > .tab-item-1:checked ~ div.tab-content > .tab-item-1, [class*="scale"] > .tab-item-2:checked ~ div.tab-content > .tab-item-2, [class*="scale"] > .tab-item-3:checked ~ div.tab-content > .tab-item-3, [class*="scale"] > .tab-item-4:checked ~ div.tab-content > .tab-item-4, [class*="scale"] > .tab-item-5:checked ~ div.tab-content > .tab-item-5, [class*="scale"] > .tab-item-6:checked ~ div.tab-content > .tab-item-6, [class*="scale"] > .tab-item-7:checked ~ div.tab-content > .tab-item-7, [class*="scale"] > .tab-item-8:checked ~ div.tab-content > .tab-item-8, [class*="scale"] > .tab-item-9:checked ~ div.tab-content > .tab-item-9, [class*="scale"] > .tab-item-10:checked ~ div.tab-content > .tab-item-10 {-webkit-transform: scale(1);transform: scale(1);}
+
+/*Rotate*/
+[class*="rotate"] .tab-content {overflow: hidden;}
+.rotate-top .tab-content > div {-webkit-transform-origin: 0% 0%;transform-origin: 0% 0%;-webkit-transform: rotate(-45deg);transform: rotate(-45deg);}
+
+.rotate-bottom .tab-content > div {-webkit-transform-origin: 0% 0%;transform-origin: 0% 0%;-webkit-transform: rotate(45deg);transform: rotate(45deg);}
+
+/*Rotate Global*/
+[class*="rotate"] > .tab-item-1:checked ~ div.tab-content > .tab-item-1, [class*="rotate"] > .tab-item-2:checked ~ div.tab-content > .tab-item-2, [class*="rotate"] > .tab-item-3:checked ~ div.tab-content > .tab-item-3, [class*="rotate"] > .tab-item-4:checked ~ div.tab-content > .tab-item-4, [class*="rotate"] > .tab-item-5:checked ~ div.tab-content > .tab-item-5, [class*="rotate"] > .tab-item-6:checked ~ div.tab-content > .tab-item-6, [class*="rotate"] > .tab-item-7:checked ~ div.tab-content > .tab-item-7, [class*="rotate"] > .tab-item-8:checked ~ div.tab-content > .tab-item-8, [class*="rotate"] > .tab-item-9:checked ~ div.tab-content > .tab-item-9, [class*="rotate"] > .tab-item-10:checked ~ div.tab-content > .tab-item-10 {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
