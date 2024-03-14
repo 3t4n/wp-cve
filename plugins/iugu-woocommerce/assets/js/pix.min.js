@@ -1,0 +1,1 @@
+!function(t){"use strict";t(function(){new ClipboardJS("#iugu_pix_qrcode_text_button");t("#iugu_pix_qrcode_text_button").on("click",function(t){new ClipboardJS("#iugu_pix_qrcode_text_button");var e=document.getElementById("snackbar");e.className="show",setTimeout(function(){e.className=e.className.replace("show","")},3e3)})})}(jQuery);
