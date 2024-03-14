@@ -1,0 +1,3 @@
+(function ($) {
+    $('#woocommerce-product-data > h2').after().append('<a class="glideffxf_related" target="_blank" href="'+ffxf_settings_locale.ffxf_link_site+'/wp-admin/admin.php?page=wc-settings&tab=products&section=glideffxf_related" data-tooltip-top data-tooltip="' + ffxf_settings_locale.ffxf_related_tooltip + '">' + ffxf_settings_locale.ffxf_related + '</a>' + '<a class="glideffxf_upsells" target="_blank" href="'+ffxf_settings_locale.ffxf_link_site+'/wp-admin/admin.php?page=wc-settings&tab=products&section=glideffxf_upsells" data-tooltip-top data-tooltip="' + ffxf_settings_locale.ffxf_upsale_tooltip + '">' + ffxf_settings_locale.ffxf_upsale + '</a>');
+})(jQuery);

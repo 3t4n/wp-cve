@@ -1,0 +1,207 @@
+/* --------------------------------- */
+    /* TOOLTIP CSS */
+    /* --------------------------------- */
+    *[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    }
+
+    *[data-tooltip-mask] {
+    z-index: 999999;
+    -webkit-box-shadow: inset 0 0 0 500px rgba(190, 220, 170, 0), 0 0 0 5000px rgba(190, 220, 170, 0);
+            box-shadow: inset 0 0 0 500px rgba(190, 220, 170, 0), 0 0 0 5000px rgba(190, 220, 170, 0);
+    -webkit-transition: all 500ms 100ms;
+    transition: all 500ms 100ms;
+    cursor: help;
+    }
+
+    *[data-tooltip-mask]:hover {
+        -webkit-box-shadow: inset 0 0 0 500px rgba(190, 220, 170, 0.70), 0 0 0 5000px rgba(190, 220, 170, 0.70);
+                box-shadow: inset 0 0 0 500px rgba(190, 220, 170, 0.70), 0 0 0 5000px rgba(190, 220, 170, 0.70);
+    }
+
+    *[data-tooltip]:hover:before,
+    *[data-tooltip]:hover:after {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    *[data-tooltip]:before {
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: all 300ms 000ms cubic-bezier(0.25, 0, 0.15, 1.50);
+        transition: all 300ms 000ms cubic-bezier(0.25, 0, 0.15, 1.50);
+    }
+
+    *[data-tooltip]:hover:before {
+        -webkit-transition: all 300ms 200ms cubic-bezier(0.25, 0, 0.15, 1.50);
+        transition: all 300ms 200ms cubic-bezier(0.25, 0, 0.15, 1.50);
+    }
+
+    *[data-tooltip]:after {
+    visibility: hidden;
+    opacity: 0;
+    content: attr(data-tooltip);
+    line-height: 14px;
+    position: absolute;
+    z-index: 99;
+    padding: 5px 10px;
+    background: #333;
+    color: #fff;
+    font-size: 11px;
+    border-radius: 3px;
+    width: 250%;
+    max-width: 290px;
+    min-width: 140px;
+    -webkit-transition: all 300ms 100ms cubic-bezier(0.25, 0, 0.15, 1.50);
+    transition: all 300ms 100ms cubic-bezier(0.25, 0, 0.15, 1.50);
+    }
+
+    /* BOTTOM TOOLTIP */
+
+    *[data-tooltip]:before,
+    *[data-tooltip-bottom]:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 12.5px 15px 12.5px;
+        border-color: transparent transparent #333 transparent;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: -25px;
+    }
+
+    *[data-tooltip]:hover:before,
+    *[data-tooltip-bottom]:hover:before {
+        bottom: -17px;
+        left: -3px;
+        z-index: 100;
+    }
+
+    *[data-tooltip]:after,
+    *[data-tooltip-bottom]:after {
+        -webkit-transform: translate(-50%, 100%) scale(.8);
+                transform: translate(-50%, 100%) scale(.8);
+        left: 50%;
+        bottom: -14px;
+    }
+
+    *[data-tooltip]:hover:after,
+    *[data-tooltip-bottom]:hover:after {
+        -webkit-transform: translate(-50%, 100%) scale(1);
+                transform: translate(-50%, 100%) scale(1);
+    }
+
+    /* TOP TOOLTIP */
+
+    *[data-tooltip-top]:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 15px 12.5px 0 12.5px;
+        border-color: #333 transparent transparent transparent;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: inherit;
+        top: -25px;
+    }
+
+    *[data-tooltip-top]:hover:before {
+        bottom: inherit;
+        top: -15px;
+    }
+
+    *[data-tooltip-top]:after {
+        -webkit-transform: translate(-50%, -100%) scale(.8);
+                transform: translate(-50%, -100%) scale(.8);
+        left: 50%;
+        top: -10px;
+        bottom: inherit;
+    }
+
+    *[data-tooltip-top]:hover:after {
+        -webkit-transform: translate(-50%, -100%) scale(1);
+                transform: translate(-50%, -100%) scale(1);
+    }
+
+    /* LEFT TOOLTIP */
+
+    *[data-tooltip-left]:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 12.5px 0 12.5px 15px;
+        border-color: transparent transparent transparent #333;
+        position: absolute;
+        margin: auto;
+        bottom: 0;
+        top: 0;
+        right: inherit;
+        left: -25px;
+    }
+
+    *[data-tooltip-left]:hover:before {
+        bottom: 0;
+        top: 0;
+        right: inherit;
+        left: -15px;
+    }
+
+    *[data-tooltip-left]:after {
+        -webkit-transform: translate(-100%, -50%) scale(.8);
+                transform: translate(-100%, -50%) scale(.8);
+        left: -10px;
+        top: 50%;
+        bottom: inherit;
+    }
+
+    *[data-tooltip-left]:hover:after {
+        -webkit-transform: translate(-100%, -50%) scale(1);
+                transform: translate(-100%, -50%) scale(1);
+    }
+
+    /* RIGHT TOOLTIP */
+
+    *[data-tooltip-right]:before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 12.5px 15px 12.5px 0;
+        border-color: transparent #333 transparent transparent;
+        position: absolute;
+        margin: auto;
+        bottom: 0;
+        top: 0;
+        left: inherit;
+        right: -25px;
+    }
+
+    *[data-tooltip-right]:hover:before {
+        bottom: 0;
+        top: 0;
+        left: inherit;
+        right: -15px;
+    }
+
+    *[data-tooltip-right]:after {
+        -webkit-transform: translate(100%, -50%) scale(.8);
+                transform: translate(100%, -50%) scale(.8);
+        right: -10px;
+        top: 50%;
+        left: inherit;
+        bottom: inherit;
+    }
+
+    *[data-tooltip-right]:hover:after {
+        -webkit-transform: translate(100%, -50%) scale(1);
+                transform: translate(100%, -50%) scale(1);
+    }
