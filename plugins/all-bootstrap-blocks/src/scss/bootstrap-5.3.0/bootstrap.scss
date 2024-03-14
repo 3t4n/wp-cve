@@ -1,0 +1,170 @@
+$exclude-utilities: null !default;
+$exclude-root: null !default;
+$exclude-reboot: null !default;
+$exclude-type: null !default;
+$exclude-images: null !default;
+$exclude-containers: null !default;
+$exclude-grid: null !default;
+$exclude-tables: null !default;
+$exclude-forms: null !default;
+$exclude-buttons: null !default;
+$exclude-transitions: null !default;
+$exclude-dropdown: null !default;
+$exclude-button-group: null !default;
+$exclude-nav: null !default;
+$exclude-navbar: null !default;
+$exclude-card: null !default;
+$exclude-accordion: null !default;
+$exclude-breadcrumb: null !default;
+$exclude-pagination: null !default;
+$exclude-badge: null !default;
+$exclude-alert: null !default;
+$exclude-progress: null !default;
+$exclude-list-group: null !default;
+$exclude-close: null !default;
+$exclude-toasts: null !default;
+$exclude-modal: null !default;
+$exclude-tooltip: null !default;
+$exclude-popover: null !default;
+$exclude-carousel: null !default;
+$exclude-spinners: null !default;
+$exclude-offcanvas: null !default;
+$exclude-placeholders: null !default;
+$exclude-helpers: null !default;
+
+// scss-docs-start import-stack
+// Configuration
+@import "functions";
+@import "variables";
+@import "variables-dark";
+@import "variables-override";
+@import "variables-override";
+@import "maps";
+@import "mixins";
+@import "utilities";
+
+@if $exclude-utilities {
+  $utilities: map-get-multiple(
+    $utilities,
+    ()
+  );
+}
+
+@import "mixins/banner";
+@include bsBanner("");
+
+// Layout & components
+@if $exclude-root != 1 {
+  @import "root";
+}
+@if $exclude-reboot != 1 {
+  @import "reboot";
+}
+@if $exclude-type != 1 {
+  @import "type";
+}
+@if $exclude-images != 1 {
+  @import "images";
+}
+@if $exclude-containers != 1 {
+  @import "containers";
+}
+@if $exclude-grid != 1 {
+  @import "grid";
+}
+@if $exclude-tables != 1 {
+  @import "tables";
+}
+@if $exclude-forms != 1 {
+  @import "forms";
+}
+@if $exclude-buttons != 1 {
+  @import "buttons";
+}
+@if $exclude-transitions != 1 {
+  @import "transitions";
+}
+@if $exclude-dropdown != 1 {
+  @import "dropdown";
+}
+@if $exclude-button-group != 1 {
+  @import "button-group";
+}
+@if $exclude-nav != 1 {
+  @import "nav";
+}
+@if $exclude-navbar != 1 {
+  @import "navbar";
+}
+@if $exclude-card != 1 {
+  @import "card";
+}
+@if $exclude-accordion != 1 {
+  @import "accordion";
+}
+@if $exclude-breadcrumb != 1 {
+  @import "breadcrumb";
+}
+@if $exclude-pagination != 1 {
+  @import "pagination";
+}
+@if $exclude-badge != 1 {
+  @import "badge";
+}
+@if $exclude-alert != 1 {
+  @import "alert";
+}
+@if $exclude-progress != 1 {
+  @import "progress";
+}
+@if $exclude-list-group != 1 {
+  @import "list-group";
+}
+@if $exclude-close != 1 {
+  @import "close";
+}
+@if $exclude-toasts != 1 {
+  @import "toasts";
+}
+@if $exclude-modal != 1 {
+  @import "modal";
+}
+@if $exclude-tooltip != 1 {
+  @import "tooltip";
+}
+@if $exclude-popover != 1 {
+  @import "popover";
+}
+@if $exclude-carousel != 1 {
+  @import "carousel";
+}
+@if $exclude-spinners != 1 {
+  @import "spinners";
+}
+@if $exclude-offcanvas != 1 {
+  @import "offcanvas";
+}
+@if $exclude-placeholders != 1 {
+  @import "placeholders";
+}
+@import "font";
+@import "wp-color";
+
+@if $enable-grid-classes {
+  .areoi-gallery .wp-block-gallery {
+    @include make-row();
+
+    > * {
+      @include make-col-ready();
+    }
+  }
+}
+
+// Helpers
+@if $exclude-helpers != 1 {
+  @import "helpers";
+}
+
+// Utilities
+@import "utilities/api";
+// scss-docs-end import-stack

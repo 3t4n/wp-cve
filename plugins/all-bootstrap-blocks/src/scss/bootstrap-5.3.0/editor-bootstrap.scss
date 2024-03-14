@@ -1,0 +1,182 @@
+// scss-docs-start import-stack
+// Configuration
+@import "functions";
+@import "variables";
+@import "variables-dark";
+@import "variables-override";
+@import "variables-override";
+@import "maps";
+@import "mixins";
+@import "utilities";
+
+
+// Layout & components
+@import "root";
+
+.block-editor-block-list__layout.is-root-container,
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container {
+    @import "root";
+    @import "reboot";
+    @import "type";
+    @import "images";
+    @import "containers";
+    @import "grid";
+    @import "tables";
+    @import "forms";
+    @import "buttons";
+    @import "transitions";
+    @import "dropdown";
+    @import "button-group";
+    @import "nav";
+    @import "navbar";
+    @import "card";
+    @import "accordion";
+    @import "breadcrumb";
+    @import "pagination";
+    @import "badge";
+    @import "alert";
+    @import "progress";
+    @import "list-group";
+    @import "close";
+    @import "toasts";
+    @import "modal";
+    @import "tooltip";
+    @import "popover";
+    @import "carousel";
+    @import "spinners";
+    @import "offcanvas";
+    @import "placeholders";
+    @import "font";
+    @import "wp-color";
+
+    // Helpers
+    @import "helpers";
+
+    // Utilities
+    @import "utilities/api";
+    // scss-docs-end import-stack
+    
+    .grid {
+        display: block;
+
+        & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            display: grid;
+            grid-template-rows: repeat(var(--bs-rows, 1), 1fr);
+            grid-template-columns: repeat(var(--bs-columns, 12), 1fr);
+            gap: var(--bs-gap, 1.5rem);
+            row-gap: var(--bs-row-gap, 1.5rem);
+
+            & > .col {
+                grid-row: var(--bs-grid-row, 1);
+            }
+        }
+    }
+    
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        
+        @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+
+            @if $grid-row-columns > 0 {
+                @for $i from 1 through $grid-row-columns {
+                    .row-cols#{$infix}-#{$i} {
+                        & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                            @include row-cols($i);
+                        }
+                    }
+                }
+            }
+        }
+
+        /* Vertical Alignment of rows */
+        .row.align-items#{$infix}-start:not(.areoi-lightspeed-block .row, .aaio-block .row),
+        .col.align-items#{$infix}-start:not(.areoi-lightspeed-block .col, .aaio-block .col) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                align-items: flex-start !important;
+            }
+        }
+        .row.align-items#{$infix}-center:not(.areoi-lightspeed-block .row, .aaio-block .row),
+        .col.align-items#{$infix}-center:not(.areoi-lightspeed-block .col, .aaio-block .col) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                align-items: center !important;
+            }
+        }
+        .row.align-items#{$infix}-end:not(.areoi-lightspeed-block .row, .aaio-block .row),
+        .col.align-items#{$infix}-end:not(.areoi-lightspeed-block .col, .aaio-block .col) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                align-items: flex-end !important;
+            }
+        }
+
+        /* Horizontal Alignment of rows */
+        .row.justify-content#{$infix}-start:not( .background .row, .areoi-lightspeed-block .row, .aaio-block .row ) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                justify-content: flex-start !important;
+            }
+        }
+        .row.justify-content#{$infix}-center:not( .background .row, .areoi-lightspeed-block .row, .aaio-block .row ) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                justify-content: center !important;
+            }
+        }
+        .row.justify-content#{$infix}-end:not( .background .row, .areoi-lightspeed-block .row, .aaio-block .row ) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                justify-content: flex-end !important;
+            }
+        }
+        .row.justify-content#{$infix}-around:not(.areoi-lightspeed-block .row, .aaio-block .row) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                justify-content: space-around !important;
+            }
+        }
+        .row.justify-content#{$infix}-between:not(.areoi-lightspeed-block .row, .aaio-block .row) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                justify-content: space-between !important;
+            }
+        }
+        .row.justify-content#{$infix}-evenly:not(.areoi-lightspeed-block .row, .aaio-block .row) {
+            display: block !important;
+
+            & > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                justify-content: space-evenly !important;
+            }
+        }
+    }
+
+    .btn-group-sm > .block-editor-inner-blocks > .block-editor-block-list__layout .btn { @extend .btn-sm; }
+    .btn-group-lg > .block-editor-inner-blocks > .block-editor-block-list__layout .btn { @extend .btn-lg; }
+
+    margin: 0; // 1
+    font-family: $font-family-base, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    @include font-size($font-size-base);
+    font-weight: $font-weight-base;
+    line-height: $line-height-base;
+    color: $body-color;
+    text-align: $body-text-align;
+    background-color: $body-bg; // 2
+    -webkit-text-size-adjust: 100%; // 3
+    -webkit-tap-highlight-color: rgba($black, 0); // 4
+
+    .btn-group-sm > .block-editor-inner-blocks > .block-editor-block-list__layout > .btn {
+        @extend .btn-sm;
+    }
+    .btn-group-lg > .block-editor-inner-blocks > .block-editor-block-list__layout > .btn {
+        @extend .btn-lg;
+    }
+}
