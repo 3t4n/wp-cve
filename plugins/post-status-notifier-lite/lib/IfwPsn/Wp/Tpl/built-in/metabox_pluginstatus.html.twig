@@ -1,0 +1,14 @@
+<div>
+    <div id="ifw-plugin-test-icon">
+        {% if status == 'true' %}<img src="{{ img_path }}plugin_status_good.png" />{% elseif status == 'false' %}<img src="{{ img_path }}plugin_status_bad.png" />{% else %}<img src="{{ img_path }}plugin_status_unknown.png" />{% endif %}
+    </div>
+    <div id="ifw-plugin-test-result">
+        {% if status == 'null' %}<p>{{ text.__('Not tested yet', 'ifw') }}</p>{% else %}
+        <p>{{ text.__('Last test performed', 'ifw') }}:<br><b>{{ timestamp }}</b></p>
+        <p>{% if status == 'true' %}<div class="ifw-plugin-test-result-good">{{ text.__('Everything is in order', 'ifw') }}</div>{% else %}<div class="ifw-plugin-test-result-bad">{{ text.__('A problem was recognized', 'ifw') }}</div>
+                <br><span class="dashicons dashicons-info"></span> {{ text.__('If the issues can not be solved by performing the self-tests, please disable and enable the plugin once.', 'ifw') }}{% endif %}</p>
+        {% endif %}
+        <a href="{% autoescape false %}{{ iframe_src }}{% endautoescape %}&TB_iframe=true&width=600&height=600" class="thickbox button ifw-perform-plugin-tests"><span class="dashicons dashicons-admin-tools"></span> {{ text.__('Perform self-tests', 'ifw') }}</a>
+    </div>
+    <div style="clear: both;"></div>
+</div>
