@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){e(document).on("ready widget-updated widget-added",function(){e(":input.color-picker-field, :input.color-picker").filter(":not(.enhanced)").each(function(){e(this).data("wpWpColorPicker")||e(this).wpColorPicker({change:_.throttle(function(){e(this).trigger("change")},3e3)}).addClass("enhanced")})})});

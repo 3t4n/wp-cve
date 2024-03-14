@@ -1,0 +1,1136 @@
+/**
+ * restaurantpress.scss
+ * Governs the general look and feel of RestaurantPress sections of shortcodes using themes that do not
+ * integrate with RestaurantPress specifically.
+ */
+
+/**
+ * Imports
+ */
+@import 'mixins';
+@import 'variables';
+@import 'animation';
+@import 'fonts';
+
+/**
+ * Global styles
+ */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+/**
+ * Utility classes
+ */
+.clear {
+	clear: both;
+}
+
+/**
+ * Main RestaurantPress styles
+ */
+.restaurantpress {
+	.blockUI.blockOverlay {
+		position: relative;
+		@include loader();
+	}
+
+	.loader {
+		@include loader();
+	}
+
+	.restaurantpress-breadcrumb {
+		@include clearfix();
+		margin: 0 0 1em;
+		padding: 0;
+		font-size: 0.92em;
+		color: $subtext;
+
+		a {
+			color: $subtext;
+		}
+	}
+
+	/**
+	 * Food Page
+	 */
+	div.food,
+	div.food_menu {
+		margin-bottom: 0;
+		position: relative;
+
+		.food_title {
+			clear: none;
+			margin-top: 0;
+			padding: 0;
+			font-size: 1.8em;
+		}
+
+		span.price,
+		p.price {
+			color: $highlight;
+			font-size: 1.25em;
+
+			ins {
+				color: inherit;
+				background: inherit;
+				font-weight: 700;
+				display: inline-block;
+			}
+
+			del {
+				opacity: 0.5;
+				display: inline-block;
+			}
+		}
+
+		div.images {
+			margin-bottom: 2em;
+
+			img {
+				display: block;
+				width: 100%;
+				height: auto;
+				box-shadow: none;
+			}
+
+			div.thumbnails {
+				padding-top: 1em;
+			}
+
+			&.restaurantpress-food-gallery {
+				position: relative;
+			}
+
+			.restaurantpress-food-gallery__wrapper {
+				transition: all cubic-bezier(0.795, -0.035, 0, 1) 0.5s;
+			}
+
+			.restaurantpress-food-gallery__wrapper .zoomImg {
+				background-color: #fff;
+			}
+
+			.restaurantpress-food-gallery__image:nth-child(n+2) {
+				width: 25%;
+				display: inline-block;
+			}
+
+			.restaurantpress-food-gallery__trigger {
+				position: absolute;
+				top: 0.5em;
+				right: 0.5em;
+				font-size: 2em;
+				z-index: 9;
+				width: 36px;
+				height: 36px;
+				background: #fff;
+				text-indent: -9999px;
+				border-radius: 100%;
+				box-sizing: content-box;
+
+				&::before {
+					content: '';
+					display: block;
+					width: 10px;
+					height: 10px;
+					border: 2px solid #000;
+					border-radius: 100%;
+					position: absolute;
+					top: 9px;
+					left: 9px;
+					box-sizing: content-box;
+				}
+
+				&::after {
+					content: '';
+					display: block;
+					width: 2px;
+					height: 8px;
+					background: #000;
+					border-radius: 6px;
+					position: absolute;
+					top: 19px;
+					left: 22px;
+					transform: rotate(-45deg);
+					box-sizing: content-box;
+				}
+			}
+
+			.flex-control-thumbs {
+				overflow: hidden;
+				zoom: 1;
+				margin: 0;
+				padding: 0;
+
+				li {
+					width: 25%;
+					float: left;
+					margin: 0;
+					list-style: none;
+
+					img {
+						cursor: pointer;
+						opacity: 0.5;
+						margin: 0;
+
+						&.flex-active,
+						&:hover {
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+
+		.restaurantpress-food-gallery--columns-3 {
+			.flex-control-thumbs li:nth-child(3n+1) {
+				clear: left;
+			}
+		}
+
+		.restaurantpress-food-gallery--columns-4 {
+			.flex-control-thumbs li:nth-child(4n+1) {
+				clear: left;
+			}
+		}
+
+		.restaurantpress-food-gallery--columns-5 {
+			.flex-control-thumbs li:nth-child(5n+1) {
+				clear: left;
+			}
+		}
+
+		div.summary {
+			margin-bottom: 2em;
+		}
+
+		div.social {
+			text-align: right;
+			margin: 0 0 1em;
+
+			span {
+				margin: 0 0 0 2px;
+
+				span {
+					margin: 0;
+				}
+
+				.stButton .chicklets {
+					padding-left: 16px;
+					width: 0;
+				}
+			}
+
+			iframe {
+				float: left;
+				margin-top: 3px;
+			}
+		}
+
+		.restaurantpress-tabs {
+			ul.tabs {
+				list-style: none;
+				padding: 0;
+				position: relative;
+				border-bottom: 1px solid #ccc;
+				margin: 0 0 1.5em;
+
+				li {
+					display: inline-block;
+					padding: 1em;
+
+					a {
+						display: inline-block;
+						padding: 0.5em 0;
+						font-weight: 700;
+						color: $darkgraybg;
+						text-decoration: none;
+
+						&:hover {
+							text-decoration: none;
+							color: lighten( $darkgraybg, 10% );
+						}
+					}
+
+					&.active {
+						border-bottom: 2px solid $darkgraybg;
+					}
+				}
+			}
+
+			.panel {
+				margin: 0 0 2em;
+				padding: 0;
+			}
+		}
+	}
+
+	span.chef {
+		height: 3.236em;
+		width: 3.236em;
+		padding: 0.202em;
+		font-size: 1em;
+		font-weight: 700;
+		position: absolute;
+		text-align: center;
+		line-height: 3.236;
+		top: -0.5em;
+		left: -0.5em;
+		margin: 0;
+		border-radius: 100%;
+		background-color: $highlight;
+		color: $highlightext;
+		-webkit-font-smoothing: antialiased;
+		z-index: 9;
+
+		&::before {
+			@include iconbefore( '\e003' );
+			margin-right: 0;
+			color: $contentbg;
+		}
+
+		&.grid,
+		&.small {
+			width: 30px;
+			height: 30px;
+			line-height: 2em;
+		}
+
+		&.grid {
+			top: 0;
+			left: 1.6em;
+			border-radius: 0;
+
+			&::before,
+			&::after {
+				position: absolute;
+				bottom: -10px;
+				left: 0;
+				content: '';
+				border-left: 0 solid transparent;
+				border-top: 10px solid $highlight;
+				border-right: 18px solid transparent;
+			}
+
+			&::after {
+				left: auto;
+				right: 0;
+				bottom: -10px;
+				border-left: 18px solid transparent;
+				border-right: 0 solid transparent;
+			}
+
+			.chef-icon {
+				&::before {
+					@include iconbefore( '\e003' );
+					margin-right: 0;
+					color: $contentbg;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Foods loops
+	 */
+	div.foods {
+		margin: 0 0 1em;
+		padding: 0;
+		list-style: none outside;
+		clear: both;
+		@include clearfix();
+
+		li {
+			list-style: none outside;
+		}
+	}
+
+	div.foods section.food_menu {
+		.chef {
+			top: 0;
+			left: 0;
+			right: auto;
+			margin: -0.5em 0 0 -0.5em;
+
+			&.small {
+				margin-top: 0.3em;
+			}
+		}
+
+		h3,
+		.restaurantpress-loop-food__title,
+		.restaurantpress-loop-category__title {
+			padding: 0.5em 0;
+			margin: 0;
+			display: inline;
+		}
+
+		a {
+			color: $restaurantpress;
+			text-decoration: none;
+
+			&:focus {
+				border: none;
+			}
+		}
+
+		a img {
+			display: block;
+			margin: 0 0 1em;
+			box-shadow: none;
+		}
+
+		strong {
+			display: block;
+		}
+
+		.button {
+			margin-top: 1em;
+		}
+
+		.price {
+			float: right;
+			color: $highlight;
+			display: block;
+			font-weight: normal;
+			margin-bottom: 0.5em;
+			font-size: 1em;
+
+			del {
+				color: inherit;
+				opacity: 0.5;
+				display: inline-block;
+			}
+
+			ins {
+				background: none;
+				font-weight: 700;
+				display: inline-block;
+			}
+
+			.from {
+				font-size: 0.67em;
+				margin: -2px 0 0 0;
+				text-transform: uppercase;
+				color: rgba(desaturate($highlight, 75%), 0.5);
+			}
+		}
+	}
+
+	nav.restaurantpress-pagination {
+		text-align: center;
+
+		ul {
+			display: inline-block;
+			white-space: nowrap;
+			padding: 0;
+			clear: both;
+			border: 1px solid darken( $secondary, 10% );
+			border-right: 0;
+			margin: 1px;
+
+			li {
+				border-right: 1px solid darken( $secondary, 10% );
+				padding: 0;
+				margin: 0;
+				float: left;
+				display: inline;
+				overflow: hidden;
+
+				a,
+				span {
+					margin: 0;
+					text-decoration: none;
+					padding: 0;
+					line-height: 1;
+					font-size: 1em;
+					font-weight: normal;
+					padding: 0.5em;
+					min-width: 1em;
+					display: block;
+				}
+
+				span.current,
+				a:hover,
+				a:focus {
+					background: $secondary;
+					color: darken( $secondary, 40% );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Buttons
+	 */
+	a.button,
+	button.button,
+	input.button,
+	#respond input#submit {
+		font-size: 100%;
+		margin: 0;
+		line-height: 1;
+		cursor: pointer;
+		position: relative;
+		text-decoration: none;
+		overflow: visible;
+		padding: 0.618em 1em;
+		font-weight: 700;
+		border-radius: 3px;
+		left: auto;
+		color: $secondarytext;
+		background-color: $secondary;
+		border: 0;
+		white-space: nowrap;
+		display: inline-block;
+		background-image: none;
+		box-shadow: none;
+		text-shadow: none;
+
+		&:hover {
+			background-color: $secondary - #111;
+			text-decoration: none;
+			background-image: none;
+			color: $secondarytext;
+		}
+
+		&.alt {
+			background-color: $primary;
+			color: $primarytext;
+			-webkit-font-smoothing: antialiased;
+
+			&:hover {
+				background-color: $primary - #111;
+				color: $primarytext;
+			}
+
+			&.disabled,
+			&:disabled,
+			&:disabled[disabled],
+			&.disabled:hover,
+			&:disabled:hover,
+			&:disabled[disabled]:hover {
+				background-color: $primary;
+				color: $primarytext;
+			}
+		}
+
+		&:disabled,
+		&.disabled,
+		&:disabled[disabled] {
+			color: inherit;
+			cursor: not-allowed;
+			opacity: 0.5;
+			padding: 0.618em 1em;
+
+			&:hover {
+				color: inherit;
+				background-color: $secondary;
+			}
+		}
+	}
+
+	/**
+	 * Forms
+	 */
+	form .form-row {
+		padding: 3px;
+		margin: 0 0 6px;
+
+		[placeholder]:focus::-webkit-input-placeholder {
+			transition: opacity 0.5s 0.5s ease;
+			opacity: 0;
+		}
+
+		label {
+			line-height: 2;
+		}
+
+		label.hidden {
+			visibility: hidden;
+		}
+
+		label.inline {
+			display: inline;
+		}
+
+		select {
+			cursor: pointer;
+			margin: 0;
+		}
+
+		.required {
+			color: red;
+			font-weight: 700;
+			border: 0;
+		}
+
+		.input-checkbox {
+			display: inline;
+			margin: -2px 8px 0 0;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		input.input-text,
+		textarea {
+			box-sizing: border-box;
+			width: 100%;
+			margin: 0;
+			outline: 0;
+			line-height: 1;
+		}
+
+		textarea {
+			height: 4em;
+			line-height: 1.5;
+			display: block;
+			box-shadow: none;
+		}
+
+		.select2-container {
+			width: 100%;
+			line-height: 2em;
+		}
+
+		&.restaurantpress-invalid {
+			label {
+				color: $red;
+			}
+			.select2-container,
+			input.input-text,
+			select {
+				border-color: $red;
+			}
+		}
+
+		&.restaurantpress-validated {
+			.select2-container,
+			input.input-text,
+			select {
+				border-color: $green - #111;
+			}
+		}
+
+		::-webkit-input-placeholder {
+			line-height: normal;
+		}
+
+		:-moz-placeholder {
+			line-height: normal;
+		}
+
+		:-ms-input-placeholder {
+			line-height: normal;
+		}
+	}
+}
+
+.restaurantpress,
+.restaurantpress-page,
+.restaurantpress-group {
+
+	.restaurantpress-foods-header {
+		margin-bottom: 1.5em;
+		border-top: 1px dashed #b0aeab;
+		border-bottom: 1px dashed #b0aeab;
+
+		h1,
+		.restaurantpress-foods-header__title,
+		.restaurantpress-foods-category__title {
+			margin: 0;
+			padding: 0.3em 0;
+			text-align: center;
+
+			.restaurantpress-foods-header__icon {
+				margin-right: 7px;
+				display: inline-block;
+				line-height: 24px;
+				height: 24px;
+
+				img {
+					width: auto;
+					height: auto;
+					max-width: 24px;
+					max-height: 24px;
+					box-shadow: none;
+					border-radius: 0;
+				}
+			}
+		}
+
+		.term-description p {
+			margin: 0 0 1em;
+			line-height: 1.5;
+		}
+	}
+
+	figure.thumbnail {
+		float: left;
+		margin: 0 20px 0 0;
+		position: relative;
+
+		img {
+			box-shadow: none;
+		}
+	}
+
+	.restaurantpress-food-details__short-description {
+		color: #8c8787;
+		margin-top: 10px;
+	}
+}
+
+/**
+ * Photoswipe
+ * 1. These styles are required to overwrite default theme button styles (Twenty Twelve adds gradients via background-image).
+ * 2. For zooming on mobile.
+ */
+.pswp {
+	z-index: 999999;
+}
+
+.pswp img {
+	max-width: none;
+}
+
+.restaurantpress img.pswp__img,
+.restaurantpress-page img.pswp__img {
+	max-width: none; /* 2 */
+}
+
+button.pswp__button {
+	box-shadow: none !important;
+	background-image: url('photoswipe/default-skin/default-skin.png') !important;
+}
+
+button.pswp__button,
+button.pswp__button:hover,
+button.pswp__button--arrow--left::before,
+button.pswp__button--arrow--right::before {
+	background-color: transparent !important; /* 1 */
+}
+
+button.pswp__button--arrow--left,
+button.pswp__button--arrow--right,
+button.pswp__button--arrow--left:hover,
+button.pswp__button--arrow--right:hover {
+	background-image: none !important; /* 1 */
+}
+
+button.pswp__button--close:hover {
+	background-position: 0 -44px;
+}
+
+button.pswp__button--zoom:hover {
+	background-position: -88px 0;
+}
+
+/**
+ * Right to left styles
+ */
+.rtl.restaurantpress div.food div.images .flex-control-thumbs li {
+	float: right;
+}
+
+/**
+ * Notices.
+ */
+.restaurantpress-message,
+.restaurantpress-error,
+.restaurantpress-info {
+	padding: 1em;
+	margin: 0 0 2em;
+	position: relative;
+	background-color: #f7f6f7;
+	color: $secondarytext;
+	border-left: 5px solid $primary;
+	list-style: none outside;
+	@include clearfix();
+	width: auto;
+	word-wrap: break-word;
+
+	.button {
+		float: right;
+	}
+
+	li {
+		list-style: none outside !important; // Required for default theme compatibility
+		padding-left: 0 !important; // Required for default theme compatibility
+		margin-left: 0 !important; // Required for default theme compatibility
+	}
+}
+
+.restaurantpress-message {
+	border-left-color: $success;
+	background-color: $successbg;
+}
+
+.restaurantpress-error {
+	border-left-color: $error;
+	background-color: $errorbg;
+}
+
+.restaurantpress-info {
+	border-left-color: $info;
+	background-color: $infobg;
+}
+
+/**
+ * Group page
+ */
+.restaurantpress-group {
+	#restaurant-press-section {
+		color: #333;
+		font-size: 14px;
+		line-height: 1.3;
+		font-weight: 400;
+
+		a {
+			color: $restaurantpress;
+			text-decoration: none;
+
+			&:focus {
+				border: none;
+			}
+		}
+
+		.rp-column-wrapper {
+			@include clearfix();
+			margin-left: -3%;
+
+			.rp-column-1,
+			.rp-column-2,
+			.rp-column-3 {
+				float: left;
+				margin-left: 3%;
+			}
+
+			.rp-column-1 {
+				width: 97%;
+			}
+
+			.rp-column-2 {
+				width: 47%;
+			}
+
+			.rp-column-3 {
+				width: 30.33%;
+			}
+
+			.rp-column-margin {
+				margin-bottom: 4%;
+			}
+		}
+	}
+
+	.rp-list-design-layout {
+		@include clearfix();
+
+		.rp-column-block {
+			padding-bottom: 23px;
+
+			.rp-column-single-block {
+				@include clearfix();
+				padding:15px 0;
+				border-bottom: 1px solid #deded7;
+
+				.rp-img {
+					float: left;
+					margin: 0 20px 0 0;
+					position: relative;
+
+					img {
+						box-shadow: none;
+						border-radius: 3px;
+
+						&.restaurantpress-placeholder {
+							max-width: 100%;
+							max-height: 100%;
+						}
+					}
+				}
+
+				.rp-content-wrapper {
+
+					.rp-desc {
+						color: #8c8787;
+						margin-top: 10px;
+					}
+
+					.rp-title-price-wrap {
+						margin-bottom: 5px;
+
+						.rp-title {
+							display: inline;
+							margin: 0 0 4px;
+							padding: 0 0 4px;
+						}
+
+						span.price,
+						p.price {
+							float: right;
+							color: $highlight;
+							font-size: 1.25em;
+
+							ins {
+								color: inherit;
+								background: inherit;
+								font-weight: 700;
+								display: inline-block;
+							}
+
+							del {
+								opacity: 0.5;
+								display: inline-block;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.rp-single-column-layout.rp-list-design-layout {
+		.rp-column-block {
+			background: none;
+		}
+	}
+
+	.rp-grid-design-layout {
+		@include clearfix();
+
+		.rp-img {
+			margin: 0;
+			position: relative;
+
+			a {
+				display: block;
+			}
+
+			img {
+				width: 100%;
+				display: block;
+				box-shadow: none;
+				border-radius: 0;
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+
+				&.restaurantpress-placeholder {
+					max-height: 245px;
+				}
+			}
+
+			.image-magnify {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 85%;
+				height: 85%;
+				display: block;
+				opacity: 0;
+				visibility: hidden;
+				background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+				transform: translate(-50%, -50%) scale(0.3);
+				transition: all 0.3s ease-in-out;
+
+				span {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					color: #fff;
+					width: 30px;
+					height: 30px;
+					display: block;
+					cursor: pointer;
+					font-size: 30px;
+					line-height: 30px;
+					text-align: center;
+					border-radius: 100%;
+					border: 1px solid #fff;
+					transform: translate(-50%, -50%);
+					transition: all 0.5s ease-in-out;
+
+					&:hover {
+						background: $restaurantpress;
+						border-color: $restaurantpress;
+					}
+				}
+			}
+
+			&:hover {
+				.image-magnify {
+					opacity: 1;
+					visibility: visible;
+					transform: translate(-50%, -50%) scale(1);
+				}
+			}
+		}
+
+		.rp-content-wrapper {
+			position: relative;
+			padding: 20px 20px 60px;
+			border-bottom: 3px solid $restaurantpress;
+			background: #f9f9f9 none repeat scroll 0 0;
+
+			.rp-title {
+				margin: 0 0 10px;
+				padding: 0 0 10px;
+			}
+
+			.rp-desc {
+				color: #8c8787;
+				line-height: 22px;
+			}
+
+			span.price,
+			p.price {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				color: #fff;
+				font-size: 1.25em;
+				padding: 6px 10px 6px 5px;
+				background: $restaurantpress none repeat scroll 0 0;
+
+				.amount {
+					color: white;
+				}
+
+				ins {
+					color: inherit;
+					background: inherit;
+					font-weight: 700;
+					display: inline-block;
+				}
+
+				del {
+					opacity: 0.5;
+					display: inline-block;
+				}
+
+				&::before {
+					position: absolute;
+					top: 0;
+					left: -16px;
+					content: '';
+					border-top: 36px solid transparent;
+					border-right: 16px solid $restaurantpress;
+					border-bottom: 0 solid transparent;
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Optimisation for screens 768px and smaller
+ */
+@media (max-width: 768px) {
+	#restaurant-press-section .rp-column-wrapper .rp-column-2 {
+		display: block;
+		float: none;
+		width: 96%;
+	}
+}
+
+/**
+ * Optimisation for screens 480px and smaller
+ */
+@media (max-width: 480px) {
+	.rp-list-design-layout .rp-column-block .rp-column-single-block {
+		.rp-img {
+			width: 60px;
+		}
+	}
+}
+
+/**
+ * Twenty Eleven specific styles
+ */
+#content.twentyeleven .restaurantpress-pagination a {
+	font-size: 1em;
+	line-height: 1;
+}
+
+/**
+ * Twenty Thirteen specific styles
+ */
+.single-food_menu .twentythirteen {
+	.entry-summary {
+		padding: 0;
+	}
+
+	p.stars {
+		clear: both;
+	}
+}
+
+.twentythirteen .restaurantpress-breadcrumb {
+	padding-top: 40px;
+}
+
+/**
+ * Twenty Fourteen specific styles
+ */
+.twentyfourteen ul.foods li.food {
+	margin-top: 0 !important;
+}
+
+/**
+ * Twenty Sixteen specific styles
+ */
+body:not( .search-results ) .twentysixteen .entry-summary {
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.twentysixteen .price ins {
+	background: inherit;
+	color: inherit;
+}
+
+/**
+ * Spacious specific styles
+ */
+.spacious {
+	padding-top: 0 !important;
+}
+
+/* Gutenberg Block
+----------------------------------------------------------------------------- */
+
+.edit-post-visual-editor {
+	.restaurantpress-gutenberg-group-selector-wrap {
+		.components-placeholder__label {
+			margin-bottom: 0;
+
+			svg {
+				width: 75px;
+				height: 75px;
+				color: #ff0033;
+			}
+		}
+		.components-placeholder__instructions {
+			color: #23282d;
+			font-size: 1.3em;
+			font-weight: 600;
+		}
+		.components-placeholder__fieldset {
+			.components-base-control {
+				width: 100%;
+			}
+		}
+	}
+}
+
+div.rp-gutenberg-form-selector input[type=button]:disabled {
+	cursor: not-allowed;
+}

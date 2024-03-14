@@ -1,0 +1,70 @@
+/**
+ * menu.scss
+ * Styles applied to dashboard menu items added via RestaurantPress.
+ * Adds icons to top level menu items, tinyMCE shortcode button, etc.
+ */
+
+/**
+ * Imports
+ */
+@import 'mixins';
+@import 'variables';
+@import 'fonts';
+
+/**
+ * Styling begins
+ */
+#adminmenu #toplevel_page_restaurantpress .menu-icon-generic div.wp-menu-image:before {
+	font-family: 'RestaurantPress' !important;
+	content: '\e001';
+}
+
+#adminmenu #menu-posts-food_menu .menu-icon-post div.wp-menu-image:before,
+#adminmenu #menu-posts-food_menu .menu-icon-food_menu div.wp-menu-image:before {
+	font-family: 'RestaurantPress' !important;
+	content: '\e002';
+}
+
+span.mce_restaurantpress_shortcodes_button {
+	background-image: none !important;
+	@include ir();
+
+	&::before {
+		@include icon( '\e002' );
+		font-size: .9em;
+		line-height: 1.2;
+	}
+}
+
+i.mce-i-restaurantpress-shortcodes {
+	position: relative;
+
+	&::before {
+		@include icon( '\e002' );
+		line-height: inherit;
+	}
+}
+
+.rp_plugin_upgrade_notice {
+	font-weight: normal;
+	color: #fff;
+	background: #d54d21;
+	padding: 1em;
+	margin: 9px 0;
+
+	a {
+		color: #fff;
+		text-decoration: underline;
+	}
+
+	&::before {
+		content: '\f348';
+		display: inline-block;
+		font: 400 18px/1 dashicons;
+		speak: none;
+		margin: 0 8px 0 -2px;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		vertical-align: top;
+	}
+}
