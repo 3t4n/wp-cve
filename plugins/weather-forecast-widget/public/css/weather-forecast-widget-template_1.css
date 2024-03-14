@@ -1,0 +1,294 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+ .weather
+ {
+   width: 100%;
+   display: flex;
+   flex-flow: column wrap;
+   box-shadow: 0px 1px 10px 0px #cfcfcf;
+   overflow: hidden;
+   cursor: pointer;
+   border-radius: 2em;
+ }
+   
+ .weather:hover:before
+ {	
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	content: attr(data-hover);
+ }
+
+.weather .current
+{
+    display: flex;
+    flex-flow: row wrap;
+    background-repeat: repeat-x;
+    color: white;
+    padding: 20px;
+    text-shadow: 2px 3px #000000;
+}
+.weather .current .info
+{
+	width: 50%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    flex-grow: 2;
+}
+.weather .current .row
+{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}	
+.weather .current .row .col-one
+{
+	float: left;
+	width: 40%;
+	padding-left: 1%;
+}
+.weather .current .row .col-two
+{
+  width: 60%;
+}
+
+.weather .current .info .title
+{
+    font-size: 26px;
+}
+
+.weather .current .info .data
+{
+    font-size: 24px;
+}
+
+.weather .current .info .data img
+{
+    width: 15%; !important;
+}
+
+.weather .current .icon
+{	
+	display: flex;
+    /*
+	flex-flow: column wrap;
+	*/
+	flex-wrap: nowrap;
+
+	flex-direction: column;
+	
+    text-align: center;
+    font-size: 64px;
+    flex-grow: 1;
+}
+
+.weather .current .icon img
+{	
+	margin: -10%;
+	/*width: 50%; !important;*/
+}
+
+.weather .current .icon .span
+{
+	text-align: center;
+	margin: 1rem!important;
+}
+
+.weather .current .icon .desc
+{
+    font-size: 18px;
+	text-align: center;
+	margin-top: -20px;
+}
+
+
+
+
+.weather .future
+{
+    display: flex;
+    flex-flow: row nowrap;
+	background-color:white;
+}
+
+.weather .future .day
+{
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.weather .future .day:hover
+{
+    color: #fff;
+    background-color: #6085e0;
+}
+
+.weather .future .day .data
+{
+    margin: -15px 0 0 0;
+	font-size: 20px;
+}
+
+.weather .future .day .data img
+{
+	width: 25%; !important;
+}
+	
+.weather .future .day .span img
+{	
+	margin: -5%;
+	width: 45%; !important;
+}
+
+.weather .future .day .span i
+{	
+	font-size: 40px;
+}
+
+.weather .future .day h4
+{
+	font-size: 18px;
+}
+
+.weather .future .day p
+{
+    font-size: 28px;
+}
+
+
+/* Different CSS for TABLET screen size */
+@media screen and (max-width: 768px) {
+	.weather:hover:before 
+	{
+		font-size: 14px;
+	}
+	.weather .current
+	{
+		padding: 15px;
+		text-shadow: 2px 3px #000000;
+	}
+	.weather .current .info .title
+	{
+		font-size: 22px;
+		padding-top: 10px;
+		padding-left: 5px;
+	}
+	.weather .current .info .data
+	{
+		font-size: 20px;
+	}
+	.weather .current .info .data img
+	{
+		width: 15%; !important;
+	}
+	.weather .current .icon
+	{	
+		font-size: 50px;
+	}
+	.weather .current .icon img
+	{	
+		margin: -10%;
+		width: 50%; !important;
+	}
+	.weather .current .icon .desc
+	{
+		font-size: 18px;
+		margin-top: -15px;
+	}
+	.weather .future .day
+	{
+		padding-bottom: 10px;
+	}
+	.weather .future .day .data
+	{
+		font-size: 19px;
+	}
+	.weather .future .day .data img
+	{
+		width: 25%; !important;
+	}
+	.weather .future .day .span img
+	{	
+		width: 50%; !important;
+	}
+	.weather .future .day .span i
+	{	
+		font-size: 30px;
+	}
+	.weather .future .day h4
+	{
+		font-size: 18px;
+	}
+}
+/* Different CSS for MOBILE DEVICE screen size */
+@media screen and (max-width: 480px) {
+  .weather:hover:before 
+	{
+		font-size: 12px;
+	}
+  .weather .current
+	{
+		padding: 10px;
+		text-shadow: 1px 2px #000000;
+	}
+	.weather .current .info .title
+	{
+		font-size: 18px;
+		padding-top: 15px;
+		padding-left: 10px;
+	}
+	.weather .current .info .data
+	{
+		font-size: 16px;
+	}
+	.weather .current .info .data img
+	{
+		width: 10%; !important;
+	}
+	.weather .current .icon
+	{	
+		font-size: 40px;
+	}
+	.weather .current .icon img
+	{	
+		margin: -5%;
+		width: 35%; !important;
+	}
+	.weather .current .icon .desc
+	{
+		font-size: 15px;
+		margin-top: -10px;
+	}
+	.weather .future .day
+	{
+		padding-bottom: 15px;
+	}
+	.weather .future .day .data
+	{
+		font-size: 17px;
+	}
+	.weather .future .day .data img
+	{
+		width: 25%; !important;
+	}
+	.weather .future .day .span img
+	{	
+		width: 50%; !important;
+	}
+	.weather .future .day .span i
+	{	
+		font-size: 25px;
+	}
+	.weather .future .day h4
+	{
+		font-size: 16px;
+	}
+}
