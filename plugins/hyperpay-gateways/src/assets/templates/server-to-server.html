@@ -1,0 +1,52 @@
+<style>
+.hyperpay_loader {
+  display: block;
+  margin: auto;
+  width: 64px;
+  height: 48px;
+  position: relative;
+  animation: hyperpay_split 1s ease-in infinite alternate;
+}
+.hyperpay_loader::before , .hyperpay_loader::after {
+  content: '';
+  position: absolute;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  transform: translateX(-10px);
+  background: #FF3D00;
+  opacity: 0.75;
+  backdrop-filter: blur(20px);
+}
+
+.hyperpay_loader::after {
+  left: auto;
+  right: 0;
+  background: whitesmoke;
+  transform: translateX(10px);
+}
+
+@keyframes hyperpay_split {
+ 0% , 25%{ width: 64px }
+ 100%{ width: 148px }
+}
+  
+</style>
+
+<span class="hyperpay_loader"></span>
+
+<form class="paymentWidgets" id="hyperpay_server_to_server_form" method="{{ redirect.method }}" action="{{ redirect.url }}">
+    {% for  param in redirect.parameters %}
+        <input type="hidden" name="{{ param.name }}" value="{{ param.value }}" >
+    {% endfor %}
+
+    {% for key , value in extra_params %}
+        <input type="hidden" name="{{ key }}" value="{{ value }}" >
+    {% endfor %}
+</form>
+
+<script>
+    document.getElementById("hyperpay_server_to_server_form").submit()
+</script>

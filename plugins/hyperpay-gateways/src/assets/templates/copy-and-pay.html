@@ -1,0 +1,21 @@
+{% if dataObj.custom_style is not empty %}
+    <style>
+        {{ dataObj.custom_style }}
+    </style>
+{% endif %}
+
+
+<script>
+    let dataObj = JSON.parse("{{ dataObj|json_encode()|escape('js') }}")
+</script>
+
+{% block javascript %}
+    <script src="{{ "#{constant('HYPERPAY_PLUGIN_DIR')}/src/assets/js/script.js" }}"></script>
+{% endblock %}  
+
+<form class="paymentWidgets" action="{{ dataObj.postBackURL }}" data-brands="{{ dataObj.payment_brands }}"></form>
+
+{% block javascript_footer %}
+    <script src="{{ dataObj.scriptURL }}"></script>
+{% endblock %}  
+

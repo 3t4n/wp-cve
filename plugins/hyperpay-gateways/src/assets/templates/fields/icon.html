@@ -1,0 +1,39 @@
+<tr valign="top">
+  <th scope="row" class="titledesc">
+      <label for="woocommerce_hyperpay_applepay_icon">
+        {{ data.title }}
+          <span class="woocommerce-help-tip" data-tip="{{ data.tip }}"></span>
+      </label>
+  </th>
+  <td class="forminp forminp-icon">
+      <img style="max-width: 238px;max-height: 50px;" id="hyperpay_applePay_action_preview" src="" />
+  </td>
+</tr>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let hyperpay_applePay_action_type = document.getElementById("woocommerce_hyperpay_applepay_action_type");
+      let hyperpay_applePay_action_style = document.getElementById("woocommerce_hyperpay_applepay_action_style");
+      let hyperpay_applePay_action_preview = document.getElementById("hyperpay_applePay_action_preview");
+      let hyperpay_root_src = '{{ "#{constant('HYPERPAY_PLUGIN_DIR')}" }}';
+      let hyperpay_applePay_src = hyperpay_root_src +
+          "/src/assets/images/applePayButtons/button-" +
+          hyperpay_applePay_action_type.value + "-" +
+          hyperpay_applePay_action_style.value +
+          "-min.png"
+
+      hyperpay_applePay_action_preview.setAttribute('src', hyperpay_applePay_src)
+
+      hyperpay_applePay_action_type.addEventListener("change", function(e) {
+          let style = hyperpay_applePay_action_style.value
+          hyperpay_applePay_src = `${hyperpay_root_src}/src/assets/images/applePayButtons/button-${e.target.value}-${style}-min.png`
+          hyperpay_applePay_action_preview.setAttribute('src', hyperpay_applePay_src)
+      })
+
+      hyperpay_applePay_action_style.addEventListener("change", function(e) {
+          let button = hyperpay_applePay_action_type.value
+          hyperpay_applePay_src = `${hyperpay_root_src}/src/assets/images/applePayButtons/button-${button}-${e.target.value}-min.png`
+          hyperpay_applePay_action_preview.setAttribute('src', hyperpay_applePay_src)
+      })
+  });
+</script>

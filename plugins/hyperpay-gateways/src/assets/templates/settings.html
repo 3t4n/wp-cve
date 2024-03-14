@@ -1,0 +1,11 @@
+<form method="post" style="margin: 15px;">
+<h1>Enabled Gatewayes</h1>
+    {% for gateway in files %}
+    <div>
+        <input {% if gateway in selected  %} checked {% endif %} name='gateways[]' value="{{ gateway }}" type='checkbox' id='{{ gateway }}'>
+        <label  for='{{gateway}}'>{{gateway}}</label>
+    </div>
+    {% endfor %}
+
+    <input style="margin-top: 10px;" type="submit">
+</form>
