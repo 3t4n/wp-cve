@@ -1,0 +1,280 @@
+@charset "utf-8";
+
+// overwride
+.theme-default .nivoSlider {
+	overflow: visible;
+	margin-bottom: 0;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.theme-default .nivo-directionNav a {
+	width: 40px;
+	height: 40px;
+	opacity: 1;
+}
+.theme-default a.nivo-nextNav {
+	background-position: -40px 0;
+//	right:-40px;
+}
+.theme-default a.nivo-prevNav {
+//	left:-40px;
+}
+
+.slider-wrapper {
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}
+.slider-box {
+	max-width: 1200px;
+	margin: 0 auto;
+	position: relative;
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}
+
+
+@mixin slide( $w:60%, $t:0, $b:0, $l:0, $r:0) {
+	background-color: #0058AE;
+	max-height: 487px;
+	overflow: hidden;
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+
+	.showtime {
+		max-width: 1200px;
+		max-height: 487px;
+	}
+	.nivo-caption {
+		position: absolute;
+		@if $t > 0 { top: $t; }
+		@if $b > 0 { bottom: $b; }
+		@if $l > 0 { left: $l; }
+		@if $r > 0 { right: $r; }
+		width: $w;
+		padding: 25px 30px;
+		background-color: rgba(0,0,0,0.5);
+		box-sizing: border-box;
+		margin: 0;
+		font-family: 'Open Sans', ​sans-serif;
+
+		h2 {
+		  color: inherit;
+			font-size: 40px;
+			line-height: 1.4;
+			overflow: hidden;
+			max-height: 2.8em;
+			margin-bottom: 0;
+			a {
+				color: inherit;
+			}
+		}
+		.content {
+			margin-top: 10px;
+			font-size: 14px;
+			font-weight: normal;
+			line-height: 1.4;
+			height: 3em*1.4;
+			overflow: hidden;
+		}
+	}
+}
+
+@mixin phototext( $p:left ) {
+	overflow: visible;
+	margin-top: 30px;
+	max-height: 487px;
+//	margin-bottom: 30px;
+
+	.slider-box {
+		overflow: hidden;
+		position: relative;
+		top: -30px;
+		margin-bottom: -60px;
+		@if $p == 'left' {
+			padding: 0 30px 0 40px
+		} @else {
+			padding: 0 40px 0 30px
+		}
+	}
+	.showtime {
+		width: 64.6%;
+		max-width: 730px;
+		max-height: 487px;
+
+		@if $p == 'left' {
+			float: right;
+			a.nivo-prevNav{
+				left: 0;
+			}
+			a.nivo-nextNav {
+				right: -30px;
+			}
+		} @else {
+			float: left;
+			a.nivo-prevNav{
+				left: -30px;
+			}
+			a.nivo-nextNav {
+				right: 0;
+			}
+		}
+
+	}
+
+	.nivo-caption {
+		background-color: transparent;
+		padding: 0;
+		position: absolute;
+		top: 80px;
+		width: 50%;
+		h2 {
+			max-height: 1.4em *4;
+		}
+		.content {
+			margin-top: 30px;
+		}
+		.slide-content {
+		}
+	}
+}
+
+
+.theme-default {
+	position: relative;
+
+	.top-left {
+		@include slide( $w:60%, $t:30px, $l:80px);
+	}
+	.top-right {
+		@include slide( $w:60%, $t:30px, $r:80px);
+	}
+	.bottom-left {
+		@include slide( $w:60%, $b:30px, $l:80px);
+	}
+	.bottom-right {
+		@include slide( $w:60%, $b:30px, $r:80px);
+	}
+	.left-photo-right {
+		@include slide;
+		@include phototext( $p:left );
+	}
+	.right-photo-left {
+		@include slide;
+		@include phototext( $p:right );
+	}
+}
+
+$brake-point: 600px !default;
+
+@mixin mobileslide() {
+	padding: 0;
+	margin: 0;
+	.showtime {
+		width: 100% !important;
+		max-width: 100% !important;
+		max-height: auto !important;
+		height: auto;
+		margin: 0;
+	}
+	.slider-box {
+		top: 0;
+	}
+	.nivo-caption {
+		position: relative;
+		left: 0;
+		top: 0;
+		margin-top: 20px;
+		padding: 0;
+		width: 100%;
+		height: auto;
+		background-color: transparent;
+
+		h2 {
+			margin: 0;
+			padding: 0;
+			font-size: 16px;
+			height: 1em *1.4;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.content {
+			margin: 1em 0 0 0;
+			padding: 0;
+			font-size: 12px;
+			height: 1.4em;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+}
+
+@media screen and (max-width: $brake-point) {
+	.slider-box {
+		width: 100% !important;
+		padding: 30px !important;
+		margin: 0 !important;
+	}
+
+	.theme-default .nivo-directionNav a {
+		width: 17px;
+	}
+	.theme-default a.nivo-nextNav {
+		background-position: -63px 0;
+		right: -30px;
+	}
+	.theme-default a.nivo-prevNav {
+		background-position: 0 0;
+		left: -30px;
+	}
+
+	.theme-default {
+		.top-left {
+			@include mobileslide();
+		}
+		.top-right {
+			@include mobileslide();
+		}
+		.bottom-left {
+			@include mobileslide();
+		}
+		.bottom-right {
+			@include mobileslide();
+		}
+		.left-photo-right {
+			@include mobileslide();
+			.showtime {
+				a.nivo-prevNav{
+					left: -30px;
+				}
+				a.nivo-nextNav {
+					right: -30px;
+				}
+
+			}
+		}
+		.right-photo-left {
+			@include mobileslide();
+			.showtime {
+				a.nivo-prevNav{
+					left: -30px;
+				}
+				a.nivo-nextNav {
+					right: -30px;
+				}
+			}
+
+		}
+	}
+}

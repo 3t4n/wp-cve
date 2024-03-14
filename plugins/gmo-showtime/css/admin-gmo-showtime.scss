@@ -1,0 +1,61 @@
+@mixin htitle {
+  font-weight:normal;
+  border-bottom:3px solid #ccc;
+  padding: 0 0 6px 6px;
+}
+
+@mixin clearfix {
+	  &:after {
+		  content: ".";
+		  display: block;
+		  clear: both;
+		  height: 0;
+		  visibility: hidden;
+        }
+}
+
+#wpwrap{
+	background:#ffffff;
+}
+
+#adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+    background-color: #222222;
+	z-index:0;
+}
+
+#gmoshowtime {
+	$wpadmin-break-point: 960px; /* wp-admin 782px */
+	//$background: #f3f3f3;
+
+	@include clearfix;
+
+	width:930px;
+	margin:10px 0 0 10px;
+
+	.helplink {
+		display: none;
+		@media screen and (max-width: $wpadmin-break-point) {
+			display: block;
+		}
+}
+
+	#mainpreview {
+		margin-top: 40px;
+	}
+
+	#transitions-settings {
+		margin-top: 2em;
+	}
+	#transitions {
+		//overflow: auto;
+	}
+	h3 {
+		@include htitle;
+    }
+	h4,
+	.form-table th{
+		font-size:14px;
+		font-weight:normal;
+	}
+
+}
