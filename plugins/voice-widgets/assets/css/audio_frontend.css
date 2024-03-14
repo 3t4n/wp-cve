@@ -1,0 +1,211 @@
+/*Front end styles*/
+:root {
+    --border-color: #2496e2;
+  }
+.qc_audio_wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.qc_audio_animation{
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    border: 3px solid var( --border-color );
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    position: relative;
+    z-index: 9;
+}
+.qc_audio_animation img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 9;
+    border-radius: 50%;
+}
+
+.qc_audio_play_button{
+    width: 27px;
+    height: 27px;
+    position: absolute;
+    bottom: 5px;
+    right: 13px;
+    color: var( --border-color );
+    font-size: 30px;
+    z-index: 99;
+    line-height: 30px;
+}
+.qc_audio_play_button i {
+    cursor: pointer;
+}
+.circle {
+    border-radius: 50%;
+    background-color: var( --border-color );
+    width: 104px;
+    height: 104px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+@keyframes scaleIn {
+  from {
+    transform: scale(.5, .5);
+    opacity: .5;
+  }
+  to {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
+}
+
+/* Style for template call to action */
+.qc_audio_bar{
+  background: #fff;
+  padding: 6px 11px 6px 32px;
+  margin-left: -24px;
+  border-radius: 0px 40px 40px 0px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 60px;
+  align-items: center;
+  box-shadow: rgb(0 0 0 / 15%) 0px 2px 10px 0px;
+}
+.qc_audio_bar_text {
+  max-width: 300px;
+}
+.qc_audio_bar a{
+  background-color: var( --border-color );
+  border: 0px;
+  border-radius: 500px;
+  color: rgb(255, 255, 255);
+  height: 40px;
+  padding: 0px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.call_to_action .qc_audio_animation{
+  width: 88px;
+  height: 88px;
+}
+.call_to_action .circle{
+  width: 88px;
+  height: 88px;
+}
+.call_to_action .qc_audio_play_button{
+  bottom: 2px;
+}
+
+/* audio wave animation */
+.wave_animation{
+  background: #fff;
+  max-width: 207px;
+  margin: 0 auto;
+  padding: 10px 0px;
+  border-radius: 50px;
+}
+.wave_animation .qc_audio_play_button{
+  position: unset;
+  margin-left: 8px;
+}
+.wave_animation .qc_audio_animation{
+  width: 70px;
+  height: 70px;
+  border: unset;
+  background-color: unset;
+}
+.wave_animation .wave-block{
+  height: 65px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+  margin-left: 25px;
+}
+.wave_animation .wave-block .stroke {
+  display: block;
+  position: relative;
+  background: var( --border-color );
+  height: 5px;
+  width: 3px;
+  border-radius: 50px;
+  margin: 0px 2px;
+}
+.wave_animation .stroke:nth-child(1) {
+  animation-delay: 0s;
+}
+.wave_animation .stroke:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.wave_animation .stroke:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.wave_animation .stroke:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.wave_animation .stroke:nth-child(5) {
+  animation-delay: 0.6s;
+}
+.wave_animation .stroke:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.wave_animation .stroke:nth-child(7) {
+  animation-delay: 0s;
+}
+[qc-data-animate="repeat"] .stroke{
+  animation: 1.2s linear 0s infinite normal forwards running animate;
+
+}
+@-webkit-keyframes animate {
+  25% {
+    transform: scaleY(1);
+    height: 45px;
+  }
+  50% {
+    transform: scaleY(0.4);
+    height: 45px;
+  }
+  75% {
+    transform: scaleY(0.6);
+    height: 45px;
+  }
+}
+@keyframes animate {
+  25% {
+    transform: scaleY(1);
+    height: 45px;
+  }
+  50% {
+    transform: scaleY(0.4);
+    height: 45px;
+  }
+  75% {
+    transform: scaleY(0.6);
+    height: 45px;
+  }
+}
+/* audio wave animation */
+
+/*Image play*/
+.image_play {
+  max-width: 150px;
+}
+
+/* Play button only */
+.play_button_only{}
+.play_button_only .qc_audio_animation {
+    width: auto;
+    height: auto;
+    border-radius: unset;
+    border: unset;
+}
+.play_button_only .qc_audio_play_button{
+  position: unset;
+}
