@@ -1,0 +1,154 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "magazine-blocks/tab-post",
+  "title": "Tab Post",
+  "description": "Display the latest and popular posts in tabbed design",
+  "keywords": [ "tab-post", "tab", "post" ],
+  "category": "magazine-blocks",
+  "textdomain": "magazine-blocks",
+  "supports": {
+    "className": false,
+    "customClassName": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "attributes": {
+    "clientId": {
+      "type": "string"
+    },
+    "postCount": {
+      "type": "number",
+      "default": 4
+    },
+    "postType": {
+      "type": "string",
+      "default": "Post"
+    },
+    "category": {
+      "type": "string",
+      "default": "all"
+    },
+    "page": {
+      "type": "number",
+      "default": 1
+    },
+    "size": {
+      "type": "string"
+    },
+    "tabBackground": {
+      "type": "object",
+      "default": { "background": 1 },
+      "style": [{ "selector": "{{WRAPPER}} .mzb-tab-title.active" }]
+    },
+    "tabTypography": {
+      "type": "object",
+      "default": { "typography": 1, "weight": 500 },
+      "style": [
+        { "selector": "{{WRAPPER}} .mzb-tab-title" }
+      ]
+    },
+    "tabColor": {
+      "type": "string",
+      "style": [
+        { "selector": "{{WRAPPER}} .mzb-tab-title {color: {{VALUE}}; }" }
+      ]
+    },
+    "postTitleTypography": {
+      "type": "object",
+      "default": { "typography": 1, "weight": 500 },
+      "style": [
+        { "selector": "{{WRAPPER}} .mzb-post-title a" }
+      ]
+    },
+    "postTitleColor": {
+      "type": "string",
+      "style": [
+        { "selector": "{{WRAPPER}} .mzb-post-title a {color: {{VALUE}}; }" }
+      ]
+    },
+    "postTitleHoverColor": {
+      "type": "string",
+      "style": [
+        { "selector": "{{WRAPPER}} .mzb-post-title a:hover {color: {{VALUE}}; }" }
+      ]
+    },
+    "blockHTML": {
+      "type": "string",
+      "default": "div"
+    },
+    "blockMargin": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { margin: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockPadding": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { padding: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockZIndex": {
+      "type": "number",
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { z-index: {{VALUE}}; }"
+        }
+      ]
+    },
+    "cssID": {
+      "type": "string"
+    },
+    "hideOnDesktop": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnTablet": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:48em) and (max-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnMobile": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (max-width:48em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "blockCSS": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    }
+  },
+  "style": "magazine-blocks",
+  "editorScript": "magazine-blocks",
+  "editorStyle": "magazine-blocks-editor",
+  "viewScript": "magazine-blocks-frontend-tab-post"
+}

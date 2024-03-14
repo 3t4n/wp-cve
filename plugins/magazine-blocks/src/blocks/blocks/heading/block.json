@@ -1,0 +1,315 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"name": "magazine-blocks/heading",
+	"title": "Heading",
+	"description": "Create stylish title for each section with various markups from H1 to H6.",
+	"keywords": [ "heading", "headline" ],
+	"category": "magazine-blocks",
+	"textdomain": "magazine-blocks",
+	"supports": {
+	"className": false,
+	"customClassName": false
+	},
+	"example": {
+	"attributes": {}
+	},
+	"attributes": {
+		"clientId": {
+			"type": "string"
+		},
+		"text": {
+			"type": "string"
+		},
+		"enableSubHeading": {
+			"type": "boolean",
+			"default": true
+		},
+		"label": {
+			"type": "string",
+			"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		},
+		"subHeadingColor": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading {color: {{VALUE}}; }"
+			}]
+		},
+		"subHeadingHoverColor": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading {color: {{VALUE}}; }"
+			}]
+		},
+		"subHeadingBackground": {
+			"type": "object",
+			"default": {
+				"background": 1
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading"
+			}]
+		},
+		"subHeadingHoverBackground": {
+			"type": "object",
+			"default": {
+				"background": 1
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading"
+			}]
+		},
+		"subHeadingPadding": {
+			"type": "object",
+			"default": {
+				"dimension": 1,
+				"desktop": {
+					"lock": true
+				}
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading { padding: {{VALUE}}; }"
+			}]
+		},
+		"subHeadingBorder": {
+			"type": "object",
+			"default": {
+				"border": 1,
+				"radius": {
+					"desktop": {
+						"lock": true
+					}
+				},
+				"size": {
+					"desktop": {
+						"lock": true
+					}
+				}
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading"
+			}]
+		},
+		"subHeadingHoverBorder": {
+			"type": "object",
+			"default": {
+				"border": 1,
+				"radius": {
+					"desktop": {
+						"lock": true
+					}
+				},
+				"size": {
+					"desktop": {
+						"lock": true
+					}
+				}
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading:hover"
+			}]
+		},
+		"subHeadingBoxShadow": {
+			"type": "object",
+			"default": {
+				"boxShadow": 1
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading"
+			}]
+		},
+		"subHeadingBoxShadowHover": {
+			"type": "object",
+			"default": {
+				"boxShadow": 1
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} .sub-heading:hover"
+			}]
+		},
+		"alignment": {
+			"type": "object",
+			"style": [{
+				"selector": "{{WRAPPER}} {text-align: {{VALUE}}; }"
+			}],
+			"default": {
+				"desktop":"left"
+			}
+		},
+		"markup": {
+			"type": "string",
+			"default": "h2"
+		},
+		"headingLayout": {
+			"type": "string",
+			"default": "heading-layout-1"
+		},
+		"headingLayout1AdvancedStyle": {
+			"type": "string",
+			"default": "heading-layout-1-style-1"
+		},
+		"headingLayout2AdvancedStyle": {
+			"type": "string",
+			"default": "heading-layout-2-style-1"
+		},
+		"margin": {
+			"type": "object",
+			"default": {
+				"dimension": 1,
+				"desktop": {
+					"lock": true
+				}
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} { margin: {{VALUE}}; }"
+			}]
+		},
+		"color": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}} h1, {{WRAPPER}} h2, {{WRAPPER}} h3, {{WRAPPER}} h4, {{WRAPPER}} h5, {{WRAPPER}} h6, {{WRAPPER}}.mzb-heading-layout-2-style-1 h1, {{WRAPPER}}.mzb-heading-layout-2-style-1 h2, {{WRAPPER}}.mzb-heading-layout-2-style-1 h3, {{WRAPPER}}.mzb-heading-layout-2-style-1 h4, {{WRAPPER}}.mzb-heading-layout-2-style-1 h5, {{WRAPPER}}.mzb-heading-layout-2-style-1 h6   {color: {{VALUE}}; }"
+			}]
+		},
+		"hoverColor": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}} h1:hover, {{WRAPPER}} h2:hover, {{WRAPPER}} h3:hover, {{WRAPPER}} h4:hover, {{WRAPPER}} h5:hover{{WRAPPER}} h6:hover {color: {{VALUE}}; }"
+			}]
+		},
+		"background": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}} h1::before, {{WRAPPER}} h2::before, {{WRAPPER}} h3::before, {{WRAPPER}} h4::before, {{WRAPPER}} h5::before, {{WRAPPER}} h6::before, .mzb-heading-layout-2-style-1 h1, {{WRAPPER}}.mzb-heading-layout-2-style-1 h2, {{WRAPPER}}.mzb-heading-layout-2-style-1 h3, {{WRAPPER}}.mzb-heading-layout-2-style-1 h4, {{WRAPPER}}.mzb-heading-layout-2-style-1 h5, {{WRAPPER}}.mzb-heading-layout-2-style-1 h6 {background-color: {{VALUE}}; }"
+			}]
+		},
+		"hoverBackground": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}}.mzb-heading-layout-2-style-1 h1:hover, {{WRAPPER}}.mzb-heading-layout-2-style-1 h2:hover, {{WRAPPER}}.mzb-heading-layout-2-style-1 h3:hover, {{WRAPPER}}.mzb-heading-layout-2-style-1 h4:hover, {{WRAPPER}}.mzb-heading-layout-2-style-1 h5:hover, {{WRAPPER}}.mzb-heading-layout-2-style-1 h6:hover {background-color: {{VALUE}}; }"
+			}]
+		},
+		"typography": {
+			"type": "object",
+			"default": {
+				"typography": 1,
+				"weight": 500
+			},
+			"style": [{
+				"selector": "{{WRAPPER}} h1, {{WRAPPER}} h2, {{WRAPPER}} h3, {{WRAPPER}} h4, {{WRAPPER}} h5, {{WRAPPER}} h6, {{WRAPPER}} .editor-styles-wrapper .wp-block h1,  {{WRAPPER}} .editor-styles-wrapper .wp-block h2, {{WRAPPER}} .editor-styles-wrapper .wp-block h3, {{WRAPPER}} .editor-styles-wrapper .wp-block h4, {{WRAPPER}} .editor-styles-wrapper .wp-block h5, {{WRAPPER}} .editor-styles-wrapper .wp-block h6"
+			}]
+		},
+		"type": {
+			"type": "string",
+			"default": "solid",
+			"style": [{
+				"selector": "{{WRAPPER}}.mzb-heading-layout-2-style-1 .mzb-heading-inner {border-bottom-style: {{VALUE}}; }"
+			}]
+		},
+		"size": {
+			"type": "object",
+			"style": [{
+				"selector": "{{WRAPPER}}.mzb-heading-layout-2-style-1 {border-width: {{VALUE}}; }"
+			}]
+		},
+		"borderBottomColor": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}}.mzb-heading-layout-2-style-1 .mzb-heading-inner {border-bottom-color: {{VALUE}}; }"
+			}]
+		},
+		"typeHover": {
+			"type": "string",
+			"default": "solid",
+			"style": [{
+				"selector": "{{WRAPPER}} .mzb-heading-inner, .mzb-heading-layout-2-style-1:hover {border-bottom-style: {{VALUE}}; }"
+			}]
+		},
+		"sizeHover": {
+			"type": "object",
+			"style": [{
+				"selector": "{{WRAPPER}}.mzb-heading-layout-2-style-1:hover {border-width: {{VALUE}}; }"
+			}]
+		},
+		"borderBottomColorHover": {
+			"type": "string",
+			"style": [{
+				"selector": "{{WRAPPER}}.mzb-heading-layout-2-style-1:hover {border-bottom-color: {{VALUE}}; }"
+			}]
+		},
+    "blockHTML": {
+      "type": "string",
+      "default": "div"
+    },
+    "blockMargin": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { margin: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockPadding": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { padding: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockZIndex": {
+      "type": "number",
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { z-index: {{VALUE}}; }"
+        }
+      ]
+    },
+    "cssID": {
+      "type": "string"
+    },
+    "hideOnDesktop": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnTablet": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:48em) and (max-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnMobile": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (max-width:48em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "blockCSS": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    }
+	},
+	"style": "magazine-blocks-blocks",
+	"editorScript": "magazine-blocks-blocks",
+	"editorStyle": "magazine-blocks-blocks-editor"
+}

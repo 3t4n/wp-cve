@@ -1,0 +1,103 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "magazine-blocks/date-weather",
+  "title": "Date & Weather",
+  "description": "Setup API to display current date and weather information",
+  "keywords": [ "date", "weather" ],
+  "category": "magazine-blocks",
+  "textdomain": "magazine-blocks",
+  "supports": {
+    "className": false,
+    "customClassName": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "attributes": {
+    "clientId": {
+      "type": "string"
+    },
+    "apiKey": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "number"
+    },
+    "blockHTML": {
+      "type": "string",
+      "default": "div"
+    },
+    "blockMargin": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { margin: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockPadding": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { padding: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockZIndex": {
+      "type": "number",
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { z-index: {{VALUE}}; }"
+        }
+      ]
+    },
+    "cssID": {
+      "type": "string"
+    },
+    "hideOnDesktop": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnTablet": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:48em) and (max-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnMobile": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (max-width:48em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "blockCSS": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    }
+  },
+  "style": "magazine-blocks",
+  "editorScript": "magazine-blocks",
+  "editorStyle": "magazine-blocks-editor"
+}

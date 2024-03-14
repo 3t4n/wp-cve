@@ -1,0 +1,136 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "magazine-blocks/post-video",
+  "title": "Post Video",
+  "description": "Uses WordPress video post format to list videos from YouTube",
+  "keywords": [ "post-video", "video" ],
+  "category": "magazine-blocks",
+  "textdomain": "magazine-blocks",
+  "supports": {
+    "className": false,
+    "customClassName": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "attributes": {
+    "clientId": {
+      "type": "string"
+    },
+    "columnGap": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "value": 20,
+          "unit": "px"
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} .mzb-posts {column-gap: {{VALUE}}; }"
+        }
+      ]
+    },
+    "category": {
+      "type": "string",
+      "default": "all"
+    },
+    "postCount": {
+      "type": "number",
+      "default": 4
+    },
+    "radius": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": { "lock": true }
+      },
+      "style": [
+        { "selector": "{{WRAPPER}} .mzb-post { border-radius: {{VALUE}}; }" }
+      ]
+    },
+    "size": {
+      "type": "string"
+    },
+    "column": {
+      "type": "number",
+      "default": 3
+    },
+    "blockHTML": {
+      "type": "string",
+      "default": "div"
+    },
+    "blockMargin": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { margin: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockPadding": {
+      "type": "object",
+      "default": {
+        "dimension": 1,
+        "desktop": {
+          "lock": true
+        }
+      },
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { padding: {{VALUE}}; }"
+        }
+      ]
+    },
+    "blockZIndex": {
+      "type": "number",
+      "style": [
+        {
+          "selector": "{{WRAPPER}} { z-index: {{VALUE}}; }"
+        }
+      ]
+    },
+    "cssID": {
+      "type": "string"
+    },
+    "hideOnDesktop": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnTablet": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (min-width:48em) and (max-width:62em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "hideOnMobile": {
+      "type": "boolean",
+      "style": [
+        {
+          "selector": "@media (max-width:48em) { {{WRAPPER}} { display: none; } }"
+        }
+      ]
+    },
+    "blockCSS": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    }
+  },
+  "style": "magazine-blocks-blocks",
+  "editorScript": "magazine-blocks-blocks",
+  "editorStyle": "magazine-blocks-blocks-editor"
+}
