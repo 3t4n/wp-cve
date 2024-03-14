@@ -1,0 +1,127 @@
+@-webkit-keyframes cldashboardLoadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes cldashboardLoadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+/**
+ * --------------------------------------------------
+ * Migration Notice
+ * --------------------------------------------------
+ */
+.cldashboard-migration-notice {
+	padding: 25px 20px;
+}
+
+.cldashboard-migration-notice .notice-body {
+	display: flex;
+}
+
+.cldashboard-migration-notice .notice-icon {
+	padding-right: 25px;
+}
+
+.cldashboard-migration-notice .notice-icon img {
+	max-width: 55px;
+}
+
+.cldashboard-migration-notice .notice-content {
+	width: 100%;
+}
+
+.cldashboard-migration-notice .notice-content h2 {
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-weight: 700;
+}
+
+.cldashboard-migration-notice .notice-content > p {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.cldashboard-migration-notice .notice-content > p:last-child {
+	margin-bottom: 0;
+}
+
+/**
+ * --------------------------------------------------
+ * Migration Status
+ * --------------------------------------------------
+ */
+.cldashboard-migration-statuses {
+	margin-top: 7px;
+	margin-bottom: 8px;
+}
+
+.cldashboard-migration-status {
+	display: none;
+	margin-bottom: 3px;
+}
+
+.cldashboard-migration-status.migration-failed,
+.cldashboard-migration-status.migration-failed i {
+	color: tomato;
+}
+
+.cldashboard-migration-status i {
+	color: rgb(39, 223, 39);
+}
+
+.cldashboard-migration-status.is-waiting {
+	display: block;
+}
+
+.cldashboard-migration-status.is-waiting i {
+	display: none;
+}
+
+.cldashboard-migration-status .loader {
+	display: none;
+	position: relative;
+	bottom: -4px;
+	margin-right: 5px;
+	width: 14px;
+	height: 14px;
+	align-items: center;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.cldashboard-migration-status.is-waiting .loader {
+	display: inline-flex;
+	justify-content: center;
+	color: transparent !important;
+	pointer-events: none;
+}
+
+.cldashboard-migration-status.is-waiting .loader::after {
+	content: "";
+	position: absolute;
+	width: 1em;
+	display: block;
+	height: 1em;
+	border: 2px solid #bbb;
+	border-color: transparent transparent #aaa #aaa !important;
+	border-radius: 290486px;
+	-webkit-animation: cldashboardLoadingSpinAround 0.5s infinite linear;
+	animation: cldashboardLoadingSpinAround 0.5s infinite linear;
+}
+
+.cldashboard-migration-status.is-done {
+	display: block;
+}

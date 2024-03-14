@@ -1,0 +1,324 @@
+/**
+ * --------------------------------------------------
+ * Animation
+ * --------------------------------------------------
+ */
+@-webkit-keyframes loadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+@keyframes loadingSpinAround {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+/**
+ * --------------------------------------------------
+ * Heatbox adjustment
+ * --------------------------------------------------
+ */
+/* exists to display the updated icon */
+.heatbox h2 {
+	position: relative;
+}
+
+.heatbox-cols {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.heatbox-group .heatbox:not(:first-child) {
+	margin-top: -21px;
+}
+
+.heatbox-group .heatbox:not(:first-child) h2 {
+	background-color: #f7f7f7;
+	border-top-width: 0;
+}
+
+/**
+ * ------------------------------
+ * Setting fields
+ * ------------------------------
+ */
+.setting-fields {
+	padding: 25px 15px;
+}
+
+.setting-fields.is-gapless {
+	padding: 0;
+}
+
+.setting-fields .label {
+	display: block;
+	font-weight: 600;
+}
+
+.setting-fields .description {
+	font-weight: 400;
+}
+
+hr {
+	margin: 20px 0;
+	border-top: 1px solid #eee;
+	border-bottom: 0;
+}
+
+.setting-fields .field:last-child {
+	margin-bottom: 0;
+}
+
+.setting-fields .field {
+	margin-bottom: 20px;
+}
+
+.field.is-horizontal {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.field.is-horizontal .field-label {
+	width: 30%;
+}
+
+.field.is-horizontal .field-body {
+	padding-left: 20px;
+	width: 70%;
+}
+
+.general-setting-field {
+	max-width: 100%;
+}
+
+.general-setting-field[type="text"] {
+	width: 500px;
+}
+
+.general-setting-field.is-small {
+	width: 300px;
+}
+
+.general-setting-field.is-tiny {
+	width: 105px;
+}
+
+/**
+ * --------------------------------------------------
+ * Form Footer
+ * --------------------------------------------------
+ */
+.cldashboard-form-footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.cldashboard-submit-area,
+.cldashboard-reset-area {
+	display: flex;
+	align-items: center;
+	width: 50%;
+}
+
+.cldashboard-submit-area {
+	justify-content: flex-start;
+}
+
+.cldashboard-reset-area {
+	justify-content: flex-end;
+}
+
+/**
+ * --------------------------------------------------
+ * Button
+ * --------------------------------------------------
+ */
+.button.cldashboard-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button.cldashboard-button.is-hidden {
+	display: none;
+}
+
+.button.cldashboard-button.is-loading {
+	justify-content: center;
+	color: transparent !important;
+	pointer-events: none;
+}
+
+.button.cldashboard-button.is-loading::after {
+	content: "";
+	position: absolute;
+	width: 1em;
+	display: block;
+	height: 1em;
+	border: 2px solid #dbdbdb;
+	border-color: transparent transparent #fff #fff !important;
+	border-radius: 290486px;
+	-webkit-animation: loadingSpinAround 0.5s infinite linear;
+	animation: loadingSpinAround 0.5s infinite linear;
+}
+
+.button.cldashboard-button.cldashboard-load-defaults-button.is-loading::after {
+	border: 2px solid #19629d;
+	border-color: transparent transparent #2271b1 #2271b1 !important;
+}
+
+.button.cldashboard-submit-button {
+	margin-right: 10px;
+}
+
+.button.cldashboard-reset-button {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #fff;
+	background-color: tomato;
+	border-color: tomato;
+}
+
+.button.cldashboard-reset-button:hover,
+.button.cldashboard-reset-button:active,
+.button.cldashboard-reset-button:focus {
+	color: #fff;
+	background-color: #f5492a;
+	border-color: #f5492a;
+}
+
+.cldashboard-reset-button:focus {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px #f5492a;
+}
+
+/**
+ * --------------------------------------------------
+ * Notice
+ * --------------------------------------------------
+ */
+.cldashboard-notice {
+	font-weight: 500;
+	opacity: 0;
+	visibility: hidden;
+	transition: 350ms all linear;
+}
+
+.cldashboard-notice.is-shown {
+	opacity: 1;
+	visibility: visible;
+	transition: 350ms all linear;
+}
+
+.cldashboard-notice.is-success {
+	color: rgb(28, 129, 28);
+}
+
+.cldashboard-notice.is-error {
+	color: tomato;
+}
+
+/**
+ * --------------------------------------------------
+ * Color picker
+ * --------------------------------------------------
+ */
+.iris-picker-inner {
+	display: grid;
+	grid-template-columns: 1fr 20px 20px;
+	grid-gap: 7px;
+}
+
+.iris-picker-inner > * {
+	width: 100% !important;
+	margin-left: 0 !important;
+}
+
+/**
+ * --------------------------------------------------
+ * Tools
+ * --------------------------------------------------
+ */
+.cldashboard-tools-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.cldashboard-tools-container .heatbox {
+	display: flex;
+	flex-direction: column;
+	flex: 0 49%;
+	margin-right: 2%;
+}
+
+.cldashboard-tools-container .heatbox:nth-child(even) {
+	margin-right: 0;
+}
+
+.cldashboard-tools-container p.submit {
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.cldashboard-tools-container .heatbox {
+		flex: 0 100%;
+		margin-right: 0;
+	}
+	
+	.heatbox-sidebar {
+		margin-top: 15px;
+	}
+}
+
+/**
+ * --------------------------------------------------
+ * Featured products
+ * --------------------------------------------------
+ */
+.featured-products > h2 {
+	text-align: center;
+	margin-bottom: 50px;
+	font-size: 24px;
+}
+
+.featured-products .products {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.featured-products .products li {
+	width: 32%;
+}
+
+.featured-products .products .subheadline {
+	font-weight: 600;
+	margin-top: -6px;
+}
+
+.featured-products .products img {
+	max-width: 100%;
+}
+
+.featured-products .credit {
+	margin-top: 20px;
+	text-align: center;
+	opacity: 0.5;
+}
+
+/**
+ * --------------------------------------------------
+ * Sidebar
+ * --------------------------------------------------
+ */
+.review-icons {
+	color: #f2dd07;
+}
