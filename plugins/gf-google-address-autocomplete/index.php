@@ -1,0 +1,4 @@
+<?php
+/*
+Slilence is golden
+* /
