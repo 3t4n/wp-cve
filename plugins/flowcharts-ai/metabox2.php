@@ -1,0 +1,2 @@
+<?php defined( 'ABSPATH' ) or die; ?>
+<p><?php _e( 'Unlock all features in FlowCharts.ai and receive all future updates' ); ?><br><a target="_blank" href="https://flowcharts.ai/#pricing" class="button button-secondary"><?php _e( 'Upgrade your FlowCharts', 'flowcharts-ai' ); ?></a></p>
