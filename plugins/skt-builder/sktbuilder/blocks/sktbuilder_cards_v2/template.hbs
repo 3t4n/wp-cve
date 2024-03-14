@@ -1,0 +1,80 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="sktbuilder-cards_v2-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}skt-builder-block-wrapper sktbuilder-cards sktbuilder-cards_v2 sktbuilder-cards_v2-{{id}}" style="background-color: {{blockBackgroundColor}}; background-image: url({{blockBgImageUrl}}); padding-bottom: {{blockPaddingBottom}}px; padding-top: {{blockPaddingTop}}px; {{#if blockParallaxEffect}}background-attachment: fixed;{{/if}}">
+	<div class="skt-builder-block-inner skt-builder-block-inner-{{id}}" style="{{#if blockAnimation}}visibility: hidden;{{/if}}">
+        <div class="skt-builder-container">
+            {{#if blockTitle}}
+				<div class="skt-builder-block-title">
+					<h2 style="color: {{blockTitleColor}}; text-align: {{blockTitleAlign}};">{{blockTitle}}</h2>
+				</div>
+			{{/if}}
+			{{#if blockDescription}}
+                <div class="skt-builder-block-description">{{{blockDescription}}}</div>
+            {{/if}}
+        </div>
+        <div class="qb-container">
+            {{#if cards.length}}
+                {{#each_with_sort cards "order"}}
+                    <div class="qb-column qb-1-3 qb-mobile-1-1 {{#ifIsNthItem nth=3}} qb-column-margin-none {{/ifIsNthItem}}">
+                        <div class="sktbuilder-card-version2  sktbuilder-card-version2-{{id}}" style="background-color: {{bgColorFront}};">
+                        	<style>
+								.sktbuilder-card-version2-{{id}} .sktbuilder-cardv2__description p{color: {{descriptionItemColor}};}
+								.sktbuilder-card-version2-{{id}}:hover{background-color: {{bgColorFrontHover}} !important;}
+								.sktbuilder-card-version2-{{id}}:hover .sktbuilder-card__icon span,
+								.sktbuilder-card-version2-{{id}}:hover .sktbuilder-card__headertext,
+								.sktbuilder-card-version2-{{id}}:hover .sktbuilder-cardv2__description,
+								.sktbuilder-card-version2-{{id}}:hover .sktbuilder-cardv2__description p{color: {{bgColorFrontHoverText}} !important;}
+								.sktbuilder-card-version2-{{id}}:hover .sktbuilder-card__headertext_v2-separator{background-color: {{bgColorFrontHoverText}} !important;}
+								.sktbuilder-card-version2-{{id}} .skt-builder-block-column-button{background-color: {{blockButtonBgColor}}; color: {{blockButtonTextColor}};}
+								.sktbuilder-card-version2-{{id}}:hover .skt-builder-block-column-button{background-color: {{blockButtonHoverBgColor}}; color: {{blockButtonHoverTextColor}};}
+							</style>
+
+                            {{#if columnImage}}
+                                <div class="sktbuilder-card__icon"><img src="{{columnImage}}"></div>
+                            {{else}}
+                                <div class="sktbuilder-card__icon"><span class="{{iconFront}}" style="color: {{iconColor}};"></span></div>
+                            {{/if}}
+                            
+                            {{#if title}}
+                                <div class="sktbuilder-card__header"><h4 class="sktbuilder-card__headertext sktbuilder-card__headertext_v2" style="color: {{titleColor}};">{{title}}</h4><span class="sktbuilder-card__headertext_v2-separator" style="background-color: {{titleSeparatorColor}};"></span></div>
+                            {{/if}}
+                            
+                            {{#if descriptionFront}}
+                                <div class="sktbuilder-cardv2__description" style="color: {{descriptionItemColor}};">{{{descriptionFront}}}</div>
+                            {{/if}}
+                            
+                            <a class="skt-builder-block-column-button" href="{{blockButtonLink}}" {{#if blockButtonLinkTarget}}target="_blank"{{/if}}>{{blockButtonText}}</a>
+                        </div>
+                    </div>
+                {{/each_with_sort}}
+            {{/if}}
+        </div>
+	</div>
+</div>
+{{#if blockAnimation}}
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function(){
+jQuery(window).scroll(function(){
+    // This is then function used to detect if the element is scrolled into view
+    function elementScrolled(elem)
+    {
+        var docViewTop = jQuery(window).scrollTop();
+        var docViewBottom = docViewTop + jQuery(window).height();
+        var elemTop = jQuery(elem).offset().top;
+        return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+	if (jQuery('.skt-builder-block-inner-{{id}}').length > 0) {
+	if(elementScrolled('.skt-builder-block-inner-{{id}}')) {
+        var els = jQuery('.skt-builder-block-inner-{{id}}'),
+            i = 0,
+            f = function () {
+                jQuery(els[i++]).addClass('{{blockAnimationEffect}}');
+                if(i < els.length) setTimeout(f, 400);
+            };
+        f();
+    }}
+
+});
+});
+</script>
+{{/if}}

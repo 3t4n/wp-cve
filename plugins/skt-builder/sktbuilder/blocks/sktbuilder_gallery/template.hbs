@@ -1,0 +1,51 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="sktbuilder-block-gallery-zoom-block-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}sktbuilder-block sktbuilder-block-gallery-zoom">
+      <div class="qb-container">
+          <div class="sktbuilder-header">
+                {{#if header}}
+                    <h2 class="sktbuilder-header__title  sktbuilder-header__title_color_black">{{header}}</h2>
+                {{/if}}
+                {{#if description}}
+                    <div class="sktbuilder-header__description sktbuilder-header__description_color_black">
+                       {{{description}}}
+                    </div>
+                {{/if}}
+           </div>
+      </div>
+          {{#if gallery.length}}
+              <div class="sktbuilder-gallery__item sktbuilder-gallery__item-{{id}}">
+                  {{#each_with_sort gallery "order"}}
+                  {{#if image}}
+                      <div class="sktbuilder-gallery__thumb">
+                          <img class="img-responsive" src="{{image}}" alt="">
+                      </div>
+                  {{/if}}
+                  {{/each_with_sort}}
+              </div>
+          {{/if}}
+</div>
+<script>
+jQuery(document).ready(function () {
+  // resize image on click
+  jQuery('.sktbuilder-gallery__item-{{id}} .sktbuilder-gallery__thumb').click(function () {
+    if (jQuery(this).hasClass('sktbuilder-gallery__thumb_active')) {
+      jQuery(this).removeClass('sktbuilder-gallery__thumb_active');
+      return;
+    }
+    jQuery('.sktbuilder-gallery__item-{{id}} .sktbuilder-gallery__thumb').removeClass('sktbuilder-gallery__thumb_active');
+    jQuery(this).addClass('sktbuilder-gallery__thumb_active');
+  });
+
+  // define left a right elements
+  var order = 0;
+  jQuery('.sktbuilder-gallery__item-{{id}} .sktbuilder-gallery__thumb').each(function() {
+    if (++order < 3) {
+      jQuery(this).addClass('sktbuilder-gallery__thumb_left');
+    } else {
+      jQuery(this).addClass('sktbuilder-gallery__thumb_right');
+      if(order === 4) {
+        order = 0;
+      }
+    }     
+  });
+});
+</script>

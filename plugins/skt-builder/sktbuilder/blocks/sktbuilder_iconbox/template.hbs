@@ -1,0 +1,79 @@
+<div id="sktbuilder-iconbox-block-{{id}}" class="skt-builder-block-wrapper sktbuilder-iconbox-block sktbuilder-iconbox-block-{{id}}" style="background-color: {{blockBackgroundColor}}; background-image: url({{blockBgImageUrl}}); padding-bottom: {{blockPaddingBottom}}px; padding-top: {{blockPaddingTop}}px; {{#if blockParallaxEffect}}background-attachment: fixed;{{/if}}">
+	<div class="skt-builder-block-inner skt-builder-block-inner-{{id}}" style="{{#if blockAnimation}}visibility: hidden;{{/if}}">
+        <div class="skt-builder-container">
+            {{#if blockTitle}}
+				<div class="skt-builder-block-title">
+					<h2 style="color: {{blockTitleColor}}; text-align: {{blockTitleAlign}};">{{blockTitle}}</h2>
+				</div>
+			{{/if}}
+			{{#if blockDescription}}
+                <div class="skt-builder-block-description">{{{blockDescription}}}</div>
+            {{/if}}
+        </div>
+        <div class="qb-container">
+            {{#if iconbox.length}}
+                {{#each_with_sort iconbox "order"}}
+                    <div class="qb-column qb-1-3 qb-mobile-1-1 {{#ifIsNthItem nth=3}} qb-column-margin-none {{/ifIsNthItem}}">
+                        <div class="sktbuilder-iconbox sktbuilder-iconbox-{{id}}" style="background-color: {{iconboxBgColor}}">
+                        	<style>
+                            	.sktbuilder-iconbox-{{id}} .sktbuilder-iconbox__description p{color: {{descriptionItemColor}};}
+								.sktbuilder-iconbox-{{id}} .sktbuilder-iconbox__headertext:hover,
+								.sktbuilder-iconbox-{{id}} .sktbuilder-iconbox__headertext a:hover{color: {{columnLinkHoverTextColor}} !important;}
+                            </style>
+                            <div class="sktbuilder-iconbox__item">
+                            	{{#if columnImage}}
+                                	<div class="sktbuilder-iconbox__icon"><img src="{{columnImage}}"></div>
+                                {{else}}
+                                    <div class="sktbuilder-iconbox__icon"><span class="sktbuilder-iconbox__iconel {{iconFront}}" style="color: {{iconColor}}"></span></div>
+                                {{/if}}
+                            
+                                {{#if title}}
+                                    <div class="sktbuilder-iconbox__itemheader">
+                                    	<span class="sktbuilder-iconbox__headertext_small" style="color: {{titleSmallColor}};">{{titleSmall}}</span>
+                                    	<h4 class="sktbuilder-iconbox__headertext" style="color: {{titleColor}};"><a href="{{columnLink}}" style="color: {{titleColor}};" {{#if columnLinkTarget}}target="_blank"{{/if}}>{{title}}</a></h4>
+                                    </div>
+                                {{/if}}
+                                
+                                {{#if descriptionItem}}
+                                    <div class="sktbuilder-iconbox__description" style="color: {{descriptionItemColor}};">{{{descriptionItem}}}</div>
+                                {{/if}}
+                                
+                                <div class="sktbuilder-iconbox__number" style="background-color: {{columnNumberBgColor}}; color: {{columnNumberColor}};">{{columnNumber}}<span style="background-color: {{columnNumberBgColor}};"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    {{#ifIsNthItem nth=3}} <div class="clearfix"></div>{{/ifIsNthItem}}
+                {{/each_with_sort}}
+            {{/if}}
+        </div>
+	</div>
+</div>
+{{#if blockAnimation}}
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function(){
+jQuery(window).scroll(function(){
+    // This is then function used to detect if the element is scrolled into view
+    function elementScrolled(elem)
+    {
+        var docViewTop = jQuery(window).scrollTop();
+        var docViewBottom = docViewTop + jQuery(window).height();
+        var elemTop = jQuery(elem).offset().top;
+        return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+	if (jQuery('.skt-builder-block-inner-{{id}}').length > 0) {
+	if(elementScrolled('.skt-builder-block-inner-{{id}}')) {
+        var els = jQuery('.skt-builder-block-inner-{{id}}'),
+            i = 0,
+            f = function () {
+                jQuery(els[i++]).addClass('{{blockAnimationEffect}}');
+                if(i < els.length) setTimeout(f, 400);
+            };
+        f();
+    }}
+
+});
+});
+</script>
+{{/if}}

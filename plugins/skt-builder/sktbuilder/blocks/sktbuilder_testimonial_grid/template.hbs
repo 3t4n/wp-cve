@@ -1,0 +1,36 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="sktbuilder-testimonial-grid-block-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}sktbuilder-block sktbuilder-testimonial-grid">
+    <div class="qb-container">
+        <div class="sktbuilder-header">
+            {{#if header}}
+                <h2 class="sktbuilder-header__title sktbuilder-header__title_color_black">{{header}}</h2>
+            {{/if}}
+            {{#if description}}
+                <div class="sktbuilder-header__description sktbuilder-header__description_color_black">
+                   {{{description}}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="qb-container">
+      {{#each_with_sort testimonial "order"}}
+            <div class="qb-column qb-1-2 qb-mobile-1-1 {{#ifIsNthItem nth=2}} qb-column-margin-none {{/ifIsNthItem}}">
+                    <dl class="sktbuilder-testimonial-grid__item {{#if first}} sktbuilder-testimonial-grid__item_first {{/if}}">
+                      <dt>
+                        {{#if image}}
+                          <img src="{{image}}" class="sktbuilder-testimonial-grid__person">
+                        {{/if}}
+                      </dt>
+                       <dd class="sktbuilder-testimonial-grid__content">
+                           <span class="sktbuilder-testimonial-grid__content__title">{{title}}</span>
+                           <span class="sktbuilder-testimonial-grid__content__company sktbuilder-testimonial-grid__company_show_mobile">{{company}}</span>
+                           <div class="sktbuilder-testimonial-grid__content__text">
+                                {{{text}}}
+                           </div>
+                           <span class="sktbuilder-testimonial-grid__content__company sktbuilder-testimonial-grid__company_hide_mobile">{{company}}</span>
+                       </dd>
+                    </dl>
+            </div> 
+            {{#ifIsNthItem nth=2}} <div class="clearfix"></div> {{/ifIsNthItem}}
+            {{/each_with_sort}}   
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="sktbuilder-main-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}sktbuilder-block sktbuilder-block_simple-bg sktbuilder-main sktbuilder-main-{{id}}" style="background-image: url({{bgImageUrl}});">
+        <div class="qb-container sktbuilder-block__table">
+            <div class="sktbuilder-block__table-cell">
+                <div class="sktbuilder-header">
+                {{#if header}}
+                    <h2 class="sktbuilder-header__title sktbuilder-main__title sktbuilder-header__title_color_white">{{header}}</h2>
+                {{/if}}
+                {{#if description}}
+                    <div class="sktbuilder-header__description sktbuilder-main__description sktbuilder-header__description_color_white">
+                       {{{description}}}
+                    </div>
+                {{/if}}
+                </div>
+                {{#if actionText}}
+                    <div class="sktbuilder-button sktbuilder-main__button">
+                        <a class="sktbuilder-button__button sktbuilder-button__button_{{actionHover}}" type="button" href="{{actionUrl}}">{{actionText}}</a>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+</div>
+<script>
+jQuery( document ).ready(function() {
+    var windowHeight = jQuery(window).height();
+    var windowWidth = jQuery(window).width();
+    if(windowWidth > 767) {
+        jQuery('.sktbuilder-main-{{id}}').css('height', windowHeight);
+    } else {
+        jQuery('.sktbuilder-main-{{id}}').css('height', 'auto');
+    }
+});
+jQuery( window ).resize(function() {
+    var windowHeight = jQuery(window).height();
+    var windowWidth = jQuery(window).width();
+    if(windowWidth > 767) {
+        jQuery('.sktbuilder-main-{{id}}').css('height', windowHeight);
+    } else {
+        jQuery('.sktbuilder-main-{{id}}').css('height', 'auto');
+    }
+});
+</script>

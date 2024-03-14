@@ -1,0 +1,76 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="skt-builder-content-block-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}skt-builder-block-wrapper skt-builder-content-block skt-builder-content-block-{{id}}" style="background-color: {{blockBackgroundColor}}; background-image: url({{blockBgImageUrl}}); padding-bottom: {{blockPaddingBottom}}px; padding-top: {{blockPaddingTop}}px; {{#if blockParallaxEffect}}background-attachment: fixed;{{/if}}">
+	<div class="skt-builder-block-inner skt-builder-block-inner-{{id}}" style="{{#if blockAnimation}}visibility: hidden;{{/if}}">
+		<div class="skt-builder-container">
+        	<style>
+            	.skt-builder-content-block-{{id}} .skt-builder-block-column-button{background-color: {{blockButtonBgColor}}; color: {{blockButtonTextColor}};}
+				.skt-builder-content-block-{{id}} .skt-builder-block-column-button:hover{background-color: {{blockButtonHoverBgColor}}; color: {{blockButtonHoverTextColor}};}
+            </style>
+			{{#if blockTitle}}
+				<div class="skt-builder-block-title">
+					<h2 style="color: {{blockTitleColor}}; text-align: {{blockTitleAlign}};">{{blockTitle}}</h2>
+				</div>
+			{{/if}}
+			{{#if blockDescription}}
+                <div class="skt-builder-block-description">{{{blockDescription}}}</div>
+            {{/if}}
+            
+			<div class="skt-builder-columns-row skt-builder-columns-row-2column">
+            	<div class="skt-builder-column">
+                	<img class="skt-builder-content-block-column-image" src="{{blockColumnImage}}">
+                    <h3 class="skt-builder-content-block-column-title" style="color: {{blockColumnTitleColor}};">{{blockColumnTitle}}</h3>
+                    <div class="skt-builder-content-block-column-description">{{{blockColumnDescription}}}</div>
+                    <a class="skt-builder-block-column-button" href="{{blockButtonLink}}" {{#if blockButtonLinkTarget}}target="_blank"{{/if}}>{{blockButtonText}}</a>
+                </div>
+                <div class="skt-builder-column">
+                    {{#if blockColumns.length}}
+                        {{#each_with_sort blockColumns "order"}}
+                            <div class="skt-builder-content-column skt-builder-content-column-{{id}}">
+                                <style>
+                                    .skt-builder-content-column-{{id}} .skt-builder-content-column-title a:hover{color: {{titleHoverColor}} !important;}
+                                </style>
+                                <div class="skt-builder-column-inner">
+                                    <a href="{{columnLink}}" {{#if columnLinkTarget}}target="_blank"{{/if}}><img class="skt-builder-content-column-image" src="{{columnImage}}"></a>
+                                    <div class="skt-builder-content-column-info">
+                                        <h3 class="skt-builder-content-column-title"><a href="{{columnLink}}" style="color: {{titleColor}};" {{#if columnLinkTarget}}target="_blank"{{/if}}>{{title}}</a></h3>
+                                        <span class="skt-builder-content-column-price" style="color: {{columnPriceColor}};">{{columnPrice}}</span>
+                                    </div>
+                                    <div class="skt-builder-content-column-description" style="color: {{columnDescriptionColor}};">{{{columnDescription}}}</div>
+                                </div>
+                            </div>
+                        {{/each_with_sort}}
+                    {{/if}}                    
+                </div>
+            </div>
+
+		</div>
+	</div>
+</div>
+{{#if blockAnimation}}
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function(){
+jQuery(window).scroll(function(){
+    // This is then function used to detect if the element is scrolled into view
+    function elementScrolled(elem)
+    {
+        var docViewTop = jQuery(window).scrollTop();
+        var docViewBottom = docViewTop + jQuery(window).height();
+        var elemTop = jQuery(elem).offset().top;
+        return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+	if (jQuery('.skt-builder-block-inner-{{id}}').length > 0) {
+	if(elementScrolled('.skt-builder-block-inner-{{id}}')) {
+        var els = jQuery('.skt-builder-block-inner-{{id}}'),
+            i = 0,
+            f = function () {
+                jQuery(els[i++]).addClass('{{blockAnimationEffect}}');
+                if(i < els.length) setTimeout(f, 400);
+            };
+        f();
+    }}
+
+});
+});
+</script>
+{{/if}}

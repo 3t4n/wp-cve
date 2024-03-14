@@ -1,0 +1,103 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="skt-builder-tabs-block-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}skt-builder-block-wrapper skt-builder-tabs-block skt-builder-tabs-block-{{id}}" style="background-color: {{blockBackgroundColor}}; background-image: url({{blockBgImageUrl}}); padding-bottom: {{blockPaddingBottom}}px; padding-top: {{blockPaddingTop}}px; {{#if blockParallaxEffect}}background-attachment: fixed;{{/if}}">
+	<div class="skt-builder-block-inner skt-builder-block-inner-{{id}}" style="{{#if blockAnimation}}visibility: hidden;{{/if}}">
+		<div class="skt-builder-container">
+			{{#if blockTitle}}
+				<div class="skt-builder-block-title">
+					<h2 style="color: {{blockTitleColor}}; text-align: {{blockTitleAlign}};">{{blockTitle}}</h2>
+				</div>
+			{{/if}}
+			{{#if blockDescription}}
+                <div class="skt-builder-block-description">{{{blockDescription}}}</div>
+            {{/if}}
+			
+            <div class="skt-builder-tabs-container">
+			<style>
+			.skt-builder-tabs-block-{{id}} .skt-builder-tabs{background-color: {{tabBarBackgroundColor}};}
+			.skt-builder-tabs-block-{{id}} .skt-builder-tabs li{color: {{tabTitleColor}};}
+			.skt-builder-tabs-block-{{id}} .skt-builder-tabs li.skt-builder-current-tab{background-color: {{tabActiveTitleBgColor}}; color: {{tabActiveTitleColor}};}
+			.skt-builder-tabs-block-{{id}} .skt-builder-tab-content{background-color: {{tabContentBgColor}}; color: {{tabContentColor}};}
+			</style>
+			
+			<ul class="skt-builder-tabs">
+				{{#if blockColumns.length}}
+					{{#each_with_sort blockColumns "order"}}
+						<li class="skt-builder-tab-link" data-tab="skt-builder-tab-{{id}}">{{title}}</li>
+					{{/each_with_sort}}
+				{{/if}}
+			</ul>
+			
+			{{#if blockColumns.length}}
+				{{#each_with_sort blockColumns "order"}}
+					<div id="skt-builder-tab-{{id}}" class="skt-builder-tab-content">
+					  {{{columnContent}}}
+					</div>
+				{{/each_with_sort}}
+			{{/if}}
+            </div>
+		</div>
+	</div>
+</div>
+<script>
+jQuery(document).ready(function() {
+    jQuery('p').each(function() {
+        var $this = jQuery(this);
+        if($this.html().replace(/\s|&nbsp;/g, '').length == 0) {
+            $this.remove();
+        }
+    });
+});
+
+jQuery(document).ready(function() {
+    jQuery('p').each(function() {
+        var $this = jQuery(this);
+        if($this.html().replace(/\s|<br>/g, '').length == 0) {
+            $this.remove();
+        }
+    });
+});
+
+jQuery(document).ready(function(){
+	jQuery("ul.skt-builder-tabs li:first-of-type").addClass("skt-builder-current-tab");
+	jQuery(".skt-builder-tabs-container .skt-builder-tab-content:first-of-type").addClass("skt-builder-current-tab");
+		
+	jQuery('.skt-builder-tabs-block-{{id}} .skt-builder-tabs li').click(function(){
+		var tab_id = jQuery(this).attr('data-tab');
+
+		jQuery('.skt-builder-tabs-block-{{id}} .skt-builder-tabs li').removeClass('skt-builder-current-tab');
+		jQuery('.skt-builder-tabs-block-{{id}} .skt-builder-tab-content').removeClass('skt-builder-current-tab');
+
+		jQuery(this).addClass('skt-builder-current-tab');
+		jQuery("#"+tab_id).addClass('skt-builder-current-tab');
+	});
+});
+</script>
+
+{{#if blockAnimation}}
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function(){
+jQuery(window).scroll(function(){
+    // This is then function used to detect if the element is scrolled into view
+    function elementScrolled(elem)
+    {
+        var docViewTop = jQuery(window).scrollTop();
+        var docViewBottom = docViewTop + jQuery(window).height();
+        var elemTop = jQuery(elem).offset().top;
+        return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+	if (jQuery('.skt-builder-block-inner-{{id}}').length > 0) {
+	if(elementScrolled('.skt-builder-block-inner-{{id}}')) {
+        var els = jQuery('.skt-builder-block-inner-{{id}}'),
+            i = 0,
+            f = function () {
+                jQuery(els[i++]).addClass('{{blockAnimationEffect}}');
+                if(i < els.length) setTimeout(f, 400);
+            };
+        f();
+    }}
+
+});
+});
+</script>
+{{/if}}

@@ -1,0 +1,29 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="sktbuilder-v2video-block-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}sktbuilder-block sktbuilder-block-video sktbuilder-block_simple-bg" style="background-image: url({{bgImageUrl}});">
+        <div class="qb-container">
+             <div class="sktbuilder-header">
+                {{#if header}}
+                    <h2 class="sktbuilder-header__title sktbuilder-header__title_color_black">{{header}}</h2>
+                {{/if}}
+                {{#if description}}
+                    <div class="sktbuilder-header__description sktbuilder-header__description_color_black">
+                       {{{description}}}
+                    </div>
+                {{/if}}
+            </div>
+            <div class="sktbuilder-block-video__container_v2 video-container-{{id}}"></div>
+        </div>
+        
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        var url = "{{src.url}}",
+            video = '',
+            format = url.substring(url.lastIndexOf('.') + 1, url.length);
+        
+        if (format === 'mp4' || format === 'ogv'|| format === 'webm') {
+            video = "<video  poster='{{src.preview}}' width=' 100%' height='100%' controls><source src='" + url + "' type='video/" + (format === 'ogv' ? 'ogg' : format) + "'></source></video>";
+        }
+
+        jQuery(".video-container-{{id}}").append(video);
+    });
+</script>

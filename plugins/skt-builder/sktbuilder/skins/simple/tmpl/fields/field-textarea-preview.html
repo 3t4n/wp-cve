@@ -1,0 +1,42 @@
+<% if (label){ %>
+	<label class="textarea-label field-label"><%= label %></label>
+<% } %>
+<div class="textarea-container">
+	<div id="<%= textareaId %>"><%= value %></div>
+</div>
+<script type="text/javascript">
+	var quill_<%= textareaId %> = new Quill('#<%= textareaId %>', {
+		modules: {
+			toolbar: [
+							[{
+								'header': [1, 2, 3, 4, 5, 6, false]
+							}, {
+								'align': []
+							}, 'bold', 'italic', 'underline', 'strike', {
+								'color': []
+							}, {
+								'background': []
+							}, {
+								'list': 'ordered'
+							}, {
+								'list': 'bullet'
+							}, {
+								'indent': '-1'
+							}, {
+								'indent': '+1'
+							}, {
+								'script': 'sub'
+							}, {
+								'script': 'super'
+							}, 'link', 'image', 'video', 'blockquote', 'code-block', {
+								'direction': 'rtl'
+							}]
+						]
+		},
+		placeholder: '',
+		theme: 'snow'
+	});
+	quill_<%= textareaId %>.on('text-change', function() {
+		jQuery('#<%= textareaId %>').trigger('change', quill_<%= textareaId %>);
+	});
+</script>

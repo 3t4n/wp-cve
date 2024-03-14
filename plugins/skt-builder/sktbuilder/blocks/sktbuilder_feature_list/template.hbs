@@ -1,0 +1,81 @@
+<div {{#if blockCustomID}}id="{{{blockCustomID}}}"{{else}}id="sktbuilder-feature-list-block-{{id}}"{{/if}} class="{{#if blockCustomClass}}{{{blockCustomClass}}} {{/if}}skt-builder-block-wrapper sktbuilder-feature_list sktbuilder-feature_list-{{id}}" style="background-color: {{blockBackgroundColor}}; background-image: url({{blockBgImageUrl}}); padding-bottom: {{blockPaddingBottom}}px; padding-top: {{blockPaddingTop}}px; {{#if blockParallaxEffect}}background-attachment: fixed;{{/if}}">
+	<div class="skt-builder-block-inner skt-builder-block-inner-{{id}}" style="{{#if blockAnimation}}visibility: hidden;{{/if}}">
+        <div class="skt-builder-container">
+            {{#if blockTitle}}
+				<div class="skt-builder-block-title">
+					<h2 style="color: {{blockTitleColor}}; text-align: {{blockTitleAlign}};">{{blockTitle}}</h2>
+				</div>
+			{{/if}}
+			{{#if blockDescription}}
+                <div class="skt-builder-block-description">{{{blockDescription}}}</div>
+            {{/if}}
+        </div>
+        <div class="qb-container">
+            {{#if featureList.length}}
+                {{#each_with_sort featureList "order"}}
+                    <div class="qb-column qb-1-3 qb-mobile-1-1 qb-table-1-1 {{#ifIsNthItem nth=3}} qb-column-margin-none {{/ifIsNthItem}}">
+                        <div class="sktbuilder-feature sktbuilder-feature-list sktbuilder-feature-list_{{figureVar}} {{#if last}} sktbuilder-feature-list_last {{/if}}">
+                            {{#each_with_sort featureListItems "order"}}
+                            <div class="sktbuilder-feature__item sktbuilder-feature-list__item sktbuilder-feature-list__item-{{id}} {{#if last}} sktbuilder-feature-list__item_last {{/if}} sktbuilder-block__table">
+                            	<style>
+									.sktbuilder-feature-list__item-{{id}} .sktbuilder-feature-list__description p{color: {{descriptionItemColor}};}
+									.sktbuilder-feature-list__item-{{id}} .sktbuilder-feature-list__headertext:hover,
+									.sktbuilder-feature-list__item-{{id}} .sktbuilder-feature-list__headertext a:hover{color: {{columnLinkHoverTextColor}} !important;}
+									.sktbuilder-feature-list__item-{{id}} .sktbuilder-feature-list__connector{border-color: {{columnConnectorColor}};}
+                            	</style>
+                                <span class="sktbuilder-feature-list__connector sktbuilder-feature-list__connector_{{../figureVar}} full" {{#if last}}style="display:none"{{/if}}></span>
+                                <div class="sktbuilder-feature__icon sktbuilder-feature__icon_{{../figureVar}}" style="background-color: {{columnNumberBgColor}};">
+                                    <span class="sktbuilder-feature__iconel" style="color: {{columnNumberColor}};">{{columnNumber}}</span>
+                                </div>
+                                <div class="sktbuilder-block__table-cell">
+                                    {{#if title}}
+                                        <div class="sktbuilder-feature__itemheader">
+                                            <h4 class="sktbuilder-feature__headertext sktbuilder-feature-list__headertext sktbuilder-feature-list__headertext_{{../figureVar}}" style="color: {{titleColor}};">
+                                            	<a href="{{columnLink}}" style="color: {{titleColor}};" {{#if columnLinkTarget}}target="_blank"{{/if}}>{{title}}</a>
+                                            </h4>
+                                        </div>
+                                    {{/if}}
+                                    {{#if featureListItemText}}
+                                        <div class="sktbuilder-feature__description sktbuilder-feature-list__description sktbuilder-feature-list__description_{{../figureVar}} {{#if last}}sktbuilder-feature-list__description_last{{/if}}" style="color: {{descriptionItemColor}};">{{{featureListItemText}}}</div>
+                                    {{/if}}
+                                </div>
+                               
+                            </div>
+                            {{/each_with_sort}}
+                        </div>
+                    </div>
+                    {{#ifIsNthItem nth=3}} <div class="clearfix"></div>{{/ifIsNthItem}}
+                {{/each_with_sort}}
+            {{/if}}
+        </div>
+	</div>
+</div>
+{{#if blockAnimation}}
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function(){
+jQuery(window).scroll(function(){
+    // This is then function used to detect if the element is scrolled into view
+    function elementScrolled(elem)
+    {
+        var docViewTop = jQuery(window).scrollTop();
+        var docViewBottom = docViewTop + jQuery(window).height();
+        var elemTop = jQuery(elem).offset().top;
+        return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+	if (jQuery('.skt-builder-block-inner-{{id}}').length > 0) {
+	if(elementScrolled('.skt-builder-block-inner-{{id}}')) {
+        var els = jQuery('.skt-builder-block-inner-{{id}}'),
+            i = 0,
+            f = function () {
+                jQuery(els[i++]).addClass('{{blockAnimationEffect}}');
+                if(i < els.length) setTimeout(f, 400);
+            };
+        f();
+    }}
+
+});
+});
+</script>
+{{/if}}
