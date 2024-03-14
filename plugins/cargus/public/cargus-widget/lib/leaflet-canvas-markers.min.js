@@ -1,0 +1,8 @@
+/**
+ * Minified by jsDelivr using Terser v5.7.1.
+ * Original file: /npm/leaflet-canvas-markers@1.0.7/leaflet-canvas-markers.js
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+"use strict";!function(t,e){"function"==typeof define&&define.amd?define(["leaflet"],e):"object"==typeof exports?module.exports=e(require("leaflet")):e(window.L)}(0,(function(t){t.Canvas.include({_updateImg(t){const{img:e}=t.options,i=t._point.round();i.x+=e.offset.x,i.y+=e.offset.y,e.rotate?(this._ctx.save(),this._ctx.translate(i.x,i.y),this._ctx.rotate(e.rotate*Math.PI/180),this._ctx.drawImage(e.el,-e.size[0]/2,-e.size[1]/2,e.size[0],e.size[1]),this._ctx.restore()):this._ctx.drawImage(e.el,i.x-e.size[0]/2,i.y-e.size[1]/2,e.size[0],e.size[1])}});const e={rotate:0,size:[40,40],offset:{x:0,y:0}},i=t.CircleMarker.extend({_updatePath(){if(this.options.img&&this.options.img.url)if(this.options.img.el)this._renderer._updateImg(this);else{this.options.img={...e,...this.options.img},this.options.img.rotate+=((t,e,i)=>{if(!i||!e)return 0;const s=t.project(e),o=t.project(i);return Math.atan2(s.y-o.y,s.x-o.x)/Math.PI*180-90})(this._map,this.options.prevLatlng,this._latlng);const t=document.createElement("img");t.src=this.options.img.url,this.options.img.el=t,t.onload=()=>{this.redraw()},t.onerror=()=>{this.options.img=null}}}});t.canvasMarker=function(...t){try{const e=t.findIndex((t=>"object"==typeof t&&t.img));e+1&&(!t[e].radius&&t[e].img&&t[e].img.size&&(t[e].radius=Math.ceil(Math.max(...t[e].img.size)/2)),t[e].pane&&delete t[e].pane)}catch(t){}return new i(...t)}}));
+//# sourceMappingURL=/sm/b6cd0b573aa4de0145e09b297b32b17753c4c518b97bfbffd1a43dade77f72bd.map

@@ -1,0 +1,301 @@
+<html lang="en">
+   <head>
+      <meta name="viewport" content="YY width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <title>Cargus</title>
+      <script src="./lib/fuse.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <script src="./lib/hyperlist.min.js"></script>
+      <script src="./lib/jquery-3.6.0.min.js"></script>
+      <script src="./lib/leaflet.min.js"></script>
+      <script src="./lib/leaflet-canvas-markers.min.js"></script>
+      <script src="./lib/lodash.min.js"></script>
+      <script src="./lib/turf.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;1,100;1,200;1,500;1,600;1,700&display=swap">
+      <link rel="stylesheet" href="./assets/style/all.min.css">
+      <link rel="stylesheet" href="./assets/style/CargusWidget.css">
+      <link rel="stylesheet" href="./assets/style/leaflet.min.css">
+      <link rel="stylesheet" href="./showcasedemo.css">
+   </head>
+   <body>
+      </head>
+      <body>
+         <header>
+            <div class="site-branding">
+               <a href="https://www.cargus.ro/" class="custom-logo-link" rel="home" aria-current="page"><img width="134" height="103" src="https://www.cargus.ro/wp-content/uploads/CG_LOGO_OGB_RGB-1.svg" class="custom-logo" alt="Cargus" decoding="async"></a>
+            </div>
+         </header>
+         <main>
+            <h1 id="widget-title"> Pudo Map Widget</h1>
+            <div class="menu widget-demo-page">
+               <form action="" method="" class="api_menu" id="apiForm">
+                  <input type="text" name="api_key" id="apiKeyInput" value="" placeholder="Subscription key" class="form-control tracking_number">
+                  <input type="submit" name="Salveaza" value="Validate" class="btn btn-primary api_key_button" id="salveazaButton">
+               </form>
+               <div class="loading-spinner text-center" style="display: none">
+                  <div class="spinner-border text-white" role="status">
+                     <span class="visually-hidden"></span>
+                  </div>
+               </div>
+               <div class="toggle-container">
+                  <input type="checkbox" id="toggle" class="toggle-checkbox">
+                  <label for="toggle" class="toggle-label"></label>
+                  <span class="toggle-text">Demo mode</span>
+               </div>
+               <div class="buttons">
+                  <span id="widgetButton" class="kb-button kt-button button">
+                  <span class="kt-btn-inner-text">Download Widget</span>
+                  </span>                
+                  <span class="kb-button kt-button button cargus-open-map-btn" id="openMapButton" disabled>
+                  <span class="kt-btn-inner-text">Open Widget</span>
+                  </span>
+               </div>
+            </div>
+            <div class="cargus-map-widget" id="shipgomap-modal" style="display: none;"></div>
+            <div id="script-container">
+               <script id="cargus-widget-script" data-widget="cargus-widget" use-mockup-data="false"></script>
+            </div>
+         </main>
+         <script>
+
+    // ###############
+    let assets_path;
+    let DEFAULT_COORDINATES;
+    let KEY_MAPPING_VALUES;
+    let data_endpoint;
+    // ###############
+
+    assets_path = "./assets/icons";
+
+    DEFAULT_COORDINATES = {
+        latitude: 44.442137062756885,
+        longitude: 26.09464970813823,
+    };
+
+    // Can be either your server endpoint or the exact file location.
+    data_endpoint = "https://webexpresstestapp.azurewebsites.net/map/points?key=";
+
+    // As an example, consider that Latitude and Longitude are mapped with 'location_lat' and 'location_lon' instead.
+
+    KEY_MAPPING_VALUES = {
+        Latitude: "location_lat",
+        Longitude: "location_lon",
+    };
+
+    // If the object is not modified, just set this to false:
+
+    KEY_MAPPING_VALUES = false;
+
+    // Place an event on the button to open the widget.
+
+    const openCargusMapButton = document.querySelector(".cargus-open-map-btn");
+
+    openCargusMapButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        openCargusMap();
+    });
+
+    const openMapButton = document.getElementById("openMapButton");
+    
+
+    function ChooseMarker(selectedPoint) {
+        closeModal();
+        // CUSTOM CODE HERE to handle the ID
+        return true;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById("shipgomap-modal");
+        if (modal) {
+            modal.style.display = "none";
+            modal.innerHTML = "";
+        }
+        return true;
+    }
+
+    var WidgetVarParams = {
+        assets_path,
+        DEFAULT_COORDINATES,
+        KEY_MAPPING_VALUES,
+        data_endpoint,
+    };
+
+    const WidgetFnParams = {
+        ChooseMarker,
+        closeModal,
+    };
+
+    function openCargusMap() {
+        const modal = document.getElementById("shipgomap-modal");
+        modal.style.display = "flex";
+        initializeCargus("shipgomap-modal", WidgetFnParams, WidgetVarParams);
+    }
+
+////////////////////////////////////////////////////////////////////////
+// Demo showcase page scripts, not required for the actual implementation
+////////////////////////////////////////////////////////////////////////
+
+const toggleCheckbox = document.querySelector("#toggle");
+const apiForm = document.querySelector("#apiForm");
+const apiKeyInput = document.querySelector(".tracking_number");
+const saveButton = document.querySelector(".api_key_button"); // Use the correct class selector
+const salveazaButton = document.getElementById("salveazaButton");
+const widgetButton = document.getElementById("widgetButton");
+
+function clearErrorMessages() {
+    const errorMessages = document.querySelectorAll(".error-container");
+    errorMessages.forEach((errorContainer) => errorContainer.remove());
+}
+
+widgetButton.addEventListener("click", () => {
+    window.location.href = "https://gitlab.com/cargus/cargus-modules/js-pudo-widget";
+});
+
+toggleCheckbox.addEventListener("change", () => {
+    apiKeyInput.value = "";
+    apiKeyInput.classList.remove("is-valid", "is-invalid");
+    messageContainer.innerHTML = '';
+    messageContainer.style.display = 'none';
+    if (toggleCheckbox.checked) {
+        apiForm.setAttribute("disabled", true);
+        apiKeyInput.disabled = true;
+        saveButton.disabled = true;
+        enableOpenMapButton();
+        clearErrorMessages();
+    } else {
+        apiForm.removeAttribute("disabled");
+        apiKeyInput.disabled = false;
+        saveButton.disabled = false;
+        disableOpenMapButton();
+        clearErrorMessages();
+    }
+});
+
+function reloadCargusScript(useMockupData) {
+    const scriptContainer = document.getElementById("script-container");
+    const newScript = document.createElement("script");
+    newScript.id = "cargus-widget-script";
+    newScript.src = "./cargusWidget.js";
+    newScript.setAttribute("data-widget", "cargus-widget");
+    newScript.setAttribute("use-mockup-data", useMockupData.toString());
+    scriptContainer.removeChild(document.getElementById("cargus-widget-script"));
+    scriptContainer.appendChild(newScript);
+}
+
+reloadCargusScript(toggleCheckbox.checked);
+
+toggleCheckbox.addEventListener("change", () => {
+    reloadCargusScript(toggleCheckbox.checked);
+});
+
+openMapButton.disabled = !toggleCheckbox.checked;
+
+function updateOpenMapButtonState() {
+    openMapButton.disabled = !toggleCheckbox.checked || apiKeyInput.value === '';
+}
+
+toggleCheckbox.addEventListener("change", updateOpenMapButtonState);
+
+apiKeyInput.addEventListener("input", updateOpenMapButtonState);
+
+salveazaButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    const newApiKey = apiKeyInput.value;
+    messageContainer.style.display = "none";
+    if (newApiKey) {
+      const baseUrl = window.location.protocol + '//' + window.location.host;
+      const data_endpoint = `${baseUrl}/map/points?key=${newApiKey}`;
+      checkApiKey(newApiKey);
+      WidgetVarParams.data_endpoint = data_endpoint;
+      apiKeyInput.value = newApiKey;
+    }
+});
+
+async function checkApiKey(apiKey) {
+
+  const baseUrl = window.location.protocol + '//' + window.location.host;
+  const apiUrl = `${baseUrl}/map/points?key=${apiKey}`;
+
+    showLoadingSpinner();
+    apiKeyInput.classList.remove("is-valid", "is-invalid");
+
+    try {
+        const response = await fetch(apiUrl);
+        hideLoadingSpinner();
+
+        if (response.status === 200) {
+            const responseBody = await response.json();
+
+            if (!responseBody.length == 0) {
+                // The API key is valid
+                showSuccessMessage("API key validation successful. You can now access the widget with real data.");
+                enableOpenMapButton();
+                apiKeyInput.classList.add("is-valid");
+            } else {
+                showErrorMessage("The API key is invalid. If you'd like to continue testing the widget without a key, please switch to 'Demo mode.'");
+                disableOpenMapButton();
+                apiKeyInput.classList.add("is-invalid");
+            }
+        } else {
+            showErrorMessage("The API key is not valid. If you'd like to continue testing the widget without a key, please switch to 'Demo mode.'");
+            disableOpenMapButton();
+            apiKeyInput.classList.add("is-invalid");
+        }
+    } catch (error) {
+        console.error("Error checking API key:", error);
+        showErrorMessage("An error occurred while checking the API key.");
+        apiKeyInput.classList.add("is-invalid");
+    }
+}
+
+function showLoadingSpinner() {
+    const loadingSpinner = document.querySelector(".loading-spinner");
+    loadingSpinner.style.display = "block";
+}
+
+function hideLoadingSpinner() {
+    const loadingSpinner = document.querySelector(".loading-spinner");
+    loadingSpinner.style.display = "none";
+}
+
+function enableOpenMapButton() {
+    const openMapButton = document.getElementById("openMapButton");
+    openMapButton.removeAttribute("disabled");
+}
+
+function disableOpenMapButton() {
+    openMapButton.setAttribute("disabled", "disabled");
+}
+
+const messageContainer = document.createElement("div");
+messageContainer.classList.add("message-container");
+apiForm.insertAdjacentElement("afterend", messageContainer);
+
+function showErrorMessage(message) {
+    const errorContainer = document.createElement("div");
+    errorContainer.classList.add("error-container");
+    const errorMessage = document.createElement("div");
+    errorMessage.textContent = message;
+    errorMessage.classList.add("error-message");
+    apiKeyInput.classList.add("is-invalid");
+    apiForm.classList.remove("shake");
+    void apiForm.offsetWidth;
+    apiForm.classList.add("shake");
+    errorContainer.appendChild(errorMessage);
+    messageContainer.innerHTML = '';
+    messageContainer.style.display = "block";
+    messageContainer.appendChild(errorContainer);
+}
+
+function showSuccessMessage(message) {
+    const successMessage = document.createElement("div");
+    successMessage.textContent = message || "API response successful";
+    successMessage.classList.add("success-message");
+    messageContainer.innerHTML = '';
+    messageContainer.style.display = "block";
+    messageContainer.appendChild(successMessage);
+}
+
+    </script>
+</body>
+</html>
