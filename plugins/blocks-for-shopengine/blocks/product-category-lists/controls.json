@@ -1,0 +1,1566 @@
+{
+    "settings_section_start": {
+        "type": "PanelBody",
+        "label": "Settings"
+    },
+    "shopengine_product_cat_list_styles": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Category Styles",
+                "options": [
+                    {
+                        "label": "Normal",
+                        "value": "normal"
+                    },
+                    {
+                        "label": "Style2",
+                        "value": "style_2"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "normal"
+        }
+    },
+
+    "shopengine_grid_columns": {
+        "control": {
+            "field": "__experimentalNumberControl",
+            "props": {
+                "min": 1,
+                "max": 12,
+                "label": "Column"
+            }
+        },
+        "type": "object",
+        "responsive": true,
+        "default": {
+            "desktop": 3,
+            "tablet": 3,
+            "mobile": 2
+        }
+    },
+
+    "settings_section_end": {
+        "type": "PanelBody"
+    },
+
+    "shopengine_category_normal_content_start": {
+        "type": "PanelBody",
+        "label": "Normal Style Content"
+    },
+    
+    "shopengine_category_list": {
+        "control": {
+            "field": "Ajaxselect2Control",
+            "label": "Select Category",
+            "props": {
+                "options": "ajaxselect2/product_cat",
+                "isMulti": true
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": []
+        }
+    },
+    
+    "shopengine_show_category_image": {
+        "control": {
+            "field": "ToggleControl",
+            "props":{
+                "label": "Show Category Image"
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": true
+        }
+    },
+    "shopengine_show_product_count": {
+        "control": {
+            "field": "ToggleControl",
+            "props":{
+                "label": "Show Product Count"
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": true
+        }
+    },
+    "shopengine_show_icon": {
+        "control": {
+            "field": "ToggleControl",
+            "props":{
+                "label": "Show Icon"
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": true
+        }
+    },
+    "shopengine_choose_icon": {
+        "control": {
+            "field": "IconControl",
+            "label": "Icon"
+        },
+        "type": "object",
+        "default": {
+            "desktop": "fas fa-chevron-right"
+        }
+    },
+    "shopengine_content_alignment": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Content Alignment",
+                "options": [{
+                        "label": "Left",
+                        "value": "left"
+                    },
+                    {
+                        "label": "Center",
+                        "value": "center"
+                    },
+                    {
+                        "label": "Right",
+                        "value": "right"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "left",
+            "tablet": "left",
+            "mobile": "left"
+        }
+    },
+    "shopengine_category_normal_content_end": {
+        "type": "PanelBody"
+    },
+
+    "shopengine_category_style2_content_start": {
+        "type": "PanelBody",
+        "label": "Style 2 Content"
+    },
+
+    "category_lists": {
+        "control": {
+            "field": "RepeaterControl",
+            "label": "Category Lists",
+            "props": {
+                "delete": true,
+                "add": true
+            },
+            "child_controls": {
+                "shopengine_product_cat_list": {
+                    "control": {
+                        "field": "Ajaxselect2Control",
+                        "label": "Select Category",
+                        "props": {
+                            "options": "ajaxselect2/product_cat",
+                            "isMulti": false
+                        }
+                    },
+                    "responsive": false,
+                    "type": "object",
+                    "default": {
+                        "desktop": {}
+                    }
+                },
+                "shopengine_product_cat_lists_icons": {
+                    "control": {
+                        "field": "IconControl",
+                        "label": "Icon"
+                    },
+                    "type": "object",
+                    "default": {
+                        "desktop": "fas fa-chevron-right"
+                    }
+                }
+            }
+        },
+        "type": "array",
+        "default": []
+    },
+
+    "shopengine_category_style2_content_end": {
+        "type": "PanelBody",
+        "label": "Style 2 Content"
+    },
+    "list_section_start": {
+        "type": "PanelBody",
+        "label": "List"
+    },
+    "shopengine_column_gap": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Column Gap (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 20
+        }
+    },
+    "shopengine_row_gap": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Row Gap (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 20
+        }
+    },
+
+    "shopengine_product_cat_lists_item_content_gap": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Content Gap (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 10
+        }
+    },
+
+    "style_type_section_start": {
+        "type": "TabContainer",
+        "label": "List"
+    },
+    "list_normal_style_control_section_start": {
+        "type": "TabControl",
+        "label": "Normal"
+    },
+    "shopengine_list_normal_background_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Background Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#DBEBE3"
+        }
+    },
+    
+    "shopengine_list_normal_overlay_background": {
+        "control": {
+            "field": "ColorPicker",
+            "label": "Overlay Background"
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+    "typography_list_normal_section_start": {
+        "type": "PopoverControl",
+        "label": "Box Shadow"
+    },
+    "shopengine_list_normal_shadow_color": {
+        "control": {
+            "field": "ColorPicker",
+            "label": "Color"
+        },
+        "type": "object",
+        "default": {
+            "desktop": { "rgb": { "r": 0, "g": 0, "b": 0, "a": 0 } }
+        }
+    },
+    "shopengine_list_normal_shadow_horizontal": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Horizontal",
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 0
+        }
+    },
+    "shopengine_list_normal_shadow_vertical": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Vertical",
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 0
+        }
+    },
+    "shopengine_list_normal_shadow_blur": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Blur",
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 0
+        }
+    },
+    "shopengine_list_normal_shadow_spread": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Spread",
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 0
+        }
+    },
+    "shopengine_list_normal_shadow_position": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Position",
+                "options": [{
+                        "label": "Outline",
+                        "value": "outline"
+                    },
+                    {
+                        "label": "Inset",
+                        "value": "inset"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+    "typography_list_normal_section_end": {
+        "type": "PopoverControl"
+    },
+
+    "shopengine_product_cat_lists_item_border_start": {
+        "type": "PopoverControl",
+        "label": "Border"
+    },
+
+    "shopengine_product_cat_lists_item_border_type": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Border Type",
+                "options": [{
+                        "label": "None",
+                        "value": "none"
+                    },
+                    {
+                        "label": "Solid",
+                        "value": "solid"
+                    },
+                    {
+                        "label": "Double",
+                        "value": "double"
+                    },
+                    {
+                        "label": "Dotted",
+                        "value": "dotted"
+                    },
+                    {
+                        "label": "Dashed",
+                        "value": "dashed"
+                    },
+                    {
+                        "label": "Groove",
+                        "value": "groove"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+
+    "shopengine_product_cat_lists_item_border_width": {
+        "control": {
+            "field": "__experimentalBoxControl",
+            "props": {
+                "label": "Border width(px)",
+                "allowReset" : true,
+                "units" : [
+                    {
+                        "label" : "px",
+                        "value" : "px",
+                        "default" : 0
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "responsive": true,
+        "default": {
+            "desktop": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+            },
+            "tablet": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+            },
+            "mobile": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+            }
+        }
+    },
+
+    "shopengine_product_cat_lists_item_border_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Border Color",
+            "props": {
+                "colors": [{
+                        "name": "Default",
+                        "color": "#DEDFE2"
+                    },
+                    {
+                        "name": "White",
+                        "color": "#ffffff"
+                    },
+                    {
+                        "name": "Black",
+                        "color": "#000000"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+    "shopengine_product_cat_lists_item_border_end": {
+        "type": "PopoverControl",
+        "label": "Border"
+    },
+    "list_normal_style_control_section_end": {
+        "type": "TabControl"
+    },
+    "list_hover_style_control_section_start": {
+        "type": "TabControl",
+        "label": "Hover"
+    },
+    "shopengine_list_hover_background_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Background Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#D3CED2",
+            "tablet": "#D3CED2",
+            "mobile": "#D3CED2"
+        }
+    },
+    "shopengine_list_hover_overlay_background": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Overlay Background",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#DBEBE3",
+            "tablet": "#DBEBE3",
+            "mobile": "#DBEBE3"
+        }
+    },
+    "typography_list_hover_section_start": {
+        "type": "PopoverControl",
+        "label": "Box Shadow"
+    },
+    "shopengine_list_hover_shadow_color": {
+        "control": {
+            "field": "ColorPicker",
+            "label": "Color"
+        },
+        "type": "object",
+        "default": {
+            "desktop": { "rgb": { "r": 0, "g": 0, "b": 0, "a": 0.23 } }
+        }
+    },
+    "shopengine_list_hover_shadow_horizontal": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Horizontal",
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 0
+        }
+    },
+    "shopengine_list_hover_shadow_vertical": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Vertical",
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 9
+        }
+    },
+    "shopengine_list_hover_shadow_blur": {
+        "control": {
+            "field": "RangeControl",
+            "label": "Blur",
+            "props": {
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 16
+        }
+    },
+    "shopengine_list_hover_shadow_spread": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Spread",
+                "min": -100,
+                "max": 100
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": -4
+        }
+    },
+    "shopengine_list_hover_shadow_position": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Position",
+                "options": [{
+                        "label": "Outline",
+                        "value": "outline"
+                    },
+                    {
+                        "label": "Inset",
+                        "value": "inset"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+    "typography_list_hover_section_end": {
+        "type": "PopoverControl"
+    },
+
+    "shopengine_product_cat_lists_item_hover_border_start": {
+        "type": "PopoverControl",
+        "label": "Border"
+    },
+
+    "shopengine_product_cat_lists_item_hover_border_type": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Border Type",
+                "options": [{
+                        "label": "None",
+                        "value": "none"
+                    },
+                    {
+                        "label": "Solid",
+                        "value": "solid"
+                    },
+                    {
+                        "label": "Double",
+                        "value": "double"
+                    },
+                    {
+                        "label": "Dotted",
+                        "value": "dotted"
+                    },
+                    {
+                        "label": "Dashed",
+                        "value": "dashed"
+                    },
+                    {
+                        "label": "Groove",
+                        "value": "groove"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+
+    "shopengine_product_cat_lists_item_hover_border_width": {
+        "control": {
+            "field": "__experimentalBoxControl",
+            "props": {
+                "label": "Border width(px)",
+                "allowReset" : true,
+                "units" : [
+                    {
+                        "label" : "px",
+                        "value" : "px",
+                        "default" : 1
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "responsive": true,
+        "default": {
+            "desktop": {
+                "top": 1,
+                "right": 1,
+                "bottom": 1,
+                "left": 1
+            },
+            "tablet": {
+                "top": 1,
+                "right": 1,
+                "bottom": 1,
+                "left": 1
+            },
+            "mobile": {
+                "top": 1,
+                "right": 1,
+                "bottom": 1,
+                "left": 1
+            }
+        }
+    },
+
+    "shopengine_product_cat_lists_item_hover_border_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Border Color",
+            "props": {
+                "colors": [{
+                        "name": "Default",
+                        "color": "#DEDFE2"
+                    },
+                    {
+                        "name": "White",
+                        "color": "#ffffff"
+                    },
+                    {
+                        "name": "Black",
+                        "color": "#000000"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+    "shopengine_product_cat_lists_item_hover_border_end": {
+        "type": "PopoverControl",
+        "label": "Border"
+    },
+    "list_hover_style_control_section_end": {
+        "type": "TabControl"
+    },
+
+    "style_type_section_end": {
+        "type": "PanelBody"
+    },
+    "shopengine_list_padding": {
+        "control": {
+            "field": "__experimentalBoxControl",
+            "props":{
+                "label": "Padding (px)"
+            }
+        },
+        "type": "object",
+        "responsive": true,
+        "default": {
+            "desktop": {
+                "top": "20px",
+                "right": "25px",
+                "bottom": "20px",
+                "left": "25px"
+            }
+        }
+    },
+    "list_section_end": {
+        "type": "PanelBody"
+    },
+    "title_section_start": {
+        "type": "PanelBody",
+        "label": "Title"
+    },
+    "shopengine_title_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Title Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#3E3E3E"
+        }
+    },
+    "shopengine_title_hover_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Title Hover Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "red",
+                        "color": "#F03D3F"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#F03D3F"
+        }
+    },
+    "typography_title_section_start": {
+        "type": "PopoverControl",
+        "label": "Typography"
+    },
+    "shopengine_title_font_family": {
+        "control": {
+            "field": "FontfamilyControl",
+            "label": "Font Family"
+        },
+        "type": "object"
+    },
+    "shopengine_title_font_size": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Font Size (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 20
+        }
+    },
+    "shopengine_title_font_weight": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Font Weight",
+                "options": [{
+                        "label": 100,
+                        "value": 100
+                    },
+                    {
+                        "label": 200,
+                        "value": 200
+                    },
+                    {
+                        "label": 300,
+                        "value": 300
+                    },
+                    {
+                        "label": 400,
+                        "value": 400
+                    },
+                    {
+                        "label": 500,
+                        "value": 500
+                    },
+                    {
+                        "label": 600,
+                        "value": 600
+                    },
+                    {
+                        "label": 700,
+                        "value": 700
+                    },
+                    {
+                        "label": 800,
+                        "value": 800
+                    },
+                    {
+                        "label": "Light",
+                        "value": "light"
+                    },
+                    {
+                        "label": "Normal",
+                        "value": "normal"
+                    },
+                    {
+                        "label": "Bold",
+                        "value": "bold"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 500
+        }
+    },
+    "shopengine_title_transform": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Transform",
+                "options": [{
+                        "label": "Default",
+                        "value": "default"
+                    },
+                    {
+                        "label": "Uppercase",
+                        "value": "uppercase"
+                    },
+                    {
+                        "label": "Lowercase",
+                        "value": "lowercase"
+                    },
+                    {
+                        "label": "Capitalize",
+                        "value": "capitalize"
+                    },
+                    {
+                        "label": "Normal",
+                        "value": "none"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "none"
+        }
+    },
+    "shopengine_title_line_height": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Line Height (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 22
+        }
+    },
+    "shopengine_title_word_spacing": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Word Spacing (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 0
+        }
+    },
+    "typography_title_section_end": {
+        "type": "PopoverControl"
+    },
+    "shopengine_title_margin": {
+        "control": {
+            "field": "__experimentalBoxControl",
+            "props":{
+                "label": "Margin"
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": {
+                "top": 0,
+                "right": 0,
+                "bottom": "18px",
+                "left": 0
+            }
+        }
+    },
+    "title_section_end": {
+        "type": "PanelBody"
+    },
+    "category_section_start": {
+        "type": "PanelBody",
+        "label": "Category Count"
+    },
+    "shopengine_category_title_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#F03D3F"
+        }
+    },
+    "shopengine_category_title_hover_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Title Hover Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "red",
+                        "color": "#F03D3F"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#F03D3F"
+        }
+    },
+    "typography_category_section_start": {
+        "type": "PopoverControl",
+        "label": "Typography"
+    },
+    "shopengine_category_title_font_family": {
+        "control": {
+            "field": "FontfamilyControl",
+            "label": "Font Family"
+        },
+        "type": "object"
+    },
+    "shopengine_category_title_font_size": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Font Size (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 20
+        }
+    },
+    "shopengine_category_title_font_weight": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Font Weight",
+                "options": [{
+                        "label": 100,
+                        "value": 100
+                    },
+                    {
+                        "label": 200,
+                        "value": 200
+                    },
+                    {
+                        "label": 300,
+                        "value": 300
+                    },
+                    {
+                        "label": 400,
+                        "value": 400
+                    },
+                    {
+                        "label": 500,
+                        "value": 500
+                    },
+                    {
+                        "label": 600,
+                        "value": 600
+                    },
+                    {
+                        "label": 700,
+                        "value": 700
+                    },
+                    {
+                        "label": 800,
+                        "value": 800
+                    },
+                    {
+                        "label": "Light",
+                        "value": "light"
+                    },
+                    {
+                        "label": "Normal",
+                        "value": "normal"
+                    },
+                    {
+                        "label": "Bold",
+                        "value": "bold"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "normal"
+        }
+    },
+    "shopengine_category_title_transform": {
+        "control": {
+            "field": "SelectControl",
+            "props": {
+                "label": "Transform",
+                "options": [{
+                        "label": "Default",
+                        "value": "default"
+                    },
+                    {
+                        "label": "Uppercase",
+                        "value": "uppercase"
+                    },
+                    {
+                        "label": "Lowercase",
+                        "value": "lowercase"
+                    },
+                    {
+                        "label": "Capitalize",
+                        "value": "capitalize"
+                    },
+                    {
+                        "label": "Normal",
+                        "value": "none"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "none"
+        }
+    },
+    "shopengine_category_title_line_height": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Line Height (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 22
+        }
+    },
+    "shopengine_category_title_word_spacing": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Word Spacing (px)",
+                "min": 0,
+                "max": 100
+            }
+        },
+        "responsive": true,
+        "type": "object",
+        "default": {
+            "desktop": 0
+        }
+    },
+    "typography_category_section_end": {
+        "type": "PopoverControl"
+    },
+    "shopengine_category_title_margin": {
+        "control": {
+            "field": "__experimentalBoxControl",
+            "props":{
+                "label": "Margin (px)"
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": {
+                "top": 0,
+                "right": 0,
+                "bottom": "18px",
+                "left": 0
+            }
+        }
+    },
+    "category_section_end": {
+        "type": "PanelBody"
+    },
+    "button_section_start": {
+        "type": "PanelBody",
+        "label": "Button"
+    },
+    "shopengine_button_size": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Button Size (px)",
+                "min": 0,
+                "max": 200
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 30
+        }
+    },
+    "shopengine_section_divider1": {
+        "control": {
+            "field": "__experimentalDivider",
+            "props": {}
+        },
+        "type": "object"
+    },
+    "shopengine_button_font_size": {
+        "control": {
+            "field": "RangeControl",
+            "props": {
+                "label": "Button Font Size (px)",
+                "min": 1,
+                "max": 200
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": 12
+        }
+    },
+    "button_style_type_section_start": {
+        "type": "TabContainer",
+        "label": "List"
+    },
+    "normal_button_style_control_section_start": {
+        "type": "TabControl",
+        "label": "Normal"
+    },
+    "shopengine_normal_button_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#858585"
+        }
+    },
+    "shopengine_normal_button_background": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Background Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#FFFFFF"
+        }
+    },
+
+    "normal_button_style_control_section_end": {
+        "type": "TabControl"
+    },
+    "hover_button_style_control_section_start": {
+        "type": "TabControl",
+        "label": "Hover"
+    },
+    "shopengine_hover_button_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#FFFFFF"
+        }
+    },
+    "shopengine_hover_button_background": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Background Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": "#F03D3F"
+        }
+    },
+
+    "hover_button_style_control_section_end": {
+        "type": "TabControl"
+    },
+
+    "button_style_type_section_end": {
+        "type": "PanelBody"
+    },
+    "shopengine_button_border_radius": {
+        "control": {
+            "field": "__experimentalBoxControl",
+            "props":{
+                "label": "Border Radius"
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": {
+                "top": "100%",
+                "right": "100%",
+                "bottom": "100%",
+                "left": "100%"
+            }
+        }
+    },
+    "shopengine_section_divider2": {
+        "control": {
+            "field": "__experimentalDivider",
+            "props": {}
+        },
+        "type": "object"
+    },
+    "shopengine_button_padding": {
+        "control": {
+            "field": "__experimentalBoxControl",
+            "props":{
+                "label": "Padding (px)"
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": {
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+            }
+        }
+    },
+    "button_section_end": {
+        "type": "PanelBody"
+    },
+
+    "shopengine_style2_icon_style_start": {
+        "type": "PanelBody",
+        "label": "Icon"
+    },
+
+    "shopengine_product_cat_lists_icon_color": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+
+    "shopengine_product_cat_lists_icon_color_hover": {
+        "control": {
+            "field": "ColorPalette",
+            "label": "Hover Color",
+            "props": {
+                "colors": [{
+                        "name": "yellow",
+                        "color": "#FEC42D"
+                    },
+                    {
+                        "name": "white",
+                        "color": "#fff"
+                    },
+                    {
+                        "name": "blue",
+                        "color": "#00f"
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+    "shopengine_product_cat_lists_icon_size": {
+        "control": {
+            "field": "__experimentalUnitControl",
+            "props": {
+                "isPressEnterToChange": true,
+                "isResetValueOnUnitChange": true,
+                "labelPosition": "top",
+                "label": "Icon Size (px)",
+                "max": 100,
+                "min": 1,
+                "step": 1,
+                "units": [
+                    {
+                        "value": "px",
+                        "label": "px",
+                        "default": 0
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+    "shopengine_product_cat_lists_icon_position": {
+        "control": {
+            "field": "__experimentalUnitControl",
+            "props": {
+                "isPressEnterToChange": true,
+                "isResetValueOnUnitChange": true,
+                "labelPosition": "top",
+                "label": "Icon Position",
+                "max": 50,
+                "min": -50,
+                "step": 1,
+                "units": [
+                    {
+                        "value": "px",
+                        "label": "px",
+                        "default": 0
+                    }
+                ]
+            }
+        },
+        "type": "object",
+        "default": {
+            "desktop": ""
+        }
+    },
+
+    "shopengine_style2_icon_style_end": {
+        "type": "PanelBody",
+        "label": "Icon"
+    }
+}
