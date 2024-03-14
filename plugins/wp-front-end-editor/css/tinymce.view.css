@@ -1,0 +1,99 @@
+.wpview,
+.mce-content-body hr {
+	position: relative;
+}
+
+.wpview {
+	width: 100%;
+	position: relative;
+	/*clear: both;*/
+}
+
+.mce-shim {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.wpview[data-mce-selected="2"] .mce-shim {
+	display: none;
+}
+
+.wpview .loading-placeholder {
+	border: 1px dashed #ccc;
+	padding: 10px;
+}
+
+.wpview[data-mce-selected] .loading-placeholder {
+	border-color: transparent;
+}
+
+/* A little "loading" animation, not showing in IE < 10 */
+.wpview .wpview-loading {
+	width: 60px;
+	height: 5px;
+	overflow: hidden;
+	background-color: transparent;
+	margin: 10px auto 0;
+}
+
+.wpview .wpview-loading ins {
+	background-color: #333;
+	margin: 0 0 0 -60px;
+	width: 36px;
+	height: 5px;
+	display: block;
+	-webkit-animation: wpview-loading 1.3s infinite 1s steps(36);
+	animation: wpview-loading 1.3s infinite 1s steps(36);
+}
+
+@-webkit-keyframes wpview-loading {
+	0% {
+		margin-left: -60px;
+	}
+	100% {
+		margin-left: 60px;
+	}
+}
+
+@keyframes wpview-loading {
+	0% {
+		margin-left: -60px;
+	}
+	100% {
+		margin-left: 60px;
+	}
+}
+
+.wpview > iframe {
+	max-width: 100%;
+	background: transparent;
+}
+
+.wpview-error {
+	border: 1px solid #ddd;
+	padding: 1em 0;
+	margin: 0;
+	word-wrap: break-word;
+}
+
+.wpview[data-mce-selected] .wpview-error {
+	border-color: transparent;
+}
+
+.wpview-error .dashicons,
+.loading-placeholder .dashicons {
+	display: block;
+	margin: 0 auto;
+	width: 32px;
+	height: 32px;
+	font-size: 32px;
+}
+
+.wpview-error p {
+	margin: 0;
+	text-align: center;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+}
