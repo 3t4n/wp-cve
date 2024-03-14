@@ -1,0 +1,182 @@
+#mdhRegister-wrap {
+    font-family      : Arial, sans-serif;
+    position         : fixed;
+    z-index          : 1000;
+    background-color : rgba(0, 0, 0, 0.45);
+    display          : none;
+    width            : 100%;
+    height           : 100%;
+    overflow         : auto;
+    top              : 0;
+
+    &.mdh-display {
+        display : block;
+    }
+    #mdhRegister {
+        z-index          : 1001;
+        background-color : #eeeeee;
+        display          : none;
+        width            : 600px;
+        position         : fixed;
+        left             : 50%;
+        top              : 20%;
+        transform        : translate(-50%, -0);
+        &.mdhRegister-show {
+            display : inline-block;
+        }
+
+        .mdhRegister-header {
+
+            #mdhRegister-close {
+                position    : absolute;
+                right       : 10px;
+                cursor      : pointer;
+                font-size   : 20px;
+                font-weight : 600;
+                color       : #808080;
+            }
+
+        }
+        .mdh-content {
+            .mdh-row-head {
+                padding : 10px 15px 0 15px;
+                .mdhModal-logo {
+                    display        : inline-block;
+                    max-width      : 100%;
+                    vertical-align : top;
+                    margin-top     : 20px;
+                }
+                .mdh-header-text {
+                    display : inline-block;
+                    ul {
+                        display : inline-block;
+                        padding : 0;
+                        margin  : 15px 25px;
+                        strong {
+                            color : #a7000b;
+                        }
+                    }
+                }
+            }
+
+            .mdh-row-content {
+                background-image : linear-gradient(135deg, #fafafa 16.67%, #f0f0f0 16.67%, #f0f0f0 50%, #fafafa 50%, #fafafa 66.67%, #f0f0f0 66.67%, #f0f0f0 100%);
+                background-size  : 9.00px 9.00px;
+                .mdh-side-profile {
+                    display    : inline-block;
+                    text-align : center;
+                    padding    : 15px;
+                    img {
+                        max-width : 220px;
+                        height    : auto;
+                    }
+                }
+                .mdh-reg-tabs {
+                    margin-top     : 10px;
+                    display        : inline-block;
+                    vertical-align : top;
+                    .mdh-tab-header {
+                        text-transform : uppercase;
+                        p {
+                            margin : 0;
+                        }
+                        strong {
+                            color : green;
+                        }
+                    }
+
+                    #mdh-reg-form {
+                        width      : 330px;
+                        text-align : center;
+                        .mdh-form-input {
+                            .mdh-form-control {
+                                position : relative;
+                                margin   : 10px 0;
+                                input, select {
+                                    width            : 100%;
+                                    height           : 30px;
+                                    font-size        : 14px;
+                                    padding          : 5px 10px;
+                                    transition       : border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                                    background-color : #ffffff;
+                                    box-sizing       : border-box;
+                                    border-radius    : 0;
+                                }
+                                select {
+                                    margin     : 0;
+                                    background : linear-gradient(180deg, #eeeeee 0, #c4c4c4);
+                                }
+                                #mdh-pass-toggle {
+                                    position : absolute;
+                                    top      : 5px;
+                                    right    : 10px;
+                                    cursor   : pointer;
+                                    color    : #808080;
+                                }
+                            }
+                        }
+                        .mdh-reg-button {
+                            color           : #ffffff;
+                            font-size       : 14px;
+                            background      : #13ab37;
+                            height          : 30px;
+                            text-decoration : none;
+                            border          : none;
+                            width           : 100%;
+                            cursor          : pointer;
+                            padding         : 5px 10px;
+                            font-weight     : 400;
+                        }
+                        .mdh-small-print {
+                            margin : 15px 0;
+                            .mdh-txt-small {
+                                text-align : left;
+                                font-size  : 10px;
+                                margin     : 0;
+                            }
+                            a {
+                                color : #a7000b;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@media only screen and (max-width : 650px) {
+    #mdhRegister-wrap {
+        #mdhRegister {
+            width : 95%;
+            .mdh-content {
+                text-align : center;
+                .mdh-row-head {
+                    .mdh-header-text {
+                        display : none !important;
+                    }
+                }
+                .mdh-row-content {
+                    padding : 20px;
+                    .mdh-side-profile {
+                        display : none;
+                    }
+                    .mdh-reg-tabs {
+                        #mdh-reg-form {
+                            width      : auto;
+                            text-align : center;
+                            .mdh-form-input {
+                                .mdh-form-control {
+                                    input, select {
+                                        width : 100%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
