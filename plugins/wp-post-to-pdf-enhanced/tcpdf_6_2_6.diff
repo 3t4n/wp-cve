@@ -1,0 +1,18 @@
+--- original\tcpdf\tcpdf.php	2013-10-29 14:26:52.000000000 -0400
++++ wp-post-to-pdf.2.4.0\tcpdf\tcpdf.php	2013-11-09 22:54:24.000000000 -0500
+@@ -16825,13 +16825,15 @@
+ 							// rows on thead block are printed as a separate table
+ 						} else {
+ 							$dom[$key]['thead'] = false;
+ 							// store the number of rows on table element
+ 							++$dom[($dom[$key]['parent'])]['rows'];
+ 							// store the TR elements IDs on table element
+-							array_push($dom[($dom[$key]['parent'])]['trids'], $key);
++							if (is_null($dom[($dom[$key]['parent'])]['trids']))
++								$dom[($dom[$key]['parent'])]['trids'] = array();
+ 						}
+ 					}
+ 					if (($dom[$key]['value'] == 'th') OR ($dom[$key]['value'] == 'td')) {
+ 						if (isset($dom[$key]['attribute']['colspan'])) {
+ 							$colspan = intval($dom[$key]['attribute']['colspan']);
+ 						} else {
