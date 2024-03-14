@@ -1,0 +1,823 @@
+/*
+justify-content:
+ - flex-start
+ - flex-end
+ - center
+ - space-between
+ - space-around
+ - space-evenly
+align-items:
+ - stretch
+ - flex-start
+ - flex-end
+ - center
+ - baseline
+ */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+/*
+start   - aligns items to be flush with the start edge of their cell
+end     - aligns items to be flush with the end edge of their cell
+center  - aligns items in the center of their cell
+stretch - fills the whole height of the cell (this is the default)
+ */
+#ephd-help-dialog {
+  position: fixed !important;
+  bottom: 81px;
+  right: 20px;
+  border-radius: 15px;
+  border-top-right-radius: 0;
+  z-index: 9999999;
+  box-shadow: 0 5px 40px #00000029;
+  font-size: 14px; }
+  #ephd-help-dialog h1, #ephd-help-dialog h2, #ephd-help-dialog h3, #ephd-help-dialog h4, #ephd-help-dialog h5, #ephd-help-dialog h6, #ephd-help-dialog p, #ephd-help-dialog a, #ephd-help-dialog div, #ephd-help-dialog span, #ephd-help-dialog strong, #ephd-help-dialog b, #ephd-help-dialog i, #ephd-help-dialog ol, #ephd-help-dialog ul, #ephd-help-dialog li, #ephd-help-dialog section, #ephd-help-dialog nav, #ephd-help-dialog menu, #ephd-help-dialog header, #ephd-help-dialog form, #ephd-help-dialog input, #ephd-help-dialog textarea, #ephd-help-dialog button, #ephd-help-dialog img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-weight: normal;
+    line-height: 1.7em;
+    text-align: left;
+    text-decoration: none;
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    list-style-image: none; }
+    #ephd-help-dialog h1:focus, #ephd-help-dialog h2:focus, #ephd-help-dialog h3:focus, #ephd-help-dialog h4:focus, #ephd-help-dialog h5:focus, #ephd-help-dialog h6:focus, #ephd-help-dialog p:focus, #ephd-help-dialog a:focus, #ephd-help-dialog div:focus, #ephd-help-dialog span:focus, #ephd-help-dialog strong:focus, #ephd-help-dialog b:focus, #ephd-help-dialog i:focus, #ephd-help-dialog ol:focus, #ephd-help-dialog ul:focus, #ephd-help-dialog li:focus, #ephd-help-dialog section:focus, #ephd-help-dialog nav:focus, #ephd-help-dialog menu:focus, #ephd-help-dialog header:focus, #ephd-help-dialog form:focus, #ephd-help-dialog input:focus, #ephd-help-dialog textarea:focus, #ephd-help-dialog button:focus, #ephd-help-dialog img:focus {
+      outline: none; }
+  #ephd-help-dialog strong, #ephd-help-dialog b {
+    font-weight: bold; }
+  #ephd-help-dialog h1 {
+    font-size: 20px; }
+  #ephd-help-dialog h2 {
+    font-size: 18px; }
+  #ephd-help-dialog h3 {
+    font-size: 16px; }
+  #ephd-help-dialog h4 {
+    font-size: 16px; }
+  #ephd-help-dialog h5 {
+    font-size: 16px; }
+  #ephd-help-dialog h6 {
+    font-size: 15px; }
+  #ephd-help-dialog p {
+    font-size: 14px; }
+  #ephd-help-dialog input {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+    line-height: 1.1;
+    font-size: 16px;
+    padding: 10px 10px;
+    background-color: #ffffff;
+    background-image: none;
+    box-shadow: #161d251f 0 2px 4px 0;
+    min-height: 40px; }
+  #ephd-help-dialog textarea {
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    width: 100%;
+    margin: 0;
+    line-height: 1.1;
+    font-size: 16px;
+    padding: 10px 10px;
+    background-color: #ffffff;
+    box-shadow: #161d251f 0 2px 4px 0;
+    resize: vertical; }
+  #ephd-help-dialog ol, #ephd-help-dialog ul {
+    margin-left: 30px; }
+  #ephd-help-dialog #ephd-hd-top-tab-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: absolute;
+    top: -32px;
+    right: 0; }
+    #ephd-help-dialog #ephd-hd-top-tab-container .ephd-hd-tab {
+      border-radius: 4px 4px 0 0;
+      margin-right: 1px;
+      position: relative;
+      overflow: hidden; }
+      #ephd-help-dialog #ephd-hd-top-tab-container .ephd-hd-tab .ephd-hd-tab__faq-btn__text,
+      #ephd-help-dialog #ephd-hd-top-tab-container .ephd-hd-tab .ephd-hd-tab__contact-btn__text {
+        display: inline-block;
+        padding: 5px 10px;
+        min-width: 100px;
+        text-align: center; }
+      #ephd-help-dialog #ephd-hd-top-tab-container .ephd-hd-tab .ephd-hd-tab__faq-btn__text {
+        font-weight: 600; }
+      #ephd-help-dialog #ephd-hd-top-tab-container .ephd-hd-tab:last-child {
+        margin-right: 0; }
+      #ephd-help-dialog #ephd-hd-top-tab-container .ephd-hd-tab:hover {
+        cursor: pointer; }
+  #ephd-help-dialog #ephd-hd-header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: -1px; }
+    #ephd-help-dialog #ephd-hd-header-container .ephd-hd-header__title-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 10px; }
+      #ephd-help-dialog #ephd-hd-header-container .ephd-hd-header__title-container .ephd-hd-header__logo {
+        width: 70px;
+        display: flex; }
+        #ephd-help-dialog #ephd-hd-header-container .ephd-hd-header__title-container .ephd-hd-header__logo .ephd-hd-header__logo__img {
+          width: 100%; }
+      #ephd-help-dialog #ephd-hd-header-container .ephd-hd-header__title-container .ephd-hd-header__title {
+        font-size: 18px;
+        line-height: 1em;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        flex-grow: 1; }
+        #ephd-help-dialog #ephd-hd-header-container .ephd-hd-header__title-container .ephd-hd-header__title .ephd-hd-header__title__faq {
+          font-size: 18px;
+          text-align: center;
+          line-height: 1.2em; }
+    #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header {
+      padding: 0 10px; }
+      #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__title-wrap {
+        background-color: #fff;
+        overflow: hidden;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        padding: 0; }
+        #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__title-wrap .ephd-hd-faq__header__title {
+          font-size: 15px;
+          text-align: center;
+          padding: 5px 10px;
+          margin-bottom: 10px; }
+      #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__breadcrumb-container {
+        background-color: #fff;
+        padding: 0 0 10px 0;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        font-size: 15px; }
+        #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__breadcrumb-container .ephd-hd__breadcrumb__nav {
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          line-height: 1em;
+          overflow: hidden;
+          padding: 5px 10px;
+          text-align: center;
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px; }
+          #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__breadcrumb-container .ephd-hd__breadcrumb__nav ol {
+            margin: 0; }
+            #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__breadcrumb-container .ephd-hd__breadcrumb__nav ol li {
+              display: inline; }
+          #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__breadcrumb-container .ephd-hd__breadcrumb__nav .ephd-hd__breadcrumb_text {
+            display: inline-block;
+            cursor: pointer;
+            line-height: 1em; }
+            #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__breadcrumb-container .ephd-hd__breadcrumb__nav .ephd-hd__breadcrumb_text:hover {
+              text-decoration: underline; }
+          #ephd-help-dialog #ephd-hd-header-container .ephd-hd-faq__header .ephd-hd-faq__header__breadcrumb-container .ephd-hd__breadcrumb__nav .ephd-hd-faq__header__title-arrow {
+            position: relative;
+            margin: 0 10px;
+            padding-top: 1px;
+            line-height: 1em; }
+  #ephd-help-dialog #ephd-hd-body-container {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    height: 477px;
+    overflow-y: auto; }
+    #ephd-help-dialog #ephd-hd-body-container ::-webkit-scrollbar {
+      width: 10px; }
+    #ephd-help-dialog #ephd-hd-body-container ::-webkit-scrollbar-thumb {
+      background: #cccccc; }
+    #ephd-help-dialog #ephd-hd-body-container ::-webkit-scrollbar-track {
+      background-color: #ededed; }
+    #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container {
+      border-right: solid 1px #ddd;
+      background-color: #fff;
+      width: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 10px 10px 10px 10px; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          padding: 10px 15px 70px 15px; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container {
+            display: flex;
+            flex-direction: column;
+            border: solid 1px;
+            margin: 0 0 10px 0;
+            border-radius: 6px;
+            background-color: #f3f5f7;
+            cursor: default; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__question {
+              padding: 8px 10px;
+              display: flex;
+              align-items: flex-start;
+              border-top-left-radius: 6px;
+              border-top-right-radius: 6px;
+              cursor: pointer; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__question .ephd-hd__item__question__icon {
+                font-size: 14px; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__question .ephd-hd__item__question__text {
+                font-size: 13px;
+                flex-grow: 1;
+                padding-left: 5px; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__question .ephd-hd__item__toggle__icon {
+                font-size: 13px;
+                transition: all 0.2s ease-in-out; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer {
+              padding: 8px 10px;
+              border-bottom-right-radius: 6px;
+              border-bottom-left-radius: 6px;
+              display: none;
+              background-color: #fff; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text {
+                color: #000000;
+                font-size: 13px;
+                word-break: break-word; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text h1 {
+                  font-size: 17px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text h2 {
+                  font-size: 16px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text h3 {
+                  font-size: 15px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text h4 {
+                  font-size: 15px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text h5 {
+                  font-size: 15px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text h6 {
+                  font-size: 14px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text p {
+                  font-size: 13px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text ol, #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text ul {
+                  font-size: 13px !important;
+                  margin-left: 30px !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text ul {
+                  list-style-type: disc !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text ol {
+                  list-style-type: decimal !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text strong {
+                  font-weight: bold !important; }
+                #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__text blockquote {
+                  margin: 20px 0 30px !important;
+                  border-left: 5px solid #888d96;
+                  padding-left: 20px; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container .ephd-hd__item__answer .ephd-hd__item__answer__link {
+                text-align: right;
+                font-weight: 600; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container:hover {
+              background-color: #f7f7f7; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container.ephd-hd__element--active {
+              box-shadow: #161d251f 0 2px 4px 0; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container.ephd-hd__element--active .ephd-hd__item__answer {
+                display: block; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq-container .ephd-hd-faq__list .ephd-hd-faq__list__item-container.ephd-hd__element--active .ephd-hd__item__toggle__icon {
+                transform: rotateZ(180deg); }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd__no-questions-set {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        line-height: 1.1; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-search-container {
+        padding: 10px 25px;
+        padding-right: 35px;
+        background-color: transparent;
+        position: absolute;
+        bottom: 41px;
+        left: 0;
+        width: 100%;
+        opacity: 0.9;
+        transition: opacity 0.2s ease-in-out; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-search-container:hover {
+          opacity: 1; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-search-container #ephd-hd__search-form {
+          position: relative; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-search-container input#ephd-hd__search-terms {
+          padding: 11px 38px 11px 14px;
+          background-color: #fff;
+          border-radius: 6px;
+          border: 1px solid #cfd7df;
+          box-shadow: #1832474d 0 0 1px 0, #161d251f 0 2px 14px 0; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-search-container .ephd-hd__search-terms__icon {
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          bottom: 5px;
+          width: 30px;
+          flex-direction: column;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 3px;
+          background-color: #647a8e;
+          color: #fff; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq__faqs-container {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq__faqs-container.ephd-hd-faq__faqs-container--no-faqs {
+          justify-content: center; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq__faqs-container .ephd-hd-faq__faqs__search_title {
+          display: none; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-faq__faqs-container .ephd-hd-faq__faqs__search_title.ephd-hd__element--active {
+            display: block; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container {
+        position: relative;
+        width: 100%; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search-results-title-wrap {
+          margin-bottom: 10px;
+          margin-left: -10px;
+          margin-right: -10px;
+          display: flex;
+          flex-direction: row;
+          flex-flow: wrap; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search-results-title {
+          font-size: 16px;
+          line-height: 1.1;
+          color: #679ef9;
+          cursor: pointer;
+          display: inline-block;
+          padding: 1px;
+          margin: 1px 10px 10px 10px; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search-results-title:not(.ephd-hd__search-results-title--active) {
+            border-bottom: 1px solid transparent; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search-results-title:hover {
+            border-bottom: 1px solid;
+            color: #337df2; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__faqs-list,
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__article-list,
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__post-list,
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__cpt-list {
+          overflow: auto; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__faqs-list ul,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__article-list ul,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__post-list ul,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__cpt-list ul {
+            margin-left: 0; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__faqs-list li:last-child,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__article-list li:last-child,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__post-list li:last-child,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__cpt-list li:last-child {
+            border: none; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__faqs-list.ephd-hd__element--active,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__article-list.ephd-hd__element--active,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__post-list.ephd-hd__element--active,
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-search-results__cpt-list.ephd-hd__element--active {
+            display: block; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details {
+          position: relative; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-details {
+            position: relative;
+            font-size: 13px;
+            padding-bottom: 75px; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-details .ephd-hd_article-title {
+              font-weight: 400;
+              font-size: 20px;
+              padding: 0 0 10px 0; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-details #ephd-hd_article-desc {
+              border: none;
+              overflow: hidden;
+              width: 100% !important;
+              min-width: 100% !important;
+              max-width: 100% !important;
+              margin: 0;
+              padding: 0; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-details .ephd-hd_article-item-details__fade--container {
+              position: absolute;
+              bottom: 52px;
+              width: 100%;
+              box-shadow: -1px -15px 13px #ffffff99; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-details .ephd-hd_article-item-details__fade--container .ephd-hd_fade-level-1 {
+                width: 100%;
+                height: 20px;
+                background-color: #ffffff99;
+                box-shadow: -1px -15px 13px #ffffff99; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-details .ephd-hd_article-item-details__fade--container .ephd-hd_fade-level-2 {
+                width: 100%;
+                height: 20px;
+                background-color: #ffffffbf;
+                box-shadow: -1px -15px 13px #ffffff99; }
+              #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-details .ephd-hd_article-item-details__fade--container .ephd-hd_fade-level-3 {
+                width: 100%;
+                height: 40px;
+                background-color: #ffffffed;
+                box-shadow: -1px -15px 13px #ffffff99; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-footer {
+            width: 100%;
+            position: relative; }
+            #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container #ephd-hd__search_results-cat-article-details .ephd-hd_article-item-footer .ephd-hd_article-link {
+              display: inline-block;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              text-align: center;
+              font-size: 14px;
+              font-weight: bold;
+              line-height: 1em;
+              padding: 7px 0;
+              color: #337df2;
+              left: 0;
+              top: -70px;
+              width: 100%; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__faq__back-btn {
+          display: flex;
+          justify-content: center;
+          cursor: pointer;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          border-radius: 5px;
+          width: fit-content;
+          padding: 10px;
+          font-size: 14px;
+          line-height: 1em;
+          color: black; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__faq__back-btn .ephd-hd__faq__back-btn__icon {
+            padding-right: 10px;
+            line-height: 1em; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__faq__back-btn .ephd-hd__faq__back-btn__text {
+            line-height: 1em; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__faq__back-btn:hover {
+            cursor: pointer; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-no-results__img {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 5px; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-no-results__img img {
+            width: 40px;
+            height: auto !important; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search_results__no-results-container {
+          background-color: #F3F2F3;
+          border-radius: 7px;
+          padding: 10px; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search_results__no-results-container .ephd-hd-no-results__msg {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 16px; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search_results__no-results-container .ephd-hd-no-results__keywords {
+            background-color: #EBEAEB;
+            display: block;
+            width: fit-content;
+            margin: 3px auto 10px auto;
+            padding: 5px 10px;
+            font-weight: bold; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd__search_results__no-results-container .ephd-hd-no-results__hints ol {
+            margin-left: 20px;
+            list-style-type: disc; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd-body__content-container .ephd-hd-kb__search-results-container .ephd-hd-search-results-container .ephd-hd-no-results__contact-us {
+          margin-top: 25px;
+          text-align: center; }
+    #ephd-help-dialog #ephd-hd-body-container .ephd-hd__loading-spinner__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd__loading-spinner__container .ephd-hd__loading-spinner {
+        position: relative;
+        border: 3px solid #f3f3f3;
+        border-top: 4px solid #0c0c0c;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin-left: -15px;
+        margin-top: -15px; }
+    #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; }
+      #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        max-height: 500px; }
+        #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body {
+          position: relative;
+          width: 100%;
+          padding: 0 30px 0 30px; }
+          #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-field {
+            width: 100%;
+            margin-bottom: 12px; }
+            #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-field label {
+              display: inline-block;
+              position: relative;
+              font-weight: 400;
+              font-size: 13px;
+              color: #000;
+              margin-bottom: 7px; }
+              #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-field label.ephdfa-asterisk:before {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                right: -12px;
+                color: #eb2d2d;
+                font-weight: 400;
+                font-size: 8px; }
+            #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-field .ephd-hd__contact-form-field__required-tag {
+              color: #d95651;
+              font-weight: bold;
+              padding-left: 3px; }
+            #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-field.ephd-hd__contact-form-field--catch-details {
+              height: 0 !important;
+              width: 0 !important;
+              opacity: 0 !important;
+              overflow: hidden !important;
+              margin: 0 !important; }
+          #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-btn-wrap {
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 16px; }
+            #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-btn-wrap .ephd-hd__contact-form-btn {
+              display: inline-block;
+              width: fit-content;
+              min-width: 180px;
+              border: none;
+              text-align: center;
+              padding: 10px;
+              position: relative;
+              text-shadow: none;
+              vertical-align: middle;
+              text-decoration: none;
+              font-size: 14px;
+              line-height: 1.1;
+              border-radius: 4px;
+              box-shadow: #161d251f 0 2px 4px 0; }
+              #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form #ephd-hd__contact-form-body .ephd-hd__contact-form-btn-wrap .ephd-hd__contact-form-btn:hover {
+                cursor: pointer; }
+        #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form .ephd-hd__contact-form-response {
+          display: flex;
+          flex-grow: 1;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 0 25px;
+          line-height: 1.5; }
+          #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form .ephd-hd__contact-form-response .ephd-hd__contact-form-response__message {
+            display: flex;
+            flex-grow: 1;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            position: relative; }
+        #ephd-help-dialog #ephd-hd-body-container #ephd-hd-body__contact-container #ephd-hd__contact-form .ephd-hd__contact-form-error .ephd-hd__contact-form-error__message {
+          padding: 10px;
+          text-align: center;
+          color: #d95651; }
+    #ephd-help-dialog #ephd-hd-body-container .ephd-hd_categories {
+      padding: 0;
+      margin: 0; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd_categories li:last-child {
+        border: none; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd_categories .ephd-hd_cat-item {
+        list-style-type: none;
+        padding: 8px 0;
+        cursor: pointer;
+        border-bottom: solid 1px #ddd; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd_categories .ephd-hd_cat-item .ephd-hd_cat-name {
+          font-size: 14px; }
+          #ephd-help-dialog #ephd-hd-body-container .ephd-hd_categories .ephd-hd_cat-item .ephd-hd_cat-name .ephd-hd_cat-name__icon {
+            margin-right: 3px; }
+    #ephd-help-dialog #ephd-hd-body-container .ephd-hd_article-box .ephd-hd__category_title {
+      font-weight: bold;
+      font-size: 16px;
+      padding: 0 0 10px 0; }
+    #ephd-help-dialog #ephd-hd-body-container .ephd-hd_article-box .ephd-hd__article_list {
+      padding: 0;
+      margin: 0; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd_article-box .ephd-hd__article_list li:last-child {
+        border: none; }
+    #ephd-help-dialog #ephd-hd-body-container .ephd-hd_article-item {
+      list-style-type: none;
+      cursor: pointer;
+      padding: 8px 0; }
+      #ephd-help-dialog #ephd-hd-body-container .ephd-hd_article-item .ephd-hd_article-item__name {
+        display: block; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd_article-item .ephd-hd_article-item__name .ephd-hd_article-item__icon {
+          font-size: 14px; }
+        #ephd-help-dialog #ephd-hd-body-container .ephd-hd_article-item .ephd-hd_article-item__name .ephd-hd_article-item__text {
+          font-size: 13px;
+          margin: 0 0 0 10px; }
+  #ephd-help-dialog #ephd-hd-footer-container {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px !important;
+    color: #fff !important;
+    opacity: 1 !important;
+    text-align: center;
+    padding: 10px; }
+    #ephd-help-dialog #ephd-hd-footer-container a {
+      color: #fff !important;
+      display: inline-block !important;
+      opacity: 1 !important; }
+    #ephd-help-dialog #ephd-hd-footer-container .ephd-hd-footer__poweredBy {
+      display: inline-block !important;
+      opacity: 1 !important; }
+    #ephd-help-dialog #ephd-hd-footer-container .ephd-hd-footer__icon {
+      width: 20px !important;
+      display: inline-block !important;
+      margin: 0 5px !important;
+      opacity: 1 !important; }
+    #ephd-help-dialog #ephd-hd-footer-container .ephd-hd-footer__link {
+      display: inline-block !important;
+      opacity: 1 !important; }
+  #ephd-help-dialog[data-tab="faqs"] [data-tab="contact"] {
+    display: none !important; }
+  #ephd-help-dialog[data-tab="faqs"] .ephd-hd-tab__contact-btn:before {
+    opacity: 0.2 !important; }
+  #ephd-help-dialog[data-tab="contact"] [data-tab="faqs"] {
+    display: none !important; }
+  #ephd-help-dialog[data-tab="contact"] .ephd-hd-tab__faq-btn:before {
+    opacity: 0.2 !important; }
+  #ephd-help-dialog[data-step="1"] [data-step="2"],
+  #ephd-help-dialog[data-step="1"] [data-step="3"],
+  #ephd-help-dialog[data-step="1"] [data-step="2,3"] {
+    display: none !important; }
+  #ephd-help-dialog[data-step="2"] [data-step="1"],
+  #ephd-help-dialog[data-step="2"] [data-step="3"] {
+    display: none !important; }
+  #ephd-help-dialog[data-step="2"] #ephd-search-result-arrow {
+    display: none; }
+  #ephd-help-dialog[data-step="3"] [data-step="1"],
+  #ephd-help-dialog[data-step="3"] [data-step="2"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="7"],
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="8"],
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="7,8"],
+  #ephd-help-dialog[data-sub-step="1"] [data-sub-step="9,10"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="7"],
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="8"],
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="7,8"],
+  #ephd-help-dialog[data-sub-step="2"] [data-sub-step="9,10"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="7,8"],
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="9,10"],
+  #ephd-help-dialog[data-sub-step="3"] [data-sub-step="1,2,7"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="7,8"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="9,10"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="1,2,3"],
+  #ephd-help-dialog[data-sub-step="4"] [data-sub-step="1,2,7"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="1,2,7"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="7,8"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="9,10"],
+  #ephd-help-dialog[data-sub-step="5"] [data-sub-step="1,2,3"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="1,2,7"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="7,8"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="9,10"],
+  #ephd-help-dialog[data-sub-step="6"] [data-sub-step="1,2,3"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="7"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="8"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="7"] [data-sub-step="9,10"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="1,2"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="9,10"],
+  #ephd-help-dialog[data-sub-step="8"] [data-sub-step="1,2,3"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="7"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="8"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="9"] [data-sub-step="7,8"] {
+    display: none !important; }
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="1"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="2"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="3"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="4"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="1,2"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="1,5"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="2,6"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="7,8"],
+  #ephd-help-dialog[data-sub-step="10"] [data-sub-step="1,2,3"] {
+    display: none !important; }
+  #ephd-help-dialog .ephd-hd__contact-us__link {
+    color: #679ef9;
+    cursor: pointer; }
+    #ephd-help-dialog .ephd-hd__contact-us__link:hover {
+      color: #337df2; }
+
+.ephd-hd-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  text-align: center;
+  line-height: 10px;
+  cursor: pointer;
+  z-index: 9999999;
+  font-size: 40px; }
+  .ephd-hd-toggle .ephd-hd-toggle__icon {
+    width: 64px;
+    height: 64px;
+    padding: 10px;
+    border-radius: 50%; }
+  .ephd-hd-toggle .ephd-hd-toggle__text {
+    vertical-align: middle;
+    color: black;
+    background-color: white;
+    box-shadow: 0px 0px 7px #919191;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 50px; }
+  .ephd-hd-toggle:hover .ephd-hd-toggle__text {
+    box-shadow: 0px 0px 15px #919191; }
+  .ephd-hd-toggle .ephd-hd-toggle__text-left {
+    margin-right: 11px; }
+  .ephd-hd-toggle .ephd-hd-toggle__text:before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2.5px);
+    border-width: 5px;
+    border-style: solid; }
+  .ephd-hd-toggle .ephd-hd-toggle__text-left:before {
+    right: 66px;
+    border-color: transparent transparent transparent white; }
+  .ephd-hd-toggle .ephd-hd-toggle__text-right:before {
+    left: 66px;
+    border-color: transparent white transparent transparent; }
+
+.ephd_hd_active_theme_twentynineteen h1:before, .ephd_hd_active_theme_twentynineteen h2:before, .ephd_hd_active_theme_twentynineteen h3:before, .ephd_hd_active_theme_twentynineteen h4:before {
+  display: none; }

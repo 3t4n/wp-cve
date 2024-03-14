@@ -1,0 +1,1 @@
+window.ephdErrorsList=[];var previousErrorHandler=window.onerror,jqueryChecked=0;window.onerror=function(r,e,o,n,d){return"NS_ERROR_FAILURE"!=d.name&&ephdErrorsList.push({msg:r,url:e}),"undefined"!=typeof jQuery&&jQuery(document).trigger("ephd_js_error",[r,e,o,n,d]),!!previousErrorHandler&&previousErrorHandler(r,e,o,n,d)};
