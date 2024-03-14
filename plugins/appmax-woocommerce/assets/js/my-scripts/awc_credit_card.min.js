@@ -1,0 +1,1 @@
+!function(e){"use strict";e(function(){e("#billing_phone").mask("(99) 99999-9999"),e("#billing_postcode").mask("99999-999"),e("#card_number").mask("9999 9999 9999 9999"),e("#card_cpf").mask("999.999.999-99"),e(".tab-2").prev().remove()})}(jQuery);
