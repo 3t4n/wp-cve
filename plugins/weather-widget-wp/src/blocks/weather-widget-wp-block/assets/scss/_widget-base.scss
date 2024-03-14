@@ -1,0 +1,99 @@
+//
+// Widget Base Style
+// ------------------------
+
+.weather-widget-wp {
+    --weather-widget-wp-padding-exp:    115px 40px 40px 40px;
+    --weather-widget-wp-padding-min:    30px;
+    --weather-widget-wp-text-align:     left;
+    --weather-widget-wp-text-color:     #fff;
+    --weather-widget-wp-bg:             linear-gradient(74.1deg, #537895 11.78%, #A3BECD 90.32%);
+    --weather-widget-wp-roundness:      18px;
+    --weather-widget-wp-shadow-size:    0px 30px 60px 5px;
+    --weather-widget-wp-shadow-color:   rgba(51, 51, 51, 0.35);
+    --weather-widget-wp-font:           sans-serif;
+
+    box-sizing: border-box;
+    border-radius: var(--weather-widget-wp-roundness);
+    background: var(--weather-widget-wp-bg);
+    box-shadow: var(--weather-widget-wp-shadow-size) var(--weather-widget-wp-shadow-color);
+    font-family: var(--weather-widget-wp-font);
+    text-align: var(--weather-widget-wp-text-align);
+    color: var(--weather-widget-wp-text-color);
+
+    .temp-group {
+
+        i { font-size: 56px; }
+
+        .weather-temp {
+            font-size: 62px;
+            font-weight: bold;
+            line-height: 0.85;
+            text-shadow: 0px 3px 15px rgba(51, 51, 51, 0.15);
+
+            .temp-units {
+                position: relative;
+                top: -5px;
+                font-size: 24px;
+                font-weight: normal;
+                vertical-align: super;
+                text-shadow: unset;
+            }
+        }
+    } // .temp-group
+
+    .info-group {
+
+        .weather-title {
+            font-weight: bold;
+            font-size: 22px;
+            letter-spacing: -1px;
+        }
+
+        .weather-description {
+            font-size: 16px;
+            font-weight: 200;
+            opacity: 0.7;
+
+            &:first-letter { text-transform: capitalize; }
+        }
+    } // .info-group
+} // .weather-widget-wp
+
+
+//
+// Block Alignment
+// ------------------------
+
+.wrapper-weather-widget-wp {
+    display: flex;
+}
+
+.block-align-right.wrapper-weather-widget-wp {
+    justify-content: flex-end;
+}
+
+.block-align-center.wrapper-weather-widget-wp {
+    justify-content: center;
+}
+
+.block-align-left.wrapper-weather-widget-wp {
+    justify-content: flex-start;
+}
+
+.block-align-wide.wrapper-weather-widget-wp {
+
+    .style-expanded.weather-widget-wp,
+    .style-minimal.weather-widget-wp {
+        width: 100% !important;
+    }
+}
+
+.block-align-full.wrapper-weather-widget-wp {
+    width: 100%;
+
+    .style-expanded.weather-widget-wp,
+    .style-minimal.weather-widget-wp {
+        width: 100% !important;
+    }
+}
