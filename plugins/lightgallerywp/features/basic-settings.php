@@ -1,0 +1,286 @@
+<?php
+namespace LightGallery;
+
+/**
+ * This function returns the basic settings for use in admin pages.
+ *
+ * @param array $boolean_options An array representing boolean choices for controls.
+ *
+ * @return array An array compatible with the controls array used in LightGallery\SmartlogixCPTWrapper and LightGallery\SmartlogixSettingsWrapper Classes.
+ */
+function lightgallerywp_get_basic_settings( $boolean_options ) {
+	return [
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'text',
+			'label'   => 'Add Custom class for gallery container',
+			'id'      => 'addClass_string',
+			'info'    => 'This can be used to set different style for different galleries',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Allow Media Overlap ',
+			'id'      => 'allowMediaOverlap_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'If true, toolbar, captions and thumbnails will not overlap with media element.  This will not effect thumbnails if animateThumb is false.  Also, toggle thumbnails button is not displayed if allowMediaOverlap is false',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Backdrop transition duration',
+			'id'      => 'backdropDuration_number',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Closable',
+			'id'      => 'closable_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'If "No", the user won\'t be able to close the gallery.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Close On Tap',
+			'id'      => 'closeOnTap_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Allows clicks on black area to close gallery.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Controls',
+			'id'      => 'controls_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'If false, prev/next buttons will not be displayed.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Counter',
+			'id'      => 'counter_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Whether to show total number of images and index number of currently displayed image.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Download',
+			'id'      => 'download_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Enable download button.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Enable Drag',
+			'id'      => 'enableDrag_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Enables desktop mouse drag support.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Enable Swipe',
+			'id'      => 'enableSwipe_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Enables swipe support for touch devices.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Esc Key Support',
+			'id'      => 'escKey_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Whether the LightGallery could be closed by pressing the "Esc" key.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Get captions from alt or title tags',
+			'id'      => 'getCaptionFromTitleOrAlt_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Option to get captions from alt or title tags.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Delay for hiding gallery controls',
+			'id'      => 'hideBarsDelay_number',
+			'info'    => 'Delay for hiding gallery controls in ms.  Pass 0 or leave empty if you don\'t want to hide the controls',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Hide Controls On End',
+			'id'      => 'hideControlOnEnd_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'If true, prev/next button will be hidden on first/last image.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'KeyPress Navigation',
+			'id'      => 'keyPress_boolean',
+			'data'    => $boolean_options,
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Loop',
+			'id'      => 'loop_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'If false, will disable the ability to loop back to the beginning of the gallery from the last slide.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Mousewheel Navigation',
+			'id'      => 'mousewheel_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Ability to navigate to next/prev slides on mousewheel.',
+		],
+
+		/*
+		Deactivating field until the bug in output HTML embed is fixed.
+		array(
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type' => 'textarea',
+			'label' => 'Next HTML',
+			'id' => 'nextHtml_string',
+			'info' => 'Custom html for next control'
+		),
+		*/
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Number Of Slide Items In Dom ',
+			'id'      => 'numberOfSlideItemsInDom_number',
+			'info'    => 'Control how many slide items should be kept in dom at a time<br />To improve performance by reducing number of gallery items in the dom, lightGallery keeps only the lowest possible number of slides in the dom at a time.  This has a minimum value of 3',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Number of preload slides',
+			'id'      => 'preload_number',
+		],
+
+		/*
+		Deactivating field until the bug in output HTML embed is fixed.
+		array(
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type' => 'textarea',
+			'label' => 'Prev HTML',
+			'id' => 'prevHtml_string',
+			'info' => 'Custom html for prev control'
+		),
+		*/
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Show Bars After',
+			'id'      => 'showBarsAfter_number',
+			'info'    => 'Delay in hiding controls for the first time when gallery is opened.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Show Close Icon',
+			'id'      => 'showCloseIcon_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'If false, close button won\'t be displayed.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle-reverse',
+			'label'   => 'Show Maximize Icon',
+			'id'      => 'showMaximizeIcon_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Show maximize icon.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Slide Delay',
+			'id'      => 'slideDelay_number',
+			'info'    => 'Delay slide transitions.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Slide End Animation',
+			'id'      => 'slideEndAnimation_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Enable slideEnd animation.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Speed',
+			'id'      => 'speed_number',
+			'info'    => 'Transition duration (in ms).  Defaults to 400',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Start Animation Duration',
+			'id'      => 'startAnimationDuration_number',
+			'info'    => 'Zoom from image animation duration.  Defaults to 400',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'number',
+			'label'   => 'Swipe Threshold',
+			'id'      => 'swipeThreshold_number',
+			'info'    => 'By setting the swipeThreshold (in px) you can set how far the user must swipe for the next/prev image..  Defaults to 50',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Swipe To Close',
+			'id'      => 'swipeToClose_boolean',
+			'data'    => $boolean_options,
+			'info'    => 'Allows vertical drag/swipe to close gallery.',
+		],
+		[
+			'metabox' => 'light_gallery_settings',
+			'section' => 'Gallery Basics',
+			'type'    => 'toggle',
+			'label'   => 'Enable zoom from origin effect',
+			'id'      => 'zoomFromOrigin_boolean',
+			'data'    => $boolean_options,
+		],
+	];
+}
+
