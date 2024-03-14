@@ -1,0 +1,212 @@
+/* Audio Album Title (You have discovered the secret undocumented shortcode for an additional album heading block)
+	[audioheading title="xxx" label="yyy" catalog="zzz"]
+---------------------------------------------------------------------------------------------------- */
+
+.audioheading {
+	background-color: #2c3138;
+	color: #fff;
+	line-height: 1;
+	margin: 0;
+}
+
+h1.audioheading {
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 20px 12px 0 12px;
+}
+
+p.audioheading {
+	font-size: 14px;
+	margin-bottom: 1px;
+	padding: 10px 12px 20px 12px;
+}
+
+p.audioheading span {
+	float: right;
+}
+
+/* Audio Album (Mandatory shortcode for album title block)
+	[audioalbum title="xxx" detail="yyy" date="zzz"]
+---------------------------------------------------------------------------------------------------- */
+
+.audioalbum {
+	background: #434A54;
+	color: #fff;
+}
+
+h2.audioalbum {
+	color: #fff;
+	counter-reset: track;
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 1.4;
+	margin: 0;
+	padding: 6px 12px 0 12px;
+}
+
+p.audioalbum {
+	font-size: 14px;
+	margin: 0;
+	margin-bottom: 1px;
+	padding: 0 12px 6px 12px;
+}
+
+p.audioalbum span {
+	float: right;
+}
+
+/* Audio Track (Mandatory shortcode for each album track)
+	[audiotrack title="xxx" songwriter="yyy" mp3="fullpathto.mp3"]
+	data image: animated background gif to indicate that the audio players are loading
+---------------------------------------------------------------------------------------------------- */
+
+.track {
+	background: #434A54 url(data:image/gif;base64,R0lGODlhFAAeAIAAAP///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCgABACwAAAAAFAAdAAACQoyPAQvKCVmTMFFaz3255714Toh1YOOd4qo95edyZhymNMrmxlupNimDAWszoo7lK06CvZsoeWwOccKlUWqlYkfaAgAh+QQJCgABACwAAAAAFAAdAAACQQwOocuGfppEicpm7V16+69kzydG5NNtZQK2ITp6KzifUerKsKnfsbpj9Sq/nAs3CdKUNiIP+DS2akOIEOq8XlYFACH5BAkKAAEALAAAAAAUAB0AAAJDDA6Gwe16YHoPJUvrwrl7ynlY2I3LZ0bo+bXlxr4RmaWTCKuua7f9OovVcrcd8CIEEX3Lo8QIZdCUQZ0MaR1Wi1pAAQAh+QQJCgABACwAAAAAFAAdAAACQ4wPCaF7jxSTELaZqpVX+48t3XeNXkmRXAq2mvmuGYjOagZXucvXzi1ixXBCnezHox1bPuZSSbQlgSFnFDkMSrPVTwEAOw==) repeat-x left bottom;
+
+	color: #fff;
+	display: block;
+	font-weight: normal;
+    font-size: 16px;
+	line-height: 1.6;
+	padding: 2px 0 0;
+	margin-bottom: 1px;
+	position: relative;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.track br,
+.track p {
+	display: none;
+}
+
+.track .songtitle:before {
+	box-sizing: border-box;
+	content: counter(track);
+	counter-increment: track;
+	display: inline-block;
+	font-weight: bold;
+	padding-right: 4px;
+    text-align: right;
+	width: 28px;
+}
+
+.track .songtitle {
+	clear: right;
+	display: block;
+}
+
+.track .songwriter {
+	color: #fff;
+	display: block;
+	font-size: 12px;
+	line-height: 1;
+	padding: 2px 0 8px 28px;
+	opacity: 0.75;
+}
+
+.track .audiobutton {
+    display: inline-block;
+    float: right;
+	position: absolute;
+	top: 5px;
+	right: 6px;
+}
+
+.track .audiobutton a {
+	background: #2c3138;
+	border-radius: 2px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 11px;
+	line-height: 1;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 4px 6px;
+}
+
+.track .audiobutton a:hover {
+	background: #fff;
+	color: #2c3138;
+	outline: none;
+}
+
+.track .audiobutton a:active,
+.track .audiobutton a:focus {
+	outline: none;
+}
+
+.track .mejs-controls .mejs-button button:focus {
+	outline: none;
+}
+
+.track .mejs-controls > .mejs-button button {
+	background: none;
+	color: #fff;
+	-o-transition: .4s;
+	-ms-transition: .4s;
+	-moz-transition: .4s;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.track .mejs-controls > .mejs-button button:before {
+	content: "";
+	display: inline-block;
+	font: normal 22px/1 'dashicons';
+	position: relative;
+	left: 0;
+	top: -2px;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.track .mejs-controls .mejs-play button:before,
+.track .mejs-controls .mejs-replay button:before {
+	content: "\f522";
+}
+
+.track .mejs-controls .mejs-pause > button:before {
+	content: "\f523";
+}
+
+.track .mejs-controls .mejs-mute button:before {
+	content: "\f521";
+	left: -4px;
+}
+
+.track .mejs-controls .mejs-unmute button:before {
+	content: "\f520";
+	left: -4px;
+}
+
+/* Native WP Audio
+	data images: transparent png backgrounds for total & loaded time, & volume rails
+---------------------------------------------------------------------------------------------------- */
+
+.track .wp-audio-shortcode.mejs-audio {
+	margin: 0;
+}
+
+.track .mejs-container .mejs-controls {
+	background: #2c3138;
+}
+
+.track .mejs-controls .mejs-time-rail .mejs-time-total {
+	background: #2c3138 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlNmTU1ZPDQAAAALSURBVAjXYwiAQAAFCAFBe2/ssAAAAABJRU5ErkJggg==);
+}
+
+.track .mejs-time-rail .mejs-time-total .mejs-time-loaded,
+.track .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	background: #2c3138 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAAA1BMVEUAAACnej3aAAAAAXRSTlNm5DccCwAAAApJREFUCNdjgAIAAAgAAaHePvkAAAAASUVORK5CYII=);
+}
+
+.track .mejs-time-rail .mejs-time-total .mejs-time-current,
+.track .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	background: #fff;
+	border: none;
+}
