@@ -1,0 +1,34 @@
+{
+	"name": "inc2734/snow-monkey-forms",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Takashi Kitajima",
+			"email": "inc@2inc.org",
+			"homepage": "https://2inc.org"
+		}
+	],
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"wp-coding-standards/wpcs": "^2.3",
+		"yoast/phpunit-polyfills": "^1.0"
+	},
+	"require": {
+		"php": ">=7.4"
+	},
+	"scripts" :{
+		"lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+		"format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+	},
+	"autoload": {
+		"psr-4": {
+			"Snow_Monkey\\Plugin\\Forms\\": ""
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}

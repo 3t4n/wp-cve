@@ -1,0 +1,38 @@
+@import '../../../src/css/core/core';
+@import '../../../node_modules/sass-basis/src/css/basis-core';
+
+.smf-form .smf-item {
+	.smf-checkboxes-control {
+		&--horizontal {
+			.smf-checkboxes-control {
+				&__control {
+					> .smf-label {
+						display: inline-block;
+						margin-right: var(--_margin-1);
+					}
+				}
+			}
+		}
+
+		&--vertical {
+			.smf-checkboxes-control {
+				&__control {
+					> .smf-label {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+
+	.smf-checkbox-control {
+		@include _checkbox();
+		align-items: flex-start;
+
+		&__control {
+			flex: none;
+			margin-top: calc(var(--_half-leading) * 1em);
+			margin-right: var(--_margin-2);
+		}
+	}
+}

@@ -1,0 +1,131 @@
+<?php
+/**
+ * @package snow-monkey-forms
+ * @author inc2734
+ * @license GPL-2.0+
+ */
+
+namespace Snow_Monkey\Plugin\Forms\App;
+
+use Snow_Monkey\Plugin\Forms\App\Control;
+
+class Helper {
+
+	/**
+	 * Return Control
+	 *
+	 * @param string $type       The Control type.
+	 * @param array  $properties Array of the Control properties.
+	 * @return Control
+	 * @throws \LogicException If the Control Class was not found.
+	 */
+	public static function control( $type, array $properties = array() ) {
+		$class_name = '\Snow_Monkey\Plugin\Forms\App\Control\\' . static::_generate_control_class_name( $type );
+
+		if ( ! class_exists( $class_name ) ) {
+			throw new \LogicException( sprintf( '[Snow Monkey Forms] Not found the class: %1$s.', $class_name ) );
+		}
+
+		return new $class_name( $properties );
+	}
+
+	/**
+	 * Return class name.
+	 *  - foo     => Foo
+	 *  - foo_bar => FooBar
+	 *  - FooBar  => Foobar
+	 *
+	 * @param string $string Control class name.
+	 * @return string
+	 */
+	protected static function _generate_control_class_name( $string ) {
+		$class_name_array = array_map(
+			function( $string ) {
+				return ucfirst( strtolower( $string ) );
+			},
+			explode( '-', $string )
+		);
+
+		return implode( '', $class_name_array );
+	}
+
+	/**
+	 * Display input HTML of Control.
+	 *
+	 * @param string $type       The Control type.
+	 * @param array  $properties Array of the Control properties.
+	 */
+	public static function the_control( $type, $properties ) {
+		$control = static::control( $type, $properties );
+		echo $control->input(); // xss ok.
+	}
+
+	/**
+	 * Convert attributes of js block to properties of php Control.
+	 *
+	 * @param array $attributes The Control attributes.
+	 * @return array
+	 */
+	public static function block_meta_normalization( array $attributes ) {
+		if ( isset( $attributes['validations'] ) ) {
+			$validations = json_decode( $attributes['validations'], true );
+			$validations = is_array( $validations ) ? $validations : array();
+
+			$attributes['validations'] = $attributes['validations'] ? $validations : array();
+		}
+
+		if ( isset( $attributes['options'] ) ) {
+			$options = array();
+
+			if ( ! empty( $attributes['options'] ) ) {
+				$_options = str_replace( array( "\r\n", "\r", "\n" ), "\n", $attributes['options'] );
+				$_options = explode( "\n", $_options );
+
+				foreach ( $_options as $value ) {
+					$decoded                    = json_decode( sprintf( '{%1$s}', $value ), true );
+					$decoded                    = is_array( $decoded ) ? $decoded : array( $value => $value );
+					$decoded                    = is_array( $decoded ) && ! $decoded ? array( '' => '' ) : $decoded;
+					$options[ key( $decoded ) ] = current( $decoded );
+				}
+			}
+			$attributes['options'] = $options ? $options : array();
+		}
+
+		if ( isset( $attributes['values'] ) ) {
+			$values               = str_replace( array( "\r\n", "\r", "\n" ), "\n", $attributes['values'] );
+			$values               = explode( "\n", $values );
+			$values               = array_unique( $values );
+			$attributes['values'] = $values;
+		}
+
+		if ( isset( $attributes['controlClass'] ) ) {
+			$attributes['class'] = $attributes['controlClass'];
+			unset( $attributes['controlClass'] );
+		}
+
+		return $attributes;
+	}
+
+	/**
+	 * Return blocks with their inner blocks flattened.
+	 *
+	 * @copyright Automattic\WooCommerce
+	 * @param array $blocks Array of blocks as returned by parse_blocks().
+	 * @return array All blocks.
+	 */
+	public static function flatten_blocks( $blocks ) {
+		return array_reduce(
+			$blocks,
+			function( $carry, $block ) {
+				array_push( $carry, array_diff_key( $block, array_flip( array( 'innerBlocks' ) ) ) );
+				if ( isset( $block['innerBlocks'] ) ) {
+					$inner_blocks = static::flatten_blocks( $block['innerBlocks'] );
+					return array_merge( $carry, $inner_blocks );
+				}
+
+				return $carry;
+			},
+			array()
+		);
+	}
+}

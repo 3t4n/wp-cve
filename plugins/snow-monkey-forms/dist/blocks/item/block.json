@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "textdomain": "snow-monkey-forms",
+  "name": "snow-monkey-forms/item",
+  "title": "Item",
+  "category": "snow-monkey-forms",
+  "parent": [
+    "snow-monkey-forms/form--input"
+  ],
+  "attributes": {
+    "label": {
+      "type": "string",
+      "source": "html",
+      "selector": ".smf-item__label .smf-item__label__text",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "source": "html",
+      "selector": ".smf-item__description",
+      "default": ""
+    },
+    "labelFor": {
+      "type": "string",
+      "source": "attribute",
+      "selector": ".smf-item__label label",
+      "attribute": "for",
+      "default": ""
+    },
+    "isDisplayLabelColumn": {
+      "type": "boolean",
+      "default": true
+    },
+    "templateLock": {
+      "type": [
+        "string",
+        "boolean"
+      ],
+      "enum": [
+        "all",
+        "insert",
+        "contentOnly",
+        false
+      ]
+    }
+  },
+  "style": "file:./style.css",
+  "editorStyle": "file:./index.css",
+  "editorScript": "file:./index.js"
+}
