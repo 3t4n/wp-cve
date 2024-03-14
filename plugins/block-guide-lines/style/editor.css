@@ -1,0 +1,27 @@
+.wp-block{position: relative;	padding: 4px;border-radius:4px}
+.wp-block:not([data-type="generateblocks/grid"]):not(.block-list-appender):not(.block-editor-default-block-appender):not(.editor-post-title):before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	border: 1px solid #aaa;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	opacity: 0.3;
+}
+.wp-block:not([data-type="generateblocks/grid"]):not(.block-list-appender):not(.block-editor-default-block-appender):not(.editor-post-title):hover::before {
+	opacity: 1;
+	border: 1px solid 333;
+}
+
+.wp-block[data-align="wide"]:hover::after,
+.wp-block[data-align="full"]:hover::after,
+.wp-block[data-align="center"]:hover::after{
+	display: none!important;
+}
+
+.wp-block[data-align="full"]:hover > div,
+.wp-block[data-align="wide"]:hover > div,
+.wp-block[data-align="center"]:hover > div{position: relative;}

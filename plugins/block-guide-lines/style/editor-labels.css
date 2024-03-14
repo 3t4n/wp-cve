@@ -1,0 +1,78 @@
+/*
+
+.wp-block{border: 1px solid rgb(216, 216, 216, 0.23)!important;}
+.wp-block:hover{border: 1px solid rgb(179, 179, 179, 1)!important;}
+
+.wp-block{border: 1px solid rgb(179, 179, 179, 0.7)!important;padding: 4px;border-radius: 2px}
+
+.block-list-appender>.block-editor-inserter .components-button {padding: 0px 12px!important;}
+.wp-block[data-type="generateblocks/container"] .block-editor-inner-blocks{position: relative;}
+.wp-block[data-type="generateblocks/container"] .block-list-appender {margin: 0px;position: absolute;bottom:-25px; width: 100%;border: none!important;}
+
+.block-list-appender.wp-block{border: none!important; position: relative;height: 0px;padding: 0px!important;}
+.block-list-appender.wp-block .wp-block{border: none!important; position: absolute;height: 20px;position: absolute; bottom:0;width: 100%;padding: 0px!important;}
+
+:not([data-type="core/paragraph"])
+
+:not([data-align="wide"])
+
+*/
+
+.wp-block{position: relative;}
+.wp-block:not([data-type="generateblocks/grid"]):not(.block-list-appender):not(.block-editor-default-block-appender):not(.editor-post-title):hover::before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	border: 1px dashed #444;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+.wp-block:not([data-type="generateblocks/grid"]):not(.block-list-appender):not(.block-editor-default-block-appender):not(.editor-post-title):hover::after {
+	content: attr(data-title);
+	position: absolute;
+	top: -20px;
+	left: unset;
+	right: 0;
+	padding: 2px 8px;
+	line-height: 15px;
+	font-size: 11px;
+	background: #333;
+	color: #fff;
+	display: inline-block;
+	height: 20px;
+	border-radius: 0;
+}
+
+
+.wp-block[data-align="wide"]:hover::after,
+.wp-block[data-align="full"]:hover::after,
+.wp-block[data-align="center"]:hover::after{
+	display: none!important;
+}
+
+.wp-block[data-align="full"]:hover > div,
+.wp-block[data-align="wide"]:hover > div,
+.wp-block[data-align="center"]:hover > div{position: relative;}
+
+.wp-block[data-align="center"]:hover > div:after,
+.wp-block[data-align="full"]:hover > div:after,
+.wp-block[data-align="wide"]:hover > div:after{
+	min-height: 0;
+	content: attr(data-title);
+	position: absolute;
+	top: -20px;
+	left: unset;
+	right: 0;
+	padding: 2px 8px;
+	height: 20px!important;
+	line-height: 15px;
+	font-size: 11px;
+	background: #333;
+	color: #fff;
+	display: inline-block;
+	border-radius:0;
+}
