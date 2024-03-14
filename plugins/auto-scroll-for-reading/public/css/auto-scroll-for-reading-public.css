@@ -1,0 +1,149 @@
+
+
+div.wpg-autoscroll-buttons-wrap {
+	position: fixed;
+    bottom: 20px;
+    /* right: 20px; */
+    z-index: 9999999;
+    display: flex;;
+}
+
+div.wpg-autoscroll-buttons-wrap div.wpg-autoscroll-button {
+	width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #6369d1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #6369d1;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+}
+
+div.wpg-autoscroll-buttons-wrap div.wpg-autoscroll-button svg:not(.wpg-progress-circle) {
+    width: 80%;
+    height: 80%;
+    max-width: 100%;
+    max-height: 100%;
+    fill: #f2f3fa;
+    pointer-events: none;
+}
+
+div.wpg-autoscroll-buttons-wrap div#wpg-autoscroll-stop-button {
+    margin-right: 15px;
+}
+div.wpg-autoscroll-buttons-wrap div#wpg-autoscroll-speed-button {
+    display: flex;
+    flex-direction: column;
+}
+
+div.wpg-autoscroll-buttons-wrap div#wpg-autoscroll-speed-button svg {
+    width: 60%;
+    height: 60%;
+}
+div.wpg-autoscroll-buttons-wrap div#wpg-autoscroll-speed-button span {
+    color: #f2f3fa;
+    pointer-events: none;
+    line-height: 0;
+    font-size: 11px;
+    font-family: sans-serif;
+}
+
+
+/* Zooming entrances */
+@-webkit-keyframes wpg_zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes wpg_zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+.wpg_animate__zoomIn {
+  -webkit-animation-name: wpg_zoomIn;
+  animation-name: wpg_zoomIn;
+}
+
+
+.wpg-progress-circle {
+    position: absolute;
+    display: none;
+    transform: rotate(-90deg);
+    margin-top: 0px;
+    pointer-events: none;
+}
+
+.wpg-progress-circle-back {
+    fill: none; 
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 4px;
+}
+.wpg-progress-circle-prog {
+    fill: none; 
+    stroke: #f2f3fa;
+    stroke-width: 4px;  
+    stroke-dasharray: 145 999;    
+    stroke-dashoffset: 0px;
+    transition: stroke-dasharray 1s linear 0s;
+} 
+
+.wpg-autoscroll-scrollwidth-wrap {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+}
+
+.wpg-autoscroll-scrollwidth-content {
+    display: block;
+    width: 0;
+    height: 20px;
+    background-color: #6369d1;
+}
+
+div.wpg-hover-title {
+    min-height: 35px;
+    min-width: 250px;
+    color: white;
+    text-align: center;
+    padding-top: 6px;
+    position: absolute;
+    top: -45px;
+    right: -3px;
+    display: none;
+    font-size: 13px;
+    border-radius: 5px;
+    -webkit-transition: opacity .2s;
+    -o-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+.wpg-bottom-triangle {
+    height: 0;
+    width: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 8px;
+    border-top-color: #050505;
+    position: absolute;
+    top: 100%;
+    right: 32px;
+}
