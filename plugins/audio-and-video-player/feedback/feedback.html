@@ -1,0 +1,177 @@
+<script id="cp_feedback_html<?php print esc_attr($plugin_slug); ?>" type="text/template">
+	<div title="QUICK FEEDBACK">
+		<div style="padding:10px;">
+			<style type="text/css">
+				.cp-feedback-reason-block { margin-top:8px; }
+			</style>
+      		<h3><strong>If you have a moment, please let us know why you are deactivating:</strong></h3>
+			<form id="cp_feedback_form{{plugin_slug}}">
+				<?php wp_nonce_field( 'cp_feedback', '_wpnonce' ); ?>
+				<div class="cp-feedback-reason-block">
+					<label>
+						<input type="radio" name="answer" value="insertion-issue">
+						I didn't know how to insert the player in the pages/posts.<br />
+					</label>
+					<div id="cp_feedback_insertion_issue" style="margin-left:25px;display:none;padding:10px;border:1px dotted gray;color:#660000">
+						<p>The plugin shown some icons beside the "Add Media" button over the page/post content. Click on them allow you create a new player for video or audio, or for selecting a player created previously.</p>
+						<p>- or - simply insert directly the player shortcode in the post/page's content: [cpm-player id="1"] of course, entering the corresponding player's id.</p>
+					</div>
+				</div>
+				<div class="cp-feedback-reason-block">
+					<label>
+						<input type="radio" name="answer" value="design-issue">
+						The player's skin does not match with my website's design.<br />
+					</label>
+					<div id="cp_feedback_design_issue" style="margin-left:25px;display:none;padding:10px;border:1px dotted gray;color:#660000">
+						<p>The professional version of the plugin includes multiple skins you can check here: <a href="https://cpmediaplayer.dwbooster.com/skins">https://cpmediaplayer.dwbooster.com/skins</a></p>
+						<p>- or - you can hire a custom coding service to implement a personalized skin to your website, visiting this link: <a href="https://cpmediaplayer.dwbooster.com/customization">https://cpmediaplayer.dwbooster.com/customization</a></p>
+					</div>
+				</div>
+				<div class="cp-feedback-reason-block">
+					<label>
+						<input type="radio" name="answer" value="temporary-deactivation"> It's a temporary deactivation. I'm just debugging an issue.<br />
+					</label>
+				</div>
+				<div class="cp-feedback-reason-block">
+					<label>
+						<input type="radio" name="answer" value="better-plugin"> I found a better plugin.<br />
+					</label>
+					<div id="cp_feedback_otherplugin" style="margin-left:25px;display:none;">
+						<input type="text" name="otherplugin" placeholder="What's the plugin name?" style="width:100%">
+					</div>
+				</div>
+				<div class="cp-feedback-reason-block">
+					<label>
+						<input type="radio" name="answer" value="other"> Other.<br />
+					</label>
+					<div id="cp_feedback_other" style="margin-left:25px;display:none;font-weight:bold;">
+						Kindly tell us the reason so we can improve.<br />
+						<input type="text" name="otherinfo" style="width:100%">
+					</div>
+				</div>
+				<div id="cp_feedback_anonymous" style="display:none;margin-top:30px;text-align:right">
+					<input type="checkbox" name="cp_feedback_anonymous" value="yes"> Anonymous feedback
+				</div>
+			</form>
+		</div>
+	</div>
+</script>
+<script type="text/javascript">
+	jQuery(window).on(
+		'load',
+		function()
+		{
+			var $ = jQuery,
+				plugin_slug = '<?php print esc_js($plugin_slug); ?>',
+				support_link = '<?php print str_replace("&amp;","&",esc_js($support_link)); ?>',
+				full_support_link = '<?php print str_replace("&amp;","&",esc_js($full_support_link)); ?>';
+			$('[data-slug="'+plugin_slug+'"] .deactivate a').
+			on(
+				'click',
+				function(evt)
+				{
+					evt.preventDefault()
+					evt.stopPropagation();
+					// Define events
+					$(document).on(
+						'change',
+						'[id="cp_feedback_form'+plugin_slug+'"] [name="answer"]',
+						function()
+						{
+							var field = $(this),
+								value = field.val(),
+								form  = field.closest('form');
+							$("#cp_feedback_deactivatebtn:visible").val('Submit & Deactivate');
+							$("#cp_feedback_deactivatebtn:visible").html('<span class="ui-button-text">Submit &amp; Deactivate</span>');
+							form.find("#cp_feedback_anonymous").show();
+							form.find("#cp_feedback_other,#cp_feedback_otherplugin,#cp_feedback_insertion_issue,#cp_feedback_design_issue").hide();
+							switch(value)
+							{
+								case 'other':
+									form.find("#cp_feedback_other").show();
+								break;
+								case 'better-plugin':
+									form.find("#cp_feedback_otherplugin").show();
+								break;
+								case 'insertion-issue':
+									form.find("#cp_feedback_insertion_issue").show();
+								break;
+								case 'design-issue':
+									form.find("#cp_feedback_design_issue").show();
+								break;
+							}
+						}
+					);
+					var url_redirect = $('[data-slug="'+plugin_slug+'"] .deactivate a').attr('href'),
+						html = $('[id="cp_feedback_html'+plugin_slug+'"]').html();
+					html = html.replace(/\{\{plugin_slug\}\}/g, plugin_slug)
+							.replace(/\{\{support_link\}\}/g, full_support_link)
+							.replace(/\{\{support_link_text\}\}/g, support_link);
+					$(html).dialog(
+						{
+							width:'600',
+							dialogClass: 'wp-dialog',
+							modal: true,
+							close: function(event, ui)
+								{
+									$(this).dialog("close");
+									$(this).remove();
+								},
+							closeOnEscape: true,
+							buttons: [
+								{
+									id: 'cp_feedback_deactivatebtn',
+									text: "Skip & Deactivate",
+									click: function()
+									{
+										var form = $('[id="cp_feedback_form'+plugin_slug+'"]'),
+											answer = form.find("input[name='answer']:checked").val();
+										if (answer == undefined || answer == '')
+										{
+											window.location.href = url_redirect;
+										}
+										else
+										{
+											var data = {
+													'action': 'cp_feedback',
+													'feedback_plugin': plugin_slug
+												};
+											$.each(form.serializeArray(), function(i,v){data[v['name']] = v['value'];});
+											if(ajaxurl) // WordPress global variable with the AJAX URL
+											{
+												$.post(
+													ajaxurl,
+													data,
+													function(response)
+													{
+														window.location.href = url_redirect;
+													}
+												);
+											}
+										}
+									}
+								},
+								{
+									text: "We can help: Support Service",
+									click: function()
+									{
+										window.open(support_link);
+										$(this).dialog("close");
+									}
+								},
+								{
+									text: "Cancel",
+									"class": 'button button-primary button-close',
+									click: function()
+									{
+										$(this).dialog("close");
+									}
+								}
+							]
+						}
+					); // End dialog
+				}
+			); // End onclick deactivate btn
+		}
+	); // End onload window
+</script>
