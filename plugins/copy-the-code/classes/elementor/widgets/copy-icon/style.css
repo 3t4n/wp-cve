@@ -1,0 +1,65 @@
+.ctc-block-copy-icon {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.ctc-block-copy-icon .check-icon {
+    display: none;
+}
+
+.ctc-block-copy-icon svg {
+    height: 1em;
+    width: 1em;
+}
+
+.ctc-block-copy-icon::after {
+    position: absolute;
+    content: attr(aria-label);
+    padding: 0.5em 0.75em;
+    right: 100%;
+    color: white;
+    background: rgb(36, 41, 47);
+    font-size: 11px;
+    border-radius: 6px;
+    line-height: 1;
+    right: 100%;
+    bottom: 50%;
+    margin-right: 6px;
+    transform: translateY(50%);
+}
+
+.ctc-block-copy-icon::before {
+    content: '';
+    top: 50%;
+    bottom: 50%;
+    left: -7px;
+    margin-top: -6px;
+    border: 6px solid transparent;
+    border-left-color: rgb(36, 41, 47);
+    position: absolute;
+}
+
+.ctc-block-copy-icon::after,
+.ctc-block-copy-icon::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.copied.ctc-block-copy-icon::after,
+.copied.ctc-block-copy-icon::before {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.copied.ctc-block-copy-icon .check-icon {
+    display: inline-block;
+}
+
+.copied.ctc-block-copy-icon .copy-icon {
+    display: none !important;
+}

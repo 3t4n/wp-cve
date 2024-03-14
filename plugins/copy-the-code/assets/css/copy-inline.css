@@ -1,0 +1,116 @@
+.ctc-inline-copy-icon .copy-icon {
+    height: 16px;
+    width: 16px;
+}
+
+.ctc-inline-copy-icon .check-icon {
+    display: none;
+}
+
+.ctc-inline-copy-icon {
+    display: inline-flex;
+}
+
+.ctc-inline-hidden {
+    display: none !important;
+}
+
+.ctc-inline-copy-text {
+    line-height: normal;
+}
+
+.ctc-inline-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+    position: relative;
+    cursor: pointer;
+}
+
+.ctc-inline-copy::before {
+    content: "";
+    top: 50%;
+    bottom: 50%;
+    left: -7px;
+    margin-top: -6px;
+    border: 6px solid transparent;
+    border-left-color: rgb(36, 41, 47);
+    position: absolute;
+}
+
+.ctc-inline-copy::after {
+    position: absolute;
+    content: attr(aria-label);
+    padding: 0.5em 0.75em;
+    right: 100%;
+    color: white;
+    background: rgb(36, 41, 47);
+    font-size: 11px;
+    border-radius: 6px;
+    line-height: 1;
+    right: 100%;
+    bottom: 50%;
+    margin-right: 6px;
+    transform: translateY(50%);
+    min-width: 60px;
+}
+
+.ctc-inline-copy::after,
+.ctc-inline-copy::before {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out;
+}
+
+.copied.ctc-inline-copy .check-icon {
+    display: block;
+}
+
+.copied.ctc-inline-copy .copy-icon {
+    display: none !important;
+}
+
+.copied.ctc-inline-copy::after,
+.copied.ctc-inline-copy::before {
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out;
+}
+
+/**
+ * Style: Cover
+ */
+.ctc-inline-style-cover .ctc-inline-copy-icon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctc-inline-style-cover .copy-icon {
+    display: none;
+}
+
+.ctc-inline-style-cover:hover .copy-icon {
+    display: block;
+}
+
+.copied.ctc-inline-style-cover .check-icon {
+    display: block;
+}
+
+.ctc-inline-style-cover svg {
+    fill: white;
+}
+
+.ctc-inline-style-cover:hover .ctc-inline-copy-icon {
+    background: rgb(0 0 0 / 50%);
+}
