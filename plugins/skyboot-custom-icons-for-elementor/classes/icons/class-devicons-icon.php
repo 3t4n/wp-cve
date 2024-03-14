@@ -1,0 +1,246 @@
+<?php
+namespace Skb_Cife;
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+/*--------------------------
+*   Class Devicons Icon Manager
+* -------------------------*/
+class Skb_Cife_Devicons_Icon_Manager{
+
+    private static $instance = null;
+
+    public static function instance() {
+        if ( is_null( self::$instance ) ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    function __construct(){
+        $this->init();
+    }
+
+    public function init() {
+
+        // Custom icon filter
+        add_filter( 'elementor/icons_manager/additional_tabs', [ $this,'skb_cife_devicons_icon'] );  
+
+    }
+
+	public function skb_cife_devicons_icon( $devicons_icons_args = array() ) {
+
+	    // Append new icons
+	    $devicons_icons = array(
+			'git',
+			'git_compare',
+			'git_branch',
+			'git_commit',
+			'git_pull_request',
+			'git_merge',
+			'bitbucket',
+			'github_alt',
+			'github_badge',
+			'github',
+			'github_full',
+			'java',
+			'ruby',
+			'scala',
+			'python',
+			'go',
+			'ruby_on_rails',
+			'django',
+			'markdown',
+			'php',
+			'mysql',
+			'streamline',
+			'database',
+			'laravel',
+			'javascript',
+			'angular',
+			'backbone',
+			'coffeescript',
+			'jquery',
+			'modernizr',
+			'jquery_ui',
+			'ember',
+			'dojo',
+			'nodejs',
+			'nodejs_small',
+			'javascript_shield',
+			'bootstrap',
+			'sass',
+			'css3_full',
+			'css3',
+			'html5',
+			'html5_multimedia',
+			'html5_device_access',
+			'html5_3d_effects',
+			'html5_connectivity',
+			'ghost_small',
+			'ghost',
+			'magento',
+			'joomla',
+			'jekyll_small',
+			'drupal',
+			'wordpress',
+			'grunt',
+			'bower',
+			'npm',
+			'yahoo_small',
+			'yahoo',
+			'bing_small',
+			'windows',
+			'linux',
+			'ubuntu',
+			'android',
+			'apple',
+			'appstore',
+			'phonegap',
+			'blackberry',
+			'stackoverflow',
+			'techcrunch',
+			'codrops',
+			'css_tricks',
+			'smashing_magazine',
+			'netmagazine',
+			'codepen',
+			'cssdeck',
+			'hackernews',
+			'dropbox',
+			'google_drive',
+			'visualstudio',
+			'unity_small',
+			'raspberry_pi',
+			'chrome',
+			'ie',
+			'firefox',
+			'opera',
+			'safari',
+			'swift',
+			'symfony',
+			'symfony_badge',
+			'less',
+			'stylus',
+			'trello',
+			'atlassian',
+			'jira',
+			'envato',
+			'snap_svg',
+			'raphael',
+			'google_analytics',
+			'compass',
+			'onedrive',
+			'gulp',
+			'atom',
+			'cisco',
+			'nancy',
+			'clojure',
+			'clojure_alt',
+			'perl',
+			'celluloid',
+			'w3c',
+			'redis',
+			'postgresql',
+			'webplatform',
+			'jenkins',
+			'requirejs',
+			'opensource',
+			'typo3',
+			'uikit',
+			'doctrine',
+			'groovy',
+			'nginx',
+			'haskell',
+			'zend',
+			'gnu',
+			'yeoman',
+			'heroku',
+			'debian',
+			'travis',
+			'dotnet',
+			'codeigniter',
+			'javascript_badge',
+			'yii',
+			'msql_server',
+			'composer',
+			'krakenjs_badge',
+			'krakenjs',
+			'mozilla',
+			'firebase',
+			'sizzlejs',
+			'creativecommons',
+			'creativecommons_badge',
+			'mitlicence',
+			'senchatouch',
+			'bugsense',
+			'extjs',
+			'mootools_badge',
+			'mootools',
+			'ruby_rough',
+			'komodo',
+			'coda',
+			'bintray',
+			'terminal',
+			'code',
+			'responsive',
+			'dart',
+			'aptana',
+			'mailchimp',
+			'netbeans',
+			'dreamweaver',
+			'brackets',
+			'eclipse',
+			'cloud9',
+			'scrum',
+			'prolog',
+			'terminal_badge',
+			'code_badge',
+			'mongodb',
+			'meteor',
+			'meteorfull',
+			'fsharp',
+			'rust',
+			'ionic',
+			'sublime',
+			'appcelerator',
+			'asterisk',
+			'aws',
+			'digital-ocean',
+			'dlang',
+			'docker',
+			'erlang',
+			'google-cloud-platform',
+			'grails',
+			'illustrator',
+			'intellij',
+			'materializecss',
+			'openshift',
+			'photoshop',
+			'rackspace',
+			'react',
+			'redhat',
+			'scriptcs',
+			'sqllite',
+			'vim'
+	    );
+	    
+	    $devicons_icons_args['skb_cife-devicons-icon'] = array(
+	        'name'          => 'skb_cife-devicons-icon',
+	        'label'         => esc_html__( 'Skyboot:: Devicons Icons', 'skb_cife' ),
+	        'labelIcon'     => 'fa fa-user',
+	        'prefix'        => 'devicons-',
+	        'displayPrefix' => 'devicons',
+	        'url'           => SKB_CIFE_ASSETS . 'css/devicons.min.css',
+	        'icons'         => $devicons_icons,
+	        'ver'           => SKB_CIFE_VERSION,
+	    );
+
+	    return $devicons_icons_args;
+	}
+
+
+
+}
+Skb_Cife_Devicons_Icon_Manager::instance();
