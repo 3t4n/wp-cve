@@ -1,0 +1,1 @@
+!function(){tinymce.create("tinymce.plugins.FascButton",{init:function(t,n){t.addButton("button_fasc_insert_button",{title:"Insert Button",icon:"fascbutton-ico",onclick:function(){t.execCommand("popup_insert_fasc_button",0,0)}})},createControl:function(t,n){return null}}),tinymce.PluginManager.add("fascbutton",tinymce.plugins.FascButton)}();

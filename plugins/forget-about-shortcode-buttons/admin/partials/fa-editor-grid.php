@@ -1,0 +1,49 @@
+			
+<!-- admin menu -->
+
+<div class="fa fa-align-center"></div>
+<div class="fa fa-align-justify"></div>
+<div class="fa fa-align-left"></div>
+<div class="fa fa-align-right"></div>
+<div class="fa fa-bold"></div>
+<div class="fa fa-chain"></div>    
+<div class="fa fa-chain-broken"></div>
+<div class="fa fa-clipboard"></div>
+<div class="fa fa-columns"></div>
+<div class="fa fa-copy"></div>
+<div class="fa fa-cut"></div>
+<div class="fa fa-dedent"></div>
+<div class="fa fa-eraser"></div>
+<div class="fa fa-file"></div>
+<div class="fa fa-file-o"></div>
+<div class="fa fa-file-text"></div>
+<div class="fa fa-file-text-o"></div>
+<div class="fa fa-files-o"></div>
+<div class="fa fa-floppy-o"></div>
+<div class="fa fa-font"></div>
+<div class="fa fa-indent"></div>
+<div class="fa fa-italic"></div>
+<div class="fa fa-link"></div>
+<div class="fa fa-list"></div>
+<div class="fa fa-list-alt"></div>
+<div class="fa fa-list-ol"></div>
+<div class="fa fa-list-ul"></div>
+<div class="fa fa-outdent"></div>
+<div class="fa fa-paperclip"></div>
+<div class="fa fa-paste"></div>
+<div class="fa fa-repeat"></div>
+<div class="fa fa-rotate-left"></div>
+<div class="fa fa-rotate-right"></div>
+<div class="fa fa-save"></div>
+<div class="fa fa-scissors"></div>
+<div class="fa fa-strikethrough"></div>
+<div class="fa fa-table"></div>
+<div class="fa fa-text-height"></div>
+<div class="fa fa-text-width"></div>
+<div class="fa fa-th"></div>
+<div class="fa fa-th-large"></div>
+<div class="fa fa-th-list"></div>
+<div class="fa fa-underline"></div>
+<div class="fa fa-undo"></div>
+<div class="fa fa-unlink"></div>
+

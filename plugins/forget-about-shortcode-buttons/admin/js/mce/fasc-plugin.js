@@ -1,0 +1,1 @@
+!function(){tinymce.PluginManager.add("fascview",function(n){addFascToEditor(n)})}();
