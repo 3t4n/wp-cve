@@ -1,0 +1,509 @@
+.wizard__content.wizard__content--content,
+.wizard__content.wizard__content--skin {
+	max-width: 800px;
+}
+ul.skin-categories {
+	list-style-type: none;
+}
+ul.skin-categories li {
+	display: inline-block;
+}
+ul.skin-categories li:not(:last-of-type)::after {
+    content: '|';
+    display: inline-block;
+    margin: 0 5px 0 8px;
+    color: #ebebeb;
+}
+ul.skin-categories li a {
+	text-decoration: none;
+	color: #9e9e9e;
+}
+ul.skin-categories li.active a {
+	color: rgb(0, 169, 167);
+}
+#demo-content-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 1rem;
+	margin: 1rem 0 2rem;
+}
+#demo-content-list li {
+	background: #ffffff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.07);
+	font-weight: 600;
+	color: #7d8183;
+	position: relative;
+	margin: 0;
+	cursor: pointer;
+	transition: all ease 0.2s;
+}
+
+#demo-content-list li:hover,
+#demo-content-list li.selected {
+	box-shadow: 0 0 5px rgba(0, 115, 170, 1);
+}
+
+#demo-content-list li img {
+	display: block;
+	margin: 0 auto 5px;
+	width: 100%;
+	height: auto;
+}
+
+#demo-content-list li a.preview-link {
+	position: absolute;
+	right: 5px;
+	text-decoration: none;
+	outline: none;
+}
+#demo-content-list li a.preview-link:not(:hover) {
+	color: #7d8183;
+}
+
+#demo-content-list li.coming-soon {
+	pointer-events: none;
+	position: relative;
+}
+#demo-content-list li.coming-soon a {
+	display: none;
+}
+
+#demo-content-list li.coming-soon:after {
+	content: "COMING SOON";
+	display: block;
+	background-color: #ffffff;
+	border-radius: 100px;
+	box-shadow: 0 0 5px rgb(0, 169, 167);
+	position: absolute;
+	width: 90px;
+	height: 70px;
+	top: 90px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	word-break: break-word;
+	color: rgb(0, 169, 167);
+	padding: 20px 0 0;
+}
+
+#demo-content-list li.coming-soon img {
+	opacity: 0.3;
+}
+
+#demo-content-list + .wizard__select-control-wrapper {
+	display: none;
+}
+
+ul.wizard__drawer.wizard__drawer--import-content.js-wizard-drawer-import-content {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+#wizard__drawer-trigger {
+	display: none;
+}
+
+.wizard__content.wizard__content--plugins form {
+	margin-top: 2em;
+}
+
+.yith-proteo-toolkit-wizard-step-img {
+	margin-bottom: 35px;
+}
+
+.yith-proteo-toolkit-wizard-nav ul {
+	text-align: center;
+	position: relative;
+}
+.yith-proteo-toolkit-wizard-nav ul:before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	top: 25px;
+	height: 1px;
+	background: #d8d8d8;
+	z-index: -1;
+}
+.yith-proteo-toolkit-wizard-nav ul li {
+	display: inline-block;
+	text-align: center;
+	margin: 0 7px 15px;
+	font-size: 0;
+	overflow: hidden;
+	background: #d8d8d8;
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+.yith-proteo-toolkit-wizard-nav ul li.active {
+	background: rgb(0, 169, 167);
+	background: linear-gradient(45deg, rgba(0, 169, 167, 1) 0%, rgba(0, 148, 204, 1) 100%);
+}
+
+.yith-proteo-toolkit-wizard-nav ul li img {
+	display: inline-block;
+	margin: 10px 0;
+}
+
+.yith-proteo-toolkit-wizard-nav ul li:not(.active):not(.step-done) img {
+	filter: brightness(0.7);
+}
+
+.yith-proteo-toolkit-wizard-nav ul li.step-done {
+	background: #b5d863;
+}
+
+.wizard__content ol.dots li.done,
+.wizard__content ol.dots li.active {
+	background: rgb(0, 169, 167);
+}
+
+.wizard__content .checkbox:checked + label i {
+	background-color: rgb(0, 169, 167);
+	border-color: rgb(0, 169, 167);
+}
+
+.wizard__button--next {
+	color: rgb(0, 169, 167);
+}
+.wizard__button--blue {
+	background: rgb(0, 169, 167);
+	color: #fff;
+}
+
+.wizard__button--loading[data-callback="install_plugins"] {
+	outline: none;
+	box-shadow: none;
+}
+
+.wizard__drawer--import-content label i,
+.wizard__drawer--install-plugins label i {
+	float: left;
+	margin-right: 15px;
+	border-radius: 0;
+}
+
+.wizard__content .checkbox:checked + label i {
+	background-color: #ffffff;
+}
+
+.checkbox:checked + label i:before,
+.checkbox:checked + label i:after {
+	background: rgb(0, 169, 167);
+}
+.checkbox:checked + label i:before {
+	left: 0.28em;
+}
+.checkbox:checked + label i:after {
+	left: 4.9px;
+}
+
+.wizard__drawer--import-content label:not(.success):not(.installing) em,
+.wizard__drawer--install-plugins label:not(.success):not(.installing) em {
+	display: none !important;
+}
+.wizard__drawer--import-content label.installing em,
+.wizard__drawer--install-plugins label.installing em {
+	display: block;
+	-webkit-animation: flickerAnimation 1s infinite;
+	-moz-animation: flickerAnimation 1s infinite;
+	-o-animation: flickerAnimation 1s infinite;
+	animation: flickerAnimation 1s infinite;
+}
+.wizard__drawer--import-content label.success em,
+.wizard__drawer--install-plugins label.success em {
+	display: block;
+	-webkit-animation: none;
+	-moz-animation: none;
+	-o-animation: none;
+	animation: none;
+}
+.wizard__drawer--import-content label em,
+.wizard__drawer--install-plugins label em {
+	background-color: transparent;
+	border: 2px solid rgb(0, 169, 167);
+	border-radius: 50%;
+	display: inline-block;
+	float: right;
+	height: 13px;
+	margin-top: 3px;
+	position: relative;
+	text-align: left;
+	-webkit-transform-origin: center;
+	-ms-transform-origin: center;
+	transform-origin: center;
+	-webkit-transition: border-color 100ms, background-color 100ms,
+		-webkit-transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+	transition: border-color 100ms, background-color 100ms,
+		-webkit-transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+	transition: border-color 100ms, background-color 100ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+	transition: border-color 100ms, background-color 100ms, transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89),
+		-webkit-transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
+	width: 13px;
+}
+
+.wizard__drawer--import-content label em:before,
+.wizard__drawer--install-plugins label em:before {
+	display: block;
+	background: #ffffff;
+	border-radius: 2px;
+	content: "";
+	height: 2px;
+	left: 0.2em;
+	position: absolute;
+	top: 0.4em;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transition: width 50ms ease 50ms;
+	transition: width 50ms ease 50ms;
+	width: 5px;
+}
+
+.wizard__drawer--import-content label em:after,
+.wizard__drawer--install-plugins label em:after {
+	display: block;
+	background: #ffffff;
+	border-radius: 2px;
+	content: "";
+	height: 2px;
+	left: 4px;
+	position: absolute;
+	top: 0.67em;
+	-webkit-transform: rotate(310deg);
+	-ms-transform: rotate(310deg);
+	transform: rotate(310deg);
+	-webkit-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transition: width 50ms ease;
+	transition: width 50ms ease;
+	width: 9px;
+}
+
+.checkbox:checked + label.success em {
+	background-color: rgb(0, 169, 167);
+	border-color: rgb(0, 169, 167);
+}
+
+.wizard__drawer--import-content label i,
+.wizard__drawer--install-plugins label i,
+.wizard__drawer--import-content label i:before,
+.wizard__drawer--install-plugins label i:before,
+.wizard__drawer--import-content label i:after,
+.wizard__drawer--install-plugins label i:after {
+	animation: none !important;
+}
+.wizard__drawer--import-content label i,
+.wizard__drawer--install-plugins label i {
+	transform: scale(1) !important;
+}
+
+#yith-proteo-toolkit-modules li {
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+#yith-proteo-toolkit-modules li:after {
+	content: '';
+	display: block;
+	position: relative;
+	border-bottom: 1px dashed #e0e0e0;
+	z-index: 0;
+	top: -4px;
+	right: 55px
+}
+
+#yith-proteo-toolkit-modules .module-name {
+	font-weight: 600;
+	background: #ffffff;
+	position: relative;
+	z-index: 1;
+	padding: 0 10px 5px 0;
+}
+
+#yith-proteo-dashboard-panel .form-switch {
+position: relative;
+	display: block;
+	border-radius: 12px;
+	box-sizing: border-box;
+	padding: 2px 4px;
+	width: 44px;
+	height: 20px;
+	background: #ffffff;
+	outline: 0;
+	cursor: pointer;
+	transition: all .4s ease;
+	box-shadow: none;
+	color: #6C6C6C;
+	text-align: right;
+	float: right;
+	border: 1px solid #87a6bc;
+}
+
+#yith-proteo-dashboard-panel .form-switch.enabled {
+	border-color: #7db930;
+}
+
+#yith-proteo-dashboard-panel .form-switch:before,
+#yith-proteo-dashboard-panel .form-switch:after {
+	position: absolute;
+	display: block;
+	content: "";
+	width: 10px;
+	height: 10px;
+	top: 4px;
+	background: #87a6bc;
+	border-radius: 50%;
+	right: 4px;
+	left: auto;
+	transition: all ease 0.3s;
+}
+
+#yith-proteo-dashboard-panel .form-switch:after {
+	content: 'OFF';
+	font-size: 9px;
+	font-weight: bold;
+	line-height: 10px;
+	left: 6px;
+	border-radius: 20px;
+	background: #fff;
+	transition: all .2s ease;
+	color: inherit;
+	transition: all ease 0.3s;
+}
+
+#yith-proteo-dashboard-panel .form-switch.enabled:after {
+	left: 20px;
+	content: 'ON';
+}
+#yith-proteo-dashboard-panel .form-switch.enabled:before {
+	background: #7db930;
+	transform: translateX(-24px);
+}
+
+@keyframes flickerAnimation {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-o-keyframes flickerAnimation {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-moz-keyframes flickerAnimation {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes flickerAnimation {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.animate-flicker {
+	-webkit-animation: flickerAnimation 1s infinite;
+	-moz-animation: flickerAnimation 1s infinite;
+	-o-animation: flickerAnimation 1s infinite;
+	animation: flickerAnimation 1s infinite;
+}
+
+@-webkit-keyframes popIn {
+	0% {
+		background: #e3e3e3;
+	}
+	40% {
+	}
+	55% {
+		background: #e3e3e3;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	65% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(1.6);
+		transform: scale(1.6);
+	}
+	85% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(0.8);
+		transform: scale(0.8);
+	}
+	95% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+	100% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes popIn {
+	0% {
+		background: #e3e3e3;
+	}
+	40% {
+	}
+	55% {
+		background: #e3e3e3;
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	65% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(1.6);
+		transform: scale(1.6);
+	}
+	85% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(0.8);
+		transform: scale(0.8);
+	}
+	95% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+	100% {
+		background: rgb(0, 169, 167);
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
