@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<ruleset name="SmashBalloonFramework">
+
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="40" />
+    <arg value="ps" />
+	<arg name="colors" />
+	<arg name="tab-width" value="4"/>
+
+	<rule ref="Squiz">
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
+		<exclude name="Squiz.Commenting.FileComment.Missing" />
+		<exclude name="Squiz.Files.FileExtension.ClassFound" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+		<exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.SpacingBeforeClose" />
+		<exclude name="Squiz.WhiteSpace.FunctionSpacing.BeforeFirst" />
+		<exclude name="Squiz.WhiteSpace.FunctionSpacing.AfterLast" />
+		<exclude name="Squiz.WhiteSpace.FunctionSpacing.After" />
+		<exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop" />
+		<exclude name="Squiz.Commenting.FunctionComment.TypeHintMissing" />
+		<exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing" />
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamName" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpaceBeforeEquals" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpaceAfterEquals" />
+		<exclude name="Generic.Commenting.DocComment.TagValueIndent" />
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType" />
+		<exclude name="Squiz.WhiteSpace.MemberVarSpacing.FirstIncorrect" />
+		<exclude name="Squiz.Commenting.VariableComment.Missing" />
+		<exclude name="Squiz.WhiteSpace.FunctionSpacing.Before" />
+		<exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
+		<exclude name="Squiz.Commenting.LongConditionClosingComment.Missing" />
+		<exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
+		<exclude name="Squiz.PHP.DisallowInlineIf.Found" />
+	</rule>
+
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="tabIndent" value="true"/>
+			<property name="indent" value="4"/>
+		</properties>
+	</rule>
+
+	<rule ref="Squiz.Commenting.FunctionComment.SpacingAfterParamName">
+		<properties>
+			<property name="spacing" value="1"/>
+		</properties>
+	</rule>
+
+	<rule ref="PHPCompatibility" />
+    <config name="testVersion" value="7.1-"/>
+
+	<exclude-pattern>vendor/*</exclude-pattern>
+	<exclude-pattern>.github/*</exclude-pattern>
+	<exclude-pattern>node_modues/*</exclude-pattern>
+	<exclude-pattern>composer.*</exclude-pattern>
+
+</ruleset>
