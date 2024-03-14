@@ -1,0 +1,215 @@
+/**
+ * Layouts for Forms: General Form Styling & Booking Form
+ * Breakpoints for arranging elements
+ *
+ * @package   CommonsBooking
+ * @author Florian Egermann <florian@wielebenwir.de>
+ * @license   GPL-2.0+
+ * @since 2.0
+ * @link      http://www.wielebenwir.de
+ * @copyright 2015 wielebenwir
+ */
+
+.cb-wrapper {
+
+
+    /* General form elements */
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="week"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"],
+    textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: $color-white;
+        border-radius: var(--commonsbooking-radius);
+        border-style: solid;
+        border-width: 0.1rem;
+        border-color: $color-black;
+        box-shadow: none;
+        display: block;
+        margin: 0;
+        font-size: var(--commonsbooking-font-size-normal);
+        max-width: 100%;
+        padding: var(--commonsbooking-spacer) var(--commonsbooking-spacer);
+    }
+
+    select {
+        box-shadow: none;
+        display: block;
+        margin: 0;
+        font-size: var(--commonsbooking-font-size-normal);
+        padding: var(--commonsbooking-spacer) var(--commonsbooking-spacer);
+        cursor: pointer;
+    }
+
+    .cb-action {
+        @extend .cb-box;
+
+        text-align: right;
+
+        input {
+            @extend .cb-button;
+            float: right;
+        }
+
+        form {
+            &#cb-booking-form-set-cancelled { // cancel OR delete button
+                input {
+                    background: transparent;
+                    color: var(--commonsbooking-color-greyedout);
+
+                }
+            }
+
+            &#cb-booking-form-set-confirmed { // confirm button
+                input {
+                    margin-left: var(--commonsbooking-spacer-big);
+                }
+            }
+        }
+    }
+
+    input.cb-action-canceled, input.cb-action-delete_unconfirmed {
+        background-color: var(--commonsbooking-color-cancel);
+        box-shadow: none !important;
+        font-size: 0.875rem;
+    }
+
+    #booking-form-container,
+    #booking-form-container div {
+        border-bottom: 0;
+        display: flow-root;
+    }
+
+    #calendar-footnote {
+        color: var(--commonsbooking-textcolor-dark);
+        background-color: #FFF;
+        margin-top: 10px;
+        padding: 10px;
+        font-size: var(--commonsbooking-font-size-normal);
+
+    }
+
+    #booking-form {
+        width: 100%; /* do not extend litepicker width */
+        color: var(--commonsbooking-textcolor-dark);
+        input {
+            @extend .cb-button;
+            float: right;
+        }
+
+        .time-selection-container {
+            margin-top: var(--commonsbooking-spacer);
+            text-align: center;
+
+            .restriction {
+                display: block;
+            }
+
+            > div {
+                display: flex;
+                align-items: center;
+
+                @extend .cb-box-inner;
+                margin-bottom: var(--commonsbooking-spacer);
+                text-align: left;
+                overflow: hidden;
+
+                span, label, select {
+                    float: left;
+                    font-size: var(--commonsbooking-font-size-normal);
+                }
+
+                label {
+                    font-weight: bold;
+                }
+
+                #resetPicker {
+                    cursor: pointer;
+                    font-weight: bold;
+                    text-decoration: none;
+                    font-size: 1rem;
+                    padding: 0;
+                    flex-basis: 100%;
+                }
+
+                > label {
+                    flex-basis: 30%;
+                }
+
+                > div {
+                    flex-basis: 70%;
+                    display: flex;
+                    gap: 1rem 3rem;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    .cb-notice {
+        @extend .cb-box;
+        margin-bottom: var(--commonsbooking-spacer-big);
+        font-size: var(--commonsbooking-font-size-big);
+        vertical-align: middle;
+        font-weight: bold;
+        position: relative;
+        background: var(--commonsbooking-color-noticebg);
+
+        /* Post status */
+        &.cb-status-unconfirmed {
+            background: var(--commonsbooking-color-noticebg);
+        }
+
+        &.cb-status-confirmed {
+            background: var(--commonsbooking-color-success);
+        }
+
+        &.cb-status-cancelled {
+            background: var(--commonsbooking-color-success);
+        }
+
+        &.error {
+            background: var(--commonsbooking-color-error);
+        }
+    }
+    #cb-colorkey-legend {
+        .colorkey-square {
+            width:10px;
+            height:10px;
+            display:inline-block;
+        }
+    
+        .colorkey-accept {
+            background-color: var(--commonsbooking-color-accept);
+        }
+        
+        .colorkey-cancel {
+            background-color: var(--commonsbooking-color-cancel);
+        }
+    
+        .colorkey-holiday {
+            background-color: var(--commonsbooking-color-holiday);
+            background: linear-gradient(135deg, var(--litepickerDayIsHolidayColorBg) 11.25%, #ffff 11.25%, #ffff 38.75%, var(--litepickerDayIsHolidayColorBg) 38.75%, var(--litepickerDayIsHolidayColorBg) 61.25%, #ffff 61.25%, #ffff 88.75%, var(--litepickerDayIsHolidayColorBg) 88.75%);
+            background-size: 5px 5px;
+        }
+    
+        .colorkey-greyedout {
+            background-color: var(--commonsbooking-color-greyedout);
+        }
+    }
+}
+
+
