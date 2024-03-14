@@ -1,0 +1,18 @@
+<?php
+/**
+* 
+*/
+
+$assignPanelBlock = $block->getOption('assignPanelBlock');
+
+if ($block->getOption('isLoading') || !$block->isClosed) {
+    
+    // Get assignment panel template
+    echo $assignPanelBlock->structuredContent['assignPanel'] = $assignPanelBlock->getTemplate(
+        'default',
+        array(
+            'block' => $block->getBlock()
+        ),
+        'tmpl/templates/assign-panel'
+    );
+}

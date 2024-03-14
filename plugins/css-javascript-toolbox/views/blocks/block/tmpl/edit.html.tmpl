@@ -1,0 +1,24 @@
+<?php
+/**
+* 
+*/
+
+// Disallow direct access.
+defined('ABSPATH') or die("Access denied");
+?>
+        
+<?php echo $this->getTemplate('toolbox', array(), 'tmpl/templates') ?>
+
+		<input type="hidden" name="blocks[]" value="<?php echo $this->block->id ?>" />
+<?php
+        // Hidden fields.
+            $fields = array('state', 'location');
+            foreach ($fields as $field) :
+?>
+        <input type="hidden" name="cjtoolbox[<?php echo $this->block->id; ?>][<?php echo $field ?>]" value="<?php echo $this->block->$field ?>" />
+<?php endforeach; ?>        
+<?php
+	
+	if (!$this->isClosed) {
+		echo $this->getTemplate('content');
+	}

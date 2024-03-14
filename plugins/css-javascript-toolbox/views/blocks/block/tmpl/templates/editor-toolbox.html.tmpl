@@ -1,0 +1,70 @@
+<?php
+
+/**
+ *
+ */
+
+// Disallow direct access.
+defined('ABSPATH') or die('Restricted Access');
+?>
+<div class="cjt-toolbox editor-toolbox <?php echo !class_exists('CJTPlus') ? 'cjt-promo-disabled' : ''; ?>">
+	<div class="icons-group">
+		<?php if (!class_exists('CJTPlus')) : ?>
+			<a href="#" class="cjt-tb-link cjttbl-toggle-objects-panel" title="Switch code editor to fullwidth mode (hides assignment panel)"></a>
+			<a href="#" class="cjt-tb-link cjttbl-fullscreen" title="Switch code editor to fullscreen mode"></a>
+			<ul class="block-toolbox-menu block-menu ui-menu ui-widget ui-widget-content" id="ui-id-12" role="menu" tabindex="0">
+				<li class="ui-menu-item">
+					<a href="#file" class="toolbox-menu-file ui-menu-item-wrapper" aria-haspopup="true" id="ui-id-13" tabindex="-1" role="menuitem" title="Allows you to perform useful functions such as saving the code as a text file"><span class="ui-menu-icon ui-icon ui-icon-caret-1-e"></span></a>
+					<ul role="menu" aria-hidden="true" aria-expanded="false" class="ui-menu ui-widget ui-widget-content ui-front" style="display: none; background-color: rgb(255, 255, 255);">
+						<li id="cjteet-menu-file-reload" class="ui-menu-item"><a href="#load" title="Reload code file from server" id="ui-id-14" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">ReLoad</a></li>
+						<li id="cjteet-menu-file-loadfile" class="ui-menu-item"><a href="#load-file" title="Load local file into Editor" id="ui-id-15" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Load Local</a></li>
+						<li id="cjteet-menu-file-loadurl" class="ui-menu-item"><a href="#load-url" title="Load Url into Editor" id="ui-id-16" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Load Url</a></li>
+						<li class="ui-menu-divider ui-widget-content"></li>
+						<li id="cjteet-menu-file-save" class="ui-menu-item"><a href="#save" title="Save Code File" id="ui-id-17" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Save</a></li>
+						<li id="cjteet-menu-file-savefile" class="ui-menu-item"><a href="#save-file" title="Save Editor into local file" id="ui-id-18" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Save File</a></li>
+						<li class="ui-menu-divider ui-widget-content"></li>
+						<li id="cjteet-menu-file-delete" class="ui-menu-item"><a href="#deleteobject" title="Delete code unit" id="ui-id-19" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Delete</a></li>
+					</ul>
+				</li>
+				<li class="ui-menu-item">
+					<a href="#edit" class="toolbox-menu-edit ui-menu-item-wrapper" aria-haspopup="true" id="ui-id-20" tabindex="-1" role="menuitem" title="Bunch of cool code editor tools like undo, redo, find and replace, go to line, go to next error, and much more"><span class="ui-menu-icon ui-icon ui-icon-caret-1-e"></span></a>
+					<ul role="menu" aria-hidden="true" aria-expanded="false" class="ui-menu ui-widget ui-widget-content ui-front" style="display: none; background-color: rgb(255, 255, 255);">
+						<li class="ui-menu-item"><a href="#ace-undo" title="Undo changes" id="ui-id-21" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Undo</a></li>
+						<li class="ui-menu-item"><a href="#ace-redo" title="Redo changes" id="ui-id-22" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Redo</a></li>
+
+						<li class="ui-menu-item"><a href="#ace-find" title="Find all occurance of string" id="ui-id-23" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Find</a></li>
+						<li class="ui-menu-item"><a href="#ace-findnext" title="Find next occurance of string" id="ui-id-24" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Find Next</a></li>
+						<li class="ui-menu-item"><a href="#ace-findprevious" title="Find previous occurance of string" id="ui-id-25" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Find Previous</a></li>
+
+						<li class="ui-menu-item"><a href="#ace-replace" title="Replace all occurance of string with another string" id="ui-id-26" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Replace</a></li>
+
+						<li class="ui-menu-item"><a href="#ace-gotoline" title="Quickly go to line specified by number" id="ui-id-27" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Go To Line</a></li>
+						<li class="ui-menu-item"><a href="#ace-golineup" title="Move Editor cusror to next line" id="ui-id-28" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Go Line Up</a></li>
+						<li class="ui-menu-item"><a href="#ace-golinedown" title="Move Editor cusrsor to previous line" id="ui-id-29" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Go Line down</a></li>
+
+						<li class="ui-menu-item"><a href="#ace-goToNextError" id="ui-id-30" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Go To Next Error</a></li>
+						<li class="ui-menu-item"><a href="#ace-goToPreviousError" id="ui-id-31" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Go To Previous Error</a></li>
+
+						<li class="ui-menu-item"><a href="#ace-fold" title="Fold selected code units/blocks" id="ui-id-32" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Fold</a></li>
+						<li class="ui-menu-item"><a href="#ace-foldall" title="Fold all code units/blocks" id="ui-id-33" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Fold All</a></li>
+						<li class="ui-menu-item"><a href="#ace-unfold" title="UnFold selected code units/blocks" id="ui-id-34" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">UnFold</a></li>
+						<li class="ui-menu-item"><a href="#ace-unfoldall" title="UnFold all code units/blocks" id="ui-id-35" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">UnFold All</a></li>
+
+						<li class="ui-menu-item"><a href="#ace-tolowercase" title="Turns selected text into Lowercase characters" id="ui-id-36" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">To Lower Case</a></li>
+						<li class="ui-menu-item"><a href="#ace-touppercase" title="Turns selected text into Uppercase characters" id="ui-id-37" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">To Upper Case</a></li>
+
+						<li class="ui-menu-item"><a href="#ace-showSettingsMenu" title="Set Editor Settings/Options" id="ui-id-38" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">Settings</a></li>
+					</ul>
+				</li>
+				<li class="ui-menu-item">
+					<a href="#aceSettingsMenu-view" class="toolbox-menu-settings ui-menu-item-wrapper" id="ui-id-39" tabindex="-1" role="menuitem" title="Choose from over 32 adjustment settings to fine-tune your code editor to just the way you like it"><span>S</span></a>
+				</li>
+			</ul>
+			<a href="#" class="cjt-tb-link cjttbl-editor-theme" title="Choose from 32 editor themes for changing the editor background colour, syntax highlighting colour, and more"></a>
+			<a href="#" class="cjt-tb-link cjttbl-beautify" title="Beautifies your code to make it perfectly formatted. Great for code readability"></a>
+			<a href="#" class="cjt-tb-link cjttbl-minify" title="Minifies your code by removing white space. Great for code optimisation"></a>
+			<a href="#" class="cjt-tb-link cjttbl-fonts" title="Increase the font size; decrease the font size; or reset the font-size for the code editor"></a>
+			<a href="#" class="cjt-tb-link cjttbl-save-editor-options" title="Save any adjustments you made in the code editor settings?"></a>
+		<?php endif; ?>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+<div id="<?php echo $tab['tab']['id'] ?>-<?php echo $block->id; ?>" class="objects-list-component <?php echo $tab['tab']['class'] ?>">
+	<ul>
+		<?php
+		/// Create TAB navigator
+		foreach ($tab['tabs'] as $name => &$item) :
+			// Use template name as CSS class for providing a way
+			// for identifying the items that has objects-list to fetch.
+
+			if ( ( class_exists('CJTPlus') || get_option( '__existing_cjt_user' ) ) && $name === '__tags') {
+				continue;
+			}
+
+			$tabViewTmpl = $item['renderer'];
+			$cjtProDisabled = isset($item['disabled']) && (bool) $item['disabled'] === true && !class_exists('CJTPlus') ? 'cjt-promo-disabled' : false;
+
+			// Cache item tab ID.
+			$item['tabId'] = "{$tab['tab']['id']}-{$block->id}-{$name}";
+		?>
+			<li class="<?php echo $tabViewTmpl ?>-button type-<?php echo $name ?> <?php echo $cjtProDisabled; ?>">
+				<?php echo $this->getTemplate('inputs-list', array('item' => $item), 'tmpl/templates/assign-panel/templates'); ?>
+				<a href="#<?php echo $item['tabId'] ?>" <?php echo $cjtProDisabled && isset($item['inlineTitle']) ? 'title="' . $item['inlineTitle'] . '"' : null; ?>><?php echo $item['title'] ?></a>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<?php
+	/// Create TAB Views.
+	foreach ($tab['tabs'] as $name => &$item) :
+		// Get item 'renderer' (every tab has template to render.) template.
+		$cjtProDisabled = isset($item['disabled']) && (bool) $item['disabled'] === true && !class_exists('CJTPlus') ? 'cjt-promo-disabled' : false;
+
+		if ( ( class_exists('CJTPlus') || get_option( '__existing_cjt_user' ) ) && $name === '__tags') {
+			continue;
+		}
+
+		$tabViewTmpl = $item['renderer'];
+
+
+	?>
+		<div id="<?php echo $item['tabId'] ?>" class="cjt-tab-item cjt-tab-item-<?php echo $name ?> <?php echo $cjtProDisabled; ?>">
+			<?php // Use template view for rendering the tab.
+			echo $this->getTemplate(
+				$tabViewTmpl,
+				array('tab' => $item, 'block' => $block),
+				'tmpl/templates/assign-panel/templates'
+			);
+			?>
+		</div>
+	<?php
+	endforeach; ?>
+
+	<?php do_action(CJTPluggableHelper::ACTION_BLOCK_ASSIGN_PANEL_TAB_BOTTOM); ?>
+
+	<?php if (!class_exists('CJTPlus')) : ?>
+		<span class="listing-options cjt-promo-disabled">
+			<a href="#" class="cjt-link" title="Toggles only assigned (or checked) assignments. Great if you have 100's of pages or posts">
+				<?php echo cssJSToolbox::getText('Assigned') ?> |
+				<?php echo cssJSToolbox::getText('All') ?>
+			</a>
+		</span>
+		<span class="assigment-settings cjt-promo-disabled">
+			<a href="#" title="This invert function runs your code block on assignments 'other' than the inverted one">Inverter</a>
+		</span>
+
+	<?php endif; ?>
+</div>

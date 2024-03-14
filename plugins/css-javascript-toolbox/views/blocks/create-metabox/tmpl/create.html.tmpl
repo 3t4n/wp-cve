@@ -1,0 +1,59 @@
+<?php
+/**
+* 
+*/
+
+// Disallow direct access.
+defined('ABSPATH') or die("Access denied");
+
+// Display as metabox without using Wordpress Metabox APIs.
+if ($this->getOption('customizeMetabox')) : ?>
+<div id="cjtoolbox-<?php echo $this->block->id; ?>" class="postbox">
+
+    <div class="postbox-header">
+    
+        <h2 class="hndle"><?php echo $this->block->name ?></h2>
+        
+        <div class="handle-actions hide-if-no-js">
+        
+            <button type="button" class="handle-order-higher hidden" aria-disabled="false" aria-describedby="cjtoolbox-<?php echo $blockView->block->id ?>-handle-order-higher-description">
+                <span class="screen-reader-text"> <?php _e('Move up') ?></span>
+                <span class="order-higher-indicator" aria-hidden="true"></span>
+            </button>
+            
+            <span class="hidden" id="cjtoolbox-<?php echo $this->block->id ?>-handle-order-higher-description"><?php _e('Move box up') ?></span>
+            
+            <button type="button" class="handle-order-lower hidden" aria-disabled="false" aria-describedby="cjtoolbox-<?php echo $this->block->id ?>-handle-order-lower-description">
+                <span class="screen-reader-text"><?php _e('Move down') ?></span>
+                <span class="order-lower-indicator" aria-hidden="true"></span>
+            </button>
+            
+            <span class="hidden" id="cjtoolbox-<?php echo $this->block->id ?>-handle-order-lower-description"><?php _e('Move box down') ?></span>
+                
+            <button type="button" class="handlediv" aria-expanded="true">
+                <span class="screen-reader-text"><?php _e('Toggle panel') ?>: </span>
+                <span class="toggle-indicator" aria-hidden="true"></span>
+            </button>
+            
+        </div>
+    
+    </div>
+    
+	<div class="inside">
+<?php endif; ?>
+		<input type="hidden" name="blocks[]" value="<?php echo $this->getBlock()->id ?>" />
+		<input type="hidden" id="cjt-securityToken" value="<?php echo $this->getSecurityToken() ?>" />
+
+		<div class="cjt-create-metabox-metabox-form">
+			<p class="notice"><?php echo cssJSToolbox::getText('Would you like to create a new CJT block for this post?') ?></p>
+			<p><?php echo cssJSToolbox::getText('In order to increase performance while navigating the post pages and for saving database records we\'re not creating CJT code block for any post until you really need to do!') ?></p>
+			<p><?php echo cssJSToolbox::getText('Click') ?> <a id="create-cjt-block" href=""><?php echo cssJSToolbox::getText('Create') ?></a> <?php echo cssJSToolbox::getText('to create CJT code block for current post and utilize from all features found in the CJT management page!') ?></p>
+		</div>
+		<script type="text/javascript">
+			// Initialize metabox.
+			jQuery(jQuery.proxy(CJTBlocksPage.init, CJTBlocksPage));
+		</script>
+<?php if ($this->getOption('customizeMetabox')) : ?>
+	</div>
+</div>
+<?php endif; ?>

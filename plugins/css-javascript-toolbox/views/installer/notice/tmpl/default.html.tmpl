@@ -1,0 +1,18 @@
+<?php
+/**
+*
+*/
+
+// Disallow direct access.
+defined('ABSPATH') or die("Access denied");
+$isPlus = class_exists( 'CJTPlusPluginInterface' ) ? ' PLUS' : '';
+?>
+<div class="cjt-installation-notice updated">
+	<input type="hidden" id="cjt-securityToken" value="<?php echo cssJSToolbox::getSecurityToken() ?>" />
+	<h1><?php echo cssJSToolbox::getText('Success!!!') ?></h1>
+    <p class="cjt-second-title"><?php echo cssJSToolbox::getText('But before you get excited, we have one more procedure.  :)') ?></p>
+	<p><?php echo cssJSToolbox::getText('CSS JavaScript Toolbox'. $isPlus .' has been successfully installed and activated via the WordPress Plugins page, but before you can start using the plugin, another installation procedure needs to run.'); ?></p>
+	<p><?php echo cssJSToolbox::getText('To begin the procedure, please click:') ?> <a href="<?php echo admin_url('admin.php?page=' . CJTPlugin::PLUGIN_REQUEST_ID) ?>" class="button button-primary"><?php echo cssJSToolbox::getText('CJT'.$isPlus.' - Installation Procedure'); ?></a></p>
+
+	<a class="button dismiss" href="#"><?php echo cssJSToolbox::getText('Dismiss') ?></a>
+</div>

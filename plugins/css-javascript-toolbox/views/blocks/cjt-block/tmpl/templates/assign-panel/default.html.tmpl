@@ -1,0 +1,104 @@
+<?php
+// Define tabs.
+
+$isExistingUser = get_option( '__existing_cjt_user', 'false' );
+
+$tabs = array(
+	'tab' => array('id' => 'tabs', 'class' => 'cjt-pages-tab'),
+	'tabs' => array(
+		'pages' => array(
+			'title' => cssJSToolbox::getText('Page'),
+			'renderer' => 'objects-list',
+			'type' => array(
+				'type' => 'page',
+				'group' => 'pages',
+				'targetType' => 'post'
+			)
+		),
+		'posts' => array(
+			'title' => cssJSToolbox::getText('Post'),
+			'renderer' => 'objects-list',
+			'type' => array(
+				'type' => 'post',
+				'group' => 'posts',
+				'targetType' => 'post'
+			)
+		),
+		'categories' => array(
+			'title' => cssJSToolbox::getText('Cat'),
+			'renderer' => 'objects-list',
+			'type' => array(
+				'type' => 'category',
+				'group' => 'categories',
+				'targetType' => 'taxonomy'
+			)
+		),
+		'custom-posts' => array(
+			'title' => cssJSToolbox::getText('C.Post'),
+			'renderer' => 'custom-posts'
+		),
+		'other' => array(
+			'title' => cssJSToolbox::getText('Aux'),
+			'renderer' => 'objects-list',
+			'type' => array(
+				'type' => 'auxiliary',
+				'group' => 'pinPoint',
+				'targetType' => 'auxiliary'
+			),
+			'disabled' => $isExistingUser === 'true' ? false : true,
+			'inlineTitle' => 'Assign your code block to popular sections of your website such as: entire website, website backend, all pages, all posts, all categories, and much more'
+		),
+		'__tags' => [
+			'title' => cssJSToolbox::getText('Tags'),
+			'renderer' => 'promo-plus',
+			'disabled' => $isExistingUser === 'true' ? false : true,
+			'inlineTitle' => 'Assign your code block to sections of your website that uses WordPress tags'
+		],
+		'advanced' => array(
+			'title' => cssJSToolbox::getText('Adv'),
+			'renderer' => 'advanced',
+			'disabled' => $isExistingUser === 'true' ? false : true,
+			'inlineTitle' => 'Assign your code block to sections of your website by using URLs or regular expressions'
+		),
+	)
+);
+
+$tabs['tabs'] = apply_filters(CJTPluggableHelper::FILTER_BLOCK_ASSIGN_PANEL_TABS, $tabs['tabs']);
+?>
+
+<div class="cjt-panel-item cjt-panel-window-assignments">
+	<?php
+	// Render assigment panel root tab. All nested tabs will be rendered
+	// internally by the tab template.
+	echo $this->getTemplate(
+		'tab',
+		array('tab' => $tabs, 'block' => $block),
+		'tmpl/templates/assign-panel/templates'
+	);
+	?>
+	<div style="clear:both;"></div>
+
+	<?php if (!class_exists('CJTPlus')) : ?>
+		<script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.2/dist/jBox.all.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.2/dist/jBox.all.min.css" rel="stylesheet">
+
+		<script>
+			jQuery(function($) {
+				const jb = new jBox('Tooltip', {
+					attach: '.cjt-promo-disabled .cjt-tb-link, .cjt-promo-disabled .cjt-link, .cjt-promo-disabled a, .cjt-promo-disabled-sp',
+					title: 'Premium Feature Only',
+					maxWidth: 250,
+					preventDefault: true,
+					closeOnClick: true,
+					onOpen: function() {
+						const _t = this.target.hasClass('ui-state-disabled')
+						if (_t) {
+							this.options.target = this.source.find('.ui-state-disabled')
+						}
+					},
+				});
+			})
+		</script>
+	<?php endif; ?>
+
+</div>

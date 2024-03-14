@@ -1,0 +1,134 @@
+<?php
+$getBlock = new CJTBlocksModel();
+$block = $getBlock->getBlock($this->info->id, [],  ['id', 'name', 'pinPoint', 'links', 'expressions', 'created']);
+$pinPoint = $block->pinPoint;
+$auxHelperClass = new CJT_Models_Block_Assignmentpanel_Helpers_Auxiliary();
+$auxHelperListItems = $auxHelperClass->getList();
+$auxPinPoints = $auxHelperClass->getPinsArray($pinPoint);
+$auxPinnedItems = [];
+
+foreach ($auxPinPoints as $key => $pinValue) {
+    $key = hexdec($key);
+    $auxPinnedItems[] = $auxHelperListItems[$key];
+}
+
+$inPages = $block->pages ?? [];
+$inPosts = $block->posts ?? [];
+$inCats = $block->categories ?? [];
+$inTags = $block->post_tags ?? [];
+$inAux = $auxPinnedItems ?? [];
+$inLinks = !empty($block->links) ? explode("\n", $block->links) : [];
+$inExps = !empty($block->expressions) ? explode("\n", $block->expressions) : [];
+$allAssignment = array_merge( $inPages, $inPosts, $inCats, $inTags, $inLinks, $inExps );
+
+
+$displaySection =   isset($_GET['show_section']) ?
+                    $_GET['show_section'] :
+                    'info';
+?>
+<div class="block-info">
+
+<?php if ($displaySection == 'info') : ?>
+
+	<ul>
+
+<?php do_action( CJTPluggableHelper::ACTION_BLOCK_SCREEN_INFO_TOP, $this->info ); ?>
+
+		<li><span style="font-weight:bold"><?php echo cssJSToolbox::getText('Shortcode') ?>: </span><span class="cjt-block-shortcode-text"><input type="text" readonly="readonly" value="<?php echo $this->info->shortcode; ?>"></span>
+
+		    <a class="copyshortcode" href="#">Copy Shortcode</a>
+
+		</li>
+
+	</ul>
+
+    <script type="text/javascript">
+
+        jQuery('a.copyshortcode').click(function() {
+            var shortcodeEle = jQuery('.cjt-block-shortcode-text input:text')
+
+            shortcodeEle.focus()
+            shortcodeEle.select()
+            document.execCommand('copy')
+
+            return false
+        });
+
+    </script>
+
+<?php endif; ?>
+
+<?php if ($displaySection == 'assignment') : ?>
+
+	<?php if (!empty($inPages)) : ?>
+            <h4>Assigned Pages</h4>
+            <ul class="assignment-list">
+            <?php foreach ($inPages as $pageID) : ?>
+                <li><?php echo get_the_title($pageID); ?></li>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif;
+
+            if (!empty($inPosts)) : ?>
+            <h4>Assigned Posts</h4>
+            <ul class="assignment-list">
+            <?php foreach ($inPosts as $postID) : ?>
+                <li><?php echo get_the_title($postID); ?></li>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif;
+
+            if (!empty($inCats)) : ?>
+            <h4>Assigned Categories</h4>
+            <ul class="assignment-list">
+            <?php foreach ($inCats as $catID) : ?>
+                <li><?php echo get_cat_name($catID); ?></li>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif;
+
+            if (!empty($inTags)) : ?>
+            <h4>Assigned Tags</h4>
+            <ul class="assignment-list">
+            <?php foreach ($inTags as $tagID) :
+                $theTag = get_tag($tagID); ?>
+                <li><?php echo $theTag->name; ?></li>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif;
+
+            if (!empty($inAux)) : ?>
+            <h4>Assigned Auxiliaries</h4>
+            <ul class="assignment-list">
+            <?php foreach ($inAux as $auxItem) : ?>
+                <li><?php echo $auxItem; ?></li>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif;
+
+            if (!empty($inLinks)) : ?>
+            <h4>Assigned URLs</h4>
+            <ul class="assignment-list">
+            <?php foreach ($inLinks as $link) : ?>
+                <li><?php echo $link; ?></li>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif;
+
+            if (!empty($inExps)) : ?>
+            <h4>Assigned Expressions</h4>
+            <ul class="assignment-list">
+            <?php foreach ($inExps as $exp) : ?>
+                <li><?php echo $exp; ?></li>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif;
+
+            if (empty($inPages) && empty($inPosts) && empty($inCats) && empty($inAux) && empty($inTags)) :
+                echo "<h4> This block is not assigned anywhere! </h4>";
+            endif;
+
+            ?>
+    </div>
+
+<?php endif; ?>

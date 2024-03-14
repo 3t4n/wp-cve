@@ -1,0 +1,75 @@
+<?php
+/**
+*
+*/
+
+// Diallow direct access.
+defined('ABSPATH') or die("Access denied");
+
+$isCJTPLUSInstalled = file_exists(WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . 'css-javascript-toolbox-plus');
+
+?>
+<div id="cjtoolbox-admin" class="wrap">
+<?php
+    $content = '';
+    echo CJTBlocksManagerView::trigger( 'CJTBlocksManagerView.loadglobalcomponents', $content );
+?>
+<?php require CJTOOLBOX_VIEWS_PATH . '/blocks/block/tmpl/codefile/codefile.html.tmpl' ?>
+    <div id="custom-icon" class="icon32 blocks-icon32"></div>
+
+	<h2 class="cjt-main-title logo"><?php echo htmlentities( cssJSToolbox::getText('CSS & JavaScript Toolbox') ) ?><?php echo apply_filters( 'cjt_after_main_title', '' ) ?>
+	<?php
+		$CJTVersion = get_plugin_data( CJTOOLBOX_PLUGIN_FILE )['Version'];
+		$versionText = 'CJT Version: ' . $CJTVersion;
+
+		if ( class_exists( 'CJTPlusPluginInterface' ) ) :
+			$reflector = new \ReflectionClass( 'CJTPlus' );
+			$CJTPlusVersion = get_plugin_data( str_replace( 'plus.class', 'plus', $reflector->getFileName() ) )['Version'];
+			$versionText .= ' / CJT PLUS Version: ' . $CJTPlusVersion . ' <a style="margin-left: 20px;"href="#" class="license-key-alt">' . cssJSToolbox::getText('License Key') . '</a>';
+		endif; ?>
+
+		<span class="cjt-ver"><?php echo $versionText; ?></span>
+	</h2>
+
+	<?php
+
+	if ( ! class_exists( 'CJTPlus' ) ) : ?>
+
+		<div id="cjt-banner-bar-center--img">
+            <a href="https://<?php echo cssJSToolbox::CJT_WEB_SITE_DOMAIN ?>/?utm_source=cjt_free_user&utm_medium=dashboard_header&utm_campaign=click_for_premium_button" target="_blank">
+                <img src="<?php echo CJTOOLBOX_VIEWS_URL . '/blocks/manager/public/images/click-for-premium.gif'; ?>" alt="Click to know more about the Premium version">
+            </a>
+		</div>
+
+        <script>
+            const existingCJTUser = '<?php echo get_option( '__existing_cjt_user', 'false' ); ?>';
+        </script>
+	<?php endif; ?>
+
+    <div id="cjt-banner-bar-right">
+        <span class="cjt-banner-link">
+            <span><?php echo cssJSToolbox::getText('Learn') ?></span>: <a target="_blank" href="https://<?php echo cssJSToolbox::CJT_WEB_SITE_DOMAIN ?>/documentation/?utm_source=cjt_free_user&utm_medium=dashboard_header&utm_campaign=online_help_link"><?php echo cssJSToolbox::getText('Online Help') ?></a>
+        </span>
+    </div>
+    <div id="cjtoolbox-blocks-page-form" method="post">
+        <?php wp_nonce_field('cjtoolbox'); ?>
+        <?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false); ?>
+        <?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false); ?>
+        <input type="hidden" id="cjt-hasBlocks" value="<?php echo $this->hasBlocks ? 'true' : 'false' ?>" />
+        <input type="hidden" id="cjt-securityToken" value="<?php echo $this->securityToken ?>" />
+        <div id="poststuff" class="metabox-holder">
+            <div id="post-body">
+<?php if ($this->backupId) : ?>
+                <p id="cjt-info"><?php  echo cssJSToolbox::getText('You have now restored the code blocks from the current backup. Nothing is saved until you click "Restore" button. To revert back to the previous code blocks and discard this action, simply click the "Cancel Restore" button.') ?></p>
+<?php endif; ?>
+<?php   echo $this->getTemplate('toolbox', array('location' => 'top')); ?>
+<?php       do_meta_boxes($this->pageHook, 'normal', null); ?>
+                <div id="cjt-noblocks-intro"<?php if ($this->hasBlocks) : ?> style="display:none"<?php endif; ?>>
+<?php       echo $this->getTemplate('intro', array(), 'tmpl/help') ?>
+                </div>
+<?php   echo $this->getTemplate('toolbox', array('location' => 'bottom'));  ?>
+            </div>
+        </div>
+    </div>
+    <div id="cjt-inline-popup"></div>
+</div>

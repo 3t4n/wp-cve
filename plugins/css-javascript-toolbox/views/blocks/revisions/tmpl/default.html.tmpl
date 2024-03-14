@@ -1,0 +1,77 @@
+<?php
+/**
+* 
+*/
+
+// Disallow direct access.
+defined('ABSPATH') or die("Access denied");
+
+// Allow view to enqueue scripts and styles.
+$this->enququeScripts();
+$this->enququeStyles();
+$this->suppressPrintScriptsHook();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+<?php wp_print_head_scripts() ?>
+<?php wp_print_styles() ?>
+
+    <style type="text/css">
+    
+        body {
+            margin: 0;            
+            font-size: 13px;
+            color: #7c7c7c;
+        }
+        
+        #cjtoolbox_popup a,
+        #cjtoolbox_popup span {
+            line-height: 1.4;
+        }
+        
+        #cjtoolbox_popup span {
+            color: #9c9c9c;
+        }
+        
+        a, a:visited {
+            color: #005DA4;
+        }
+        
+        a:hover {
+            color: #628ead;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            height: 96%;
+        }
+    
+    </style>
+    
+	</head>
+	<body>
+		<div id="cjtoolbox_popup">
+			<form id="block-revisions-form" class="cjt-form">
+				<input type="hidden" id="blockId" value="<?php echo $this->blockId ?>" />
+<?php		if (empty($this->revisions)) : // No revisions ?>
+				<p><?php echo cssJSToolbox::getText('No revisions!') ?></p>
+<?php		else : // Revisions available ?>
+				<ul>
+<?php
+					foreach ($this->revisions as $revision) :
+?>
+						<li>
+							<span><?php echo $revision->created ?> <?php echo cssJSToolbox::getText('by') ?> <?php echo get_userdata($revision->owner)->display_name ?></span> | 
+							<a class="restore-link" href="#<?php echo $revision->id ?>"><?php echo cssJSToolbox::getText('Restore') ?></a>
+						</li>
+<?php
+						endforeach;
+?>
+				</ul>
+<?php		endif; ?>
+			</form>
+<?php wp_print_footer_scripts() ?>
+		</div>		
+	</body>
+</html>

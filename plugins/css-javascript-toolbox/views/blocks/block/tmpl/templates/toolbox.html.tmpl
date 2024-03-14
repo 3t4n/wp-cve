@@ -1,0 +1,144 @@
+<?php
+
+$hooksAttacher = &CJTBlocksCouplingController::theInstance()->getHooksAttacher();
+
+extract($this->getHookStatus());
+
+?>
+
+<?php $this->ontoolbox($this); // Trigger On Toolbox Hook
+?>
+
+<div class="cjt-toolbox flagged-actions-toolbox">
+
+	<div class="icons-group">
+		<?php do_action(CJTPluggableHelper::ACTION_BLOCK_TOOLBOX_TEMPLATE_INSIDE_BEFORE_FLAGS, $this); ?>
+		<a href="#" class="cjt-tb-link cjttbl-state-switch state-<?php echo $this->block->state ?>" title="<?php echo $this->localization["state_{$this->block->state}Title"] ?>"></a>
+		<?php do_action(CJTPluggableHelper::ACTION_BLOCK_TOOLBOX_TEMPLATE_INSIDE_AFTER_FLAGS, $this); ?>
+	</div>
+
+</div>
+
+<div class="cjt-toolbox edit-block-toolbox">
+
+	<div class="icons-group">
+
+		<a href="#" class="cjt-tb-link cjttbl-save il-60x23" title="<?php echo cssJSToolbox::getText('Save changes to code block') ?>"><?php echo cssJSToolbox::getText('Save') ?></a>
+		<a href="#" class="cjt-tb-link cjttbl-delete" title="<?php echo cssJSToolbox::getText('Delete code block') ?>"></a>
+
+	</div>
+
+</div>
+
+<div class="cjt-info-bar cjt-info-bar-top cjt-toolbox block-toolbox">
+
+	<div class="cjt-toolbox editor-langs-toolbox">
+
+		<div class="icons-group big-bar">
+
+			<span class="block-id">
+				<span class="infobar-item-title"><?php echo cssJSToolbox::getText('Block ID:') ?> </span>
+				<a href="#info" class="cjt-tb-link cjt-tb-text-link cjttbl-block-info"><?php echo $this->block->id; ?></a>
+			</span>
+
+			<div class="block-hook">
+
+				<span class="infobar-item-title <?php echo $badLocationClass ?>"><?php echo cssJSToolbox::getText('Hook:') ?> </span>
+
+				<a href="#" class="cjt-tb-link cjt-tb-text-link cjttbl-location-switch location-<?php echo $this->block->location ?> <?php echo $badLocationClass ?>" title="<?php echo $locationText ?>"><?php echo $locationTitle ?></a>
+				<div class="popup-menu hooks-dropdown" style="display:none">
+
+					<ul class="hooks-dropdown-list">
+
+						<?php
+
+						foreach ($hooksAttacher->getFiltersList() as $hooks) :
+
+							foreach ($hooks as $hook) :
+
+								$isSelected = ($this->block->location == $hook['locationName']) ? 'selected' : '';
+								$isDisabled = isset($hook['disabled']) && (bool) $hook['disabled'] === true && !class_exists('CJTPlus') ? 'cjt-promo-disabled' : '';
+								$listClass = empty($isSelected) && empty($isDisabled) ? '' : 'class=' . $isSelected . ' ' . $isDisabled;
+						?>
+
+								<li <?php echo $listClass; ?>>
+
+									<a <?php echo empty($isDisabled) ? 'href="#' . $hook['locationName'] . '"' : ''; ?> title="<?php echo $hook['text'] ?>"><?php echo $hook['title'] ?></a>
+								</li>
+
+							<?php endforeach; ?>
+
+						<?php endforeach; ?>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="block-editor-lang">
+				<span class="infobar-item-title"><?php echo cssJSToolbox::getText('Editor:') ?> </span>
+
+				<a href="#" class="cjt-tb-link cjt-tb-text-link cjttbl-switch-editor-language" title="<?php echo cssJSToolbox::getText('Set editing language for syntax highlighting') ?>">
+					<?php echo $this->block->file->type ? $this->block->file->type : 'PHP' ?>
+				</a>
+
+				<div class="popup-menu editor-langs" style="display:none">
+					<a href="#" class="cjt-tb-link cjt-tb-text-link cjttbl-editor-language-css" title="<?php echo cssJSToolbox::getText('Set editing language to CSS') ?>"><?php echo cssJSToolbox::getText('CSS') ?></a>
+					<a href="#" class="cjt-tb-link cjt-tb-text-link cjttbl-editor-language-html" title="<?php echo cssJSToolbox::getText('Set editing language to HTML') ?>"><?php echo cssJSToolbox::getText('HTML') ?></a>
+					<a href="#" class="cjt-tb-link cjt-tb-text-link cjttbl-editor-language-javascript" title="<?php echo cssJSToolbox::getText('Set editing language to JavaScript') ?>"><?php echo cssJSToolbox::getText('JavaScript') ?></a>
+					<a href="#" class="cjt-tb-link cjt-tb-text-link cjttbl-editor-language-php" title="<?php echo cssJSToolbox::getText('Set editing language to PHP') ?>"><?php echo cssJSToolbox::getText('PHP') ?></a>
+				</div>
+
+			</div>
+
+			<span class="block-assignment-count">
+				<span class="infobar-item-title"><?php echo cssJSToolbox::getText('Assignments:') ?> </span>
+				<strong>
+					<a class="cjt-tb-link cjt-tb-text-link cjttbl-assignment-info show-assignment-info" href="#assignment-info">
+						<?php echo count($this->getAllAssignments()); ?>
+					</a>
+				</strong>
+			</span>
+
+			<div class="templates-info">
+				<span class="infobar-item-title"><?php echo cssJSToolbox::getText('Templates') ?> </span>
+
+				<a href="#templates" class="cjt-tb-link cjt-tb-text-link cjttbl-templates" title="<?php echo cssJSToolbox::getText('Template Lookup - Embed or link templates to code blocks') ?>">
+					<?php echo CJTBlockTemplatesModel::getLinkedTemplatesCount($this->block->id) ?>
+				</a>
+				<div class="popup-menu templates" style="display:none">
+					<?php // FILTER MAY BE
+					?>
+					<a href="#templates-lookup" class="cjt-tb-link cjt-tb-text-link cjttbl-templates-lookup" title="">
+						<?php echo cssJSToolbox::getText('Embed / Link Templates') ?>
+					</a>
+					<?php do_action(CJTPluggableHelper::ACTION_BLOCK_INSIDE_TOOLBOX_TEMPLATES_MENU, $this) ?>
+					<a href="#templates-manager" class="cjt-tb-link cjt-tb-text-link cjttbl-templates-manager" title="">
+						<?php echo cssJSToolbox::getText('Templates Manager') ?>
+					</a>
+					<?php // FILTER MAY BE
+					?>
+				</div>
+
+			</div>
+
+			<span class="block-code-files">
+				<span class="infobar-item-title"><?php echo cssJSToolbox::getText('Files:') ?> </span>
+				<a href="#code-files" class="cjt-tb-link cjt-tb-text-link cjttbl-code-files"><?php echo CJTBlocksModel::getCodeFilesCount($this->block->id) ?></a>
+			</span>
+
+			<?php if (!class_exists('CJTPlus')) : ?>
+				<span class="block-revisions cjt-promo-disabled">
+					<span class="infobar-item-title"><?php echo cssJSToolbox::getText('Revs:') ?> </span>
+					<strong><a class="cjt-tb-link cjt-tb-text-link cjttbl-block-revisions show-revisions" title="Shows all your code block revisions allowing you to choose one, restore it and save" href="#">0</a></strong>
+				</span>
+			<?php endif; ?>
+
+			<?php do_action(CJTPluggableHelper::ACTION_BLOCK_INFO_BAR_TOP_END, $this) ?>
+
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,67 @@
+<?php
+/**
+*
+*/
+
+// Disallow direct access.
+defined('ABSPATH') or die("Access denied");
+// Set vars based on detected installed version number!
+if ($this->upgrade) {
+	$title = 'Upgrading CJT Plugin';
+	$installButtonTitle = 'Upgrade';
+}
+else {
+	$title = 'CSS JavaScript Toolbox - Installation Procedure';
+	$installButtonTitle = 'Install';
+}
+?>
+<div class="cjt-installer-view">
+<?php if (!$this->error) : ?>
+	<form name="installation-form" action="">
+		<input type="hidden" id="cjt-securityToken" value="<?php echo $this->securityToken ?>" />
+		<h1><?php echo cssJSToolbox::getText($title) ?></h1>
+		<p class="cjt-second-title"><?php echo cssJSToolbox::getText('You must run the install procedure before you can start using the plugin') ?></p>
+		<p>
+			<?php echo cssJSToolbox::getText('This will create the database tables and records, check for previous versions as well as a number of other tasks. CSS JavaScript Toolbox will be in a disabled state until this procedure is complete.') ?>
+		</p>
+		<h3><?php echo cssJSToolbox::getText('Installing Version ') . CJTPlugin::VERSION ?></h3>
+		<p><?php echo cssJSToolbox::getText('When you install a new version of CJT, reinstall, or even upgrade from a previous version, a number of processes will take place. Overall, this should take under a minute so please be patient.  Click the ') ?><a href="#install"><?php echo cssJSToolbox::getText('Install') ?></a>  <?php echo cssJSToolbox::getText('button to begin. ') ?></p>
+
+		<ul class="installation-list install">
+<?php
+		// Print installation operations (to be executed in the same order below).
+		echo $this->getTemplate('default_operations_list', array(
+			'type' => 'install',
+			'operations' => array(
+				'database' => array('text' => cssJSToolbox::getText('Create database tables.')),
+				'fileSystem' => array('text' => cssJSToolbox::getText('Creating file system directories (e.g wp-content/cjt-content/templates).')),
+				'builtinAuthors' => array('text' => cssJSToolbox::getText('Add CJT built-in authors used by templates system.')),
+				'wordpressTemplates' => array('text' => cssJSToolbox::getText('Add Wordpress built-in scripts and styles as CJT Templates so it can be used via Templates Lookup form.')),
+				'finalize' => array('text' => cssJSToolbox::getText('Finalize Installation.')),
+			))
+		);
+
+		global $wpdb;
+		$table_name = $wpdb->base_prefix.'cjtoolbox_blocks';
+		$query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) );
+		$preCheck = get_option( '__existing_cjt_user' );
+
+		// Only create it once.
+		if ( empty( $preCheck ) ) {
+			update_option( '__existing_cjt_user', $wpdb->get_var( $query ) === $table_name ? 'true' : 'false' );
+		}
+?>
+		</ul>
+<?php
+		// Print upgrade operations (to be executed in the same order below).
+		if ($this->upgrade) {
+			echo $this->getTemplate('upgrade', array(), 'tmpl/upgrades');
+		}
+?>
+		<input type="button" name="install" value="<?php echo cssJSToolbox::getText($installButtonTitle) ?>" />
+<?php else : ?>
+<div class="error"><p><?php echo $this->error->getMessage() ?></p></div>
+<br>
+<?php endif ?>
+	</form>
+</div>
