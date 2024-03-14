@@ -1,0 +1,1 @@
+<div id="ezd-search-results" data-noresult="<?php esc_attr_e('No Results Found', 'eazydocs'); ?>"> </div>
