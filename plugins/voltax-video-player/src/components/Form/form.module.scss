@@ -1,0 +1,210 @@
+@import "../../library/styles/colors";
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow-y: scroll;
+    padding: 5px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    textarea {
+        border-color: $lightGray;
+    }
+
+    input {
+        border-color: $lightGray;
+    }
+}
+
+.fileButton {
+    border-radius: 50px;
+    background-color: $lightBlue;
+    font-size: 14px;
+    text-align: center;
+    color: $blue;
+    font-weight: 300;
+    cursor: pointer;
+    border: none;
+    padding: 8px 34px;
+    max-width: 135px;
+
+    span {
+        margin-left: 8px;
+    }
+}
+
+input[type="file"] {
+    position: absolute;
+    height: 50px;
+    top: 40px;
+    left: 0;
+    opacity: 0;
+}
+
+:global {
+    .uploader-editor {
+        display: none !important;
+    }
+}
+
+.formElement {
+    margin-top: 30px;
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+
+    input[type="text"] {
+        padding: 8px;
+        border: 1px solid $lightGray;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .textarea {
+        padding: 8px;
+        border: 1px solid $lightGray;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .characterCount {
+        text-align: right;
+        color: $lightGray;
+        letter-spacing: 1.1px;
+        margin-top: 5px;
+        margin-bottom: -16px;
+    }
+}
+
+.titleContainer {
+    max-width: 100%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.emphasize {
+    margin: 0;
+    font-style: italic;
+    color: $darkGray;
+}
+
+.categoryContainer {
+    max-width: 40%;
+}
+
+.checkboxContainer {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+
+    input[type="checkbox"] {
+        margin: 0 6px 0 0;
+    }
+}
+
+.customParamContainer {
+    margin: 30px 30px 5rem 0;
+
+    .customParamButton {
+        background-color: transparent;
+        border: none;
+        font-size: inherit;
+        color: $blue;
+        cursor: pointer;
+        padding: 0 0 0 5px;
+    }
+
+    .addSymbol {
+        color: $white;
+        background-color: $blue;
+        border-radius: 50%;
+        width: 12px;
+        padding: 1px 1px 2px 2px;
+        display: inline-block;
+        height: 13px;
+        line-height: 1;
+        margin-right: 5px;
+    }
+
+    .keyValueRowContainer {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+
+        .keyValueDelete {
+            display: flex;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            background-color: $lightGray;
+            border: none;
+            border-radius: 50%;
+            margin-top: 8px;
+            margin-left: -10px;
+            padding: 4px;
+
+            svg {
+                pointer-events: none;
+            }
+        }
+
+        .keyContainer {
+            position: inherit;
+            margin-right: 20px;
+            flex: 1 1;
+        }
+
+        .keyValueInput {
+            margin-right: 20px;
+            flex: 1;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid $lightGray;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+}
+
+.submitButton {
+    border-radius: 50px;
+    background-color: $blue;
+    font-size: 14px;
+    text-align: center;
+    color: $white;
+    font-weight: 300;
+    cursor: pointer;
+    border: none;
+    height: 36px;
+    padding: 8px 16px;
+    margin-left: 2rem;
+    margin-right: 10px;
+    max-width: 77px;
+
+    &:disabled {
+        background-color: $lightGray;
+        color: $white;
+    }
+}
+
+.submitContainer {
+    position: fixed;
+    bottom: 0;
+    background-color: $white;
+    padding: 2rem 0;
+    border-radius: 0.8rem;
+    width: 100%;
+    left: 0;
+}

@@ -1,0 +1,108 @@
+@import "../styles/colors";
+
+.container {
+    list-style: none;
+    margin-bottom: 8px;
+    border: 1px solid $lightGray;
+    clear: both;
+    position: relative;
+    border-radius: 4px;
+    &:hover {
+        border: 1px solid $blue;
+    }
+}
+
+.active {
+    border: 1px solid $blue;
+}
+
+.clickable {
+    padding: 16px;
+    cursor: pointer;
+}
+
+.media {
+    float: left;
+    position: relative;
+    margin-right: 12px;
+    &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 128px;
+        height: 72px;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 39%, $black);
+    }
+}
+
+.playlist .media::after {
+    display: none;
+}
+
+.image {
+    background: $darkGray;
+    width: 128px;
+    height: 72px;
+    display: block;
+    overflow: hidden;
+}
+
+.playlistImage {
+    height: 72px;
+    display: block;
+}
+
+.innerContainer {
+    padding: 16px;
+    cursor: pointer;
+    height: 72px;
+    position: relative;
+}
+
+.title {
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    color: $black;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.text {
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+    color: $darkGray;
+    margin-top: 0;
+}
+
+.duration {
+    position: absolute;
+    color: $white;
+    font-size: 10px;
+    line-height: 12px;
+    bottom: 3px;
+    left: 4px;
+    z-index: 2;
+    margin: 0;
+}
+
+.dropdowns {
+    max-height: 0;
+    overflow: hidden;
+    height: auto;
+}
+
+.open {
+    max-height: 600px;
+    // transition: max-height 500ms ease;
+    border-top: 1px solid $lightGray;
+    margin-top: 16px;
+    padding: 0 40px 20px;
+}
