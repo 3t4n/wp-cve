@@ -1,0 +1,59 @@
+<div class="wrap">
+    <h2>{% trans "More Features With Our Premium Add-Ons" %}</h2>
+    <p>
+        {% trans %}
+            The following addons are available to increase the functionality of the WP RSS Aggregator plugin.
+        {% endtrans %}
+    <p>
+    <p>
+        {% trans %}
+            Check out our pricing plans for bigger savings!
+        {% endtrans %}
+    </p>
+
+    <div id="add-ons" class="clearfix">
+        <div class="add-on-group clearfix">
+
+            {# PLANS #}
+            {% for plan in plans %}
+                <div class="add-on wp-box {{ plan.highlight ? 'wpra-orange-highlight' : '' }}">
+                    {% if plan.mostPopular %}
+                        <span class="corner-ribbon">Most Popular</span>
+                    {% endif %}
+                    <div class="inner">
+                        <h3>{{ plan.name }}</h3>
+                        <p>{{ plan.desc }}</p>
+                        <p style="margin-bottom: 0">{{ plan.featureLabel }}</p>
+                        <ul style="margin: 5px 0 55px; list-style: disc; padding-left: 25px;">
+                            {% for feature in plan.features %}
+                                <li>{{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <a class="button button-secondary" href="{{ plan.url|e('html_attr') }}">
+                            {{ plan.btnLabel }}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {# SPOTLIGHT #}
+            <div class="add-on spotlight">
+                <span class="corner-ribbon">NEW</span>
+                <div class="inner">
+                    <h3>Instagram Feeds</h3>
+                    <p>
+                        Spotlight, a sister-product of WP RSS Aggregator, is the best and simplest way of adding
+                        Instagram feeds anywhere on your site in under 2 minutes.
+                    </p>
+                </div>
+                <div class="footer">
+                    <a class="button button-secondary" href="{{ spotlightUrl }}">
+                        {{ spotlightBtnText }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
