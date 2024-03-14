@@ -1,0 +1,1 @@
+<?php // And no one speaks
