@@ -1,0 +1,164 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+ /** Generic assets and styles**/ 
+
+ #mpwp-container .separator-20px-top{
+  margin:20px 0 0 0;
+ }
+/*Remove arrows from phone type input field in Chrome, Safari, Edge, Opera */
+#mpwp-container input::-webkit-outer-spin-button, 
+#mpwp-container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*Remove arrows from phone type input field in Firefox*/
+#mpwp-container input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+
+/** Single form elements**/ 
+#mpwp-container label {
+  display: block;
+}
+
+#mpwp-container .mupwp-form-field {
+  margin: 20px 0;
+}
+
+#mpwp-container .mupwp-form-term {
+  margin:20px 0 0 0;
+}
+
+#mpwp-container .label.terms {
+  display: inline;
+  word-wrap: break-word;
+  margin: 20px 0;
+  cursor: pointer;
+  text-transform: none;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  box-sizing: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+
+#mpwp-container .label.terms.small-font {
+  font-size: 0.85rem;
+}
+
+#mpwp-container .label.terms p {
+  margin: 0;
+}
+
+#mpwp-container .label.terms p:first-of-type {
+  display: inline;
+}
+
+#mpwp-container input[type='checkbox'] {
+  position: relative;
+  vertical-align: middle;
+  bottom:1px;
+}
+
+#mupwp-form-submit-container {
+  display: table-cell;
+}
+
+
+/** Errors and feedback management**/ 
+#mpwp-container .label.terms.error {
+  color:red;
+}
+
+#mpwp-container span.error,
+#mpwp-container label.error {
+  display: block;
+  margin: 5px 0 0 4px;
+  color: red;
+  font-size: smaller;
+}
+
+#mpwp-container input.error {
+  border-color: red;
+}
+
+#mpwp-container .feedback {
+  display: none;
+}
+
+#mpwp-container .feedback.error {
+  display: inline-block;
+}
+
+#mpwp-container .ajax-loader {
+  visibility: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #23282d; /* Dark Gray 800 */
+  opacity: 0.75;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 100%;
+  position: relative;
+}
+
+#mpwp-container .ajax-loader.active {
+  visibility: visible;
+}
+
+#mpwp-container .ajax-loader::before {
+  content: '';
+  position: absolute;
+  background-color: #fbfbfc; /* Light Gray 100 */
+  top: 4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  border: none;
+  border-radius: 100%;
+  transform-origin: 8px 8px;
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #mpwp-container .ajax-loader::before {
+    animation-name: blink;
+    animation-duration: 2000ms;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
