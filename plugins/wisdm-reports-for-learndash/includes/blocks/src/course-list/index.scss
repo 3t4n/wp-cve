@@ -1,0 +1,281 @@
+$color-primary: #008AD8;
+.refresh-data {
+    clear: both;
+    position: relative;
+    .chart-refresh-icon {
+        /* position: absolute;
+        right: 15px; */
+        color: green;
+        cursor: pointer;
+        clear: both;
+        display: inline-block;
+        .dashicons {
+            font-size: 16px;
+            line-height: 16px;
+            display: inline-block;
+            margin-left: 5px;
+        }
+    }
+    .chart_update_time {
+        text-transform: capitalize;
+        color: green;
+        font-style: italic;
+        margin: 7px 0;
+        font-size: 12px;
+        margin-bottom: 25px;
+        clear: both;
+        line-height: 17px;
+    }
+}
+.course-list-table-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    margin: 10px;
+    margin-top: 0;
+}
+
+.course-list-table thead{
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.course-list-table tr td {
+    border: 0px;
+    border-bottom: 1px solid #4444444f;
+}
+
+table.course-list-table {
+    border-radius: 2px;
+    border: none;
+    width: 100%;
+}
+
+table.course-list-table tr {
+    line-height: 30px; 
+}
+
+.course-list-table-download-options {
+    flex: 1;
+    text-align: right;
+    margin-bottom: 22px;
+}
+
+tr.course-list-table-data-row:hover{
+    cursor:pointer;
+    border-radius: 2px;
+    transform: scaleX(1.01);
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 4px 20px 0px #00000033;
+}
+
+.edit-post-visual-editor table.course-list-table{
+    border-radius: 2px;
+    border: none;
+    width: 100%;
+}
+
+.wisdm-ld-loading {
+    width: 100%;
+    min-height: 40px;
+    animation: load 1.2s infinite 0s ease-in-out;
+	animation-direction: alternate;
+	text-shadow: 0 0 1px $color-primary;
+    display:flex;
+	justify-content: center;
+	align-items: center;
+    @keyframes load {
+        0%{
+            opacity: 0.08;
+            filter: blur(5px);
+            letter-spacing: 3px;
+            }
+        100%{
+            
+            }
+    }
+}
+
+.download-csv-button {
+    color:#ffffff;
+}
+
+.download-csv-button.disabled {
+    cursor:not-allowed;
+}
+
+.wisdm-learndash-reports-chart-block.error {
+    text-align: center;
+}
+
+.table-chart-container .table-pagination {
+    text-align: center;
+}
+
+.table-pagination button {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: #000000;
+    border-radius: 4px;
+    margin: 4px;
+}
+
+.chart-title {
+    flex: 1;
+    font-size: 20px;
+    color: #444;
+    font-weight: 700;
+}
+
+.course-table-wrap {
+    max-width: 100%;
+    overflow: auto;
+    margin-bottom: 20px;
+    padding-top: 130px;
+    margin-top: -130px;
+}
+
+.course-list-table{
+    .cl_tooltip{
+        img:hover{
+            + .wdm-tooltip{
+                display: flex;
+                bottom: calc(100% + 22px);
+            }
+        }
+    }
+}
+
+.course-list-table-header {
+    // display: flex;
+    // align-items: center;
+    position: relative;
+    z-index: 99;
+}
+
+.course-list-table-header .course-list-table-download-options{
+    display: inline-block;
+    margin-bottom: 10px;
+    float: right;
+    vertical-align: middle;
+}
+
+table.course-list-table tr {
+    line-height: 30px !important;
+}
+
+.course-list-table-container table.course-list-table th {
+    white-space: nowrap;
+    color: unset;
+    vertical-align: middle;
+}
+
+.course-list-table-container .course-list-table tr td, table.course-list-table thead th, table.course-list-table thead td{
+    padding: 15px;
+}
+
+.course-list-table-container .course-list-table tr .table-course, .course-list-table-container .course-list-table tr .table-groups {
+    min-width: 250px;
+}
+
+.course-list-table-container .course-list-table tr .table-email {
+    min-width: 200px;
+}
+
+.course-list-table-container .course-list-table tr .table-category,.course-list-table-container .course-list-table tr .table-status, .course-list-table-container .course-list-table tr .table-started, .course-list-table-container .course-list-table tr .table-name {
+    min-width: 150px;
+}
+
+.table-start_date, .table-end_date {
+    white-space: nowrap;
+}
+
+.wisdm-learndash-reports-course-list > .chart-summary.error {
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    box-shadow: 0px 20px 40px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+
+// tooltip css
+.course-list-table th{
+    position : relative;
+}
+
+//tooltip css
+
+.cl_tooltip {
+    position: relative;
+    height:20px;
+    width: 20px;
+    display: inline-block;
+    margin-left: 5px;
+  }
+  
+  .cl_tooltip .cl_tooltiptext {
+    visibility: hidden;   
+    font-family: inherit;
+    margin-left: 4px;
+    z-index: 99;
+    white-space: initial;
+    bottom: calc(100% + 22px);
+  }
+
+  .cl_tooltip img{
+    margin-bottom: 5px;
+  }
+
+  .cl_tooltip p a{
+    color: $color-primary;
+    transition: none;
+  }
+  
+  .cl_tooltip .cl_tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .cl_tooltip:hover .cl_tooltiptext {
+    visibility: visible;
+  }
+
+  .cl_tooltip_container .cl_tooltip_button{
+    height: 33px;
+    border-radius: 5px;
+    background-color: white;
+    color: skyblue;
+    font-size: 14px;
+    padding: 7px 20px;
+    margin-bottom: 5px;
+    text-align: center;
+    opacity: 0.95;
+    transition: 0.3s opacity;
+    display: inline-block;
+    text-decoration: none !important;
+    cursor: pointer;
+  }
+
+  .cl_tooltip_container .cl_tooltip_button:hover {opacity: 1}
+
+  .hover_helper{
+    height: 50px;
+    position: absolute;
+    width: 50px;
+    left: 140px;
+    bottom: -40px;
+    background-color:transparent;
+  }
+
+  .hover_helper:hover .wdm-tooltip{
+    display: flex;
+    bottom: calc(100% + 22px);
+}
