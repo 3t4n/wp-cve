@@ -1,0 +1,1 @@
+!function(e){var n=function(e,n){e.find(".gs_logo_area").length&&n(document).trigger("gslogo:scripts:reprocess")};e(window).on("elementor/frontend/init",(function(){elementorFrontend.hooks.addAction("frontend/element_ready/gs-logo-slider.default",n)}))}(jQuery);
