@@ -1,0 +1,159 @@
+.easy-notification-bar {
+	--enb-close-offset: 20px;
+	--enb-close-svg-dims: 24px;
+	--enb-padding-x: 1em;
+	--enb-padding-y: 0.7em;
+
+	width: 100%;
+	background: var(--enb-background, var(--wpex-accent, #0073aa));
+	color: var(--enb-color, var(--wpex-on-accent, #fff));
+	padding: var(--enb-padding-y) var(--enb-padding-x);
+	font-size: 16px;
+	line-height: 1.8;
+	position: relative;
+	z-index: 99;
+	box-sizing: border-box;
+}
+
+.easy-notification-bar--hidden {
+	display: none !important;
+}
+
+.easy-notification-bar--sticky {
+	position: sticky;
+	top: 0;
+}
+
+.admin-bar .easy-notification-bar--sticky {
+	top: var(--wpadminbar-height, 32px);
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar .easy-notification-bar--sticky {
+		top: var(--wpadminbar-height, 46px);
+	}
+}
+
+.easy-notification-bar strong {
+	color: currentColor; /* some themes change strong tag to make it darker */
+}
+
+.enb-system-font {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.easy-notification-bar-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1em;
+}
+
+.easy-notification-bar--has_close_icon.easy-notification-bar--align_left {
+	padding-right: calc(var(--enb-close-offset) + var(--enb-close-svg-dims) + var(--enb-padding-x));
+}
+
+.easy-notification-bar--has_close_icon.easy-notification-bar--align_right {
+	padding-left: calc(var(--enb-close-offset) + var(--enb-close-svg-dims) + var(--enb-padding-x));
+}
+
+.easy-notification-bar--has_close_icon.easy-notification-bar--align_center,
+.easy-notification-bar--has_close_icon.easy-notification-bar--button_bottom {
+	padding-left: calc(var(--enb-close-offset) + var(--enb-close-svg-dims) + var(--enb-padding-x));
+	padding-right: calc(var(--enb-close-offset) + var(--enb-close-svg-dims) + var(--enb-padding-x));
+}
+
+.easy-notification-bar--align_center .easy-notification-bar-container {
+	justify-content: center;
+	text-align: center;
+}
+
+.easy-notification-bar--align_left .easy-notification-bar-container,
+.easy-notification-bar--button_left.easy-notification-bar--align_right .easy-notification-bar-container {
+	justify-content: flex-start;
+}
+
+.easy-notification-bar--align_right .easy-notification-bar-container,
+.easy-notification-bar--button_right.easy-notification-bar--align_right .easy-notification-bar-container {
+	justify-content: flex-end;
+}
+
+.easy-notification-bar--space_between .easy-notification-bar-container {
+	justify-content: space-between !important;
+}
+
+.easy-notification-bar--button_left .easy-notification-bar-container {
+	flex-direction: row-reverse;
+}
+
+.easy-notification-bar--button_bottom .easy-notification-bar-container {
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.easy-notification-bar--align_left.easy-notification-bar--button_bottom .easy-notification-bar-container {
+	align-items: flex-start;
+}
+
+.easy-notification-bar--align_right.easy-notification-bar--button_bottom .easy-notification-bar-container {
+	align-items: flex-end;
+}
+
+.easy-notification-bar-message :is(a,a:hover,a:visited,a:focus) {
+	color: currentColor;
+	text-decoration: underline;
+}
+
+.easy-notification-bar-message p {
+	margin: 0;
+}
+
+.easy-notification-bar-button a {
+	display: inline-block;
+	padding: 0.1em 1.25em;
+}
+
+.easy-notification-bar-button :is(a,a:hover,a:visited,a:focus){
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+	background: rgba(0,0,0,0.5);
+}
+
+.easy-notification-bar-button a:hover {
+	opacity: 0.9;
+}
+
+/* Close Icon */
+a.easy-notification-bar__close {
+	display: flex;
+    position: absolute;
+    right: var(--enb-close-offset);
+    top: 50%;
+    transform: translateY(-50%);
+    color: inherit;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    background: none;
+    border: 0;
+}
+
+.easy-notification-bar__close svg {
+	height: var(--enb-close-svg-dims);
+	width: var(--enb-close-svg-dims);
+}
+
+a.easy-notification-bar__close:is(:hover,:focus) {
+	background: none;
+	color: inherit;
+	border: 0;
+	text-decoration: none;
+}
+
+.rtl a.easy-notification-bar__close,
+.easy-notification-bar--align_right a.easy-notification-bar__close {
+	left: var(--enb-close-offset);
+	right: auto;
+}
