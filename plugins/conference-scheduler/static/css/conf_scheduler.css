@@ -1,0 +1,436 @@
+/*
+Conference Scheduler
+Version: 1.7.3
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+/* ----  Colours  ----- */
+.conf_scheduler_star_outline {
+  fill: currentColor;
+}
+.conf_scheduler * {
+  box-sizing: border-box;
+}
+.conf_scheduler .filter {
+  display: flex;
+  padding-bottom: 5px;
+  margin-bottom: 1em;
+}
+.conf_scheduler .filter .multi_filter {
+  max-width: 100%;
+  width: 300px;
+  opacity: 0;
+  max-height: 1em;
+}
+.conf_scheduler .filter select.multi_filter,
+.conf_scheduler .filter span.select2 {
+  flex-grow: 1;
+  display: inline-block;
+  margin-right: 10px;
+}
+.conf_scheduler .filter select.multi_filter .select2-selection__choice i.fas,
+.conf_scheduler .filter span.select2 .select2-selection__choice i.fas {
+  margin-left: 4px;
+}
+.conf_scheduler .filter .select2-selection:focus {
+  border-color: #5b9dd9;
+  box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+  outline: none;
+}
+.conf_scheduler .filter .my_picks:before {
+  content: "\f0c8";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  font-size: 0.8em;
+  margin-right: 5px;
+}
+.conf_scheduler .filter button {
+  outline: none;
+  float: right;
+  padding: 5px 8px;
+  margin-left: 1em;
+}
+.conf_scheduler .filter:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.conf_scheduler.picks .filter .my_picks:before {
+  content: "\f14a";
+}
+.conf_scheduler .conference_day.open > h3:before {
+  content: "\f0d7";
+}
+.conf_scheduler .open > .session {
+  display: block;
+}
+.conf_scheduler.searching .session h3 {
+  display: none;
+}
+.conf_scheduler.searching .session.open p.no_workshops {
+  display: none;
+}
+.conf_scheduler.picks .session.open p.no_workshops {
+  display: none;
+}
+.conf_scheduler .session h3,
+.conf_scheduler .conference_day h3 {
+  cursor: pointer;
+}
+.conf_scheduler .session h3:before,
+.conf_scheduler .conference_day h3:before {
+  content: "\f0da";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+  font-size: 0.8em;
+  margin-right: 5px;
+}
+.conf_scheduler .session.open > h3:before,
+.conf_scheduler .conference_day.open > h3:before {
+  content: "\f0d7";
+}
+.conf_scheduler .session .session,
+.conf_scheduler .conference_day .session {
+  margin-left: 1em;
+}
+.conf_scheduler .session {
+  clear: left;
+  display: none;
+}
+.conf_scheduler .session:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+.conf_scheduler .session .workshops,
+.conf_scheduler .session p.no_workshops,
+.conf_scheduler .session > div.description {
+  display: none;
+}
+.conf_scheduler .session.open > .workshops,
+.conf_scheduler .session.open > p.no_workshops,
+.conf_scheduler .session.open > div.description {
+  display: block;
+}
+.conf_scheduler .session.open .workshop {
+  display: block;
+}
+.conf_scheduler .session .workshop.placeholder {
+  height: 5em;
+}
+.conf_scheduler .session .workshop,
+body.single-conf_workshop .workshop {
+  position: relative;
+  cursor: pointer;
+}
+.conf_scheduler .session .workshop h4,
+body.single-conf_workshop .workshop h4 {
+  margin-top: 0;
+  margin-left: 3px;
+}
+.conf_scheduler .session .workshop .details,
+body.single-conf_workshop .workshop .details {
+  border-top: 1px solid #d1d2d4;
+  padding: 1em 0;
+  display: none;
+}
+.conf_scheduler .session .workshop .quick_info,
+body.single-conf_workshop .workshop .quick_info {
+  text-align: right;
+  margin-bottom: 0.3em;
+}
+.conf_scheduler .session .workshop .quick_info span,
+body.single-conf_workshop .workshop .quick_info span {
+  margin-left: 0.5em;
+  display: inline-block;
+}
+.conf_scheduler .session .workshop span:before,
+body.single-conf_workshop .workshop span:before,
+.conf_scheduler .session .workshop .edit_link:before,
+body.single-conf_workshop .workshop .edit_link:before,
+.conf_scheduler .session .workshop .themes:before,
+body.single-conf_workshop .workshop .themes:before,
+.conf_scheduler .session .workshop .keywords:before,
+body.single-conf_workshop .workshop .keywords:before,
+.conf_scheduler .session .workshop .file:before,
+body.single-conf_workshop .workshop .file:before,
+.conf_scheduler .session .workshop .limit:before,
+body.single-conf_workshop .workshop .limit:before {
+  font-family: "Font Awesome 5 Free";
+  font-size: 0.8em;
+  margin-right: 5px;
+}
+.conf_scheduler .session .workshop .presenter:before,
+body.single-conf_workshop .workshop .presenter:before {
+  content: "\f007";
+  font-weight: 700;
+}
+.conf_scheduler .session .workshop .location:before,
+body.single-conf_workshop .workshop .location:before {
+  content: "\f3c5";
+  font-weight: 700;
+}
+.conf_scheduler .session .workshop .bio,
+body.single-conf_workshop .workshop .bio {
+  margin-top: 1em;
+  font-style: italic;
+}
+.conf_scheduler .session .workshop .edit_link,
+body.single-conf_workshop .workshop .edit_link {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  opacity: 0.3;
+  font-weight: normal;
+}
+.conf_scheduler .session .workshop .edit_link:before,
+body.single-conf_workshop .workshop .edit_link:before {
+  content: "\f303";
+  font-weight: 900;
+  font-size: 0.8em;
+}
+.conf_scheduler .session .workshop .edit_link:hover,
+body.single-conf_workshop .workshop .edit_link:hover {
+  opacity: 1;
+}
+.conf_scheduler .session .workshop .data,
+body.single-conf_workshop .workshop .data {
+  padding-top: 0.3em;
+  border-top: 1px dashed #d1d2d4;
+}
+.conf_scheduler .session .workshop .data::after,
+body.single-conf_workshop .workshop .data::after {
+  clear: both;
+  display: table;
+  content: "";
+}
+.conf_scheduler .session .workshop .session,
+body.single-conf_workshop .workshop .session {
+  text-align: right;
+  display: block;
+  float: right;
+}
+.conf_scheduler .session .workshop .session:before,
+body.single-conf_workshop .workshop .session:before {
+  content: "\f017";
+}
+.conf_scheduler .session .workshop .themes,
+body.single-conf_workshop .workshop .themes,
+.conf_scheduler .session .workshop .keywords,
+body.single-conf_workshop .workshop .keywords {
+  clear: both;
+  padding-left: 1.2em;
+}
+.conf_scheduler .session .workshop .themes:before,
+body.single-conf_workshop .workshop .themes:before {
+  content: "\f07c";
+  font-weight: 700;
+  margin-left: -1.5em;
+}
+.conf_scheduler .session .workshop .keywords:before,
+body.single-conf_workshop .workshop .keywords:before {
+  content: "\f02c";
+  font-weight: 700;
+  margin-left: -1.5em;
+}
+.conf_scheduler .session .workshop .limit,
+body.single-conf_workshop .workshop .limit {
+  display: block;
+  float: left;
+}
+.conf_scheduler .session .workshop .limit:before,
+body.single-conf_workshop .workshop .limit:before {
+  content: "\f0c0";
+  font-weight: 700;
+}
+.conf_scheduler .session .workshop img,
+body.single-conf_workshop .workshop img {
+  margin: 1em auto 0 auto;
+  display: block;
+}
+.conf_scheduler .session .workshop .files,
+body.single-conf_workshop .workshop .files {
+  margin-top: 1em;
+}
+.conf_scheduler .session .workshop .files span,
+body.single-conf_workshop .workshop .files span {
+  font-weight: bold;
+  display: block;
+  color: #58585b;
+}
+.conf_scheduler .session .workshop .files .file:before,
+body.single-conf_workshop .workshop .files .file:before {
+  content: "\f15b";
+  font-weight: 700;
+  color: #a7a9ab;
+}
+.conf_scheduler .session .workshop .favorite,
+body.single-conf_workshop .workshop .favorite {
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  z-index: 5;
+  top: 5px;
+  left: 5px;
+}
+.conf_scheduler .session .workshop .favorite svg,
+body.single-conf_workshop .workshop .favorite svg {
+  width: 1em;
+  height: 1em;
+  fill: transparent;
+}
+.conf_scheduler .session .workshop .favorite:hover svg,
+body.single-conf_workshop .workshop .favorite:hover svg {
+  fill: #FFCC09;
+}
+.conf_scheduler .session .workshop.picked .favorite svg,
+body.single-conf_workshop .workshop.picked .favorite svg {
+  fill: #FFCC09;
+}
+.conf_scheduler .session .workshop {
+  transform: translateZ(0);
+}
+.conf_scheduler .session .workshop:hover,
+.conf_scheduler .session .workshop.open,
+.conf_scheduler .session .workshop.picked {
+  background: #ffffff;
+}
+body.single-conf_workshop .workshop .title,
+body.single-conf_workshop .workshop a.edit_link {
+  display: none;
+}
+body.single-conf_workshop .workshop .details {
+  display: block;
+}
+.conf_scheduler .conf_block {
+  border: 1px solid #333;
+  width: calc((100% - 3em)/3);
+  margin: 0 1em 1em 0;
+}
+.conf_scheduler .conf_block.workshop {
+  padding: 1.5em;
+}
+.conf_scheduler .conf_block .workshop {
+  width: 100%;
+  padding: 1.5em;
+  margin: 0;
+  border-bottom: 1px solid #58585b;
+}
+.conf_scheduler .conf_block .workshop:last-child {
+  border-bottom: none;
+}
+.conf_scheduler.day_tabs ul.day_tabs {
+  border-bottom: 1px solid black;
+}
+.conf_scheduler.day_tabs ul.day_tabs li {
+  display: inline-block;
+  margin-right: 0.5em;
+  border: 1px solid black;
+  border-bottom: none;
+  padding: 0.1em 0.5em;
+  cursor: pointer;
+}
+.conf_scheduler.day_tabs .conference_day > h3 {
+  display: none;
+}
+@media only screen and (min-width: 509px) {
+  .conf_scheduler.timeline .conference_day.open > .session {
+    display: grid;
+    grid-template-columns: [first] 6.6em [split] auto;
+    grid-template-rows: [top] auto [startWorkshops] auto;
+    grid-template-areas: "time description" "time workshops";
+  }
+  .conf_scheduler.timeline .session > h3 {
+    grid-area: time;
+    box-sizing: border-box;
+    text-align: right;
+    border-right: 1px solid #58585b;
+    margin: 0;
+    padding: 1em 1em 1em 0;
+  }
+  .conf_scheduler.timeline.searching .session > h3 {
+    display: block;
+  }
+  .conf_scheduler.timeline .workshops,
+  .conf_scheduler.timeline .session > p.no_workshops,
+  .conf_scheduler.timeline .session > .description {
+    grid-area: description;
+    margin-left: 1em;
+    padding-top: 1em;
+    box-sizing: content-box;
+  }
+  .conf_scheduler.timeline .workshops {
+    grid-area: workshops;
+    margin-left: 1em;
+    padding-top: 1em;
+    box-sizing: content-box;
+  }
+  .conf_scheduler.timeline .session > .description > p:first-child {
+    margin-top: 0;
+  }
+  .conf_scheduler.timeline .session.no_workshops .workshops {
+    padding: 0;
+    border-bottom: 0;
+    display: none !important;
+  }
+  .conf_scheduler.timeline .session p.no_workshops {
+    padding: 1em 0 1em 1em;
+    margin: 0;
+  }
+}
+/* Mobile Landscape & Tablet Portrait */
+@media only screen and (max-width: 780px) {
+  .conf_scheduler .filter .my_picks,
+  .conf_scheduler .filter .toggle_all {
+    float: none;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .conf_scheduler .filter .my_picks {
+    margin: 0 0 0 15px;
+  }
+  .conf_scheduler .conference_day .session {
+    margin-left: 0.5em;
+  }
+  .conf_scheduler .conf_block {
+    width: calc((100% - 2em)/2);
+  }
+}
+/* 4.5 - Mobile Portrait */
+@media only screen and (max-width: 509px) {
+  .conf_scheduler .filter .multi_filter {
+    display: block;
+    width: 95%;
+    margin: 10px 0 0 0;
+  }
+  .conf_scheduler .conference_day .session {
+    margin-left: 0;
+  }
+  .conf_scheduler .conf_block {
+    width: 100%;
+  }
+}
+@media print {
+  .conf_scheduler .workshops {
+    height: auto !important;
+    max-width: 100%;
+    text-align: left;
+  }
+  .conf_scheduler .conf_block {
+    vertical-align: top;
+    position: relative !important;
+    left: 0 !important;
+    top: auto !important;
+    float: none !important;
+    display: inline-block !important;
+    margin: 0 10pt 12pt 0 !important;
+    min-width: calc(50% - 12pt) !important;
+    width: auto;
+  }
+  .conf_scheduler.picks .workshop {
+    display: none !important;
+  }
+  .conf_scheduler.picks .workshop.picked {
+    display: block !important;
+  }
+}
