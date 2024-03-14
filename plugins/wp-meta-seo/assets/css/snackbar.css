@@ -1,0 +1,87 @@
+/** Snackbars */
+.wpms-snackbar-wrapper {
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    z-index: 10000000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 240px;
+}
+
+.wpms-snackbar-wrap {
+    background: #0073ab;
+    color: #FFF;
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: transform 0.2s ease-in-out, all 0.4s ease-in-out;
+    font-size: 14px;
+    margin: 10px 0;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.wpms-snackbar-error {
+    border-left: #dc3232 4px solid;
+    color: #444;
+    background: #ffffff;
+}
+
+.wpms-snackbar .wpms-snackbar-content {
+    line-height: 18px;
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.wpms-snackbar .wpms-snack-icon {
+    vertical-align: middle;
+    font-size: 18px !important;
+    margin-right: 5px;
+}
+
+.wpms-snack-loader {
+    -webkit-animation: wpms-snack-loader 2s linear infinite;
+    -moz-animation: wpms-snack-loader 2s linear infinite;
+    animation: wpms-snack-loader 2s linear infinite;
+}
+
+@-moz-keyframes wpms-snack-loader { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes wpms-snack-loader { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes wpms-snack-loader { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.wpms-snackbar .wpms-snackbar-undo {
+    text-transform: capitalize;
+    font-size: 12px;
+    margin: 0;
+    text-decoration: underline;
+    line-height: 18px;
+    color: #fff;
+    vertical-align: middle;
+    float: right;
+}
+
+.wpms-snackbar [class^=wpms-snackbar-]:focus {
+    border: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.wpms-snackbar-wrap .wpms-snackbar-close {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+}
+
+.wpms-snackbar-wrap .wpms-snackbar-close .material-icons {
+    font-size: 12px;
+    color: #fff;
+}
+
+.wpms-snackbar.wpms-snackbar-hidden {
+    transform: translateY(-200%);
+}

@@ -1,0 +1,93 @@
+<?php
+/**
+ * Author: Alin Marcu
+ * Author URI: https://deconf.com
+ * Copyright 2013 Alin Marcu
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Modified by Joomunited
+ */
+/* Prohibit direct script loading */
+defined('ABSPATH') || die('No direct script access allowed!');
+$domaindata = WpmsGaTools::getRootDomain(esc_html(get_option('siteurl')));
+// phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect, WordPress.Security.EscapeOutput.OutputNotEscaped, Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis, PSR2.Methods.FunctionCallSignature.SpaceBeforeOpenBracket, Squiz.WhiteSpace.ScopeClosingBrace.Indent, Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen, PSR2.ControlStructures.ControlStructureSpacing.SpaceBeforeCloseBrace, PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace, Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace, Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore, Generic.WhiteSpace.ScopeIndent.IncorrectExact -- Render google analytics script structure on frontend
+?>
+<script type="text/javascript">
+    (function ($) {
+        $(window).load(function () {
+            <?php if ($this->ga_tracking['wpmsga_event_tracking']) { ?>
+
+            //Track Downloads
+            $('a').filter(function () {
+                return this.href.match(/.*\.(<?php echo esc_js($this->ga_tracking['wpmsga_event_downloads']);?>)(\?.*)?$/);
+            }).on('click', function () {
+                gtag('event', 'file_download', {
+                    link_url: this.href
+                    <?php if (isset($this->ga_tracking['wpmsga_event_bouncerate']) && $this->ga_tracking['wpmsga_event_bouncerate']) {
+                        echo ', non_interaction: true';
+                    }?>
+                });
+            });
+
+            //Track Mailto
+            $('a[href^="mailto"]').on('click', function () {
+                gtag('event', 'email', {
+                    link_url: this.href
+                    <?php if (isset($this->ga_tracking['wpmsga_event_bouncerate']) && $this->ga_tracking['wpmsga_event_bouncerate']) {
+                        echo ', non_interaction: true';
+                    }?>
+                });
+            });
+
+            <?php if (isset ($domaindata ['domain']) && $domaindata ['domain']) { ?>
+
+            //Track Outbound Links
+            $('a[href^="http"]').filter(function () {
+                if (!this.href.match(/.*\.(<?php echo esc_js($this->ga_tracking['wpmsga_event_downloads']);?>)(\?.*)?$/)) {
+                    if (this.href.indexOf('<?php echo esc_html($domaindata['domain']); ?>') === -1) return this.href;
+                }
+            }).on('click', function () {
+                gtag('event', 'click', {
+                    link_url: this.href
+                    <?php if (isset($this->ga_tracking['wpmsga_event_bouncerate']) && $this->ga_tracking['wpmsga_event_bouncerate']) {
+                        echo ', non_interaction: true';
+                    }?>
+                });
+            });
+            <?php } ?>
+
+            <?php } ?>
+            <?php if ($this->ga_tracking['wpmsga_event_affiliates'] && $this->ga_tracking['wpmsga_aff_tracking']){ ?>
+            //Track Affiliates
+            $('a').filter(function () {
+                if ('<?php echo esc_js($this->ga_tracking['wpmsga_event_affiliates']);?>' !== '') {
+                    return this.href.match(/(<?php echo str_replace('/', '\/', (esc_js($this->ga_tracking['wpmsga_event_affiliates'])));?>)/);
+                }
+            }).on('click', function () {
+                gtag('event', 'affiliates', {
+                    link_url: this.href
+                    <?php if (isset($this->ga_tracking['wpmsga_event_bouncerate']) && $this->ga_tracking['wpmsga_event_bouncerate']) {
+                        echo ', non_interaction: true';
+                    }?>
+                });
+            });
+            <?php } ?>
+            <?php if (isset ($domaindata ['domain']) && $domaindata ['domain'] && $this->ga_tracking ['wpmsga_hash_tracking']) { ?>
+
+            //Track Hashmarks
+            $('a').filter(function () {
+                if (this.href.indexOf('<?php echo esc_html($domaindata['domain']); ?>') !== -1 || this.href.indexOf('://') === -1) return this.hash;
+            }).on('click', function () {
+                gtag('event', 'hashmark', {
+                    link_url: this.href
+                    <?php if (isset($this->ga_tracking['wpmsga_event_bouncerate']) && $this->ga_tracking['wpmsga_event_bouncerate']) {
+                        echo ', non_interaction: true';
+                    }?>
+                });
+            });
+
+            <?php } ?>
+        });
+    })(jQuery);
+</script>
+<?php // phpcs:enable ?>
