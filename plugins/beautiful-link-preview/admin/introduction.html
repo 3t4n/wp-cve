@@ -1,0 +1,112 @@
+<div class="zwt-wp-lnk-prev-intro-container">
+
+    <img src="%s" style="%s">
+
+    <h2>Introduction</h2>
+    <p>Welcome to the <strong>Beautiful Link Preview</strong> Plugin.
+        This plugin allows you to create previews of links similar to common social networks when you share a link.</p>
+    <p>
+        It works by fetching the link URL and examining either the <em>facebook Open Graph</em> properties or <em>Twitter
+        card</em>
+        tags including any preview image. Any title, description or image is stored inside this Wordpress' own
+        database and subsequently used from there to render the beautiful link previews.
+    </p>
+    <p>
+        <strong>Note:</strong> some websites will not always have an image preview available. In that instance this plugin will render an <code>&lt;img&gt;</code> tag with no <code>src</code> property, and an additional class of <code>empty</code>. You can set a default image for this via CSS. See the <strong>CSS Styling</strong> section below for an example.
+    </p>
+
+    <p>
+        <em>If you find any bugs please report them to the Support Tab at the official <a target="_blank" href="%s">Wordpress Plugin Directory</a> and I will be
+            happy to find a solution.</em>
+    </p>
+
+    <h2>Usage - Gutenberg Editor (WordPress version 5.5 or newer)</h2>
+    <ol>
+        <li>Navigate to the plugin settings page in the WP Admin and enable the plugin.</li>
+        <li>You will now see a Beautiful Link Preview item in your Gutenberg block menu when editing posts and pages with the Gutenberg editor. Provide the URL, click "Save", and you will see your preview rendered in place.</li>
+        <li>You may also override any of the plugin’s settings on a per-block basis via the override controls.</li>
+        <li>See the <strong>CSS Styling</strong> section below for handling previews without images.</li>
+        <li><strong>Note: </strong> if you disable the plugin from the plugin settings page, none of the link preview blocks on your posts and pages will render.</li>
+    </ol>
+    <h2>Usage (WordPress Classic editor or version older than 5.5)</h2>
+    <ol>
+        <li>add a new HTML block in your (Gutenberg) blog or page editor and copy this shortcode into it:
+            <pre><code>[beautiful_link_preview url="https://zeitwesentech.com"]</code></pre>
+        </li>
+        <li>adapt the URL, click save/publish and view your post/page</li>
+    </ol>
+
+    <h2>Customization</h2>
+    <p>The above shortcode renders each preview with the given default options in Tab <a
+            href="%s">Settings</a>.<br>
+        However you can also override any option on a per-shortcode basis:</p>
+
+    <h3>Layout</h3>
+    <pre><code>[beautiful_link_preview <b>layout="full"</b> url="https://zeitwesentech.com"]</code></pre>
+    <pre><code>[beautiful_link_preview layout="compact" url="https://zeitwesentech.com"]</code></pre>
+
+    <h3>Target</h3>
+    <pre><code>[beautiful_link_preview target="_blank" url="https://zeitwesentech.com"]</code></pre>
+    <pre><code>[beautiful_link_preview target="_self" url="https://zeitwesentech.com"]</code></pre>
+    <pre><code>[beautiful_link_preview target="_parent" url="https://zeitwesentech.com"]</code></pre>
+    <pre><code>[beautiful_link_preview target="_top" url="https://zeitwesentech.com"]</code></pre>
+
+    <h3>Hide items</h3>
+    <pre><code>[beautiful_link_preview no_img url="https://zeitwesentech.com"]</code></pre>
+    <pre><code>[beautiful_link_preview no_title url="https://zeitwesentech.com"]</code></pre>
+    <pre><code>[beautiful_link_preview no_desc url="https://zeitwesentech.com"]</code></pre>
+
+    <h3>Max. length</h3>
+    <pre><code>[beautiful_link_preview max_title_chars="20" url="https://zeitwesentech.com"]</code></pre>
+    <pre><code>[beautiful_link_preview max_desc_chars="60" url="https://zeitwesentech.com"]</code></pre>
+
+    <h3>CSS Styling</h3>
+    <p>
+        You can override any CSS classes starting with name "zwt-wp-lnk-prev*" to fulfill your styling needs. Normally
+        this can be done in the "Additional CSS" section of your theme.
+    </p>
+    <p>
+        To set a default image for URLs that have no preview image, this is an example of how to define one using CSS.<br>
+        <code>.zwt-wp-lnk-prev-img.empty { content: url("/path/to/your/image"); }</code>
+    </p>
+
+    <h2>Manage Previews</h2>
+
+    <p>In Tab <a href="%s">Link Previews</a>
+        you can see any link previews that have been fetched by this plugin. Here you can <em>Refresh</em> or
+        <em>Delete</em> any item.
+    </p>
+    <p><strong>Important:</strong> When you delete a preview do not forget to also remove the shortcode on your page or
+        post as the preview will be refetched once it is displayed the next time!</p>
+
+    <a name="legal"></a>
+    <h2>Legal Terms &amp; Conditions</h2>
+    <p>
+        Using this plugin to render beautiful link previews works by fetching the content of the given URL and
+        extracting meta data given in form of <em>facebook Open Graph</em> properties, <em>Twitter
+        card</em> tags or by simply extracting parts of content like title, first h1 heading or similar. <br>
+        Any fetched information - including preview images - will be stored to this Wordpress instances' database and
+        subsequently used from there to render any beautiful link previews.
+    </p>
+    <p>
+        <strong>IMPORTANT: By using this plugin you declare that you have all the legal rights to copy, distribute and
+            use all data
+            fetched from any external third party website!</strong>
+    </p>
+    <p>
+        The creator of this plugin provides the functionality as is and can not be held responsible for legal violations
+        of any kind!
+    </p>
+    <p>
+        License: <a href="http://www.gnu.org/licenses/gpl-2.0.txt" target="_blank">GPL-2.0+</a>
+    </p>
+    <p>
+        Links:
+        <ul>
+            <li>
+                <a target="_blank" href="%s">wordpress.org/plugins/beautiful-link-preview</a>
+            </li>
+            <li><a target="_blank" href="%s">Plugin Website, zeitwesentech</a></li>
+        </ul>
+    </p>
+</div>
