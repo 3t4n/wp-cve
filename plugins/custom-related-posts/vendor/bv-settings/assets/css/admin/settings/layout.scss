@@ -1,0 +1,339 @@
+#wpbody-content > *:not(#bvs-settings),
+#wpfooter {
+    display: none;
+}
+
+#update-nag,
+.update-nag,
+.updated,
+.error,
+.is-dismissible {
+    display: none;
+}
+
+.rtl {
+    #bvs-settings-menu {
+        .bvs-settings-menu-group {
+            .bvs-settings-icon {
+                margin-right: 0;
+                margin-left: 2px;
+            }
+        }
+    }
+    
+    #bvs-settings-container {
+        .bvs-setting-required {
+            border-radius: 3px;
+            margin-left: 0;
+        }
+    }
+
+    .bvs-settings-scroll-to-top {
+        left: 20px;
+        right: initial;
+    }
+}
+
+#bvs-settings-buttons {
+    margin-bottom: 20px;
+}
+
+#bvs-settings-menu,
+.bvs-settings-group {
+    .bvs-settings-menu-group,
+    .bvs-settings-subgroup {
+        padding: 6px;
+        border-bottom: 1px solid #ddd;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+#bvs-settings-menu {
+    .bvs-settings-menu-header {
+        background-color: white;
+        padding: 10px;
+        padding-bottom: 5px;
+        text-align: center;
+        font-weight: 300;
+        font-size: 1.2em;
+    }
+
+    .bvs-settings-menu-group {
+        background-color: white;
+        display: block;
+        text-decoration: none;
+        color: #444;
+        cursor: pointer;
+
+        &:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        &:last-child {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        &.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+        .bvs-settings-noicon {
+            display: inline-block;
+            width: 18px;
+        }
+        .bvs-settings-icon {
+            vertical-align: middle;
+            margin-right: 2px;
+            position: relative;
+            top: 1px;
+
+            svg {
+                fill: #ddd;
+            }
+        }
+    }
+}
+
+#bvs-settings-buttons {
+    text-align: center;
+    padding-top: 10px;
+
+    background-color: white;
+    border-radius: 5px;
+
+    button {
+        display: inline-block;
+        margin: 0 3px;
+        margin-bottom: 10px;
+    }
+}
+
+#bvs-settings-container {
+    .bvs-settings-group {
+        background-color: white;
+        border-radius: 5px;
+
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+
+        & > .bvs-setting-documentation,
+        & > .bvs-settings-group-container {
+            padding: 25px;
+            padding-bottom: 0;
+        }
+    }
+
+    .bvs-setting-required {
+        background-color: darkred;
+        color: white;
+
+        padding: 3px 5px;
+        margin-left: -10px;
+        margin-right: 5px;
+
+        border-radius: 3px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+        text-decoration: none;
+        font-weight: normal;
+        font-size: 0.8em;
+    }
+
+    .bvs-settings-group > .bvs-setting-required {
+        display: block;
+        font-size: 1.2em;
+        border-radius: 3px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        padding: 6px 10px;
+        margin: 0;
+    }
+
+    .bvs-settings-group-name,
+    .bvs-settings-subgroup-name {
+        text-align: center;
+    }
+    .bvs-settings-group-name {
+        padding: 20px 10px 0 10px;
+        padding-bottom: 0;
+        margin: 5px 0;
+        font-size: 1.8em;
+        font-weight: 400;
+    }
+    .bvs-settings-subgroup-name {
+        margin: 5px 0 15px 0;
+        font-size: 1.6em;
+        font-weight: 300;
+    }
+
+    .bvs-settings-group-description {
+        padding: 10px 25px 0 25px;
+    }
+
+    .bvs-settings-group-description,
+    .bvs-settings-subgroup-description {
+        font-style: italic;
+    }
+
+    .bvs-settings-subgroup-description + .bvs-settings-group-container,
+    .bvs-settings-subgroup-description + .bvs-setting-documentation + .bvs-settings-group-container {
+        margin-top: 20px;
+    }
+
+    .bvs-setting-container {
+        margin-bottom: 25px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        .bvs-setting-label {
+            display: block;
+            font-weight: bold;
+        }
+        .bvs-setting-description {
+            display: block;
+            font-style: italic;
+            margin-top: 2px;
+        }
+        .bvs-setting-input-container {
+            margin-top: 5px;
+
+            input {
+                &[type=text],
+                &[type=email],
+                &[type=number] {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.bvs-settings-scroll-to-top {
+    background-color: #444;
+    border-radius: 100%;
+    
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    width: 30px;
+    height: 30px;
+    text-align: center;
+
+    .bvs-settings-icon {
+        position: relative;
+        top: 7px;
+
+        path {
+            fill: white;
+            stroke: white;
+        }
+    }
+}
+
+.bvs-settings-error {
+    color: darkred;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 783px) {
+    .rtl {
+        #bvs-settings-container {
+            margin-right: 225px;
+            margin-left: 0;
+    
+            .bvs-settings-subgroup-name {
+                text-align: right;
+            }
+
+            .bvs-setting-required {
+                margin-right: 5px;
+                margin-left: 0;
+            }
+    
+            .bvs-setting-label-container {
+                margin-left: 5%;
+                margin-right: 0;
+            }
+        }
+    }
+
+    #bvs-settings-sidebar {
+        position: fixed;
+        width: 200px;
+        height: 100%;
+        max-height: calc(100% - 50px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    #bvs-settings-menu {
+        flex: 1;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    #bvs-settings-container {
+        margin-left: 225px;
+        padding-bottom: 70%;
+
+        .bvs-settings-subgroup-name {
+            text-align: left;
+        }
+
+        .bvs-settings-subgroup {
+            padding: 25px;
+            padding-top: 10px;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+
+        .bvs-setting-required {
+            margin-left: -25px;
+        }
+
+        .bvs-setting-label-container,
+        .bvs-setting-input-container {
+            vertical-align: top;
+        }
+
+        .bvs-setting-label-container {
+            display: inline-block;
+            width: 45%;
+            margin-right: 5%;
+        }
+        .bvs-setting-input-container {
+            display: inline-block;
+            width: 50%;
+        }
+    }
+
+    .bvs-settings-scroll-to-top {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .rtl {
+        #bvs-settings-container {
+            margin-right: 275px;
+            margin-left: 0;
+        }
+    }
+    #bvs-settings-sidebar {
+        width: 250px;
+    }
+
+    #bvs-settings-container {
+        margin-left: 275px;
+    }
+}

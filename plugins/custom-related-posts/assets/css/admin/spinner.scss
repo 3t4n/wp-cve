@@ -1,0 +1,33 @@
+@keyframes crp_spinner {
+    to {transform: rotate(360deg);}
+}
+  
+@-webkit-keyframes crp_spinner {
+    to {-webkit-transform: rotate(360deg);}
+}
+  
+.crp_spinner {
+    color: white !important;
+    min-width: 24px;
+    min-height: 24px;
+}
+  
+.crp_spinner:before {
+    content: 'Loading…';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    margin-left: -8px;
+}
+  
+.crp_spinner:not(:required):before {
+    content: '';
+    border-radius: 50%;
+    border-top: 2px solid #444;
+    border-right: 2px solid transparent;
+    animation: crp_spinner .6s linear infinite;
+    -webkit-animation: crp_spinner .6s linear infinite;
+}
