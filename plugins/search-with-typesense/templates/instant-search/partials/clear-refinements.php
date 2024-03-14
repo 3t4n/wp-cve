@@ -1,0 +1,1 @@
+<div class="cmswt-ClearRefinements" data-label="<?php esc_attr_e('Clear','search-with-typesense'); ?>"></div>

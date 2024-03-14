@@ -1,0 +1,1 @@
+<div class="cmswt-CurrentRefinements"></div>
