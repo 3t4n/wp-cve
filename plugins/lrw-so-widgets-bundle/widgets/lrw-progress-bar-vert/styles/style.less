@@ -1,0 +1,63 @@
+.border-radius (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
+@bar_height: 200px;
+@bar_color: #41a9d5;
+@bar_background: transparent;
+@bar_rounding: 0;
+@vl_color: #fff;
+@vl_fontweight: 700;
+@vl_margin_top: 0;
+@vl_margin_bottom: 0;
+@lb_color: inherit;
+@lb_fontweight: 700;
+@lb_align: center;
+@lb_margin_top: 20px;
+@lb_margin_bottom: 20px;
+
+.lrw-progress-bar-vert {
+    .lrw-progress-bar-wrapper {
+		position: relative;
+		background: @bar_background;
+	    width: 100%;
+	    text-align: center;
+	    height: @bar_height;
+	    overflow: hidden;
+	    .border-radius(@bar_rounding);
+    }
+
+    .lrw-progress-bar-area {
+    	position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    background: @bar_color;
+	    height: 0;
+	    width: 100%;
+	    display: block;
+	    z-index: 0;
+	    transition: height 1s linear;
+	    .border-radius(@bar_rounding);
+	}
+
+	.lrw-bar-value {
+		color: @vl_color;
+		font-weight: @vl_fontweight;
+		margin-bottom: @vl_margin_bottom;
+		margin-top: @vl_margin_top;
+		position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    transform: translate(-50%, -50%);
+	}
+
+	.lrw-bar-label {
+		color: @lb_color;
+		font-weight: @lb_fontweight;
+		text-align: @lb_align;
+		margin-bottom: @lb_margin_bottom;
+		margin-top: @lb_margin_top;
+	}
+}

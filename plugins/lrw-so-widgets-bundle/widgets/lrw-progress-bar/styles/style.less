@@ -1,0 +1,83 @@
+.border-radius (@radius: 0.25) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
+/* Variables */
+@bar_height: default;
+@bar_background: #ccc;
+@bar_rounding: default;
+@bar_margin_bottom: 10px;
+@label_width: auto;
+@label_fontsize: default;
+@label_fontweight: default;
+@label_background_opacity: default;
+
+.lrw-progress-bar {
+	.lrw-progress-bar-wrapper {
+	    position: relative;
+	}
+
+	.lrw-progress-bar-label {
+		display: block;
+		font-size: @label_fontsize;
+		font-weight: @label_fontweight;
+    	white-space: nowrap;
+
+		&.label-out {
+			color: inherit;
+		    padding: 0;
+		    width: auto;
+
+		    span + span {
+		    	float: right;
+		    }
+		}
+
+		&.label-inner {
+			.bar-lb,
+			.bar-vl {
+				color: #fff;
+				display: block;
+				height: @bar_height;
+				line-height: @bar_height;
+				padding: 0 1em;
+			    position: absolute;
+			    top: 0;
+			    z-index: 1;
+		        .border-radius(@bar_rounding 0 0 @bar_rounding);
+		    }
+
+		    .bar-lb {
+		    	background-color: @label_background_opacity;
+		    	width: @label_width;
+		    }
+
+		    .bar-vl {
+		    	right: 0;
+		    }
+		}
+	}
+
+	.lrw-progress-bar-content {
+		background-color: @bar_background;
+		height: @bar_height;
+		line-height: @bar_height;
+		margin-bottom: @bar_margin_bottom;
+	    overflow: hidden;
+		position: relative;
+		.border-radius(@bar_rounding);
+	}
+
+	.lrw-progress-bar-area {
+		display: block;
+		background-color: #41a9d5;
+    	height: 100%;
+    	left: 0;
+    	position: absolute;
+    	top: 0;
+		width: 0;
+		.border-radius(@bar_rounding);
+	}
+}

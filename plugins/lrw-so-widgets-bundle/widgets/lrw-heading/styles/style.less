@@ -1,0 +1,49 @@
+@fontsize: default;
+@lineheight: default;
+@fontweight: initial;
+@heading_color: #222;
+@heading_align: center;
+@margin_top: 0px;
+@margin_bottom: 0px;
+
+.lrw-heading {
+	.custom-heading {
+		color: @heading_color;
+		font-size: @fontsize;
+		font-weight: @fontweight;
+		line-height: @lineheight;
+		margin-bottom: @margin_bottom;
+		margin-top: @margin_top;
+
+		a {
+			color: @heading_color;
+		}
+
+		&.has-hover {
+			a {
+				&:hover {
+					color: darken(@heading_color, 10%);
+				}
+			}
+		}
+	}
+
+	.lrw-heading-align() when (@heading_align = left) {
+		.heading-align {
+			text-align: left;
+		}
+	}
+
+	.lrw-heading-align() when (@heading_align = center) {
+		.heading-align {
+			text-align: center;
+		}
+	}
+
+	.lrw-heading-align() when (@heading_align = right) {
+		.heading-align {
+			text-align: right;
+		}
+	}
+	.lrw-heading-align();
+}
