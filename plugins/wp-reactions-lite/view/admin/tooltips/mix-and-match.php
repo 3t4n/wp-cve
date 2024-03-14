@@ -1,0 +1,1 @@
+<p>Here you can choose the emojis that you would like to use. Once selected, you can arrange them at the bottom. You can always change your selections by coming back to this page.</p>
