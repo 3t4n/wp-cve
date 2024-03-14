@@ -1,0 +1,83 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *=# require_tree .
+ *=# require_self
+ */
+
+// COLORS
+$body-bg: #F5F6F8;
+// brand
+$primary: #12B1F7 !default;
+$orange: #F77300;
+$dark-orange: #F5333F;
+$pink: #EB0987;
+$blue: #0077DB;
+$gray: #FBFBFB;
+
+ //Font family poppins
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+ 
+// @import "~bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import "mixins/index";
+@import "base";
+@import "components/button";
+
+@import './components/main';
+
+.container {
+  font-family: 'Poppins', sans-serif;
+  $small-screen: 1200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  @media (max-width: $small-screen) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.box {
+  width: 500px;
+  box-shadow: 0.5px 1.2px 11px 1px rgba(0, 0, 0, 0.1);
+  height: 580px;
+  &__info {
+    .info__img{
+      width: 70px;
+    }
+  }
+
+  &:hover {
+    background-color: #F3F3F3;
+    transition: 0.3s;
+  }
+}
+
+.bg-impact-gray {
+  background-color: #F3F3F3;
+}
+
+@media (min-width: 550px) and (max-width: 576px) {
+  .container-sm, .container {
+      max-width: 500px;
+      padding: 0;
+  }
+
+  .col-sm {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
