@@ -1,0 +1,286 @@
+#wpz-custom-css-js-settings {
+
+  .wpz-custom-css-js-settings-box {
+    position : relative;
+
+    &:not(:last-child) {
+      margin-bottom : 35px;
+      }
+
+    @media (min-width : $breakSmall) {
+      padding-right : 35px;
+      }
+
+    .wpz-custom-css-js-settings-box-title {
+      label {
+        @include formLabelMixin();
+        box-sizing : border-box;
+        cursor     : default;
+        }
+      }
+
+    .wpz-custom-css-js-settings-box-content {
+      .wpz-custom-css-js-setting-description {
+        display : block;
+        width   : 100%;
+
+        &.with-space {
+          margin-top : 10px;
+          }
+        }
+      }
+
+    // Types
+    &.wpz-custom-css-js-settings-box-columns {
+      @media (min-width : 500px) {
+        display : flex !important;
+
+        .wpz-custom-css-js-settings-box-title {
+          flex-basis   : 150px;
+          margin-right : 20px;
+          padding-left : 0 !important;
+          }
+
+        .wpz-custom-css-js-settings-box-content {
+          flex : 1;
+
+          input[type="text"], input[type="password"], select {
+            max-width : 25rem;
+            }
+          }
+        }
+
+      .wpz-custom-css-js-settings-box-title {
+        @media (min-width : 600px) {
+          flex-basis : 200px;
+          }
+        }
+      }
+
+    &.wpz-custom-css-js-settings-multirow {
+      .wpz-custom-css-js-settings-box-content {
+        display     : flex;
+        flex-wrap   : wrap;
+        align-items : center;
+
+        input, select, a, span.sep {
+          margin-right  : 20px;
+          margin-top    : 4px;
+          margin-bottom : 4px;
+          }
+
+        select {
+          width     : auto;
+          min-width : 175px;
+          }
+
+        .wpz-custom-css-js-settings-cb-list {
+          display : block;
+          width   : 100%;
+          }
+
+        @media (max-width : $breakSmall) {
+          flex-direction : column;
+          align-items    : flex-start;
+
+          input, select, a, span.sep {
+            margin-right  : 0;
+            margin-top    : 6.5px;
+            margin-bottom : 6.5px;
+            }
+          }
+        }
+      }
+
+    &.wpz-custom-css-js-settings-cb-list {
+      .wpz-custom-css-js-settings-box-content {
+        display        : flex;
+        flex-direction : column;
+        align-items    : flex-start;
+
+        .wpz-custom-css-js-settings-cb-list-item {
+          display       : flex;
+          flex-wrap     : wrap;
+          align-items   : center;
+          margin-bottom : 15px;
+
+          &:last-child {
+            margin-bottom : 0;
+            }
+
+          &.has-checkbox, &.has-radio {
+            position     : relative;
+            padding-left : 40px;
+            min-height   : 30px;
+            }
+
+          &.has-radio > input[type="radio"],
+          &.has-checkbox > input[type="checkbox"] {
+            position : absolute;
+            left     : 0;
+            top      : 2px;
+            margin   : 0;
+            }
+
+          &.has-text-input.has-radio input[type="radio"],
+          &.has-text-input.has-checkbox input[type="checkbox"] {
+            top : 10px;
+
+            @media (max-width : $breakSmall) {
+              top : 0;
+              }
+            }
+
+          &.item-fullwidth {
+            width : 100%;
+            }
+
+          &.wpz-custom-css-js-settings-cb-list-item-multirow {
+            display     : inline-flex;
+            flex-wrap   : wrap;
+            align-items : center;
+            //width       : 100%;
+
+            input, select, a, span.sep {
+              margin-right  : 20px;
+              margin-top    : 4px;
+              margin-bottom : 4px;
+              }
+
+            input {
+              width : auto;
+              }
+
+            select {
+              width     : auto;
+              min-width : 175px;
+              }
+
+            @media (max-width : $breakSmall) {
+              flex-direction : column;
+              align-items    : flex-start;
+
+              input, select, a, span.sep {
+                margin-right  : 0;
+                margin-top    : 6.5px;
+                margin-bottom : 6.5px;
+                }
+              }
+            }
+          }
+
+        .wpz-custom-css-js-settings-cb-list-item-child {
+          margin-left : 40px;
+          }
+        }
+
+      &.wpz-custom-css-js-settings-cb-list-inline {
+
+        @media (min-width : 450px) {
+          .wpz-custom-css-js-settings-box-content {
+            flex-direction : row;
+            flex-wrap      : wrap;
+
+            & > * {
+              margin-right : 30px;
+              }
+            }
+          }
+
+        &.col-2 {
+          .wpz-custom-css-js-settings-box-content > * {
+            width : 100%;
+            @media (min-width : 550px) {
+              width : calc(50% - 30px);
+              }
+            }
+          }
+
+        &.col-3 {
+          .wpz-custom-css-js-settings-box-content > * {
+            width : 100%;
+            @media (min-width : 550px) {
+              width : calc(50% - 30px);
+              }
+            @media (min-width : 900px) {
+              width : calc(33.3% - 30px);
+              }
+            }
+          }
+
+        &.col-4 {
+          .wpz-custom-css-js-settings-box-content > * {
+            width : 100%;
+            @media (min-width : 550px) {
+              width : calc(50% - 30px);
+              }
+            @media (min-width : 900px) {
+              width : calc(33.3% - 30px);
+              }
+            @media (min-width : 1200px) {
+              width : calc(25% - 30px);
+              }
+            }
+          }
+
+        &.col-5 {
+          .wpz-custom-css-js-settings-box-content > * {
+            width : 100%;
+            @media (min-width : 550px) {
+              width : calc(50% - 30px);
+              }
+            @media (min-width : 800px) {
+              width : calc(33.3% - 30px);
+              }
+            @media (min-width : 1080px) {
+              width : calc(25% - 30px);
+              }
+            @media (min-width : 1250px) {
+              width : calc(20% - 30px);
+              }
+            }
+          }
+        }
+      }
+
+    &.has-checkbox, &.has-radio {
+      .wpz-custom-css-js-settings-box-content {
+        position     : relative;
+        padding-left : 40px;
+        min-height   : 30px;
+        }
+      }
+
+    &.has-radio .wpz-custom-css-js-settings-box-content > input[type="radio"],
+    &.has-checkbox .wpz-custom-css-js-settings-box-content > input[type="checkbox"] {
+      position : absolute;
+      left     : 0;
+      top      : 2px;
+      margin   : 0;
+      }
+
+    &.has-text-input.has-radio input[type="radio"],
+    &.has-text-input.has-checkbox input[type="checkbox"] {
+      top : 8px;
+      }
+
+    &.has-text-input.has-radio.wpz-custom-css-js-settings-multirow input[type="radio"],
+    &.has-text-input.has-checkbox.wpz-custom-css-js-settings-multirow input[type="checkbox"] {
+      top : 11.5px;
+      }
+    }
+
+  // Title
+  .wpz-custom-css-js-settings-title {
+    margin-bottom : 39px;
+    }
+
+  // Separator
+  hr.wpz-custom-css-js-settings-sep {
+    width        : 100%;
+    border-width : 1px 0 0 0 !important;
+    border-style : solid;
+    border-color : $lightBorderColor;
+    margin       : 30px 0;
+    }
+  }
