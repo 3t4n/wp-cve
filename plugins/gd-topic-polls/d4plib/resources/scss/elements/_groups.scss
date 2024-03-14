@@ -1,0 +1,187 @@
+.d4p-group {
+    background: var(--d4p-color-main-background);
+    border: 1px solid var(--d4p-color-main-border);
+    color: var(--d4p-color-main-text);
+    border-radius: var(--d4p-layout-main-border-radius);
+    margin: 0 0 2em;
+    text-align: center;
+    max-width: 955px;
+    width: 100%;
+
+    h3 {
+        margin: 0;
+        background: #{$color-header-background};
+        color: #{$color-header-text};
+        border-bottom: 1px solid #{$color-main-border};
+        text-align: left;
+        padding: .75em 1em;
+        line-height: 1.4;
+        font-size: 1.4em;
+        font-weight: 400;
+        vertical-align: top;
+        border-radius: var(--d4p-layout-main-border-radius) var(--d4p-layout-main-border-radius) 0 0;
+
+        i {
+            float: right;
+            cursor: pointer;
+        }
+
+        textarea {
+            height: 160px;
+        }
+
+        .d4p-kb-group {
+            float: right;
+            background: #C00;
+            color: #FFF;
+            padding: 2px 8px;
+            border-radius: var(--d4p-layout-badge-border-radius);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .d4p-toggle-control-wrapper {
+            input {
+                display: none;
+            }
+
+            button {
+                border: 0;
+                padding: 0;
+                background: 0 0;
+                vertical-align: top;
+                cursor: pointer;
+                font-size: 1.4em;
+                margin: 0 .5em 0 0;
+
+                i.d4p-ui-toggle-on {
+                    color: green;
+                }
+
+                i.d4p-ui-toggle-off {
+                    color: red;
+                }
+            }
+        }
+    }
+
+    &.d4p-group-tools {
+        label {
+            display: block;
+            line-height: 1.8;
+        }
+    }
+
+    &.d4p-hidden-group {
+        display: none;
+    }
+
+    .d4p-group-inner {
+        text-align: left;
+        font-size: 15px;
+        line-height: 1.7;
+
+        p {
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+
+            li {
+                margin: 3px 0;
+            }
+
+            &.d4p-with-bullets {
+                list-style: outside disc;
+                margin-left: 20px;
+
+                li {
+                    list-style: inherit;
+                }
+            }
+        }
+
+        .d4p-group-notice {
+            padding: 1em;
+            margin: 0;
+            font-size: 1.1em;
+            font-weight: 500;
+            border: none;
+            border-bottom: 1px solid #DDD;
+            background-color: #E9F5FF;
+            color: #003252;
+
+            &.d4p-notice-warning {
+                background-color: #FFE5E5;
+                color: #4B0000;
+            }
+        }
+    }
+
+    &.d4p-group-with-toggle {
+        .d4p-group-inner {
+            .d4p-settings-off {
+                display: none;
+                padding: 1.5em;
+
+                p {
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        &.d4p-group-toggle-off {
+            .d4p-group-inner {
+                .d4p-settings-section,
+                .d4p-group-notice {
+                    display: none;
+                }
+
+                .d4p-settings-off {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &:not(.d4p-group-with-settings) {
+        .d4p-group-inner {
+            padding: 1.5em;
+
+            > *:first-child {
+                margin-top: 0;
+            }
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.d4p-group-error {
+    border-color: #D00;
+
+    h3 {
+        background: #D00;
+        color: #FFF;
+    }
+
+    .d4p-group-inner {
+        text-align: left;
+
+        p {
+            margin-top: 0;
+            font-weight: bold;
+        }
+    }
+}
