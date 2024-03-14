@@ -1,0 +1,49 @@
+jQuery(document).ready(function( $ ) {
+	// EOL Notice
+	jQuery('body').on( 'click', '.whq-chilexpress-eolnotice > .notice-dismiss', function() {
+		var data = {
+				action: 'whq_wcchp_eolnotice_dismiss',
+		};
+
+		jQuery.post( ajaxurl, data, function() {
+			// Nothing to do
+		});
+	});
+
+	// Dismiss admin notice
+	jQuery('body').on( 'click', '.whq_wcchp_incompatible_plugins > .notice-dismiss', function() {
+		jQuery.ajax({
+			url: ajaxurl,
+			data: {
+				action: 'whq_wcchp_incompatible_plugins_dismiss_ajax'
+			},
+			success: function( response ) {
+			}
+		});
+	});
+
+	// Disable Shipping Zones support
+	jQuery('body').on( 'click', '.wcchp_disable_shipping_zones_support', function() {
+		var instance_id = $(this).attr('href');
+		instance_id = instance_id.replace('#', '');
+
+		jQuery.ajax({
+			url: ajaxurl,
+			method: 'POST',
+			data: {
+				action: 'whq_wcchp_disable_shipping_zones_support_ajax',
+				instance_id: instance_id
+			},
+			success: function( response ) {
+				if ( response == 1 ) {
+					window.location.href = 'admin.php?page=wc-settings&tab=shipping&section=chilexpress';
+				}
+			}
+		});
+	});
+
+	// Shippment type select height
+	if( $('#woocommerce_chilexpress_shipments_types').length ) {
+		//$('#woocommerce_chilexpress_shipments_types').selectWoo(); //See admin_options() method
+	}
+});
