@@ -1,0 +1,1 @@
+jQuery(document).ready(function(e){var r=!1;jQuery("#remove_wordpress_overhead_selectall").click(function(){r=r?(jQuery("#remove_wordpress_overhead_settings td input").prop("checked",!1),!1):(jQuery("#remove_wordpress_overhead_settings td input").prop("checked",!0),!0)})});
