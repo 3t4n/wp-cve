@@ -1,0 +1,337 @@
+/* Slider Module (elpug-testimonials) */
+//Media Queries
+@full-hd:   ~"(min-width: 1400px)";
+@desktop:   ~"(min-width: 1200px)";
+@laptop:   ~"(min-width:992px)";
+@tablet:    ~"(min-width: 768px)";
+@mobile:    ~"(min-width: 240px) and (max-width: 719px)";
+
+
+//Mixins and Variables
+.absolute-centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+
+.vertically-centered {
+    transform: translate(0,-50%);
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    position: absolute;
+    top: 50%;
+}
+
+.horizontally-centered {
+    transform: translate(-50%,0);
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    position: absolute;
+    left: 50%;
+}
+
+.absolute-centered {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+}
+   
+
+.anima (@anima) {
+  -webkit-transition: all @anima ease-in-out;
+    -moz-transition: all @anima ease-in-out;
+    transition: all @anima ease-in-out;
+}
+
+.background-cover, .bg-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.translateY(@translateY) {
+  transform: translateY(@translateY);
+    -webkit-transform: translateY(@translateY);
+    -moz-transform: translateY(@translateY);
+}
+
+.translateX(@translateX) {
+  transform: translateX(@translateX);
+    -webkit-transform: translateX(@translateX);
+    -moz-transform: translateX(@translateX);
+}
+
+.translate(@translateX, @translateY) {
+  transform: translate(@translateX,@translateY);
+  -webkit-transform: translate(@translateX,@translateY);
+  -moz-transform: translate(@translateX,@translateY);
+}
+
+.rotate(@rotatedg) {
+  -webkit-transform: rotate(@rotatedg);
+  -moz-transform: rotate(@rotatedg);
+  -o-transform: rotate(@rotatedg);
+  transform: rotate(@rotatedg);
+}
+
+.border-radius(@border-radius){
+  -webkit-border-radius: @border-radius;
+  -moz-border-radius: @border-radius;
+  border-radius: @border-radius;
+}
+
+
+//CSS
+.elpug-slider-item-overlay { 
+    background: rgba(0, 0, 0, 0.60);
+}
+.elpug-slider-carousel{
+    .elpug-slider-item .elpug-slider-item-overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;        
+        z-index: 1;
+    }
+    .container {
+        position: relative;
+        z-index: 2;
+    }         
+}
+
+.elpug-slider-carousel-wrapper {
+    background: url('../../assets/img/spinner.gif') no-repeat center center #eee;
+    background-size: 60px 60px;
+    min-height: 350px;
+    @media @laptop {        
+        min-height: 400px;
+    }
+    @media @full-hd {
+        min-height: 500px;
+    }
+}
+
+
+.elpug-slider-carousel {    
+    .owl-controls {
+        .owl-next, .owl-prev {
+            width: 35px!important;
+            height: 35px!important;
+            .border-radius(50%) !important;
+            background-color: transparent!important;
+            border: 2px solid #fff!important;
+            top: 50%;    
+            margin-top: -20px;  
+            opacity: 0.2!important;
+            .anima(0.3s);
+            text-indent: -9999px;
+            overflow: hidden;
+            &:hover {
+                opacity: 0.9!important;
+                background-color: #333!important;
+                border-color: #333!important;
+            }     
+        }
+        .owl-prev {
+            left: 0;
+            background: url('../../assets/img/slide-left.png') no-repeat transparent!important;
+            background-position: 10px 7px!important;
+            @media @desktop {
+                left: 50px;
+            }
+        }
+        .owl-next {
+            right: 0;
+            background: url('../../assets/img/slide-right.png') no-repeat center center transparent!important;
+            background-position: 12px 7px!important;
+            @media @desktop {
+                right: 50px;
+            }
+        }
+    }
+    .elpug-slider-item {
+        color: #fff;
+        background-color: #777;
+        text-align: center;
+        background-position: center center;
+        .bg-cover;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 350px;        
+        align-items: center;
+        padding-top: 70px;
+        position: relative;
+        @media @tablet {
+            padding-top: 10%;
+        }
+        @media @laptop {
+            height: 450px;
+        }
+        @media @full-hd {
+            height: 500px;
+        }
+    }
+    .elpug-slide-inner {
+        padding: 0 15px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 3;
+        @media @laptop {
+            top: -90px;
+        }
+    }
+    .elpug-slide-title {
+        font-size: 40px;        
+        color: #fff;
+        position: relative;
+        margin-bottom: 10px;  
+        letter-spacing: -2px; 
+        font-weight: bold;           
+        @media @tablet {
+            font-size: 57px;
+        }
+        @media @laptop {
+            .translateY(-10px);
+            opacity: 0;
+        }
+        &.active {
+            opacity: 1;
+            .translateY(0px);
+            .anima(0.6s);
+        }
+        .slide-feature-text {
+            color: #333 + #222;
+        }
+    }
+    .elpug-slide-btn {
+        border: 2px solid #fff;
+        display: inline-block;
+        padding: 5px 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fff!important;
+        @media @laptop {
+            .translateY(10px);
+            opacity: 0;
+            &.active {
+                opacity: 0.9;
+                .translateY(0);
+                .anima(0.6s);
+            }
+        }
+    }
+    .elpug-slide-text {
+        opacity: 0.9;        
+        font-weight: 200;
+        font-style: italic;
+        margin-bottom: 30px;                
+        @media @laptop {
+            .translateY(10px);
+            opacity: 0;
+            &.active {
+                opacity: 0.9;
+                .translateY(0);
+                .anima(0.6s);
+            }
+        }
+    }   
+    .elpug-slide-text,
+    .elpug-slide-text p {
+        font-size: 16px;
+        letter-spacing: 0px;
+        line-height: 1.5;  
+    }
+    .owl-nav {
+        div.owl-prev,
+        div.owl-next {
+            display: none;
+            width: 40px;
+            height: 40px;
+            background-color: #0a0f14;
+            .anima(.30s);
+            padding-top: 3px;
+            @media @tablet {
+                .vertically-centered;
+                display: block;
+                font-size: 26px;
+                opacity: 1;
+                margin: 0;
+                color: #fff;
+                text-align: center;
+            }
+            &:hover {
+                background-color: #333;
+            }
+        }
+    }
+    .owl-dots {
+        .horizontally-centered;
+        width: 100%;
+        bottom: 20px;
+        z-index: 88889;
+    }
+    .owl-controls .owl-page span {
+        height: 15px;
+        width: 15px;
+        background-color: #fff;
+        opacity: 1;
+    }
+    .owl-controls .owl-page.active span {
+        height: 18px;
+        width: 18px;
+        border: 2px solid #fff;
+        background: none;
+    }
+    .slide-extra {
+        margin-top: 20px;
+    }
+}
+
+body .elpug-slider-carousel {
+    .slide-videobg {
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #000;
+        z-index: 0;
+        overflow: hidden;
+        z-index: 0;
+        video {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* Make video to at least 100% wide and tall */
+              min-width: 100%; 
+              min-height: 100%; 
+              
+              /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+              width: auto;
+              height: auto;
+              
+              /* Center the video */
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+        }
+    } 
+}
+
+.elpug-slider-carousel.owl-theme .owl-controls {
+    margin: 0 !important;
+}

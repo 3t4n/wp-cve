@@ -1,0 +1,184 @@
+/* ! >> Variables and Mixins
+==============  =========================================== */  
+@full-hd:   ~"(min-width: 1400px)";
+@desktop:   ~"(min-width: 1200px)";
+@laptop:   ~"(min-width:992px)";
+@tablet:    ~"(min-width: 768px)";
+@mobile:    ~"(min-width: 240px) and (max-width: 719px)";
+
+
+
+.anima (@anima) {
+  -webkit-transition: all @anima ease-in-out;
+    -moz-transition: all @anima ease-in-out;
+    transition: all @anima ease-in-out;
+}
+
+.translateY(@translateY) {
+  transform: translateY(@translateY);
+    -webkit-transform: translateY(@translateY);
+    -moz-transform: translateY(@translateY);
+}
+
+.background-cover, .bg-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* ! >> CSS
+========================================================= */  
+
+
+/* Portfolio Module (elpt-portfolio) */
+.elpt-portfolio {
+    padding-top: 20px;
+    padding-bottom: 20px;    
+}
+
+.elpt-portfolio-filter {
+    text-align: center;
+    padding-bottom: 20px;
+    .portfolio-filter-item {
+        border: 0;
+        background: #333;
+        color: #fff;
+        padding: 8px 12px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+        font-size: 13px;
+        outline:none!important;
+        .anima(0.3s);
+        &:hover {
+            background: #555;    
+            opacity: 0.9;                   
+        }
+    }
+    .portfolio-filter-item.item-active {
+        background: #555;
+        opacity: 0.8;   
+        outline:none!important;
+    }
+}
+.elpt-portfolio-content {
+    &:after {
+        content: '';
+        clear: both;
+    }
+    .portfolio-item-wrapper {
+        float: none;
+        margin-bottom: 0;
+        width: 100%;
+        @media @tablet {
+            float: left;
+            width: 50%;
+        }                       
+        img {
+            width: 100%;
+            .anima(0.4s);
+        }
+    }        
+    .portfolio-item {
+        display: block;
+        position: relative;
+        width: 100%;
+        .bg-cover;
+        background-position: center center;
+        &:hover {
+            .portfolio-item-infos-wrapper {
+                opacity: 0.95;
+            }
+            .portfolio-item-infos {
+                opacity: 1!important;
+                .translateY(-0px)!important;
+            } 
+            img {
+                
+            }
+        }
+    }
+    .portfolio-item-infos-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        color: #fff;
+        text-align: center;
+        z-index: 9;
+        .anima(0.4s);
+        opacity: 0;
+    }
+    .portfolio-item-infos {
+       position: absolute;
+       width: 100%;
+       top: 50%;
+       left: 0;
+       margin-top: -20px;
+       z-index: 10;       
+       opacity: 0;
+       .anima(0.4s);
+       .translateY(12px);
+    }
+    p {
+        display: none;
+    }
+    .portfolio-item-title {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 1.1;
+        margin-bottom: 2px;
+    }
+    .portfolio-item-category {
+        font-size: 11px;
+        font-style: italic;
+        display: inline-block;
+        opacity: 0.7;
+        line-height: 1;
+    }
+}
+//Collumns
+.elpt-portfolio-content.elpt-portfolio-columns-3 {
+    .portfolio-item-wrapper {
+        @media @laptop {
+            width: 50%;
+        } 
+    }        
+}
+.elpt-portfolio-content.elpt-portfolio-columns-3 {
+    .portfolio-item-wrapper {
+        @media @laptop {
+            width: 33.33%;
+        } 
+    }        
+}
+.elpt-portfolio-content.elpt-portfolio-columns-4 {
+    .portfolio-item-wrapper {
+        @media @laptop {
+            width: 25%;
+        } 
+    }        
+}
+//margin
+.elpt-portfolio-content.elpt-portfolio-margin {
+    .portfolio-item-wrapper {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 10px;
+    }
+}
+//style
+.elpt-portfolio-content.elpt-portfolio-style-box {
+    .portfolio-item {
+        height: 250px;
+        @media @full-hd {
+            height: 400px;
+        }
+        img {
+            display: none;
+        }
+    }
+    
+}
