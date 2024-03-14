@@ -1,0 +1,63 @@
+<div class="bridge">
+  <div class="connectormessage"></div>
+      <div class="text-center/">
+        <a target="_blank" href="https://app.zendrop.com/">
+          <img src="<?php esc_html_e(plugins_url('images/logo.png', __FILE__)) ?>" alt="" style="display: block; margin-left: auto; margin-right: auto; padding: 30px 0 30px 0; max-width: 260px;">
+        </a>
+      </div>
+      <div class="text-center">
+        <p></p>
+      </div>
+
+  <div class="container">
+    <div class="text-center">
+      <p id="connector-installed-txt">Click the button below to reveal the information to connect your <?php echo $cartName; ?> store to Zendrop.</p>
+      <div id="content-block-manage">
+        <h2><b>How to Connect Zendrop to WooCommerce?</b></h2>
+        1. <b>Login</b> to your <a href="https://app.zendrop.com/" target="_blank">Zendrop account</a> - <i>(If you don't have a Zendrop account yet, create one for free at <a href="https://bitly.zendrop.com/3lCezu1" target="_blank">Zendrop.com</a>)</i><br>
+        2. Click on <b>Connect a store</b></a> banner.<br>
+        3. Select <b>WordPress</b><br>
+        4. Provide the <b>Key Information</b> below on your Zendrop account.<br>
+        5. The connection has been established! You can now start importing products & automate fulfillment!<br>
+        <br>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="progress progress-dark progress-small progress-striped active">
+        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="store-key">
+        <h2><b>Key Information</b></h2>
+        <span class="store-key-title">Your store key:</span>
+        <span class="store-key-content" id="storeKey"><?php esc_html_e($storeKey); ?></span>
+      </div>
+      <button id="bridgeConnectionInstall" class="btn-connect btn-setup">Connect</button>
+    </div>
+
+    <input type="hidden" id="showButton" value="<?php esc_html_e($showButton); ?>">
+    <div id="additionalInfo" style="display: <?php if ($isCustom) {echo 'block';} else {echo 'none';} ?>">
+      <table>
+        <tr>
+          <td><b>Bridge Url:</b></td><td id="bridgeUrlVal"><?php esc_html_e($bridgeUrl); ?></td>
+        </tr>
+        <tr>
+          <td><b>Store Root Directory:</b></td><td><?php esc_html_e(realpath(WP_CONTENT_DIR . '/..')); ?></td>
+        </tr>
+      </table>
+    </div>
+    <button id="bridgeConnectionUninstall" class="btn-disconnect btn-setup">Disconnect</button>
+    <div class="clearfix"></div>
+    <br>
+    <br>
+    -
+    <h2><b>FAQ</b></h2>
+    <a href="https://zendrop.zendesk.com/hc/en-us/articles/4409650628243-How-to-Connect-a-WooCommerce-Store-to-Zendrop" target="_blank">How to Connect my WooCommerce Store to Zendrop</a><br>
+    <a href="https://zendrop.zendesk.com/hc/en-us/articles/7008786868499" target="_blank">CAN NOT INSTALL CONNECTOR CAN'T VERIFY BRIDGE URL (Error Message)</a><br>
+    <a href="https://zendrop.zendesk.com/hc/en-us/articles/5344034095507-Unable-to-connect-your-WooCommerce-store-WordPress-to-Zendrop" target="_blank">Unable to connect my WooCommerce store to Zendrop?</a><br>
+    <a href="https://zendrop.zendesk.com/hc/en-us/articles/5344034095507-Unable-to-connect-your-WooCommerce-store-WordPress-to-Zendrop" target="_blank">My products aren't being imported correctly?</a><br>
+    <a href="https://zendrop.zendesk.com/hc/en-us/articles/4410707210259-How-to-Receive-Tracking-Numbers-From-Zendrop-to-My-WooCommerce-Store" target="_blank">Not receiving Tracking Numbers From Zendrop?</a><br>
+     Contact our <a href="mailto:support@zendrop.com">Support Team</a> ♥
+
+  </div>
+</div>

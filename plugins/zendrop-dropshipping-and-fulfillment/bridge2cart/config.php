@@ -1,0 +1,1 @@
+<?php if (!defined('A2CBC_TOKEN')) {define('A2CBC_TOKEN', 'efe866d6adc7b69d5347dfb7bb9c5938');}
