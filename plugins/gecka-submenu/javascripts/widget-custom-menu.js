@@ -1,0 +1,1 @@
+(function(a){gksm_widget_update_select=function(b,d){var c={action:"gksm_update",ID:b.value,_ajax_nonce:gksm_widget.custom_menu_nonce};a.post(ajaxurl,c,function(e){a(d).html(e)})}})(jQuery);
