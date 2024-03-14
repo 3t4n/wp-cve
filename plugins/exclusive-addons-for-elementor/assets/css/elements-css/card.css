@@ -1,0 +1,156 @@
+
+/* Card Style Start */
+
+.exad-card-description {
+  margin: 0 auto;
+}
+.exad-card-tag {
+  margin: 0;
+}
+
+.exad-card.default {
+  position: relative;
+}
+
+.exad-card.default .exad-card-thumb img {
+  display: block;
+}
+
+.exad-card.default .exad-card-body .exad-card-title,
+.exad-card.text_on_image .exad-card-body .exad-card-title{
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  transition: all .4s ease;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.exad-card.default .exad-card-body .exad-card-title::before,
+.exad-card.text_on_image .exad-card-body .exad-card-title::before {
+  position: absolute;
+  content: '';
+  height: 3px;
+  width: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  transition: all .3s ease;
+  opacity: 0;
+}
+
+.exad-card.default .exad-card-body .exad-card-title:hover::before,
+.exad-card.text_on_image .exad-card-body .exad-card-title:hover::before {
+  opacity: 1;
+  left: -30px;
+}
+
+.exad-card .exad-card-body .exad-card-action {
+  display: table;
+  border-radius: 4px;
+  transition: all .4s ease;
+  color: #132c47;
+  text-decoration: none;
+}
+
+.exad-card.left .exad-card-action {
+  margin-right: auto;
+}
+.exad-card.center .exad-card-action {
+  margin-right: auto;
+  margin-left: auto;
+}
+.exad-card.right .exad-card-action {
+  margin-left: auto;
+}
+
+.exad-card.text_on_image {
+  position: relative;
+  overflow: hidden;
+}
+
+.exad-card.text_on_image::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  transition: all .2s ease;
+  z-index: 1;
+}
+
+.exad-card.text_on_image:hover::before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.exad-card.text_on_image .exad-card-thumb {
+  position: relative;
+}
+
+.exad-card-thumb {
+  overflow: hidden;
+}
+
+.exad-card.left .exad-card-thumb {
+  margin-right: auto;
+}
+.exad-card.center .exad-card-thumb {
+  margin-left: auto;
+  margin-right: auto;
+}
+.exad-card.right .exad-card-thumb {
+  margin-left: auto;
+}
+
+.exad-card .exad-card-thumb img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  -o-object-fit: cover;
+}
+
+.exad-card.text_on_image .exad-card-thumb img {
+  width: 100%;
+}
+
+.exad-card.text_on_image .exad-card-thumb::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.99) 0%, rgba(128, 128, 128, 0.1) 50%, rgba(255, 255, 255, 0.1) 100%);
+}
+
+.exad-card.text_on_image .exad-card-body {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.exad-card.yes .exad-card-thumb img{
+  transform: scale(1);
+  transition: all .3s ease;
+}
+
+.exad-card:hover.yes .exad-card-thumb img{
+  transform: scale(1.15);
+}
+
+.exad-card{
+  position: relative;
+}
+
+.exad-card-badge{
+  position: absolute;
+}
+
+/* Card Style End */

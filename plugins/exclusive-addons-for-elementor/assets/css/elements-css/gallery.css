@@ -1,0 +1,214 @@
+/* Filterable Gallery Start */
+
+.exad-gallery-items {
+  text-align: center;
+}
+
+.exad-gallery-items .exad-gallery-content-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.exad-gallery-items .exad-gallery-image .exad-gallery-thumbnail-holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100.1%;
+    height: 100.1%;
+    background-position: center;
+    background-size: cover;
+    z-index: 0;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    will-change: transform;
+    overflow: hidden;
+}
+.exad-gallery-items .exad-gallery-image {
+    position: relative;
+    background-color: #eeeeee;
+    padding-bottom: 80%;
+}
+.exad-gallery-menu {
+  display: block;
+}
+
+.exad-gallery-menu .filter-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all .3s ease;
+  text-transform: capitalize;
+}
+
+.exad-gallery-items .exad-gallery-element {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.exad-gallery-items .exad-gallery-element .exad-gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .exad-gallery-items .exad-gallery-element .exad-gallery-item {
+    width: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .exad-gallery-items .exad-gallery-element .exad-gallery-item {
+    width: 100%;
+  }
+}
+
+.exad-gallery-items .exad-gallery-element .exad-gallery-item img {
+  width: 100%;
+  display: block;
+}
+
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(114, 76, 255, 0.8);
+  transition: all .3s ease;
+}
+
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay .exad-gallery-item-overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay .exad-gallery-item-overlay-content .exad-fg-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay .exad-gallery-item-overlay-content .exad-gallery-item-content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay .exad-gallery-item-overlay-content a {
+  height: 60px;
+  width: 60px;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  transition: all .3s ease;
+  border-radius: 100%;
+}
+
+.exad-gallery-items .exad-gallery-item-content.below-image {
+  display: flex;
+  flex-direction: column;
+}
+.exad-gallery-items .exad-gallery-item-content h2 {
+  margin: 10px 0px 10px 0px;
+  font-size: 20px;
+}
+
+.exad-gallery-items .exad-gallery-item-content p {
+  margin: 10px 0px 10px 0px;
+}
+
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay .exad-gallery-item-overlay-content a i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay.exad-zoom-in{
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item:hover .exad-gallery-item-overlay.exad-zoom-in{
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay.exad-slide-left{
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+          opacity: 0;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item:hover .exad-gallery-item-overlay.exad-slide-left{
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+          opacity: 1;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay.exad-slide-right{
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          opacity: 0;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item:hover .exad-gallery-item-overlay.exad-slide-right{
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+          opacity: 1;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay.exad-slide-top{
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+          opacity: 0;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item:hover .exad-gallery-item-overlay.exad-slide-top{
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+          opacity: 1;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item .exad-gallery-item-overlay.exad-slide-bottom{
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+          opacity: 0;
+}
+.exad-gallery-items .exad-gallery-element .exad-gallery-item:hover .exad-gallery-item-overlay.exad-slide-bottom{
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+          opacity: 1;
+}
+
+.exad-gallery-element .exad-gallery-item.exad-col-1 {
+  width: 100%;
+}
+.exad-gallery-element .exad-gallery-item.exad-col-2 {
+  width: 50%;
+}
+.exad-gallery-element .exad-gallery-item.exad-col-3 {
+  width: 33.3333333333333%;
+}
+.exad-gallery-element .exad-gallery-item.exad-col-4 {
+  width: 25%;
+}
+
+@media only screen and (max-width: 991px) {
+  .exad-gallery-element .exad-gallery-item.exad-col-1,
+  .exad-gallery-element .exad-gallery-item.exad-col-2,
+  .exad-gallery-element .exad-gallery-item.exad-col-3,
+  .exad-gallery-element .exad-gallery-item.exad-col-4 {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .exad-gallery-element .exad-gallery-item.exad-col-1,
+  .exad-gallery-element .exad-gallery-item.exad-col-2,
+  .exad-gallery-element .exad-gallery-item.exad-col-3,
+  .exad-gallery-element .exad-gallery-item.exad-col-4 {
+    width: 100%;
+  }
+}
+
+/* Flterable gallery End */
