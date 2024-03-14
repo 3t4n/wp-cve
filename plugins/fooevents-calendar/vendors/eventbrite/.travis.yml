@@ -1,0 +1,24 @@
+dist: trusty
+language: php
+php:
+- '5.4'
+- '5.5'
+- '5.6'
+- '7.0'
+- '7.1'
+- hhvm
+
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev --no-interaction
+
+script:
+  - php vendor/bin/phpunit -c phpunit.xml
+
+matrix:
+  allow_failures:
+    - php: hhvm
+
+env:
+  matrix:
+    - secure: kTu8FfF3dDO4NW/M6xweLs7vflA2hW4iZgpPZkfUCiwTqiFo4QRkzAhg3D8+0jjC2IOv7AsYe3bW0iiDIE/JaeRh2Nts4eCiQzXHgBsQsBSqnEkc/9CsFlJ7tbb6SQP6kbhRl33VC0O6W3fWUNhvyHKJp0nRARO5fRcZUHRm6w7pYXcSlmAOhnlocbkozlaACQA0bvx9u79d7KgXgojb14VxJhWLQVNh+J0jLQsBkvr3FWlLv6ZAh8UhCn9MTgaEqnE4siJUeitL/YFMqkgQOb4xAHP70V9jWIuTmSIoaPzz6qPQpy0pz96r5uiH3MifvsCB6H5EGf/EVNAWWr5UH9L8xCWk8ELhzWthulz/YvFPnZooSUtVXdja1qwaDgEjBn1mk4pBP6Kwn+GJP1NVEC2yXmUpgyaJG7Zly2npFRQVznjNeDmpUPJ0qNFrefhyN2y2bFpIUVOpvTkGbhwH/NqlZEKfVObuRy0IYo0IdlcCXm2hhETkEwC5ZaPq2CfYZeYmogyJVPBogZIppXISCkFET/TAl/fKkK3jHU8hh7GYG72yjRmT8m7c0MITYboTAO/hjlaf918ExDHHfEzY4VoD2RIuBVO5Xxkhd88MQEB6RB0i/51p6lULyMxMAryj/AyW5xS4jzuz88/d4bemTjR1So95yOSww0dww26Zvto=
