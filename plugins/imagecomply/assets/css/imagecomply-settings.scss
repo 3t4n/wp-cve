@@ -1,0 +1,369 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+$base: 16px;
+$purple400: #c084fc;
+$purple500: #a855f7;
+$pink600: #db2777;
+$neutral900: rgb(23, 23, 23);
+$neutral700: rgb(64, 64, 64);
+$neutral300: rgb(212, 212, 212);
+
+$transition: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+@function rem($rem) {
+  @return $rem * $base;
+}
+
+@mixin sm() {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin md() {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin lg() {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin xl() {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+.imagecomply-dashboard {
+  margin-top: 20px;
+  padding: rem(2);
+  background: #fff;
+  border-radius: rem(0.25);
+  position: relative;
+
+  font-family: "Inter", sans-serif;
+  font-size: rem(1.25);
+  line-height: rem(1.75);
+
+  margin-right: 20px;
+
+  @media screen and (max-width: 782px) {
+    margin-right: 10px;
+  }
+
+  @include lg {
+    padding: rem(4);
+  }
+
+  * {
+    border: 0 solid #e5e7eb;
+  }
+
+  p {
+    font-size: inherit;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .link {
+    border-bottom: 2px solid $pink600;
+    background: linear-gradient(to right, $purple500, $pink600);
+    background-clip: text;
+    color: transparent;
+    cursor: pointer;
+    transition: opacity $transition;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .gradient-text {
+    background: linear-gradient(to right, $purple500, $pink600);
+    background-clip: text;
+    color: transparent;
+  }
+
+  .logo {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: rem(0.5);
+    font-size: rem(1.5);
+    font-weight: 800;
+
+    > span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to right, $purple400, $pink600);
+      background-clip: text;
+      color: transparent;
+      opacity: 0;
+      transition: opacity $transition;
+    }
+
+    &:hover {
+      > span {
+        opacity: 1;
+      }
+    }
+  }
+
+  h1 {
+    font-size: rem(3);
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: rem(1.625);
+  }
+
+  h3 {
+    font-size: rem(1.25);
+  }
+
+  input:not(.toggle-checkbox),
+  textarea,
+  button,
+  optgroup,
+  select {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  input:not(.toggle-checkbox),
+  textarea,
+  select {
+    border-radius: rem(0.375);
+    border-width: 1px;
+    border-color: rgb(214, 211, 209);
+    padding: rem(0.5) rem(1);
+  }
+
+  [type="button"],
+  [type="reset"],
+  [type="submit"],
+  button,
+  .button {
+    appearance: button;
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .toggle-switch-container {
+    display: flex;
+    align-items: center;
+    gap: rem(1);
+  }
+
+  div.toggle-switch {
+    position: relative;
+    border-radius: 9999px;
+    width: rem(3);
+    height: rem(1.5);
+    transition-property: color, background-color, border-color, fill, stroke,
+      opacity, box-shadow, transform, filter, -webkit-text-decoration-color,
+      -webkit-backdrop-filter;
+    transition-property: color, background-color, border-color,
+      text-decoration-color, fill, stroke, opacity, box-shadow, transform,
+      filter, backdrop-filter;
+    transition-property: color, background-color, border-color,
+      text-decoration-color, fill, stroke, opacity, box-shadow, transform,
+      filter, backdrop-filter, -webkit-text-decoration-color,
+      -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    transition-timing-function: linear;
+
+    > label {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      background-color: #fff;
+      border-width: 2px;
+      width: rem(1.5);
+      height: rem(1.5);
+      border-radius: 9999px;
+      transition-property: color, background-color, border-color, fill, stroke,
+        opacity, box-shadow, transform, filter, -webkit-text-decoration-color,
+        -webkit-backdrop-filter;
+      transition-property: color, background-color, border-color,
+        text-decoration-color, fill, stroke, opacity, box-shadow, transform,
+        filter, backdrop-filter;
+      transition-property: color, background-color, border-color,
+        text-decoration-color, fill, stroke, opacity, box-shadow, transform,
+        filter, backdrop-filter, -webkit-text-decoration-color,
+        -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 100ms;
+      transition-timing-function: linear;
+      cursor: pointer;
+    }
+
+    > input {
+      border: none;
+      border-radius: 99999px;
+      margin: 0;
+      box-shadow: none;
+      min-width: 0;
+      background: none;
+      outline: none;
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+
+      &::before {
+        content: none !important;
+        display: none !important;
+      }
+
+      &:active {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
+
+      &:focus {
+        outline-offset: 2px;
+      }
+    }
+
+    &.active {
+      background-color: rgb(45, 205, 45);
+
+      > label {
+        transform: translateX(100%) translateY(-50%);
+        border-color: rgb(45, 205, 45);
+      }
+      > input {
+        width: calc(100% + 8px);
+      }
+    }
+
+    &.inactive {
+      background-color: $neutral300;
+
+      > label {
+        transform: translateX(0) translateY(-50%);
+        border-color: $neutral300;
+      }
+    }
+  }
+
+  button,
+  [type="button"],
+  [type="submit"],
+  .button {
+    position: relative;
+    overflow: hidden;
+    border-radius: rem(0.375);
+    padding: rem(0.75) rem(2);
+    font-size: rem(1.125);
+    line-height: rem(1.75);
+    font-weight: 600;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+    }
+
+    &[disabled] {
+      opacity: 0.5 !important;
+      cursor: not-allowed !important;
+    }
+
+    &.button--black {
+      background: $neutral900;
+
+      &:not([disabled]):hover {
+        background: $neutral700;
+      }
+    }
+
+    &.button--primary {
+      background: linear-gradient(to right, $purple400, $pink600);
+
+      &::before {
+        content: "";
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        opacity: 0;
+        transition: opacity $transition;
+      }
+
+      &:not([disabled]):hover::before {
+        opacity: 0.1;
+      }
+    }
+  }
+
+  .has-license-key {
+    display: flex;
+    flex-direction: column;
+    gap: rem(2);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: rem(1);
+    max-width: rem(40);
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: rem(0.5);
+    }
+
+    button {
+      align-self: flex-start;
+      margin-top: rem(0.25);
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: rem(1);
+    align-items: baseline;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: rem(0.5);
+  }
+
+  hr {
+    background: linear-gradient(45deg, #e5e7eb 66%, transparent);
+    width: 100%;
+    margin: 30px 0 0px;
+    height: 1px;
+  }
+}
