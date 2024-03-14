@@ -1,0 +1,183 @@
+
+
+**************************************************************************************************
+Update History by Florian Meier for RS EVENT multiday
+
+1.3.1	- 17th Dezember 2012
+
+	* bugfix of functions rs_event_pst() (lines 941, 952, 962)
+		ts_l_location replaced by ts_p_location in order to show location with function rs_event_post()
+
+1.3 	- 04th December 2012
+
+	* major change: group by date
+		completely new code: now grouping by year, month and/or day is possible
+	* major change: introduction of the function rs_event_list_return()
+		in order to offer direct access to $output_array
+	* major change: %TIME%, %STARTTIME%, %ENDTIME%
+		possibility to add an endtime to an event
+		%TIME% shows the starttime or, if an endtime is entered, the start and endtime with the
+		variable 'time-connector' (default value: " - ") in between.
+		%STARTTIME% shows just the entered %STARTTIME%
+		%ENDTIME% shows just the entered %ENDTIME%
+	* major change: widget
+		code for widget control is completely new: now, more than one widget of RS EVENT multiday can
+		be added to a sidebar; furthermore, different categories can be entered.
+	* parameter "loggedin" added
+		if you want to show the widget/function only to logged in users
+	* wildcard %FULLTEXT%
+		possibilty added to disable %FULLTEXT% in order to improve performance if not needed
+	* function rs_event_sidebar controls
+		id-tags added to <div>s in order to customize input area via css
+	* fix of function rs_event_list()
+		argument "$event->id" added to &TITLE& (thanks to Christian Sander)
+	* fix of function rs_event_list()
+		addition to force observance of Role Scoper-imposed restrictions (thanks to kevinB)
+	* fix of widget input
+		" changed to ', so html-code using " can be entered as further info without any problem
+
+		
+1.2.1	- 10th July 2010
+
+	* bugfix of functions rs_event_list() (line 526) and rs_event_id() (line 897)
+		JOIN changed from INNER to LEFT, so pages are found as well 
+		(Category must be set to '0' [=default], if pages should be includes, too!)
+
+
+1.2	- 26th May 2010
+
+	* major changes
+		* $query_string completely renewed in functions rs_event_list() and rs_event_id()
+		  in order to improve performance
+		* Javasript removed in widget control panel (did not really work anyway)
+	* Norwegian translation added (thanks to Barbara)
+		
+
+1.1beta - 22nd April 2010
+	
+	* some major changes
+		* intruduction of the function rs_event_post_return()
+		  in order to make it compatible to Thematic themes 
+		  (thanks to Michelle McGinnis, www.thefriendlywebconsultant.com)
+		* the possibility to mark pages as events is added
+		  i.e. the RS EVENT multiday custom box is now visible on the edit-pages page
+		* the possibility to add a location to the event is added
+		* a tiny facelift to the custom box
+	* Russian translation added
+	* Romanian translation added (thanks to Horia)
+
+
+1.0.1 - 26th May 2009
+
+	* bugfixes
+		* bugfix of function rs_event_save()
+		* bugfix of function rs_event_list(); ORDER BY-clause added at $query_string1
+
+
+
+1.0   - 20th April 2009
+
+	* initial release of RS EVENT multiday
+
+		* function rs-event-delete() removed
+		* option "remove from list with start- or end-date" added
+		  meta_keys _rs_event_ts and _rs_event_start added with option "remove from list"
+		* event data is put in an array and stored with the meta-key _rs_event_array
+		  (data stored with RS EVENT <= v.0.9.8 is still recognized)
+		* meta_keys are no longer visible in "edit post"-panel
+
+
+0.9.8 - 14th April 2009
+
+	* first beta release of RS EVENT multiday
+
+		* function rs-event-post() added
+		* function rs-event-id() added
+		* option "multiday" added
+
+
+
+**************************************************************************************************
+v. 0.9.7 of RS Event
+
+	Mods by LivingOS:
+
+	A modified version incorporating the WordPress 2.3 fixes from LivingOS and some of the 
+	ideas from Nudnik i.e. preset this year on Write Post form & if no time is set, leave it 
+	out plus some cosmetics. It does not include his change to 12 hour clock which I didn't 
+	think was helpful.
+
+
+	Mods by Rick Parsons:
+
+	* reduced the excerpt size from 55 to 20 words because 55 is a bit long for a sidebar.
+	* fixed a bug with timezoning in routine gmdate_i18n and another one in rs_event_list 
+	  (right at the top).
+	* modified the algorithm, so that today's events stay on the page right up to the very end. 
+	  I have done this so that I can keep the caption "Services this Sunday" without it 
+	  changing over to next week's morning service part way through the day.
+	* changed the plugin registration and admin so that it works properly with WP2.7
+
+
+
+**************************************************************************************************
+Update History by Robert Sargant for RS EVENT 0.5 - 0.9.3
+
+
+0.9.3 — 13th August 2006
+
+        * Bugfix: fixing (hopefully) the last timezone issue introduced in 0.9.1 
+
+0.9.2 — 11th August 2006
+
+        * Bugfix: shifting dates problem introduced in 0.9.1 
+
+0.9.1 — 28th July 2006
+
+        * Bugfix: MySQL timezone settings cause a delay in event appearance for servers behind UTC
+
+0.9 — 26th July 2006
+
+        * Bugfix: events attached to postdated posts are not shown
+        * Bugfix: output variables now passed through appropriate filters
+        * New-look widget options panel
+        * New output variable %EXCERPT%
+        * Ability to restrict to a single category
+        * Ability to change sort order
+        * Cleaned up code substantially
+
+0.6.3 — 8th July 2006
+
+        * Bugfix: events attached to unpublished posts are not shown.
+        * You can now specify a distance into the past to retrieve posts for.
+
+0.6.2 — 12th May 2006
+
+        * Events no longer remain listed when the parent post is deleted
+
+0.6.1 — 7th May 2006
+
+        * Date output now obeys WordPress locality (thanks Choan!)
+        * Clickable tags in widget options
+        * New %FULLTEXT% tag for more flexibility
+
+0.6 — 16th April 2006
+
+        * Now widgets compatible!
+        * Timespan is now in units of days, not seconds
+        * A couple of small alterations to the HTML output to make it more compatible with widgets
+
+0.5.2 — 15th April 2006
+
+        * You can now easily remove events from posts
+        * Default timespan is now 365 days, to clear up some confusion
+
+0.5.1 — 13th March 2006
+
+        * You can now restrict the number of events displayed simultaneously.
+        * Cleaned up ambiguous documentation about "timestamp".
+
+0.5 — 3rd March 2006
+
+        * Initial release.
+
