@@ -1,0 +1,764 @@
+// main: style.scss
+#megamenu-wp-page {
+    overflow-x: hidden;
+
+    .megamenu-wp {
+        position: relative;
+        &::after {
+            //@include clearfix();
+        }
+        .mega-item {
+            //position: initial;
+            // Disable default WP menu child
+            .column-heading, .widgettitle, .widget-title {
+                font-size: 17px;
+                //letter-spacing: 0.3px;
+               //text-transform: uppercase;
+                text-align: left;
+                //color: $heading;
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+                line-height: 22px;
+                a {
+                    color: inherit;
+                }
+            }
+            .widget {
+                text-align: left;
+                color: $text;
+                ul {
+                    li {
+                        &:hover {
+                            background: none;
+                        }
+                    }
+                }
+            }
+            .rc-hide_on_mobile {
+                .column-heading {
+                    @include for-desktop(){
+                        display: none;
+                    };
+                    @include for-mobile(){
+                        display: block;
+                    };
+                }
+            }
+
+            .mega-content {
+                padding: 0px;
+                &::after, &::before {
+                    visibility: hidden !important;
+                    opacity: 0;
+                }
+                li {
+                    text-indent: 0px;
+                }
+                li.mega-content-li {
+
+                    width: 100%;
+                    //display: block;
+                    left: auto;
+                    position: relative;
+                    right: auto;
+                    //visibility: visible;
+                    opacity: 1;
+                    padding: 0px !important;
+                    //float: none;
+                    background: none;
+                    max-width: initial;
+                    display: inherit;
+                    margin: 0;
+                    border: 0;
+                }
+
+                @include for-desktop() {
+                    color: $text;
+                    line-height: 1.6;
+                    /* Reset Items inside CSS*/
+
+                    a {
+                        display: inline-block;
+                        background: none;
+                        color: $text;
+                        white-space: normal;
+                        line-height: inherit;
+                        position: relative;
+                        width: initial;
+                        // Disable all icons
+                        &:after, &:before {
+                            display: none;
+                        }
+                        &:hover {
+                            color: #000000;
+                        }
+                    }
+                    ul {
+                        height: auto;
+                        width: auto;
+                        background: none;
+                        display: block;
+                        position: relative;
+                        overflow: initial;
+                        margin: auto;
+                        left: auto;
+                        right: auto;
+                        top: auto;
+                        border: 0px none;
+                        opacity: 1;
+
+                        ul {
+                            padding-left: $gutter*2;
+                            left: auto;
+                        }
+                        li {
+                            &::before {
+                                //float: none;
+                            }
+                            display: block;
+                            margin: 0px;
+                            border: 0px none;
+                            float: none;
+                            a {
+                                width: auto;
+                            }
+                            &:hover {
+                                color: $text;
+                                a {
+                                    color: $text;
+                                    &:hover {
+                                        color: $text;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                } // end for desktop
+
+                iframe {
+                    max-width: 100%;
+                }
+                /* END Reset Items inside CSS*/
+
+                /* WP Default widgets */
+
+                .widget_tag_cloud {
+                    .tagcloud {
+                        a {
+                            display: inline-block;
+                            padding: 0px;
+                        }
+                    }
+                }
+                .widget {
+                    box-shadow: none;
+                }
+
+                .calendar_wrap table{
+                    width: 100%;
+                }
+
+                .widget {
+                    .widget-title {
+                        text-align: left;
+                    }
+                    background: inherit;
+                    border: 0px;
+                    padding: 0px;
+                    text-align: left;
+                    a {
+                        padding: 0px;
+                    }
+                    &:last-child {
+                        margin-bottom: 0px;
+                    }
+                    ul {
+                        padding: 0px;
+                        margin: 0px;
+                        box-shadow: none;
+                        ul {
+                            padding-left: 30px;
+                        }
+                        li {
+                            > a {
+                                padding: 0px;
+                            }
+                            margin-bottom: 10px;
+                            padding: 0px;
+                            &:last-child {
+                                margin-bottom: 0px;
+                            }
+                        }
+                    }
+                    &.widget_recent_comments {
+                        a {
+                            display: inline;
+                        }
+                    }
+                }
+
+                .wp-video {
+                    padding-top: 55%;
+                    position: relative;
+                    .me-plugin {
+                        height: 100% !important;
+                        width: 100% !important;
+                        display: block;
+                    }
+                    .mejs-container {
+                        position: absolute;
+                        top:0px;
+                        left: 0px;
+                        height: 100% !important;
+                        width: 100% !important;
+                    }
+                }
+
+                /* END WP Default widgets */
+
+                /* Layout Builder */
+                .mega-widget {
+                    word-wrap: break-word;
+                    white-space: normal;
+                    background: inherit;
+                }
+
+                .mega-element {
+                    display: block;
+                }
+                .mega-menu-item {
+                    a {
+                        display: block;
+                        float: none;
+                        line-height: 20px;
+                        line-height: 18px;
+                        padding: 10px 0px;
+                        border: 0px none;
+                    }
+                }
+                .mega-widget {
+                    li {
+                        padding: 0px;
+                    }
+                    a {
+                        line-height: 20px;
+                        line-height: 18px;
+                        padding: 10px 0px;
+                        border: 0px none;
+                    }
+                }
+                /* END Layout Builder */
+
+                /* Mega tab posts */
+                .mega-tab-post-cont {
+                    @include for-desktop(){
+                        position: relative;
+                        -webkit-flex: 1;
+                        flex: 1;
+                        overflow: hidden;
+                        &:before{
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            top: 0px; right: 0px;
+                            bottom: 0px; left: 0px;
+                            background: rgba( 255, 255, 255, .6 );
+                            //z-index: 23;
+                            display: none;
+                        }
+                        .mega-spinner {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            display: none;
+                            transform: translate( -50%, -50%);
+                            //z-index: 26;
+                        }
+                    }
+                    @include for-mobile(){
+                        display: none;
+                    }
+
+                }
+
+                // Start mega tab post
+                @include for-desktop() {
+                    .mega-tab-posts {
+                        background: #fff;
+                        display: flex;
+
+                        .mega-tab-post-cont {
+                            //box-shadow: 0 1px 5px $border;
+                            //border: 1px solid $border;
+                        }
+                        &.loading {
+                            .mega-tab-post-cont {
+
+                                &:before {
+                                    display: block;
+                                }
+                                .mega-spinner {
+                                    display: block;
+                                }
+                            }
+                        }
+                        &.tabs-left {
+                            .mega-tab-post-nav {
+                                background: #f7f7f7;
+                                border-right: 1px solid $border;
+                                .li {
+                                    padding-left: 0px;
+                                    border-right: 1px solid transparent;
+                                    position: relative;
+                                    right: -1px;
+                                    margin-left: -2px;
+                                    min-width: 200px;
+                                    a {
+                                        border-color: transparent;
+                                        border-image: none;
+                                        border-style: solid none solid solid;
+                                        border-width: 1px 0 1px 1px;
+                                        //border-radius: 2px 0 0 2px;
+
+                                    }
+                                    &:hover, &.active {
+                                        //background: #fff;
+                                        border-right-color: #FFFFFF;
+                                        a {
+                                            //box-shadow: -2px 1px 5px #dcdee3;
+                                            border-color: $border transparent $border $border;
+                                            background: #FFF;
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.tabs-right {
+                            .mega-tab-post-nav {
+                                order: 5;
+                                background: #f7f7f7;
+                                border-left: 1px solid $border;
+                                .li {
+                                    padding-right: 0px;
+                                    border-left: 1px solid transparent;
+                                    position: relative;
+                                    left: -1px;
+                                    margin-right: -2px;
+                                    .arrow {
+                                        right: auto;
+                                        left: 15px;
+                                        .arrow-inner {
+                                            &:before, &::after {
+
+                                            }
+                                            &::before {
+                                                transform: rotate(-45deg);
+                                            }
+                                            &::after {
+                                                transform: rotate(45deg);
+                                            }
+                                        }
+
+                                    }
+
+                                    a {
+                                        border-color: transparent;
+                                        border-image: none;
+                                        border-style: solid none solid solid;
+                                        border-width: 1px 1px 1px 0px;
+                                        //border-radius: 2px 0 0 2px;
+                                    }
+                                    &:hover, &.active {
+                                        background: #fff;
+                                        a {
+                                            border-color: $border $border $border transparent;
+                                            background: inherit;
+
+                                        }
+                                    }
+
+                                    a {
+                                        text-align: right;
+                                        @include for-mobile() {
+                                            text-align: left;
+                                        }
+                                    }
+                                    .mega-spinner {
+                                        right: auto;
+                                        left: 30px;
+                                    }
+                                }
+                            }
+                            .mega-tab-post-cont {
+                                order: 1;
+                            }
+                        }
+                        .post {
+                            box-shadow: none;
+                        }
+                        .megamenu-post-thumbnail {
+                            position: relative;
+                            overflow: hidden;
+                            display: block;
+                            a {
+                                width: 100%;
+                                display: block;
+                                padding: 62% 0 0 0;
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                                background-position: center center;
+                            }
+                            img {
+                                width: 100%;
+                                height: auto;
+                            }
+
+                        }
+                        .post-title {
+                            font-size: 16px;
+                            margin: 10px 0px 0px;
+                            border: 0px none;
+                            background: none;
+                            text-align: left;
+                            a {
+                                padding: 0px;
+                                font-size: 16px;
+                                border: 0px none;
+                                max-width: 100%;
+                                min-width: 0px;
+                            }
+                        }
+                        .nav-post {
+                            margin-bottom: 0;
+                            background: inherit;
+                            a {
+                                border: none;
+                            }
+
+                            
+                        }
+
+                        .mega-tab-post-nav {
+                            padding: 0px;
+                            //opacity: 1;
+                            //visibility: visible;
+                            background: none;
+                            padding-top: 28px;
+                           // min-width: 150px;
+                            @include for-mobile() {
+                                padding-top: 0px;
+                            }
+                            &:before, &:after {
+                                background: none;
+                            }
+                            @include for-desktop() {
+                                width: 250px;
+                                max-width: 250px;
+                                min-width: 250px;
+                            }
+                            &:after {
+                                @include clearfix();
+                            }
+
+                            //border-right: 1px solid $border;
+                            a {
+                                display: block;
+                                width: auto;
+                                float: none;
+                                min-width: 100px;
+                                outline: none;
+                            }
+                            .li {
+                                display: block;
+                                float: none;
+                                position: relative;
+                                //z-index: 20;
+                                margin-top: -1px;
+                                .arrow {
+                                    @include for-mobile {
+                                        display: none;
+                                    }
+
+                                    @include for-desktop() {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                    }
+                                    position: absolute;
+                                    height: 100%;
+                                    width: 15px;
+                                    top: 0px;
+                                    right: 0px;
+
+                                    .arrow-inner {
+                                        width: 20px;
+                                        height: 20px;
+                                        display: block;
+                                        position: relative;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        &:before, &::after {
+                                            width: 7px;
+                                            height: 1.3px;
+                                            content: " ";
+                                            display: block;
+                                            position: relative;
+                                            background: $text;
+                                        }
+                                        &::before {
+                                            transform: rotate(45deg);
+                                            top: 6px;
+                                            right: 0px;
+                                        }
+                                        &::after {
+                                            transform: rotate(-45deg);
+                                            bottom: -9px;
+                                            right: 0px;
+                                        }
+                                    }
+
+                                }
+
+                                a {
+                                    line-height: 1.6;
+                                    //border-bottom: 1px solid $border;
+                                    border-top: 0px;
+                                    padding: 7px 25px 8px 13px;
+                                }
+                            }
+                        }
+                        .nav-posts-tab {
+                            padding: 14px;
+                            display: none;
+
+                            @include for-desktop {
+                                overflow: hidden;
+                                div {
+                                    transition: all .7s ease;
+                                    opacity: 0.2;
+                                    transform: translateY(- 15px);
+                                }
+                                &.animation {
+                                    div {
+                                        opacity: 1;
+                                        transform: translateY(0px);
+                                    }
+                                }
+                            }
+                            transition: all $animation-delay ease;
+                            &.active {
+                                display: block;
+                            }
+                            .nav-post {
+                                padding: 14px;
+                                float: left;
+
+                                a {
+                                    word-wrap: break-word;
+                                    white-space: normal;
+                                    line-height: inherit;
+                                    text-transform: none;
+                                    letter-spacing: 0;
+                                }
+                                .post-title {
+                                    line-height: 1.6;
+                                }
+                            }
+                        }
+
+                        .nav-posts-tab[data-col="2"] {
+                            > .nav-post {
+                                width: percentage(6/ 12);
+                                &:nth-child( 2n+1 ) {
+                                    clear: left;
+
+                                }
+                            }
+                        }
+
+                        .nav-posts-tab[data-col="3"] {
+                            > .nav-post {
+                                width: percentage(4/ 12);
+                                &:nth-child( 3n+1 ) {
+                                    clear: left;
+
+                                }
+                            }
+                        }
+
+                        .nav-posts-tab[data-col="4"] {
+                            > .nav-post {
+                                width: percentage(3/ 12);
+                                &:nth-child( 4n+1 ) {
+                                    clear: left;
+
+                                }
+                            }
+                        }
+
+                        .nav-posts-tab[data-col="6"] {
+                            > .nav-post {
+                                width: percentage(2/ 12);
+                                &:nth-child( 6n+1 ) {
+                                    clear: left;
+
+                                }
+                            }
+                        }
+
+                        .nav-tab-paging {
+                            clear: both;
+                            padding: 0px $gutter/2 0px;
+                            text-align: initial;
+                            margin-bottom: 5px;
+                            &:after {
+                                @include clearfix();
+                            }
+                            a {
+                                &.disable {
+                                    //display: none;
+                                    opacity: 0.4;
+                                    cursor: default;
+                                }
+                                border: 1px solid $border;
+                                padding: 12px 10px;
+                                width: 28px;
+                                height: 28px;
+                                min-width: 28px;
+                                min-height: 28px;
+                                line-height: 1;
+                                position: relative;
+                                display: inline-block;
+                                margin: 0 3px 0 0;
+
+                                &:before, &::after {
+                                    width: 7px;
+                                    height: 1.3px;
+                                    content: " ";
+                                    display: block;
+                                    position: relative;
+                                    background: $text;
+                                    margin: 0px;
+                                }
+                                &::before {
+                                    transform: rotate(45deg);
+                                    top: -1px;
+                                    right: 0px;
+                                }
+                                &::after {
+                                    transform: rotate(-45deg);
+                                    bottom: -2px;
+                                    right: 0px;
+                                }
+
+                                &.back-page {
+                                    &::before {
+                                        transform: rotate(-45deg);
+                                    }
+                                    &::after {
+                                        transform: rotate(45deg);
+
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                } // End for desktop
+
+                @include for-mobile(){
+                    .mega-tab-post-nav {
+                        a {
+                            display: block;
+                        }
+                        .li {
+                            padding: 10px 15px;
+                        }
+                    }
+                }
+                /* END Mega tab posts */
+
+
+
+            } // end mega content
+            @include for-desktop() {
+                &.mega-full {
+                    .mega-content {
+                        overflow: initial !important;
+                        box-shadow: none;
+                        &:hover, .mega-hover {
+                            overflow: initial !important;
+                            li.mega-content-li {
+                                opacity: 1;
+                            }
+                        }
+                        .mega-content-li {
+                            overflow: initial;
+                            border: 0px none;
+                        }
+                    }
+
+                    .mega-content-inner {
+                        margin-left: -9999em;
+                        margin-right: -9999em;
+                        padding-left: 9999em;
+                        padding-right: 9999em;
+                        .mega-inner {
+                            //border: 0px none;
+                            background: none;
+                           // box-shadow: none;
+                        }
+                    }
+
+                    &.mega-content-boxed {
+                        .mega-content-inner {
+                            .mega-row {
+                                padding-left: 0px;
+                                padding-right: 0px;
+                            }
+                        }
+
+                    }
+                }
+                // end mega Full width
+            }
+
+            &.mega-boxed {
+                &.mega-hover {
+                    @include for-desktop {
+                        .mega-content-inner {
+                           // border: 1px solid $border;
+                        }
+                    }
+                }
+            }
+
+            @include for-desktop(){
+                .mega-content-inner {
+                    background: #FFF;
+                    display: block;
+                    &:after {
+                        @include clearfix();
+                    }
+                }
+                // For hover action
+                .mega-content {
+                    background: none;
+                }
+            }
+
+            // Animations
+
+        } // /.mega-item
+    }
+}
+
+// For live view
+.mega-hover .mega-content {
+    display: block !important;
+    opacity: 1 !important;
+    top: 100% !important;
+    visibility: visible !important;
+}
