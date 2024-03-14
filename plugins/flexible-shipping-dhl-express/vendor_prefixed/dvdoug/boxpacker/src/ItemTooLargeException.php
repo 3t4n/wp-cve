@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Box packing (3D bin packing, knapsack problem).
+ *
+ * @author Doug Wright
+ */
+declare (strict_types=1);
+namespace DhlVendor\DVDoug\BoxPacker;
+
+/**
+ * Exception used when an item is too large to pack into any box.
+ * @deprecated now unused, just catch NoBoxesAvailableException
+ */
+class ItemTooLargeException extends \DhlVendor\DVDoug\BoxPacker\NoBoxesAvailableException
+{
+}

@@ -1,0 +1,99 @@
+{
+  "name": "wpdesk/flexible-shipping-dhl-express",
+  "authors": [
+	{
+	  "name": "Grzegorz",
+	  "email": "grzegorz@octolize.com"
+	}
+  ],
+  "autoload": {
+	"psr-4": {
+	  "WPDesk\\FlexibleShippingDhl\\": "src/Plugin",
+	  "WPDesk\\FlexibleShippingDhl\\ApiStatus\\": "src/ApiStatus"
+	},
+	"classmap": [
+	  "vendor_prefixed"
+	]
+  },
+  "autoload-dev": {
+	"classmap": [
+	  "vendor/wpdesk/wp-basic-requirements",
+	  "tests/unit",
+	  "tests/integration",
+	  "tests/codeception/tests/acceptance"
+	]
+  },
+  "config": {
+	"autoloader-suffix": "FSDhlExpress",
+	"sort-packages": true,
+	"platform": {
+	  "php": "7.4"
+	},
+    "allow-plugins": {
+      "cweagans/composer-patches": true,
+      "kylekatarnls/update-helper": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "wpdesk/wp-codeception": true,
+      "wpdesk/wp-wpdesk-composer": true
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.4",
+    "wpdesk/wp-wpdesk-helper-override": "^1.1.0"
+  },
+  "require-dev": {
+    "10up/wp_mock": "*",
+    "octolize/wp-shipping-extensions": "^1.5",
+    "octolize/wp-octolize-tracker": "^1.2",
+    "phpunit/phpunit": "<7",
+    "wpdesk/dhl-express-shipping-service": "^2.0.0",
+    "wpdesk/wp-codeception": "^2.3.0",
+    "wpdesk/wp-dhl-express-shipping-method": "^2",
+    "wpdesk/wp-logs": "^1.7.3",
+    "wpdesk/wp-plugin-flow-free": "^1.0.2",
+    "wpdesk/wp-pro-woocommerce-shipping": "^2.1.0",
+    "wpdesk/wp-woocommerce-shipping": "^3.27.2",
+    "wpdesk/wp-wpdesk-composer": "^2.14.7",
+    "wpdesk/wp-wpdesk-rating-petition": "^1.1",
+    "wpdesk/wpdesk-packer": "^3.0"
+  },
+  "extra": {
+	"php-requires": "7.2",
+	"text-domain": "flexible-shipping-dhl-express",
+	"translations-folder": "lang",
+	"translation-file-headers": {
+	  "Project-Id-Version": "Flexible Shipping DHL Express",
+	  "Last-Translator": "Grzegorz Rola <grola@octolize.com>",
+	  "X-Poedit-WPHeader": "flexible-shipping-dhl-express.php"
+	},
+	"po-files": {
+	  "pl_PL": "pl_PL.po",
+	  "de_DE": "de_DE.po"
+	},
+	"minify-assets": {
+	  "js": [
+		"assets/js/admin.js"
+	  ]
+	},
+	"prefix_psr": true
+  },
+  "scripts": {
+	"test": "echo composer is alive",
+	"phpcs": "phpcs",
+	"phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+	"phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+	"docs": "apigen generate"
+  },
+  "repositories": {
+    "octolize": {
+      "type": "composer",
+      "url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
+    },
+    "wpdesk": {
+      "type": "composer",
+      "url": "https://gitlab.wpdesk.dev/api/v4/group/wpdesk/-/packages/composer/"
+    }
+  }
+}
