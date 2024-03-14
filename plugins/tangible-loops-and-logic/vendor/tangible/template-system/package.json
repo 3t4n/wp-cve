@@ -1,0 +1,59 @@
+{
+  "name": "@tangible/template-system",
+  "description": "Template System module",
+  "homepage": "https://github.com/tangibleinc/template-system",
+  "repository": "git@github.com:tangibleinc/template-system.git",
+  "type": "module",
+  "tangible": {
+    "deployType": "module"
+  },
+  "scripts": {
+    "// Local environment": "",
+    "start": "wp-env start",
+    "stop": "wp-env stop",
+    "destroy": "wp-env destroy",
+    "env": "wp-env",
+    "env:update": "wp-env start --update",
+    "env:shell": "wp-env run cli bash",
+    "env:composer": "wp-env run cli bash -c 'cd wp-content/plugins/template-system && composer install'",
+    "// Build": "",
+    "dev": "roll dev",
+    "build": "roll build",
+    "format": "roll format",
+    "check": "node tools/check.js",
+    "version": "node tools/version.js",
+    "list": "node tools/list-modules.js",
+    "deps": "node ./tools/deps.js",
+    "subrepo": "./tools/git-subrepo/bin",
+    "// Test": "",
+    "test": "wp-env run tests-wordpress /var/www/html/wp-content/plugins/template-system/vendor/bin/phpunit --testdox -c /var/www/html/wp-content/plugins/template-system/phpunit.xml --verbose",
+    "test:all": "npm run test && npm run e2e",
+    "test:watch": "chokidar '**/*.php' --initial --silent --ignore node_modules --ignore vendor -c 'wp-env run tests-wordpress /var/www/html/wp-content/plugins/template-system/vendor/bin/phpunit --testdox -c /var/www/html/wp-content/plugins/template-system/phpunit.xml --verbose'",
+    "test:7.4": "WP_ENV_PHP_VERSION=7.4 wp-env start && npm run test",
+    "test:8.2": "WP_ENV_PHP_VERSION=8.2 wp-env start && npm run test",
+    "e2e": "playwright test",
+    "e2e:watch": "chokidar 'tests/e2e/**/*.js' --initial --silent -c 'playwright test -- --retries=0'",
+    "e2e:ui": "playwright test --ui",
+    "// HTML profiler and snapshots - See /tests/html": "",
+    "start:xdebug": "wp-env start --xdebug=develop --update",
+    "html": "wp-env run tests-wordpress php wp-content/plugins/template-system/tests/html/index.php",
+    "html:profile": "wp-env run tests-wordpress php wp-content/plugins/template-system/tests/html/index.php profile",
+    "html:snapshot": "wp-env run tests-wordpress php wp-content/plugins/template-system/tests/html/index.php snapshot"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@tangible/roller": "^1.7.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@wordpress/e2e-test-utils-playwright": "^0.16.0",
+    "@wordpress/env": "^9.0.0",
+    "chokidar-cli": "^3.0.0",
+    "globby": "^14.0.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "useTabs": false
+  }
+}
