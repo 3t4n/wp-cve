@@ -1,0 +1,28 @@
+{
+    "require": {
+        "qcloud/cos-sdk-v5": "^2.0",
+        "tencentcloud/monitor": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SyncQcloudCos\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": "SyncQcloudCos\\Composer::removeUnusedModels",
+        "post-update-cmd": "SyncQcloudCos\\Composer::removeUnusedModels"
+    },
+    "extra": {
+        "tencentcloud/monitor": [
+            "GetMonitorDataRequest.php",
+            "Instance.php",
+            "Dimension.php",
+            "GetMonitorDataResponse.php",
+            "DataPoint.php"
+        ]
+    }
+}
