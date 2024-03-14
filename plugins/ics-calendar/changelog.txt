@@ -1,0 +1,2170 @@
+=== ICS Calendar Changelog ===
+
+= 10.14.1.3 - 2024.03.08 =
+
+* AJAX:
+  * Added failure handling that will retry the AJAX request up to 5 times in situations where the AJAX response is only `1` instead of the proper calendar HTML output. After the fifth failure, AJAX will report `ICS Calendar AJAX request failed for element...` to the JavaScript console. (Previous versions would fail in this way after one attempt.)
+* Bug fix:
+  * Modified conditional introduced in version 10.14.1.2, to resolve possible `Undefined array key "VALUE"` PHP warnings.
+* Misc:
+  * Removed unnecessary `global $wp_locale;` line from all templates.
+  * Added `changelog.txt` and moved older changelogs to that file; truncated changelog in `readme.txt` to comply with WordPress repository requirements.
+* Bumped 'tested up to' version to 6.5.
+
+= 10.14.1.2 - 2024.03.06 =
+
+* Added a workaround for a possible issue with the [ics-parser](https://github.com/u01jmg3/ics-parser) library on recurrence exclusions (`EXDATE`) where excluded event dates are still being included in the output array.
+* Updated embedded ics-parser library to v. 3.3.1 (carrying over existing modifications).
+
+= 10.14.1.1 - 2024.02.21 =
+
+* JavaScript:
+  * Replaced `wp_localize_script()` with the now-preferred `wp_add_inline_script()` in `R34ICS::enqueue_scripts()` method. Fixes an issue where the "localized" script was not actually rendering in the page in some situations.
+  * Modified logic that hides "Show past events" on mobile month/week views, when there are no past events in the current month, to account for the `.month_list_all` class (an ICS Calendar Pro-only feature).
+
+= 10.14.1 - 2024.01.25 =
+
+* Added **Remove "Add ICS Calendar" button in Classic Editor** admin option to leverage the existing `r34ics_display_add_calendar_button` action without the need for custom PHP code.
+* Added `r34ics_purge_calendar_transients` action to allow external cleanup functions to fire off on the **Clear Cached Calendar Data** utility.
+* JavaScript: added type casting to `r34ics_boolean_check()` function to prevent occasional AJAX loading errors.
+* i18n: New translation strings.
+
+= 10.14.0 - 2024.01.11 =
+
+* AJAX:
+  * Encapsulated AJAX client-side logic in a new `r34ics_ajax_init()` function, and added `r34ics_ajax_start` and `r34ics_ajax_end` events.
+  * Two changes to address the issue of AJAX requests occasionally outputting only "1" instead of the calendar:
+    1. Added a check on the `R34ICS::display_calendar()` method for transient data containing only "1" instead of the calendar, bypassing the transient cache if true.
+    2. Added handling to the AJAX output itself to suppress display of the "1" if it still occurs, and write an error message to the console. We are still investigating the root cause of this issue.
+* JavaScript:
+  * Added JavaScript version of `r34ics_boolean_check()` function.
+* List view:
+  * Added text underline to events that have a clickable description when the `toggle` option is turned on, to give users a visual cue.
+
+= 10.13.1.1 - 2023.12.16 =
+
+* AJAX: Replaced `FILTER_SANITIZE_STRING`, deprecated in PHP 8.1, with a new sanitization method, and added conditional to prevent processing the AJAX output if URL is missing.
+
+= 10.13.1 - 2023.12.08 =
+
+* Basic view:
+  * Switched event layouts to use CSS flexbox instead of float, to address issues where long event titles may force all text to wrap below the date block.
+  * Additional minor CSS adjustments.
+* Month view:
+  * Added "Today" link to header navigation. Requires `monthnav` to be set to an option that includes the previous/next arrows (all except the default `select`).
+  * Fixed bug that would prevent "Show past events" link from appearing in mobile breakpoint under certain conditions.
+* i18n: Added new translation strings.
+
+= 10.13.0.2 - 2023.12.04 =
+
+* Added missing logic to turn off caching if `debug="3"` is set; refactored logic for setting `reload` value.
+* Adjusted CSS for event hover effects to improve performance in some views in the Pro version.
+* Narrowed jQuery selector scope for pagination logic in List and Basic views, to fix a conflict with some views in the Pro version.
+
+= 10.13.0.1 - 2023.11.28 =
+
+* Fixed a display bug introduced in v.10.13.0 that would cause broken HTML code to appear directly on the page for some sites. (The default values for the new `htmltageventtitle` and `htmltageventdesc` parameters were not being set correctly for sites with the **Use new parameter defaults (v.10.6)** setting turned off.)
+* Renamed new `r34ics_filter_allowed_heading_tags()` function to `r34ics_allowed_heading_tags_check()`, since it's not technically a filter.
+* Hotfix: Added `.event-info` wrapper element in Basic view to prevent longer event descriptions from wrapping below the floating date block element.
+
+= 10.13.0 - 2023.11.27 =
+
+* New Features:
+  * **Added new "Basic" view.** Use `view="basic"` in your shortcode. This is a variant of List view that does not group events by date/month. By default, the date of each event is displayed in a prominent date box. For a "true" basic view, also add `nostyle="true"` to your shortcode. This view supports most of the same parameters (and associated functionality) as List view, including `count`, `pagination`, `color`, `eventdesc` and `toggle`.
+  * All views: Added `<span>` wrapping of date elements (day of week, month, day number, year, etc.) with a new `data-date-format` attribute on each tag. Allows for custom styling of the components of a date. This feature is used for the date boxes in the new Basic view, but also allows for custom styling of List view.
+* New shortcode parameters:
+  * `htmltageventdesc`: Sets the HTML tag used for the `.eventdesc` element on events.
+  * `htmltageventtitle`: Sets the HTML tag used for the `.title` element on events.
+  * `htmltagtime`: Sets the HTML tag used for the `.time` element.
+  * `nostyle`: Turns off most of Basic view's default HTML styling for a "true" basic view that you can customize with your own CSS. (Currently has no effect on any other views.)
+* New filter:
+  * `r34ics_display_add_calendar_button`: Use with the `__return_false` function to turn off the "Add ICS Calendar" button in Classic Editor.
+* Functionality changes:
+  * The `paginationposition` parameter in List and Basic views now defaults to `above` rather than `below`.
+  * Minor code refactoring in `templates/calendar-list.php` and `functions.php`.
+
+= 10.12.2 - 2023.11.13 =
+
+* Admin Utilities:
+  * Removed raw data output from ICS Feed URL Tester utility.
+  * Minor refactoring of `r34ics_system_report()` function.
+* Security:
+  * Streamlined URL validation code added in v.10.12.0.4 to remove redundant custom logic, and instead rely on the WP core `[wp_http_validate_url()](https://developer.wordpress.org/reference/functions/wp_http_validate_url/)` function. This change also adds the ability for site developers to use the `[http_request_host_is_external](https://developer.wordpress.org/reference/hooks/http_request_host_is_external/)` filter to selectively grant access to specific internal network URLs, e.g. for retrieving ICS feeds from locally hosted mail/calendar servers.
+  * Restricted debugging data collection to users with the Administrator role, and removed raw retrieved URL data from all debugging tools.
+* i18n:
+  * Updated translation strings.
+* Vendors:
+  * Updated ICS Parser library to 3.3.1 (with modified namespace, as usual, to avoid plugin conflicts).
+
+= 10.12.1 - 2023.11.06 =
+
+* Bug fix: Corrected CSS logic for `combinemultiday` that would incorrectly display event titles if site's **Week starts on** value was anything other than Sunday.
+* CSS: Tweaks to `compact` in Month and Week views.
+* Hooks: Added `r34ics_eventdesc_include_time_and_title` filter. This allows for additional external conditionals to determine whether or not the time and title for events should be included in the `.eventdesc` element.
+* Misc: Removed a few redundant lines of code.
+
+= 10.12.0.4 - 2023.10.30 =
+
+* Added an extra security check for extremely rare conditions where the security fix added in versions 10.12.0.2 and 10.12.0.3 may not have been adequate. This fix has been backported to all earlier affected versions of the plugin in the repository.
+
+= 10.12.0.3 - 2023.10.24 =
+
+* **Critical bug fix:** Addresses an additional condition of the same issue first addressed in 10.12.0.2. This is not a second bug, rather a more thorough and effective solution to the same bug. This fix has been backported to all earlier affected versions of the plugin in the repository.
+* Minor code refactoring.
+
+= 10.12.0.2 - 2023.10.23 =
+
+* **Critical bug fix:** Addresses a security issue identified in earlier versions of the plugin. Per best practices we are not identifying the specific details of the issue or the fix. This fix has been backported to all earlier affected versions of the plugin in the repository.
+* Removed unnecessary retrieval of `/etc/issue` file contents from `r34ics_system_report()` function. (This is unrelated to the critical bug fix noted above.)
+
+= 10.12.0.1 - 2023.10.16 =
+
+* Bug fix: Added `stopPropagation()` to jQuery logic for `toggle` feature. The modified selector added in version 10.12.0 was inadvertently causing the code to run twice (instantly re-closing the toggle) when clicking on the event title itself.
+
+= 10.12.0 - 2023.10.06 =
+
+* a11y: Added `tabindex="0"` to all events and corresponding CSS changes to make event hover descriptions tab-accessible. **Note:** We are still troubleshooting some issues with tabbing to links contained within the description block. However, we are releasing this feature as-is due to the immediate accessibility improvements it can offer.
+* Developer: Removed deprecated filter names.
+
+= 10.11.6 - 2023.10.03 =
+
+* Parser: Added automatic support for Microsoft Outlook `X-ALT-DESC` as primary event description, falling back to standard `DESCRIPTION` field if `X-ALT-DESC` is not present.
+* i18n: Swedish translation updates.
+
+= 10.11.5.2 - 2023.09.11 =
+
+* Admin: Added `post_max_size` and `upload_max_filesize` to PHP Settings section of System Report.
+* CSS: Fixed issue of week numbers wrapping in certain themes.
+* i18n: Updated translation files and resolved some inconsistencies.
+* List view: Added missing support for `timeformat` setting on multi-day event headings.
+
+= 10.11.5.1 - 2023.07.27 =
+
+* Patched embedded [ics-parser](https://github.com/u01jmg3/ics-parser) library with new version that incorporates changes mentioned in notes for v. 10.11.3 below, along with some additional fixes that may have caused correctly calculated final recurrences from appearing.
+
+= 10.11.5 - 2023.07.12 =
+
+* List view:
+  * Fixed event description excerpt appearing in lightbox (in addition to full description).
+  * Fixed missing times on multi-day events with start and/or end times.
+  * Fixed redundant dates/title on multi-day events.
+* Mobile breakpoint:
+  * Bug fix: Event titles and times appearing twice on mobile breakpoint when `nomobile` is used.
+  * New feature: Changed options for `compact` parameter to support `mobile` and `desktop` as well as the previous boolean options. (Allows for CSS modifications that only apply to mobile or desktop breakpoints.) **Use `compact="mobile"` along with `nomobile="true"` with month view to get a smaller table-based month layout on mobile devices.** This feature is still considered "experimental" and is subject to change; your feedback is welcomed!
+* Bumped "Tested up to" to 6.2.
+
+= 10.11.4 - 2023.07.05 =
+
+* Added logic to collapse full day name headers to "short" abbreviated versions on mobile for table-based views.
+
+= 10.11.3 - 2023.06.21 =
+
+* Improvements:
+  * Added `r34ics_raw_feed_strip_embedded_images()` function to automatically strip embedded images (e.g. `<img src="data:image/...">`) from event descriptions. In practice these have not been rendering properly, and they can potentially introduce a large enough explosion of the ICS data array size to cause PHP out of memory fatal errors. This new function runs on the `r34ics_display_calendar_preprocess_raw_feed` filter, to reduce the data size very early in the process, prior to initial parsing.
+  * Refactored `R34ICS::_url_get_contents()` method with additional HTTP headers, improved user agent string handling, and support for compressed feeds. Specifically designed to address an issue with Kayak, however this may also resolve issues with some other hosts.
+* Deprecation:
+  * Removed workaround code in deprecated `r34ics_url_get_contents()` function.
+* Bug fixes:
+  * Identified and patched a bug in the [ics-parser](https://github.com/u01jmg3/ics-parser) library that causes stray erroneous instances of recurring events if their condition has no match in a given month. (For example, an event that recurs every 5th Saturday, in months that do not *have* a 5th Saturday, was appearing incorrectly near the beginning of the month.)
+* Vendors:
+  * Updated embedded ics-parser library to v. 3.2.1 (carrying over existing modifications).
+  * Removed extraneous files from embedded ics-parser.
+* i18n:
+  * Updated Korean translation strings. Thanks to [@modelaid](https://profiles.wordpress.org/modelaid/) 한호성 for providing the new translations!
+* Miscellaneous:
+  * Updated debugging output for cURL connections.
+
+= 10.11.2 - 2023.05.09 =
+
+* Miscellaneous:
+  * Removed extraneous `r34ics_purge_cache` item from System Report and debug data.
+* i18n:
+  * Added support for `G.i` in `r34ics_time_format()` function.
+  * Added Slovenian translation. (Thanks, Peter!)
+
+= 10.11.1 - 2023.04.29 =
+
+* Bug fixes:
+  * Fixed bug caused by changed shortcode defaults (generating dynamic values for `guid` and `startdate`) which was preventing ICS Calendar caching from functioning properly. The issue would cause an explosion of separate transient entries in the `wp_options` data table.
+* Miscellaneous:
+  * Added warning on the admin page not to post the System Report in the WordPress Support Forums.
+  * Removed `header` as an allowed tag in the `r34ics_allowed_heading_tags()` function used with the `htmltagtitle`, `htmltagmonth` and `htmltagdate` parameters because it was not a logical inclusion for this purpose. The accepted values are now `h2`, `h3`, `h4`, `h5`, `h6`, `p`, and `div`.
+* i18n:
+  * Updated translation strings.
+
+= 10.11.0 - 2023.04.15 =
+
+* New features:
+  * Added `htmltagtitle`, `htmltagmonth` and `htmltagdate` parameters, to allow SEO-focused developers to control the tags used for the calendar title, month and date headings in the calendar. (The month headings are used in month and list view; the date headings are used in list view only. Neither is used in week view.) Values are the names of the HTML tags (without the angle brackets), e.g. `htmltagmonth="div"`. **Accepted values are: `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `div` and `header`.** (`h1` is deliberately excluded; for SEO purposes `h1` should only appear once per page as the main title heading, and does not belong in ICS Calendar output.) The defaults are unchanged; if these parameters are omitted from the shortcode, ICS Calendar will continue to use `h2` for the calendar title, `h3` for month and `h4` for dates. *Note: This featured required some minor CSS and JavaScript changes: code that was previously referring directly to `h2`, `h3` and `h4` tags is now using the corresponding `.ics-calendar-title`, `.ics-calendar-label` and `.ics-calendar-date` CSS classes, respectively. If you have custom CSS or JavaScript in your site based on these tags, you'll need to change it to use the CSS classes instead.*
+  * Added `r34ics_allowed_heading_tags()` function to support new `htmltagtitle`, `htmltagmonth` and `htmltagdate` parameters.
+* Bug fixes:
+  * Fixed bug in week view introduced in 10.10.1 that would prevent current and future days from displaying under default conditions. (This occurred due to a change in how the value for `startdate` is determined.)
+* Miscellaneous:
+  * Minor refactoring in `R34ICS::shortcode()`.
+
+= 10.10.1 - 2023.04.07 =
+
+* Month view:
+  * Fixed doubled-up week number and table cell misalignment when the first day of the month is also the first day of the week.
+  * Fixed logic for filler cells at end of month that would add too many extra cells when configured "Week starts on" day is not Sunday or Monday.
+* Week view:
+  * Fixed bug that would cause the previous week to display instead of the current week if `limitdays` is set, when using the new defaults introduced in v.10.6.
+  * Fixed layout bug that may occur (compressing the previous and current weeks into a single view) when the first day of the month is also the first day of the current week.
+* General:
+  * Modified regular expression in `r34ics_scrape_url_from_string()` to support single quotes as attribute value delimiter in HTML link tags.
+  * Minor updates to `readme.txt` content.
+
+= 10.10.0 - 2023.03.31 =
+
+**Please note:** With this version we are implementing a new development cycle and release process. Update releases will be limited to *at most* once per week, unless there is a critical issue. You can read more about this change on our [blog](https://icscalendar.com/testing-a-new-development-cycle/).
+
+* New features/enhancements:
+	* Added `CONTACT`, `DURATION`, `FREEBUSY`, `GEO`, and `RESOURCES` fields to output .ics files generated when using the `eventdl` option.
+* Admin:
+  * Restricted System Report access to admins/super admins only.
+* Bug fixes:
+  * Fixed: Added `unbind()` to jQuery for stepping through previous/next month links in navigation, to resolve an issue that caused the links to skip one or more months on pages that contain multiple AJAX-loaded calendars.
+  * Fixed redundant date/event title text in list view on multi-day events.
+  * Refactored list view pagination. Logic to determine whether or not to show the links is now directly based on whether or not there is more than one "page" in the HTML output. (Because of how the event data array is structured, it's not possible to know how many pages will be in the output until the HTML is actually generated in the template.)
+* Functional changes:
+  * Changed default value for `guid` in `R34ICS::shortcode()` from `null` to an auto-generated UID using `r34ics_uid()` function. This was already happening in `R34ICS::display_calendar_ics_data_init()` anyway, but by moving it to the `shortcode()` method, temporary AJAX container HTML elements can now have the same `id` attribute as the `.ics-calendar` element that will replace them, which will be useful for future AJAX-related development.
+  * Changed JavaScript trigger from `change` to `click` for color key checkboxes. Should have no significant impact on typical usage but may help facilitate some future development.
+  * Changed jQuery for color key feed toggle checkboxes from using `.hide()` and `.show()` to using a CSS class. This will allow for greater flexibility in how different views handle the checkboxes.
+  * Changed logic for `maskinfo` in `R34ICS::event_description_html()` to hide the event details box regardless of the `filler` value.
+  * Limited scope of CSS for `combinemultiday` to month (and week) view table layouts only.
+  * Moved `r34ics_init()` call from `jQuery(function())` into `jQuery(window).on('load')` to ensure page is fully ready before execution.
+  * Refactored parts of `R34ICS::display_calendar()`, mainly around standardizing variable names between ICS Calendar and ICS Calendar Pro.
+* Developer:
+  * Added `r34ics_init_start` and `r34ics_init_end` custom jQuery events at start and end of `r34ics_init()` function, allowing developers to add their own callbacks that fire off just before and after ICS Calendar initializes itself on the page.
+  * Removed PHP deprecated notice for `limitdayscustom` because it is not actually deprecated, and may be legitimately included in the data passed by ICS Calendar Pro.
+
+= 10.9.1.1 - 2023.03.24 =
+
+* Fixed logic issue in `r34ics_location_map_link()` introduced in v.10.9.0 that may trigger PHP warnings in some ICS Calendar Pro views.
+
+= 10.9.1 - 2023.03.24 =
+
+* Added `paginationposition` parameter, with accepted values `above`, `below` and `both`, to determine where pagination links appear in list view. Default is `below`.
+* Fixed bug in list view that may show pagination links even when there is only one page of events to display.
+
+= 10.9.0 - 2023.03.24 =
+
+* Added less commonly used iCalendar spec fields `CONTACT`, `DURATION`, `FREEBUSY`, `GEO`, and `RESOURCES` to event data array, to support enhancements in this version plus future development.
+* Added `mapsource` parameter, accepting values `google`, `bing` or `openstreetmap`. Defaults to `google` if left blank. *Note: This parameter has no effect unless `location="maplinks"` is also set.*
+* Added `resources="true"` parameter to show resources (rooms, equipment, etc.) assigned to the event, in event description hover box/lightbox. (Note: This data is not present in most feeds.)
+* Modified `organizer` and `location` options to incorporate data from `CONTACT` and `GEO`, if present in the feed. *Note: Because we do not have "real world" feed examples that use these properties, this functionality is considered "beta" at this time. Your [feedback](https://wordpress.org/support/plugin/ics-calendar/) is welcomed!*
+* i18n: Translated plugin description, added new text strings.
+
+= 10.8.8.3 - 2023.03.20 =
+
+* CSS fix for `combinemultiday` to prevent its block element styling from affecting list-style views.
+
+= 10.8.8.2 - 2023.03.18 =
+
+* Removed conditional in `r34ics_feed_colors_css()` that would prevent output unless either the `color` or `tablebg` shortcode parameter was set. This ensures that the `r34ics_feed_colors_css` filter can be applied in conditions that are independent of those parameters.
+
+= 10.8.8.1 - 2023.03.16 =
+
+* Improved handling of [ICS Parser](https://github.com/u01jmg3/ics-parser) v. 3.2.1 changes.
+
+= 10.8.8 - 2023.03.16 =
+
+* Changed handling of data for multi-day events. They are now grouped as all-day style events even if they have start/end times, and those start/end times are shown in the hover/toggle box rather than displayed directly in the calendar grid.
+* Ongoing improvements to `combinemultiday` presentation.
+
+= 10.8.7.2 - 2023.03.14 =
+
+* Added `_r34ics_array_filter_recursive()` function for use by `_r34ics_debug()` to produce more legible output for feeds with very long event descriptions.
+* Refactored logic around `maskinfo` to more effectively conceal event details when this option is being used.
+* Updated some event properties to handle changes introduced in [ICS Parser](https://github.com/u01jmg3/ics-parser) library v. 3.2.1. Should resolve some issues relating to missing content, e.g. embedded images.
+
+= 10.8.7.1 - 2023.03.14 =
+
+* Added locale to cURL HTTP headers to facilitate translating auto-generated feed text (e.g. Google Meet link info) into the language configured in site settings.
+* CSS improvements to multiday events when using the new experimental `combinemultiday` setting.
+* Fixed deprecation notice that may appear in event description hover boxes if an event has a URL but no description, after changes in v. 10.8.6.
+* Fixed fatal error with `legacyparser` parameter introduced with use of the `Event` class's new `__get` method in v. 10.8.6.2. (Note: This fix, as currently coded, makes `legacyparser` incompatible with `hideprivateevents`.)
+
+= 10.8.7 - 2023.03.13 =
+
+* Added **experimental** new parameter `combinemultiday="true"`. This is designed to address a common request for better handling of multi-day events. Due to the way the Month and Week view templates are designed, it is not feasible to make these into HTML elements that truly span across multiple day cells in the calendar table. This update does not restructure the templates; instead, it uses an unconventional CSS technique to simulate an element spanning multiple cells. *Please let us know about any issues you encounter, or your general feedback, in the [support forums](https://wordpress.org/support/plugin/ics-calendar/).**
+* Added logic to read plugin version from `ics-calendar.php` header comments rather than hardcoding a constant value.
+* Changed most instances of code that were reading the plugin version from the R34ICS object property to instead read the `r34ics_version` option using the `get_option()` function.
+* Some minor code/comment reformatting.
+* Hotfix: Modified `R34ICS::_date_events_sort()` method to always group multi-day events first before single-day all-day events. This should reduce the likelihood of `combinemultiday` "breaking" if a single-day all-day event occurs in the middle of a multi-day event's span.
+
+= 10.8.6.2 - 2023.03.10 =
+
+* Fixed bug with `hideprivateevents` due to changes introduced in the [ICS Parser](https://github.com/u01jmg3/ics-parser) library v. 3.2.1, which was updated in ICS Calendar v. 10.8.4. ICS Parser moved the `class` property of the event object into a private `additionalProperties` array, with a magic "getter" function to retrieve the data. ICS Calendar's `hideprivateevents` logic has now been updated accordingly.
+
+= 10.8.6.1 - 2023.03.09 =
+
+* Added check for presence of event URL in event description, to prevent possibly appending a redundant link, after changes introduced in version 10.8.6.
+* Modified use of `r34ics_scrape_url_from_string()` in extracting event URLs from descriptions, so this is only done when the description contains a single URL.
+* Refactored `r34ics_scrape_url_from_string()` function to use `preg_match_all()` and remove duplicate URLs from matches.
+
+= 10.8.6 - 2023.03.08 =
+
+* Added logic to extract URLs from event descriptions, if event does not already have the URL field. This is an adaptation to recent changes to Google Calendar (and possibly other platforms) that removed the dedicated URL field from the event editing screens, in favor of including links directly in event descriptions. By automatically inserting the extracted URL into the event array's `'url'` node, all existing functionality such as `linktitles` will automatically use these extracted URLs when possible. (Also added `r34ics_scrape_url_from_string()` function to support this capability.)
+* Minified `debug.css`.
+
+= 10.8.5 - 2023.03.06 =
+
+* Print CSS now includes event descriptions in table layout.
+* Set minimum width of 700 pixels, with horizontal scrolling, on table-based views (month and week) on mobile breakpoint when `nomobile="true"` is set in the shortcode. Only the calendar table scrolls horizontally, and it should not affect any other elements on the page. While horizontal scrolling is not ideal, it provides a way for the table cells to be a reasonable width (100 pixels each) for improved table readability on phones and other small-screen mobile devices.
+
+= 10.8.4 - 2023.03.06 =
+
+* Added workaround to ICS Parser library code issue that was causing `Warning: Undefined array key 4` PHP messages.
+* Bumped [ICS Parser](https://github.com/u01jmg3/ics-parser) library to v. 3.2.1.
+
+**A note about PHP error messages:** If your live site is displaying error messages of this type (from ICS Calendar or *any* plugin, or WordPress core), this means you have debugging turned on, which is not recommended for live sites, both because it looks bad, and also because it can be a slight security risk by potentially revealing details of your server configuration. Check your `wp-config.php` file and make sure the `WP_DEBUG` constant is set to `false`, and if the error messages still appear, you or your server admin may need to change the `display_errors` PHP setting in your `.htaccess` or `php.ini` file.
+
+= 10.8.3 - 2023.03.01 =
+
+* Added multi-day event date range to event description (in hover, toggle and lightbox). Applies to month and week views only. (List view already displays multi-day events with a separate date range heading.)
+* Refactored `R34ICS::event_description_html()`, `R34ICS::event_label_html()` and `R34ICS::event_sublabel_html()` methods.
+
+= 10.8.2.1 - 2023.02.20 =
+
+* Added missing minified assets to repository.
+
+= 10.8.2 - 2023.02.18 =
+
+* Consolidated `r34ics-ajax.js` into `script.js`.
+* Minified JS and CSS files.
+
+= 10.8.1.1 - 2023.02.17 =
+
+* Fixed bug that prevented saving **Transient (cache) expiration** option on admin page.
+* Modified logic for whether or not to use transients for retrieving the raw feed, to ensure the raw feed data is not retrieved from the cache if `reload` is set to a smaller value than the **Transient (cache) expiration** option.
+* Bumped "Tested up to" to 6.2.
+
+= 10.8.1 - 2023.02.14 =
+
+* Added `hideprivateevents` option, which will exclude any events containing `CLASS:PRIVATE` or `CLASS:CONFIDENTIAL` from display. Also added `R34ICS::r34ics_display_calendar_exclude_event()` method for handling this and any future conditional exclusions, leveraging the existing `r34ics_display_calendar_exclude_event` filter.
+* Fixed bug in list view template by adding missing date variables to resolve PHP message `Warning: Undefined variable $d in wp-content/plugins/ics-calendar/templates/calendar-list.php on line 237` caused by with changes in version 10.8.0.
+* Fixed bug in `r34ics_has_desc()` function that would display hover box for recurring events when `hiderecurrence` is set. (Was incorrectly checking for `skiprecurrence`, which determines whether recurring events are displayed at all.)
+* Minor code refactoring.
+* Updated plugin description in `readme.txt` and `ics-calendar.php`.
+
+= 10.8.0 - 2023.02.13 =
+
+* Added `data-events-count` and `data-feed-keys` attributes to `.ics-calendar-date-wrapper` elements in list view.
+* Fixed CSS padding issue on multi-day events in list view with `color` and `compact` set.
+* Rewrote portions of the admin page to provide more useful guidance on getting started with the plugin, and added a link to the new online [Shortcode Builder](https://icscalendar.com/shortcode-builder/).
+* Removed any margin on `:last-child` element (which may be generated by the site theme) in `.descloc` and `.eventdesc` elements.
+* Updated ICS Calendar branding assets to new colors.
+* Updated `readme.txt` contents that appear on WordPress Plugin Directory to reflect availability of Shortcode Builder, and other minor tweaks.
+* i18n: Updated translation strings.
+
+= 10.7.3 - 2023.02.07 =
+
+* AJAX fixes:
+  * Added `r34ics_url_uniqid_update()` function to encapsulate updating the `r34ics_feed_urls` setting, and updated `r34ics_url_uniqid() to use it to create a new ID if one doesn't already exist, to ensure that new URLs can be retrieved via AJAX without first being loaded by the regular method.
+  * Fixed issues with ampersand entities in feed URLs and slash-escaped apostrophes and quotation marks.
+* Fixed PHP 8 deprecation notice in `R34ICS::display_calendar_ics_data_init()` method.
+* Hotfix: Added logic to prevent an empty row at the top of table-based views (month, week) when the first day of the month is also the first day of the week.
+
+= 10.7.2.1 - 2023.02.06 =
+
+* Changed conditional checking for deprecated shortcode parameters to reduce the possibility of unnecessary deprecation notices.
+* Corrected prefix on some hooks from `r3417_` to `r34ics_`. **Note:** If your site contains any custom code using ICS Calendar's hooks (actions/filters), be sure to replace any instances of `r3417_` with `r34ics_` in your code. (Retained deprecated old filter names for now.)
+* Fixed alphabetization of functions in `functions.php` file.
+
+= 10.7.2 - 2023.02.02 =
+
+* Added CSS color variables to admin pages.
+* Added workaround for an issue with the new 10.6 default value for `pastdays`, when `limitdays` is set and calendar is starting on "today". (Adds `pastdays` and `limitdays` together, to ensure `limitdays` is setting the number of days *in the future* rather than only showing past events.)
+* Updated **ICS Feed URL Tester** on admin page with additional diagnostic information.
+
+= 10.7.1.1 - 2023.02.01 =
+
+* **Restored standard script enqueuing.** This effectively undoes the change introduced in version 10.6.0, which has proven to introduce a number of issues with custom CSS and various optimization plugins, along with problems with the Customizer and FullCalendar features in ICS Calendar Pro. We will continue to troubleshoot these issues and hope to restore conditional enqueuing at a later time, but for now it is best for all users of the plugin if we revert to the standard enqueuing methods.
+
+= 10.7.1 - 2023.01.31 =
+
+* Fixed conditional loading of `debug.css` for users with `manage_options` capability only (since the code for *displaying* the debug panel requires that capability anyway).
+* Fixed possible "undefined index" PHP warning on `r34ics_calendar_view` action in `R34ICS::shortcode_defaults_merge()` method.
+* Removed **Load CSS and JS files on wp_enqueue_scripts action** option, as it was causing a handful of issues with calendar rendering and conflicts with JS/CSS optimization plugins. Replaced with *registering* the JS/CSS files, and later conditional enqueuing as needed.
+* Updated `Author URI` in plugin file to [ICS Calendar](https://icscalendar.com) to make it easier for users to find the correct site when seeking direct support or commercial upgrades. ICS Calendar is still owned and developed by [Room 34 Creative Services, LLC](https://room34.com).
+
+= 10.7.0.2 - 2023.01.17 =
+
+* Fixed issues in list view introduced in 10.7.0 that may result in extra closing `article` tags, or missing closing `div` tags (if using `pagination`).
+* Moved list view pagination links outside of `article` tag to resolve some interaction issues.
+* Restyled list view pagination elements as `a` tags for better UX.
+* Removed animate scroll of pagination on list view due to inconsistent results.
+
+= 10.7.0.1 - 2023.01.16 =
+
+* Bumped version due to error during Subversion commit on version 10.7.0. (There are no code differences between this version and a properly updated copy of 10.7.0.)
+
+= 10.7.0 - 2023.01.16 =
+
+* Added new `pagination` parameter for list view. Allows for long event lists to be broken up into smaller, paginated groups. Has no effect on any other views.
+* Added **Transient (cache) expiration** option to **Administrative Options** on admin page. This setting was previously hardcoded to 3600 unless using ICS Calendar Pro.
+* Moved **Administrative Options** up higher on admin page. (This section of the page is only accessible to users with the Administrator role.) Other minor HTML changes to admin page.
+* Updated calendar table cell border colors for consistency between views.
+* Updated System Report to include ICS Calendar's saved settings.
+
+= 10.6.1.1 - 2023.01.09 =
+
+* Fix for possible PHP fatal error "Uncaught Error: Call to undefined function is_plugin_active()" on admin pages immediately after version update. 
+
+= 10.6.1 - 2023.01.08 =
+
+* Added **Load CSS and JS files on wp_enqueue_scripts action** option to admin page. This restores the old functionality of loading ICS Calendar's CSS and JS files in every page.
+* Fixed an additional logic issue with new default settings for `title` and `description` on calendars with multiple feeds.
+* i18n: Updated translation files.
+
+= 10.6.0.1 - 2023.01.08 =
+
+* Fixed logic issue with new default settings for `title` and `description`.
+
+= 10.6.0 - 2023.01.07 =
+
+* Added `r34ics_debug` filter.
+* Added deferred admin notice handling for improved display of notices on installation and update.
+* **Changed default values for 11 parameters.** The changes allow many common options to be applied without having to be explicitly included in the shortcode. The **Use new parameter defaults (v.10.6)** box on the ICS Calendar admin page must be checked to take advantage of the new defaults. (This box will be checked automatically in new installations, but for older installations, an administrator will need to specifically check the box for the new defaults to take effect.) These changes are explained in more detail in [this blog post](https://icscalendar.com/updated-parameter-defaults-in-ics-calendar-10-6/).
+* Fixed bug that may cause `guid` to be blank, which causes JavaScript errors in some views.
+* Fixed logic order issue in `R34ICS::_url_get_contents()`.
+* Fixed phone layout bug in week and month views with `nomobile="true"` set.
+* Improved display of loading animation when rendering via AJAX.
+* Modified `R34ICS::event_description_html()` to allow `$has_desc` parameter to force output. (Useful in Pro/custom views that may not allow full event titles to fit in table/grid layout.)
+* Modified logic for `columnlabels` to default to `short` if `nomobile="true"` is set and `columnlabels` is not specified.
+* Modified the ICS Calendar admin page to support configuration settings, under the **Administrative Options** heading at the bottom of the page. This area of the page will only be available to users with the Administrator role.
+* Moved loading of all CSS and JS to `wp_footer`, loaded dynamically by the shortcode function, so ICS Calendar's assets only load on pages that actually contain a calendar.
+* Refactored logic for setting some parameters' default values when processing the shortcode. (Changed handling of some empty values; reformatted code to split long ternary operators onto multiple lines for readability.)
+* Removed `.r34ics-hidden-on-load` CSS class and restored inline `style="display: none;"` with addition of `R34ICS::safe_style_css()` method to resolve conflict with `wp_kses()` functions.
+* Removed full `Plugin Data` dump from debug mode 1.
+* Updated CSS/layout of ICS Calendar admin page for more consistency between ICS Calendar and ICS Calendar Pro.
+* Miscellaneous minor CSS tweaks.
+* i18n: Updated translation files.
+
+**Note regarding the validity of `<style>` tags in the `<body>`:** ICS Calendar has long included `<style>` tags in the `<body>`, specifically for feed color coding. While this has technically violated earlier HTML specifications, and still causes [validation](https://validator.w3.org) errors, there is no practical way around it, as these styles are *only* defined when the shortcode runs, which is after the `wp_head` hook has already run. Meanwhile, there is another conflicting consideration, which is the unnecessary loading of ICS Calendar's CSS and JS files on *every* page of the site, regardless of whether or not a given page contains a calendar.
+
+This version of ICS Calendar (technically) exacerbates the first issue while resolving the second: we have now moved all enqueuing of ICS Calendar's CSS and JS to the `wp_footer` action, rather than the `wp_enqueue_scripts` action. This allows them to be *inserted by the shortcode function* to ensure that they only get loaded on pages that actually contain a calendar.
+
+While this *technically* exacerbates the problem of `<style>` (and `<link>`) tags in the `<body>`, the latest HTML spec (5.3) *does* allow `<style>` and `<link>` tags for CSS in the `<body>`, addressing the practical reality of CMS-type systems that need to be able to insert this code after the `<head>` has been generated, and consistent with the fact that all major browsers have always allowed this without issue. These pages may not validate, but that is because the validator is using an outdated version of the spec. A "vanilla" installation of Gutenberg-era WordPress itself already inserts `<style>` tags near the closing `</body>` tag, so ICS Calendar's inclusion of these tags does not directly impact whether or not a page validates.
+
+= 10.5.2 - 2023.01.04 =
+
+* Changed: Modified colors for day number header in month table when using `whitetext`.
+* Changed: Removed CSS that styled past dates in different colors than current/future dates.
+* Fixed: Changed scope of CSS color variables, to include event description lightboxes. Resolves issue of transparent lightbox background introduced in version 10.5.0.
+* Fixed: Resolved various issues with text and background colors when using `whitetext` or `solidcolors` options.
+
+= 10.5.1 - 2022.12.30 =
+
+* Updated the base color palette, from true neutral to slightly cooler grays. CSS variable names have been retained with the corresponding true neutral color names. These variable names will be retained permanently to facilitate custom palette creation.
+
+= 10.5.0.1 - 2022.12.29 =
+
+* Restored deprecated alias functions that were removed in 10.5.0, as their removal may cause fatal errors for users of ICS Calendar Pro prior to version 4.0.
+
+= 10.5.0 - 2022.12.29 =
+
+This update includes general cleanup, as well as preliminary code for future enhancements, specifically around the use of CSS variables. Some of these changes are in support of major new features forthcoming in [ICS Calendar Pro version 4.0](https://icscalendar.com/pro).
+
+* Created CSS variables for all plugin colors to make themed color modifications easier. Variables are defined within the `.ics-calendar` scope.
+* Added five accent colors and 9 transparent neutral colors to palette.
+* Changed default background color on table header cells from `darkgray` to `gainsboro`.
+* Converted all colors in `style.css` to using the aforementioned CSS variables.
+* Removed deprecated `r34ics_first_day_of_current()` and `r34ics_last_day_of_current()` functions.
+* i18n: Updated translation files. (No new strings added.)
+
+= 10.4.1 - 2022.12.28 =
+
+* Removed disused `R34ICS::pand_path` property.
+* Modified `r34ics_purge_calendar_transients()` conditions to catch some transients that were being missed.
+
+= 10.4.0 - 2022.12.26 =
+
+* Began process of refactoring main `R34ICS::display_calendar()` method into smaller, modular components. This process will continue over subsequent updates.
+* Added `r34ics_display_calendar_ics_data_init` filter.
+* Changed default legend style to inline.
+* Changed handling of default calendar name and description when a shortcode contains multiple feed URLs. Will now default to blank instead of the title and description of the last parsed feed.
+* Modified jQuery for showing/hiding rows in week view to use `display: block` instead of `display: table-row` on mobile.
+* Modified CSS selector for event download icon (button) to avoid styles getting steamrolled by Block Editor defaults. Also removed alternate animated icon for loading as the `.loading` state does not seem to be active long enough for the icon to appear.
+* Admin page CSS tweaks.
+* Deleted some code that had been commented out for several versions.
+
+= 10.3.1 - 2022.12.23 =
+
+* Minor code tweak to conditional for rendering AJAX placeholder in `R34ICS::shortcode()` method to allow support for this feature in the Pro version.
+* Added AJAX loading animation.
+* Added shortcode attribute deprecation notices in `R34ICS::shortcode()` (and changed `E_USER_NOTICE` to `E_USER_DEPRECATED`).
+* i18n: Added translations for new text strings.
+
+= 10.3.0 - 2022.12.22 =
+
+* **Added AJAX calendar loading support.** The intention of this feature is to work around issues with caching plugins interfering with calendar updates. This approach loads the entire calendar element dynamically rather than sending the calendar HTML in the initial server response. The output is otherwise identical to the standard method. Switching between months within the calendar still happens entirely on the client side. Note that this is **beta** functionality. Your feedback is welcomed. 
+* Uncommented previously unused AJAX files that were waiting for the above functionality to be added.
+* Added `r34ics_url_uniqid_array_convert()` function to facilitate converting feed URLs into reference strings, as the contents of the shortcode must be included in the HTML placeholder for the AJAX-loaded calendar.
+* Encapsulated JavaScript that was previously firing directly on DOM ready into `r34ics_init()` function so it can also be fired when calendar is inserted dynamically by AJAX.
+* Cleaned up `script.js` formatting.
+* Additional minor System Report revisions.
+
+= 10.2.3 - 2022.12.22 =
+
+* Revamped System Report output to help provide more efficient user support.
+* Removed ClassicPress compatibility note. (The plugin should still work with ClassicPress at this time, but we make no promises of future support.)
+
+= 10.2.2 - 2022.12.15 =
+
+* Added `r34ics_system_report_array` filter to `r34ics_system_report()` function.
+
+= 10.2.1 - 2022.12.13 =
+
+* Added `$no_toggles` input parameter to `R34ICS::color_key_html()` method.
+
+= 10.2.0.1 - 2022.12.12 =
+
+* Bumped version to resolve repository sync issue.
+
+= 10.2.0 - 2022.12.12 =
+
+* Modified `r34ics_feed_colors_css()` function. Revised CSS output to remove references to specific views and instead apply styles generally to tables and definition lists inside the ICS Calendar output. Added `r34ics_feed_colors_css` filter for external modification of the output.
+* Added `r34ics_minify_css()` function.
+* Added `$ics_data['view']` to data array to make it easier to know the current view in certain functions without needing to modify the functions' accepted input parameters.
+* Refactored `r34ics_color_text4bg()` to more effectively calculate background color's luminosity.
+
+= 10.1.0 - 2022.12.12 =
+
+* Modified logic for `eventdesc` values greater than 1 to not apply to week view.
+* Corrected Plugin URI and Author URI.
+* Minor reorganization of the admin page. Removed the links to additional tools and reference, as they are not especially relevant for day-to-day use of the plugin.
+
+= 10.0.2.1 - 2022.11.07 =
+
+* Added `G\hi` (e.g. "14h45") as a supported time format.
+
+= 10.0.2 - 2022.11.07 =
+
+* Added alphabetical sorting of events with the same start time (including all-day events).
+* Encapsulated event sorting in `R34ICS::_date_events_sort()` method.
+* Renamed `R34ICS::_fix_recurrence_exceptions()` method to `R34ICS::_date_events_fix_recurrence_exceptions()` to clarify the scope of the array it manipulates. (Retained old name as a deprecated alias.)
+
+= 10.0.1 - 2022.11.07 =
+
+* CSS updates: added the dreaded `!important` to table padding and event titles, to fix a common conflict with many themes.
+* Added new `vendors/ics-parser/phpstan.neon.dist` file that was omitted in version 10.0.0 update. (This file does not appear to be relevant to any ICS Calendar functionality, but is included for completeness.)
+
+= 10.0.0 - 2022.11.07 =
+
+* Refactored numerous functions and function calls to resolve PHP 8.1 deprecation notices when [passing `null` to non-nullable parameters of built-in functions](https://www.php.net/manual/en/migration81.deprecated.php#migration81.deprecated.core.null-not-nullable-internal).
+* Updated all default shortcode values that were previously `null` to either `''` (empty string) or `0` (for integers).
+* Updated SQL query for clearing cached calendar data for better accuracy in identifying transients to be deleted.
+* Fixed bug that would prevent **Clear Cached Calendar Data** utility from clearing cached raw feed URL data. (This issue was introduced in version 9.3.0 when `r34ics_url_get_contents()` function was replaced with protected method `R34ICS::_url_get_contents()`.)
+* Fixed bug in list view that would cause only the first instance of a recurring multi-day event to display.
+* i18n: Updated text strings. Replaced all inline instances of "ICS Calendar" with `printf` variables to ensure consistent use of the ICS Calendar brand name throughout, regardless of the site language. Updated some status notification messages. Added missing translations for Classic Editor **Add ICS Calendar** popup.
+* Bumped [ICS Parser](https://github.com/u01jmg3/ics-parser) library to v. 3.2.0.
+
+= 9.9.1 - 2022.11.03 =
+
+* Added `skipdomainerrors` shortcode parameter. This option is intended for specialized use cases where a page may be loading numerous ICS feeds from the same server. When `skipdomainerrors="true"` is present in your shortcode, if the server does not respond to the first request with a valid feed, ICS Calendar will not try to retrieve any additional feeds from the same server on the same page. This should resolve potential issues where a page may take several minutes to load as it is attempting in vain to retrieve multiple feeds from the same unresponsive server.
+* Modified `R34ICS::_url_get_contents()` method to add extra context options when using `fopen` functions. Added values for `max_redirects`, `timeout` and `user_agent` options.
+
+= 9.9.0 - 2022.11.03 =
+
+* Added `sametab` shortcode parameter to override ICS Calendar's default functionality of making all links within the calendar open in a new browser tab. Add `sametab="true"` to your shortcode to have links within the calendar open in the same browser tab as the current page.
+* Bumped tested up to version to 6.1.
+
+= 9.8.4 - 2022.10.27 =
+
+* Removed unnecessary HTTP headers to force download of `.ics` files when using `eventdl`, to simplify the user experience on Android.
+* Minor CSS fix for grid columns in compact list view. (Fixes issue of all-day events, after the first, shifting to the right when using `hidealldayindicator`.)
+* Added catch-all logic to run `r34ics_show_hide_headers()` JavaScript function when the user clicks anything on the page, if the page loads with a hidden calendar. Resolves an issue where list view may be missing its day/month headers after user interaction reveals the hidden calendar.
+* Bumped tested up to version to 6.0.3.
+
+= 9.8.3 - 2022.10.19 =
+
+* Fixed bug in list view that would omit some multi-day events when using multiple feed URLs in one calendar shortcode.
+* Minor refactoring of list view template.
+* Fixed typo in `assets/style.css`. (The typo was in an empty placeholder selector, so it had no impact on display.)
+* Removed extraneous `.hndle` CSS class on `h3` headers on admin pages.
+
+= 9.8.2 - 2022.09.30 =
+
+* Added `r34ics_maybe_enfold()` function, and added conditional line "enfolding" to single-event .ics file downloads (when using the `eventdl` option). Should resolve issues where some event description text may not be imported into certain calendar software, e.g. Microsoft Office 365/Outlook. Also resolves issue of the generated .ics feeds not [validating](https://icalendar.org/validator.html).
+
+= 9.8.1 - 2022.09.20 =
+
+* Added **ICS Feed URL Tester** to **Utilities** on admin page. (This feature was previously available only in ICS Calendar Pro.)
+
+= 9.8.0.1 - 2022.09.12 =
+
+* Critical fix: Resolved PHP fatal error issue introduced in v. 9.8.0 due to incorrect class name. (Note: The error would only have affected sites upgrading to 9.8.0 from an earlier version of the plugin. The version of 9.8.0 in the repository has since had a hotfix applied.)
+
+= 9.8.0 - 2022.09.12 =
+
+* Added admin notice on plugin activation with guidance on general settings (language, timezone, date/time formats) and link to ICS Calendar User Guide.
+* Added existing admin error notices (missing cURL/fopen and UTC timezone) to ICS Calendar and General Settings admin pages, in addition to the dashboard and updated text of the timezone message.
+* Added `NAME` and `VERSION` constants to `R34ICS` class.
+* Added new `timeformat` shortcode parameter to allow overriding the time format in general settings.
+* Refactored `ics-calendar.php` to better organize initialization logic and install/update functions, added support for deferred admin notices.
+* Removed `persist-admin-notices-dismissal` vendor folder and related functions/methods because they were not being used.
+* i18n: Updated translations with new text strings added in this version.
+* i18n: Standardized plugin name as "ICS Calendar" (in English) in all translation files.
+* Added copyright notice to readme file.
+* Miscellaneous minor refactoring.
+
+= 9.7.1 - 2022.09.09 =
+
+* i18n: Updated German translations. Thanks to Pascal (@wordpri) for assisting with these updates.
+* Bumped tested up to version to 6.0.2.
+
+= 9.7.0.1 - 2022.09.08 =
+
+* Removed logic that restricted `monthnav` parameter to month view only.
+
+= 9.7.0 - 2022.09.08 =
+
+Modifications to `data` attributes in month and week views:
+
+* Added `r34ics_day_events_count()` function, and `data-events-count` attribute on `td` tags in calendar table.
+* Added `r34ics_day_events_feed_keys()` function, and `data-feed-keys` attribute on `td` tags in calendar table.
+
+The above changes are intended for developers/site admins to write custom CSS or JavaScript code to modify the appearance of table cells based on the number of events, and which feeds have events on a given date. Note that the feed keys are the same numeric values used for the `data-feed-key` attributes in the legend and on individual events. However, the `data-feed-keys` attribute on `td` tags may include multiple feed keys, if there are multiple events on a date. The keys are pipe-delimited.
+
+Additional changes in this version:
+
+* Added comments in `class-r34ics.php` to indicate deprecated or special-purpose shortcode attributes.
+
+= 9.6.8 - 2022.08.30 =
+
+* Modified JavaScript `r34ics_maybe_skip_to_next_month()` function not to skip to next month if `nomobile` is set.
+
+= 9.6.7 - 2022.08.26 =
+
+* Removed instances of `cursor: help;` in the plugin's CSS, due to frequent confusion over the intent of this cursor icon.
+* Updated admin plugin action links.
+* Bumped tested up to version to 6.0.1.
+
+= 9.6.6.1 - 2022.08.12 =
+
+* i18n: Translation update (Swedish).
+
+= 9.6.6 - 2022.07.22 =
+
+* Fixed issue of `r34ics_show_hide_headers()` JavaScript function not firing on calendars inside an HTML5 `details` tag.
+
+= 9.6.5.2 - 2022.06.07 =
+
+* CSS fix for indentation of multiple events at the same time (or multiple all-day events) in compact list view.
+
+= 9.6.5.1 - 2022.06.06 =
+
+* Revision to the list view template update from version 9.6.3.2. For an unknown reason, both the WP core `wp_date()` function and the custom `r34ics_date()` function are shifting dates back by 1 when the date is provided in YYYYMMDD format. This update converts the dates into MM/DD/YYYY format, and switches back to using `r34ics_date()`.
+
+= 9.6.5 - 2022.05.31 =
+
+* Added User Guide and Upgrade action links on Plugins page.
+* Fixed Markdown formatting error in `readme.txt`.
+
+= 9.6.4.1 - 2022.05.24 =
+
+* Fixed bug in week view that would prevent events from the next month from displaying in some situations when using `limitdays`.
+
+= 9.6.4 - 2022.05.24 =
+
+* Added `pastdays` to logic for calculating the default `startdate` numeric value when using `startdate="today"` or when using `limitdays` in week view. (Fixes an issue where `pastdays` had no effect in week view.)
+
+= 9.6.3.2 - 2022.05.19 =
+
+* Temporarily switched list view multi-day event header formatting from using `r34ics_date()` to `wp_date()`, to address an issue where multi-day events with specific start and end times may display the incorrect dates. Appears to be an issue with how `r34ics_date()` handles timezones under certain server configurations. Template will be switched back to using `r34ics_date()` when the issue is resolved.
+
+= 9.6.3 - 2022.05.10 =
+
+* Moved logic to convert `webcal` protocol to `https` from `R34ICS::display_calendar()` to `R34ICS::_url_get_contents()`.
+* Added `rtrim()` to remove trailing slashes on path definitions in `R34ICS::__construct()`.
+* Reformatted comments in `R34ICS::_url_get_contents()`.
+
+= 9.6.2.3 - 2022.05.10 =
+
+* Fixed issue that may cause feeds to reload on every page load if `reload` is set to a value greater than `1`.
+
+= 9.6.2.2 - 2022.05.02 =
+
+* Added `</article>` to fix introduced in 9.6.2.1.
+
+= 9.6.2.1 - 2022.05.02 =
+
+* Fixed missing `</dl>` and `</div>` tags on last shown date in list views when `count` is in effect (which is almost always) by adding these tags before PHP `break(5)` control structure.
+
+= 9.6.2 - 2022.04.14 =
+
+* Fixed bug that may prevent `eventdl` (individual event ICS downloads) links from doing anything.
+* Fixed bug that prevented `eventdl` from functioning properly in the lightbox, when `toggle="lightbox"` is set.
+* Modified logic so lightbox is only closed when clicking the "X", not when clicking anywhere on the page, to prevent issues of clickable elements within the lightbox content from closing the lightbox.
+
+= 9.6.1 - 2022.04.13 =
+
+* Added early render logic to `R34ICS::display_calendar()` method via the new `r34ics_display_calendar_early_render` filter, to allow new features that will use a refactored event parsing method to bypass the existing process. Needed for future updates.
+* Version 9.6.0 was withdrawn from the repository. (It is stable and suitable for production use, but its minor changes have been removed from the development roadmap.)
+
+= 9.5.4.1 - 2022.04.08 =
+
+* Fixed bug introduced in 9.5.4 that may cause day headers not to appear on mobile breakpoints on initial load, or when switching months via the month dropdown.
+* Streamlined code for `update_option_timezone_string` action in `ics-calendar.php`.
+
+= 9.5.4 - 2022.04.01 =
+
+* Modified `r34ics_show_hide_headers()` JavaScript function to check for `:visible` instead of `:not([style*="none"]`, allowing for more flexible scenarios where an element might be hidden (e.g. in the stylesheet or via dynamically-added CSS classes, rather than just inline styles).
+
+= 9.5.3 - 2022.03.30 =
+
+* Deprecated `r34ics_guid()` function and replaced it with the new `r34ics_uid()` function. Old GUID output did not strictly conform to the GUID/UUID definition, and we do not need it for cryptographic purposes. This new function is intended simply to create a reasonably reliably unique ID for elements within a page. The new output is substantially smaller (and somewhat faster to generate), resulting in a smaller overall HTML payload, especially on large calendars, and potentially faster loading times. (Note: The associated shortcode parameter for supplying custom ID strings is still called `guid` although it will be changed to `uid` in a future update. (At that time, `guid` will be retained for backward compatibility with existing shortcodes.)
+* Refactored `r34ics_url_uniqid()` and `r34ics_purge_calendar_transients()` functions and `R34ICS::_url_get_contents()` method to fix an issue that may cause unique feed URL IDs not to be generated, which would make the event download links (`eventdl`) fail.
+
+= 9.5.2 - 2022.03.28 =
+
+* Replaced inline `style="display: none;"` attributes in some templates with `r34ics-hidden-on-load` CSS class, to resolve conflicts with other plugins that may run ICS Calendar's output through `wp_kses_post()`.
+
+= 9.5.1 - 2022.03.28 =
+
+* Added new `reverse="true"` option to display list view in reverse order (displaying past dates in reverse chronological order, rather than future dates). Should be used in conjunction with `pastdays` (*or* `limitdays`) to set the number of days to include. **Notes:** 1) When `reverse` is used, `pastdays` and `limitdays` are automatically set to the same value. If both are set, `pastdays` takes precedence. 2) Due to date scope logic in the parser, if both `pastdays` and `limitdays` are omitted, only events in the current calendar year will be displayed. 3) The `reverse` option applies *only* to list view. It has no effect on other views, due to a logical incompatibility with other layouts. 4) Multiple events within a single day are still displayed in "forward" time order.
+
+= 9.5.0 - 2022.03.26 =
+
+* Added new `stickymonths="true"` option to create "sticky" months. If this is included in your shortcode, when a month is selected from the dropdown, a query string variable, e.g. `?r34icsym=202203` (with values in `YYYYMM` format), is appended to the URL in the address bar. This allows you to easily share a link to the page with the specified month automatically selected. Old links will not break over time; if the month in the query string is no longer present in the calendar, it will default to the current month. **Notes:** 1) If the current month is selected, it will *not* be appended to the URL in the address bar. 2) If multiple month view calendars appear on the same page, this query string value will affect *all* of them.
+* Added `r34ics_qs_update()` (to update query string values in the address bar) and `r34ics_qs_val()` (for retrieving the value of a given query string key) JavaScript functions, to support the new `r34icsym` functionality.
+
+= 9.4.1 - 2022.03.24 =
+
+* Added stub functionality for categories. There is no visual change yet, but all `.event` elements now include a `data-categories` attribute if the event is assigned to one or more categories in the source feed. **Note:** *Most widely used source calendars (e.g. Google Calendar, Office 365) do not include category data in the ICS feed, even if that data exists in the source calendar itself.*
+* Added the `CATEGORIES` field to ICS download links (used by `eventdl="true"`).
+* Refactored templates only to include the `data-feed-color` attribute on `.event` elements if there is actually a color value.
+
+= 9.4.0 - 2022.03.15 =
+
+* Added `r34ics_day_classes` and `r34ics_event_css_classes` filters, to facilitate custom logic for applying additional CSS classes to day `td` elements (technically, the parent element of the `.day` class) in table-based views, and to individual `.event` elements (`li.event` in table-based views, and `dd.event` in list view). Documentation and code examples are available on our [Developer](https://icscalendar.com/developer/) page.
+* Minor refactoring of the `r34ics_day_classes()` and `r34ics_event_css_classes()` functions, in conjunction with adding the above filters.
+
+= 9.3.6.3 - 2022.03.14 =
+
+* Simplified conditional in `R34ICS::_url_get_contents()` for storing IDs retrieved by `r34ics_url_uniqid()` to avoid false negatives.
+
+= 9.3.6.2 - 2022.03.14 =
+
+* Updated **Clear Cached Calendar Data** tool to also purge and rebuild the list of saved feed URL IDs (used by `eventdl="true"`).
+
+= 9.3.6.1 - 2022.03.14 =
+
+* Added conversion of `webcal://` to `https://` in `r34ics_url_uniqid()`. Resolves issue that would prevent `eventdl="true"` links from working properly on calendars where the feed URL begins with `webcal://`.
+* Minor code reformatting in `script.js` for easier reading.
+
+= 9.3.6 - 2022.03.14 =
+
+* Removed ATTENDEE from generated individual event ICS downloads.
+
+= 9.3.5.3 - 2022.03.09 =
+
+* Changed logic in `r34ics_lightbox_container()` to resolve issues where lightbox HTML still may not be included in page after changes in 9.3.5.1.
+* Increased `z-index` of lightbox to deal with sites that may have a header with an extremely high `z-index` value. (Any arbitrarily large number may never be enough; this is the nature of `z-index`.)
+
+= 9.3.5.2 - 2022.03.08 =
+
+* Added `function_exists()` check for `shell_exec()` before executing it in the **System Report** on the admin page. Most servers have the function enabled, but if they don't, the plugin's admin page returns a fatal error.
+
+= 9.3.5.1 - 2022.03.02 =
+
+* Refactored `toggle="lightbox"` logic to resolve some edge cases where the jQuery-injected lightbox container was not working properly.
+* Fixed bug of white-on-white text in event detail hover blocks when the `whitetext` option is being used. Hover block background will now be black to match the rest of the calendar table.
+* i18n: Updates to Swedish translations.
+
+= 9.3.4.4 - 2022.02.22 =
+
+* Updated icon used in admin notices.
+* Removed unused image assets.
+
+= 9.3.4.3 - 2022.02.03 =
+
+* Modified `r34ics_scrub_duplicate_uids()` to accept second `$args` parameter. Modified `fixredundantuids` attribute to accommodate integer values to allow for different levels of processing. Setting `fixredundantuids="2"` will now remove any duplicates that start at the same time and have the same SUMMARY value, regardless of matching UIDs. (This is intended for handling edge cases where an individual instance of a recurring event has been edited.) The original functionality of `fixredundantuids="true"` has also now been modified to only catch UIDs that have the same *start time*, not just the same date.
+
+= 9.3.4.2 - 2022.02.02 =
+
+* Fixed conditional in `R34ICS::parse_attach_array()` to more accurately identify attachment URLs on Google Drive.
+
+= 9.3.4.1 - 2022.01.31 =
+
+* Added fallback handling in deprecated `r34ics_url_get_contents()` function to fix issue with ICS Calendar Pro license verification for versions earlier than 3.12.0.
+
+= 9.3.4 - 2022.01.28 =
+
+* Added `legacyparser="true"` option to load the old (pre-ICS Calendar v.9.0.0) version of ics-parser library. Useful mainly for an edge case where the new version of ics-parser is stripping CSS classes out of HTML-formatted event descriptions. **This option will be removed when an updated version of ics-parser that resolves this issue is available.**
+* Removed redundant parser loading code in `R34ICS::_event_ics_download()` method.
+
+= 9.3.3 - 2022.01.28 =
+
+* Added default value for `$args` parameter of `R34ICS::r34ics_calendar_classes()` method to resolve error message with PHP 8.
+* Added support for `ATTENDEE` and `RDATE` in .ics files generated by `eventdl`.
+* Fixed missing condition in `r34ics_has_desc()` to make event details hover block appear when `eventdl` is on but `eventdesc` is not.
+
+= 9.3.2 - 2022.01.27 =
+
+* Added `basicauth` attribute, to allow accessing calendars that are configured to require HTTP basic authentication. **Note: This is currently considered a "beta" feature.** In order to use this feature, you will need to define a `R34ICS_FEED_BASICAUTH` constant in your site's `wp-config.php` file. More details are available on our [Beta Features](https://icscalendar.com/beta-features/) page.
+* Fixed alphabetization of shortcode defaults.
+
+= 9.3.1 - 2022.01.27 =
+
+* Modified `R34ICS::_url_get_contents()` to *always* include a user agent string. Previously a user agent string was only applied if the undocumented `curlopts="useragent"` attribute was present in the shortcode. (This is helpful with sources that reject requests with an empty user agent string, e.g. Facebook.)
+
+= 9.3.0 - 2022.01.27 =
+
+* Restored `eventdl` functionality, rebuilt to resolve security issues and inefficiencies with the original method. **Note: This is still considered a "beta" feature. Your feedback is welcomed.**
+* Replaced `r34ics_url_get_contents()` function with protected method `R34ICS::_url_get_contents()`, to limit access to its functionality. The `r34ics_url_get_contents()` function now returns false and triggers a PHP warning if used.
+* Added `r34ics_feed_urls` site option and associated getter functions, to store a list of feed URLs with unique IDs and allow them to be referenced on the front end (e.g. in conjunction with `eventdl`) without exposing the feed URLs directly in the HTML code.
+* Changed `R34ICS::_load_parser()` and `R34ICS::_load_pand()` from private to protected methods.
+* Removed `replaceWindowsTimeZoneIds` from calls to `ICal` methods, since it is no longer part of the ics-parser library.
+* Fixed order of input parameters in some filters. **ICS Calendar Pro users MUST upgrade to the latest version ASAP to prevent issues with Pro views.**
+* i18n: Updated Dutch translations. (Special thanks to Paul Shelton for translation assistance!)
+
+= 9.2.0.2 - 2022.01.26 =
+
+* Fixed character escaping in System Report on admin page.
+* Replaced Room 34 logo on admin page with updated colors.
+* Revised `readme.txt` content.
+
+= 9.2.0.1 - 2022.01.26 =
+
+* Removed the `eventdl` feature, as its current configuration presents a security risk. It will be added back after the issue has been resolved.
+
+= 9.2.0 - 2022.01.26 =
+
+* Added transient (cache) loading of feed URLs in `r34ics_url_get_contents()` function.
+* Refactored `r34ics_purge_calendar_transients()` to support changes to `r34ics_url_get_contents()` function, along with any future transients added to ICS Calendar or ICS Calendar Pro.
+
+**Note about changes to transients in this version:** Previously, ICS Calendar only cached the final parsed calendar data array for each individual shortcode, meaning sites that use multiple different shortcodes to access the same feeds would reload those feed URLs from the source for each individual shortcode that used it. This change should resolve issues with source servers that throttle requests from the same IP address (causing calendars to occasionally come up blank), and also reduce load times for sites that use multiple shortcodes with large calendars. Transient expiration for feed URLs follows the same rules as the existing parsed calendar transients, and `reload="true"` applies in the same way as before. The **Clear Cached Calendar Data** utility also applies to both.
+
+= 9.1.0.3 - 2022.01.25 =
+
+* Fixed bug introduced in 9.1.0 that may cause week view to display all three weeks on initial load instead of just the current week.
+
+= 9.1.0.2 - 2022.01.24 =
+
+* Refactored `r34ics_shortcode_url_fix()` function to better handle edge cases around the `url` attribute containing HTML tags. Rewrote error message this function throws, to be more specific, and raised the error level from **notice** to **warning**. (Note: The `url` attribute should *never* contain HTML tags!)
+* Withdrew version 9.1.0.1 from repository due to its incomplete fix for the above issue.
+
+= 9.1.0 - 2022.01.24 =
+
+* Added User Guide link in Basic Shortcode Example block on admin page.
+* Added `solidcolors` option. Include `solidcolors="true"` in your shortcode to make events in color-coded feeds use the designated color as a solid background behind the text, instead of the default lighter "tint" of the designated color.
+* Added `whitetext` option. Include `whitetext="true"` in your shortcode to force all text within the calendar to be white. Useful on pages with dark backgrounds.
+* Added `dimgray` to color palette. Used mainly in conjunction with the `whitetext` setting.
+* Fixed bug that prevented new `eventdl` feature from working in list view after the current month.
+* Renamed new (9.0.0) hook methods with namespace prefix, preventing conflict with the same methods that already exist in the R34ICSPro class, which extends the R34ICS class.
+* Refactored templates to consolidate `r34ics_calendar_classes` filter logic. Added option to return an imploded string instead of an array, along with a third input parameter (`$implode`) to allow for backwards compatibility with older Pro/external templates that expect an array.
+* Bumped tested up to version to 5.9.
+
+= 9.0.0 - 2022.01.22 =
+
+* New Feature: Individual event ICS file downloads. Add `eventdl="true"` to your shortcode to add a clickable download link to each event. This will download a customized `.ics` file containing only the selected event for users to add the event to their personal calendars. **This is currently a BETA feature. Please provide any feedback you may have via the [WordPress support forums](https://wordpress.org/support/plugin/ics-calendar/).** (Note: The current version does not split DESCRIPTION lines at the recommended 75-character limit; however this should not present an issue with most calendar software.)
+* Added stub files for future AJAX development.
+* Added methods to hook into template actions, allowing the plugin to insert code across all templates. (These actions were previously used only by ICS Calendar Pro.)
+* Updated ICS Parser library to latest available version (3.0.0).
+* Minor code refactoring.
+* i18n: Added new translation strings. Revised translations are coming in a future v. 9.x update.
+
+= 8.12.0 - 2022.01.18 =
+
+* Added `r34ics_get_ics_data()` function to allow developers to retrieve the `$ics_data` array directly, outside of a shortcode. Takes a single array of key-value pairs as input. The keys match the attributes in the shortcode. (At this time the function has been retrofitted into the existing `R34ICS::display_calendar()` method, with an extra argument to bypass template output and return the array directly. A future update will refactor the parsing and display logic into two separate methods.)
+* Added `arrayonly` attribute. Intended only for use by the `r34ics_get_ics_data()` function (which automatically sets it to `true`). *Should not* be used with the shortcode.
+* Fixed missing support for `full` value for `columnlabels` attribute.
+* Bumped tested up to version to 5.8.3.
+
+= 8.11.0.1 - 2021.12.27 =
+
+* Bug fix: Removed instances of `wp_kses_post()` added in 8.11.0 that were being used unnecessarily on output from `R34ICS` class methods.
+
+= 8.11.0 - 2021.12.27 =
+
+* New feature: Added `weeknumbers` option to display week number at beginning of each row of month and week views. (Has no effect on list view; also does not appear on month or week views when collapsed to a list on mobile displays.)
+* Security: Added filtering (using `wp_kses_post()` or `esc_attr()` as appropriate) to all variable output.
+* Performance: Added `r34ics_month_in_range()` function and refactored week view to avoid outputting a large amount of extraneous table HTML. This will be further optimized in the future, as it is still outputting some unnecessary hidden table rows. (Also refactored month and list views to use this function, although they were already removing extra months with conditional logic.)
+* Appearance: CSS tweak to override table alternating row colors that may exist in some themes; CSS tweak to table widths to allow for narrow week number column.
+* i18n: Numbered all placeholders in `printf()` functions and updated translation strings that had multiple placeholders.
+
+= 8.10.4.2 - 2021.12.21 =
+
+* i18n: Updated Dutch translations of recurrence strings.
+
+= 8.10.4.1 - 2021.12.21 =
+
+* i18n: Added extra translation files for Dutch ("Nederlands (Formeel)" and "Nederlands (België)").
+
+= 8.10.4 - 2021.12.18 =
+
+* Added *experimental* `curlopts` attribute. **Sites whose feeds are already loading successfully should NOT use this feature.** This attribute takes a pipe-delimited string of options to turn on for the cURL connection that retrieves an ICS feed. Currently supports `cookie` and `useragent` (e.g. `curlopts="cookie"` or `curlopts="useragent"` or `curlopts="cookie|useragent"`. *It has come to our attention that some services like Cloudflare (providing load balancing, CDNs, and DDOS mitigation services) may reject requests generated by ICS Calendar due to their superficial similarity to malicious requests. If you are using a service like this and are finding that ICS Calendar is unable to retrieve your feeds, please try adding `curlopts="cookie|useragent"` to your shortcode and let us know if it is helpful.*
+
+= 8.10.3 - 2021.12.15 =
+
+* Added extra input parameters into `r3417_event_description_html_filter`, `r3417_event_label_html_filter` and `r3417_event_sublabel_html_filter` filters, to allow filtering functions to access all event data and other input parameters available to the calling functions.
+
+= 8.10.2 - 2021.12.08 =
+
+* Added `r34ics_scrub_duplicate_uids()` function, which will iterate through the final `$ics_data` array and remove any events that have a redundant UID with other events on the same date.
+* Added experimental `fixredundantuids` shortcode attribute (which uses the new `r34ics_scrub_duplicate_uids()` function with the `r34ics_display_calendar_filter_ics_data` filter) to address an issue where an iCloud source feed may include multiple past edits of an event as separate, redundant instances of the event in the calendar. **If you are experiencing this issue, add `fixredundantuids="true"` to your shortcode.** Note that this will not remove redundant-looking events if they have different UIDs. (For instance, if you've deleted a single instance of a recurring event, and then created a new one-off event at the same date and time, or with the same title... those events will have different UIDs and be treated as separate events.) Also note that we are still testing this feature and it is subject to change or removal. Your feedback is welcomed.
+
+= 8.10.1.1 - 2021.12.04 =
+
+* Fixed syntax error introduced in 8.10.1 that may have caused a PHP fatal error on some views.
+
+= 8.10.1 - 2021.12.04 =
+
+* Modified jQuery behavior on month view. If the current month contains a `.no_events` or `.no_additional_events` element, and the *next* month does *not* contain a `.no_events` element, the mobile/list formatting will skip to next month, rather than displaying the "no additional events" message. This switch is triggered both on the initial page load and on window resize (for situations where the user resizes a browser window from the desktop to mobile breakpoint).
+* Changed logic for displayed date ranges in month view, to include all dates within displayed months, rather than cutting off mid-month based on exact `pastdays` and `limitdays` values.
+* Created `r34ics_first_day_of()` and `r34ics_last_day_of()` functions to replace `r34ics_first_day_of_current()` and `r34ics_last_day_of_current()`; adds `$dt_str` as a second input parameter, allowing the function to be used with arbitrary dates instead of just the current date. `r34ics_first_day_of_current()` and `r34ics_last_day_of_current()` remain as aliases.
+* Refactored code that sets outer date parsing range boundaries to avoid possibly excluding dates that should be considered in-range; note that this change may slow calendar parsing *slightly*, with a greater impact on calendars with a very large number of recurring events.
+
+= 8.10.0 - 2021.11.28 =
+
+* Added support for `location="maplinks"` to make event locations automatically convert into a clickable Google Maps link, unless the feed's LOCATION field data already contains HTML or a URL. `location="true"` is still supported for displaying locations *without* adding a Google Maps link. **IMPORTANT: This feature performs a Google Maps search on the exact text of your events' LOCATION fields. It does not have a way to verify that the value is a real address, so incomplete locations (e.g. conference room names within your office) may yield nonsensical map results.**
+
+= 8.9.0 - 2021.11.22 =
+
+* Added workaround for an apparent Block Editor (Gutenberg) bug where shortcodes inside paragraph blocks can contain clickable links. In some cases this results in the `url` attribute of the ICS Calendar shortcode containing HTML tags, which was preventing proper parsing of the feed URL.
+* Additional filtering in `r34ics_url_get_contents()` function to handle invalid feed URLs.
+* i18n: Minor translation updates.
+
+= 8.8.1 - 2021.11.18 =
+
+* Minor CSS adjustments.
+* Bumped tested up to version to 5.8.2.
+
+= 8.8.0 - 2021.10.27 =
+
+* Added support for `toggle="lightbox"` to make event descriptions load in a lightbox instead of toggling in place. `toggle="true"` is still supported for toggle-in-place. **This is currently an *experimental* feature, and we are looking for feedback, especially regarding the visual display of the lightbox.**
+* Refactored code handling the deprecated `currentweek` option. Currently this option will still function, although it is now triggering a PHP notice. It will be removed entirely in a future update. Please switch your shortcodes to using `view="week"` instead.
+* Added `dtstart_date` to parsed event array.
+* Miscellaneous minor code formatting cleanup and comment updates.
+
+= 8.7.0 - 2021.10.27 =
+
+* Added `compact` option. Set `compact="true"` to activate a more compact display of whichever view you are currently using. The exact layout changes will vary by view; not all views are affected. It is recommended that you also use `toggle="true"` on list view for maximum effect. **This is currently an *experimental* feature, and we are looking for feedback. In this version, the changes are that all text is reduced slightly in size, and the *list* view is collapsed into a new layout with the times left-aligned next to the event titles.**
+* Added `nomonthheaders` option. Use `nomonthheaders="true"` on list or month view to prevent month headers from displaying on the page. (Has no effect on week view since there are no month headers in that view anyway.)
+* Changed mouse cursor on titles for events with descriptions to be less confusing: now the default cursor is used instead of the "help" cursor (a question mark in most browsers), except when `toggle` is set, then the standard link "pointer" (hand) cursor is used.
+* Removed all HTML whitespace between `<dt>` and `<dl>` tags to allow tighter formatting due to browsers continuing to do [something that should have been resolved years ago](https://css-tricks.com/fighting-the-space-between-inline-block-elements/). This was necessary for the new `compact` list view to display properly.
+* Coded list view to remove event times from HTML, rather than just hiding them with CSS, when `hidetimes="true"` is set. This is mostly relevant for the new compact view.
+
+= 8.6.0 - 2021.10.26 =
+
+* Adjusted size and position of event detail hover blocks in month table, and added `max-height` and internal scrolling to keep hover blocks a manageable size and (mostly) contained within the area of the table when the event description is very long. Prevents potential issues with the hover block running off the end of the page or outside of a container with `overflow: hidden`.
+
+= 8.5.5.1 - 2021.10.22 =
+
+* Fixed jQuery selector in `r34ics_show_hide_headers()` function to resolve issue with month headers disappearing in list view on window resize.
+
+= 8.5.5 - 2021.10.12 =
+
+* Changed `reload` parameter to support integers greater than 1. Now `reload="true"` or `reload="1"` will function as before, telling the plugin to reload the source feed on every page load. Setting `reload` to any integer greater than 1 will override the default 1-hour (3600-second) expiration of the cached calendar data (transient). The value is in seconds, e.g. `reload="14400"` for 4 hours (14,400 seconds).
+
+= 8.5.4 - 2021.10.11 =
+
+* Added 'on' and 'off' as possible values to check in `r34ics_boolean_check()` function.
+* i18n: Corrections in German translations based on user feedback.
+
+= 8.5.3 - 2021.10.08 =
+
+* Modified jQuery selector for event description toggles to handle dynamically-inserted elements. (This is mainly relevant for some ICS Calendar Pro views.)
+
+= 8.5.2 - 2021.10.01 =
+
+* Modified `R34ICS::parse_attach_array()` method to properly handle events with multiple attachments.
+* Modified event description toggle jQuery to prevent closing the toggle when the user clicks a link inside it.
+
+= 8.5.1 - 2021.09.30 =
+
+* Fixed a potential issue caused by expiration of the X3 root certificate used by Let's Encrypt on September 30, 2021. Removed SSL peer verification on both cURL and fopen methods, to bypass errors that may occur if the source calendar server is running an outdated version of OpenSSL. **This fix *only* applies to situations where the expired root certificate is on the source calendar server. It does not resolve any general issues with your site's SSL certificate or users' devices running older OSes that are affected by the root certificate expiration.**
+
+*Note: If your calendars were affected by this issue, you may need to use the **Purge Cached Calendar Data** utility on the ICS Calendar admin page after applying this update.*
+
+More information about the Let's Encrypt X3 root certificate expiration and how it may affect clients and servers is available on [Scott Helme's blog](https://scotthelme.co.uk/lets-encrypt-old-root-expiration/).
+
+= 8.5.0 - 2021.09.28 =
+
+* Changed namespace used for the embedded version of the ics-parser library, to avoid a conflict on sites that also have another calendar plugin installed that includes an older version of the library.
+* Hotfix: Changed Author URI in main plugin file from [https://room34.com](https://room34.com) to [https://icscalendar.com](https://icscalendar.com).
+
+= 8.4.1 - 2021.09.24 =
+
+* JavaScript and CSS fixes for multiple issues around showing/hiding month and date headers in month view (mobile or Pro with table/list toggle) when using the multi-feed toggle buttons and the show/hide past events link. Some of these issues specifically affect the Pro version but need to be included in the free version's JavaScript due to event trigger/timing issues. The corresponding update to Pro (3.4.1) should also be applied for any sites using Pro.
+
+= 8.4.0 - 2021.09.24 =
+
+* Changed default table cell background color for current and future dates from transparent to white, and added `tablebg` option to allow setting a custom color. **Note:** If you wish to retain the old transparent background on table cells, add `tablebg="transparent"` to your shortcode.
+* Added conditional to prevent unnecessary output of inline CSS code when custom colors are not being used.
+* Added `r34ics_color_hex_sanitize()` function to sanitize color input (specifically for `tablebg` but may also be used for other settings in the future).
+* Alphabetized out-of-order functions in functions.php file.
+* Renamed debugging functions with leading underscore to indicate they are for internal use within the plugin only. Retained old function names as deprecated aliases.
+* Minor CSS color adjustments.
+* Minor refactoring.
+
+= 8.3.1 - 2021.09.23 =
+
+* CSS fixes:
+    * Added (restored) `position: relative;` on `.ics-calendar-month-grid th:hover, .ics-calendar-month-grid td:hover` selector in CSS (was removed from the non `:hover` selector in version 8.1.1) because lacking it causes event description hover boxes to be obscured behind adjacent table cells. Including it *only* on the hover state seems to avoid the issue in Firefox that 8.1.1 was attempting to resolve.
+    * Removed `opacity: 0.75;` on past events to prevent legibility issues on pages with dark or patterned backgrounds.
+
+= 8.3.0 - 2021.09.21 =
+
+* Added `r34ics_is_phone()` JavaScript function.
+* Added `r34ics_show_hide_headers()` JavaScript function.
+* Added `jQuery(window).on('resize')` for handling switches between breakpoints.
+* Changed HTML tag and related CSS (`.ics-calendar-past-events-toggle`) for Show Past Events toggle for cleaner appearance.
+* Fixed 'Undefined index: status' notice that may appear with version 8.2.0.
+
+= 8.2.0 - 2021.09.17 =
+
+* Added handling for STATUS:CANCELLED on events (all views).
+* Bumped "Tested up to" to 5.8.1.
+
+= 8.1.2 - 2021.09.09 =
+
+* CSS refinements: reduced minimum height of month table cells on tablet/phone breakpoints; adjusted vertical position of month dropdown to better align with adjacent elements.
+
+= 8.1.1 - 2021.09.07 =
+
+* Removed `position: relative;` on `.ics-calendar-month-grid th, .ics-calendar-month-grid td` selector in CSS (which appears to have been unnecessary anyway), to resolve issue of missing cell borders in Firefox.
+* Minor CSS fixes and tweaks.
+
+= 8.1.0.2 - 2021.09.07 =
+
+* Fixed bug introduced in version 7.9 that caused calendars with multiple feeds not to properly sort individual days' events correctly by time.
+
+= 8.1.0.1 - 2021.09.06 =
+
+* Fixed recently introduced CSS bug that would cause redundant display of day name headers (and possibly some other elements) on mobile breakpoint.
+
+= 8.1.0 - 2021.09.05 =
+
+* Modified CSS for improved list-style display of month/week views on mobile.
+* Added `r34ics_calendar_classes` filter to all views.
+* Added jQuery logic to hide "Show Past Events" link on month/week views when there *are* no past events in the current month.
+* Miscellaneous CSS refinements.
+
+= 8.0.1 - 2021.09.02 =
+
+* Added "No events" message to mobile breakpoint in "week" view when there are no returned events, to avoid a blank display.
+* Fixed a minor CSS issue that may have caused "hidden" elements to display erroneously on the mobile breakpoint.
+
+= 8.0.0 - 2021.09.01 =
+
+* ICS Calendar has a new look! New logo and branding assets were added to this update. Your calendar templates are unchanged. This version is fully compatible with the version 7.x series.
+
+= 7.9.0 - 2021.08.30 =
+
+* Moved JavaScript loading to footer.
+* Added logic to fix redundant "default" instances of recurring events on dates where the recurrence has an exception in the feed. (Note: This is targeted at the recurrence exception handling in Office 365; other calendar sources may require additional fixes, to be added later.)
+* Refactored event array sorting to consolidate multiple loops through the data array.
+* Cleaned up formatting of changelog notes for version 7.8.0.
+
+= 7.8.1 - 2021.08.25 =
+
+* Added "No events" and "No additional events this month" messages on month view mobile layout, to prevent the appearance of a "missing" calendar when there are no events to display in the collapsed mobile list.
+
+= 7.8.0.2 - 2021.08.16 =
+
+* Added missing CSS to hide `.time-inline` class in list view when `hidetimes` is used.
+
+= 7.8.0.1 - 2021.08.10 =
+
+* Changed new `id` parameter to `guid` to avoid conflict with existing `id` parameter in ICS Calendar Pro.
+
+= 7.8.0 - 2021.08.10 =
+
+*PLEASE SEE NOTES FOR VERSION 7.8.0.1 ABOVE!*
+
+* Added `id` parameter to allow assignment of an arbitrary `id` attribute to a given calendar instead of the plugin's auto-generated GUID.
+* Added missing `$ym` variable definition in `calendar-week.php` template. 
+* Bumped "Tested up to" to 5.8.
+*NOTES on `id` parameter:*
+(1) The WordPress `sanitize_title()` function is automatically applied to the string.
+(2) As is standard for all HTML, the `id` value must be unique on the page!
+
+
+= 7.7.2.1 - 2021.06.24 =
+
+* Modified Google Drive image handling to be a link rather than nothing; minor refactoring of other attachment link handling.
+
+= 7.7.2 - 2021.06.23 =
+
+* Added logic to prevent rendering of invalid `<img>` tags containing a `src` value that is a link to a Google Drive file. Images attached to events on Google Calendar are treated as Google Drive file links rather than direct images and are not accessible without logging into a Google account that is authorized to view the image. We are looking for a workaround, but in the meantime this will prevent these types of broken images from appearing in rendered calendars.
+
+= 7.7.1.2 - 2021.06.13 =
+
+* Fixed broken "Show past events" link in week view (mobile breakpoint).
+
+= 7.7.1.1 - 2021.06.10 =
+
+* Fixed "Undefined variable: d" PHP notice that was appearing on week view since a11y changes added in version 7.6.0.
+* Note: Stable tag for version 7.7.1 was inadvertently not updated, so updating to this version will also make the version 7.7.1 changes available, which may not have been previously.
+
+= 7.7.1 - 2021.06.07 =
+
+* Restructured `r34ics_maybe_make_clickable()` to support link formatting common in Microsoft Teams (Office 365) meetings, and improved use of `r34ics_is_html()` in determining whether or not to add HTML line breaks.
+
+= 7.7.0 - 2021.06.07 =
+
+* Refactored `R34ICS::display_calendar()` method: moved date range calculation and array sorting out of `foreach()` loop to improve performance on calendars with multiple feeds, and to avoid PHP warnings that may have occurred in edge cases where no feed was loaded. **Please note: These changes have eliminated timezone overrides for date range calculations, which could result in some calendars starting or ending one day off from the intended dates, especially if your feed timezone is different from your site's default timezone.** Please report any issues in the [WordPress support forums](https://wordpress.org/support/plugin/ics-calendar/).
+
+= 7.6.0 - 2021.06.01 =
+
+* a11y: Added `aria-labelledby` attributes to calendar containers to improve screen reader user experience.
+* Added conditional to omit empty `<ul>` elements on dates with no events.
+* Minor CSS adjustments related to the above changes.
+* Added `r34ics_day_classes()` function for assembling CSS classes for table cells.
+* Changed handling of `showendtimes` parameter on event description hover boxes. Previously, end times would only display if `showendtimes="true"` was set in the shortcode. Now they will always display in the event description hover box. (The intended functionality of this feature is for what is displayed in the default calendar grid only.)
+
+= 7.5.3 - 2021.06.01 =
+
+* Added `rel="noopener noreferrer nofollow"` to dynamically inserted offsite links (which already contained `target="_blank"`) in event descriptions.
+* Fixed conditionals that were inverting the logic of `r34ics_domain_match()` in creating offsite links.
+* Modified attachment links to download *any* URL that is not a "text/" MIME type as a download. (Previously this applied only to PDFs.)
+
+= 7.5.2 - 2021.06.01 =
+
+* Fixed date format bug in list view on mobile breakpoint.
+
+= 7.5.1 - 2021.05.28 =
+
+* Added `r34ics_is_empty_array()` function to restore proper display of "No events found" message on list view, which stopped working when we added empty nodes to the events array to accommodate blank grids (when necessary) in month and week views. Removed conditional logic for "No events found" message in week and month views, since the current functionality should never allow it to display.
+
+= 7.5.0.1 - 2021.05.26 =
+
+* Cleaned up admin menu setup; removed useless "User Guide" subpage, now that the User Guide is [online](https://icscalendar.com/user-guide).
+
+= 7.5.0 - 2021.05.26 =
+
+* Added `r34ics_purge_calendar_transients()` function to automatically purge cached calendar data (transients) if the WordPress timezone setting is changed. Only clears cached data from this plugin; does not affect any WP core or other plugins' transients. (Can also be used in the future if other WP options are identified that warrant purging the cache after changes.)
+* Added **Utilities** section to admin page, and added a tool to manually call `r34ics_purge_calendar_transients()`.
+* Refactored admin page, moving User Guide block to sidebar and eliminated unnecessary conditional logic for Pro version, since this page is never loaded in the Pro version.
+* i18n: Added Polish, updated existing translations.
+
+= 7.4.2 - 2021.05.25 =
+
+* Added bypass of system timezone check in System Report on Windows servers, since the code relies on a Linux shell command.
+* Added Server Software to System Report.
+
+= 7.4.1 - 2021.05.21 =
+
+* Fixed bug that was causing single-day events that end at midnight to be handled as multi-day events. (The main observable issue was that end times were not being included for these events.)
+* Fixed bug that would return a PHP notice in the System Report if the system (OS) timezone can't be retrieved.
+* Fixed error in debug code if `$ics_events` variable is undefined. Now displays 'NO DATA' for feeds that do not have this variable set.
+
+= 7.4.0 - 2021.05.20 =
+
+* i18n: Added translations into Estonian, Latvian, Lithuanian and Russian. Added non-country-specific translation files for Finnish and Greek to resolve an issue where the translations may not have been loading. Updated translations (in all languages) of a few admin messages that were changed in a recent update. **Please note:** These are mostly machine translations. If you notice any errors, please let us know and we will make corrections promptly!
+* Added missing release dates to version numbers in changelog from 7.2.0 to 7.4.0.
+
+= 7.3.4.1 - 2021.05.19 =
+
+* Added ClassicPress compatibility note.
+
+= 7.3.4 - 2021.05.13 =
+
+* Print CSS improvements: removed display of event descriptions and form inputs (e.g. legend checkboxes, month dropdowns) on month and week views. This is a stopgap measure to improve the plugin's printer output from "atrocious" to "borderline." More print improvements to come!
+* Fixed PHP "Undefined index: INTERVAL" notice.
+
+= 7.3.3 - 2021.05.13 =
+
+* Deprecated `legendinline` option. (For now, if it is present and `legendstyle` is not also set, it will set `legendstyle` to `inline`.) Fixed associated logic.
+* Changed logic for displaying legend so it will display for calendars with multiple feeds, even if no colors are set, unless `legendstyle` is set to `none`. The original conditional logic was built around the legend being a color key only. With the addition of checkboxes to toggle the display of each individual calendar, the legend should be present regardless of the `color` setting.
+* Removed 50% max-width on legend.
+* Bumped "Tested up to" to 5.7.1.
+
+= 7.3.2.1 - 2021.05.06 =
+
+* Removed persistent 7.0 upgrade admin notice.
+
+= 7.3.2 - 2021.04.27 =
+
+* Added logic for appending `.available` and `.has_events` CSS classes to table cells in month and week views.
+
+= 7.3.1 - 2021.04.26 =
+
+* Modified `r34ics_display_calendar_filter_ics_data` to pass `$args` as a second input parameter.
+* Added support for 'filler' boolean on events to bypass `maskinfo` check.
+
+= 7.3.0 - 2021.04.26 =
+
+* Changed instruction text accompanying the Basic Shortcode Example on the admin page.
+* Moved base64-encoded admin icon SVG into a class property.
+* Modified the refactored `r34ics_space_pipe_explode()` function to return a string when applicable, instead of 1-item array, to mimic previous functionality. This change was breaking `hiderecurrence="true"`, and possibly other issues.
+
+= 7.2.0 - 2021.04.02 =
+
+* Bumped [ICS Parser](https://github.com/u01jmg3/ics-parser) library to v. 2.2.2.
+* Refactored `r34ics_space_pipe_explode()` function to accept any combination of spaces and pipes as delimiters. (Allows for situations where, for example, the `url` parameter is delimited by space-pipe-space.
+* Added debug level 3 (`debug="3"`) and moved full dump of raw ICS feed into level 3. Level 1 is the basic debugger; level 2 adds `Peak memory usage`, `ICS Parser data` and `cURL info`; level 3 adds full dump of `URL contents retrieved` (levels 1 and 2 show total bytes retrieved only).
+
+= 7.1.1 - 2021.04.01 =
+
+* Removed `title="DISPLAY_TITLE" description="DISPLAY_DESCRIPTION"` from the basic shortcode example on the admin page, as this seems to have been a source of some confusion.
+* Added "Loaded from transient" to debugger.
+* Modified `reload` to be true if `debug` is set to 2, so the extended debugger always reloads from the source server.
+* Modified logic for displaying "No events found" message on list and week views for consistent handling across all views.
+
+= 7.1.0 - 2021.03.27 =
+
+* Added `hiderecurrence` parameter to suppress all recurrence indicators in event descriptions. Note this is different from `skiprecurrence` in that `skiprecurrence` skips *calculating* recurrences. The new `hiderecurrence` option will still *show* the recurring events, but not indicate that they are recurring; `skiprecurrence` will not show the recurring events *at all.* The default behavior, omitting both of these options, is to calculate and display all recurring events, including the indicator showing their recurrence frequency. The `hiderecurrence` parameter accepts one or more pipe-delimited frequency values, e.g. `hiderecurrence="yearly|monthly"` or `hiderecurrence="true"` to hide all recurrence indicators.
+* Restored previous functionality in week view that collapses the display to a list on mobile, with CSS enhancements. Use the `nomobile="true"` parameter to force week view to remain in grid layout for mobile breakpoints.
+* Added "Show all events" to week view on mobile breakpoint and fixed a general jQuery issue with this feature if multiple calendars are on one page.
+* Logic change to force start date to "today" on week view if `startdate` is empty and `limitdays` is less than or equal to 7. (This eliminates the previous/current/next week dropdown, and "Show past events" on mobile view.
+* Removed an unnecessary block of code in week view that was causing calendar grid to stop on first day of next month in some situations.
+* Removed special background color on all-day events; text formatting is the same as before, but now their background color matches timed events.
+* Removed error handling that would bail out before displaying an empty calendar in cases where the calendar was valid, just without any events within the selected range. Now a calendar will display, with no events shown.
+* Fixed issue with parsed date range that may have omitted multi-day events that started out of range. (Multi-day events still must start within one month of the first displayed date.)
+* Refactored `R34ICS::event_description_html()` method to check for presence of any substantive output before generating the `.descloc` DOM element.
+
+= 7.0.1 - 2021.03.24 =
+
+* i18n: Updated German translations for recurrence-related text strings.
+* Rolled back WordPress version requirement to 4.9, as the `compatibility.php` file should provide the necessary support for versions before 5.3, and having the version requirement officially set at 5.3 may have prevented some installations from allowing updates.
+
+= 7.0.0.2 - 2021.03.24 =
+
+* i18n: Fixed translations of date strings that broke in version 7.0.0. (Added localization code from `wp_date()` into `r34ics_date()`.)
+
+= 7.0.0.1 - 2021.03.23 =
+
+* Fixed critical issue that could cause a PHP Fatal Error: "Uncaught Exception: DateTimeZone::__construct(): Unknown or bad timezone ()" if a site's timezone is not set.
+
+= 7.0.0 - 2021.03.23 =
+
+* Added `r34ics_date()` function to consolidate datetime manipulations; replaced all uses of `gmmktime()`, `date()`, and most uses of `wp_date()` functions.
+* Added recurrence information to event data (only displays when `eventdesc="true"`).
+* Removed extraneous code in week view template and changed to display grid on mobile as well as desktop. (Additional CSS refinements for mobile week view forthcoming in a future update.)
+* Wrapped days' headers and event lists in `div` tags in list view.
+* Added relevant PHP settings to System Report.
+* Miscellaneous refactoring.
+
+= 6.11.1 - 2021.03.20 =
+
+* Renamed option from `r34ics_transient_expiration` to `r34ics_transient_expiration` so it's not a transient itself.
+
+= 6.11.0.1 - 2021.03.19 =
+
+* Fixed issue with Japanese translations not displaying.
+* Minor HTML changes on admin page.
+
+= 6.11.0 - 2021.03.19 =
+
+* Added System Report diagnostics tool to admin page. Please copy and paste the contents of the System Report into your email when requesting support.
+
+= 6.10.0 - 2021.03.13 =
+
+* CSS enhancements to list view. Added `.ics-calendar-date` class to previously undifferentiated `h4` tags, along with improved styling of `dl.event`, `dt.date` and `dd.event`. **IMPORTANT: If you have modified the CSS for list view in your theme, you may need to review the new CSS added to the plugin and adjust your modifications accordingly, as the necessary CSS selectors may have changed.**
+
+= 6.9.2 - 2021.03.11 =
+
+* Removed `abs()` (PHP absolute value function) on `pastdays` handling, to allow negative values to be used for future days.
+* Modified 'No events found in ICS feed(s).' error message to be thrown only when calendar debugging is turned on.
+
+= 6.9.1 - 2021.03.10 =
+
+* Added [Persist Admin notice Dismissal](https://github.com/w3guy/persist-admin-notices-dismissal) library to `vendor` folder, to support future use of dismissible admin notices within the plugin.
+* Added debugging output when display exits early due to missing ICS data.
+* Fixed bug in logic that creates empty month arrays for months within the range of the calendar that have no events. (Previously it was unnecessarily creating arrays without a leading zero when proper arrays with a leading zero already existed.)
+
+= 6.9.0 - 2021.03.09 =
+
+* Added `extendmultiday="true"` shortcode parameter. Per iCalendar specifications, multi-day, all-day events should set `DTEND` equal to the first date **after** the event ends. However in some usages, it may be desirable to include that date in the displayed range for an event. Including this parameter in your shortcode will cause the date specified by `DTEND` to be included in the event range. Note: This has no effect on multi-day events that have start/end **times** specified.
+* Bumped "Tested up to" to 5.7.
+
+= 6.8.0 - 2021.03.05 =
+
+* Moved the full User Guide from the plugin admin page to the [ICS Calendar website](https://icscalendar.com/user-guide), including full translations into dozens of languages.
+* i18n: Added translations to the plugin admin page and admin notices.
+
+= 6.7.0.1 - 2021.02.25 =
+
+* Added three additional input parameters for `r34ics_display_calendar_preprocess_raw_feed` filter and moved it from immediately after ICS feed is loaded to immediately before it is handed off to the ICS Parser library. Extra parameters were added to allow for more useful manipulation of the feed data and placement was changed to after these parameters are all defined.
+
+= 6.7.0 - 2021.02.25 =
+
+* Added new documented `r34ics_display_calendar_preprocess_raw_feed` filter to allow pre-processing of raw ICS feed data, after loading and immediately *before* sending to ICS Parser library for parsing. Can be used by ICS Calendar Pro, or custom code in theme or external plugins, to modify the contents of the feed prior to parsing, e.g. to strip out HTML tags in event DESCRIPTION fields or to exclude events from parsing. An understanding of proper [iCalendar syntax](https://icalendar.org/RFC-Specifications/iCalendar-RFC-5545/) will be helpful in using this filter. See the Developer tab in the plugin's User Guide (on the ICS Calendar admin page) for usage.
+
+= 6.6.3 - 2021.02.23 =
+
+* Changed admin menu order to prevent ICS Calendar from appearing in the middle of the WooCommerce set, if WooCommerce is installed.
+* Bumped "Tested up to" to 5.6.2.
+
+= 6.6.2 - 2021.02.22 =
+
+* Fixed issue with excessive `</dl>` tags in list view HTML output.
+
+= 6.6.1 =
+
+(This version has been removed due to a code error.)
+
+= 6.6.0 - 2021.02.18 =
+
+* Added `compatibility.php` file containing core WordPress datetime functions introduced in version 5.3. This has been tested to function properly with WordPress core version 4.9, and should allow the plugin to be used with at least WordPress 4.9 through 5.2, provided they are running a sufficiently new version of PHP (7.0 or later). The compatibility file is *only* loaded if the `wp_date()` function does not exist in the current WordPress installation, and all functions defined in the file are wrapped in `function_exists()` conditionals. This will have no impact on sites running WordPress 5.3 or later, and will not cause any issues for sites that upgrade from earlier WordPress versions in the future. **Please note: While this has been added as a good faith effort to make ICS Calendar usable on earlier versions of WordPress, these features are provided as-is with no warranty or support. We strongly recommend keeping your WordPress core, and all plugins and themes, up-to-date whenever possible.**
+* Bumped "Tested up to" to 5.6.1.
+
+= 6.5.1.2 - 2021.02.17 =
+
+* Minor CSS tweaks to prevent list bullets from displaying in month/week view grids.
+
+= 6.5.1.1 - 2021.02.13 =
+
+* Additional adjustments to `r34ics_line_break_fix()` to account for lines that do not contain spaces but do contain an escaped line break.
+
+= 6.5.1 - 2021.02.11 =
+
+* Fixed repeated date headers on each event in list view.
+
+= 6.5.0.2 - 2021.02.10 =
+
+* Minor adjustments to `r34ics_line_break_fix()` function to handle `DTSTART` or `DTEND` with `TZID` and also to resolve some edge case issues with URLs crossing the line break in folded `DESCRIPTION` values. Should also prevent `linebreakfix` from causing issues with *properly* formatted ICS feeds.
+
+= 6.5.0.1 - 2021.02.08 =
+
+* Bug fixes to new multi-day list view:
+  * Fixed HTML tag nesting issue with date headers.
+  * (i18n) Fixed date function issue that was preventing multi-day events' dates from being translated.
+
+= 6.5.0 - 2021.02.07 =
+
+* **Consolidated multi-day events into single entries in list view.**
+* Fixed bug that may cause empty month/day headers to display in list view when using `skip`.
+* Refactored some elements of list view template.
+
+= 6.4.2.3 - 2021.02.07 =
+
+* Refinements to logic of `r34ics_line_break_fix()` function introduced in v. 6.4.2.2. Rather than inserting an arbitrary replacement string, this new version attempts to more accurately simulate proper line folding, per the iCalendar spec.
+
+= 6.4.2.2 - 2021.02.06 =
+
+* Fixed a CSS error that would prevent event hover description boxes from displaying on the final day of a multi-day event, when the end is at a specific time rather than an all-day event. (Switched adjacent sibling selector `+` to general sibling selector `~`.)
+* Added `linebreakfix="true"` shortcode parameter to address rare cases where lines in the ICS feed are not properly folded. See [3.1 Content Lines](https://icalendar.org/iCalendar-RFC-5545/3-1-content-lines.html) in the iCalendar spec for details.
+
+= 6.4.2.1 - 2021.02.01 =
+
+* Modified `r34ics_time_format()` to strip currently unsupported time format characters from the format string prior to processing the time format. This is a *temporary workaround* to allow the rest of the desired time format to display properly rather than reverting to the plugin's default `H:i` format. For example: `g:i a T` will now be interpreted as `g:i a` and display times like "4:30 pm" rather than "16:30".
+
+= 6.4.2 - 2021.01.15 =
+
+* Building on the changes in v. 6.4.1, this version introduces the `method` shortcode attribute, which can be used to force the plugin to *only* try retrieving the ICS feed via either cURL or fopen. By default, the plugin tries cURL first and then falls back on fopen. In cases where cURL fails, but with a long timeout, you can use `method="fopen"` in the shortcode to bypass cURL. This can significantly improve page load times for calendars that experience this issue with cURL receiving an HTTP 500 error from the calendar server.
+
+= 6.4.1 - 2021.01.15 =
+
+* Added `r34ics_url_get_contents_customize_curl_options` filter (accepts one parameter `$conn`, being the handle for the cURL connection) to allow customization/overrides of plugin's default settings for the cURL connection used to retrieve the ICS feed with the `r34ics_url_get_contents()` function.
+* Modified conditions in `r34ics_url_get_contents()` for fallback to using fopen if cURL fails: failure might return *some* content, which the function previously interpreted as success. Now any time the HTTP response code is 400 or higher (indicating an error), the function will use fopen functions as a fallback. (This is specifically to address a rare condition where a server might return an HTTP 500 Internal Server Error on our cURL requests, but not with an fopen request.) **Note:** This is a *partial* fix for this issue; while it seems to resolve the problem of the calendar not loading at all, it still may require the request to timeout on the calendar server, causing the page to take 30 seconds or more to load. It is strongly recommended that you do *not* use the `reload="true"` option except for testing purposes.
+
+= 6.4.0 - 2020.12.26 =
+
+* Modified mobile version of month view to only display "Show past events" link on the current month.
+* Minor refactoring of today's date variables in month and week views.
+* i18n: Added translation files for "Deutsch (Sie)" (German, Germany, formal) and "Deutsch (Schweiz, Du)" (German, Switzerland, informal).
+
+= 6.3.2.1 - 2020.12.11 =
+
+* Made color key 100% width on phone breakpoint.
+
+= 6.3.2 - 2020.12.11 =
+
+* i18n: Refactored `R34ICS::days_of_week()` method to use `WP_Locale` "get" methods, instead of retrieving properties directly.
+* i18n: Modified `R34ICS::days_of_week()` method to always output full day names in Arabic. (We have been informed that WP core translations for `WP_Locale::get_weekday_initial()` return values are incorrect in Arabic.)
+* Refactored data array for multi-day events, in preparation for a future update that will concatenate multi-day events into a single entry in list view.
+* Fixed minor bug where last day of all-day, multi-day events was being labeled 'middle' instead of 'last'. (May not have actually impacted any noticeable functionality.)
+* Bumped "Tested up to" to 5.6.
+
+= 6.3.1.2 - 2020.12.06 =
+
+* Fixed bug that would prevent the current month from appearing if the first event in a feed is in a future month/year.
+* Switched logic for `startdate="today"` to using `wp_date()` function instead of PHP `date()` function to avoid a potential timezone issue.
+
+= 6.3.1.1 - 2020.12.05 =
+
+* Slight adjustment to jQuery selector for color key toggles. (Fixes issue with grid view in Pro version.)
+* (Hotfix) Updated readme.txt documentation.
+
+= 6.3.1 - 2020.12.04 =
+
+* Introduced `r34ics_filter_the_content()` function to eliminate our possibly erroneous (and definitely conflicting) use of `the_content` filter.
+
+= 6.3.0 - 2020.12.02 =
+
+* Fixed missing `$first_ts` variable in week view under certain conditions.
+* Added `r34ics_color_text4bg()` to dynamically set a text color that is optimal over a given background color.
+* Updated `r34ics_hex2rgba()` with new output options (needed for new `r34ics_color_text4bg()` function).
+* Added `r34ics_display_calendar_color_set` filter.
+
+= 6.2.5 - 2020.11.28 =
+
+* Coded event links that are on the same domain *not* to open in a new window/tab. (Off-site links still open in a new window/tab as before.)
+* Minor code cleanup.
+
+= 6.2.4.1 - 2020.11.10 =
+
+* Fixed bug that prevented `tz` from working properly if only one timezone was set. (Would default to local WordPress timezone setting.)
+* Bumped "Tested up to" to 5.5.3.
+
+= 6.2.4 - 2020.11.03 =
+
+* Added "compact" option for `monthnav`.
+
+= 6.2.3 - 2020.10.30 =
+
+* Slightly revised color palette to match named HTML colors.
+* Added better error handling if feed URL is invalid or other errors are present in the shortcode that prevent loading the feed.
+* Refactored `r34ics_url_get_contents()` function. Removed useless `stream_get_contents()` condition; increased `CURLOPT_MAXREDIRS` from 3 to 5; other minor adjustments.
+* Added translations of custom PHP error messages.
+
+= 6.2.2 - 2020.10.28 =
+
+* Refactored attachment data handling changes from v. 6.2.1 (moved into `R34ICS::parse_attach_array()` method and added proper URL filtering with `filter_var()`.
+* Removed `R34ICS::carbon_path` property as ICS Parser library has become Carbon independent.
+* Updated code comments to reduce wheel reinvention propensities.
+
+= 6.2.1 - 2020.10.27 =
+
+* Added event titles and times into event details hover block on month and week views, added content filtering on event details, and increased default width of hover block.
+* Improved handling of inconsistently formatted organizer data.
+* Improved validation and sanitizing of attachment data, with a basic check to prevent display of any attachments that do not contain a full URL. (We have found some feeds may contain local system/network file paths in the attachment field.)
+* Added implicit use of start date as end date for events that do not explicitly specify an end date. All events in a feed *should* have DTEND set but we have observed instances where they do not. (Fixes "Undefined property: ICal&#92;Event::$dtend_array in ...ics-calendar/class-r34ics.php on line 400/line 411" PHP notices.)
+
+= 6.2.0.1 - 2020.10.26 =
+
+* Minor CSS fix.
+* Updated information in the readme file.
+* New banner image for WordPress plugin directory.
+
+= 6.2.0 - 2020.10.23 =
+
+* Added `monthnav` attribute with options of `select`, `arrows` or `both` to choose how user navigates through months (month view only).
+* Added "Show past events"/"Hide past events" toggle in month view on mobile breakpoint (month view only).
+* Corrected documentation for default behavior when `limitdays` is not set.
+* Refactored jQuery interactive elements to better support multiple ICS Calendars on one page.
+* Removed @todo comment regarding refactoring how views iterate through dates.
+
+= 6.1.2.2 - 2020.10.22 =
+
+* Further refinements to `tz` parameter and timezone handling to avoid fatal errors if site does not have a timezone set and to default to WP timezone string instead of null if `tz` is not specified.
+
+= 6.1.2.1 - 2020.10.21 =
+
+* Reworked `r34ics_get_feed_tz()` to prevent thrown exceptions on an invalid timezone string. Added `r34ics_is_valid_tz()` function for support.
+* Fixed syntax error in `r34ics_organizer_format()` function.
+
+= 6.1.2 - 2020.10.21 =
+
+* Changed condition for toggle event description excerpts so it can be used in pro and custom templates.
+* Fixed URL-encoded character output that may appear in event organizer names.
+* Changed `r34ics_get_feed_tz()` to using `timezone_open()` instead of `new DateTimeZone` to easily handle exceptions.
+* Updated i18n translation files with additional text strings. Added translations for Danish and Korean. Added localized translation versions for Austria, Belgium, Canada, Portugal, Spain, Switzerland. If you are interested in helping improve the accuracy of these machine translations please email us at support@room34.com.
+
+= 6.1.1 - 2020.10.21 =
+
+* Added `data-feed-color` attribute to events to make color-based CSS customizations easier.
+* Used `data-feed-color` to remove unnecessary padding on events without a color background.
+* Added proper handling of empty color settings on multi-feed calendars.
+* Miscellaneous CSS refinements.
+
+= 6.1.0 - 2020.10.20 =
+
+* Added `legendstyle` parameter with value options of "block" (default), "inline" or "none". Will eventually replace `legendinline` parameter, which is functionally equivalent to `legendstyle="inline"`.
+* Added `legendposition` parameter with value options of "above" (default) or "below". Determines whether legend is displayed above or below the calendar itself.
+
+= 6.0.0 - 2020.10.10 =
+
+* Refactored parsing of event dates and times to properly adjust for site's local time zone. (Plugin previously used the feed's embedded time zone with no adjustments.) **IMPORTANT: This change may cause a time zone shift in your existing calendars if your WordPress time zone setting is incorrect or differs from the feed's time zone. Be sure to check Settings > General > Timezone in your WordPress configuration, or use the new `tz` parameter (see below).**
+* **Added new `tz` parameter** to allow overriding the site's default time zone on an individual calendar. (See admin page for usage instructions.)
+* Bumped [ICS Parser](https://github.com/u01jmg3/ics-parser) library to v. 2.1.20, which removes [Carbon](https://carbon.nesbot.com) library dependency... and its own numerous dependencies. (Reduced this plugin's overall weight by 82% by removing ICS Parser library's `vendor` folder entirely, as ICS Parser's dependencies are now only required for development on the library itself.)
+
+= 5.10.0.2 - 2020.10.06 =
+
+* Added CSS `position` and `z-index` properties to select dropdown and adjacent container to fix issue where select dropdown may be inaccessible due to default z-index stacking order.
+
+= 5.10.0.1 - 2020.09.25 =
+
+* Fixed incorrect variable name in two `curl_setopt()` calls added in version 5.10.0.
+
+= 5.10.0 - 2020.09.23 =
+
+* Improved handling of 301 and 302 redirects in feed URLs and debugger details around URL retrieval.
+
+= 5.9.2 - 2020.09.11 =
+
+* Added "Show/hide all" toggle checkbox on color key when the calendar is displaying 5 or more feeds.
+* Updated translations.
+* Added version check when enqueuing plugin's JavaScript file.
+* Bumped "Tested up to" to 5.5.1.
+
+= 5.9.1 - 2020.08.20 =
+
+* Added `r3417_event_description_html_filter`, `r3417_event_label_html_filter` and `r3417_event_sublabel_html_filter` filters to allow modification of event information display on a per-event basis. Used by the new Regular Expressions feature in "Pro" version.
+* Updated admin user guide with Developer documentation for the `r34ics_display_calendar_filter_ics_data` filter.
+* Updated admin sidebar with new information about the Pro version.
+
+= 5.9.0.1 - 2020.08.17 =
+
+* Modified logic for identifying all-day events to search for `T000000` in datetime strings instead of `T000000Z`. (This change resolves an issue in at least one test case but may require further review. Please submit a support ticket if you are seeing new issues with all-day events.)
+
+= 5.9.0 - 2020.08.17 =
+
+* Added `r34ics_display_calendar_filter_ics_data` filter to allow external filtering of ICS data prior to display.
+* Added link to live preview in readme.txt.
+* Bumped tested up to version to 5.5.
+
+= 5.8.1 - 2020.07.15 =
+
+* Added `r34ics_display_calendar_exclude_event` filter to allow custom theme/plugin code to determine whether or not each event should be excluded from display. **Note:** This filter runs on the loop that parses events. Avoid redundant or processor-heavy logic in uses of the filter. (For example, if a query is being run, execute it outside of the filter and pass its results into the filter as global variable.)
+* Added `customoptions` attribute to shortcode. This attribute will *never* be used directly within the core ICS Calendar plugin, but may be used in ICS Calendar Pro or in customizations/add-ons to pass additional data into the shortcode for use within filters. Developers are advised to use the pipe delimiter to separate multiple discrete options within this attribute value, as the plugin will explode this option into an array on the pipe character.
+* Updated documentation.
+
+= 5.8.0.8 - 2020.07.10 =
+
+* Added missing input parameter to `current_time()` call in `R34ICS::first_dow()` method to resolve a fatal error that may occur in rare cases.
+* Changed jQuery in week view from using `.show()` and `.hide()` methods to using `.css('display','table-row')` to prevent layout issues with certain themes.
+
+= 5.8.0.7 - 2020.07.01 =
+
+* Added conversions of am/pm into their Greek equivalents in `r34ics_time_format()` function when site language is set to Greek.
+
+= 5.8.0.6 - 2020.06.30 =
+
+* Added value for CURLOPT_CAINFO in `r34ics_url_get_contents()` function for sites that are experiencing errors related to verifying peers. See [this Stack Overflow post](https://stackoverflow.com/a/18972719) for more details.
+* Extended show/hide logic from v. 5.8.0.5 to month headers in list view.
+
+= 5.8.0.5 - 2020.06.26 =
+
+* Modified jQuery for list view filters to hide day labels when all events scheduled for that day are hidden.
+
+= 5.8.0.4 - 2020.06.24 =
+
+* Fixed bug on week view that would cause the time on filtered-out events to continue displaying when the events themselves were hidden.
+
+= 5.8.0.3 - 2020.06.24 =
+
+* Changed HTML tags for .ics-calendar-VIEW-wrapper elements from div to article to work around glitch affecting at least week view when the color key is displayed. (Issue with use of :first-of-type selector.)
+
+= 5.8.0.2 - 2020.06.17 =
+
+* Added option to use pipes as the delimiter between multiple URLs and colors instead of spaces, to resolve an apparent conflict with the HivePress plugin that was causing the `url` attribute of the shortcode to be blanked out when used on a HivePress listing.
+
+= 5.8.0.1 - 2020.06.17 =
+
+* Fixed handling of an empty or irretrievable URL. No longer allows one empty URL to cause the entire calendar to fail when multiple URLs are provided.
+
+= 5.8.0 - 2020.06.11 =
+
+* Bumped ICS Parser library to v. 2.1.19. (Core now incorporates my fix in src/ICal/ICal.php, line 1692.)
+* Added "Object moved" to set of values for detecting a URL rewrite.
+
+= 5.7.2.1 - 2020.05.16 =
+
+* Added missing documentation for `feedlabel` parameter.
+
+= 5.7.2 - 2020.05.05 =
+
+* Added `legendinline` option to display color key legend as an inline list instead of stacked.
+* Encapsulated dynamic feed color CSS into `r34ics_feed_colors_css()` function and removed redundant code from each template file.
+
+= 5.7.1.2 - 2020.04.13 =
+
+* Minor CSS fix on color key checkbox alignment.
+* Bumped tested up to version to 5.4.
+
+= 5.7.1.1 - 2020.03.23 =
+
+* Removed unused Block Editor stub code to prevent WordPress plugin directory from falsely indicating Block Editor support. Sites can continue to use the shortcode with the Block Editor.
+
+= 5.7.1 - 2020.03.22 =
+
+* i18n translation updates.
+* Corrected smart quote formatting on User Guide page.
+* Fixed admin page tabbing jQuery to apply to in-page links only.
+
+= 5.7.0.1 - 2020.03.12 =
+
+* Updated admin documentation page. No functionality changes from version 5.7.0.
+
+= 5.7.0 - 2020.03.10 =
+
+* Fully removed all code related to deprecated `tzoffset` and `tzignore` parameters.
+* Added `.multi-feed` CSS class for future customizations of calendar display with multiple feeds.
+* CSS refinements.
+
+= 5.6.1.1 - 2020.03.10 =
+
+* Added necessary `$args` parameter to `R34ICS::color_key_html()` method to allow for conditional logic based on shortcode parameters.
+
+= 5.6.1 - 2020.03.10 =
+
+* Added array of URLs to general `$ics_data` array to allow for easier manipulation.
+* Added `r34ics_color_key_html_after_feed_title` action to new `R34ICS::color_key_html()` method.
+
+= 5.6.0 - 2020.03.09 =
+
+* Changed default transient expiration value from 10 minutes to 1 hour for better caching performance.
+* Added `skiprecurrence` option to omit instances of recurring events. Use of this setting is discouraged in most cases, as it will prevent recurring events from displaying; however it may be useful in cases with extremely large calendars, if recurrences are not needed.
+* Added checkboxes to show/hide events from individual calendars with color code key if present; encapsulated color code key logic/display in `R34ICS::color_key_html()` method. Moved color code keys above calendar for improved usability.
+* Minor CSS improvements for more consistent display across different themes.
+
+= 5.5.1 - 2020.03.03 =
+
+* Improved support for recursively following feed URLs that may return a 301 or 302 status code (redirect).
+* Improved performance and reduced potential for out-of-memory errors on feeds with a large amount of data, by using ICS Parser library's date filtering settings.
+* Added some conditional logic (including a modification to the ICS Parser library) to avoid PHP warnings when certain data is missing in the feed, involving recurrence and/or DTEND being formatted differently than DTSTART.
+* Additional debugger output, including ICS Parser date filter values and peak server RAM usage while parsing.
+* Removed some unused (commented-out) code.
+* Changed hardcoded transient expiration value to a stored setting.
+
+= 5.5.0.1 - 2020.03.01 =
+
+* Fixed bad path for sidebar include on admin page.
+
+= 5.5.0 - 2020.02.28 =
+
+* Added new `attach` parameter to allow handling of attachments independent of `eventdesc`. Possible values are `true`, `false`, `image` and `download`. If omitted or blank, attachments will be displayed if `eventdesc` is `true`, as before. If set to `image`, only image attachments will be displayed. If set to `download` only download-type attachments will be displayed.
+* Modified layout for list view to display attached images right-aligned and reduced in size. This can be further modified to suit your needs by customizing `.ics-calendar .event .descloc .attach_float` in your CSS.
+* Adjusted margins and line height settings event descriptions for better readability.
+
+= 5.4.1 - 2020.02.27 =
+
+* Added admin notice and documentation regarding incorrect display times after Daylight Saving Time begins. (Be sure WordPress is using a city-based timezone setting, not a UTC offset.)
+* Fixed bug in `pastdays` calculations in list and month view.
+
+= 5.4.0.1 - 2020.02.24 =
+
+* Rolled back changes to `r34ics_boolean_check()` until issues with the new logic can be resolved.
+
+= 5.4.0 - 2020.02.20 =
+
+* Refactored `r34ics_boolean_check()` function to leverage core PHP `filter_var()` function.
+* Wrote logic (not yet implemented, pending further tests) to automatically replace `http://` with `https://` in feed URLs.
+* Added `r34ics_display_calendar_range_start` and `r34ics_display_calendar_range_start` filters.
+* Bumped ICS Parser library to v. 2.1.17.
+
+= 5.3.0 - 2020.02.09 =
+
+* Added new CSS classes and updated jQuery scope to mitigate possible functionality conflicts when multiple calendars are displayed on one page.
+* Removed extraneous slashes in paths that use `plugin_dir_path()` function.
+* Added text color to select menus to resolve issue in some browsers when page text color is white.
+
+= 5.2.9 - 2020.02.03 =
+
+* Added error handling for shortcodes with empty/missing URL.
+* Minor CSS adjustments.
+* Improved `r34ics_boolean_check()` function's handling of string input.
+
+= 5.2.8 - 2020.01.22 =
+
+* Added experimental `skip` parameter for use in conjunction with `count` in list view. (Presently undocumented, as functionality may change.)
+
+= 5.2.7 - 2020.01.21 =
+
+* Added `formatmonthyear` parameter to customize formatting of month/year headers, dropdown menus, etc.
+
+= 5.2.6.1 - 2020.01.19 =
+
+* Reorganized admin template file structure.
+
+= 5.2.6 - 2020.01.18 =
+
+* Additional hooks for template manipulation in Pro version.
+
+= 5.2.5.3 - 2020.01.17 =
+
+* Fixed bug that was preventing support sidebar from appearing on admin screen.
+
+= 5.2.5.2 - 2020.01.15 =
+
+* Fixed bug that was displaying event start time (from first day) on last day of multi-day events.
+
+= 5.2.5.1 - 2020.01.13 =
+
+* Updated new time format function with support for European-style formats with "h" and "min"/"m".
+* Changed default fallback time format from "His" to "H:i".
+
+= 5.2.5 - 2020.01.12 =
+
+* Continued work to resolve persistent time calculation issues for various users by replacing time display formatting that relies on PHP or WordPress functions, all of which apply timezone calculations to a timestamp, with a simple custom function that assumes the time string provided is already the correct time and just formats it for display based on the desired format string. Defaults to WordPress **Time Format** setting if a custom format is not provided.
+
+**We are actively working to resolve these time display issues for all plugin users worldwide. Please contact us at support@room34.com if you are encountering any issues, and we will work with you to find a resolution.**
+
+= 5.2.4.1 - 2020.01.09 =
+
+* Replaced all instances of PHP `mktime()` function with `gmmktime()` to prevent display date/month label miscalculations due to differences between server timezone and UTC.
+
+**Additional background information about this issue and the difficulty in troubleshooting it:** If all date-handling functions are not using the same timezone offset, date/month labels might occasionally be "off by one" as a result of the difference between the server's timezone and UTC. *These miscalculations only occur during the hours of the day when the local timezone's current date is different than the current date in UTC.*
+
+The problem occurs for as many hours in the day as local time is offset from UTC. East of UTC, it occurs after midnight, and west of UTC, before midnight. So, for example, in the "Asia/Tokyo" timezone, it happens between midnight and 9 AM. In the "America/Chicago" timezone (where this plugin is developed), it occurs between 7 PM and midnight (during Daylight Saving Time). Because most of the development work on the plugin has been during the day, the problem has not often been observable in troubleshooting.
+
+Recent updates to the plugin have been focused on moving all date calculations into using UTC for consistency, but in several places, `mktime()` (which uses local server time) was being used in combination with other functions (like the WordPress `wp_date()` function) that were using UTC. By switching all instances of `mktime()` to `gmmktime()`, this issue should now be resolved.
+
+= 5.2.4 - 2020.01.08 =
+
+* Added `hidealldayindicator` parameter.
+* Updated admin User Guide content.
+
+= 5.2.3 - 2020.01.07 =
+
+* Added `r34ics_empty_content()` function for checking HTML strings for the presence of actual content. (Tests string by stripping spaces, non-breaking spaces, and all HTML except media tags.)
+* Added `r34ics_empty_content()` checks on some output methods to avoid rendering empty hover boxes.
+
+= 5.2.2.1 - 2020.01.06 =
+
+* Fixed bug that would prevent event descriptions (`eventdesc`) from displaying when set to `"true"`.
+
+= 5.2.2 - 2020.01.04 =
+
+* Fixed display of empty hover box on calendar events that have no description content.
+* Fixed logic limiting `eventdesc` excerpts to list view.
+* Changed handling of event description excerpts in list view from tooltip (which could not contain HTML formatting) to click-to-expand in the main body.
+* Changed positioning of month view event description hover boxes to mitigate issue of being partially hidden if a container element has `overflow: hidden` set.
+* Fixed a minor CSS issue with list view and color blocks in some themes.
+* Updated admin documentation regarding use of `toggle` parameter. (Now deprecated in favor of the new `eventdesc` excerpt handling.
+
+= 5.2.1 - 2020.01.04 =
+
+* Fixed bug with `eventdesc` not shortening to an excerpt when an integer value is provided.
+* Fixed bug with HTML entities in event titles rendering as code instead of the correct characters.
+
+= 5.2.0 - 2020.01.03 =
+
+* Added new `pastdays` option to allow previous months' events to appear.
+* Removed less frequently used options from Add ICS Calendar admin overlay to streamline UX.
+
+= 5.1.1 - 2020.01.01 =
+
+* Standardized base color palette and updated CSS.
+* Fixed version numbering discrepancy.
+
+= 5.0.2 - 2019.12.31 =
+
+* Minor formatting adjustments to Add ICS Calendar insertion overlay.
+* Added `feedlabel` parameter. (Currently undocumented, as usage may change.)
+* Added shortcode input arguments to debugger output.
+* Fixed issue with default date display format on week view.
+
+= 5.0.1.1 - 2019.12.31 =
+
+* Corrected formatting of day labels using $wp_locale.
+* Refactored elements of admin pages for compatibility with changes in Pro version.
+
+= 5.0.1 - 2019.12.31 =
+
+* Fixes critical issue with 5.0.0 that may cause some date labels to display one day earlier than the correct date.
+* Switched R34ICS::days_of_week() method to using global $wp_locale object instead of manual translations and removed day names from i18n files.
+
+= 5.0.0 - 2019.12.30 =
+
+* Bumped WordPress requirement to 5.3 and PHP requirement to 7.0.0. WordPress requirement is due to the use of the new `wp_date()` function to replace `date_i18n()`. PHP requirement is because most actively supported OSes now ship with at least PHP 7.0.
+* Replaced all uses of `date_i18n()` with `wp_date()` (if translations are needed for display) or PHP `date()` function (if dates are being formatted for processing only). Currently also using `date()` to format time-only display, due to issues on certain servers with redundant timezone offset adjustments when using `wp_date()`.
+* Added `r34ics_date_format()` and `r34ics_hour_format()` functions for improved i18n support.
+* Removed `tzignore` and `tzoffset` functionality due to unreliable results. These parameters are now ignored. All events are displayed at the time determined by the timezone for the overall feed or the individual event. An arbitrary timezone offset feature will be added back in a future version.
+* Redesigned admin User Guide screen and added a full list of all available shortcode parameters.
+
+= 4.7.2 - 2019.12.28 =
+
+* Switched to local WordPress time zone rather than UTC for events that do not explicitly include a time zone ("float" times).
+* Refactored logic around start/end time calculations, "float" times and manual offsets.
+* Fixed a logic error that would carry over one feed's `tzoffset` setting into the next feed, if it didn't have its own, for shortcodes with multiple feed URLs.
+* Removed time calculation workaround logic that appears redundant with the most recent ICS Parser library update. This may have resulted in a "double calculation" of time offsets relative to UTC if both `tzoffset` and `tzignore` were set.
+* Fixed a bug in calculating displayed start and end times that was not reading the event's year properly.
+* Corrected some minor CSS omissions due to classes present in our default test theme.
+* Updated User Guide page and help messages on Add ICS Calendar insertion overlay.
+
+= 4.7.1 - 2019.12.19 =
+
+* Added `columnlabels` attribute to allow use of abbreviated day names in column headers on month and week views.
+* Refactored logic around using custom or default calendar titles and descriptions; changed preferred value for suppressing defaults from `none` to `false`.
+* Refactored r34ics_boolean_check() function.
+* Updated admin documentation with notes on the use of general WordPress settings for language, date and time formats, and first day of week.
+
+= 4.7.0 - 2019.12.17 =
+
+* Updated ICS Parser library to latest version (2.1.16) which may resolve some fatal errors on certain Google Calendar feeds.
+* Updated some formatting and added ICS Calendar Pro beta sign-up link on ICS Calendar admin user guide page.
+* Modified shortcode output to not execute on admin pages, for performance and to prevent any fatal errors in the output from causing editing screens not to load. (This change may need to be reversed in the future when full Block Editor support is implemented.)
+* Updated "Tested up to" to version 5.3.1.
+
+= 4.6.2 - 2019.12.12 =
+
+* Refactored logic for determining date range to force future empty months to display when `limitdays` is set and to improve performance.
+* Added missing admin documentation for the `color` attribute.
+* Added `.multiday_first`, `.multiday_middle` and `.multiday_last` CSS classes to customize appearance of events spanning multiple days.
+* Fixed PHP warning if feed is empty.
+* Changed debug output in footer from a closure to a named function.
+* Updated "Tested up to" to version 5.3.
+
+= 4.6.1 - 2019.11.25 =
+
+* Added CSS box-sizing: border-box on all elements inside .ics-calendar for more consistent layout.
+* Fixed bug that may prevent list view (and possibly the others) from showing the correct range of events, by adjusting scope of dates initially considered by the parser.
+
+
+= 4.6.0 - 2019.11.18 =
+
+* Added `linktitles` attribute to make event titles into clickable links if the event contains a URL.
+* Refactored logic for displaying event labels (titles) and sublabels into class methods.
+
+= 4.5.0.1 - 2019.11.01 =
+
+* Modified `.no_phone` and `.phone_only` classes to override conflicts in some themes. This is a temporary solution that will be improved upon in a future version.
+* Added `aria-hidden="true"` attributes to date values that were changed in version 4.4.1 to prevent redundant date descriptions in screen readers.
+
+= 4.5.0 - 2019.11.01 =
+
+* Fixed bug that prevented week view from showing events from the previous month when a new month begins during the current week. (Adjusted date range of initial parser run.)
+* Refactored time zone logic so `tzoffset` works properly and can be used in conjuction with `tzignore` to override the feed's time zone data. (Previously `tzoffset` only worked if the feed did not contain any time zone data.)
+* Added support for multiple `tzoffset` values (space-delimited) for calendars that include multiple feed URLs and need to use a different time zone setting for each feed.
+
+= 4.4.1 - 2019.11.01 =
+
+* Added support for the `format` attribute in the *mobile breakpoint only* for month and week views. (Already supported in list view.)
+* Updated "Tested up to" to 5.2.4.
+
+= 4.4.0.1 - 2019.10.07 =
+
+* Changed CSS class for `toggle` attribute to work around third-party plugin conflicts.
+* Fixed PHP notice that may occur if events in feed don't have an ATTACH array.
+
+= 4.4.0 - 2019.10.01 =
+
+* Added `maskinfo` option to hide event details (e.g. for vacation rental availability).
+* Updated admin User Guide page with additional resource links and updated information about the upcoming Pro version.
+
+= 4.3.1 - 2019.09.30 =
+
+* Added support for attachments in event descriptions. Images will be displayed inline; PDFs will be download links. For security purposes, other file formats are not supported at this time. (As with URLs, these will be included automatically when `eventdesc="true"` is set.)
+* Removed commented-out workaround code.
+
+= 4.3.0 - 2019.09.27 =
+
+* Removed workaround code for time zone issues that should no longer be needed with ICS Parser library v. 2.1.13. **PLEASE REPORT ANY NEW START/END TIME CALCULATION ISSUES, ESPECIALLY AROUND THE START/END OF DAYLIGHT SAVING TIME, IN THE SUPPORT FORUMS AND WE WILL WORK TO RESOLVE ASAP.**
+* Refactored and streamlined ICS event parsing code.
+* Encapsulated event detail HTML in new `R34ICS::event_description_html()` method for cleaner template code.
+* Added support for URLs in events (included in output when `eventdesc="true"` is set, rather than as its own parameter).
+* Added jQuery to open offsite links in a new tab. (Can't be added to the HTML directly because it relies on the core WordPress `make_clickable()` function.)
+
+= 4.2.0.1 - 2019.09.25 =
+
+* Modified r34ics_url_get_contents() to convert ampersand entities in URL to plain ampersands.
+
+= 4.2.0 - 2019.09.23 =
+
+* Added `organizer` option to display organizer information if included in the feed.
+* Added support for `startdate` to all views.
+* Fixed bug preventing description/location/organizer data from displaying in list view when `toggle` is off.
+* Refactored Add ICS Calendar button/overlay to work with multiple WYSIWYG editors, including those with delayed initialization (e.g. Advanced Custom Fields).
+* Moved debugger CSS to separate file that only loads for site admins.
+* Added hooks to admin Add ICS Calendar overlay.
+* Miscellaneous admin CSS/JS debugging and refactoring.
+
+= 4.1.4 - 2019.09.23 =
+
+* Per multiple support requests, reversed order of location and description in all views.
+* Modified color calculation function to increase opacity of "highlight" color.
+
+
+= 4.1.3.1 - 2019.09.22 =
+
+* Fixed issue with conditional for color key below calendars, to avoid a PHP warning that was appearing when no colors are set.
+
+= 4.1.3 - 2019.09.21 =
+
+* Corrected code for custom `limitdays` value to calculate starting from calendar's first event date rather than the current date and subtracted 1 from calculated value to account for the first date.
+* Broke out r34ics_hex2rgba() as separate function.
+* Included additional fields in parsed event data for display manipulation in Pro version.
+* Updated hooks for Pro version.
+
+= 4.1.2 - 2019.09.18 =
+
+* Added `bypassworkaround="true"` option to allow users to test bypassing some existing workarounds for time zone calculation errors in ICS Parser that may no longer be needed. If you are finding issues with time calculations, especially around switching into/out of Daylight Saving Time, please add this parameter to your shortcode and let us know in the WordPress support forum if it is helpful.
+* Modified handling of `limitdays` parameter. When set, it now applies a hard end date for the display range, rather than ending at the date of the last event in the feed.
+
+= 4.1.1 - 2019.09.18 =
+
+* Added missing documentation of the `tzoffset` feature to the admin page.
+* Fixed broken month layout for months ending on a Sunday when site's "Week starts on" value is set to a day other than Sunday.
+
+= 4.1.0 - 2019.09.16 =
+
+* Added `nomobile` option to shortcode to block the standard functionality of displaying month and week views as lists on mobile. **This feature should only be used if you will be writing your own CSS to improve the cramped display of the grid on mobile.** Basic instructions on how to do this are included on the admin page. Additional notes: 1) This feature involves a CSS change, so you may need to clear your cache before you will see the change on the front end of your site. 2) This is intended as a simple workaround option for the free version of the plugin. Additional views are planned for the upcoming pro version, including an enhanced mobile display option for month and week views.
+
+= 4.0.2 - 2019.09.15 =
+
+* Fixed issue with jQuery on admin page that may have been conflicting with other plugins' admin pages (e.g. Postie).
+* Skipped version 4.0.1 due to misnumbering error in previous update.
+
+= 4.0.0.1 - 2019.09.13 =
+
+* Fixed issue with `data-dow` values not resetting to 0 on Sunday on fill cells at end of month view grid if site's **Start of week** value is set to a day other than Sunday.
+* Updated "Tested up to" version to 5.2.3.
+
+= 4.0.0 - 2019.09.12 =
+
+Updates in this new version are primarily focused on preparing to support the new Pro version currently in development. **The Pro version is designed as an add-on to the free version, so the free version will continue to receive ongoing enhancements and bug fixes.**
+
+* Added conditional loading of ICS Parser library dependencies.
+* Added hooks to support Pro add-on.
+* Changed capabilities requirement to view admin page.
+* Reorganized admin navigation with dedicated menu item.
+
+= 3.3.1 - 2019.09.09 =
+
+* Added `startdate="today"` option.
+* Modified logic for displaying color key, so it only appears if there are multiple calendars in the display.
+
+= 3.3.0 - 2019.08.12 =
+
+* Refactored main ICS Parser call to pass date range restrictions into the parser rather than limiting the range after parsing, for better performance.
+* Updated ICS Parser library to version 2.1.13. This was done mainly to resolve a bug with how the previous version of the library (2.1.9) handled weekly recurrences with an interval greater than 1. (This version of the library reverts to allowing Carbon 1.3.9 or greater as well as 2.0 or greater; we have avoided Carbon version 2.0 due to its very large number of new dependencies causing instability in our builds.) We have not updated any of the dependencies.
+* Overhauled debugger output details and interface elements.
+* Additional notes on the experimental `color` attribute: You can hide or modify the **Key** that appears below the calendar using these CSS classes: `.ics-calendar-color-key` for the outer container; `.ics-calendar-color-key-label` for the word "Key" (not yet included in the translation files), and `.ics-calendar-color-key-item` for the color items themselves; use `.ics-calendar-color-key-item[data-feed-key="n"]` to alter individual items. (Replace "n" with the number of the item in the list, starting with 0.)
+* Added release dates to version number headers in `readme.txt`.
+* Hotfix: Fixed CSS so month/week grids always fill the container.
+* Hotfix: Fixed an issue that would cause the new debugger output to appear on all pages (for site admins only).
+* Hotfix: Changed date formats passed into new `ICal::eventsFromRange()` call from `r` to `Y/m/d` for better international compatibility.
+
+= 3.2.2 - 2019.08.12 =
+
+Note: This is a minor "housecleaning" update that does not add any new features or bug fixes.
+
+* File structure clean-up: split `class-r34ics.php` and `functions.php` out from main `ics-calendar.php` file.
+* Added **Additional Resources** links on admin page.
+* Swapped in new Room 34 logo.
+
+= 3.2.1.1 - 2019.08.11 =
+
+* Fixed bug that would prevent fixed start dates from working if they are in the past.
+* Fixed minor logic issues with new experimental `color` attribute that may cause the color key to appear when no colors are set. (Note: The feature still currently supports an unequal number of calendars and colors, meaning some calendars might not have a color, or some colors may appear in the key even though they are not assigned to a calendar.) Also fixed issue that would prevent calendar names from appearing in the key if a color was not assigned to it.
+
+= 3.2.1 - 2019.08.09 =
+
+* Added CSS word hyphenation to prevent long words from running outside day blocks in the calendar grid. This is especially important for text in German. (Previous versions just hid the overflow; we needed to turn on `overflow: visible` in 3.2.0 to allow the hover blocks that replaced tooltips.
+* Improved debugging messages.
+* Added scope to all properties of the R34ICS object.
+* Added experimental `color` attribute. This feature is not yet officially documented, but testing and feedback are welcome. Use `color="#ffffff"` or, if you have multiple URLs, enter multiple values in the `color` attribute, space-separated, and those colors will be applied in the same order as the URLs. You are setting the *base* color (the accent on the left edge). The highlight color behind the text is the same color with a 20% alpha transparency applied. (A full-featured color customizer tool is planned for inclusion in the upcoming Pro version.)
+
+= 3.2.0 - 2019.08.06 =
+
+* Added "fixed week" capability (displaying an arbitrary date range up to 7 days) using the `startdate` and `limitdays` attributes.
+* Replaced tooltips on event hover with formatted HTML hover block.
+* Added function to apply `make_clickable()` in descriptions only if they do not already contain HTML. This function also applies `html_entity_decode()` to *all* parsed string output, as well as applying `nl2br()` *if* `make_clickable()` is being applied.
+* Changed "currentweek" view to "week" (retained "currentweek" for backwards compatibility).
+* Fixed logic sequence in loop to exclude out-of-range dates, for improved performance.
+* CSS refactoring. **IMPORTANT CHANGE NOTE:** If you have customized your CSS using the `.eventdesc` or `.location` classes, there is now a wrapper on those elements called `.descloc`; your customizations may need to be applied to that class instead.
+* Updated "Tested up to" to 5.2.2.
+
+= 3.1.1 - 2019.06.24 =
+
+* Fixed issue in Firefox where calendar dropdown menu would not refresh if the page was reloaded.
+
+= 3.1.0 - 2019.06.24 =
+
+* Added `limitdays` parameter to override default limit of 365 days.
+
+= 3.0.0 - 2019.06.11 =
+
+* Added support for multiple calendars by including more than one URL, space-separated, in the `url` parameter. __Known issue:__ Because the URLs are passed in together, any rules in other parameters will be applied to all calendars. This may present a problem if, for example, one calendar requires the `tzignore` parameter and another does not. These types of calendars should be considered "incompatible" at this time, and not combined into one display.
+* Miscellaneous refactoring.
+
+= 2.3.0 - 2019.06.11 =
+
+* Added tzignore option to allow bypass of ICS Parser library's time zone conversions, which fail in certain instances.
+* Added debugging option. (Requires Administrator role to view.)
+* Updated ICS Parser library to version 2.1.9. (Note: ICS Parser recommends updating the Carbon library as well, but the latest version adds a very large number of additional dependencies that make this plugin unstable.)
+
+= 2.2.1.1 - 2019.03.17 =
+
+* Added workaround to issue where an Outlook ICS URL might return a "Found" HTML link instead of an actual ICS feed.
+* Added code for Block Editor (coming in version 3.0 -- not yet functional).
+
+= 2.2.1 - 2019.03.05 =
+
+* Added `toggle` attribute to allow for event description/location display to be toggled on/off by clicking an event title.
+
+= 2.2.0.1 - 2019.03.05 =
+
+* Removed `phone_only` class from location information in list view.
+
+= 2.2.0 - 2019.02.28 =
+
+* Modified transients to store parsed data instead of raw data, to improve performance for feeds with a large number of events.
+
+= 2.1.4 - 2019.02.26 =
+
+* Fixed grid layout issues in month view if site's Week Starts On value is set to a day other than Sunday.
+
+= 2.1.3 - 2019.02.23 =
+
+* Fixed bug introduced in version 2.1.0 that prevented list view from displaying properly.
+
+= 2.1.2 - 2019.02.22 =
+
+* Restructured logic for empty calendars so grid still displays when there are no events in a given period on month and current week views.
+
+= 2.1.1 - 2019.02.21 =
+
+* Added "current week" as option in Add ICS Calendar editor button pop-up (Classic Editor only).
+* Fixed ampersand entities and escape backslashes in readme file.
+* Additional improvements to admin help page.
+
+= 2.1.0 - 2019.02.21 =
+
+* Cleaned up FAQs.
+* Added new URL retrieval function that tries cURL and then falls back on file_get_contents.
+* Added full currentweek template with previous/this/next week selector. Deprecated __currentweek__ option in favor of `view="currentweek"`.
+* Added admin notice if __allow_url_fopen__ is off and cURL is unavailable.
+* Added error handling if no ICS data was retrieved.
+* Improved layout of admin help page.
+* Minor refactoring.
+
+= 2.0.5 - 2019.02.18 =
+
+* Added __currentweek__ option to display just the current calendar week in the month grid style.
+
+= 2.0.4 - 2019.02.04 =
+
+(No updates -- checked in new version number to correct issue with previous checkin.)
+
+= 2.0.3 - 2019.02.04 =
+
+* Added object property for current plugin version.
+* Added current plugin version variable to enqueue stylesheet.
+
+= 2.0.2 - 2019.02.04 =
+
+* Updated ICS loading to allow URLs using the __webcal://__ protocol. (Plugin automatically converts to __https://__.) Also updated instructions page to make it clearer that ICS URLs may not always have the __.ics__ filename extension.
+* Updated CSS to allow any element to use the __.phone_only__ class, not just <span> tags. (Mainly affects the display of event descriptions in month view.)
+* Fixed issues with relative text sizes of various elements in month view.
+
+__Note:__ If your site was relying on the previous functionality, you can override the hidden __.phone_only__ class by adding the following line of code in __Appearance > Customizer > Additional CSS__:
+
+__.ics-calendar .phone_only { display: initial; }__
+
+= 2.0.1 - 2019.02.04 =
+
+* Fixed issue where events would not appear in the calendar if the ICS feed entry does not contain a DTEND value.
+
+= 2.0.0 - 2019.01.22 =
+
+* Added __Add ICS Calendar__ button to editor with visual tools for inserting shortcode into page. Notes: 1) Currently works only with Classic Editor plugin or in WordPress versions before 5.0. 2) Admin interface not yet translated for internationalization, although the output on the page will be translated as usual.
+
+= 1.5.8 - 2019.01.21 =
+
+* Fixed an issue with some recurring all-day events not displaying as all-day after the initial instance.
+
+= 1.5.7 - 2019.01.21 =
+
+* Added location display option.
+* Refactored some variables.
+* Added support for additional field display on all-day events.
+
+= 1.5.6 - 2019.01.18 =
+
+* Added user_agent string before retrieving the ICS calendar feed, to address an issue where some sites such as Airbnb might return a 403 Forbidden error.
+
+= 1.5.5 - 2019.01.18 =
+
+* i18n: Added Finnish, Italian, Norwegian and Swedish translations. (Machine translations; may need some work. Please contact us with suggestions for improvement.)
+
+= 1.5.4 - 2019.01.18 =
+
+* Added description display to month view on phone breakpoint.
+* CSS text formatting adjustments (improved text scaling on phones; removed letter-spacing).
+
+= 1.5.3 - 2019.01.18 =
+
+* i18n: Fixed bug that caused day/date in list view to always display in English.
+* Added __showendtimes__ option to always display the end time instead of only displaying on hover.
+* Added __eventdesc__ option to show event descriptions, with an optional word count limit.
+
+= 1.5.2 - 2018.12.28 =
+
+* i18n: Added Chinese (Simplified), Dutch, Greek, Hungarian and Japanese translations.
+
+= 1.5.1 - 2018.12.28 =
+
+* Modified list view to only show events on or after the current date. (Previously showed all events for the current month, including past dates.)
+
+= 1.5.0 - 2018.12.06 =
+
+* Added list view with related options.
+* Added option to hide times.
+* Modified display of non-"all day" events that span across multiple days for clarity.
+* Fixed issue with times displaying in GMT if ICS file is missing time zone offset information.
+* Fixed bug with title="none" and description="none" options.
+* Added a workaround for an unresolved issue that may cause All-Day events to appear between 9 AM and 10 AM instead of at beginning of day.
+* Updated transient to cache raw ICS file data instead of processed data; allowing modification of output without needing to force a reload of the ICS file from the server.
+
+= 1.4.1 - 2018.11.19 =
+
+* Fixed translations that were not appearing properly.
+* Fixed bug in translation string format for multi-day events with start and end times.
+
+= 1.4.0 - 2018.10.31 =
+
+* Refactored calendar loop to include months between the first and last month in the feed that do not have any events.
+* Replaced all calls to default PHP date() function with WordPress date_i18n() function to ensure proper formatting.
+* Added WordPress current_time() function to determination of today's date to avoid time zone issues around midnight.
+* Fixed missing HTML tag when a feed returns no events.
+* Added ability to hide title and/or description with __title="none"__ or __description="none"__ in shortcode.
+* Added plugin icon.
+
+= 1.3.0 - 2018.10.23 =
+
+* Added full i18n support.
+* Added these translations: German, English (Australia), English (United States), Spanish (Mexico), French, Portuguese (Brazil). (Note: All languages are machine-translated. Please contact us if you would like to assist in our translation efforts!)
+
+= 1.2.1 - 2018.10.02 =
+
+* Added support for multi-day events. (Thanks to Henry Brink for identifying this issue and proposing a solution.)
+
+= 1.2.0.1 - 2018.09.20 =
+
+* Updated readme file for clarity.
+
+= 1.2.0 - 2018.09.20 =
+
+* Fixed time zone error that was overcompensating for site's offset from GMT. (The included third-party ICS Parser library apparently double-applies the time zone offset when time zone data is present in individual events.)
+* Added support for WordPress "Week Starts On" setting.
+* Moved events' end time from direct display into tooltip on hover over start time, for cleaner appearance.
+* Inserted <wbr> tag after any slashes in event label output, to prevent run-on lines overflowing table cells.
+* Added date limit to avoid memory issues with very large calendars. Currently hardcoded to 365 days, but will be a configurable option in version 2.0.
+* Added partial support for translations. Full language support coming in version 2.0.
+
+= 1.1.4 - 2018.08.22 =
+
+* Added missing CSS class to display day of week in grid on phone layout only.
+
+= 1.1.3 - 2018.07.27 =
+
+* Added support for localized time format.
+* Removed debugging code that would display for administrators in version 1.1.2.
+
+= 1.1.2 - 2018.07.27 =
+
+* Ran composer update to fix missing dependencies in ics-parser library.
+* Removed recurrence handling code that was no longer needed with ics-parser library updates.
+
+= 1.1.1 - 2018.07.26 =
+
+* Added handling for all-day events.
+* Added handling of multiple events with same start date/time.
+* Fixed start/end time bug affecting feeds that don't include the time zone in every event.
+* CSS improvements.
+* Updated ics-parser library to version 2.1.4.
+
+= 1.1.0 - 2018.07.26 =
+
+* Added explicit cell widths to CSS.
+* Added donation option to admin page.
+* Fixed bug that would cause all event end times to be 12:00am.
+* Removed unnecessary use of .siblings() jQuery method on month select dropdown.
+
+= 1.0.1 - 2018.05.15 =
+
+* Added handling for empty calendars.
+* Updated "Tested up to" version.
+
+= 1.0.0 - 2017.05.31 =
+
+* Initial release version.

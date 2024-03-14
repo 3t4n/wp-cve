@@ -1,0 +1,262 @@
+/*! ICS Calendar admin styles https://icscalendar.com */
+
+
+/* Variables */
+
+/*
+Note: Colors with hex values do not match the corresponding HTML color names. The named
+colors are true neutral grays with values close to those defined. These variable names
+will be retained permanently, so they can be used to create custom color palettes.
+"Sunset red" and "midnight purple" are new custom ICS brand colors for 2023.
+*/
+.r34ics {
+	--r34ics--color--ics-red: #dc143c;
+	--r34ics--color--ics-purple: #312a85;
+	--r34ics--color--white: #ffffff;
+	--r34ics--color--whitesmoke: #f0f3f6;
+	--r34ics--color--gainsboro: #d9dcdf;
+	--r34ics--color--darkgray: #a3a8ac;
+	--r34ics--color--gray: #70787f;
+	--r34ics--color--dimgray: #60686f;
+	--r34ics--color--black: #10181f;
+	--r34ics--color--dodgerblue: dodgerblue;
+	--r34ics--color--gold: gold;
+	--r34ics--color--lemonchiffon: lemonchiffon;
+	--r34ics--color--limegreen: limegreen;
+	--r34ics--color--orangered: orangered;
+	--r34ics--color--trans10: rgba(105,105,105,0.1);
+	--r34ics--color--trans20: rgba(105,105,105,0.2);
+	--r34ics--color--trans30: rgba(105,105,105,0.3);
+	--r34ics--color--trans40: rgba(105,105,105,0.4);
+	--r34ics--color--trans50: rgba(105,105,105,0.5);
+	--r34ics--color--trans60: rgba(105,105,105,0.6);
+	--r34ics--color--trans70: rgba(105,105,105,0.7);
+	--r34ics--color--trans80: rgba(105,105,105,0.8);
+	--r34ics--color--trans90: rgba(105,105,105,0.9);
+}
+
+
+.notice.r34ics-admin-notice {
+	align-items: center;
+	background: white url('ics-calendar-icon-2023.svg') left 16px center no-repeat;
+	background-size: 64px;
+	display: flex;
+	min-height: 88px;
+	padding-left: 96px;
+}
+
+
+.r34ics h4 code { font-weight: normal; }
+
+.r34ics .code-sample {
+	background: #f7f7f7;
+	border: 1px solid #dddddd;
+	color: #009933;
+	font-family: monospace;
+	font-size: 85%;
+	margin: 1em 0;
+	overflow: auto;
+	padding: 0.25em 0.5em;
+    white-space: pre;
+    width: 95%;
+}
+
+.r34ics .columns-2 {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: row;
+	gap: 3rem;
+	width: 100%;
+}
+
+	.r34ics .columns-2 .column-1 {
+		flex: 0 0 calc(100% - 280px - 3rem);
+	}
+
+	.r34ics .columns-2 .column-2 {
+		flex: 0 0 280px;
+	}
+
+	.r34ics_media_icon {
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 16px auto;
+		float: left;
+		height: 16px;
+		margin: 0;
+		text-align: left;
+		width: 20px;
+		padding-top: 4px;
+	}
+	.r34ics_media_icon:before {
+		color: #82878c;
+		content: "\f508";
+		font: normal 18px/1 dashicons;
+		padding: 0;
+		transition: all 0.1s ease-in-out 0s;
+	}
+
+	#insert_r34ics {
+		display: none;
+		overflow: auto;
+		position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+		z-index: 100050;
+	}
+	#insert_r34ics.open { display: block; }
+	#insert_r34ics_overlay {
+		background: #000000;
+		display: block;
+		position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+		opacity: 0.7;
+	}
+	#insert_r34ics_window {
+		background: #ffffff;
+		box-shadow: 1px 1px 5px #000000;
+		min-height: 10rem;
+		min-width: 240px;
+		padding: 0;
+		position: absolute; top: 50%; right: auto; bottom: auto; left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	#insert_r34ics_header {
+		border-bottom: 1px solid #999999;
+		font-size: 125%;
+		height: 44px;
+		line-height: 44px;
+		padding: 0 50px 0 1.5em;
+		position: absolute; top: 0; right: 0; bottom: auto; left: 0;
+	}
+	#insert_r34ics_close {
+		cursor: pointer;
+		font-size: 36px;
+		height: 44px;
+		line-height: 40px;
+		position: absolute; top: 0; right: 0; bottom: auto; left: auto;
+		text-align: center;
+		width: 44px;
+	}
+	#insert_r34ics_content {
+		margin-top: 44px;
+		min-width: 280px !important;
+		padding: 1.5em;
+		position: relative;
+	}
+	#insert_r34ics_toggle_wrapper {
+		display: none;
+	}
+
+.r34ics .diagnostics-window {
+	background: #f7f7f7;
+	border: 1px solid #c3c4c7;
+	border-radius: 0;
+	color: #191919;
+	font-family: monospace;
+	height: clamp(5rem, 25vh, 15rem);
+	margin: 1em 0;
+	overflow: auto;
+	padding: 0.5em;
+	white-space: pre;
+	width: calc(100% - 2px);
+}
+
+.r34ics hr {
+	margin: 1.5rem 0;
+}
+
+.r34ics mark.alert {
+	background-color: var(--r34ics--color--lemonchiffon);
+	color: var(--r34ics--color--orangered);
+	font-weight: bold;
+	padding: 2px 5px;
+}
+
+.r34ics mark.error {
+	background-color: transparent;
+	color: var(--r34ics--color--orangered);
+	font-weight: bold;
+}
+
+.r34ics mark.info {
+	background-color: transparent;
+	color: var(--r34ics--color--dodgerblue);
+	font-weight: bold;
+}
+
+.r34ics mark.success {
+	background-color: transparent;
+	color: var(--r34ics--color--limegreen);
+	font-weight: bold;
+}
+
+/* Place field help into "bugs" */
+.wrap.r34ics .description {
+	display: inline-block;
+	margin: 0;
+	position: relative;
+	vertical-align: top;
+	width: auto;
+}
+
+	.wrap.r34ics .description .r34ics-help {
+		cursor: help;
+		display: block;
+		height: 1.5em;
+		position: absolute; top: 0.1em; left: 0.5em;
+		width: 1.5em;
+	}
+
+	.wrap.r34ics .description .r34ics-help:before {
+		background: #0985f2;
+		border-radius: 2em;
+		color: #ffffff;
+		content: '?';
+		display: inline-block;
+		font-style: normal;
+		font-weight: bold;
+		height: 1.5em;
+		line-height: 1.5em;
+		position: absolute; top: 0; left: 0;
+		text-align: center;
+		width: 1.5em;
+	}
+	
+		.wrap.r34ics .description .r34ics-help .help_content {
+			background: #ffffff;
+			border: 1px solid #ccd0d4;
+			color: #444444;
+			display: none;
+			font-style: normal;
+			padding: 0.75em;
+			position: absolute; top: 0.75em; left: 0;
+			text-align: left;
+			width: 20em;
+			z-index: 2;
+		}
+
+		.wrap.r34ics .description .r34ics-help:hover .help_content { display: block; }
+
+			.wrap.r34ics .description .r34ics-help:hover .help_content code {
+				display: inline-block !important;
+				font-size: 90% !important;
+				padding: 1px 2px !important;
+			}
+
+@media screen and (max-width: 782px) {
+
+	.r34ics .columns-2 {
+		display: block;
+	}
+
+		.r34ics .columns-2 .column-1 {
+			display: block;
+			padding-right: 0;
+			width: 100%;
+		}
+
+
+		.r34ics .columns-2 .column-2 {
+			display: block;
+			width: 100%;
+		}
+
+}

@@ -1,0 +1,1 @@
+<a href="#" class="button r34ics_media_link add_r34ics" id="add_r34ics_<?php echo esc_attr(r34ics_uid()); ?>" title="<?php echo esc_attr(sprintf(__('Add %1$s', 'r34ics'), 'ICS Calendar')); ?>"><div class="r34ics_media_icon">&nbsp;</div><?php echo esc_html(sprintf(__('Add %1$s', 'r34ics'), 'ICS Calendar')); ?></a>
