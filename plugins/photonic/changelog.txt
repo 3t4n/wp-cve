@@ -1,0 +1,886 @@
+== Changelog ==
+
+= 3.05 =
+
+*	Fixed: Thumbnails within lightbox were not showing up (https://wordpress.org/support/topic/thumbnails-inside-a-lightbox/).
+*	Fixed: When the number of columns was being set explicitly, the grids were displaying information in a single column (https://wordpress.org/support/topic/initial-number-of-albums-displayed/).
+*	Fixed: "More" button was not showing up for WordPress galleries.
+*	Fixed: For certain installations, CSS was not being read correctly; corrected by escaping the data uri SVG used in a background image (https://wordpress.org/support/topic/latest-update-3-04-breaks-website/).
+
+= 3.04 =
+
+*	Added: Full support for lazy-loading.
+*	HTML / CSS Change: Cleaned up a lot of the HTML markup, reducing payload.
+*	Added: Ability to show "More" for WordPress galleries.
+*	Changed: Flickr photos now pick URLs from the url parameter instead of constructing based on the Farm and Server.
+
+= 3.03 =
+
+*	Changed: Updated PHP support to 7.1; no new syntax yet.
+*	Changed: Updated WP compatibility support to 6.4
+*	Changed: Renamed "Modules" to "Platforms" and "Core.php" to "Base.php"
+*	Removed: Options for transpiled code, since IE support was dropped in version 3.00.
+*	Added: Hooks <code>photonic_custom_sort_albums</code> and <code>photonic_custom_sort_photos</code> for sorting output before printing.
+*	Changed: Updated lightbox scripts to latest versions - Lightgallery, PhotoSwipe, Splide
+*	Fixed: Sort options in the Wizard were displaying for all types of Flickr level 1 displays (multiple / album / gallery photos) - corrected to only display for multiple photos (https://wordpress.org/support/topic/flickr-photoset-sorting-only-descending/)
+*	Fixed: SmugMug keyword settings for albums, when defined through the Wizard, were not working (https://wordpress.org/support/topic/smugmug-filter-on-keywords-not-working-for-me/)
+*	Fixed: Header options in a shortcode were not being deconstructed via the Wizard
+*	Added: Ability to show LightGallery controls on mobiles (https://wordpress.org/support/topic/close-button-in-lightgallery-on-mobile/)
+
+= 3.02 =
+
+*	Changed: Version number in readme.txt to be consistent.
+
+= 3.01 =
+
+*	Changed: Plugin file header to include PHP version requirements. Previously only included in readme.txt
+
+= 3.00 =
+
+*	Changed: Adopted backwards-incompatible PHP 7.0 syntax - null coalescing operator and function return types.
+*	Changed: Moved some of the code to separate files to keep things more readable.
+*	Added: Support for YouTube timestamps in lightboxes that allow such functionality.
+*	Removed: Instagram options.
+*	Removed: Support for IE11 and older browsers.
+*	Fixed: Typo "grove" has been corrected to "groove".
+*	Fixed: Option <code>type='wp'</code> was not working for slideshow layouts.
+*	Fixed: If there were slideshows from 2 or more platforms, the first gallery of the second platform was not showing up.
+*	Fixed: Widgets, Elementor and Beaver content was not showing in JS load mode.
+*	Fixed: WP 6.2 broke the Flickr functionality to retrieve collections in parallel.
+
+= 2.84 =
+
+*	Removed: Support for Instagram in the Wizard.
+*	Removed: Cron job for Instagram.
+*	Added: Sort options for WP galleries in the Wizard.
+*	Added: Ability to control nesting levels for SmugMug trees; useful for deeply nested user trees.
+*	Changed: Updated compatibility information to WP 6.2.
+*	Changed: Added KSES filtering for content within the Wizard.
+*	Fixed: For "No lightbox" scenarios, clicking on album thumbnails was leading to the first photo of the album instead of showing the album page.
+*	Fixed: The global setting for modal vs. direct lightbox displays was ignoring the album header options for the modal.
+*	Fixed: The "timeout" setting for slideshows was not being honoured.
+
+= 2.83 =
+
+*	Fixed: Added "More" capability to the Wizard for Flickr albums
+*	Changed: Added more "allowed" tags to the KSES filter, because some plugins were removing Photonic <code>data-</code> elements from the markup.
+
+= 2.82 =
+
+*	Fixed: Unicode handling in the <code>more</code> tag in the Wizard was not working
+
+= 2.81 =
+
+*	Changed: Updated PhotoSwipe 5 to version 5.2.8.
+*	Changed: Replaced calls to <code>esc_sql</code> with <code>prepare</code>.
+*	Fixed: Vanilla form for shortcode editing was not rendering select lists properly.
+*	Fixed: Flickr shortcodes were not displaying photos in an album if the "Default user" was non-empty and not the same as the photoset's owner.
+
+= 2.80 =
+
+*	Fixed: Generated CSS had a blank "px" value.
+*	Fixed: Vanilla form for shortcode generation was not rendering select lists properly.
+*	Added: Support for PhotoSwipe 5.
+*	Fixed: Apostrophes and quotes were getting prefixed with a "\" in lightbox captions.
+*	Fixed: Google Photos corner-case scenario where transients were blank, but the access token was not getting generated.
+
+= 2.79 =
+
+*	Fixed: SVN did not have the right file name (case confusion) for one script.
+*	Fixed: Warnings were showing up for some variables in debug mode.
+
+= 2.78 =
+
+*	Added: New lightbox, "VenoBox".
+*	Fixed: A bug in "Separate Page" display, where the title was not showing correctly.
+*	Fixed: A bug in Featherlight was causing improper display of videos.
+*	Fixed: SmugMug users with more than 100 albums were not able to see all of them.
+*	Fixed: Wizard was showing only 3 Google Photos albums at one time.
+*	Fixed: In some cases, the widget was causing an array offset error.
+*	Fixed: A bug in GLightbox where the "expand" behaviour of Flickr collections was not working.
+*	Changed: Updated all applicable JS libraries to their current versions (BigPicture, Fancybox3, Featherlight, GLightbox, Lightcase, LightGallery, PhotoSwipe, Splide, Strip, Swipebox).
+*	Changed: Removed Fancybox 1, Magnific and PrettyPhoto from the list of bundled lightboxes
+*	Changed: Split up the combined JS files and the combined CSS files into their respective components.
+*	Changed: Code housekeeping - optimized the performance of some of the JS components (Modal, Prompter, Tooltip).
+
+= 2.77 =
+
+*	Fixed: A bug in the Flickr gallery (not photosets / albums) display was preventing photos in a gallery from showing up.
+*	Fixed: A bug in the Google module where clicking on an album to display contents on a new page was not working if the the album was loaded as a part of the "More" data set.
+*	Fixed: Blank invocation of the shortcode was causing a warning in PHP 7.4 and an error in 8.0
+*	Fixed: A bug in the Instagram module where using an old <code>media_id</code> would cause an error instead of degrading gracefully.
+*	Fixed: FOUC issue in the slider when thumbnails were enabled.
+*	Changed: Some instances of null comparison were causing errors due to strict evaluation. Replaced those with <code>empty</code>
+*	Security: Added more security hardening and escaping.
+
+= 2.76 =
+
+*	Changed: Updated Splide to new version
+*	Fixed: BigPicture and Spotlight were including jQuery. This has been rectified.
+*	Security: Moved authentication settings of Google and Instagram to transients from options
+*	Security: Added <code>current_user_can</code> and nonce checks to all option update calls
+*	Security: Improved sanitization checks and hardened security for saving options
+*	Changed: Modified code to align with WPCS / CodeSniffer recommendations where applicable
+
+= 2.75 =
+
+*	New: Added monitoring capability for checking if Instagram credentials are expiring soon.
+*	New: Added support for the Spotlight lightbox script (https://nextapps-de.github.io/spotlight/)
+*	Fixed: "Slide up" behaviour, as per patch provided by @nicegamer7 (https://wordpress.org/support/topic/fix-slideup-show-css/)
+
+= 2.74 =
+
+*	Fixed: "Title position" option was not working for Google Photos albums
+*	Fixed: Swipebox "Enable Bars on Mobile" was not working
+
+= 2.73 =
+
+*	Fixed: "Hide photo count" option was not working for Flickr albums
+
+= 2.72 =
+
+*	Fixed: Title widths for the square layout when the title is below the photo were not auto-adjusting upon clicking the "More" button.
+
+= 2.71 =
+
+*	Fixed: URLs for Flickr photosets were not working in some cases.
+*	Fixed: Wizard Google Photos count was capped at 3
+
+= 2.70 =
+
+*	Fixed: When Flickr Groups were being used with other attributes like tags, the gallery was repeating twice.
+*	Fixed: The Gutenberg block was throwing an error in case the "Load More" button was being clicked in the Wizard
+
+= 2.69 =
+
+*	Fixed: The Wizard generating an error upon clicking on "Load More" for "single album" scenarios.
+
+= 2.68 =
+
+*	Fixed: The Wizard was deselecting Google Photos albums not in the first 50 results
+
+= 2.67 =
+
+*	Fixed: "Flash of unstyled content" (FOUC) with slideshows
+*	Fixed: "Strip below" option for thumbnails was not always showing up for all slideshows
+*	Changed: Removed redundant Instagram options
+
+= 2.66 =
+
+*	Fixed: Fatal error when a slideshow is displayed with a "strip-below" or "strip-above" option
+
+= 2.65 =
+
+*	Fixed: "Dynamic height" option in the slideshow was not sizing to the tallest image if count was more than 1.
+*	Fixed: GLightbox was not working for level 2 displays in the JS load mode.
+*	Fixed: Lightbox setting of "none" was resulting in a JS error.
+*	Fixed: Flickr photo searches for "All users" were not working; only user and group-specific searches were working.
+*	Fixed: The "more" button was showing up in Instagram even if not specified
+*	Changed: Minor CSS and data attribute changes.
+*	Changed: Code refactored for gallery elements and made more modular.
+
+= 2.64 =
+
+*	Fixed: "Zoom upon hover" behaviour was broken for Justified Grid and Mosaic layouts.
+*	Fixed: Thumbnails were not centering in the "square" layout.
+*	Fixed: Google Photos was not working for Fancybox.
+
+= 2.63 =
+
+*	Switched the Justified Grid layout to use CSS when image sizes are available.
+*	Minimized the presence of Cumulative Layout Shift (CLS) on galleries by pre-assigning image sizes. Instagram is the only platform for which this is not supported.
+*	Fixed a bug with Image Lightbox, Fancybox3, Lightcase and Strip, which was preventing the "Load More" feature from working for albums.
+*	New shortcode options added, <code>load_mode</code> and <code>layout_engine</code> to support overriding global options in case of issues.
+*	HTML / CSS change: images are now served as <code>figure</code> elements in a <code>div</code>. Corresponding captions are served in <code>figcaption</code>.
+*	HTML / CSS change: <code>slideshow-grid-panel</code> is now called <code>modal-gallery</code>
+*	HTML / CSS change: removed redundant CSS classes - photonic-[flickr etc.]-[image etc.] to reduce payload size.
+
+= 2.62 =
+
+*	Added an option for a "Loading mode", that lets defer shortcode execution till after the page has been generated.
+*	"Load More" was not working for albums. This has been addressed.
+*	The option to show a title permanently covering the bottom of images was not working. This has been fixed.
+*	Native WP galleries were defaulting to a 3 column layout. This has been changed to "auto" to facilitate responsive behaviour by default.
+*	The slideshow script has been updated to the latest version.
+*	In fixed height slideshows the aspect ratio was getting distorted upon resizing the screen. This has been corrected.
+*	Slideshow title styles were not working. This has been rectified.
+*	A fix has been put in for cases where the title was blank, yet the caption was not being retrieved from the description.
+
+= 2.61 =
+
+*	"Show Gallery" feature was not working for Justified Grids and Mosaic layouts for BaguetteBox, BigPicture, GLightbox, LightGallery, PhotoSwipe, Featherlight, Image Lightbox and Magnific.
+*	BigPicture was throwing a PHP warning when there was a video mixed with a gallery. This has been fixed.
+*	Removed jQuery dependency for the Photonic Block in the Gutenberg Editor (the front-end did not require it)
+
+= 2.60 =
+
+*	Overhauled the front-end JavaScript by rewriting code to ES6 standards; jQuery is not used for some lightboxes
+*	Replaced LightSlider with Splide (https://splidejs.com), a pure JS slider library
+*	Added support for 3 plain JavaScript lightboxes: BaguetteBox (https://feimosi.github.io/baguetteBox.js/), BigPicture (https://henrygd.me/bigpicture/), and GLightbox (https://biati-digital.github.io/glightbox/)
+*	Strip is now released under a GPL-compatible license, so this has been moved to the "standard" lightbox list
+*	Fixed a bug where activation of Elementor was causing the backend widget script to get included on all pages in the front-end
+*	Added new <code>view</code> option for Google Photos, <code>shared-photos</code>
+*	Automatic conversion of shortcodes to blocks is now fully supported
+*	Added options to disable the Photonic shortcode on the "Latest Posts" and archive pages.
+
+= 2.48 =
+
+*	Added check for $_SERVER to prevent WP-CLI errors
+
+= 2.47 =
+
+*	Added support for showing captions for Instagram posts
+
+= 2.46 =
+
+*	Made changes to account for Facebook / Instagram disabling oEmbed
+*	Fixed an issue that was requiring jQuery Migrate for Google Photos authentication
+*	Looping was not working for Fancybox3 - fixed
+
+= 2.45 =
+
+*	Fixed an issue where titles of SmugMug folders, Flickr collections and Zenfolio groups were not showing up on pages in some cases
+
+= 2.44 =
+
+*	Removed capability for archive view "more buttons"
+*	Fixed a bug where an invalid refresh token was causing an error about missing OAuth2 credentials (error 401)
+*	Fixed a bug where album descriptions were showing up if the album was being included on a page
+*	More button was not showing up in the wizard for Instagram
+*	Instagram automatic refresh of token was not working
+
+= 2.43 =
+
+*	Fatal error showing up on "Add New" post for PHP 5.6.x; fixed
+*	"Load More" was not working in the Helpers; fixed
+*	Flickr videos were not playing; fixed
+*	"Load More" for the helper shortcode was not working if the shortcode was on a page by itself; fixed
+*	Conflict with <code>the_title</code> hook between bbPress and Photonic; resolved
+
+= 2.42 =
+
+*	SmugMug "Load More" in the wizard was not working; fixed.
+*	Beaver Builder integration was partially broken; fixed.
+*	Google Photos galleries were not showing up on a dedicated page; fixed.
+*	Just calling the Photonic shortcode without any attributes was causing an error; fixed
+
+= 2.41 =
+
+*	File "Defaults.php" got checked in as "defaults.php" in the previous version.
+
+= 2.40 =
+
+*	Full implementation of object oriented code, completing shift to PHP 5.6+
+*	Added a widget for Photonic. This enables integration with site builders such as Elementor and Beaver Builder that support WP widgets
+*	Added a way to show albums in their own page
+*	Removed options for front-end authentication
+*	Fixed the behaviour of tile images for Flickr Level 2 displays. Some sizes were broken
+*	Added a parameter <code>carousel_handling</code> to prevent recursion of carousels in Instagram
+*	Significant performance improvements in the Gallery Wizard
+*	Performance improvements across all Photonic admin pages, specifically for PHP 7.0+
+
+= 2.34 =
+
+*	Minor change for PHP 5.6 compatibility in corner cases
+
+= 2.33 =
+
+*	Function definition syntax was causing problems for PHP 5.6. This has been addressed.
+*	Code for <code>shortcode_atts_gallery</code> adapted to apply for <code>shortcode_atts_{$photonic_alternative_shortcode}</code>
+*	Option to "Show whitespace to the side for narrower images" was not working for slideshows
+
+= 2.32 =
+
+*   Switched Instagram module to the Graph API.
+*	Phasing out PHP < 5.6 - replaced PHP array conventional syntax with short syntax.
+*   Code housekeeping - moved authentication functions on admin dashboard to own file
+*   Google video - switched video size parameter to "dv", which should fetch largest video available
+*   "Load More" was not working for the "Gallery Builder wizard" for SmugMug albums
+*   Lazy Loading - now galleries will display with lazy loading set to "eager" to avoid conflicts with an upcoming WP change
+*   Instagram's default gallery layout is now a Justified Grid, because Instagram's API no longer provides images of multiple sizes
+*   All photos in an Instagram post can now be displayed using the <code>carousel</code> attribute
+*   Changed <code>shortcode_atts_gallery</code> to apply only if the  gallery shortcode is being used
+*	Updated compatibility information
+
+= 2.31 =
+
+*	Changed Zenfolio extension to use wp_remote_post instead of cURL because of "Unknown Error" for BlueHost installations
+*   Flickr photos' main size was not being considered while viewing collections
+
+= 2.30 =
+
+*	Missed version number in previous release
+
+= 2.29 =
+
+*	Plugin name changed to comply with FaceBook's terms of service (Instagram removed from the name)
+*	Made a change to Instagram to pull photos from within carousels (i.e. Instagram posts, which group more than one photo)
+
+= 2.28 =
+
+*	Instagram authentication was failing due to a recent change in the Instagram API. This has been been addressed
+*	The admin menu showed a blank "Photonic" sub-menu item for users not authorized to "edit_theme_options". This has been removed
+*	Added a "Show Gallery" button capability to defer the loading of galleries
+*	Fixed an issue where Google's chain query mode would trigger an API quota issue if invalid album ids were passed to the shortcode
+
+= 2.27 =
+
+*	Updated Colorbox to latest version; removes dependency on jQuery Migrate
+*	Updated Fancybox 1 to work with newer versions of jQuery without jQuery Migrate
+*	Updated Image Lightbox to work with newer versions of jQuery without jQuery Migrate
+*	Updated PrettyPhoto to work with newer versions of jQuery without jQuery Migrate
+*	Removed options for borders and padding around individual photos for all sources, reducing custom CSS size
+*	Moved options defaults to different file, reducing load time
+*	Combined JS files where possible to reduce HTTP requests
+*	Combined CSS files where possible to reduce HTTP requests
+*	Added screenshots to settings pages for "Add / Edit Photonic Gallery"
+
+= 2.26 =
+
+*	Changed code to adapt to latest Flickr URL changes. Flickr no longer generates URLs with "static.flickr.com" in the URL and replaces that with "staticflickr.com"
+*	Single photos displayed for Flickr were relying explicitly on the "main_size" parameter. This has been changed to pick the "largest image" smaller than or equal to the main size image.
+*	Flickr's changes broke the thumbnail URL generation for new videos - this has been fixed
+*	LightGallery full-screen plugin has been updated to the latest version to address a JS error resultant from closing the gallery
+
+= 2.25 =
+
+*	Changed the filtering logic for Google Photos to show results from subsequent pages only if the "Chain queries" option for Google Photos is turned on. This is to avoid API quota limit violations
+*	Made a modification to ensure that Photonic is not loading any scripts on admin pages such as the post listing page
+
+= 2.24 =
+
+*	Fixed a bug where the shortcode builder was requiring the API key for SmugMug
+*	Added option to control title content for Google Photos
+*	Added condition to exclude loading the vanilla shortcode builder form if the Rich Content Editor is disabled
+*	Fixed album filtering logic for Google Photos to show results from subsequent pages if matches are not found on the first page
+
+= 2.23 =
+
+*	Added a switch to allow scripts to load in the header, to account for themes including RetinaJS, <a href='https://github.com/strues/retinajs/issues/260'>which has a bug</a>.
+
+= 2.22 =
+
+*	Conditional script placement was not working for blocks
+*	Added option to force load scripts
+
+= 2.21 =
+
+*	Added logic to conditionally load JavaScript only on pages where Photonic is being invoked
+*	Replaced the jQuery UI Dialog script (used for password prompting) with a much smaller library (ModaliseJS) with no jQuery dependency
+*	Replaced the jQuery UI Tooltip script with a 2KB custom, no jQuery tooltip script
+*	Added support for Enhanced Media Library
+*	Fixed a mosaic layout bug that was causing the last row on smaller viewports to not render properly
+*	Fixed an issue with the Interactive Shortcode Builder not being able to process authenticated SmugMug calls
+*	Fixed a bug where Colorbox was not showing the lightbox for non-Photonic images
+*	Fixed a bug where on slow connections with the title being displayed below the photos, users were seeing a narrow, tall column of text
+
+= 2.20 =
+
+*	Fixed an issue that was causing a fatal error on versions of PHP older than 5.5
+*	Fixed an issue where the <code>video_size</code> attribute, if passed to a collection of albums, was not being propagated to the photos within each album.
+
+= 2.19 =
+
+*	Picasa is now deprecated, so support for it in the plugin has been removed
+*	Added support for the Gutenberg block "wide-alignment" and "full-width" options
+*	Added a <code>photonic_helper</code> utility shortcode
+*	The block-builder also shows the equivalent shortcode at the bottom for users who are facing Gutenberg conflicts or want to use a shortcode
+*	The <code>main_size</code> option was being ignored for the native galleries in favour of <code>slide_size</code>
+*	Escaped all translated strings appropriately
+*	The more button was not showing up on some OS configurations due to EOL character mismatches
+*	Performance tracing was causing native WP galleries to not show up
+*	Removed option to link photos for Google as all access is for private photos - "View" link is always erroneous
+*	Added an "end" element to the galleries, to enable linking to the end of the gallery
+*	Added PHP and extension info to the "Getting Started" page
+*	Added a <code>tile_size</code> option to Instagram
+*	Added PHP 7.3 compatibility
+*	Added a hover overlay icon for videos for Instagram, Flickr and SmugMug
+*	Fixed an issue where the slideshow layout was not respecting the <code>strip-above</code> option
+*	Removed the requirement for an API key for SmugMug - SmugMug users will require an API key only if they want to display private photos
+*	Fixed an "empty space" issue occurring for Safari with the masonry layout
+*	Fixed a bug with PhotoSwipe and the justified grid layout, which was causing the lightbox to show a different image than the one clicked
+*	Fixed a bug with PhotoSwipe and StripJS where the looping setting was not being respected
+*	Added options to disable loading of Photonic's scripts in case a theme / plugin supplies them
+*	Switched to minified versions of all JavaScript files; can be controlled by options
+*	Renamed translation file to photonic.pot from photonic.po
+
+= 2.17 =
+
+*	Private albums for Flickr and SmugMug were not showing up in the interactive shortcode builder
+*	Resolved Divi conflict with Visual Editor, and in Text editor the WP media library gets pushed behind
+
+= 2.16 =
+
+*	Zenfolio photosets with "smart" names were not being pulled up correctly
+*	Using <code>title_position='none'</code> was not disabling the title
+*	Masonry layout was not respecting the column count for level 2 displays
+*	Minor changes to ensure that the hints in the flow editor are showing up only when required
+*	Pinterest share now opens in a new window
+
+= 2.15 =
+
+*	Added a filtering capability on the shortcode insertion screens
+*	Fixed a JS error that was showing up on clicking on "Add / Edit Photonic Gallery" button
+*	Added the ability to provide the thumbnail size for Instagram in the shortcode builder
+
+= 2.14 =
+
+*	Fixed "disableShrink" behaviour for Lightcase.
+*	Fixed Fancybox3 social media linking issues
+*	Fixed a flickering issue for PhotoSwipe on mobiles
+*	Fixed a bug where Flickr collections were not showing nested collections in some scenarios
+
+= 2.13 =
+
+*	Fixed a bug where the interactive flow was replacing the "Tile size" for WordPress galleries with a "Thumb Size"
+*	Fixed a bug where gallery transitions within Fancybox3, PrettyPhoto and StripJS galleries were not working
+*	Added a capability to check if the current user can edit posts before showing the interactive flow
+*	Added several new options to the lightbox configurations
+
+= 2.12 =
+
+*	Added support for Magnific Popup
+*	Fixed an issue with LightSlider slideshows not going the full-width in specific cases
+*	Fixed a bug with the interactive flow that was causing a JS error for WP galleries if starting a new gallery
+*	Split out the lightbox options to their own tab
+*	Added multiple customization options to the lightboxes
+*	Added a capability to launch a lightbox from a slideshow for LightGallery and Magnific
+*	Added an option to remove the photo count from Google Album displays
+
+= 2.11 =
+
+*	Optimized and modularized JavaScript by separating out each lightbox script
+*	Flickr photsets in a collection were losing their order due to parallel calls - now fixed
+*	Instagram Masonry layout was hardcoding image sizes and not working properly
+*	Fixed an issue in the interactive workflow that was causing a fatal error for PHP versions < 5.5
+*	Modified the Flickr photo display link to be more "specific". E.g. if a photo is in an album its link in Flickr will be specific to that album instead of the user's photostream
+
+= 2.10 =
+
+*	Added Gutenberg compatibility
+*	Added a "Shortcode replacement" capability to prepare for Gutenberg. See <em>Photonic &rarr; Prepare for Gutenberg</em>
+*	Fixed a bug that was causing the default album search by user to fail for SmugMug
+*	The <code>layout='strip-above'</code> setting was not working for the slideshow layouts. This has been corrected
+*	Added new "Advanced" settings under "Generic Options". Moved SSL and performance logging options there.
+*	Added new options to increase the cURL timeout and to enable debug logging for troubleshooting, under the "Advanced" section
+*	Replaced Flickr collection-fetching with parallel calls
+
+= 2.02 =
+
+*	Minor patch for Interactive Workflow z-index issue
+
+= 2.01 =
+
+*	Added support for PhotoSwipe
+*	Addressed an Instagram change that was preventing higher resolution images from being displayed.
+*	Removed the explicitly defined Instagram sizes for 1080px and replaced them with a "Largest" option to automatically pull the largest available image
+*	Fixed a bug that was not respecting the sort order for SmugMug
+
+= 2.00 =
+
+*	Added a new workflow-type button, "Add / Edit Photonic Gallery" to create Photonic galleries
+*	Introduced a "Default user" feature for Flickr, SmugMug, Picasa and Zenfolio. This is used if a user is not specified. For Instagram the authenticated user is used by default and Google supports only the authenticated user
+*	Added "search" capability for images in SmugMug albums, folders and for users by text and keywords
+*   User id is no longer required for Instagram photos. The authenticated user is used
+*   Added support for Zenfolio authentication
+*	Added support for user-specific text / category searches for Zenfolio photosets
+*	Added support for <code>photoset_type</code> (Gallery / Collection) for user-specific photosets in Zenfolio
+*	Added support for <code>kind</code> (Recent / Popular) for user-specific photosets in Zenfolio
+*	Added filter capability for Zenfolio photosets
+*   Switched Zenfolio call from HTTP to HTTPS
+*	Added <code>tile_size</code> support to native WP galleries
+*	Changed Flickr "download" URL to reflect the full-size original image
+*   Added capability to disable visual editing by post type
+*	Fixed a bug that was causing a "short term cache" for an authenticated Google account, resulting in erroneous photos if the account was switched
+*   If a video is added to a native WP gallery via third party plugins such as Media Library Assistant, Photonic can now display it as a part of the gallery and play the video in a lightbox
+*   Switched Masonry to use the script bundled natively with WP
+*   Added capability to track performance for each gallery (disabled by default)
+*   Added option to disable SSL verification on local sites
+*   There was an issue where, in the "Random Justified Gallery" layout, there was a visible "pop and realign" happening whenever the "Load More" button was being clicked. This has now been addressed
+
+= 1.68 =
+
+*	Added support for the new Google Photos API. The Google Photos module of Photonic coexists with the older Picasa module. Please refer to the <a href='https://aquoid.com/plugins/photonic/google-photos/'>documentation</a> for further details
+*	Added capability to "show more" albums. Passing the <code>count</code> and <code>more</code> attributes allows pagination of albums
+*	Added capability to paginate and "show more" in the overlaid popup window. Passing the <code>photo_count</code> and <code>photo_more</code> attributes allow this when the overlaid popup is enabled
+*	Fixed an issue that was causing the photos of albums to not display if the global layout option was set to one of the slideshow options
+*	Updated Featherlight to latest version
+
+= 1.67 =
+
+*	Fixed an issue with Instagram where not all recent media was displaying
+*	Fixed an issue where a lightbox / interim popup launched from a Flickr album thumbnail capped off at 100 photos
+
+= 1.66 =
+
+*	Added video support for Flickr, Picasa / Google, SmugMug, Zenfolio and Instagram, plus videos from YouTube or Vimeo, plus standalone, locally hosted MP4 files
+*	Added support for the <a href='https://fancyapps.com/fancybox/3/'>Fancybox3</a> lightbox
+*	Added thumbnails to the Picasa and SmugMug helpers for easier identification
+*	Added a <code>structure</code> option to the Zenfolio shortcode so that photosets can be shown without being grouped
+*	Fixed a bug where the shortcode insertion script was not printing the alternative shortcode
+*	Fixed a bug where, for the alternative shortcode being used with a native WP gallery, the <code>ids</code> parameter was not being respected
+*	Fixed a bug where the archive-view thumbnail limit was not working for the home page
+*	Updated LightGallery scripts to latest version
+*	Corrected instructions for Picasa redirect URLs
+*	Scrapped support for 500px.com because its <a href='https://support.500px.com/hc/en-us/articles/360002435653-API-'>API has been shut down with effect from 15th June 2018</a>
+*	Random Justified Grid was setting the <code>alt</code> attribute of images to "undefined". This has been fixed
+
+= 1.65 =
+
+*	Added back-end authentication support for Flickr, SmugMug and 500px (feature existed for Google/Picasa and Instagram)
+*	Fixed an incompatibility between themes and plugins using Bootstrap, and Photonic's use of jQuery Tooltip
+*	Added support for the <a href='http://noelboss.github.io/featherlight/'>Featherlight</a> lightbox
+*	Split out Authentication functionality to its own admin page, away from Helpers.
+*	Improved error messages
+*	Fixed a problem with the "Buy" link for SmugMug not appearing when opted for
+*	Fixed an issue where user names in 500px that had numbers at the start were not displaying photos from the correct user
+*	Streamlined the Picasa code to use native WP methods for HTTP requests
+*	Changed permissions for "Helpers" and "Getting Started" pages. These will now display for non-admins. The Authentication and Settings pages will be shown only to admin users
+*	Added support for Pinterest sharing
+*	The SmugMug folder view was dropping albums that didn't have a "Highlight image". This has been addressed to use a placeholder
+*	SmugMug folders were unable to display more than 10 albums within. This has been addressed to display up to 200 albums
+*	Fixed a bug with 500px.com categories, where categories with spaces were not being processed correctly
+*	Added a parameter called <code>filter_type</code> that takes the values <code>exclude</code> and <code>include</code> to indicate if a list of albums in the <code>filter</code> parameter should be excluded or included.
+*	Added support for images in Flickr that do not follow Flickr's documented URL structure
+*	Added a new title style to stick the title over the lower portion of a photo
+
+= 1.64 =
+
+*	New Masonry layout, triggered by <code>layout='masonry'</code> for external galleries, and <code>style='masonry'</code> for WP galleries
+*	New Mosaic layout, triggered by <code>layout='mosaic'</code> for external galleries, and <code>style='mosaic'</code> for WP galleries
+*	Added "More" button capability to native WP galleries
+*	Added deep-linking and sharing capabilities to native WP galleries
+*	Added an option to disable lightbox linking for Native WP galleries
+*	Added support to display a folder in SmugMug, using <code>view='folder'</code>
+*	Added size options for Instagram's larger sizes, e.g. 1080x1080px
+*	Added options for "Thumbnail effects" - opacity, zoom and none
+*	Added a <code>popup</code> attribute to the shortcode, which overrides the "Bypass Popup" capability. It takes the values <code>hide</code> and <code>show</code>
+*	Added an option to auto-start slideshows in the slideshow layout
+*	Added slideshow options to the shortcode insertion script for all galleries
+*	Fixed a corner-case issue with the "random" layout: if the post-content width was being rounded up, e.g. 549.8px became 550px, some widths were not being computed correctly, causing the layout to break.
+*	Fixed a mismatched HTML tag for single-photo displays.
+*	Corrected a styling issue for the preview button in the WP editor that occurred when the back-end shortcode editor was active
+*	The SmugMug helper now also provides information about folders
+*	Fixed a bug with Image Lightbox's deep-linking, where if the same image was repeated in different galleries, the deep-link would show up from the first instance.
+
+= 1.63 =
+
+*	Shortcode integration with TinyMCE. Placeholders show up for all galleries, and clicking them lets users update gallery properties.
+*	Added support for non-bundled lightbox, <a href='http://stripjs.com'>Strip</a>. There is deep-linking support, but social sharing doesn't work.
+*	"Download" capability for LightGallery was not working in Firefox for Picasa, SmugMug, Flickr, Zenfolio, 500px and Instagram. Fixed for Picasa, SmugMug and Flickr.
+*	Lightgallery showed a title in the lightbox even if "Show description only, even if blank" was selected. Fixed.
+
+= 1.62 =
+
+*	Added new "Slideshow" layout for all galleries, triggered by layout values <code>strip-below</code>, <code>strip-above</code>, <code>strip-right</code>, and <code>no-strip</code>.
+*	Replaced jQuery Cycle with <a href='http://sachinchoolur.github.io/lightslider/index.html'>Lightslider</a> - responsive, touch-enabled and smaller. Lost most transition effects as a result.
+*	Modified the back-end to remove dependency on JQuery UI; different look, reduced size and load time. Streamlined Flickr options.
+*	Added new "Getting Started" page in the back-end with links to documentation.
+*	Added support for the <a href='https://sachinchoolur.github.io/lightGallery/'>Lightgallery</a> lightbox script.
+*	Added <code>controls</code> as an option for native WP galleries displayed as slideshows - shows "Previous" and "Next" buttons on the slideshow.
+*	Added <code>caption_control</code> as an option for native WP galleries displayed as slideshows - shows the image caption at the bottom of the slideshow.
+*	Added <code>caption</code> as an option for all galleries - helps pick the photo title or description / caption to display.
+*	Added <code>thumb_size</code> and <code>main_size</code> options to all shortcodes. This overrides the settings in the back-end for individual providers.
+*	Added Circular thumbnails option for WP gallery layouts
+
+= 1.61 =
+
+*	Fixed an issue that was causing the Flickr API to fail for old versions of PHP.
+
+= 1.60 =
+
+*	Added a "Load More" feature to shortcodes that display images.
+*	Added capability to display a selected number of photos from SmugMug albums.
+*	Added support for the <a href='http://cornel.bopp-art.com/lightcase/'>Lightcase</a> lightbox. Optimized CSS and fonts to reduce file sizes.
+*	Fixed a bug with "Image Lightbox" wherein if interim popups were enabled, clicking on an image in the interim popup wouldn't show the lightbox.
+
+= 1.59 =
+
+*	Fixed a "Headers already sent" error for password-protected Zenfolio albums displayed "in page".
+*	Fixed an "Event not defined" error with Swipebox on FF.
+*	Added support for <a href='https://osvaldas.info/image-lightbox-responsive-touch-friendly'>Image Lightbox</a>.
+*	Rewrote the Instagram extension, which was broken due to API changes. Multiple changes, now authentication happens in the back-end, but users require an "access token", which can be obtained from <em>Photonic &rarr; Helpers</em>
+*	Due to Instagram API changes, some features such as popular photos, follows and followed-by capabilities have been removed.
+*	Added options for lazy-loading of Flickr Collections.
+*	Added a new "headers" parameter for Flickr, SmugMug and Zenfolio, where the album / set / gallery / collection header display may be controlled via the shortcode.
+*	Added a new "Back-End Authentication" mode for Picasa / Google Photos to support the Google Photos API.
+
+= 1.58 =
+
+*	Added deeplinking support if Swipebox, Colorbox, PrettyPhoto, or Fancybox2 (not Fancybox) are the lightbox libraries. Nested deep-links currently show the correct album, but cannot open the correct image within.
+*	Added social sharing support for Facebook, Twitter and Google+ for the above-mentioned lightboxes.
+*	Fixed a SmugMug bug that was causing the album headers to show up twice.
+*	Added a hook, <code>photonic_modify_title</code> to apply a different title for photos.
+*	Fixed Fancybox styling issues for certain themes
+*	Enhanced Fancybox2 support: added support for "Bypass popup", thumbnail and button helpers, and touch gestures
+*	Added "Bypass popup" support for all included lightboxes, on by default
+*	Added new SmugMug sizes to the backend options
+*	In case an image has no title, and lightbox linking is disabled, the plugin will now not show the "View" text in the lightbox
+
+= 1.57 =
+
+*	Changed the SmugMug code to point to version 2 of the API, resulting in better performance, and improved support of titles, captions and highlight images.
+*	Changed the format of the <code>album</code> parameter of the shortcode. It now requires only the album key. The older format still works, though.
+*	Added new capability to support clicking of password-protected and authenticated albums in SmugMug
+*	Added new capability to support clicking and display of password-protected albums in Zenfolio
+*	Added new helper for Picasa to fetch Google Photos / Picasa album ids.
+*	Added a "filter" option for the shortcode to allow for displaying selected albums / photosets / galleries / collections for Flickr, SmugMug, 500px and Picasa
+*	Added a "loading" wheel to show that images are loading on the front-end.
+
+= 1.56 =
+
+*	Removed syntax that was causing errors in PHP versions <= 5.3.
+*	Made a correction to the Picasa processor to support https in all cases. Previously https was being used only for authenticated users.
+*	Added a new title style - slides up from the bottom upon hovering on a thumbnail.
+
+= 1.55 =
+
+*	Fixed a password-protection issue for SmugMug albums. Earlier password-protected albums would display only for authenticated users. Now, just passing the <code>password</code> attribute works.
+*	Added support for <code>site_password</code> for SmugMug.
+*	Changed <code>load_textdomain</code> to <code>load_plugin_textdomain</code>.
+*	Replaced older fixed width popup panel with a responsive popup panel.
+*	Removed options for displaying a fixed number of images per screen in the popup panel.
+
+= 1.54 =
+
+*	Changed the "gestures" script from TouchSwipe to TouchWipe, saving over 10KB of JS. The option to enable touch is now removed, as it is included by default for all libraries.
+*	Added the "authkey" option to the shortcode generation script.
+*	Added the "Text Domain" to the readme header to support translations on <a href='https://translate.wordpress.org/projects/wp-plugins/photonic'>wordpress.org</a>.
+
+= 1.53 =
+
+*	Added option for Photonic lightbox be used for non-Photonic images
+*	Added support for "anyone with link" albums in Picasa, via the <code>authkey</code> parameter
+*	Fixed an issue where a "." in the album id was causing JQuery errors
+
+= 1.52 =
+
+*	Added option to save CSS file, can be loaded for caching.
+*	Added support for an additional "layout" attribute for the shortcode. Will take a value <code>square</code>, <code>circle</code> or <code>random</code>, can override the global layout.
+*	Added support for "Random Justified Gallery" layout for displaying a group of albums, photosets etc.
+*	Added support to display all of one's 500px collections
+*	Added gesture support for Colorbox, PrettyPhoto and FancyBox
+*	Updated "wait for images" code to latest version, to facilitate getting the rest of the images when one image is blocked or broken.
+*	Added capability to bypass the popup for PrettyPhoto; on by default.
+*	Fixed an issue that was causing Fancybox, Colorbox and PrettyPhoto to fail to open images in a lightbox in the random justified gallery layout.
+*	Fixed an issue where the popup panel's lightbox was pulling photos from other popup panels
+*	Fixed an issue with 500px to support new Galleries API, which replaces the Collections / Sets API
+*	Swipebox would remove the title on mobiles by default. Added an option to address this.
+
+= 1.51 =
+
+*	Fixed an issue with applying borders and padding to "in-page" Flickr photos
+*	Fixed an issue with Swipebox "bypassed popup panel" displays, which weren't supporting multi-line descriptions
+*	Added new layout options, "Random Justified Gallery" and "Circular Thumbnails", under <em>Settings &rarr; Generic Options &rarr; Layouts</em>
+*	Fixed an issue that wasn't showing the last used screen on the options pages upon saving
+
+= 1.50 =
+
+*	Added Swipebox support for gestures on mobile devices
+*	Added capability to bypass the popup panel for libraries like Swipebox
+*	Corrected issues with Zenfolio displays. WP was corrupting the photoset ids for Zenfolio
+*	Added helper for SmugMug to find album id and album key
+*	Switched JQuery Tooltip to the default JQuery Tooltip script supplied by WP
+
+= 1.49 =
+
+*	Security patch - updated PrettyPhoto to latest version
+
+= 1.48 =
+
+*	Fixed Zenfolio API issues.
+
+= 1.47 =
+
+*	Fixed a problem with the Flickr helpers.
+*	Fixed miscellaneous issues with SmugMug.
+
+= 1.46 =
+
+*	500px API updated to accommodate the new URL formats.
+
+= 1.45 =
+
+*	Flickr API updated to use https instead of http, as per Flickr's transition plans.
+
+= 1.44 =
+
+*	Options panel was not working for WP 3.6. This has been fixed.
+
+= 1.43 =
+
+*	Added Thickbox support
+*	Fixed an incompatibility between Photonic and themes from Themify.
+*	Added capability to exclude passworded galleries from displaying for SmugMug.
+*	Added support for alternative shortcode - specifying this will mean Photonic will not use the gallery shortcode
+
+= 1.42 =
+
+*	Massively refactored code. Several lines of JS code taken off, lots of PHP code modularized.
+*	Added option to use a Colorbox skin defined in the theme folder
+*	Updated SimpleModal, Colorbox and PrettyPhoto to latest versions.
+*	Swapped the use of "live" for "on". This means Photonic needs WP 3.3 at least (since "on" was introduced in JQuery 1.7)
+*	Removed the "View in Flickr" text from the plugin.
+*	Ensured consistent behaviour with the lightbox title linking behaviour across all providers.
+*	Introduced non-bundled lightbox support, with support for FancyBox2
+*	Removed the modified scripts for FancyBox and ColorBox - now the original scripts are used.
+
+= 1.41 =
+
+*	Resolved a conflict between JetPack "Publicize" and protected access. The login box was not showing up.
+*	Added the "ids" parameter to the shortcode insertion UI.
+*	Added options to control thumbnail, title and photo count display in SmugMug album headers
+
+= 1.40 =
+
+*	Added Zenfolio support for public photos.
+*	Fixed an issue with the shortcode generation for Instagram tags.
+*	Added the 'photonic_register_extensions' action hook for registering more extensions.
+*	Fixed some PHP notices that were showing up in debug mode when no options were set.
+*	Fixed an option to prevent SmugMug album thumbnails and titles from linking to the SmugMug page.
+
+= 1.36 =
+
+*	Rewrote the Picasa processor to be DOM-based instead of event-based.
+*	Added option to let users display the Picasa image title instead of the description.
+*	Fixed a problem with Flickr Collections that was causing nested collections to display repeatedly.
+*	Fixed a problem with Flickr Collections that was making the collections link to an invalid page.
+*	Picasa thumbnails in the popup now have the same dimensions as those in the main page.
+
+= 1.35 =
+
+*	Added Instagram support
+*	Gave Photonic its own menu item
+*	Added some helpers to let people find their Flickr and Instagram IDs
+*	Fixed a bug that was preventing Flickr Galleries from showing their overlaid popups
+*	Added capability to display external links in a new tab
+
+= 1.30 =
+
+*	Removed singular check for 500px.com
+
+= 1.29 =
+
+*	Added support for 500px.com collections.
+*	Fixed authentication problems in 500px.com.
+*	Added capability to show a different number of photos on an archive page than on the page for a single post/page
+*	Changed the Flickr API calls to be PHP-based instead of JS-based.
+
+= 1.28 =
+
+*	Removed some debugging statements.
+
+= 1.27 =
+
+*	Fixed a minor issue with the displaying of the login box for Picasa.
+
+= 1.26 =
+
+*	Added support for displaying single photos in 500px.com.
+*	Added authentication support for Picasa.
+*	Added more skins for Colorbox.
+
+= 1.25 =
+
+*	Changed some code so that not being connected to the web doesn't throw an error for 500px.
+*	Fixed an issue that was preventing 500px photos from being shown on certain servers.
+
+= 1.24 =
+
+*	Added date filtering support for 500px.com. Thanks to Bart Kuipers (http://www.bartkuipers.com/) for the code.
+*   Removed the included script for JQuery Dimensions, which was causing conflicts with other JQuery plugins. Dimensions has been merged into JQuery Core a while back.
+
+= 1.23 =
+
+*   Added search support for 500px.com, via tags and terms
+*   Added new categories, sort criteria and capability to exclude a category for 500px.com
+
+= 1.22 =
+
+*   Made minor corrections to authentication behaviour. If not connected to the internet, Photonic was returning a fatal error.
+*   Changed the wording for PrettyPhoto licensing. PrettyPhoto is licensed under GPL, and that is now explicitly stated in the options page.
+*   Added the capability to include shortcodes inside the parameters of the gallery shortcode (nested shortcodes)
+
+= 1.21 =
+
+*	Added support for SmugMug password-protected albums where the user has access to the albums. Other albums show up, but clicking on them takes the users nowhere.
+*	Fixed a bug that was killing the last thumbnail in a popup for SmugMug.
+
+= 1.20 =
+
+*	Added authentication support for Flickr, 500px.com and SmugMug.
+*   Disabled the showing of password-protected SmugMug galleries.
+
+= 1.12 =
+
+*	Fixed a problem with handling double quotes in the title of Flickr photos.
+
+= 1.11 =
+
+*	Combined SimpleModal script with Photonic to save an HTTP request.
+*   Deleted some redundant JS files.
+*   Added support for a different default type.
+*   Added support for single photos in Flickr.
+
+= 1.10 =
+
+*	Fixed a bug with the SmugMug processor, which was preventing the display of an album popup.
+
+= 1.09 =
+
+*	Fixed a bug with the Flickr processor, which was preventing the execution of the shortcode with a group_id parameter
+*	Fixed a minor problem with the popup panels, where hovering over the panel titles was resulting in a Tooltip error.
+*	The Picasa inserter was not showing the "album" field. This has been rectified.
+
+= 1.08 =
+
+*	Made a change to the Picasa processor to handle the recent change by Google. Google's change was forcing images to 512px.
+*	Updated the plugin to support WP 3.3.
+*   Fixed an issue with FancyBox that was showing server log errors for IE.
+
+= 1.07 =
+
+*	Added support for SmugMug
+*	Modified the Picasa plugin to not display the file name if no title is found.
+
+= 1.06 =
+
+*	Fixed an issue with the 500px.com extension, which had to be changed to invoke HTTPS instead of HTTP.
+*	Added support for the "sort" parameter for 500px.
+*	Fixed an issue with the PrettyPhoto library where you couldn't see the "View in Flickr" link.
+
+= 1.05 =
+
+*	Added support for the PrettyPhoto JS library.
+*	Added check for _wp_additional_image_sizes. This was causing errors for some people.
+*	Fixed a bug with the thumbnail_width and thumbnail_height attribute of the plugin. The attributes should have been called thumb_width and thumb_height.
+*	Added option to launch images in a slideshow mode.
+*	Fixed a bug that was not accepting border settings for the thumbnails.
+
+= 1.04 =
+
+*	Added support for photos on 500px.
+*	Modified the Colorbox invocation to fit in the browser window.
+
+= 1.03 =
+
+*	Added support for Gallery objects in Flickr.
+*	Fixed an issue with the Picasa galleries where under certain circumstances users were getting a "Division by zero" error.
+*	Fixed an issue where Chrome and Safari were showing an overlap of the slides over the rest of the content in native galleries.
+*	Updated translation file.
+
+= 1.02 =
+
+*	Added a UI panel for insertion of Photonic galleries through the Add Media screen.
+*	Restructured code for better extensibility.
+*	Updated translation file.
+
+= 1.01 =
+
+*	Included a PO file for translation support.
+*	Fixed a bug to prevent appearance of Photonic stylesheets on other admin pages.
+
+= 1.00 =
+
+*	New version created.
+
