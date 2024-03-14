@@ -1,0 +1,1 @@
+!function(n){var i=n("#_payment_method"),a=n("#gazchap_purchase_order_edit_fields");function d(){a.hide(),a.find("input").prop("disabled",!0)}n("a.edit_address").on("click",function(){setTimeout(function(){i.trigger("change")},1)}),i.on("change",function(){var i=n(this).val();gcWcPoPg.gatewayId===i?(a.show(),a.find("input").prop("disabled",!1)):d()}),d()}(jQuery);
