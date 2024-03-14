@@ -1,0 +1,122 @@
+/**
+ * Site Announcements Styles
+ */
+
+.cw-announcement {
+	position: fixed;
+	z-index: 99999; /* have to deal with themes which may have conflicting elements*/
+	width: 100%;
+	top: 0;
+	-webkit-transition: top 0.2s ease;
+	-moz-transition: top 0.2s ease;
+	-o-transition: top 0.2s ease;
+	transition: top 0.2s ease;
+	left: 0;
+}
+
+body.cw-overlay .cw-announcement {
+	z-index: 0;
+}
+
+.cw-admin-bar-showing {
+	top: 46px;
+}
+
+.cw-announcement .cw-inner {
+	text-align: center;
+	padding: 15px 0;
+	display: block;
+	margin: 0 25px;
+}
+
+.cw-announcement .cw-inner a,
+.cw-announcement .cw-inner h4 {
+	margin: 0;
+	padding: 0;
+}
+
+.cw-announcement-modal .cw-modal-inner {
+	width: 100%;
+	margin: 0 auto;
+	padding: 35px;
+}
+
+.cw-announcement h4.cw-announcement-title {
+	display: inline-block;
+}
+
+.cw-announcement .cw-close-button {
+	color: #fff;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}
+
+.cw-announcement-modal {
+	display: none;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	max-height: 100vh;
+	z-index: 999999;
+	background-color: white;
+	color: #222;
+	overflow: auto;
+	margin: 0 auto;
+}
+
+.cw-modal-close {
+	font-size: 28px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	cursor: pointer;
+}
+
+body.cw-overlay,
+html.cw-overlay {
+	overflow: hidden;
+	position: relative;
+
+}
+
+body.cw-overlay:before {
+	content: " ";
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.80);
+}
+
+@media screen and ( min-width: 783px ) {
+	.cw-admin-bar-showing {
+		top: 32px;
+	}
+	.cw-announcement-modal {
+		width: 70vw;
+		height: auto;
+		max-height: 85vh;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: 30px auto;
+	}
+
+	.cw-announcement-modal .cw-modal-inner {
+		width: 100%;
+		margin: 0 auto;
+		padding: 35px;
+	}
+
+	.cw-announcement-modal .cw-modal-inner {
+		width: 80%;
+		margin: 0 auto;
+		padding: 25px;
+	}
+
+}
