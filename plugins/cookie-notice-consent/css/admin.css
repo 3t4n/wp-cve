@@ -1,0 +1,150 @@
+.cookie-notice-consent-page {
+	--cnc-color-darkgray--800: #23282d;
+	--cnc-color-darkgray--700: #32373c;
+	--cnc-color-lightgray--200: #edeff0;
+	--cnc-color-lightgray--100: #fbfbfc;
+	--cnc-color-accent-100-rgb: 20, 100, 255;
+	--cnc-color-accent-200-rgb: 20, 130, 255;
+	--cnc-color-accent-300-rgb: 20, 160, 255;
+	--cnc-bar-chart-color-breakpoint: calc( 100% - 200px );
+	--cnc-bar-chart-opacity-start: 0.25;
+	--cnc-bar-chart-opacity-end: 0.75;
+}
+.cookie-notice-consent-page .wp-list-table,
+.cookie-notice-consent-page .form-table {
+	max-width: 960px;
+}
+.cnc__bar-chart__title {
+	margin-top: 35px;
+}
+.cnc__bar-chart {
+	max-width: 960px;
+	background: linear-gradient(
+		to right,
+		var(--cnc-color-darkgray--700),
+		var(--cnc-color-darkgray--800) 1px,
+		var(--cnc-color-darkgray--800) calc( 100% - 1px ),
+		var(--cnc-color-darkgray--700)
+	);
+	background-size: 10% 20px;
+	border: 1px solid var(--cnc-color-darkgray--700);
+	color: var(--cnc-color-lightgray--100);
+}
+.cnc__bar-chart__legend {
+	background: var(--cnc-color-darkgray--700);
+	color: var(--cnc-color-lightgray--200);
+	padding: 12px 15px;
+	font-weight: bold;
+	font-size: larger;
+	display: flex;
+}
+.cnc__bar-chart__legend span {
+	margin-left: auto;
+	font-size: smaller;
+	font-weight: normal;
+}
+.cnc__bar-chart__bar {
+	box-sizing: border-box;
+	white-space: nowrap;
+	overflow-x: overflow;
+	padding: 8px 15px;
+	margin: 8px 0;
+	display: flex;
+	justify-content: space-between;
+	animation: 1.5s bar-grow ease-in-out;
+}
+.cnc__bar-chart__bar:nth-of-type( 2 ) {
+	background: linear-gradient( to right, rgba( var(--cnc-color-accent-100-rgb), var(--cnc-bar-chart-opacity-start) ) var(--cnc-bar-chart-color-breakpoint), rgba( var(--cnc-color-accent-100-rgb), var(--cnc-bar-chart-opacity-end) ) );
+	border-right: 2px solid rgb( var(--cnc-color-accent-100-rgb) );
+}
+.cnc__bar-chart__bar:nth-of-type( 3 ) {
+	background: linear-gradient( to right, rgba( var(--cnc-color-accent-200-rgb), var(--cnc-bar-chart-opacity-start) ) var(--cnc-bar-chart-color-breakpoint), rgba( var(--cnc-color-accent-200-rgb), var(--cnc-bar-chart-opacity-end) ) );
+	border-right: 2px solid rgb( var(--cnc-color-accent-200-rgb) );
+}
+.cnc__bar-chart__bar:nth-of-type( 4 ) {
+	background: linear-gradient( to right, rgba( var(--cnc-color-accent-300-rgb), var(--cnc-bar-chart-opacity-start) ) var(--cnc-bar-chart-color-breakpoint), rgba( var(--cnc-color-accent-300-rgb), var(--cnc-bar-chart-opacity-end) ) );
+	border-right: 2px solid rgb( var(--cnc-color-accent-300-rgb) );
+}
+.cnc__bar-chart__label {
+	margin-right: auto;
+}
+.cnc__bar-chart__percentage {
+	margin-left: 15px;
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: larger;
+}
+.cnc__bar-chart__value {
+	font-size: smaller;
+	opacity: 0.66;
+}
+@keyframes bar-grow {
+	0% {
+		width: 5%;
+		padding-left: 0;
+		opacity: 0;
+	}
+	75% {
+		padding-left: 15px;
+		opacity: 1;
+	}
+	100% {
+		visibility: visible;
+	}
+}
+.cookie-notice-consent__consent-data-table {
+	margin-top: 10px;
+}
+.cookie-notice-consent__consent-data-table td {
+	padding: 5px 20px 5px 0;
+}
+.cookie-notice-consent__consent-data-table td:first-of-type {
+	font-weight: bold;
+}
+
+.cnc-option__theme__container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.cnc-option__theme__item {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: 100%;
+	max-width: 160px;
+}
+.cnc-option__theme__item:hover .cnc-option__theme__image {
+	opacity: 1;
+}
+.cnc-option__theme__image {
+	display: block;
+	order: 1;
+	margin-bottom: 15px;
+	border: 1px solid grey;
+	opacity: 0.33;
+	transition: 0.2s ease opacity;
+}
+.cnc-option__theme__image img {
+	display: block;
+	width: 100%;
+	background: grey;
+}
+input.cnc-option__theme__radio[type="radio"] {
+	order: 2;
+	margin-top: 0;
+	margin-right: 10px;
+}
+@media screen and (max-width: 782px) {
+	input.cnc-option__theme__radio[type="radio"] {
+		margin-top: -4px;
+	}
+}
+.cnc-option__theme__radio:checked ~ .cnc-option__theme__image {
+	opacity: 1;
+}
+.cnc-option__theme__label {
+	order: 3;
+	margin: 0;
+}
