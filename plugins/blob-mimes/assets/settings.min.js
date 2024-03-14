@@ -1,0 +1,5 @@
+(function(){const s=document.querySelectorAll(".lotf__setting_row"),i=document.getElementById("lotf-settings"),n=document.getElementById("lotf-settings-default"),o=document.getElementById("lotf-settings-override"),l=()=>{let t=[];for(let e=0;e<s.length;++e){const c=s[e].querySelector(".lotf__setting"),r=c.name;!!c.checked?s[e].classList.contains("is-active")||s[e].classList.add("is-active"):(s[e].classList.contains("is-active")&&s[e].classList.remove("is-active"),t.push(`<span class="lotf__markup_keyword">const</span> <span class="lotf__markup_constant">${r}</span> <span class="lotf__markup_operator">=</span> <span class="lotf__markup_constant">true</span><span class="lotf__markup_operator">;</span>`))}t.length?(o.removeAttribute("style"),n.style.display="none",i.innerHTML=`<span class="lotf__markup_comment">/**
+ * Lord of the Files: Settings
+ */</span>
+`+t.join(`
+`)):(n.removeAttribute("style"),o.style.display="none")};l();const a=document.querySelectorAll(".lotf__setting");for(let t=0;t<a.length;++t)a[t].addEventListener("click",l)})();
