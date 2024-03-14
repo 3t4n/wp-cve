@@ -1,0 +1,90 @@
+/*================ ==================
+* Admin Notice 
+* since 1.0
+*====================== ==============/
+
+/* ******************
+* Table of content
+*
+* 1. Admin Basic Notice  
+* ***********************/
+
+.notice.shop-ready-notice {
+   
+  background: rebeccapurple;
+  color:aliceblue;
+  padding: 20px 15;   
+   
+} 
+
+.notice.shop-ready-notice .notice-dismiss:before {
+
+  color : #fff; 
+
+}
+
+.notice.shop-ready-notice strong a {
+
+    color : #fff; 
+    font-size: 14px;
+    background: rgb(7, 7, 0);
+    padding: 10px;
+    border-left: 3px solid #f6ebeb;
+    border-radius: 3px;
+
+}
+
+#adminmenu a.toplevel_page_shop-ready-elements-dashboard:hover{
+  color: #fff !important
+}
+
+
+/* hover menu color */
+#adminmenu a.toplevel_page_shop-ready-elements-dashboard{
+  position: relative;
+  z-index: 10;
+}
+#adminmenu a.toplevel_page_shop-ready-elements-dashboard::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #000;
+  background: linear-gradient(90deg, rgba(95,149,252,1) 0%, rgba(61,93,255,1) 50%);
+  transition: all linear 0.3s;
+  z-index: -1;
+}
+
+#adminmenu a.toplevel_page_shop-ready-elements-dashboard:hover{
+  opacity: 1;
+}
+#adminmenu a.toplevel_page_shop-ready-elements-dashboard:hover::before{
+  width: 100%;
+  animation: shopready-move 3s linear 0.1s infinite;
+}
+
+
+#adminmenu li.wp-has-current-submenu a.wp-menu-open.toplevel_page_shop-ready-elements-dashboard{
+  background: linear-gradient(90deg, rgba(95,149,252,1) 0%, rgba(61,93,255,1) 50%);
+  color:#fff;
+}
+
+
+
+
+
+@-webkit-keyframes shopready-move {
+  0% {
+    background-position: 0 0;
+}
+
+50% {
+    background-position: 300% 0;
+}
+
+100% {
+    background-position: 0 0;
+}
+}
