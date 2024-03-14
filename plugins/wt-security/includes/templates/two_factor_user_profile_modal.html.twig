@@ -1,0 +1,63 @@
+<h2>{{ 'WebTotem two-factor protection'|trans }}</h2>
+
+<table class="form-table">
+    <tbody>
+    <tr>
+        <th title="" data-tlite="">{{ 'Two-Factor Authentication'|trans }}</th>
+        <td>
+            <p><strong>{% if (two_factor.isActivated) %}{{ 'Active'|trans }} {% else %} {{ 'Inactive'|trans }} {% endif %}</strong></p>
+
+            <p>
+                <span class="button" id="wtotem_2fa__show-more">
+                    {% if (two_factor.isActivated) %}{{ 'Disactivate 2FA'|trans }} {% else %} {{ 'Activate 2FA'|trans }} {% endif %}
+                </span>
+            </p>
+
+            {% if (can_manage_options) %}
+                <p><a href="{{ menu_url }}_settings#wtotem-2fa-wrap" class="button">{{ 'Edit 2FA Settings'|trans }}</a></p>
+            {% endif %}
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<script type="application/javascript">
+    jQuery(document).ready(function ($) {
+        jQuery('#wtotem_2fa__show-more').on('click', function (e) {
+            jQuery('#wtotem-2fa-modal').removeClass('d-none');
+        });
+
+        jQuery('#wt-cancel').on('click', function (e) {
+            jQuery('.popup-overlay').addClass('d-none');
+        });
+    });
+</script>
+<div class="wtotem_body">
+    <div class="popup-overlay d-none" id="wtotem-2fa-modal">
+        <div class="popup-content wt_card" style="position: relative; width: 100%; max-width: 700px; overflow: auto; max-height: 80vh; margin: auto; border: 1px solid rgb(187, 187, 187); padding: 5px; border-radius: 10px;">
+            <div class="port-scanner-list__header">
+                <div class="port-scanner-list__header--title">{{ 'Two-Factor Authentication'|trans }}</div>
+                <div class="port-scanner-list__header--close popup-overlay__close">
+                    <img width="10px" height="10px" src="{{ images_path }}plus_dark.svg" class="svg-icon">
+                </div>
+            </div>
+
+            <div class="wtotem_notifications_wrapper" id="wtotem_notifications">
+                {% include 'notifications.html.twig' with {'notifications': notifications, 'images_path': images_path } %}
+            </div>
+
+            <div style="position: relative;" class="wtotem_settings_section_inner" id="wtotem-2fa-wrap-inner">
+                {% include 'two_factor_auth.html.twig' with { 'two_factor': two_factor, 'page_nonce': page_nonce, 'user_id': user_id} %}
+
+            </div>
+
+
+            <div class="confirmation-dialog__buttons-wrapper" style="flex-direction: row-reverse; margin: 20px 0;">
+                <span class="wt-button wt-button--size-300 wt-button--padded wt-font-700 confirmation-dialog__button" id="wt-cancel">{{ 'Close'|trans }}</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,21 @@
+<div class="wtotem_chart wt_card" id="server_status_cpu">
+    <div class="wtotem_chart-first">
+        <div class="wtotem_chart-first__left">
+            <h3 class="h3">{{ 'CPU Load average'|trans }}
+                <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="CPU Load average">
+                    <div class="wtotem-tooltip__content">
+                        <p class="wtotem-tooltip__header">{{ 'CPU Load average'|trans }}</p>
+                        <p class="wtotem-tooltip__text">{{ 'Shows the CPU load'|trans }}</p>
+                    </div>
+                </div>
+            </h3>
+        </div>
+
+        {% include 'chart_periods.html.twig' with { 'service': 'cpu', 'days': days, 'is_period_available': is_period_available } %}
+    </div>
+
+    <!-- CPU diagram -->
+    <div id="cpu_chart_wrap">
+        {% include 'cpu_chart.html.twig' with {'chart': cpu_chart, 'days': days} %}
+    </div>
+</div>

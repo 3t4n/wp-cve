@@ -1,0 +1,18 @@
+{% for log in logs %}
+<div class="wtotem_file-table__tr">
+    <div class="wtotem_file-table__td wtotem_file-table__td_critical" title="{{ log.path }}">
+        {{ log.path|slice(0, 30) }}
+    </div>
+    <div class="wtotem_file-table__td">
+        {{ log.date }}
+    </div>
+    <div class="wtotem_file-table__td wtotem_antivirus__quarantine-restore">
+        <div data-id="{{ log.id }}" type="button" class="remove-from-quarantine wtotem_antivirus__quarantine-restore-button">
+            <span class="wtotem_antivirus__quarantine-restore-text">
+                {{ 'Restore file'|trans }}
+            </span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+

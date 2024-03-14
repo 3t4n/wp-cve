@@ -1,0 +1,69 @@
+<div class="wtotem_chart wt_card" id="server_status_ram">
+    <div class="wtotem_chart-first">
+        <div class="wtotem_chart-first__left">
+            <h3 class="h3">{{ 'Random access memory'|trans }}
+                <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Random access memory">
+                    <div class="wtotem-tooltip__content">
+                        <p class="wtotem-tooltip__header">{{ 'RAM'|trans }}</p>
+                        <p class="wtotem-tooltip__text">{{ 'Shows the RAM load'|trans }}</p>
+                    </div>
+                </div>
+            </h3>
+        </div>
+
+        {% include 'chart_periods.html.twig' with { 'service': 'ram', 'days': days, 'is_period_available': is_period_available } %}
+    </div>
+
+    <!-- RAM diagram -->
+    <div id="ram_chart_wrap">
+        {% include 'ram_chart.html.twig' with {'chart': ram_chart, 'days': days} %}
+    </div>
+
+
+    <!-- Server resources  -->
+    <section class="wtotem-ss-info">
+        <h3 class="h3 visually-hidden"></h3>
+        <dl class="wtotem-ss-info__stats-list">
+            <div class="wtotem-ss-info__column">
+                <div class="wtotem-ss-info__stat-wrapper">
+                    <dt>PHP version</dt>
+                    <dd>{{ info.phpVersion }}</dd>
+                </div>
+                <div class="wtotem-ss-info__stat-wrapper">
+                    <dt>PHP Server User</dt>
+                    <dd>{{ info.phpServerUser }}</dd>
+                </div>
+                <div class="wtotem-ss-info__stat-wrapper">
+                    <dt>Operation system</dt>
+                    <dd title="{{ info.osInfo }}">
+                        {{ info.osInfo | slice(0, 20) }}
+                    </dd>
+                </div>
+            </div>
+            <div class="wtotem-ss-info__column">
+                <div class="wtotem-ss-info__stat-wrapper">
+                    <dt>CPU Freq</dt>
+                    <dd>{{ info.CpuFreq }} MHz</dd>
+                </div>
+                <div class="wtotem-ss-info__stat-wrapper">
+                    <dt>CPU count</dt>
+                    <dd>{{ info.cpuCount }}</dd>
+                </div>
+                <div class="wtotem-ss-info__stat-wrapper">
+                    <dt>CPU Model</dt>
+                    <dd title="{{ info.cpuModel }}">
+                        {{ info.cpuModel | slice(0, 20) }}
+                    </dd>
+                </div>
+            </div>
+            <div class="wtotem-ss-info__column">
+                <div class="wtotem-ss-info__stat-wrapper">
+                    <dt>CPU Family</dt>
+                    <dd>{{ info.phpVersion }}</dd>
+                </div>
+
+            </div>
+        </dl>
+    </section>
+
+</div>

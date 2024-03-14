@@ -1,0 +1,35 @@
+{% if chart %}
+    <div class="wtotem_chart__diagram" data-days="{{ days }}" id="wtotem_chart_diagram">
+        <div id="line-chart" class="line-chart">
+            <div id="tooltipAttacks" class="line-chart__tooltip">
+                <span id="countAttacks"></span>
+            </div>
+            <div id="tooltipBlocked" class="line-chart__tooltip line-chart__tooltip--reverse">
+                <span id="countBlocked"></span>
+            </div>
+        </div>
+    </div>
+    <div class="wtotem_chart__line"></div>
+
+
+    <script>
+        {% autoescape false %}
+            var waf_chart = {{ chart }};
+        {% endautoescape %}
+
+        if(typeof drawWafChart !== 'undefined'){
+            if(typeof waf_chart == "object"){
+                drawWafChart(waf_chart);
+            }
+        }
+    </script>
+
+{% else %}
+    <!-- No data block -->
+    <section class="wtotem_reports-no-data" style="height:300px" >
+        <h2 class="h2 visually-hidden">{{ 'No data'|trans }}</h2>
+        <p class="wtotem_reports-no-data__text">
+            {{ 'Has no action ready yet'|trans }}
+        </p>
+    </section>
+{% endif %}

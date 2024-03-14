@@ -1,0 +1,74 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.wtotem_body').on('input', '#edit-from', function (e) {
+
+            jQuery('#firewall_data').addClass('wtotem_loader_spinner');
+
+            let dates = jQuery(this).val().split(" to ");
+            let period = daysBetween(dates[0], dates[1]);
+
+            AmplitudeAnalytics.showGraphDetailed('firewall', period, dates[0], dates[1]);
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'waf_date_filter',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                date_from: jQuery(this).val(),
+
+            }, function (data) {
+
+                jQuery('#firewall_data').removeClass('wtotem_loader_spinner');
+                jQuery('#waf_chart_wrap').html(data.chart);
+                jQuery('#waf_logs_wrap').html(data.waf_logs);
+                jQuery('#firewall_stats').html(data.waf_stats);
+
+                if(data.has_next_page){
+                    jQuery('.wtotem_more_btn_wrap').html(
+                        '<div class="wtotem_more_btn" id="waf_load_more">{{ 'Load more'|trans }}</div>'
+                    );
+                } else {
+                    jQuery('#waf_load_more').remove();
+                }
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        });
+    });
+
+    window.addEventListener('DOMContentLoaded', function () {
+        const calendarElement = document.querySelector("#edit-from");
+        const calendarGroup = document.querySelector(".wtotem_chart__calendars");
+        if(calendarElement) {
+            setFlatpickr_(calendarElement,"#edit-from", "#edit-to", calendarGroup);
+        }
+    });
+
+</script>
+<div class="wtotem_waf_filter__wrapper wt_card">
+    <div class="wtotem_chart-first">
+        <div class="wtotem_chart-first__left">
+            <div class="wtotem_chart-first__hack wtotem_chart-first__hack_attack">
+                <span></span>
+                <p>{{ 'Suspicious events'|trans }}</p>
+            </div>
+            <div class="wtotem_chart-first__hack wtotem_chart-first__hack_blocked">
+                <span></span>
+                <p>{{ 'Blocked'|trans }}</p>
+            </div>
+        </div>
+
+        <div class="wtotem_chart__calendars">
+            <div class="wtotem_calendar-icon"></div>
+            <input class="wtotem_calendar flatpickr flatpickr-input wtotem_calendar_from" type="text" data-service="firewall"
+                   name="date_period" readonly="readonly" id="edit-from" placeholder="{{ 'Select Date' | trans }}" />
+            <div class="wtotem_calendar-connect">
+                -
+            </div>
+            <input class="wtotem_calendar wtotem_calendar_to" data-service="firewall" type="text" id="edit-to" readonly="readonly" placeholder="{{ 'Select Date' | trans }}" />
+        </div>
+
+        {%  include 'chart_periods.html.twig' with { 'service': 'waf', 'days': 7, 'is_period_available': is_period_available } %}
+    </div>
+</div>

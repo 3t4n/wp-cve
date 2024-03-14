@@ -1,0 +1,27 @@
+{% for report in reports %}
+<tr class="wtotem_reports-table__row">
+    <td class="wtotem_reports-table__column">{{ report.created_at }}</td>
+    <td class="wtotem_reports-table__column">PDF</td>
+    <td class="wtotem_reports-table__column" style="max-width:420px;">
+        {{ report.modules }}
+    </td>
+
+    <td class="wtotem_reports-table__column wtotem_reports-table__column--actions">
+        <div class="wtotem_reports-table__buttons-wrapper">
+            <div data-id="{{ report.id }}" class="report-download wtotem_reports-table__button wtotem_reports-table__button--download">
+                <span class="visually-hidden">{{ 'Download'|trans }}</span>
+            </div>
+        </div>
+    </td>
+</tr>
+{% endfor %}
+
+{% if has_next_page %}
+<tr id="reports_load_more_wrap">
+    <td colspan="5">
+        <div class="wtotem_reports-list__load-more-wrapper">
+            <div class="wtotem_more_btn" id="reports_load_more">{{ 'Load more'|trans }}</div>
+        </div>
+    </td>
+</tr>
+{% endif %}

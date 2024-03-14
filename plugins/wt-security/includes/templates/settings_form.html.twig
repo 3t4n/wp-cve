@@ -1,0 +1,1054 @@
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+
+        let modules_ajax = (action, value, wrap, elem) => {
+            jQuery(wrap).addClass('wtotem_loader_spinner');
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    settings_action: action,
+                    value: value,
+                },
+                function (data) {
+                    jQuery(wrap).removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                    if(!data.success){
+                        elem.prop("checked", !elem.prop("checked"));
+                    }
+                }
+            );
+        };
+
+        jQuery('.module-list input').on('change', function (e) {
+            modules_ajax('module_toggle', jQuery(this).val(),'.module-list', $(this));
+            AmplitudeAnalytics.flipModules(jQuery(this).attr('id'));
+        });
+
+        jQuery('.notifications-list input').on('change', function (e) {
+            modules_ajax('module_notifications', jQuery(this).val(), '.notifications-list', $(this));
+            AmplitudeAnalytics.flipNotification(jQuery(this).attr('id'));
+        });
+
+        let allow_deny_list_ajax = (action, input, wrap) => {
+            jQuery(wrap).addClass('wtotem_loader_spinner');
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    settings_action: action,
+                    value: jQuery(input).val(),
+                },
+                function (data) {
+                    jQuery(wrap).removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                    if(data.content){
+                        jQuery(input).val('');
+                        jQuery(wrap).html(data.content);
+                    }
+                }
+            );
+        };
+
+        jQuery('#allow_ip_submit').on('click', function (e) {
+            allow_deny_list_ajax('add_allow_ip', '#allow_ip', '#wtotem_ip_allow_list');
+            AmplitudeAnalytics.addWhiteIp(jQuery('#allow_ip').val());
+        });
+
+        jQuery('#deny_ip_submit').on('click', function (e) {
+            allow_deny_list_ajax('add_deny_ip', '#deny_ip', '#wtotem_ip_deny_list');
+            AmplitudeAnalytics.addBlackIp(jQuery('#deny_ip').val());
+        });
+
+        jQuery('#allow_url_submit').on('click', function (e) {
+            allow_deny_list_ajax('add_allow_url', '#allow_url', '#wtotem_allow_url');
+        });
+
+        let remove_ajax = (btn) => {
+            jQuery(btn.data('wrap')).addClass('wtotem_loader_spinner');
+
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'remove',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    remove_action: btn.data('action'),
+                    id: btn.data('id'),
+                },
+                function (data) {
+                    jQuery(btn.data('wrap')).removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                    if(data.content){
+                        jQuery(data.wrap).html(data.content);
+                    }
+                }
+            );
+        };
+
+        jQuery('.wtotem_body').on('click','.wtotem_remove_address', function (e) {
+            remove_ajax(jQuery(this));
+        });
+
+        $('#wtotem_ips').on('input', function() {
+            if(jQuery('#wtotem-ip-list-type').val() === 'white'){
+                AmplitudeAnalytics.inputWhiteIpList($(this).val());
+            } else {
+                AmplitudeAnalytics.inputBlackIpList($(this).val());
+            }
+        });
+
+        jQuery('#wtotem-allow-deny-multi-add-form').on('submit', function (e) {
+            jQuery('.firewall-multi-adding__form').addClass('wtotem_loader_spinner');
+
+            e.preventDefault();
+
+            let ips = jQuery('#wtotem_ips').val();
+            let list = jQuery('#wtotem-ip-list-type').val();
+
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    settings_action: 'add_ip_list',
+                    ips: ips,
+                    list: list,
+                },
+                function (data) {
+
+                    jQuery('.firewall-multi-adding__form').removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                    if(data.content){
+
+                        if(list === 'white'){
+                            AmplitudeAnalytics.saveWhiteIpList(ips);
+                        } else {
+                            AmplitudeAnalytics.saveBlackIpList(ips);
+                        }
+
+
+                        jQuery(data.wrap).html(data.content);
+
+                        if(data.invalidIPs){
+                            jQuery('#wtotem_ips').val(data.invalidIPs);
+                            jQuery('.wtotem_input__messages').html(
+                                '<span class="error_message">{{ "Incorrect IP addresses"|trans }}</span>'
+                            );
+                        } else {
+                            jQuery('#wtotem_ips').val('');
+                            jQuery('.wtotem_input__messages').html(
+                                '<span class="success_message">{{ 'IP addresses success added'|trans }}</span>'
+                            );
+                        }
+                    }
+                }
+            );
+        });
+
+        jQuery('#waf_submit').on('click', function (e) {
+
+            jQuery('#wtotem-waf-settings').addClass('wtotem_loader_spinner');
+            let gdn = jQuery('#gdn').is(':checked'),
+                dos = jQuery('#dos').is(':checked'),
+                dos_limit = parseInt(jQuery('#dos_limit').val()),
+                login_attempt = jQuery('#login_attempt').is(':checked'),
+                login_attempt_limit = parseInt(jQuery('#login_attempt_limit').val());
+
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    settings_action: 'waf_settings',
+                    gdn: gdn,
+                    dos: dos,
+                    dos_limit: dos_limit,
+                    login_attempt: login_attempt,
+                    login_attempt_limit:login_attempt_limit,
+                },
+                function (data) {
+                    if(data.errors){
+                        $('.wtotem_error_waf_settings').remove();
+                        $('#wtotem-waf-settings input').removeClass('wtotem_input_error');
+                        $.each(data.errors, function(index, value){
+
+                            if(value){
+                                $('#wtotem_' + index).append('<div class="is--status--error wtotem-mb-15 wtotem_error_waf_settings">'+ value +'</div>')
+                                $('#' + index ).addClass('wtotem_input_error');
+                            }
+                        });
+
+                    } else {
+                        $('.wtotem_error_waf_settings').remove();
+                        $('#wtotem-waf-settings input').removeClass('wtotem_input_error');
+                    }
+
+
+                    jQuery('#wtotem-waf-settings').removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                }
+            );
+
+            AmplitudeAnalytics.wafSettingsChanged( gdn, dos, login_attempt, dos_limit, login_attempt_limit );
+        });
+
+        jQuery('#recaptcha_settings_submit').on('click', function (e) {
+
+            jQuery('#wtotem-recaptcha-settings').addClass('wtotem_loader_spinner');
+
+            let recaptcha = jQuery('#recaptcha').is(':checked'),
+                recaptcha_v3_site_key = jQuery('#recaptcha_v3_site_key').val(),
+                recaptcha_v3_secret = jQuery('#recaptcha_v3_secret').val();
+
+            $.getScript(`//www.google.com/recaptcha/api.js?render=${recaptcha_v3_site_key}`, function(){
+                jQuery('#recaptcha_token').val('')
+                grecaptcha.ready(function () {
+                    grecaptcha.execute(recaptcha_v3_site_key, {action: 'login'}).then(function (token) {
+                        jQuery('#recaptcha_token').val(token);
+                    });
+                });
+            });
+
+            setTimeout(() => {
+                let recaptcha_token = jQuery('#recaptcha_token').val();
+
+                jQuery.post(
+                    ajaxurl,
+                    {
+                        action: 'wtotem_ajax',
+                        ajax_action: 'settings',
+                        wtotem_page_nonce: '{{ page_nonce }}',
+                        settings_action: 'recaptcha_settings',
+                        recaptcha: recaptcha,
+                        recaptcha_v3_site_key: recaptcha_v3_site_key,
+                        recaptcha_v3_secret: recaptcha_v3_secret,
+                        recaptcha_token: recaptcha_token,
+                    },
+                    function (data) {
+                        if(data.errors){
+                            $.each(data.errors, function(index, value){
+
+                                $('#wtotem_' + index + '_block .is--status--error').remove();
+                                if(value){
+                                    $('#wtotem_' + index + '_block').append('<div class="is--status--error wtotem-mb-15 wtotem_error_recaptcha">'+ value +'</div>')
+                                    $('#' + index ).addClass('wtotem_input_error');
+                                }
+                            });
+
+                        } else {
+                            $('.wtotem_error_recaptcha').remove();
+                            $('#wtotem-recaptcha-settings input').removeClass('wtotem_input_error');
+                        }
+
+                        jQuery('#wtotem-recaptcha-settings').removeClass('wtotem_loader_spinner');
+                        jQuery('#wtotem_notifications').html(data.notifications);
+                    }
+                );
+
+            }, 1500);
+
+        });
+
+        jQuery('#two_factor_global').on('change', function (e) {
+
+            jQuery('#wtotem-2fa-wrap').addClass('wtotem_loader_spinner');
+
+            let two_factor = jQuery(this).is(':checked'), elem = jQuery(this);
+
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    settings_action: 'two_factor_settings',
+                    two_factor: two_factor,
+                },
+                function (data) {
+                    jQuery('#wtotem-2fa-wrap').removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+
+                    if(data.success){
+                        if(two_factor){
+                            jQuery('#wtotem-2fa-wrap-inner').removeClass('visually-hidden');
+                        } else {
+                            jQuery('#wtotem-2fa-wrap-inner').addClass('visually-hidden');
+                        }
+                    } else {
+                        elem.prop("checked", !elem.prop("checked"));
+                    }
+                }
+            );
+
+        });
+
+        jQuery('#other_settings_submit').on('click', function (e) {
+
+            jQuery('#wtotem-other-settings').addClass('wtotem_loader_spinner');
+
+            let hide_wp_version = jQuery('#hide_wp_version').is(':checked');
+
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    settings_action: 'other_settings',
+                    hide_wp_version: hide_wp_version,
+                },
+                function (data) {
+                    jQuery('#wtotem-other-settings').removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                }
+            );
+        });
+
+        jQuery('#bruteforce_protection_settings_submit').on('click', function (e) {
+
+            jQuery('#wtotem-bruteforce-protection-settings').addClass('wtotem_loader_spinner');
+
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    settings_action: 'bruteforce_protection_settings',
+                    data: {
+                        login_attempts: jQuery('#login_attempts').is(':checked'),
+                        password_reset: jQuery('#password_reset').is(':checked'),
+                        login_number_of_attempts: jQuery('#login_number_of_attempts').val(),
+                        login_minutes_of_ban: jQuery('#login_minutes_of_ban').val(),
+                        password_reset_number_of_attempts: jQuery('#password_reset_number_of_attempts').val(),
+                        password_reset_minutes_of_ban: jQuery('#password_reset_minutes_of_ban').val()
+                    }
+
+                },
+                function (data) {
+                    if(data.errors){
+                        $.each(data.errors, function(index, value){
+
+                            $('#wtotem_' + index + '_block .is--status--error').remove();
+                            if(value){
+                                $('#wtotem_' + index + '_block').append('<div class="is--status--error wtotem-mb-15 wtotem_error_bruteforce_protection">'+ value +'</div>')
+                                $('#' + index ).addClass('wtotem_input_error');
+                            }
+                        });
+
+                    } else {
+                        $('.wtotem_error_bruteforce_protection').remove();
+                        $('#wtotem-bruteforce-protection-settings input').removeClass('wtotem_input_error');
+                    }
+
+                    jQuery('#wtotem-bruteforce-protection-settings').removeClass('wtotem_loader_spinner');
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                }
+            );
+        });
+
+        jQuery('#dos').on('change', function (e) {
+            if(jQuery(this).is(':checked')){
+                jQuery('#wtotem_dos_limit').removeClass('visually-hidden');
+            } else {
+                jQuery('#wtotem_dos_limit').addClass('visually-hidden');
+            }
+        });
+
+        jQuery('#login_attempt').on('change', function (e) {
+            if(jQuery(this).is(':checked')){
+                jQuery('#wtotem_login_attempt_limit').removeClass('visually-hidden');
+            } else {
+                jQuery('#wtotem_login_attempt_limit').addClass('visually-hidden');
+            }
+        });
+
+        jQuery('#recaptcha').on('change', function (e) {
+            if(jQuery(this).is(':checked')){
+                jQuery('#recaptcha-details').removeClass('visually-hidden');
+            } else {
+                jQuery('#recaptcha-details').addClass('visually-hidden');
+            }
+        });
+
+        jQuery('#login_attempts').on('change', function (e) {
+            if(jQuery(this).is(':checked')){
+                jQuery('#login_attempts-details').removeClass('visually-hidden');
+            } else {
+                jQuery('#login_attempts-details').addClass('visually-hidden');
+            }
+        });
+
+        jQuery('#password_reset').on('change', function (e) {
+            if(jQuery(this).is(':checked')){
+                jQuery('#password_reset-details').removeClass('visually-hidden');
+            } else {
+                jQuery('#password_reset-details').addClass('visually-hidden');
+            }
+        });
+
+        jQuery('.open-popup').on('click', function (e) {
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'popup',
+                    popup_action: jQuery(this).data('action'),
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                },
+                function (data) {
+
+                    if(data.success){
+                        jQuery('.wtotem_body').append(data.content);
+                    }
+                }
+            );
+        });
+    });
+</script>
+
+<div class="wtotem_container">
+    <div class="wtotem_holder">
+        <div class="wtotem_holder__content">
+
+            <section class="wt_card notifications-settings wtotem-mb-20">
+                <div class="notifications-settings__header-wrapper">
+                    <h3 class="h3 wtotem-mb-15">{{ 'Module settings'|trans }}</h3>
+                    <p class="notifications-settings__text">
+                        {{ 'If you do not need any module, then you can disable it'|trans }}
+                    </p>
+                </div>
+                <div style="position: relative;">
+                    <ul class="togglers-list module-list">
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Firewall'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="module_waf"
+                                       value="{{ configs.waf.id }}" {{ configs.waf.checked }}/>
+
+                                <label for="module_waf" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Antivirus'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="module_av"
+                                       value="{{ configs.av.id }}" {{ configs.av.checked }}/>
+
+                                <label for="module_av" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Server status'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="module_ss"
+                                       value="{{ configs.ss.id }}" {{ configs.ss.checked }}/>
+
+                                <label for="module_ss" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Availability/SSL'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="module_wa"
+                                       value="{{ configs.wa.id }}" {{ configs.wa.checked }}/>
+
+                                <label for="module_wa" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+
+{#                        <li class="togglers-list__item">#}
+{#                            <p class="togglers-list__name">{{ 'Deface'|trans }}</p>#}
+{#                            <div class="wtotem_option__checkbox onoff">#}
+{#                                <input type="checkbox" class="onoff__input" id="module_dc"#}
+{#                                       value="{{ configs.dc.id }}" {{ configs.dc.checked }}/>#}
+
+{#                                <label for="module_dc" class="onoff__label">#}
+{#                                    <span class="onoff__circle"></span>#}
+{#                                </label>#}
+{#                            </div>#}
+{#                        </li>#}
+
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Reputation'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="module_rc"
+                                       value="{{ configs.rc.id }}" {{ configs.rc.checked }}/>
+
+                                <label for="module_rc" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Port scanner'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="module_ps"
+                                       value="{{ configs.ps.id }}" {{ configs.ps.checked }}/>
+
+                                <label for="module_ps" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Technologies'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="module_cms"
+                                       value="{{ configs.cms.id }}" {{ configs.cms.checked }}/>
+
+                                <label for="module_cms" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="wt_card wtotem-mb-20 block-country-section">
+                <div class="block-country-section__content">
+                    <h3 class="h3 wtotem-mb-15">{{ 'Country blocking'|trans }}</h3>
+                    <p class="notifications-settings__text">{{ 'Block countries you want to limit access to your website.'|trans }}</p>
+                </div>
+                <button class="wtotem_control__btn wtotem_btn_wc" id="block_countries_btn" style="white-space: nowrap;">{{ 'Block countries'|trans }}</button>
+
+                {% include 'country_blocking_modal.html.twig' with {'blocked_countries_list': blocked_countries_list, 'mock_attacks': mock_attacks} %}
+            </div>
+
+            <section class="wt_card wtotem-mb-20">
+                <h3 class="h3 settings__header">{{ 'IP lists configuration'|trans }}</h3>
+
+                <div class="wtotem-tabs firewall-configuration">
+
+                    <ul class="wtotem-tabs__caption firewall-configuration__list-types">
+                        <li class="firewall-configuration__list-types-item active">{{ 'Allow list'|trans }}</li>
+                        <li class="firewall-configuration__list-types-item">{{ 'Deny list'|trans }}</li>
+                        <li class="firewall-configuration__list-types-item">{{ 'URL Allow list'|trans }}</li>
+                    </ul>
+
+                    <div class="wtotem-tabs__content active">
+                        <div class="firewall-configuration__ip-adress-wrapper">
+                            <input class="firewall-configuration__ip-adress" type="text" autocomplete="off" id="allow_ip"
+                                                                 placeholder="{{ 'Type IPv4 or IPv6 address or a mask (104.122.249.38 or 104.122.*.*)' | trans }} ">
+                            <button class="wtotem_control__btn wtotem_btn_wc" id="allow_ip_submit"
+                                    type="submit">{{ 'Add IP' | trans }}</button>
+
+                            <span class="firewall-configuration__multi-adding" data-list="white">
+                                {{ 'Multi-adding IP'|trans }}
+                            </span>
+                        </div>
+                        <div id="wtotem_ip_allow_list">
+                            {% include 'allow_deny_list.html.twig' with {'list': allow_list} %}
+                        </div>
+                    </div>
+
+                    <div class="wtotem-tabs__content">
+                        <div class="firewall-configuration__ip-adress-wrapper">
+                            <input class="firewall-configuration__ip-adress" type="text" autocomplete="off" id="deny_ip"
+                                   placeholder="{{ 'Type IPv4 or IPv6 address or a mask (104.122.249.38 or 104.122.*.*)' | trans }} ">
+                            <button class="wtotem_control__btn wtotem_btn_wc" id="deny_ip_submit"
+                                    type="submit">{{ 'Add IP' | trans }}</button>
+
+                            <span class="firewall-configuration__multi-adding multi-adding-deny_list" data-list="black">
+                                {{ 'Multi-adding IP'|trans }}
+                            </span>
+                        </div>
+
+                        <div id="wtotem_ip_deny_list">
+                            {% include 'allow_deny_list.html.twig' with {'list': deny_list} %}
+                        </div>
+                    </div>
+
+                    <div class="wtotem-tabs__content">
+                        <div class="firewall-configuration__ip-adress-wrapper">
+                            <input class="firewall-configuration__ip-adress" type="text" autocomplete="off" id="allow_url"
+                                   placeholder="path/">
+                            <button class="wtotem_control__btn wtotem_btn_wc" id="allow_url_submit"
+                                    type="submit">{{ 'Add URL' | trans }}</button>
+                        </div>
+
+                        <div id="wtotem_allow_url">
+                            {% include 'allow_url_list.html.twig' with {'list': url_list} %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="wt_card notifications-settings wtotem-mb-20">
+                <div class="notifications-settings__header-wrapper">
+                    <h3 class="h3 wtotem-mb-15">{{ 'Notifications'|trans }}</h3>
+                    <p class="notifications-settings__text">
+                        {{ 'Send me notifications on e-mail'|trans }}
+                    </p>
+                </div>
+                <div style="position: relative;">
+                    <ul class="togglers-list notifications-list">
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Availability/SSL'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="notification_wa"
+                                       value="{{ configs.wa.service }}" {{ configs.wa.notification_checked }}/>
+
+                                <label for="notification_wa" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Antivirus'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="notification_av"
+                                       value="{{ configs.av.service }}" {{ configs.av.notification_checked }}/>
+
+                                <label for="notification_av" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+
+{#                        <li class="togglers-list__item">#}
+{#                            <p class="togglers-list__name">{{ 'Deface'|trans }}</p>#}
+{#                            <div class="wtotem_option__checkbox onoff">#}
+{#                                <input type="checkbox" class="onoff__input" id="notification_dc"#}
+{#                                       value="{{ configs.dc.service }}" {{ configs.dc.notification_checked }}/>#}
+
+{#                                <label for="notification_dc" class="onoff__label">#}
+{#                                    <span class="onoff__circle"></span>#}
+{#                                </label>#}
+{#                            </div>#}
+{#                        </li>#}
+
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Reputation'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="notification_rc"
+                                       value="{{ configs.rc.service }}" {{ configs.rc.notification_checked }}/>
+
+                                <label for="notification_rc" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Port scanner'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="notification_ps"
+                                       value="{{ configs.ps.service }}" {{ configs.ps.notification_checked }}/>
+
+                                <label for="notification_ps" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="togglers-list__item">
+                            <p class="togglers-list__name">{{ 'Firewall'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="notification_waf"
+                                       value="{{ configs.waf.service }}" {{ configs.waf.notification_checked }}/>
+
+                                <label for="notification_waf" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="wt_card wtotem-mb-20" id="wtotem-recaptcha-settings">
+                <div class="notifications-settings__header-wrapper">
+                    <h3 class="h3 wtotem-mb-15">ReCaptcha</h3>
+                    <p class="notifications-settings__text">{{ 'Enable reCAPTCHA on login pages'|trans }}</p>
+                </div>
+                <div style="position: relative;" class="wtotem_settings_section_inner">
+                    <ul class="wtotem-mb-20">
+                        <li class="togglers-list__item one-element">
+                            <p class="togglers-list__name">
+                                {{ 'Enable reCAPTCHA'|trans }}
+                                <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="reCAPTCHA">
+                                    <div class="wtotem-tooltip__content">
+                                        <p class="wtotem-tooltip__header">{{ 'Enable reCAPTCHA'|trans }}</p>
+                                        <p class="wtotem-tooltip__text">
+                                            {{ 'Please make sure that no other recaptcha is used on your site. Otherwise, there may be a conflict that will cause problems when logging into the admin panel.'|trans }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="recaptcha"
+                                       value="{{ plugin_settings.recaptcha }}" {{ plugin_settings.recaptcha_checked }}/>
+
+                                <label for="recaptcha" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <div id="recaptcha-details" class="{% if (plugin_settings.recaptcha == false) %}visually-hidden{% endif %}">
+                        <div id="wtotem_recaptcha_v3_site_key_block" class="">
+                            <label class="wtotem-waf-settings-popup__label" for="recaptcha_v3_site_key">reCAPTCHA v3 Site Key</label>
+                            <input class="wtotem_settings_input" value="{{ plugin_settings.recaptcha_v3_site_key }}" type="text" id="recaptcha_v3_site_key" name="recaptcha_v3_site_key" title="" data-tlite="" placeholder="Enter the key">
+                        </div>
+                        <div id="wtotem_recaptcha_v3_secret_block" class="">
+                            <label class="wtotem-waf-settings-popup__label" for="recaptcha_v3_secret">reCAPTCHA v3 Secret</label>
+                            <input class="wtotem_settings_input" value="{{ plugin_settings.recaptcha_v3_secret }}" type="text" id="recaptcha_v3_secret" name="recaptcha_v3_secret" title="" data-tlite="" placeholder="Enter the key">
+                        </div>
+                        <input type="hidden" id="recaptcha_token">
+                    </div>
+                    <div class="wtotem_settings_submit_wrap">
+                        <button class="wtotem_control__btn" id="recaptcha_settings_submit" type="submit">{{ 'Save settings' |trans }}</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="wt_card wtotem-mb-20" id="wtotem-bruteforce-protection-settings" >
+
+                <div class="notifications-settings__header-wrapper">
+                    <h3 class="h3 wtotem-mb-15">{{ 'Authorization attempts'|trans }}</h3>
+                    <p class="notifications-settings__text">{{ 'The number of login and password reset attempts on the login page'|trans }}</p>
+                </div>
+
+                <div class="wtotem_settings_section_inner">
+                    <ul class="wtotem-mb-20">
+                        <li class="togglers-list__item one-element">
+                            <p class="togglers-list__name">
+                                {{ 'Login attempt counter'|trans }}
+                            </p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="login_attempts"
+                                       value="{{ plugin_settings.login_attempts }}" {% if (plugin_settings.login_attempts) %} checked{% endif %} />
+
+                                <label for="login_attempts" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="wtotem-mb-20{% if (plugin_settings.login_attempts == false) %} visually-hidden{% endif %}" id="login_attempts-details">
+                        <div class="wtotem-two_in_one">
+                            <div id="wtotem_login_number_of_attempts_block" class="">
+                                <label class="wtotem-waf-settings-popup__label" for="login_number_of_attempts">{{ 'Number of attempts (per minute)'|trans }}</label>
+                                <input class="wtotem_settings_input" value="{{ plugin_settings.login_number_of_attempts }}" type="text" id="login_number_of_attempts" name="login_number_of_attempts" title="" data-tlite="" placeholder="{{ 'Set limits'|trans }}">
+                            </div>
+                        </div>
+
+                        <div class="wtotem-two_in_one">
+                            <div id="wtotem_login_minutes_of_ban_block" class="">
+                                <label class="wtotem-waf-settings-popup__label" for="login_minutes_of_ban">{{ 'Minutes of ban'|trans }}</label>
+                                <div class="wtotem-interval-select">
+                                    <select type="text" id="login_minutes_of_ban" name="login_minutes_of_ban" title="" data-tlite="" >
+                                        <option disabled selected value> -- {{ 'Select interval'|trans }} -- </option>
+                                        <option value="5" {% if (plugin_settings.login_minutes_of_ban == 5) %}selected{% endif %}> 5 {{ 'minutes'|trans }}  </option>
+                                        <option value="15" {% if (plugin_settings.login_minutes_of_ban == 15) %}selected{% endif %}> 15 {{ 'minutes'|trans }} </option>
+                                        <option value="30" {% if (plugin_settings.login_minutes_of_ban == 30) %}selected{% endif %}> 30 {{ 'minutes'|trans }} </option>
+                                        <option value="60" {% if (plugin_settings.login_minutes_of_ban == 60) %}selected{% endif %}> 60 {{ 'minutes'|trans }} </option>
+                                        <option value="120" {% if (plugin_settings.login_minutes_of_ban == 120) %}selected{% endif %}> 120 {{ 'minutes'|trans }} </option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="wtotem-mb-20">
+                        <li class="togglers-list__item one-element">
+                            <p class="togglers-list__name">{{ 'Password reset attempt counter'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="password_reset"
+                                       value="{{ plugin_settings.password_reset }}" {% if (plugin_settings.password_reset) %} checked{% endif %}/>
+
+                                <label for="password_reset" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="wtotem-mb-20 {% if (plugin_settings.password_reset == false) %}visually-hidden{% endif %}" id="password_reset-details">
+                        <div class="wtotem-two_in_one">
+                            <div id="wtotem_password_reset_number_of_attempts_block" class="">
+                                <label class="wtotem-waf-settings-popup__label" for="password_reset_number_of_attempts">{{ 'Number of attempts (per minute)'|trans }} </label>
+                                <input class="wtotem_settings_input" value="{{ plugin_settings.password_reset_number_of_attempts }}" type="text" id="password_reset_number_of_attempts" name="password_reset_number_of_attempts" title="" data-tlite="" placeholder="{{ 'Set limits'|trans }}">
+                            </div>
+                        </div>
+
+                        <div class="wtotem-two_in_one">
+                            <div id="wtotem_password_reset_minutes_of_ban_block" class="">
+                                <label class="wtotem-waf-settings-popup__label" for="password_reset_minutes_of_ban">{{ 'Minutes of ban'|trans }}</label>
+                                <div class="wtotem-interval-select">
+                                    <select type="text" id="password_reset_minutes_of_ban" name="password_reset_minutes_of_ban" title="" data-tlite="">
+                                        <option disabled selected value> -- {{ 'Select interval'|trans }} -- </option>
+                                        <option value="5" {% if (plugin_settings.password_reset_minutes_of_ban == 5) %}selected{% endif %}> 5 {{ 'minutes'|trans }}  </option>
+                                        <option value="15" {% if (plugin_settings.password_reset_minutes_of_ban == 15) %}selected{% endif %}> 15 {{ 'minutes'|trans }} </option>
+                                        <option value="30" {% if (plugin_settings.password_reset_minutes_of_ban == 30) %}selected{% endif %}> 30 {{ 'minutes'|trans }} </option>
+                                        <option value="60" {% if (plugin_settings.password_reset_minutes_of_ban == 60) %}selected{% endif %}> 60 {{ 'minutes'|trans }} </option>
+                                        <option value="120" {% if (plugin_settings.password_reset_minutes_of_ban == 120) %}selected{% endif %}> 120 {{ 'minutes'|trans }} </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wtotem_settings_submit_wrap">
+                        <button class="wtotem_control__btn" id="bruteforce_protection_settings_submit" type="submit">{{ 'Save settings' |trans }}</button>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="wt_card wtotem-mb-20" id="wtotem-2fa-wrap">
+                <div class="notifications-settings__header-wrapper">
+                    <h3 class="h3 wtotem-mb-15">{{ 'Two-Factor Authentication'|trans }}</h3>
+                </div>
+                <div class="wtotem_settings_section_inner">
+                    <ul class="wtotem-mb-20">
+                        <li class="togglers-list__item one-element">
+                                <p class="togglers-list__name">
+                                    {{ 'Enable Two-factor authorization'|trans }}
+                                    <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Two-factor authorization">
+                                        <div class="wtotem-tooltip__content">
+                                            <p class="wtotem-tooltip__header">{{ 'Enable Two-factor authorization'|trans }}</p>
+                                            <p class="wtotem-tooltip__text">
+                                                {{ 'Makes two-factor authorization available to all users of the site'|trans }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="two_factor_global"
+                                       value="{{ plugin_settings.two_factor }}" {{ plugin_settings.two_factor_checked }}/>
+
+                                <label for="two_factor_global" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="position: relative;" class="wtotem_settings_section_inner{% if (plugin_settings.two_factor == false) %} visually-hidden{% endif %}" id="wtotem-2fa-wrap-inner">
+                    {% include 'two_factor_auth.html.twig' with { 'two_factor': two_factor, 'page_nonce': page_nonce } %}
+                </div>
+            </section>
+
+            <section class="wt_card wtotem-mb-20" id="wtotem-other-settings">
+                <div class="notifications-settings__header-wrapper">
+                    <h3 class="h3 wtotem-mb-15">{{ 'Other options'|trans }}</h3>
+                </div>
+
+                <div style="position: relative;" class="wtotem_settings_section_inner">
+
+                    <ul class="wtotem-mb-20">
+                        <li class="togglers-list__item one-element">
+                            <p class="togglers-list__name">{{ 'Hide WP version'|trans }}</p>
+                            <div class="wtotem_option__checkbox onoff">
+                                <input type="checkbox" class="onoff__input" id="hide_wp_version"
+                                       value="{{ plugin_settings.hide_wp_version }}" {{ plugin_settings.hide_wp_version_checked }}/>
+
+                                <label for="hide_wp_version" class="onoff__label">
+                                    <span class="onoff__circle"></span>
+                                </label>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <div class="wtotem_settings_submit_wrap">
+                        <button class="wtotem_control__btn" id="other_settings_submit" type="submit">{{ 'Save settings' |trans }}</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="wtotem_holder__sidebar">
+
+            <div class="wtotem_item">
+                <div class="wtotem_control wt_card">
+                    <h4 class="h4 wtotem_control__title">
+                        {{ 'Agent installation'|trans }}
+                    </h4>
+                    <p class="notifications-settings__text">
+                        {{ 'If you have any problems with our agent, we advise you to reinstall it'|trans }}
+                    </p>
+                    <div class="wtotem_control__block">
+                        <div class="wtotem_control__circle">
+                            <img src="{{ av_status.icon }}" alt="{{ av_status.name }}"
+                                 class="wtotem_control__check-mark"/>
+                        </div>
+                        <div class="wtotem_control__name">
+                            {{ 'Antivirus'|trans }}
+                        </div>
+                    </div>
+                    <div class="wtotem_control__block">
+                        <div class="wtotem_control__circle">
+                            <img src="{{ waf_status.icon }}" alt="{{ waf_status.name }}"
+                                 class="wtotem_control__check-mark"/>
+                        </div>
+                        <div class="wtotem_control__name">
+                            {{ 'Firewall'|trans }}
+                        </div>
+                    </div>
+                    <div class="wtotem_button wtotem_control__btn open-popup" data-action="reinstall_agents">
+                        <img src="{{ images_path }}reload.svg" alt=""> <span>{{ 'Reinstall agents'|trans }}</span>
+                    </div>
+                    <div class="wtotem_button_link open-popup" data-action="logout">
+                        {{ 'API-key change'|trans }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="wtotem_item" id="wtotem-waf-settings">
+                <div class="wtotem_control wt_card">
+                    <h2 class="h2 wtotem-waf-settings-popup__title">{{ 'Firewall configuration'|trans }}</h2>
+                    <div class="wtotem-waf-settings-popup__form" id="wtotem-waf-settings-form">
+                        <div class="wtotem_firewall-section-menu-item">
+
+                            <div class="wtotem_firewall-section-menu-item">
+                                <div class="wt-flex wt-flex-middle"><strong>{{ 'DoS limits'|trans }}</strong>
+                                    <div>
+                                        <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="DoS limits">
+                                            <div class="wtotem-tooltip__content">
+                                                <p class="wtotem-tooltip__header">{{ 'DoS limits'|trans }}</p>
+                                                <p class="wtotem-tooltip__text">
+                                                    {{ 'Limits the number of requests per minute from an IP address.'|trans }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wtotem_option__checkbox onoff wtotem_switch-checkbox-with-text">
+
+                                        <input type="checkbox" class="onoff__input" name="dos" id="dos" {{ waf_settings.dos.checked }}/>
+                                        <label for="dos" class="onoff__label">
+                                            <span class="onoff__circle"></span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="wtotem_dos_limit" class="{{ waf_settings.dos.visually }}">
+                                <input class="wtotem-waf-settings-popup__input wtotem_settings_input" value="{{ waf_settings.dos_limit }}"
+                                       type="number" min="500" max="100000" id="dos_limit" name="dos_limit" required>
+                            </div>
+
+                            <div class="wtotem_firewall-section-menu-item">
+                                <div class="wt-flex wt-flex-middle" style="color: #a1a1a1;"><strong>{{ 'Login attempts'|trans }}</strong>
+                                    <div>
+                                        <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Login attempts">
+                                            <div class="wtotem-tooltip__content">
+                                                <p class="wtotem-tooltip__header" >{{ 'Login attempts'|trans }}</p>
+                                                <p class="wtotem-tooltip__text">
+                                                    {{ 'This Login attempts function belongs to the WAF agent itself. It is replaced with the "Authorization attempts limit" integration for WordPress. You can access it below in the setting.'|trans }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wtotem_option__checkbox onoff wtotem_switch-checkbox-with-text">
+
+                                        <input type="checkbox" class="onoff__input" id="login_attempt"
+                                               name="login_attempt" {#{{ waf_settings.login_attempt.checked }}#} disabled/>
+                                        <label for="login_attempt" class="onoff__label">
+                                            <span class="onoff__circle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <a href="#wtotem-bruteforce-protection-settings">{{ 'Authorization attempts'|trans }}</a>
+                            </div>
+
+{#                            <div id="wtotem_login_attempt_limit" class="{{ waf_settings.login_attempt.visually }}">#}
+
+{#                                <input class="wtotem-waf-settings-popup__input wtotem_settings_input" value="{{ waf_settings.login_attempt_limit }}"#}
+{#                                       type="number" min="5" max="30" id="login_attempt_limit" name="login_attempt_limit" required>#}
+{#                            </div>#}
+
+
+                            <div class="wtotem_firewall-section-menu-item">
+                                <div class="wt-flex wt-flex-middle"><strong>GDN</strong>
+                                    <div>
+                                        <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="GDN">
+                                            <div class="wtotem-tooltip__content">
+                                                <p class="wtotem-tooltip__header">GDN</p>
+                                                <p class="wtotem-tooltip__text">
+                                                    {{ 'This option protects you from hackers detected on other websites connected to our global defence network.'|trans }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wtotem_option__checkbox onoff wtotem_switch-checkbox-with-text">
+                                        <input type="checkbox" class="onoff__input" id="gdn" name="gdn" {{ waf_settings.gdn.checked }}/>
+
+                                        <label for="gdn" class="onoff__label">
+                                            <span class="onoff__circle"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="wtotem_control__btn" id="waf_submit" type="submit">{{ 'Save settings' |trans }}</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="firewall-multi-adding side-modal">
+    <section class="side-modal__content wt_card">
+
+        <div class="side-modal__header-wrapper">
+            <h2 class="h2 side-modal__title">{{ 'Multi-adding IP'|trans }}</h2>
+            <span class="firewall-multi-adding__close side-modal__close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.38338 0 0 5.38292 0 12C0 18.6171 5.38338 24 12 24C18.6166 24 24 18.6171 24 12C24 5.38292 18.6166 0 12 0ZM12 23.0769C5.89246 23.0769 0.923077 18.1075 0.923077 12C0.923077 5.89246 5.89246 0.923077 12 0.923077C18.1075 0.923077 23.0769 5.89246 23.0769 12C23.0769 18.1075 18.1075 23.0769 12 23.0769Z" fill="#5E6977"/>
+                    <path d="M16.4803 7.51987C16.2998 7.33941 16.0081 7.33941 15.8277 7.51987L12.0001 11.3474L8.17261 7.51987C7.99214 7.33941 7.70045 7.33941 7.51999 7.51987C7.33953 7.70033 7.33953 7.99202 7.51999 8.17248L11.3475 12L7.51999 15.8276C7.33953 16.008 7.33953 16.2997 7.51999 16.4802C7.60999 16.5702 7.72814 16.6154 7.8463 16.6154C7.96445 16.6154 8.08261 16.5702 8.17261 16.4802L12.0001 12.6526L15.8277 16.4802C15.9177 16.5702 16.0358 16.6154 16.154 16.6154C16.2721 16.6154 16.3903 16.5702 16.4803 16.4802C16.6608 16.2997 16.6608 16.008 16.4803 15.8276L12.6528 12L16.4803 8.17248C16.6608 7.99202 16.6608 7.70033 16.4803 7.51987Z" fill="#5E6977"/>
+                </svg>
+            </span>
+        </div>
+
+        <div class="firewall-multi-adding__form">
+            <form action="" id="wtotem-allow-deny-multi-add-form">
+                <input type="hidden" id="wtotem-ip-list-type" name="list">
+
+                <div class="firewall-multi-adding__label-wrapper">
+                    <label class="firewall-multi-adding__label" for="ip-list">
+                        {{ 'IP lists configuration'|trans }}
+                    </label>
+                    <div class="wtotem_title-info__info wtotem-tooltip firewall-multi-adding__tooltip" data-service="IP lists configuration">
+                        <div class="wtotem-tooltip__content wtotem-tooltip__content--top-center firewall-multi-adding__tooltip-content">
+                            <p class="wtotem-tooltip__header firewall-multi-adding__tooltip-header">{{ 'How to use?'|trans }}</p>
+                            <p class="wtotem-tooltip__text">
+                                {{ 'If you want to add several IP addresses at once, you can add the address separated by commas.'|trans }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <textarea name="ips" id="wtotem_ips" rows="10" class="firewall-multi-adding__input" placeholder="{{ 'Example:' | trans }} 104.122.249.38, 104.122.249.39"></textarea>
+
+                <p class="wtotem_input__messages"></p>
+                <button class="wtotem_control__btn" id="ip_list_submit" type="submit">{{ 'Add IP list' |trans }}</button>
+            </form>
+        </div>
+    </section>
+    <div class="side-modal__overlay"></div>
+</div>

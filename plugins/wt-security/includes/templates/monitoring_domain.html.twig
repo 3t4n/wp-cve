@@ -1,0 +1,54 @@
+{% if domain.status.name == 'pending' %}
+    {%  include 'dots_loader.html.twig' %}
+{% else %}
+
+    <div class="wtotem_table__item">
+        <div class="wtotem_table__wrap_big">
+            <img src="{{ domain.status.image }}" class="wtotem_table__img"/>
+        </div>
+    </div>
+
+    <div class="wtotem_table__info">
+        <h3 class="h3 wtotem_table__subject">{{ 'Presence of the site'|trans }}</h3>
+        <div class="wtotem_table__text">
+            <img width="18px" height="18px" src="{{ images_path }}{% if domain.is_taken  %}check.svg{% else %}minus.svg {% endif %}" class="svg-icon">
+        </div>
+    </div>
+
+    {% if domain.redirect_link  %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">{{ 'Redirect'|trans }}</h3>
+            <div class="wtotem_table__text">{{ domain.redirect_link }}</div>
+        </div>
+    {% endif %}
+
+    {% if domain.ips  %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">{{ 'IP address'|trans }}</h3>
+            <div class="wtotem_table__text">
+                <select name="ip" aria-label="ip" class="wtotem_select__inner" data-testid="select-ip">
+                    {% for item in domain.ips %}
+                        <option value="{{ item.ip }}">{{ item.ip }}, {{ item.location }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if domain.protection  %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">{{ 'Site protection'|trans }}</h3>
+            <div class="wtotem_table__text">{{ domain.protection }}</div>
+        </div>
+    {% endif %}
+
+
+    {% if domain.is_created_at  %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">{{ 'Check time'|trans }}</h3>
+            <div class="wtotem_table__text">{{ domain.created_at }}</div>
+        </div>
+    {% endif %}
+
+
+{% endif %}

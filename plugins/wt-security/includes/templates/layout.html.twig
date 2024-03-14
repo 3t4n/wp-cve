@@ -1,0 +1,155 @@
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        jQuery('.wtotem_body').on('click', '#theme_mode', function (e) {
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'theme_mode',
+                wtotem_page_nonce: '{{ page_nonce }}',
+            }, function (data) {
+                if(data === "dark"){
+                    jQuery('body').addClass('wtotem_theme—dark');
+                    jQuery('.wtotem_body').addClass('wtotem_theme—dark');
+                } else {
+                    jQuery('body').removeClass('wtotem_theme—dark');
+                    jQuery('.wtotem_body').removeClass('wtotem_theme—dark');
+                }
+            });
+        });
+
+        let set_time_zone = () => {
+            let visitorTime = new Date();
+            let time_zone_offset = -visitorTime.getTimezoneOffset() / 60;
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'set_time_zone',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                offset: time_zone_offset,
+            });
+        };
+        set_time_zone();
+
+        let reload_page_data = () => {
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'reload_page',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                page: '{{ page }}',
+            }, function (data) {
+                jQuery('#wtotem_notifications').html(data.notifications);
+
+                jQuery.each(data.content, function(){
+                    jQuery(this.selector).replaceWith(this.content);
+                });
+
+            });
+
+        };
+
+        if('{{ page }}' === 'dashboard'){
+            /* run the reload every 60 seconds */
+            let wtotem_reload_page = setInterval(() => reload_page_data(), 60000);
+
+            /* stop reload after 60 min */
+            setTimeout(() => { clearInterval(wtotem_reload_page); }, 3600000);
+        }
+
+        AmplitudeAnalytics.pageVisited();
+
+        jQuery('body').addClass('{{ theme_mode.is_dark_mode }}');
+
+    });
+</script>
+
+<div class="wtotem_body {{ theme_mode.is_dark_mode }}">
+    <div class="wtotem_header wt_card">
+        <div class="wtotem_container">
+            <div class="wtotem_header__body">
+                <div class="wtotem_version">
+                    <div class="wtotem_logo"></div>
+                    <span class="wtotem_version__count">2.0</span>
+                </div>
+                <div class="wtotem_burger">
+                    <span class="wtotem_burger__middle-line"></span>
+                </div>
+
+                <nav class="wtotem_nav">
+                    <ul class="wtotem_nav__menu">
+                        <li class="wtotem_control__checkbox" id="color_scheme_toggle">
+                            <input type="checkbox" class="wtotem_control__input" id="theme_mode" {{ theme_mode.dark_mode_checked }} />
+                            <label for="theme_mode" class="wtotem_control__label">
+                                <span class="wtotem_control__switched-circle"></span>
+                            </label>
+                        </li>
+                        {% if is_multisite and is_super_admin %}
+                            <li class="wtotem_nav__item">
+                                <a href="{{ menu_url }}_all_sites" class="wtotem_nav__link {{ is_active.all_sites }}">
+                                    {{ 'All sites'|trans }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="wtotem_nav__item">
+                                <a href="{{ menu_url }}_dashboard" class="wtotem_nav__link {{ is_active.dashboard }}">
+                                    {{ 'Dashboard'|trans }}
+                                </a>
+                            </li>
+                            <li class="wtotem_nav__item">
+                                <a href="{{ menu_url }}_firewall" class="wtotem_nav__link {{ is_active.firewall }}">
+                                    {{ 'Firewall'|trans }}
+                                </a>
+                            </li>
+                            <li class="wtotem_nav__item">
+                                <a href="{{ menu_url }}_antivirus" class="wtotem_nav__link {{ is_active.antivirus }}">
+                                    {{ 'Antivirus'|trans }}
+                                </a>
+                            </li>
+                            <li class="wtotem_nav__item">
+                                <a href="{{ menu_url }}_settings" class="wtotem_nav__link {{ is_active.settings }}">
+                                    {{ 'Settings'|trans }}
+                                </a>
+                            </li>
+                            <li class="wtotem_nav__item">
+                                <a href="{{ menu_url }}_reports" class="wtotem_nav__link {{ is_active.reports }}">
+                                    {{ 'Reports'|trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        <li class="wtotem_nav__item">
+                            <a href="https://wtotem.com/faq/#hs-chat-open" class="wtotem_nav__link" target="_blank">
+                                {{ 'Help'|trans }}
+                            </a>
+                        </li>
+
+                        <li class="wtotem_nav__item">
+                            <a href="{{ menu_url }}_documentation" class="wtotem_nav__link {{ is_active.information }}">
+                                {{ 'Documentation'|trans }}
+                            </a>
+                        </li>
+
+                        <li class="wtotem_nav__item">
+                            <a href="{{ menu_url }}_wpscan" class="wtotem_nav__link {{ is_active.wpscan }}">
+                                {{ 'WP scan'|trans }}
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="wtotem_content">
+        <div class="wtotem_container">
+            <div class="wtotem_notifications_wrapper" id="wtotem_notifications">
+                {% include 'notifications.html.twig' with {'notifications': notifications, 'images_path': images_path } %}
+            </div>
+        </div>
+    </div>
+
+    <div class="wtotem_content">
+        <div class="wtotem_container">
+            {{ content | raw}}
+        </div>
+    </div>
+    {% include 'footer.html.twig' with {'current_year': current_year, 'images_path': images_path } %}
+</div>

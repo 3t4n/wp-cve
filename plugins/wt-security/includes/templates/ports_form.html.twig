@@ -1,0 +1,127 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        let ignore_ports = (action, btn = false) => {
+            jQuery('.port-scanner-list').addClass('wtotem_loader_spinner');
+            var port = btn ? btn.data('port') : jQuery('#wtotem-input-port').val();
+
+            if(action === "add"){
+                AmplitudeAnalytics.addPsExclusion(port);
+            } else {
+                AmplitudeAnalytics.removePsExclusionPort(port);
+            }
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'ignore_ports',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                port_action: action,
+                port: port,
+
+            }, function (data) {
+                jQuery('.port-scanner-list').removeClass('wtotem_loader_spinner');
+                jQuery('#wtotem-input-port').val('');
+                jQuery('#open_ports_wrap').html(data.open_ports);
+                jQuery('#open_ports_modal_wrap').html(data.open_ports);
+                jQuery('#ignore_ports_wrap').html(data.ignore_ports);
+            });
+        };
+
+        let show_port_details = (item) => {
+            jQuery('.port-cve__technology-container').show();
+            jQuery('.port__result-list-item').removeClass('port__result-list-item--selected');
+
+            $("#port_result_list").find("[data-port="+item.data('port')+"]").addClass('port__result-list-item--selected');
+
+            jQuery('#add_port').attr('data-port', item.data('port'));
+            jQuery('#technology_name').html(item.data('technology'));
+            jQuery('#technology_version').html(item.data('version'));
+            jQuery('#cve_container').html(item.data('summary'));
+        };
+
+        jQuery('.wtotem_body').on('click', '#add_port', function (e) {
+            ignore_ports('add', jQuery(this));
+        }).on('click', '#add_port_btn', function (e) {
+            ignore_ports('add');
+        }).on('click', '.remove_port', function (e) {
+            ignore_ports('remove', jQuery(this));
+        }).on('click', '.port__result-list-item', function (e) {
+            show_port_details(jQuery(this));
+        });
+
+        jQuery('#wtotem-input-port').keydown(function(e) {
+            if(e.keyCode === 13) {
+                ignore_ports('add');
+            }
+        });
+
+
+    });
+
+</script>
+
+<div class="popup-overlay d-none">
+    <div class="popup-content wt_card">
+        <div class="port-scanner-list">
+            <div class="port-scanner-list__header">
+                <div class="port-scanner-list__header--title">{{ 'Ports list'|trans }}</div>
+                <div class="port-scanner-list__header--close popup-overlay__close">
+                    <img width="10px" height="10px" src="{{ images_path }}plus_dark.svg" class="svg-icon">
+                </div>
+            </div>
+            <div class="port-scanner-list__form port__result">
+                <span>{{ 'Open ports'|trans }}</span>
+                <div class="port-scanner-list__form-ports" id="open_ports_modal_wrap">
+
+                    <ul class="port__result-list" id="port_result_list">
+                        {% if ports.TCPResults %}
+                            {% include 'open_ports.html.twig' with {'ports': ports.TCPResults} %}
+                        {% endif %}
+                    </ul>
+{#                    {% if ports.TCPResults %}#}
+{#                        {% include 'open_ports.html.twig' with {'ports': ports.TCPResults} %}#}
+{#                    {% endif %}#}
+                </div>
+
+                <div class="port-cve__technology-container" style="display: none">
+                    <div class="port-cve__technology">
+                        <div class="port-cve__technology-info"><p>{{ 'Technology'|trans }}</p>
+                            <div class="port-cve__technology-description">
+                                <img width="40" height="40" class="port-cve__technology-icon" src="{{ images_path }}defaultTechnologiesIcon.svg">
+                                <div class="port-cve__technology-details">
+                                    <p class="port-cve__technology-name" id="technology_name"></p>
+                                    <p class="port-cve__technology-version" id="technology_version"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="wt-button wt-font-700 port-cve__technology-btn" id="add_port">{{ 'Add to ignore list'|trans }}</button>
+                    </div>
+                    <div class="port-cve__cve-container" id="cve_container"></div>
+                </div>
+
+                <div class="port-scanner-list__form-input">
+                    <div class="wt-input">
+                        <div class="wt-input__inner wt-input__inner--with-icon">
+                            <input placeholder="{{ 'Type port number' | trans }}" id="wtotem-input-port" type="number" min="0" max="65536" value="">
+                            <div class="wt-input__icon">
+                                <div class="port-scanner-list__form-input-icon">
+                                    <div class="wt-icon">
+                                        <input type="image" src="{{ images_path }}plus_dark.svg" class="svg-icon" id="add_port_btn">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="wtotem-input-port__info" id="wtotem_ports_form-messages"></p>
+                </div>
+            </div>
+
+            <span style="padding: 24px 22px;">{{ 'Ignored ports'|trans }}</span>
+            <div class="port-scanner-list__wrap" id="ignore_ports_wrap">
+                {% include 'ignore_ports.html.twig' with {'ports': ports} %}
+            </div>
+
+        </div>
+    </div>
+</div>

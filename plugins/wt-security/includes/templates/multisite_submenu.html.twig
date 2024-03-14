@@ -1,0 +1,55 @@
+<div class="wtotem_page-header">
+    <div class="wtotem_page-header__first">
+        <div class="wtotem_page-header__subjects">
+            <div class="wtotem_page-header__sub-title">
+                {{ 'Report page'|trans }}
+            </div>
+            <div class="wtotem_page-header__title">
+                {{ site_name }}
+            </div>
+        </div>
+    </div>
+    <div class="wtotem_page-header__menu">
+        <ul class="wtotem_page-header__list">
+            <li class="wtotem_page-header__item">
+                <a href="{{ menu_url }}_dashboard{{ hid }}" class="wtotem_page-header__link {{ is_active.dashboard }}" >
+                    {{ 'All stats'|trans }}
+                </a>
+            </li>
+            <li class="wtotem_page-header__item">
+                <a href="{{ menu_url }}_firewall{{ hid }}" class="wtotem_page-header__link {{ is_active.firewall }}" >
+                    {{ 'Firewall'|trans }}
+                </a>
+            </li>
+
+            {% if is_multisite == false or is_super_admin %}
+            <li class="wtotem_page-header__item">
+                <a href="{{ menu_url }}_antivirus{{ hid }}" class="wtotem_page-header__link {{ is_active.antivirus }}" >
+                    {{ 'Antivirus'|trans }}
+                </a>
+            </li>
+            {% endif %}
+
+            <li class="wtotem_page-header__item">
+                <a href="{{ menu_url }}_reports{{ hid }}" class="wtotem_page-header__link {{ is_active.reports }}" >
+                    {{ 'Reports'|trans }}
+                </a>
+            </li>
+        </ul>
+        <ul class="wtotem_page-header__list">
+            {% if is_multisite == false or is_super_admin %}
+            <li class="wtotem_page-header__item">
+                <a href="{{ menu_url }}_settings{{ hid }}" class="wtotem_page-header__link {{ is_active.settings }}" >
+                    {{ 'Settings'|trans }}
+                </a>
+            </li>
+
+            <li class="wtotem_page-header__item">
+                <a href="https://wtotem.com/cabinet/site/{{ host_id }}/scoring" class="wtotem_page-header__link" target="_blank" >
+                    {{ 'Full scoring'|trans }}
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

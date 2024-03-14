@@ -1,0 +1,176 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.wtotem_body').on('click', '#waf_load_more', function (e) {
+            jQuery('#waf_logs_wrap').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'lazy_load',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                service: 'firewall',
+            }, function (data) {
+                jQuery('#waf_logs_wrap').removeClass('wtotem_loader_spinner').append(data.content);
+
+                if(!data.has_next_page) {
+                    jQuery('#waf_load_more').remove();
+                }
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        });
+
+        jQuery('#wtotem-request-copy').on('click', function(e) {
+            let copy_text = $('#wt_payload').text();
+            try {
+                navigator.clipboard.writeText(copy_text);
+            } catch(err) {
+                if(typeof document.execCommand == 'function') {
+                    var $tmp = $("<textarea>");
+                    $("body").append($tmp);
+                    $tmp.val(copy_text).select();
+                    document.execCommand("copy");
+                    $tmp.remove();
+                }
+            }
+        });
+
+        jQuery('.wtotem_body').on('click', '.wtotem_firewall-log__show-more', function (e) {
+
+            let data_info = jQuery.parseJSON( jQuery(this).attr('data-more') );
+
+            jQuery('#wt_user_ip').text(data_info.ip);
+            jQuery('#wt_proxy_ip').text(data_info.proxy_ip);
+            jQuery('#wt_source').text(data_info.source);
+            jQuery('#wt_request').text(data_info.request);
+            jQuery('#wt_user_agent').text(data_info.user_agent);
+            jQuery('#wt_time').text(data_info.time);
+            jQuery('#wt_type').text(data_info.type);
+            jQuery('#wt_category').text(data_info.category);
+            jQuery('#wt_country').text(data_info.country);
+            jQuery('#wt_payload').text(data_info.payload);
+
+            jQuery('#firewall-log-report').removeClass('d-none');
+        });
+    });
+
+</script>
+
+<div class="wtotem_chart wt_card" id="firewall_data">
+    <div id="waf_chart_wrap">
+        {% include 'firewall_chart.html.twig' with {'chart': chart, 'days': days } %}
+    </div>
+
+    <div class="wtotem_data">
+        <div class="wtotem_data__thead">
+            <div class="wtotem_data__tr">
+                <div class="wtotem_data__th wtotem_data_width_1">
+                    {{ 'Type/IP'|trans }}
+                </div>
+                <div class="wtotem_data__th wtotem_data_width_2">
+                    {{ 'Country'|trans }}
+                </div>
+                <div class="wtotem_data__th wtotem_data_width_3">
+                    {{ 'Time'|trans }}
+                </div>
+                <div class="wtotem_data__th wtotem_data_width_4">
+                    {{ 'Attack location'|trans }}
+                </div>
+                <div class="wtotem_data__th wtotem_data_width_6">
+                    {{ 'Status'|trans }}
+                </div>
+                <div class="wtotem_data__th wtotem_data_width_6">
+                    {{ 'Report'|trans }}
+                </div>
+
+            </div>
+        </div>
+        <div class="wtotem_data__tbody">
+            <div id="waf_logs_wrap">
+                {% include 'firewall_logs.html.twig' with {'logs': logs, 'page': page, 'has_next_page': has_next_page } %}
+            </div>
+        </div>
+    </div>
+
+
+{% if page == 'firewall' %}
+    <div class="wtotem_more_btn_wrap">
+        {% if has_next_page %}
+            <div class="wtotem_more_btn" id="waf_load_more">{{ 'Load more'|trans }}</div>
+        {% endif %}
+    </div>
+{% endif %}
+
+    <div class="wtotem_chart__line"></div>
+</div>
+
+
+<div class="popup-overlay d-none" id="firewall-log-report">
+    <div class="popup-content wt_card">
+        <div class="port-scanner-list">
+            <div class="port-scanner-list__header">
+                <div class="port-scanner-list__header--title">{{ host_name }}</div>
+                <div class="port-scanner-list__header--close popup-overlay__close">
+                    <img width="10px" height="10px" src="{{ images_path }}plus_dark.svg" class="svg-icon">
+                </div>
+            </div>
+
+            <section class="firewall-log-report">
+                <ul class="firewall-log-report__list">
+                    <li class="firewall-log-report__item firewall-log-report__item--blue">
+                        <p class="firewall-log-report__item-title">{{ 'Hostname'|trans }}:</p>
+                        <p class="firewall-log-report__item-value">{{ host_name }}</p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'IP'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_user_ip"></p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'Proxy IP'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_proxy_ip"></p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'Source'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_source">0</p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'Request'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_request"></p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-value">
+                            <span class="firewall-log-report__item-title">{{ 'User agent:</'|trans }}span>
+                            <span id="wt_user_agent"></span>
+                        </p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'Time'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_time"></p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'Type'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_type"></p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'Category'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_category"></p>
+                    </li>
+                    <li class="firewall-log-report__item">
+                        <p class="firewall-log-report__item-title">{{ 'Country'|trans }}:</p>
+                        <p class="firewall-log-report__item-value" id="wt_country"></p>
+                    </li>
+                </ul>
+                <div class="firewall-log-report__payload-wrapper">
+                    <p class="firewall-log-report__payload-title">{{ 'Payload'|trans }}:</p>
+                    <p class="firewall-log-report__payload" >
+                        <span class="firewall-log-report__payload-text" id="wt_payload"></span>
+                        <span class="wtotem-recovery-btn">
+                            <img src="{{ images_path }}copy-min.svg" alt="" id="wtotem-request-copy">
+                        </span>
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>

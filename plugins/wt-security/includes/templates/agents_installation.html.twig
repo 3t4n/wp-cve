@@ -1,0 +1,138 @@
+{% if process_status.am == 'failed' %}
+    <div class="wtotem_unit__block">
+        <div class="wtotem_unit__contain">
+            <div class="wtotem_unit__circle wtotem_unit__circle_error"></div>
+            <h2 class="h2 title">
+                {{ 'Failed to install Agent Manager' | trans }}
+            </h2>
+        </div>
+        <div class="wtotem_unit__expectation wtotem_unit__expectation_error">
+            <a class="wtotem_button wtotem_button--primary wtotem-font-700 wtotem_block_center" id="reinstall_agents">
+                <span>{{ 'Install' | trans }}</span>
+            </a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        AmplitudeAnalytics.agentInstallConfirm('{{ process_status.waf }}','{{ process_status.av }}');
+        jQuery(document).ready(function ($) {
+            jQuery('#reinstall_agents').on('click', function (e) {
+                jQuery.post(
+                    ajaxurl,
+                    {
+                        action: 'wtotem_ajax',
+                        ajax_action: 'reinstall_agents',
+                        wtotem_page_nonce: '{{ page_nonce }}',
+                    },
+                    function (data) {
+                        window.open(data.redirect_link, '_self');
+                    }
+                );
+            });
+        });
+    </script>
+{% else %}
+
+    {% if process_status.av == 'installed' %}
+        <div class="wtotem_unit__block wtotem_unit__block_antivirus">
+            <div class="wtotem_unit__contain">
+                <div class="wtotem_unit__circle wtotem_unit__circle_success">
+                    <img src="{{ images_path }}success.svg" alt="Success" class="wtotem_unit__img">
+                </div>
+                <h2 class="h2 title">
+                    {{ 'Antivirus' | trans }}
+                </h2>
+            </div>
+            <div class="wtotem_unit__expectation wtotem_unit__expectation_success">
+                {{ 'Installed' | trans }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if process_status.av == 'installing' %}
+        <div class="wtotem_unit__block wtotem_unit__block_antivirus" >
+            <div class="wtotem_unit__contain">
+                <div class="wtotem_unit__expectation wtotem_unit__circle_loading">
+                    <img src="{{ images_path }}spinner.svg" alt="Spinner"
+                    class="wtotem_unit__img wtotem_unit__img_spinner"/>
+                </div>
+                <h2 class="h2 title wtotem-ml-20">
+                    {{ 'Antivirus' | trans }}
+                </h2>
+            </div>
+            <div class="wtotem_unit__expectation wtotem_unit__expectation_loading">
+                {{ 'Installing' | trans }}...
+            </div>
+        </div>
+    {% endif %}
+
+    {% if process_status.av == 'failed' %}
+        <div class="wtotem_unit__block wtotem_unit__block_antivirus" >
+            <div class="wtotem_unit__contain">
+                <div class="wtotem_unit__circle wtotem_unit__circle_error"></div>
+                <h2 class="h2 title">
+                    {{ 'Antivirus' | trans }}
+                </h2>
+            </div>
+            <div class="wtotem_unit__expectation wtotem_unit__expectation_error">
+                {{ 'Failed to install' | trans }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if process_status.waf == 'installed' %}
+        <div class="wtotem_unit__block wtotem_unit__block_firewall" >
+            <div class="wtotem_unit__contain">
+                <div class="wtotem_unit__circle wtotem_unit__circle_success">
+                    <img src="{{ images_path }}success.svg" alt="Success"
+                    class="wtotem_unit__img">
+                </div>
+                <h2 class="h2 title">
+                    {{ 'Firewall' | trans }}
+                </h2>
+            </div>
+            <div class="wtotem_unit__expectation wtotem_unit__expectation_success">
+                {{ 'Installed' | trans }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if process_status.waf == 'installing' %}
+        <div class="wtotem_unit__block wtotem_unit__block_firewall" >
+            <div class="wtotem_unit__contain">
+                <div class="wtotem_unit__expectation wtotem_unit__circle_loading">
+                    <img src="{{ images_path }}spinner.svg" alt="Spinner"
+                    class="wtotem_unit__img wtotem_unit__img_spinner"/>
+                </div>
+                <h2 class="h2 title wtotem-ml-20">
+                    {{ 'Firewall' | trans }}
+                </h2>
+            </div>
+            <div class="wtotem_unit__expectation wtotem_unit__expectation_loading">
+                {{ 'Installing' | trans }}...
+            </div>
+        </div>
+    {% endif %}
+
+    {% if process_status.waf == 'failed' %}
+        <div class="wtotem_unit__block wtotem_unit__block_firewall" >
+            <div class="wtotem_unit__contain">
+                <div class="wtotem_unit__circle wtotem_unit__circle_error"></div>
+                <h2 class="h2 title">
+                    {{ 'Firewall' | trans }}
+                </h2>
+            </div>
+            <div class="wtotem_unit__expectation wtotem_unit__expectation_error">
+                {{ 'Failed to install' | trans }}
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if process_status.waf != 'installing' or  process_status.av != 'installing' %}
+        <script>
+            AmplitudeAnalytics.agentInstallConfirm('{{ process_status.waf }}','{{ process_status.av }}');
+        </script>
+    {% endif %}
+
+{% endif %}

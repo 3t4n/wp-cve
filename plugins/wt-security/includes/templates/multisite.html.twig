@@ -1,0 +1,112 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.wtotem_body').on('click', '#sites_load_more', function (e) {
+            jQuery('#all_sites_wrap').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'lazy_load',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                service: 'all_sites',
+            }, function (data) {
+                jQuery('#all_sites_wrap').removeClass('wtotem_loader_spinner').append(data.content);
+
+                if(!data.has_next_page) {
+                    jQuery('#sites_load_more').remove();
+                }
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        }).on('click', '.wtotem_remove_site', function (e) {
+            jQuery('#all_sites_wrap').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'multisite',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                multisite_action: 'remove_site',
+                hid: jQuery(this).data('hid'),
+            }, function (data) {
+                jQuery('#all_sites_wrap').removeClass('wtotem_loader_spinner');
+                if(data.content){
+                    jQuery('#all_sites_wrap').html(data.content);
+                }
+
+                if(!data.has_next_page) {
+                    jQuery('#sites_load_more').remove();
+                }
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        }).on('click', '.wtotem_add_site', function (e) {
+            jQuery('#all_sites_wrap').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'multisite',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                multisite_action: 'add_site',
+                site_name: jQuery(this).data('site'),
+            }, function (data) {
+                jQuery('#all_sites_wrap').removeClass('wtotem_loader_spinner').html(data.content);
+
+                if(!data.has_next_page) {
+                    jQuery('#sites_load_more').remove();
+                }
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        });
+
+        jQuery('body').addClass('{{ theme_mode.is_dark_mode }}');
+
+    });
+
+</script>
+
+<div class="wtotem_welcome-wrapper">
+    <div class="wtotem_body {{ theme_mode.is_dark_mode }}">
+
+        <div class="wtotem_content">
+            <div class="wtotem_container">
+                <div class="wtotem_notifications_wrapper" id="wtotem_notifications">
+                    {% include 'notifications.html.twig' with {'notifications': notifications, 'images_path': images_path } %}
+                </div>
+            </div>
+        </div>
+
+        <div class="wtotem_container">
+
+            <div class="wtotem_all">
+                <div class="wtotem_all__first">
+                    <h2 class="title">{{ 'All sites'|trans }}</h2>
+                </div>
+
+                {% if sites %}
+                    <table class="wtotem_all__table">
+                        <thead class="wtotem_all__thead">
+                        <tr class="wtotem_all__tr card">
+                            <th class="wtotem_all__th">{{ 'Site name'|trans }}</th>
+                            <th class="wtotem_all__th">{{ 'Firewall'|trans }}</th>
+                            <th class="wtotem_all__th">{{ 'Antivirus'|trans }}</th>
+                            <th class="wtotem_all__th">{{ 'Services status'|trans }}</th>
+                            <th class="wtotem_all__th" colspan="2">{{ 'Technologies'|trans }} </th>
+                        </tr>
+                        </thead>
+                        <tbody class="wtotem_all__tbody" id="all_sites_wrap">
+                            {% include 'multisite_list.html.twig' with {'sites': sites, 'images_path': images_path, 'hasNextPage': hasNextPage } %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="wtotem__no-data">
+                        <div class="wtotem__no-data-icon">
+                            <img src="{{ images_path }}list.svg">
+                        </div>
+                        <div>
+                            {{ 'No site here'|trans }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+{% if logs %}
+
+    {% for log in logs %}
+        <div class="wtotem_file-table__tr">
+
+            <div class="wtotem_file-table__td wt-flex break-word ">
+                <div class="file_path_wrap" >
+                    <div class="file_path wt-text {{ log.class }}">
+                        {{ log.file_name }}
+                    </div>
+                    <div class="file_path wtotem_file_path" title="{{ log.file_path }}">
+                        {{ log.file_path|slice(0, 80) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="wtotem_file-table__td">
+                {{ log.permissions }}
+
+                {% if log.permissions_changed  %}
+                    <span title="{{ 'Permissions or access rights has been modified'|trans }}">
+                        <img src="{{ images_path }}alert-warning.svg" alt="Warning icon" height="12px" width="15px" >
+                    </span>
+                {% endif %}
+            </div>
+
+            <div class="wtotem_file-table__td">
+                {{ log.time }}
+            </div>
+
+            <div class="wtotem_file-table__td {{ log.class }}">
+                {{ log.status.text }}
+            </div>
+
+
+            <div class="wtotem_file-table__td text-align-center">
+                {% if log.event == 'infected' %}
+                    <div class="add-to-quarantine" data-path="{{ log.original_path }}" title="{{ 'Move to quarantine'|trans }}">
+                        <img src="{{ images_path }}av-trash-red.svg" >
+                    </div>
+                {% else %}
+                    <div class="wt-icon" title="">
+                        <img src="{{ images_path }}av-trash-gray.svg" >
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endfor %}
+
+{% else %}
+    <!-- No data block -->
+    <section class="wtotem_reports-no-data" style="height:300px" >
+        <h2 class="h2 visually-hidden">{{ 'No data'|trans }}</h2>
+        <p class="wtotem_reports-no-data__text">
+            {{ 'Has no action ready yet'|trans }}
+        </p>
+    </section>
+{% endif %}

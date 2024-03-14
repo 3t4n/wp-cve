@@ -1,0 +1,20 @@
+<div class="wtotem_map-wrap wtotem_map wt_card">
+    <div class="wtotem_chart-first">
+        <div class="wtotem_country">
+            <div class="wtotem_country__title">
+                {{ 'Country'|trans }}
+            </div>
+            <div class="wtotem_country__desc">
+                {{ 'Attack map'|trans }}
+            </div>
+        </div>
+        <div class="wtotem_chart__wrapper">
+            {% include 'chart_periods.html.twig' with { 'service': 'map', 'days' : days, 'is_period_available': is_period_available } %}
+        </div>
+    </div>
+
+    <!-- Map -->
+    <div class="wtotem_map-block" id="map_chart_wrap">
+        {% include 'map_chart.html.twig' with {'attacks_map': attacks_map, 'world_map_json': world_map_json} %}
+    </div>
+</div>

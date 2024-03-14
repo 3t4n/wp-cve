@@ -1,0 +1,93 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        let av_ajax_execute = (action) => {
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'antivirus',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                av_action: action,
+                file_status: jQuery('#wtotem_av_state_filter').val(),
+                permission: jQuery('#wtotem_permission-changed').is(':checked'),
+            }, function (data) {
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+                if(data.last_scan){
+                    jQuery('.wtotem_antivirus-logs__button--rescan').removeClass('active');
+                    jQuery('#wtotem_last_scan_av').html(data.last_scan);
+                }
+                if(data.doc_link){
+                    window.open(data.doc_link, '_blank');
+                }
+
+                if(data.logs){
+                    jQuery('#av_logs_wrap')
+                        .html(data.logs)
+                        .removeClass('wtotem_loader_spinner');
+
+                    if(data.has_next_page){
+                        jQuery('.wtotem_more_btn_wrap').html(
+                            '<div class="wtotem_more_btn" id="av_load_more">{{ 'Load more'|trans }}</div>'
+                        );
+                    } else{
+                        jQuery('#av_load_more').remove();
+                    }
+                }
+            });
+        };
+
+        jQuery('.wtotem_body').on('click', '#wtotem_av_export', function (e) {
+            av_ajax_execute('download_report');
+            AmplitudeAnalytics.downloadAvExcel();
+        }).on('click', '#wtotem_rescan', function (e) {
+            av_ajax_execute('rescan');
+            jQuery('.wtotem_antivirus-logs__button--rescan').addClass('active');
+            AmplitudeAnalytics.avRescanDemanded();
+            AmplitudeAnalytics.rescan('antivirus');
+        }).on('change', '#wtotem_av_state_filter', function (e) {
+            jQuery('#av_logs_wrap').addClass('wtotem_loader_spinner');
+            av_ajax_execute('filter')
+            AmplitudeAnalytics.avFileType();
+        }).on('change', '#wtotem_permission-changed', function (e) {
+            jQuery('#av_logs_wrap').addClass('wtotem_loader_spinner');
+            av_ajax_execute('filter')
+            AmplitudeAnalytics.avChangedFiles();
+        });
+    });
+
+</script>
+
+
+<div class="wtotem_state wt_card">
+    <div class="wtotem_antivirus__logs wtotem_antivirus-logs">
+        <div class="wtotem_antivirus-logs__panel">
+
+            <div class="wtotem_state__select-wrapper wtotem_antivirus-logs__filter">
+                <select name="file-status" id="wtotem_av_state_filter" class="wtotem_state__select">
+                    <option class="wtotem_state__option" value="new">{{ 'New files' | trans }}</option>
+                    <option class="wtotem_state__option" value="scanned">{{ 'Scanned files' | trans }}</option>
+                    <option class="wtotem_state__option" value="modified">{{ 'Changed files' | trans }}</option>
+                    <option class="wtotem_state__option" value="deleted">{{ 'Deleted files' | trans }}</option>
+                    <option class="wtotem_state__option" value="infected">{{ 'Infected files' | trans }}</option>
+                </select>
+            </div>
+
+            <div class="wtotem_antivirus-logs__permission wt-checkbox">
+                <input class="wt-checkbox__input" type="checkbox" id="wtotem_permission-changed" name="permission-changed" />
+                <label class="wt-checkbox__label" for="wtotem_permission-changed">{{ 'Permissions changed' | trans }}</label>
+            </div>
+            <div class="wtotem_antivirus-logs__buttons-wrapper">
+                <div class="wtotem_antivirus-logs__button wtotem_antivirus-logs__button--download" id="wtotem_av_export" type="button">
+                    <span class="wtotem_antivirus-logs__button-text">{{ 'Download'|trans }}</span>
+                </div>
+
+                <div class="wtotem_antivirus-logs__button wtotem_antivirus-logs__button--rescan" id="wtotem_rescan" type="button">
+                    <span class="wtotem_antivirus-logs__button-text">{{ 'Rescan'|trans }}</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

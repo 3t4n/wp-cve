@@ -1,0 +1,102 @@
+{% if sites %}
+    {% for site in sites %}
+        <tr class="wtotem_all__tr card">
+            <td class="wtotem_all__td">
+                <h5 class="wtotem_all__title-tr">
+                    {{ site.hostname }}
+                </h5>
+                <p class="wtotem_all__url">
+                    {{ site.title }}
+                </p>
+            </td>
+            <td class="wtotem_all__td">
+                <span class="wtotem_all__status wtotem_all__status_need {{ site.firewall.status.class }}" >
+                    {{ site.firewall.status.text }}
+                        <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Firewall status">
+                        <div class="wtotem-tooltip__content">
+                            <p class="wtotem-tooltip__header">{{ site.firewall.status.text }} </p>
+                            <p class="wtotem-tooltip__text">{{ site.firewall.status.tooltips }} </p>
+                        </div>
+                    </div>
+                </span>
+            </td>
+            <td class="wtotem_all__td">
+                <span class="wtotem_all__status wtotem_all__status_need {{ site.antivirus.status.class }}" >
+                    {{ site.antivirus.status.text }}
+                        <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Antivirus status">
+                        <div class="wtotem-tooltip__content">
+                            <p class="wtotem-tooltip__header">{{ site.antivirus.status.text }} </p>
+                            <p class="wtotem-tooltip__text">{{ site.antivirus.status.tooltips }} </p>
+                        </div>
+                    </div>
+                </span>
+            </td>
+            <td class="wtotem_all__td">
+                <div class="sites-section__icon-stack">
+                    {% if site.services.list %}
+                        {% for service in site.services.list %}
+                            <div class="sites-section__icon--{{ service.status.color }}"  title="{{ service.name }}">
+                                <img src="{{ images_path }}{{ service.icon }}" width="25px" height="25px" data-tlite="w"
+                                title="{{ service.name }}" class="services-icons services-icon__{{ service.icon }}">
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if site.services.other.count != 0 %}
+                    <div class="sites-section__icon--gray" title="{{ site.services.other.names }}">
+                        {{ site.services.other.count }}+
+                    </div>
+                    {% endif %}
+                </div>
+            </td>
+            <td class="wtotem_all__td">
+                <div class="sites-section__icon-stack">
+                    {% if site.stacks.list %}
+                        {% for stack in site.stacks.list %}
+                            <div class="sites-section__icon--gray"  title="{{ stack.name }}" >
+                                {% if stack.icon %}
+                                    <img src="{{ stack.icon }}" width="18px" height="18px" data-tlite="w">
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if site.stacks.other.count != 0 %}
+                    <div class="sites-section__icon--gray" title="{{ site.stacks.other.names }}">
+                        {{ site.stacks.other.count }}+
+                    </div>
+                    {% endif %}
+                </div>
+            </td>
+            <td class="wtotem_all__td">
+
+                {% if site.host_id %}
+                    <a href="{{ site.url }}" class="wtotem_all__td-btn button">
+                        {{ 'Show more'|trans }}
+                    </a>
+                {#{% else %}#}
+                    {#<span data-site="{{ site.hostname }}" class="wtotem_all__td-btn wt-button--success button wtotem_add_site">#}
+                    {#{{ 'Install'|trans }}#}
+                    {#</span>#}
+                {% endif %}
+
+                {#{% if site.main_host == false and site.host_id %}#}
+                    {#<span data-hid="{{ site.host_id }}" class="wtotem_all__td-btn button wt-button--red wtotem_remove_site">#}
+                        {#{{ 'Delete'|trans }}#}
+                    {#</span>#}
+                {#{% endif %}#}
+
+            </td>
+        </tr>
+    {% endfor %}
+{% endif %}
+
+{% if hasNextPage %}
+    <tr id="sites_load_more_wrap">
+        <td style="background: transparent; border: 0">
+            <a href="#" class="wtotem_chart__btn" id="sites_load_more">
+                {{ 'Load more'|trans }}
+            </a>
+        </td>
+    </tr>
+{% endif %}

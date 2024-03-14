@@ -1,0 +1,30 @@
+{% if chart %}
+    <div class="wtotem_chart__diagram">
+        <div id="ram-chart" class="line-chart" data-days="{{ days }}">
+            <div id="tooltipRam" class="line-chart__tooltip">
+                <span id="countRam"></span>
+            </div>
+        </div>
+    </div>
+    <div class="wtotem_chart__line"></div>
+
+    <script>
+        {% autoescape false %}
+            var ram_chart = {{ chart }};
+        {% endautoescape %}
+
+        if(typeof drawRamChart !== 'undefined'){
+            if(typeof ram_chart == "object"){
+                drawRamChart(ram_chart);
+            }
+        }
+    </script>
+{% else %}
+    <!-- No data block -->
+    <section class="wtotem_reports-no-data" style="height:300px" >
+        <h2 class="h2 visually-hidden">{{ 'No data'|trans }}</h2>
+        <p class="wtotem_reports-no-data__text">
+            {{ 'No data'|trans }}
+        </p>
+    </section>
+{% endif %}

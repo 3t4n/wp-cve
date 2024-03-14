@@ -1,0 +1,31 @@
+{% for logs_for_period in audit_logs %}
+    <div class="audit-logs__item">
+        <p class="audit-logs__short-info">
+            <span class="audit-logs__date">{{ logs_for_period.date }}</span>
+            <span class="audit-logs__divider"></span>
+            <span class="audit-logs__time-count">{{ logs_for_period.count }}</span>
+        </p>
+
+
+        <div class="audit-logs__entries-container">
+        {% for log in logs_for_period.logs %}
+            <div class="audit-logs-entry" data-id="1664344613000" data-unseen="{{ log.viewed }}">
+                <div class="audit-logs-entry__left">
+                    <p class="audit-logs-entry__time">
+                        {{ log.time }}
+                        <span class="audit-logs-entry__new"></span>
+                    </p>
+                    <div class="audit-logs-entry__status-container">
+                        <span class="audit-logs-entry__status audit-logs-entry__status--{{ log.status }}">{{ log.user_name }}</span>
+                    </div>
+                    <p class="audit-logs-entry__description">{{ log.title }}
+                        {% if log.description %}<br> <span style="color: #86939E">{{ log.description | raw }}</span>{% endif %}
+                    </p>
+                </div>
+                <div class="audit-logs-entry__ip">IP: {{ log.ip }}</div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+{% endfor %}

@@ -1,0 +1,112 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.wtotem_body').on('click', '#av_load_more', function (e) {
+
+            jQuery('#av_logs_wrap').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'lazy_load',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                service: 'antivirus',
+            }, function (data) {
+                jQuery('#av_logs_wrap')
+                    .removeClass('wtotem_loader_spinner')
+                    .append(data.content);
+
+                if(!data.has_next_page){
+                    jQuery('#av_load_more').remove();
+                }
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        });
+
+        let quarantine_ajax = (action, id_or_path) => {
+
+            jQuery('#av_logs_wrap').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'quarantine',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                quarantine_action: action,
+                id_or_path: id_or_path,
+            }, function (data) {
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+
+                jQuery('#av_logs_wrap')
+                    .html(data.antivirus_logs)
+                    .removeClass('wtotem_loader_spinner');
+                jQuery('#wtotem_quarantine_wrap').html(data.quarantine);
+                if(data.has_next_page){
+                    jQuery('#wtotem_more_btn_wrap').html(
+                        '<div class="wtotem_more_btn" id="av_load_more">{{ 'Load more'|trans }}</div>'
+                    );
+                } else{
+                    jQuery('#av_load_more').remove();
+                }
+            });
+        };
+
+        jQuery('.wtotem_body').on('click', '.add-to-quarantine', function (e) {
+            quarantine_ajax('add', jQuery(this).data('path'));
+            AmplitudeAnalytics.fileQuarantined();
+        }).on('click', '.remove-from-quarantine', function (e) {
+            quarantine_ajax('remove', jQuery(this).data('id'));
+            AmplitudeAnalytics.fileRestored();
+        });
+
+    });
+
+</script>
+
+<div class="wtotem_last_scan_av wt_card">
+    {{ 'Last scan'|trans }} <span id="wtotem_last_scan_av">{{ last_scan }}</span>
+</div>
+<div class="wtotem_file-table wt_card">
+    <div class="wtotem_file-table__thead {% if logs is empty %} visually-hidden {% endif %}">
+        <div class="wtotem_file-table__tr">
+            <div class="wtotem_file-table__th">
+                {{ 'File'|trans }}
+            </div>
+            <div class="wtotem_file-table__th">
+                {{ 'Permission'|trans }}
+                <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top">
+                    <div class="wtotem-tooltip__content">
+                        <p class="wtotem-tooltip__header">{{ 'Permission'|trans }}</p>
+                        <p class="wtotem-tooltip__text">{{ 'Shows permissions or access rights configurations.'|trans }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wtotem_file-table__th">
+                {{ 'Time'|trans }}
+            </div>
+            <div class="wtotem_file-table__th">
+                {{ 'Status'|trans }}
+            </div>
+            <div class="wtotem_file-table__th" style="text-align: center;">
+                {{ 'Actions'|trans }}
+            </div>
+        </div>
+    </div>
+    <div class="wtotem_file-table__tbody" id="av_logs_wrap">
+        {% include 'antivirus_logs.html.twig' with {'logs': logs, 'has_next_page': has_next_page} %}
+    </div>
+
+    <div class="wtotem_more_btn_wrap">
+    {% if has_next_page %}
+        <div class="wtotem_more_btn" id="av_load_more">{{ 'Load more'|trans }}</div>
+    {% endif %}
+    </div>
+</div>
+
+<div class="wtotem_state__line"></div>
+
+<div class="wtotem_state__last">
+    <div class="wtotem_state__text">
+        {{ 'Need more support'|trans }}
+        <a target="_blank" href="https://wtotem.com/#hs-chat-open">{{ 'Let\'s talk!'|trans }}</a>
+    </div>
+</div>

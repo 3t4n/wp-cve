@@ -1,0 +1,43 @@
+{% if reputation.status.name == 'pending' %}
+    {% include 'dots_loader.html.twig' %}
+{% else %}
+
+    <div class="wtotem_table__td">
+        <div class="wtotem_table__wrap">
+            {% if reputation.status.image %}
+                <img src="{{ reputation.status.image }}" class="wtotem_table__img"/>
+            {% endif %}
+        </div>
+
+        <div class="wtotem_table__perfomance wtotem_table__perfomance_long wtotem-ml-20">{{ reputation.info }}</div>
+    </div>
+    <div class="wtotem_table__info">
+        <h3 class="h3 wtotem_table__subject">
+            {{ 'Status'|trans }}
+            <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Reputation status">
+                <div class="wtotem-tooltip__content">
+                    {{ reputation.status.tooltips }}
+                </div>
+            </div>
+        </h3>
+        <div class="wtotem_table__status">{{ reputation.status.text }}</div>
+    </div>
+    <div class="wtotem_table__info">
+        <h3 class="h3 wtotem_table__subject">
+            {{ 'Deny lists entries'|trans }}
+        </h3>
+        <div class="wtotem_table__text">
+            {{ reputation.blacklists_entries }}
+        </div>
+    </div>
+    <div class="wtotem_table__info">
+        <h3 class="h3 wtotem_table__subject">
+            {{ 'Last test'|trans }}
+        </h3>
+        <div class="wtotem_table__text">
+            {{ reputation.last_test }}
+        </div>
+    </div>
+    <div class="wtotem_table__info"></div>
+
+{% endif %}

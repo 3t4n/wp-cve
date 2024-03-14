@@ -1,0 +1,81 @@
+<div class="wtotem_firewall" id="firewall_stats">
+    {% if is_waf_training %}
+        <div class="wtotem_firwall-training-alert wt_card">
+            <div class="wtotem_firwall-training-alert__text-wrapper">
+                <p class="wtotem_firwall-training-alert__text">
+                    {{ 'Firewall needs up to 2 days to finish training'|trans }}
+                </p>
+            </div>
+            <a href="https://docs.wtotem.com/SpHJ-firewall" target="_blank" class="wtotem_control__btn wtotem_btn_wc">
+                {{ 'Show more'|trans }}
+            </a>
+        </div>
+    {% endif %}
+
+    <div class="wtotem_firewall__block">
+        <div class="wtotem_numbers wt_card">
+            <div class="wtotem_numbers__item">
+                <div class="wtotem_numbers__title">
+                    {{ 'Suspicious events'|trans }}
+                    <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Suspicious event">
+                        <div class="wtotem-tooltip__content">
+                            <p class="wtotem-tooltip__text">
+                                {{ 'Suspicious event - any event, either blocked or non blocked because of being low risk, with a sign of a malicious request.'|trans }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wtotem_numbers__figures">{{ all_attacks }}</div>
+            </div>
+
+            <div class="wtotem_numbers__item">
+                <div class="wtotem_numbers__title">
+                    {{ 'Blocked'|trans }}
+                    <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Blocked event">
+                        <div class="wtotem-tooltip__content">
+                            <p class="wtotem-tooltip__text">
+                                {{ 'Blocked - a suspicious event, found to be critical enough to get blocked.'|trans }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wtotem_numbers__figures">{{ blocking }}</div>
+            </div>
+
+            <div class="wtotem_numbers__item">
+                <div class="wtotem_numbers__title">
+                    {{ 'Low risk'|trans }}
+                    <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Low risk event">
+                        <div class="wtotem-tooltip__content">
+                            <p class="wtotem-tooltip__text">
+                                {{ 'Low risk - a suspicious event with a feature of a malicious request yet not critical enough to get blocked.'|trans }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wtotem_numbers__figures">{{ not_blocking }}</div>
+            </div>
+        </div>
+
+        <div class="wtotem_from wt_card">
+            <div class="wtotem_from__svg-wrap">
+                <svg class="wtotem_from__progress">
+                    <circle class="wtotem_from__circle" cx="35" cy="35" r="28" stroke-width="20" stroke="rgb(135,255,222)"
+                            style="stroke-dasharray: 176, 176; stroke-dashoffset: {{ most_attacks.offset }}"/>
+                </svg>
+                <span class="wtotem_from__percent" data-value="{{ most_attacks.percent }}">{{ most_attacks.percent }}%</span>
+            </div>
+
+            <div class="wtotem_from__info">
+                <div class="wtotem_from__title">{{ 'Country'|trans }}</div>
+                <div class="wtotem_from__country" >
+                    {% if most_attacks.country %}
+                        <span>{{ 'Attack from'|trans }} {{ most_attacks.country }}</span>
+                    {% else %}
+                        {{ 'Pending'|trans }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

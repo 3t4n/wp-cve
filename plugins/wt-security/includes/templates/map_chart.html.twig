@@ -1,0 +1,32 @@
+{% if attacks_map and attacks_map != 'false' %}
+    <div class="wtotem_map-block__map">
+        <svg id="firewallMap" class="firewall_map" height="305" width="100%"></svg>
+    </div>
+    <div class="firewall">
+        <canvas id="firewall" class="firewall_bar" width="100%"></canvas>
+    </div>
+
+    <script>
+        {% autoescape false %}
+        var attacks_map = {{ attacks_map }};
+        {% endautoescape %}
+
+        var world_map_json = '{{ world_map_json }}';
+
+        if(typeof attacksMap !== 'undefined'){
+            if(typeof attacks_map == "object"){
+                attacksMap();
+            }
+        }
+    </script>
+
+{% else %}
+    <!-- No data block -->
+    <section class="wtotem_reports-no-data" style="height:300px" >
+        <h2 class="h2 visually-hidden">{{ 'No data'|trans }}</h2>
+        <p class="wtotem_reports-no-data__text">
+            {{ 'Has no action ready yet'|trans }}
+        </p>
+    </section>
+{% endif %}
+

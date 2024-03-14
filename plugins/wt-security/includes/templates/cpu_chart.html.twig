@@ -1,0 +1,29 @@
+{% if chart %}
+    <div class="wtotem_chart__diagram">
+        <div id="cpu-chart" class="line-chart" data-days="{{ days }}">
+            <div id="tooltipCpu" class="line-chart__tooltip">
+                <span id="countCpu"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        {% autoescape false %}
+            var cpu_chart = {{ chart }};
+        {% endautoescape %}
+
+        if(typeof drawCpuChart !== 'undefined'){
+            if(typeof cpu_chart == "object"){
+                drawCpuChart(cpu_chart);
+            }
+        }
+    </script>
+{% else %}
+    <!-- No data block -->
+    <section class="wtotem_reports-no-data" style="height:300px" >
+        <h2 class="h2 visually-hidden">{{ 'No data'|trans }}</h2>
+        <p class="wtotem_reports-no-data__text">
+            {{ 'No data'|trans }}
+        </p>
+    </section>
+{% endif %}

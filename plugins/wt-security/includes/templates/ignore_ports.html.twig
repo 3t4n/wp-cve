@@ -1,0 +1,25 @@
+
+<div class="port-scanner-list__table">
+    <table>
+        <thead>
+        <tr>
+            <td>{{ 'Port'|trans }}</td>
+            <td>{{ 'Actions'|trans }}</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% if ports.ignorePorts %}
+            {% for port in ports.ignorePorts %}
+                <tr>
+                    <td><span>{{ port }}</span></td>
+                    <td>
+                        <div data-port="{{ port }}" class="remove_port">
+                            {{ 'Remove'|trans }}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>

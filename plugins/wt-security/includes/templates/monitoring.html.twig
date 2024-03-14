@@ -1,0 +1,111 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.wtotem_body').on('click', '.force_check', function (event) {
+
+            event.preventDefault();
+            let service = jQuery(this).data('service'),
+                btn = jQuery(this);
+
+            btn.find('img').addClass('wtotem_unit__img_spinner');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'force_check',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                service: service,
+
+            }, function (data) {
+
+                btn.find('img').removeClass('wtotem_unit__img_spinner');
+                if(service === 'ssl'){
+                    jQuery('#ssl_data_wrap').html(data.content);
+                } else if(service === 'dec'){
+                    jQuery('#domain_data_wrap').html(data.content);
+                } else if(service === 'rc'){
+                    jQuery('#reputation_data_wrap').html(data.content);
+                }
+
+            });
+        });
+
+    });
+
+</script>
+<div class="wtotem_monitoring" id="monitoring">
+    <div class="wtotem_table wt_card">
+        <div class="wtotem_table__row">
+            <div class="wtotem_table__col" {% if domain == false %}style="width: 50%"{% endif %}>
+                <div class="wtotem_table__th">
+                    <h3 class="h3 wtotem_table__title wtotem_title-info__title">
+                        SSL
+                        <span class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="SSL module">
+                            <span class="wtotem-tooltip__content">
+                                <span class="wtotem-tooltip__header">{{ 'SSL module'|trans }}</span>
+                                <span class="wtotem-tooltip__text">{{ 'Displays the status of the SSL Certificate.'|trans }}</span>
+                            </span>
+                        </span>
+                    </h3>
+                    <button class="open-path__force-check-btn force_check" data-service="ssl" title="{{ 'ForceCheck'|trans }}">
+                        <img width="18px" height="18px" src="{{ images_path }}recheck.svg" class="svg-icon">
+                    </button>
+                </div>
+
+                <div id="ssl_data_wrap">
+                    {% include 'monitoring_ssl.html.twig' with {'ssl': ssl } %}
+                </div>
+
+            </div>
+
+            {% if domain != false %}
+            <div class="wtotem_table__col">
+                <div class="wtotem_table__th">
+                    <h3 class="h3 wtotem_table__title wtotem_title-info__title">
+                        {{ 'Domain'|trans }}
+
+                    </h3>
+
+                    <button class="open-path__force-check-btn force_check" data-service="dec" title="{{ 'ForceCheck'|trans }}">
+                        <img width="18px" height="18px" src="{{ images_path }}recheck.svg" class="svg-icon">
+                    </button>
+                </div>
+
+                <div id="domain_data_wrap">
+                    {% include 'monitoring_domain.html.twig' with {'domain': domain } %}
+                </div>
+
+            </div>
+            {% endif %}
+
+            <div class="wtotem_table__col" {% if domain == false %}style="width: 50%"{% endif %}>
+                <div class="wtotem_table__th">
+                    <h3 class="h3 wtotem_table__title wtotem_title-info__title">{{ 'Reputation'|trans }}
+                        <div class="h3 wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Reputation module">
+                            <div class="wtotem-tooltip__content">
+                                <p class="wtotem-tooltip__header">{{ 'Reputation module'|trans }}</p>
+                                <p class="wtotem-tooltip__text">{{ 'Checks website entries in 60+ blacklisting authorities.'|trans }}</p>
+                            </div>
+                        </div>
+                    </h3>
+
+                    <button class="open-path__force-check-btn force_check" data-service="rc" title="{{ 'ForceCheck'|trans }}">
+                        <img width="18px" height="18px" src="{{ images_path }}recheck.svg" class="svg-icon">
+                    </button>
+                </div>
+
+                <div id="reputation_data_wrap">
+                    {% include 'monitoring_reputation.html.twig' with {'reputation': reputation } %}
+                </div>
+
+            </div>
+        </div>
+        <div class="wtotem_table__footer">
+            <a target="_blank" href="https://wtotem.com/faq/#hs-chat-open" class="wtotem_table__link open_support_dialog" data-service="Monitoring">
+                <div class="wtotem_table__perfomance">
+                    <span>{{ 'Need more support?'|trans }} {{ 'Let\'s talk!'|trans }}</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

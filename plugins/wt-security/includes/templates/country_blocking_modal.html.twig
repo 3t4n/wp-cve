@@ -1,0 +1,86 @@
+<script>
+    jQuery(document).ready(function ($) {
+        jQuery('#country-blocking').on('submit', function (e) {
+
+            jQuery('#country-blocking').addClass('wtotem_loader_spinner');
+
+            jQuery.post(
+                ajaxurl,
+                {
+                    dataType: 'json',
+                    action: 'wtotem_ajax',
+                    ajax_action: 'settings',
+                    settings_action: 'country_blocking',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    checked_countries: checkedCountries,
+                },
+                function(response) {
+                    jQuery('#wtotem_notifications').html(response.notifications);
+                    jQuery('#country-blocking').removeClass('wtotem_loader_spinner');
+                    if(response.success){
+                        AmplitudeAnalytics.saveCountryBlock(checkedCountries);
+                        populateCountries(regions, false, response.blocked_countries_list);
+                    }
+                }
+            );
+        });
+    });
+
+    jQuery('.country-blocking-modal__closeBtn').on('click', function (e) {
+        AmplitudeAnalytics.closeCountry();
+    });
+    jQuery('.country-blocking-form__checkbox').on('click', function (e) {
+        AmplitudeAnalytics.addCountry(checkedCountries);
+    });
+
+    let blocked_countries_list = {{ blocked_countries_list | raw }};
+    let mockAttacks = {{ mock_attacks | raw }};
+    let countryBlockingTranslate = {
+        "attack_from": "{{'Attack from'|trans}}",
+        "countries_blocked_from": "{{'countries blocked from'|trans}}",
+        "select_all": "{{'Select all'|trans}}"
+    };
+
+</script>
+
+<div class="country-blocking-modal side-modal">
+    <section class="side-modal__content wt_card">
+        <div class="side-modal__header-wrapper">
+            <h2 class="side-modal__title h2">{{ 'Block countries'|trans }}</h2>
+            <button class="country-blocking-modal__closeBtn side-modal__close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.38338 0 0 5.38292 0 12C0 18.6171 5.38338 24 12 24C18.6166 24 24 18.6171 24 12C24 5.38292 18.6166 0 12 0ZM12 23.0769C5.89246 23.0769 0.923077 18.1075 0.923077 12C0.923077 5.89246 5.89246 0.923077 12 0.923077C18.1075 0.923077 23.0769 5.89246 23.0769 12C23.0769 18.1075 18.1075 23.0769 12 23.0769Z" fill="#5E6977" />
+                    <path d="M16.4803 7.51987C16.2998 7.33941 16.0081 7.33941 15.8277 7.51987L12.0001 11.3474L8.17261 7.51987C7.99214 7.33941 7.70045 7.33941 7.51999 7.51987C7.33953 7.70033 7.33953 7.99202 7.51999 8.17248L11.3475 12L7.51999 15.8276C7.33953 16.008 7.33953 16.2997 7.51999 16.4802C7.60999 16.5702 7.72814 16.6154 7.8463 16.6154C7.96445 16.6154 8.08261 16.5702 8.17261 16.4802L12.0001 12.6526L15.8277 16.4802C15.9177 16.5702 16.0358 16.6154 16.154 16.6154C16.2721 16.6154 16.3903 16.5702 16.4803 16.4802C16.6608 16.2997 16.6608 16.008 16.4803 15.8276L12.6528 12L16.4803 8.17248C16.6608 7.99202 16.6608 7.70033 16.4803 7.51987Z" fill="#5E6977" />
+                </svg>
+                <span class="visually-hidden">{{ 'close'|trans }}</span>
+            </button>
+        </div>
+        <div class="country-blocking-modal__content">
+            <div class="country-blocking-modal-header">
+
+                <div class="country-blocking-modal-attacks-container"></div>
+                <form id="country-search" class="country-blocking-modal-form">
+                    <input class="country-blocking-modal__search-input" type="text" placeholder="{{ 'Name of the country'|trans }}">
+                </form>
+            </div>
+            <form id="country-blocking" class="country-blocking-form">
+                <div>
+                    <div class="country-blocking-form__select-all">
+                        <label for="select-all">{{ 'Select all countries'|trans }}</label>
+                        <input type="checkbox" id="select-all" class="wt-checkbox country-blocking-form__checkbox">
+                    </div>
+                    <div class="country-blocking-form__main"></div>
+                </div>
+                <div class="country-blocking-form-save">
+                    <p class="country-blocking-form-save__text">
+                        {{ 'Access blocked to'|trans }}  <span id="num-of-countries">0</span> {{ 'countries'|trans }}
+                    </p>
+                    <button type="submit" class="button country-blocking-form-save__btn">{{ 'save'|trans }}</button>
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+    <div class="side-modal__overlay"></div>
+</div>

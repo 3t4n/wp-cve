@@ -1,0 +1,109 @@
+<div class="wtotem_footer">
+    <div class="wtotem_container">
+        <div class="wtotem_footer__first">
+            <div class="wtotem_footer__caption">
+                <div class="wtotem_footer__logo"></div>
+                <p class="wtotem_footer__text">
+                    {{ 'Your best friend in cybersecurity world'|trans }}
+                </p>
+            </div>
+        </div>
+
+        <div class="wtotem_footer__line"></div>
+
+        <div class="wtotem_footer__bottom">
+            <div class="wtotem_footer__left">
+                <p class="wtotem_footer__text">
+                    © 2017-{{ current_year }} {{ 'All rights reserved'|trans }}
+                </p>
+            </div>
+            <div class="wtotem_footer__soc">
+                <a target="_blank" href="https://www.facebook.com/webtotem" class="wtotem_footer__soc-link">
+                    <img src="{{ images_path }}fc.svg" alt="Facebook icon" />
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/company/wtotem/" class="wtotem_footer__soc-link">
+                    <img src="{{ images_path }}lk.svg" alt="Linkedin icon" />
+                </a>
+                <a target="_blank" href="https://www.youtube.com/channel/UCD-n_NIXTOmw4Nm-LcmW1XA/featured" class="wtotem_footer__soc-link">
+                    <img src="{{ images_path }}youtube.svg" alt="Youtube icon" />
+                </a>
+            </div>
+            <div class="wtotem_footer__payment">
+                <img class="wtotem_footer__card wtotem_footer__card_visa" src="{{ images_path }}visa.svg" alt="Visa"/>
+                <img class="wtotem_footer__card wtotem_footer__card_master" src="{{ images_path }}master-card.svg" alt="Master wt_card"/>
+                <img class="wtotem_footer__card wtotem_footer__card_payPal" src="{{ images_path }}paypal.svg" alt="PayPal"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if user_feedback == false and page != 'activation' %}
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        jQuery('#user-feedback-submit').on('click', function (e) {
+
+            e.preventDefault();
+            let user_score = jQuery('input[name="rating"]:checked').val() ?? 1;
+            let feedback =  jQuery('.user-feedback__comment').val();
+
+            jQuery.post(ajaxurl, {
+
+                action: 'wtotem_ajax',
+                ajax_action: 'user_feedback',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                score: user_score,
+                feedback: feedback,
+
+            }, function (data) {
+                if(data.success){
+                    jQuery('.user-feedback').html(data.content).css("width", "220px");
+                }
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+
+            });
+
+        });
+
+        jQuery('body').on('click', '#user-feedback-close, #user-feedback-ok', function (e) {
+            jQuery('.user-feedback').hide();
+        });
+
+    });
+</script>
+
+<div class="user-feedback">
+    <div class="user-feedback__header">
+        <div>
+            <p class="user-feedback__title">{{ 'How would you rate our product?'|trans }}</p>
+        </div>
+        <button id="user-feedback-close" class="user-feedback__close-btn" type="button">
+            <img width="10px" height="10px" src="{{ images_path }}plus_dark.svg" class="svg-icon">
+        </button>
+    </div>
+    <div class="user-feedback__stars">
+
+        <div class="star-container">
+            <div class="rating-area">
+                <input type="radio" id="star-5" name="rating" value="5">
+                <label for="star-5"></label>
+                <input type="radio" id="star-4" name="rating" value="4">
+                <label for="star-4"></label>
+                <input type="radio" id="star-3" name="rating" value="3">
+                <label for="star-3"></label>
+                <input type="radio" id="star-2" name="rating" value="2">
+                <label for="star-2"></label>
+                <input type="radio" id="star-1" name="rating" value="1">
+                <label for="star-1"></label>
+            </div>
+        </div>
+
+    </div>
+    <p class="user-feedback__title">{{ 'What disappointed or displeased you?'|trans }}</p>
+    <div class="user-feedback__additional">
+        <p class="user-feedback__additional-title">{{ 'Additional feedback'|trans }}</p>
+        <textarea class="user-feedback__comment" placeholder="{{ 'If you have any additional feedback, please type it in here...'|trans }}"></textarea>
+    </div>
+    <button type="submit" id="user-feedback-submit" class="wtotem_control__btn user-feedback__submit-btn wt-text wt-text--uppercase">{{ 'Submit feedback'|trans }}</button>
+</div>
+{% endif %}

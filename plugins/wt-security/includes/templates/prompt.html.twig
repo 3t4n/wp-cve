@@ -1,0 +1,40 @@
+<div class="wtotem_body">
+    <div class="popup-overlay" id="wtotem-popup" style="display: none">
+
+        <script type="text/javascript">
+          jQuery(document).ready(function ($) {
+
+            $(document).on('click.wt-security', '#deactivate-wt-security', function (event) {
+              event.preventDefault();
+              $('#wtotem-popup').show();
+            })
+              .on('click', '#wt-cancel', function (event) {
+                event.preventDefault();
+                $('#wtotem-popup').hide();
+              })
+              .on('click', '#wt-continue', function (event) {
+                event.preventDefault();
+                $('#wtotem-popup').hide();
+
+                $(document).off('click.wt-security');
+                $('#deactivate-wt-security').get(0).click();
+              })
+          });
+        </script>
+
+        <div class="popup-content">
+            <img src="{{ images_path }}logo-blue.svg" alt="WebTotem logo" style="width: 50px; margin-bottom: 40px;" />
+            <div class="confirmation-dialog">
+                <h2 class="confirmation-dialog__title">{{ 'Are you sure?'|trans }}</h2>
+                <p class="confirmation-dialog__text">{{ message | raw}}</p>
+                <div class="confirmation-dialog__buttons-wrapper">
+                    <button class="wt-button" id="wt-continue">{{ 'Continue deactivation'|trans }}</button>
+                </div>
+                <div class="confirmation-dialog__buttons-wrapper">
+                    <a class="" href="#" id="wt-cancel">{{ 'Go back to plugins'|trans }}</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

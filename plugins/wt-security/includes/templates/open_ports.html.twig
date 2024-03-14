@@ -1,0 +1,18 @@
+{% for port in ports %}
+{#    <span data-port="{{ port.port }}" data-technology="{{ port.technology }}" data-version="{{ port.version }}" class="port-scanner-port-wrapper">{{ port.port }}#}
+{#        <span  class="port-scanner-icon add_port">#}
+{#            <img width="10px" height="10px" src="{{ images_path }}plus_white.svg" class="svg-icon">#}
+{#        </span>#}
+{#    </span>#}
+
+    <li class="port__result-list-item"
+        data-port="{{ port.port }}"
+        data-technology="{{ port.technology }}"
+        data-version="{{ port.version }}"
+        data-summary="{{ port.cve_summary }}"
+    >{{ port.port }}</li>
+{% endfor %}
+
+{% if more %}
+<li><span class="port__result-more-btn" id="wtotem_ps_settings">{{ 'More'|trans }}+</span></li>
+{% endif %}

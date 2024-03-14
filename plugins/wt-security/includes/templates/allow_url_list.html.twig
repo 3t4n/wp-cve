@@ -1,0 +1,33 @@
+{% if list %}
+<table class="firewall-configuration__ip-list firewall-ip-table">
+    <thead>
+    <tr>
+        <th class="firewall-ip-table__th">{{ 'URL address'|trans }}</th>
+        <th class="firewall-ip-table__th">{{ 'Date added'|trans }}</th>
+        <th class="firewall-ip-table__th">{{ 'Actions'|trans }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in list %}
+    <tr class="firewall-ip-table__tr">
+        <td class="firewall-ip-table__td">{{ item.url }}</td>
+        <td class="firewall-ip-table__td">{{ item.created_at }}</td>
+        <td class="firewall-ip-table__td">
+            <div data-id="{{ item.id }}" data-action="{{ item.list_name }}" data-wrap="#wtotem_allow_url" class="wtotem_remove_address firewall-ip-table__remove">
+                {{ 'Remove'|trans }}
+            </div>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="wtotem-firewall-settings__no-data">
+    <div class="wtotem-firewall-settings__no-data-icon">
+        <img src="{{ images_path }}list.svg">
+    </div>
+    <div>
+        {{ 'No URL address here'|trans }}
+    </div>
+</div>
+{% endif %}

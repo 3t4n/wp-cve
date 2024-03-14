@@ -1,0 +1,38 @@
+{% if logs %}
+    {% for log in logs %}
+        <div class="wtotem_data__tr">
+            <div class="wtotem_data__td wtotem_data_width_1 break-word">
+                <div class="wtotem_data__ip">
+                    {{ log.ip|e }}
+                </div>
+            </div>
+            <div class="wtotem_data__td wtotem_data_width_2 break-word">
+                <div class="wtotem_data__country wt-flex wt-flex-middle">
+
+                    {% if log.country_code %}
+                        <img src="https://assets.wtotem.net/images/flags/{{ log.country_code }}.png" class="wtotem-mr-10 wtotem_flag">
+                        {{ log.country|e }}
+                    {% else %}
+                        {{ 'Unknown'|trans }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="wtotem_data__td wtotem_data_width_3">
+                {{ log.time }}
+            </div>
+
+            <div class="wtotem_data__td wtotem_data_width_4 break-word" title="{{ log.request }}">
+                {{ log.request|slice(0, 30) }}
+            </div>
+            <div class="wtotem_data__td wtotem_data_width_6 wt-text wt-text--red">
+                {{ log.blocked }}
+            </div>
+
+            <div class="wtotem_data__td wtotem_data_width_6">
+                <span data-more="{{ log.more }}" class="wtotem_firewall-log__show-more">{{ 'Show more'|trans }}</span>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+

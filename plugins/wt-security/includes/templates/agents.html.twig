@@ -1,0 +1,43 @@
+{% if process_status %}
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        let ajax_execute = () => {
+            jQuery.post(ajaxurl, {
+
+                action: 'wtotem_ajax',
+                ajax_action: 'agents_installation',
+                wtotem_page_nonce: '{{ page_nonce }}',
+
+            }, function (data) {
+                if(data.agents_statuses){
+                    clearInterval(wtotem_check_agents_status);
+                }
+                jQuery('#wtotem_agents_wrap').html(data.agents);
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        };
+
+        /* run the check every 10 seconds */
+        let wtotem_check_agents_status = setInterval(() => ajax_execute(), 10000);
+
+        /* stop check after 30 min */
+        setTimeout(() => { clearInterval(wtotem_check_agents_status); }, 1800000);
+
+    });
+
+</script>
+
+<div class="wtotem_unit">
+    <div class="wtotem_unit__first section-header-mb">
+        <h2 class="h2 title">
+            {{ 'Agent manager installation' | trans }}
+        </h2>
+    </div>
+
+    <div class="wtotem_unit__wrapper wt_card" id="wtotem_agents_wrap">
+        {% include 'agents_installation.html.twig' with {'process_status': process_status, 'images_path': images_path} %}
+    </div>
+</div>
+{% endif %}

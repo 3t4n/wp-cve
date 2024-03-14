@@ -1,0 +1,70 @@
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        jQuery('#wtotem-activation-form').on('submit', function (e) {
+
+            e.preventDefault();
+
+            jQuery.post(ajaxurl, {
+
+                action: 'wtotem_ajax',
+                ajax_action: 'activation',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                api_key: jQuery('#api_key').val(),
+
+            }, function (data) {
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+
+                if(data.success){
+                    AmplitudeAnalytics.apiKeyActivated();
+                    AmplitudeAnalytics.setUser(data.user);
+                    window.open(data.link, '_self');
+                }
+
+            });
+
+        });
+    });
+</script>
+
+<div class="wtotem_welcome-wrapper">
+    <div class="wtotem_content">
+        <div class="wtotem_container" id="wtotem_notifications">
+            {% include 'notifications.html.twig' with {'notifications': notifications, 'images_path': images_path } %}
+        </div>
+    </div>
+    <div class="wtotem_welcome-wrapper__head-height">
+        <div class="wtotem_modal">
+            <h2 class="h2 wtotem_modal__subject">
+                {{ 'Activate the plugin'|trans }}
+            </h2>
+
+            <form action="" method="post" class="wtotem_modal__window wt_card" id="wtotem-activation-form">
+                <h3 class="wtotem_modal__title">
+                    {{'Welcome friend!'|trans}}
+                </h3>
+                <p class="wtotem_modal__text">
+                    {{ 'Sign in to continue to WebTotem'|trans }}
+                </p>
+                <div class="wtotem_modal__block">
+                    <img src="{{ images_path }}logo-circle.svg" alt="Web Totem" class="wtotem_modal__logo" />
+                </div>
+                <div class="wtotem_modal__wrap">
+                    <input name="api_key" id="api_key" type="text" class="wtotem_modal__api-key" placeholder="{{'API-KEY code'|trans}}" required />
+                </div>
+                <button class="wtotem_modal__btn" type="submit">
+                    {{ 'ACTIVATE'|trans }}
+                </button>
+            </form>
+
+            <p class="wtotem_modal__desc">
+                {{ 'You can receive the keys in your personal account <a>cabinet</a>' | trans({'<a>' : '<a target="_blank" href="https://wtotem.com/cabinet/profile/keys">'}) | raw  }}
+                {{ 'or read the activation <a>manual</a>' | trans({'<a>' : '<a target="_blank" href="https://docs.wtotem.com/plugin-for-wordpress#vy-to-activate-the-plugin">'}) | raw }}
+            </p>
+
+        </div>
+    </div>
+
+    {% include 'footer.html.twig' with {'current_year': current_year, 'images_path': images_path, 'page': page  } %}
+
+</div>

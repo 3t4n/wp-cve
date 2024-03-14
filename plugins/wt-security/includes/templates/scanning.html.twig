@@ -1,0 +1,151 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.wtotem_body').on('click', '.force_check', function (event) {
+
+            event.preventDefault();
+            let service = jQuery(this).data('service'),
+                btn = jQuery(this);
+
+            btn.find('img').addClass('wtotem_unit__img_spinner');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'force_check',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                service: service,
+
+            }, function (data) {
+
+                btn.find('img').removeClass('wtotem_unit__img_spinner');
+                if(service === 'ps'){
+                    jQuery('#open_ports_wrap').html(data.open_ports_few);
+                    jQuery('#port_result_list').html(data.open_ports);
+                    jQuery('#ignore_ports_wrap').html(data.ignore_ports);
+                    jQuery('#port_status').addClass(data.status.class).html(data.status.text);
+                    jQuery('#port_last_check').html(data.last_test);
+                } else if(service === 'ops'){
+                    jQuery('#open_paths_wrap').html(data.open_paths);
+                    jQuery('#ops_status').addClass(data.status.class).html(data.status.text);
+                    jQuery('#ops_last_check').html(data.last_test);
+                }
+
+            });
+        });
+
+    });
+
+</script>
+
+<div class="wtotem_scanning" id="scanning" style="display: flex; justify-content: space-between;">
+    <div class="wt_card" style="width: 49%;  padding: 20px">
+        <div class="port__top">
+            <div class="open-path__header">
+                <h3 class="h3 wtotem_table__title wtotem_title-info__title">
+                    {{ 'Port scanner'|trans }}
+                    <span class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Port scanner">
+                    <span class="wtotem-tooltip__content">
+                        <span class="wtotem-tooltip__header">{{ 'Port scanner'|trans }}</span>
+                        <span class="wtotem-tooltip__text">{{ 'Detects open ports on the server. Potentially, open ports can be dangerous and used by hackers.'|trans }} </span>
+                    </span>
+                </span>
+                </h3>
+
+                <button class="open-path__force-check-btn force_check" data-service="ps" title="{{ 'ForceCheck'|trans }}">
+                    <img width="18px" height="18px" src="{{ images_path }}recheck.svg" class="svg-icon">
+                </button>
+            </div>
+
+            <div class="port__last-check">
+                <div class="port__last-status">
+                    <p class="port__last-status-title">{{ 'Status'|trans }}</p>
+                    <p class="port__last-status-value {{ ports.status.class }}" id="port_status">{{ ports.status.text }}</p>
+                </div>
+                <div class="port__last-check-date">
+                    <p class="port__last-check-date-title">{{ 'Last test'|trans }}</p>
+                    <p class="port__last-check-date-value" id="port_last_check">{{ ports.last_test }}</p>
+                </div>
+            </div>
+        </div>
+
+        {% if ports.TCPResults %}
+            <div class="port__result">
+                <p class="port__result-title">{{ 'Open ports'|trans }}</p>
+
+
+                <div class="wt-stats__value port-scanner-ports">
+                    <ul class="port__result-list" id="open_ports_wrap">
+                        {% if ports.TCPResults %}
+                            {% include 'open_ports.html.twig' with {'ports': ports.TCPResults|slice(0, 3), 'more': true} %}
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </div>
+
+        {% else %}
+            <div class="open-path__no-data">
+                <div class="open-path__no-data-text">
+                    <p class="open-path__no-data-heading">{{ 'Everything is ok'|trans }}</p>
+                    <div class="open-path__no-data-status">
+                        <img width="18px" height="18px" src="{{ images_path }}everything-is-ok.svg" class="svg-icon">
+                        {{ 'No open ports found'|trans }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="wt_card"  style="width: 49%; padding: 20px">
+        <div class="open-path__top">
+            <div class="open-path__header">
+                <h3 class="h3 wtotem_table__title wtotem_title-info__title">
+                    {{ 'Open paths'|trans }}
+                    <span class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Open paths">
+                    <span class="wtotem-tooltip__content">
+                        <span class="wtotem-tooltip__header">{{ 'Open paths'|trans }}</span>
+                        <span class="wtotem-tooltip__text">{{'Display potentially dangerous open paths'|trans }} </span>
+                    </span>
+                </span>
+                </h3>
+
+                <button class="open-path__force-check-btn force_check" data-service="ops" title="{{ 'ForceCheck'|trans }}">
+                    <img width="18px" height="18px" src="{{ images_path }}recheck.svg" class="svg-icon">
+                </button>
+            </div>
+            <div class="open-path__last-check">
+                <div class="open-path__last-status">
+                    <p class="open-path__last-status-title">{{ 'Status'|trans }}</p>
+                    <p class="open-path__last-status-value {{ open_path.status.class }}" id="ops_status">{{ open_path.status.text }}</p>
+                </div>
+                <div class="open-path__last-check-date">
+                    <p class="open-path__last-check-date-title">{{ 'Last test'|trans }}</p>
+                    <p class="open-path__last-check-date-value" id="ops_last_check">{{ open_path.last_test }}</p>
+                </div>
+            </div>
+        </div>
+        {% if open_path.paths %}
+            <div class="open-path__result"><p class="open-path__result-title">{{ 'Open paths'|trans }}</p>
+                <ul class="open-path__result-list" id="open_paths_wrap">
+                    {% include 'open_paths.html.twig' with {'paths': open_path.paths|slice(0, 2)} %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="open-path__no-data">
+                <div class="open-path__no-data-text">
+                    <p class="open-path__no-data-heading">{{ 'Everything is ok'|trans }}</p>
+                    <div class="open-path__no-data-status">
+                        <img width="18px" height="18px" src="{{ images_path }}everything-is-ok.svg" class="svg-icon">
+
+                        {{ 'No open path found'|trans }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
+</div>
+

@@ -1,0 +1,138 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.wtotem_body').on('click', '#reports_load_more', function (e) {
+
+            jQuery('#reports_logs_wrap').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'lazy_load',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                service: 'reports',
+            }, function (data) {
+                jQuery('#reports_load_more_wrap').remove();
+                jQuery('#reports_logs_wrap')
+                    .removeClass('wtotem_loader_spinner')
+                    .append(data.content);
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        })
+        .on('click', '#reports_m_load_more', function (e) {
+
+            jQuery('#reports_m_load_more').addClass('wtotem_loader_spinner');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'lazy_load',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                service: 'reports_m',
+            }, function (data) {
+                jQuery('#reports_m_load_more').remove();
+                jQuery('#reports_m_logs_wrap')
+                    .removeClass('wtotem_loader_spinner')
+                    .append(data.content);
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        })
+        .on('click', '.report-download', function (e) {
+            AmplitudeAnalytics.downloadReport('{{ domain }}');
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'reports',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                report_action: 'download',
+                id: jQuery(this).data('id'),
+            }, function (data) {
+                window.open(data.link);
+
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        }).on('click', '.add_report', function (e) {
+            AmplitudeAnalytics.generateReport();
+        });
+    });
+
+</script>
+
+<div class="wtotem_reports">
+    <div class="wtotem_content">
+        <div class="wtotem_container wtotem_reports__content">
+            <div class="wtotem_reports__header section-header-mb">
+                <h1 class="h1 title wtotem_reports__title">
+                    {{ 'Reports'|trans }}
+                </h1>
+
+                <button class="wtotem_reports__btn button add_report" type="button">
+                    {{ 'Generate report'|trans }}
+                </button>
+            </div>
+
+            {% if reports %}
+                <!-- Reports list -->
+                <section class="wtotem_reports-list">
+                    <h2 class="h2 visually-hidden"> {{ 'Report data'|trans }}</h2>
+                    <table class="wtotem_reports-list__table wtotem_reports-table">
+                        <thead>
+                        <tr class="wtotem_reports-table__row wtotem_reports-table__row--header">
+                            <th class="wtotem_reports-table__column"> {{ 'Generated time'|trans }}</th>
+                            <th class="wtotem_reports-table__column"> {{ 'Type'|trans }}</th>
+                            <th class="wtotem_reports-table__column" style="max-width:420px;"> {{ 'Modules'|trans }}</th>
+                            <th class="wtotem_reports-table__column wtotem_reports-table__column--actions">
+                                {{ 'Actions'|trans }}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="reports_logs_wrap">
+                            {% include 'reports_list.html.twig' with {'reports': reports} %}
+                        </tbody>
+                    </table>
+
+                    <!-- accordion for mobiles -->
+                    <div class="wtotem_reports-list__accordion wtotem_reports-accordion">
+                        <ul class="wtotem_reports-accordion__list" id="reports_m_logs_wrap">
+                            {% include 'reports_list_mobile.html.twig' with {'reports': reports} %}
+                        </ul>
+                    </div>
+                </section>
+
+            {% else %}
+
+                <section class="wtotem_reports-list" style="display: none">
+                    <h2 class="h2 visually-hidden"> {{ 'Report data'|trans }}</h2>
+                    <table class="wtotem_reports-list__table wtotem_reports-table">
+                        <thead>
+                        <tr class="wtotem_reports-table__row wtotem_reports-table__row--header">
+                            <th class="wtotem_reports-table__column"> {{ 'Generated time'|trans }}</th>
+                            <th class="wtotem_reports-table__column"> {{ 'Type'|trans }}</th>
+                            <th class="wtotem_reports-table__column" style="max-width:420px;"> {{ 'Modules'|trans }}</th>
+                            <th class="wtotem_reports-table__column wtotem_reports-table__column--actions">
+                                {{ 'Actions'|trans }}
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="reports_logs_wrap"></tbody>
+                    </table>
+
+                    <!-- accordion for mobiles -->
+                    <div class="wtotem_reports-list__accordion wtotem_reports-accordion">
+                        <ul class="wtotem_reports-accordion__list" id="reports_m_logs_wrap"></ul>
+                    </div>
+                </section>
+
+                <!-- No data block -->
+                <section class="wtotem_reports-no-data" >
+                    <h2 class="h2 visually-hidden"> {{ 'No data'|trans }}</h2>
+                    <p class="wtotem_reports-no-data__text">
+                        {{ 'Has no action ready yet'|trans }}
+                    </p>
+                    <button class="wtotem_reports__btn button add_report" type="button">
+                        {{ 'Generate new report'|trans }}
+                    </button>
+                </section>
+
+            {% endif %}
+        </div>
+    </div>
+</div>

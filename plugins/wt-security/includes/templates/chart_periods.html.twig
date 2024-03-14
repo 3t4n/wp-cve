@@ -1,0 +1,69 @@
+{% if service %}
+<div id="{{ service }}_chart_period">
+    <script type="text/javascript">
+
+        jQuery(document).ready(function ($) {
+
+            jQuery('.wtotem_body').on('click', '#{{ service }}_chart_btn div', function (e) {
+
+                jQuery('#{{ service }}_chart_wrap').addClass('wtotem_loader_spinner');
+                var active_class = 'wtotem_chart-first__btn_active';
+                var btn = jQuery(this);
+
+                AmplitudeAnalytics.selectGraphPeriod(btn.data('days'), '{{ service }}');
+
+                jQuery.post(ajaxurl, {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'chart',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    days: btn.data('days'),
+                    service: '{{ service }}'
+
+                }, function (data) {
+
+                    if(data.success) {
+                        jQuery('#{{ service }}_chart_btn div').removeClass(active_class);
+                        btn.addClass(active_class);
+
+                        jQuery('#{{ service }}_chart_wrap')
+                            .removeClass('wtotem_loader_spinner')
+                            .html(data.chart);
+
+                        if (data.service === 'waf') {
+                            jQuery('#waf_logs_wrap').html(data.waf_logs);
+                            jQuery('#firewall_stats').html(data.waf_stats);
+
+                            if (data.has_next_page) {
+                                jQuery('.wtotem_more_btn_wrap').html(
+                                    '<div class="wtotem_more_btn" id="waf_load_more">{{ 'Load more'|trans }}</div>'
+                                );
+                            } else {
+                                jQuery('#waf_load_more').remove();
+                            }
+                        }
+
+                        jQuery('#wtotem_notifications').html(data.notifications);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <div class="wtotem_chart-first__right" id="{{ service }}_chart_btn">
+        <div data-days="365" class="wtotem_chart-first__btn {% if is_period_available.yearly == false %} wtotem_period_not_available {% endif %} ">
+            {{ 'Yearly'|trans }}
+        </div>
+        <div data-days="31" class="wtotem_chart-first__btn {% if is_period_available.monthly == false %} wtotem_period_not_available {% endif %}">
+            {{ 'Monthly'|trans }}
+        </div>
+        <div data-days="7"
+             class="wtotem_chart-first__btn wtotem_chart-first__btn_active">
+            {{ 'Weekly'|trans }}
+        </div>
+        <div data-days="1" class="wtotem_chart-first__btn">
+            {{ 'Daily'|trans }}
+        </div>
+    </div>
+</div>
+{% endif %}

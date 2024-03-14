@@ -1,0 +1,54 @@
+{% if ssl.status.name == 'pending' or ssl == null %}
+    {% include 'dots_loader.html.twig' %}
+{% else %}
+    <div class="wtotem_table__td">
+        <div class="wtotem_table__expired">
+            <span class="{{ ssl.status.class }}">{{ ssl.status.text }}</span>
+        </div>
+    </div>
+
+    {% if ssl.cert_name %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">
+                {{ 'Cert name'|trans }}
+            </h3>
+            <div class="wtotem_table__text">
+                {{ ssl.cert_name }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if ssl.days_left %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">
+                {{ 'Days left'|trans }}
+            </h3>
+            <div class="wtotem_table__text">
+                {{ ssl.days_left }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if ssl.issue_date %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">
+                {{ 'Issue date'|trans }}
+            </h3>
+            <div class="wtotem_table__text">
+                {{ ssl.issue_date }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if ssl.expiry_date %}
+        <div class="wtotem_table__info">
+            <h3 class="h3 wtotem_table__subject">
+                {{ 'Expiry date'|trans }}
+            </h3>
+            <div class="wtotem_table__text">
+                {{ ssl.expiry_date }}
+            </div>
+        </div>
+    {% endif %}
+
+{% endif %}

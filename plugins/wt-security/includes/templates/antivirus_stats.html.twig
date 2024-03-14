@@ -1,0 +1,84 @@
+{% if page == 'antivirus' %}
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            jQuery('.wtotem_antivirus__item').on('click', function (e) {
+
+                AmplitudeAnalytics.avFileType();
+                
+                jQuery('#av_logs_wrap').addClass('wtotem_loader_spinner');
+                let status =  jQuery(this).data('status');
+                jQuery.post(ajaxurl, {
+
+                    action: 'wtotem_ajax',
+                    ajax_action: 'antivirus',
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                    av_action: 'filter',
+                    file_status: status,
+                    permission: jQuery('#wtotem_permission-changed').is(':checked'),
+
+                }, function (data) {
+                    jQuery('#wtotem_notifications').html(data.notifications);
+                    if(data.success){
+                        jQuery('#wtotem_av_state_filter').val(status);
+                        if(data.logs){
+                            jQuery('#av_logs_wrap')
+                                .html(data.logs)
+                                .removeClass('wtotem_loader_spinner');
+
+                            if(data.has_next_page){
+                                jQuery('.wtotem_more_btn_wrap').html(
+                                    '<div class="wtotem_more_btn" id="av_load_more">{{ 'Load more'|trans }}</div>'
+                                );
+                            } else{
+                                jQuery('#av_load_more').remove();
+                            }
+                        }
+                    }
+
+                });
+
+            });
+        });
+    </script>
+{% endif %}
+
+<div class="wtotem_antivirus{% if page == 'antivirus' %} wtotem_antivirus_stats{% endif %}" id="antivirus_stats">
+    <div class="wtotem_antivirus__block wt_card">
+        <div class="wtotem_antivirus__item" data-status="scanned">
+            <div class="wtotem_antivirus__figures wtotem_antivirus__figures_green">
+                {{ scanned }}
+            </div>
+            <div class="wtotem_antivirus__title">
+                {{ 'Scanned files'|trans }}
+            </div>
+        </div>
+
+        <div class="wtotem_antivirus__item" data-status="modified">
+            <div class="wtotem_antivirus__figures wtotem_antivirus__figures_yellow">
+                {{ changes }}
+            </div>
+            <div class="wtotem_antivirus__title">
+                {{ 'Changed files'|trans }}
+            </div>
+        </div>
+
+        <div class="wtotem_antivirus__item" data-status="deleted">
+            <div class="wtotem_antivirus__figures wtotem_antivirus__figures_black">
+                {{ deleted }}
+            </div>
+            <div class="wtotem_antivirus__title">
+                {{ 'Deleted files'|trans }}
+            </div>
+        </div>
+
+        <div class="wtotem_antivirus__item" data-status="infected">
+            <div class="wtotem_antivirus__figures wtotem_antivirus__figures_orange">
+                {{ infected }}
+            </div>
+            <div class="wtotem_antivirus__title">
+                {{ 'Infected files'|trans }}
+            </div>
+        </div>
+
+    </div>
+</div>

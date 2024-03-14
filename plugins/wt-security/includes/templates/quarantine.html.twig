@@ -1,0 +1,30 @@
+<div id="wtotem_quarantine_wrap">
+    {% if count %}
+    <section class="wtotem_antivirus__quarantine wtotem_state wt_card">
+        <div class="wtotem_antivirus__quarantine-header">
+            <h3 class="h3 wtotem_antivirus__quarantine-title">{{ 'Quarantine'|trans }}</h3>
+            <p class="wtotem_antivirus__quarantine-files-count">
+                {{ 'Files in quarantine'|trans }} - <span id="quarantine_files_count">{{ count }}</span>
+            </p>
+        </div>
+
+        <div class="wtotem_file-table">
+            <div class="wtotem_file-table__thead">
+                <div class="wtotem_file-table__tr">
+                    <div class="wtotem_file-table__th">
+                        {{ 'File'|trans }}
+                    </div>
+                    <div class="wtotem_file-table__th">
+                        {{ 'Date'|trans }}
+                    </div>
+                    <div class="wtotem_file-table__th"></div>
+                </div>
+            </div>
+            <div class="wtotem_file-table__tbody"  id="quarantine_logs_wrap">
+                {% include 'quarantine_logs.html.twig' with {'logs': logs} %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+</div>
+

@@ -1,0 +1,45 @@
+<div class="wt_card">
+    <div class="open-path-details__header">
+        <h1 class="h2 title">{{ 'Open paths detected'|trans }}</h1>
+    </div>
+
+    {% if paths %}
+    <div class="open-path-details__content">
+
+        {% for path in paths %}
+
+            <div class="open-path-details__item">
+                <div class="open-path-details__item-header">
+                    <div class="open-path-details__item-info">
+                        <div>
+                            <p>httpCode</p>
+                            <p class="open-path-details__item-value">{{ path.httpCode }}</p>
+                        </div>
+                        <div>
+                            <p>{{ 'Path'|trans }}</p>
+                            <p class="open-path-details__item-value">{{ path.path }}</p>
+                        </div>
+                    </div>
+                    <span class="open-path-details__status open-path-details__status--{{ path.severity }}">{{ path.severity|capitalize }}</span>
+                </div>
+                <div class="open-path-details__item-action">
+                    <p>{{ path.path }}</p>
+                    <a href="{{ path.path }}" target="_blank" rel="noreferrer">
+                        <img width="18px" height="18px" src="{{ images_path }}link.svg" class="svg-icon">
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+        <!-- No data block -->
+        <section class="wtotem_reports-no-data" style="height:400px" >
+            <h2 class="h2 visually-hidden">{{ 'No data'|trans }}</h2>
+            <p class="wtotem_reports-no-data__text">
+                {{ 'Has no action ready yet'|trans }}
+            </p>
+        </section>
+    {% endif %}
+
+</div>

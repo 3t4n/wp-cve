@@ -1,0 +1,50 @@
+<div class="wtotem_first" id="scoring">
+    <div class="wtotem_overall wt_card">
+        <div class="wtotem_overall__title wtotem_title-info">
+            <h3 class="h3 wtotem_title-info__title">
+                {{ 'Overall Security Grade'|trans }}
+                <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-bottom" data-service="Scoring module">
+                    <div class="wtotem-tooltip__content">
+                        <p class="wtotem-tooltip__header">{{ 'Scoring module'|trans }}</p>
+                        <p class="wtotem-tooltip__text">
+                            {{ 'Assesses overall site security, identifies vulnerabilities, misconfigurations, and data leak, as well as gives recommendations for their elimination.'|trans }}
+                        </p>
+                    </div>
+                </div>
+            </h3>
+        </div>
+        <div class="wtotem_overall__body">
+            <div class="wtotem_overall__inner">
+                <div class="wtotem_overall__rectangle wtotem_score_bg_{{ color }}">{{ grade }}</div>
+                <div class="wtotem_overall__figures wtotem_score_{{ color }}">{{ total_score }}</div>
+            </div>
+            <p class="wtotem_overall__text">
+                {{ 'Your security grade is higher than %s of the companies in your industry.'|trans|format(is_higher_than) }}
+            </p>
+        </div>
+    </div>
+
+    <div class="wtotem_info wt_card">
+        <div class="wtotem_info__item">
+            <div class="wtotem_info__block">
+                <div class="wtotem_info__subtitle">{{ 'Tested on:'|trans }}</div>
+                <div class="wtotem_info__info">{{ tested_on }}</div>
+            </div>
+            <div class="wtotem_info__block">
+                <div class="wtotem_info__subtitle">{{ 'Server Ip:'|trans }}</div>
+                <div class="wtotem_info__info">{{ server_ip }}</div>
+            </div>
+        </div>
+        <div class="wtotem_info__item">
+            <div class="wtotem_info__block">
+                <div class="wtotem_info__subtitle">{{ 'Location:'|trans }}</div>
+                <div class="wtotem_info__info">{{ location }}</div>
+            </div>
+            <div class="wtotem_info__scoring arrow-right">
+                <a href="https://wtotem.com/cabinet/site/{{ host_id }}/scoring" target="_blank">
+                    {{ 'Full scoring'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

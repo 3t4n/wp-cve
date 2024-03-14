@@ -1,0 +1,27 @@
+{% for notice in notifications %}
+    <div class="wtotem_alert wt_card" id="wtotem_alert_{{ notice.id }}">
+        <div class="wtotem_alert__desc">
+            <div class="wtotem_alert__img">
+                <img src="{{ images_path }}{{ notice.image }}">
+            </div>
+            <div class="wtotem_alert__title {{ notice.class }}">{{ notice.type }}: </div>
+            <p class="wtotem_alert__text">{{ notice.text | raw }}</p>
+        </div>
+        <div class="wtotem_alert__close" ></div>
+
+        {# <script>
+            /* remove alert after 20 seconds */
+            setTimeout(() => { document.getElementById("wtotem_alert_{{ notice.id }}").remove(); }, 20000);
+        </script>#}
+
+        <script>
+            jQuery(document).ready(function ($) {
+                toastr["{{ notice.type_raw }}"]('{{ notice.text | raw }}');
+            });
+
+            {% if notice.type_raw  == 'error' %}
+                AmplitudeAnalytics.errorNotification('{{ notice.text}}');
+            {% endif %}
+        </script>
+    </div>
+{% endfor %}

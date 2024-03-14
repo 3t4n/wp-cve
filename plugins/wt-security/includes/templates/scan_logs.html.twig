@@ -1,0 +1,604 @@
+<script type="text/javascript">
+
+    jQuery(document).ready(function ($) {
+
+        jQuery('.audit-logs__pagination').on('click', 'a.wtotem_pagination__number', function (e) {
+            e.preventDefault();
+            jQuery('.audit-logs__content').addClass('wtotem_loader_spinner');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'audit_logs_pagination',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                current_page: jQuery(this).attr('data-page'),
+                order: jQuery('.audit-logs__time--down').attr('data-order'),
+                event: jQuery('.audit-logs__event').val(),
+            }, function (data) {
+                jQuery('.audit-logs__content')
+                    .removeClass('wtotem_loader_spinner')
+                    .html(data.content);
+                jQuery('.audit-logs__pagination').html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        })
+
+        jQuery('#refresh_audit_logs').on('click', function (e) {
+
+            let btn = jQuery(this);
+            btn.html("{{ 'Refreshing' |trans}}").addClass('wtotem_min_loader_spinner').css({'pointerEvents' : 'none'});
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'audit_logs_pagination',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                current_page: 1,
+                order: jQuery('.audit-logs__time--down').attr('data-order'),
+                event: jQuery('.audit-logs__event').val(),
+            }, function (data) {
+                jQuery('.audit-logs__content').html(data.content);
+                jQuery('.audit-logs__pagination').html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+                btn.html("{{ 'Refresh' |trans}}").removeClass('wtotem_min_loader_spinner').css({'pointerEvents' : 'auto'});
+            });
+        })
+
+        jQuery('.audit-logs__time--down').on('click', function (e) {
+            e.preventDefault();
+            jQuery('.audit-logs__content').addClass('wtotem_loader_spinner');
+
+            let order = (jQuery(this).attr('data-order') === 'ascending') ? 'descending' : 'ascending';
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'audit_logs_sort_filter',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                order: order,
+                event: jQuery('.audit-logs__event').val(),
+            }, function (data) {
+                jQuery('.audit-logs__content')
+                    .removeClass('wtotem_loader_spinner')
+                    .html(data.content);
+                jQuery('.audit-logs__pagination').html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+
+                jQuery('.audit-logs__time--down').data('order', order);
+            });
+
+            jQuery('.audit-logs__time--down').attr('data-order', order);
+        })
+
+        jQuery('.audit-logs__event').on('change', function (e) {
+            e.preventDefault();
+            jQuery('.audit-logs__content').addClass('wtotem_loader_spinner');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'audit_logs_sort_filter',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                order: jQuery('.audit-logs__time--down').attr('data-order'),
+                event: jQuery(this).val(),
+            }, function (data) {
+                jQuery('.audit-logs__content')
+                    .removeClass('wtotem_loader_spinner')
+                    .html(data.content);
+                jQuery('.audit-logs__pagination').html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+
+        })
+
+        jQuery('.files__btn--size, .files__btn--modified_at').on('click', function (e) {
+            e.preventDefault();
+            jQuery('.confidential_files__content').addClass('wtotem_loader_spinner');
+
+            let direction = (jQuery(this).attr('data-order') === 'ascending') ? 'descending' : 'ascending';
+            let order = jQuery(this).attr('data-type');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'confidential_files',
+                order: order,
+                direction: direction,
+                current_page: 1,
+                wtotem_page_nonce: '{{ page_nonce }}',
+            }, function (data) {
+                jQuery('.confidential_files__content')
+                    .removeClass('wtotem_loader_spinner')
+                    .html(data.content);
+                jQuery('.confidential_files__pagination').html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+
+            });
+
+            jQuery(this).attr('data-order', direction);
+            jQuery(this).parents('.files__controls').attr('data-order-type', order);
+        })
+
+        jQuery('.confidential_files__pagination').on('click', 'a.wtotem_pagination__number', function (e) {
+            e.preventDefault();
+
+            jQuery('.confidential_files__content').addClass('wtotem_loader_spinner');
+
+            let order = jQuery('.files__controls').attr('data-order-type');
+            let direction = (jQuery('.files__btn--' + order).attr('data-order') === 'ascending') ? 'descending' : 'ascending';
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                order: order,
+                direction: direction,
+                logs_action: 'confidential_files',
+                wtotem_page_nonce: '{{ page_nonce }}',
+                current_page: jQuery(this).attr('data-page'),
+            }, function (data) {
+                jQuery('.confidential_files__content')
+                    .removeClass('wtotem_loader_spinner')
+                    .html(data.content);
+                jQuery('.confidential_files__pagination').html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        })
+
+        jQuery(document).click(function (e) {
+            if (jQuery(e.target).closest(".options.options--open").length) {
+                return;
+            }
+            jQuery(".options.options--open").hide();
+        });
+
+        jQuery('.confidential_files__content').on('click', '.files__btn-dots', function (event) {
+            event.stopPropagation();
+            jQuery(this).next('.options').show().addClass('options--open');
+        })
+        .on('click', '.options__delete', function (e) {
+            e.preventDefault();
+
+            jQuery(".options.options--open").hide();
+            let id = jQuery(this).attr('data-id');
+            let file_name = jQuery(this).attr('data-name');
+            jQuery('#popup__delete').attr('data-id', id);
+            jQuery('.popup__file-name').text(file_name);
+
+            jQuery('#confidential_files_popup').addClass('popup--active');
+
+        })
+
+        jQuery('#confidential_files_popup .popup__cancel').on('click',  function (event) {
+            jQuery('#confidential_files_popup').removeClass('popup--active');
+        })
+
+        jQuery('#confidential_files_popup #popup__delete').on('click',  function (event) {
+
+            jQuery('.confidential_files__content').addClass('wtotem_loader_spinner');
+
+            jQuery('#confidential_files_popup').removeClass('popup--active');
+
+            let order = jQuery('.files__controls').attr('data-order-type');
+            let direction = (jQuery('.files__btn--' + order).attr('data-order') === 'ascending') ? 'descending' : 'ascending';
+            let id = jQuery(this).attr('data-id');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'confidential_files',
+                order: order,
+                direction: direction,
+                id: id,
+                wtotem_page_nonce: '{{ page_nonce }}',
+                current_page: jQuery('.confidential_files__pagination .wtotem_pagination__number_active').text() ?? 1,
+            }, function (data) {
+                jQuery('.confidential_files__content')
+                    .removeClass('wtotem_loader_spinner')
+                    .html(data.content);
+                jQuery('.confidential_files__pagination').html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+
+                jQuery('.confidential_files__num').html(data.count);
+            });
+        })
+
+        jQuery('.confidential-files').on('click', '.options__copy', function(e) {
+
+            var text = jQuery(this).html();
+            var copied = jQuery(this).attr('data-copied-text');
+
+            jQuery(this)
+                .html('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.00296 9.82709C3.58732 9.37366 2.86531 9.32772 2.3903 9.72446C1.91528 10.1212 1.86715 10.8104 2.28279 11.2638L6.28278 15.6275C6.72666 16.1117 7.5109 16.1259 7.97374 15.6581L17.688 5.83995C18.1214 5.40194 18.1007 4.71149 17.6419 4.29781C17.183 3.88412 16.4597 3.90385 16.0263 4.34187L7.17515 13.2877L4.00296 9.82709Z" fill="#86939E"></path></svg> ' + copied)
+                .attr('disabled', 'true');
+
+            window.setTimeout( () => { jQuery(this).html(text).removeAttr('disabled'); }, 2000);
+
+            let copy_text = jQuery(this).attr('data-copy');
+            try {
+                navigator.clipboard.writeText(copy_text);
+            } catch(err) {
+                if(typeof document.execCommand == 'function') {
+                    var $tmp = $("<textarea>");
+                    $("body").append($tmp);
+                    $tmp.val(copy_text).select();
+                    document.execCommand("copy");
+                    $tmp.remove();
+                }
+            }
+        });
+
+
+      let wtotem_scan_init = () => {
+        /* run the reload every 10 seconds */
+        var wtotem_check_scan_interval = setInterval(() => wtotem_check_scan(), 10000);
+
+        /* stop reload after 60 min */
+        setTimeout(() => { clearInterval(wtotem_check_scan_interval); }, 3600000);
+      }
+      var scan_finished = false;
+      let wtotem_check_scan = () => {
+        if(!scan_finished){
+          jQuery.post(ajaxurl, {
+            action: 'wtotem_ajax',
+            ajax_action: 'logs',
+            logs_action: 'check_scan',
+            wtotem_page_nonce: '{{ page_nonce }}',
+          }, function (data) {
+            if (data.scan_finished) {
+              jQuery('.confidential_files__content').html(data.content.confidential_files);
+              jQuery('.confidential_files__pagination').html(data.pagination.confidential_files);
+              jQuery('.confidential_files__num').html(data.count.confidential_files);
+
+              jQuery('.links-logs__content').html(data.content.links);
+              jQuery('.links-logs__pagination').html(data.pagination.links);
+              jQuery('.links__num').html(data.count.links);
+
+              jQuery('.scripts-logs__content').html(data.content.scripts);
+              jQuery('.scripts-logs__pagination').html(data.pagination.scripts);
+              jQuery('.scripts__num').html(data.count.scripts);
+
+              jQuery('.iframes-logs__content').html(data.content.iframes);
+              jQuery('.iframes-logs__pagination').html(data.pagination.iframes);
+              jQuery('.iframes__num').html(data.count.iframes);
+
+              jQuery('#next_scan').html(data.next_scan);
+
+              jQuery('#rescan').html("{{ 'Start scanning' |trans }}").removeClass('wtotem_min_loader_spinner');
+
+              scan_finished = true;
+            }
+            jQuery('#wtotem_notifications').html(data.notifications);
+
+          });
+        }
+      }
+
+      // init check_scan
+      if( {{ scan_init }} ){
+        wtotem_scan_init();
+      }
+
+
+        jQuery('#rescan').on('click', function (e) {
+
+            let btn = jQuery(this);
+            btn.html("{{ 'Scan is running' |trans}}").addClass('wtotem_min_loader_spinner');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'rescan',
+                wtotem_page_nonce: '{{ page_nonce }}',
+            }, function (data) {
+              scan_finished = false;
+              wtotem_scan_init();
+              jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        })
+
+        function pagination (wrap, type, page, pagination) {
+            jQuery(wrap).addClass('wtotem_loader_spinner');
+
+            let direction = jQuery('.' + type + ' .files__btn--type').attr('data-order');
+
+            jQuery.post(ajaxurl, {
+                action: 'wtotem_ajax',
+                ajax_action: 'logs',
+                logs_action: 'logs_pagination',
+                type: type,
+                direction: direction,
+                wtotem_page_nonce: '{{ page_nonce }}',
+                current_page: page,
+            }, function (data) {
+                jQuery(wrap)
+                    .removeClass('wtotem_loader_spinner')
+                    .html(data.content);
+                jQuery(pagination).html(data.pagination);
+                jQuery('#wtotem_notifications').html(data.notifications);
+            });
+        }
+
+        jQuery('.links .files__btn--type').on('click', function (e) {
+            e.preventDefault();
+            let order = (jQuery(this).attr('data-order') === 'ascending') ? 'descending' : 'ascending';
+            pagination('.links-logs__content', 'links', 1, '.links-logs__pagination');
+            jQuery(this).attr('data-order', order);
+        })
+
+        jQuery('.scripts .files__btn--type').on('click', function (e) {
+            e.preventDefault();
+            let order = (jQuery(this).attr('data-order') === 'ascending') ? 'descending' : 'ascending';
+            pagination('.scripts-logs__content', 'scripts', 1, '.scripts-logs__pagination');
+            jQuery(this).attr('data-order', order);
+        })
+
+        jQuery('.iframes .files__btn--type').on('click', function (e) {
+            e.preventDefault();
+            let order = (jQuery(this).attr('data-order') === 'ascending') ? 'descending' : 'ascending';
+            pagination('.iframes-logs__content', 'iframes', 1, '.iframes-logs__pagination');
+            jQuery(this).attr('data-order', order);
+        })
+
+        jQuery('.links-logs__pagination').on('click', 'a.wtotem_pagination__number', function (e) {
+            e.preventDefault();
+            pagination('.links-logs__content', 'links', jQuery(this).attr('data-page'), '.links-logs__pagination');
+        })
+
+        jQuery('.scripts-logs__pagination').on('click', 'a.wtotem_pagination__number', function (e) {
+            e.preventDefault();
+            pagination('.scripts-logs__content', 'scripts', jQuery(this).attr('data-page'), '.scripts-logs__pagination');
+        })
+
+        jQuery('.iframes-logs__pagination').on('click', 'a.wtotem_pagination__number', function (e) {
+            e.preventDefault();
+            pagination('.iframes-logs__content', 'iframes', jQuery(this).attr('data-page'), '.iframes-logs__pagination');
+        })
+
+        jQuery('.scan-tabs__item').on('click', function (e) {
+            e.preventDefault();
+            let tab = jQuery(this).find('.scan-tabs__btn').attr('data-value');
+
+            jQuery('.scan-tabs__item').removeClass('scan-tabs__item--active');
+            jQuery(this).addClass('scan-tabs__item--active');
+
+            jQuery('.tab').removeClass('tab--active');
+            jQuery('.' + tab).addClass('tab--active');
+
+        });
+    });
+</script>
+
+<div class="wtotem_scan__first section-header-mb wtotem_scan__header wtotem-mb-20">
+    <h2 class="title">{{ 'Scans' |trans}}
+        <span class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-bottom" data-service="Antivirus module">
+            <div class="wtotem-tooltip__content">
+                <p class="wtotem-tooltip__header">{{ 'Scans' |trans}}</p>
+                <p class="wtotem-tooltip__text">{{ 'In this section you can find information about confidential files. These are files that may contain sensitive data. As well as a list of found links, scripts and frames on the site pages.' | trans }}</p>
+            </div>
+        </span>
+    </h2>
+
+    {% if scan_init %}
+        <div class="wtotem_control__btn wtotem_btn_wc wtotem_min_loader_spinner" id="rescan">{{ 'Scan is running' | trans }}</div>
+    {% else %}
+        <div class="wtotem_control__btn wtotem_btn_wc" id="rescan">{{ 'Start scanning' | trans }}</div>
+    {% endif %}
+</div>
+
+<div class="wtotem_scan__subheader">
+    <p>{{ 'Automatic scanning every 24 hours' |trans}}</p>
+    <p>{{ 'Until the next automatic scan' |trans}}: <span id="next_scan">{{ next_scan }}</span></p>
+</div>
+
+<section class="wtotem_scan__second wt_card">
+    <ul class="scan-tabs">
+        <li class="scan-tabs__item scan-tabs__item--active">
+            <button class="scan-tabs__btn" data-value="confidential-files">
+                {{ 'Confidential files' |trans}} <span data-value="confidential_files" class="num confidential_files__num">{{ confidential_files_count }}</span>
+            </button>
+        </li>
+        <li class="scan-tabs__item">
+            <button class="scan-tabs__btn" data-value="links">
+                {{ 'Links' |trans}} <span data-value="links" class="num links__num">{{ links_count }}</span>
+            </button>
+        </li>
+        <li class="scan-tabs__item">
+            <button class="scan-tabs__btn" data-value="scripts">
+                {{ 'Scripts' |trans}} <span data-value="scripts" class="num scripts__num">{{ scripts_count }}</span>
+            </button>
+        </li>
+        <li class="scan-tabs__item">
+            <button class="scan-tabs__btn" data-value="iframes">
+                {{ 'iFrames' |trans}} <span data-value="iframes" class="num iframes__num">{{ iframes_count }}</span>
+            </button>
+        </li>
+    </ul>
+
+    <div class="confidential-files tab tab--active">
+        <div class="files__controls">
+            <button class="files__btn files__btn--size" data-order="descending" data-type="size">
+                {{ 'Size' |trans}}
+                <div class="files__icon-container">
+                    <svg class="files__icon files__size-icon files__size-icon--up" xmlns="http://www.w3.org/2000/svg" viewBox="4.984496593475342 7.000481605529785 10.015031814575195 6.015620231628418">
+                        <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="files__icon files__size-icon files__size-icon--down" xmlns="http://www.w3.org/2000/svg" viewBox="5.000471591949463 6.983900547027588 10.015031814575195 6.01561975479126">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </button>
+            <button class="files__btn files__btn--modified_at" data-order="descending" data-type="modified_at">
+                {{ 'Last modify' |trans}}
+                <div class="files__icon-container">
+                    <svg class="files__icon files__last-modify-icon files__last-modify-icon--up" xmlns="http://www.w3.org/2000/svg" viewBox="4.984496593475342 7.000481605529785 10.015031814575195 6.015620231628418">
+                        <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="files__icon files__last-modify-icon files__last-modify-icon--down" xmlns="http://www.w3.org/2000/svg" viewBox="5.000471591949463 6.983900547027588 10.015031814575195 6.01561975479126">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </button>
+            <p class="files__file-name-title">
+                {{ 'File name' |trans}}
+            </p>
+            <p class="files__path">{{ 'Path' |trans}}</p>
+            <div class="files__empty"></div>
+        </div>
+
+        <div class="confidential_files__content">
+            {% include 'scan_confidential_files.html.twig' with {'confidential_files': confidential_files} %}
+        </div>
+
+        <div class="confidential_files__pagination">
+            {{ confidential_files_pagination | raw }}
+        </div>
+
+        <div class="popup" id="confidential_files_popup">
+            <div class="popup__container">
+                <div class="popup__content">
+                    <div class="popup__icon" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" rx="20" fill="#FEE2E2"></rect>
+                            <path d="M20 17V19M20 23H20.01M13.0718 27H26.9282C28.4678 27 29.4301 25.3333 28.6603 24L21.7321 12C20.9623 10.6667 19.0378 10.6667 18.268 12L11.3398 24C10.57 25.3333 11.5322 27 13.0718 27Z" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="popup__text">
+                        <p class="popup__title">{{ 'Are you sure you want to delete the file?' |trans}}</p>
+                        <p class="popup__file-name"></p>
+                    </div>
+                </div>
+                <div class="popup__btns">
+                    <button class="popup__cancel popup__btn">{{ 'Cancel' |trans}}</button>
+                    <button class="popup__delete popup__btn" id="popup__delete">{{ 'Delete' |trans}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="links tab">
+
+        <div class="files__controls" title="" data-tlite="">
+            <p class="files__link" title="" data-tlite="">
+                {{ 'Link' |trans}}
+            </p>
+            <button class="files__btn files__btn--type" data-order="">
+                {{ 'Type' |trans}}
+                <div class="files__icon-container" title="" data-tlite="">
+                    <svg class="files__icon files__size-icon files__size-icon--up" xmlns="http://www.w3.org/2000/svg" viewBox="4.984496593475342 7.000481605529785 10.015031814575195 6.015620231628418">
+                        <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="files__icon files__size-icon files__size-icon--down" xmlns="http://www.w3.org/2000/svg" viewBox="5.000471591949463 6.983900547027588 10.015031814575195 6.01561975479126">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </button>
+        </div>
+
+        <div class="links-logs__content">
+            {% include 'scan_logs_items.html.twig' with {'logs': links} %}
+        </div>
+
+        <div class="links-logs__pagination">
+            {{ links_pagination | raw }}
+        </div>
+    </div>
+    <div class="scripts tab">
+        <div class="files__controls" title="" data-tlite="">
+            <p class="files__link" title="" data-tlite="">
+                {{ 'Script' |trans}}
+            </p>
+            <button class="files__btn files__btn--type" data-order="">
+                {{ 'Type' |trans}}
+                <div class="files__icon-container" title="" data-tlite="">
+                    <svg class="files__icon files__size-icon files__size-icon--up" xmlns="http://www.w3.org/2000/svg" viewBox="4.984496593475342 7.000481605529785 10.015031814575195 6.015620231628418">
+                        <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="files__icon files__size-icon files__size-icon--down" xmlns="http://www.w3.org/2000/svg" viewBox="5.000471591949463 6.983900547027588 10.015031814575195 6.01561975479126">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </button>
+        </div>
+
+        <div class="scripts-logs__content">
+            {% include 'scan_logs_items.html.twig' with {'logs': scripts} %}
+        </div>
+
+        <div class="scripts-logs__pagination">
+            {{ scripts_pagination | raw }}
+        </div>
+    </div>
+    <div class="iframes tab">
+        <div class="files__controls" title="" data-tlite="">
+            <p class="files__link" title="" data-tlite="">
+                {{ 'iframe' |trans}}
+            </p>
+            <button class="files__btn files__btn--type" data-order="">
+                {{ 'Type' |trans}}
+                <div class="files__icon-container" title="" data-tlite="">
+                    <svg class="files__icon files__size-icon files__size-icon--up" xmlns="http://www.w3.org/2000/svg" viewBox="4.984496593475342 7.000481605529785 10.015031814575195 6.015620231628418">
+                        <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="files__icon files__size-icon files__size-icon--down" xmlns="http://www.w3.org/2000/svg" viewBox="5.000471591949463 6.983900547027588 10.015031814575195 6.01561975479126">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </button>
+        </div>
+
+        <div class="iframes-logs__content">
+            {% include 'scan_logs_items.html.twig' with {'logs': iframes, 'data_type': 'iframes'} %}
+        </div>
+
+        <div class="iframes-logs__pagination">
+            {{ iframes_pagination | raw }}
+        </div>
+    </div>
+</section>
+
+<div class="wtotem_scan__third section-header-mb wtotem_scan__header">
+    <h2 class="title">{{ 'Audit logs' |trans}}
+        <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Audit logs">
+            <div class="wtotem-tooltip__content">
+                <div class="wtotem-tooltip__header">{{ 'Audit logs' |trans}}</div>
+                <div class="wtotem-tooltip__text">{{ 'Log of user actions in the admin panel.' |trans}}</div>
+            </div>
+        </div>
+    </h2>
+
+    <div class="wtotem_control__btn wtotem_btn_wc" id="refresh_audit_logs">{{ 'Refresh' | trans }}</div>
+</div>
+
+<section class="wtotem_scan__fourth wt_card">
+    <div class="audit-logs__controls">
+        <div class="audit-logs__left">
+            <button class="audit-logs__time audit-logs__time--down" data-order="descending">
+                {{ 'Time' |trans}}
+                <div class="audit-logs__icon-container">
+                    <svg class="audit-logs__time-icon--up" xmlns="http://www.w3.org/2000/svg" viewBox="4.984496593475342 7.000481605529785 10.015031814575195 6.015620231628418">
+                        <path fill-rule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg class="audit-logs__time-icon--down" xmlns="http://www.w3.org/2000/svg" viewBox="5.000471591949463 6.983900547027588 10.015031814575195 6.01561975479126">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </button>
+            <p class="audit-logs__label audit-logs__user">{{ 'User' |trans}} </p>
+            <div class="audit-logs__event-container">
+                <label class="audit-logs__label" for="event">{{ 'Event' |trans}} </label>
+                <select class="audit-logs__event" name="event" id="event">
+                    <option value="All">{{ 'All' |trans}}</option>
+                    {% for key, event in audit_logs_events %}
+                        <option value="{{ key }}">{{ event }} </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <p class="audit-logs__label audit-logs__ip">IP</p>
+    </div>
+
+    <div class="audit-logs__content">
+        {% include 'scan_audit_logs.html.twig' with {'audit_logs': audit_logs} %}
+    </div>
+    <div class="audit-logs__pagination">{{ audit_logs_pagination | raw }}</div>
+</section>

@@ -1,0 +1,204 @@
+{% if two_factor.isActivated  %}
+    <script type="application/javascript">
+
+        jQuery(document).ready(function ($) {
+            jQuery('#wtotem-2fa-deactivate').on('click', function(e) {
+
+                jQuery('#wtotem-2fa-wrap').addClass('wtotem_loader_spinner');
+                e.preventDefault();
+                e.stopPropagation();
+
+                jQuery.post(
+                    ajaxurl,
+                    {
+                        action: 'wtotem_ajax',
+                        ajax_action: 'two_factor_auth',
+                        case_action: 'deactivate',
+                        wtotem_page_nonce: '{{ page_nonce }}',
+                        {% if user_id %} user_id: {{ user_id }}, {% endif %}
+                    },
+                    function (data) {
+                        jQuery('#wtotem-2fa-wrap').removeClass('wtotem_loader_spinner');
+                        jQuery('#wtotem_notifications').html(data.notifications);
+
+                        if(data.success){
+                            jQuery('#wtotem-2fa-wrap-inner').html(data.content);
+                        }
+
+                    }
+                );
+
+            });
+        });
+    </script>
+
+    <p class="wtotem-content-text">{{ 'Two-factor authentication is currently active on your account. You may deactivate it by clicking the button below'|trans }}.</p>
+
+    <div class="wtotem_settings_submit_wrap">
+        <button class="wtotem_control__btn" id="wtotem-2fa-deactivate" type="submit">{{ 'Deactivate 2FA' |trans }}</button>
+    </div>
+
+{% else %}
+
+    <script type="application/javascript">
+        jQuery(document).ready(function ($) {
+            $(function() {
+                $('#wtotem_ga_qr').qrcode({text: '{{ two_factor.qr_url | raw}}', width: (window.outerWidth < 500) ? 175 : 250, height: (window.outerWidth < 500) ? 175 : 250 });
+                if (window.outerWidth < 500) {
+                    $('#wtotem_qr_text').attr('size', 35).css('font-family', 'monospace');
+                }
+            });
+
+            jQuery('#wtotem-recovery-download').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                saveAs(new Blob(["{{two_factor.fileContents}}"], {type: "text/plain;charset=" + document.characterSet}), '{{two_factor.fileName}}');
+                //var savedRecoveryCodes = true;
+            });
+
+            jQuery('#wtotem-recovery-copy').on('click', function(e) {
+                try {
+                    navigator.clipboard.writeText("{{two_factor.fileContents}}");
+                } catch(err) {
+                    if(typeof document.execCommand == 'function') {
+                        var $tmp = $("<textarea>");
+                        $("body").append($tmp);
+                        $tmp.val("{{two_factor.fileContents}}").select();
+                        document.execCommand("copy");
+                        $tmp.remove();
+                    }
+                }
+            });
+
+            jQuery('#wtotem-2fa-activate-field').on('keyup', function(e) {
+                jQuery('#wtotem-2fa-activate').toggleClass('wtotem_disabled', jQuery('#wtotem-2fa-activate-field').val().length !== 6);
+
+                if (e.keyCode === 13) {
+                    jQuery('#wtotem-2fa-activate').trigger('click');
+                }
+            });
+
+            jQuery('#wtotem-2fa-activate').on('click', function(e) {
+
+                jQuery('#wtotem-2fa-wrap').addClass('wtotem_loader_spinner');
+                e.preventDefault();
+                e.stopPropagation();
+
+                jQuery.post(
+                    ajaxurl,
+                    {
+                        action: 'wtotem_ajax',
+                        ajax_action: 'two_factor_auth',
+                        case_action: 'activate',
+                        wtotem_page_nonce: '{{ page_nonce }}',
+                        secret: '{{ two_factor.secret }}',
+                        recovery: '{{ two_factor.recovery | raw }}',
+                        code: $('#wtotem-2fa-activate-field').val(),
+                        {% if user_id %} user_id: {{ user_id }}, {% endif %}
+                    },
+                    function (data) {
+                        jQuery('#wtotem-2fa-wrap').removeClass('wtotem_loader_spinner');
+                        jQuery('#wtotem_notifications').html(data.notifications);
+
+                        if(data.success){
+                            jQuery('#wtotem-2fa-wrap-inner').html(data.content);
+                        }
+
+                    }
+                );
+
+            });
+
+            jQuery('#two_factor').on('change', function (e) {
+                if(jQuery(this).is(':checked')){
+                    jQuery('#two_factor-details').removeClass('visually-hidden');
+                } else {
+                    jQuery('#two_factor-details').addClass('visually-hidden');
+                }
+            });
+
+        });
+
+    </script>
+
+
+    <ul class="wtotem-mb-20">
+        <li class="togglers-list__item one-element">
+            <div>
+                <p class="togglers-list__name">
+                    {{ 'Activate 2FA'|trans }}
+                <div class="wtotem_title-info__info wtotem-tooltip wtotem-tooltip-top" data-service="Activate 2FA">
+                    <div class="wtotem-tooltip__content">
+                        <p class="wtotem-tooltip__header">{{ 'Activate 2FA'|trans }}</p>
+                        <p class="wtotem-tooltip__text">
+                            {{ 'Enables two-factor authorization for the current user'|trans }}
+                        </p>
+                    </div>
+                </div>
+                </p>
+            </div>
+
+            <div class="wtotem_option__checkbox onoff">
+                <input type="checkbox" class="onoff__input" id="two_factor"
+                       value="{{ two_factor.isActivated }}" {{ two_factor.isActivated }}/>
+
+                <label for="two_factor" class="onoff__label">
+                    <span class="onoff__circle"></span>
+                </label>
+            </div>
+        </li>
+    </ul>
+
+    <div id="two_factor-details" class="{% if (two_factor.isActivated == false) %}visually-hidden{% endif %}">
+
+        <h3 class="wtotem-mb-15 wtotem-content-text">{{ '1. Scan Code or Enter Key'|trans }}</h3>
+        <p class="wtotem-mb-15 wtotem-content-text">{{ 'Scan the code below with your mobile app to add this account. Some authenticator apps also allow you to type in the text version instead.'|trans }}</p>
+
+        <div class="wtotem-tabs">
+
+            <ul class="wtotem-tabs__caption firewall-configuration__list-types">
+                <li class="firewall-configuration__list-types-item active">{{ 'Scan QR'|trans }}</li>
+                <li class="firewall-configuration__list-types-item">{{ 'Enter key'|trans }}</li>
+            </ul>
+
+            <div class="wtotem-tabs__content active">
+                <div id="wtotem_ga_qr" class="wtotem-mb-15">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="wtotem-tabs__content">
+                <div class="text-align-center">
+                    <input value="{{ two_factor.secret }}" type="text" id="wtotem_qr_text" class="wtotem_settings_input wtotem-mb-15 text-align-center" disabled>
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="wtotem-hr wtotem-mb-15">
+
+        <h3 class="wtotem-mb-15 wtotem-content-text">{{ '2. Enter Code from mobile app'|trans }}</h3>
+        <div class="wtotem-block-content">
+            <p class="wtotem-content-text">{{ 'Use one of these codes to log in if you lose access to your authenticator device.'|trans }}</p>
+
+            <div class="wtotem-recovery-list">
+                <ul class="wtotem-recovery-codes">
+                    {% for code in two_factor.blocks %}
+                        <li>{{ code }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="wtotem-recovery-btn">
+                    <img src="{{ images_path }}copy-min.svg" alt="" id="wtotem-recovery-copy">
+                    <img src="{{ images_path }}download-mini.svg" alt="" id="wtotem-recovery-download">
+                </div>
+            </div>
+
+            <p class="wtotem-mb-15 wtotem-content-text">{{ 'Enter the code from your mobile app below to verify and activate two-factor authentication for this account'|trans }}</p>
+            <input type="text" class="wtotem_settings_input" id="wtotem-2fa-activate-field" value="" size="6" maxlength="6" placeholder="{{ 'Enter the code'|trans }}" autocomplete="off">
+
+            <div class="wtotem_settings_submit_wrap">
+                <button class="wtotem_control__btn wtotem_disabled" id="wtotem-2fa-activate" type="submit">{{ 'Activate 2FA' |trans }}</button>
+            </div>
+        </div>
+
+    </div>
+{% endif %}

@@ -1,0 +1,24 @@
+
+{% if logs %}
+
+        {% for log in logs %}
+            <div class="files__item">
+                <a href="{{log.content}}" target="_blank" class="links__item">
+                    {{log.content}}
+                    <svg class="hover-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M14.0859 6.08623L5.58606 14.5861" stroke="#3D50DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M7.2441 6.10061L14.0859 6.08587L14.0718 12.9283" stroke="#3D50DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </a>
+                <p class="link_source"> {{log.source}}</p>
+
+                <p class="links__type">{% if log.is_internal == true %}{{ 'Internal' | trans }} {% elseif (log.is_internal) == (false) %} {{ 'External' | trans }} {% endif %}</p>
+            </div>
+        {% endfor %}
+
+{% else %}
+<div class="wtotem_scan_no_data">
+    <p>There is nothing</p>
+</div>
+
+{% endif %}

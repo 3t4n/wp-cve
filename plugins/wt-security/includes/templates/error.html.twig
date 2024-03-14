@@ -1,0 +1,36 @@
+<script>
+    jQuery(document).ready(function ($) {
+        jQuery('.open-popup').on('click', function (e) {
+            jQuery.post(
+                ajaxurl,
+                {
+                    action: 'wtotem_ajax',
+                    ajax_action: 'popup',
+                    popup_action: jQuery(this).data('action'),
+                    wtotem_page_nonce: '{{ page_nonce }}',
+                },
+                function (data) {
+
+                    if(data.success){
+                        jQuery('.wtotem_body').append(data.content);
+                    }
+                }
+            );
+        });
+    });
+</script>
+
+<div class="wtotem_not-working__card message-card wtotem-mb-15">
+    <h2 class="wtotem_not-working__title message-card__title">{{ 'Data access error'|trans }}</h2>
+    <img class="wtotem_not-working__img" src="{{ images_path }}people-with-glass.svg" width="183" height="156" alt="People with loupe" />
+    <p class="wtotem_not-working__text">
+        {{ 'Try reinstalling the agents or changing the API key'|trans }}
+    </p>
+
+    <div class="wtotem_button wtotem_control__btn open-popup wtotem-mb-15" data-action="reinstall_agents">
+        <img src="{{ images_path }}reload.svg" alt=""> <span>{{ 'Reinstall agents'|trans }}</span>
+    </div>
+    <div class="wtotem_button wtotem_control__btn open-popup" data-action="logout">
+        {{ 'API-key change'|trans }}
+    </div>
+</div>
