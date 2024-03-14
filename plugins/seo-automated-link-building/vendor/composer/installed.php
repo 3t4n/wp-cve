@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '707eb4f281e848f4e51c906dc066d175bd466fcd',
+        'name' => 'webraketen/seo-automated-link-building',
+        'dev' => true,
+    ),
+    'versions' => array(
+        'friedolinfoerder/html-changer' => array(
+            'pretty_version' => 'v0.1.6',
+            'version' => '0.1.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../friedolinfoerder/html-changer',
+            'aliases' => array(),
+            'reference' => '11324d318f366a56389e1ae54c6cd3f3649262ae',
+            'dev_requirement' => false,
+        ),
+        'friedolinfoerder/wp-activerecord' => array(
+            'pretty_version' => 'v1.0.6',
+            'version' => '1.0.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../friedolinfoerder/wp-activerecord',
+            'aliases' => array(),
+            'reference' => '0920735f6c3ed7a3628e79d56bf0d090201eab14',
+            'dev_requirement' => false,
+        ),
+        'webraketen/seo-automated-link-building' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '707eb4f281e848f4e51c906dc066d175bd466fcd',
+            'dev_requirement' => false,
+        ),
+    ),
+);
