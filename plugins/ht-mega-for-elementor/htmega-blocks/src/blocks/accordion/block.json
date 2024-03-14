@@ -1,0 +1,564 @@
+{
+  "name": "htmega/accordion",
+  "category": "htmega-blocks",
+  "title": "Accordion",
+  "example": {
+    "attributes": {
+      "preview": true
+    }
+  },
+  "attributes": {
+    "blockUniqId": {
+      "type": "string",
+      "default": ""
+    },
+    "preview": {
+      "type": "boolean",
+      "default": false
+    },
+    "style": {
+      "type": "string",
+      "default": "2"
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h2"
+    },
+    "separator": {
+      "type": "boolean",
+      "default": false
+    },
+    "iconInActive": {
+      "type": "string",
+      "default": "dashicons dashicons-plus-alt2"
+    },
+    "iconActive": {
+      "type": "string",
+      "default": "dashicons dashicons-minus"
+    },
+    "iconAlignment": {
+      "type": "string",
+      "default": "right"
+    },
+    "accordionSeparatorColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-body-inner { border-color: {{accordionSeparatorColor}}; }"
+      }
+    },
+    "accordionCardBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card { background-color: {{accordionCardBgColor}}; }"
+      }
+    },
+    "accordionCardBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card { background-image: {{accordionCardBgGradient}}; }"
+      }
+    },
+    "accordionCardShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card { box-shadow: {{accordionCardShadow}}; }"
+      }
+    },
+    "accordionCardBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card { border-style: {{accordionCardBorderType}}; }"
+      }
+    },
+    "accordionCardBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "accordionCardBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card { border-width: {{accordionCardBorderWidth}}; }"
+      }
+    },
+    "accordionCardBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "accordionCardBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card { border-color: {{accordionCardBorderColor}}; }"
+      }
+    },
+    "accordionCardBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover { background-color: {{accordionCardBgColorHover}}; }"
+      }
+    },
+    "accordionCardBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover { background-image: {{accordionCardBgGradientHover}}; }"
+      }
+    },
+    "accordionCardShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover { box-shadow: {{accordionCardShadowHover}}; }"
+      }
+    },
+    "accordionCardBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "accordionCardBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover { border-color: {{accordionCardBorderColorHover}}; }"
+      }
+    },
+    "accordionCardBgColorActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card.htmega-accordion-card-active { background-color: {{accordionCardBgColorActive}}; }"
+      }
+    },
+    "accordionCardBgGradientActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card.htmega-accordion-card-active { background-image: {{accordionCardBgGradientActive}}; }"
+      }
+    },
+    "accordionCardShadowActive": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card.htmega-accordion-card-active { box-shadow: {{accordionCardShadowActive}}; }"
+      }
+    },
+    "accordionCardBorderColorActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "accordionCardBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card.htmega-accordion-card-active { border-color: {{accordionCardBorderColorActive}}; }"
+      }
+    },
+    "accordionCardGap": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion { gap: {{accordionCardGap}}px; } {{HTMEGA_WRAPPER}}.htmega-accordion > .block-editor-inner-blocks > .block-editor-block-list__layout { gap: {{accordionCardGap}}px; }"
+      }
+    },
+    "accordionCardBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card { border-radius: {{accordionCardBorderRadius}}; }"
+      }
+    },
+    "iconSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator span { font-size: {{iconSize}}px; }"
+      }
+    },
+    "iconBgSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { width: {{iconBgSize}}px; height: {{iconBgSize}}px; }"
+      }
+    },
+    "iconGap": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-header { gap: {{iconGap}}px; }"
+      }
+    },
+    "iconColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { color: {{iconColor}}; }"
+      }
+    },
+    "iconBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { background-color: {{iconBgColor}}; }"
+      }
+    },
+    "iconBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { background-image: {{iconBgGradient}}; }"
+      }
+    },
+    "iconBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { border-style: {{iconBorderType}}; }"
+      }
+    },
+    "iconBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "iconBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { border-width: {{iconBorderWidth}}; }"
+      }
+    },
+    "iconBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "iconBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { border-color: {{iconBorderColor}}; }"
+      }
+    },
+    "iconBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-indicator { border-radius: {{iconBorderRadius}}; }"
+      }
+    },
+    "iconColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover .htmega-accordion-card-indicator { color: {{iconColorHover}}; }"
+      }
+    },
+    "iconBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover .htmega-accordion-card-indicator { background-color: {{iconBgColorHover}}; }"
+      }
+    },
+    "iconBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover .htmega-accordion-card-indicator { background-image: {{iconBgGradientHover}}; }"
+      }
+    },
+    "iconBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "iconBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover .htmega-accordion-card-indicator { border-color: {{iconBorderColorHover}}; }"
+      }
+    },
+    "iconColorActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-active .htmega-accordion-card-indicator { color: {{iconColorActive}}; }"
+      }
+    },
+    "iconBgColorActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-active .htmega-accordion-card-indicator { background-color: {{iconBgColorActive}}; }"
+      }
+    },
+    "iconBgGradientActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-active .htmega-accordion-card-indicator { background-image: {{iconBgGradientActive}}; }"
+      }
+    },
+    "iconBorderColorActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "iconBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-active .htmega-accordion-card-indicator { border-color: {{iconBorderColorActive}}; }"
+      }
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { font-size: {{titleFontSize}}px; }"
+      }
+    },
+    "titleFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { font-weight: {{titleFontWeight}}; }"
+      }
+    },
+    "titleFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { font-style: {{titleFontStyle}}; }"
+      }
+    },
+    "titleFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { text-transform: {{titleFontTransform}}; }"
+      }
+    },
+    "titleFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { text-decoration: {{titleFontDecoration}}; }"
+      }
+    },
+    "titleFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { line-height: {{titleFontLineHeight}}px; }"
+      }
+    },
+    "titleFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { letter-spacing: {{titleFontLetterSpacing}}px; }"
+      }
+    },
+    "titlePadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-header { padding: {{titlePadding}}; }"
+      }
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-title { color: {{titleColor}}; }"
+      }
+    },
+    "titleBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-header { background-color: {{titleBgColor}}; }"
+      }
+    },
+    "titleBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-header { background-image: {{titleBgGradient}}; }"
+      }
+    },
+    "titleColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover .htmega-accordion-card-title { color: {{titleColorHover}}; }"
+      }
+    },
+    "titleBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover .htmega-accordion-card-header { background-color: {{titleBgColorHover}}; }"
+      }
+    },
+    "titleBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card:hover .htmega-accordion-card-header { background-image: {{titleBgGradientHover}}; }"
+      }
+    },
+    "titleColorActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-active .htmega-accordion-card-title { color: {{titleColorActive}}; }"
+      }
+    },
+    "titleBgColorActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-active .htmega-accordion-card-header { background-color: {{titleBgColorActive}}; }"
+      }
+    },
+    "titleBgGradientActive": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-active .htmega-accordion-card-header { background-image: {{titleBgGradientActive}}; }"
+      }
+    },
+    "bodyPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-body-inner { padding: {{bodyPadding}}; }"
+      }
+    },
+    "bodyBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-body-inner { background-color: {{bodyBgColor}}; }"
+      }
+    },
+    "bodyBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-accordion .htmega-accordion-card-body-inner { background-image: {{bodyBgGradient}}; }"
+      }
+    }
+  }
+}

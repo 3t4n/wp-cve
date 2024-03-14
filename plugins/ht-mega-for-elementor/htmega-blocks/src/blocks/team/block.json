@@ -1,0 +1,1005 @@
+{
+  "name": "htmega/team",
+  "category": "htmega-blocks",
+  "title": "Team",
+  "example": {
+    "attributes": {
+      "preview": true
+    }
+  },
+  "attributes": {
+    "blockUniqId": {
+      "type": "string",
+      "default": ""
+    },
+    "preview": {
+      "type": "boolean",
+      "default": false
+    },
+    "teamStyle": {
+      "type": "string",
+      "default": "1"
+    },
+    "nameTag": {
+      "type": "string",
+      "default": "h2"
+    },
+    "showBio": {
+      "type": "boolean",
+      "default": false
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "noFollow": {
+      "type": "boolean",
+      "default": false
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "id": "",
+        "url": "",
+        "width": "",
+        "height": ""
+      }
+    },
+    "name": {
+      "type": "string",
+      "default": "John Doe"
+    },
+    "designation": {
+      "type": "string",
+      "default": "Senior Software Engineer"
+    },
+    "bio": {
+      "type": "string",
+      "default": "A short bio of myself as a singer software engineer."
+    },
+    "socials": {
+      "type": "array",
+      "default": [
+        {
+          "label": "Facebook",
+          "icon": "fa fa-facebook",
+          "link": "#"
+        },
+        {
+          "label": "Twitter",
+          "icon": "fa fa-twitter",
+          "link": "#"
+        },
+        {
+          "label": "Linkedin",
+          "icon": "fa fa-linkedin",
+          "link": "#"
+        }
+      ]
+    },
+    "teamBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { border-radius: {{teamBorderRadius}}; }"
+      }
+    },
+    "teamMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { margin: {{teamMargin}}; }"
+      }
+    },
+    "teamPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { padding: {{teamPadding}}; }"
+      }
+    },
+    "teamShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { box-shadow: {{teamShadow}}; }"
+      }
+    },
+    "teamShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team:hover { box-shadow: {{teamShadowHover}}; }"
+      }
+    },
+    "teamBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { border-style: {{teamBorderType}}; }"
+      }
+    },
+    "teamBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "teamBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { border-width: {{teamBorderWidth}}; }"
+      }
+    },
+    "teamBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "teamBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { border-color: {{teamBorderColor}}; }"
+      }
+    },
+    "teamBorderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team:hover { border-style: {{teamBorderTypeHover}}; }"
+      }
+    },
+    "teamBorderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "teamBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team:hover { border-width: {{teamBorderWidthHover}}; }"
+      }
+    },
+    "teamBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "teamBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team:hover { border-color: {{teamBorderColorHover}}; }"
+      }
+    },
+    "teamBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { background-color: {{teamBgColor}}; }"
+      }
+    },
+    "teamBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team:hover { background-color: {{teamBgColorHover}}; }"
+      }
+    },
+    "teamBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team { background-image: {{teamBgGradient}}; }"
+      }
+    },
+    "teamBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team:hover { background-image: {{teamBgGradientHover}}; }"
+      }
+    },
+    "thumbnailBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-thumbnail { background-color: {{thumbnailBgColor}}; }"
+      }
+    },
+    "thumbnailBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-thumbnail { background-image: {{thumbnailBgGradient}}; }"
+      }
+    },
+    "thumbnailBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-thumbnail { border-radius: {{thumbnailBorderRadius}}; }"
+      }
+    },
+    "thumbnailMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team-thumbnail { margin: {{thumbnailMargin}}; }"
+      }
+    },
+    "thumbnailPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team-thumbnail { padding: {{thumbnailPadding}}; }"
+      }
+    },
+    "contentBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { background-color: {{contentBgColor}}; }"
+      }
+    },
+    "contentBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { background-image: {{contentBgGradient}}; }"
+      }
+    },
+    "contentBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { border-style: {{contentBorderType}}; }"
+      }
+    },
+    "contentBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "contentBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { border-width: {{contentBorderWidth}}; }"
+      }
+    },
+    "contentBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "contentBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { border-color: {{contentBorderColor}}; }"
+      }
+    },
+    "contentBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { border-radius: {{contentBorderRadius}}; }"
+      }
+    },
+    "contentPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { padding: {{contentPadding}}; }"
+      }
+    },
+    "contentAlignment": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-content { text-align: {{contentAlignment}}; }"
+      }
+    },
+    "nameColor": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { color: {{nameColor}}; }"
+      }
+    },
+    "nameFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { font-size: {{nameFontSize}}px; }"
+      }
+    },
+    "nameFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { font-weight: {{nameFontWeight}}; }"
+      }
+    },
+    "nameFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { font-style: {{nameFontStyle}}; }"
+      }
+    },
+    "nameFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { text-transform: {{nameFontTransform}}; }"
+      }
+    },
+    "nameFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { text-decoration: {{nameFontDecoration}}; }"
+      }
+    },
+    "nameFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { line-height: {{nameFontLineHeight}}px; }"
+      }
+    },
+    "nameFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { letter-spacing: {{nameFontLetterSpacing}}px; }"
+      }
+    },
+    "nameMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-name { margin: {{nameMargin}}; }"
+      }
+    },
+    "designationColor": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { color: {{designationColor}}; }"
+      }
+    },
+    "designationFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { font-size: {{designationFontSize}}px; }"
+      }
+    },
+    "designationFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { font-weight: {{designationFontWeight}}; }"
+      }
+    },
+    "designationFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { font-style: {{designationFontStyle}}; }"
+      }
+    },
+    "designationFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { text-transform: {{designationFontTransform}}; }"
+      }
+    },
+    "designationFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { text-decoration: {{designationFontDecoration}}; }"
+      }
+    },
+    "designationFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { line-height: {{designationFontLineHeight}}px; }"
+      }
+    },
+    "designationFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { letter-spacing: {{designationFontLetterSpacing}}px; }"
+      }
+    },
+    "designationMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-designation { margin: {{designationMargin}}; }"
+      }
+    },
+    "bioColor": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { color: {{bioColor}}; }"
+      }
+    },
+    "bioFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { font-size: {{bioFontSize}}px; }"
+      }
+    },
+    "bioFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { font-weight: {{bioFontWeight}}; }"
+      }
+    },
+    "bioFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { font-style: {{bioFontStyle}}; }"
+      }
+    },
+    "bioFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { text-transform: {{bioFontTransform}}; }"
+      }
+    },
+    "bioFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { text-decoration: {{bioFontDecoration}}; }"
+      }
+    },
+    "bioFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { line-height: {{bioFontLineHeight}}px; }"
+      }
+    },
+    "bioFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { letter-spacing: {{bioFontLetterSpacing}}px; }"
+      }
+    },
+    "bioMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "showBio",
+              "condition": "===",
+              "value": true
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-bio { margin: {{bioMargin}}; }"
+      }
+    },
+    "socialBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { background-color: {{socialBgColor}}; }"
+      }
+    },
+    "socialBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { background-image: {{socialBgGradient}}; }"
+      }
+    },
+    "socialGap": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { gap: {{socialGap}}px; }"
+      }
+    },
+    "socialPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { padding: {{socialPadding}}; }"
+      }
+    },
+    "socialBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { border-radius: {{socialBorderRadius}}; }"
+      }
+    },
+    "socialAlignment": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { justify-content: {{socialAlignment}}; }"
+      }
+    },
+    "socialBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { border-style: {{socialBorderType}}; }"
+      }
+    },
+    "socialBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "socialBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { border-width: {{socialBorderWidth}}; }"
+      }
+    },
+    "socialBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "socialBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social { border-color: {{socialBorderColor}}; }"
+      }
+    },
+    "socialIconColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { color: {{socialColor}}; }"
+      }
+    },
+    "socialIconBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { background-color: {{socialBgColor}}; }"
+      }
+    },
+    "socialIconBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { background-image: {{socialBgGradient}}; }"
+      }
+    },
+    "socialIconBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { border-style: {{socialIconBorderType}}; }"
+      }
+    },
+    "socialIconBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "socialIconBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { border-width: {{socialIconBorderWidth}}; }"
+      }
+    },
+    "socialIconBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "socialIconBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { border-color: {{socialIconBorderColor}}; }"
+      }
+    },
+    "socialIconShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { box-shadow: {{socialIconShadow}}; }"
+      }
+    },
+    "socialIconColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a:hover { color: {{socialColorHover}}; }"
+      }
+    },
+    "socialIconBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a:hover { background-color: {{socialBgColorHover}}; }"
+      }
+    },
+    "socialIconBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a:hover { background-image: {{socialBgGradientHover}}; }"
+      }
+    },
+    "socialIconBorderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a:hover { border-style: {{socialIconBorderTypeHover}}; }"
+      }
+    },
+    "socialIconBorderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "socialIconBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a:hover { border-width: {{socialIconBorderWidth}}; }"
+      }
+    },
+    "socialIconBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "socialIconBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a:hover { border-color: {{socialIconBorderColorHover}}; }"
+      }
+    },
+    "socialIconShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a:hover { box-shadow: {{socialIconShadowHover}}; }"
+      }
+    },
+    "socialIconBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { border-radius: {{socialIconBorderRadius}}; }"
+      }
+    },
+    "socialIconFontSize": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a span { font-size: {{socialIconFontSize}}px; }"
+      }
+    },
+    "socialIconSize": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-team .htmega-team-social li a { width: {{socialIconSize}}px; height: {{socialIconSize}}px; }"
+      }
+    }
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "name": "htmega/button",
+  "category": "htmega-blocks",
+  "parent": [
+    "htmega/buttons"
+  ],
+  "title": "Button",
+  "attributes": {
+    "blockUniqId": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string",
+      "default": "Read More"
+    },
+    "link": {
+      "type": "string",
+      "default": "#"
+    },
+    "newTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "noFollow": {
+      "type": "boolean",
+      "default": false
+    },
+    "style": {
+      "type": "string",
+      "default": "1"
+    },
+    "effect": {
+      "type": "string",
+      "default": ""
+    },
+    "size": {
+      "type": "string",
+      "default": ""
+    },
+    "icon": {
+      "type": "string",
+      "default": ""
+    },
+    "iconPosition": {
+      "type": "string",
+      "default": ""
+    },
+    "iconSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { gap: {{iconSpacing}}px; }"
+      }
+    },
+    "fontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { font-size: {{fontSize}}px; }"
+      }
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { font-weight: {{fontWeight}}; }"
+      }
+    },
+    "fontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { font-style: {{fontStyle}}; }"
+      }
+    },
+    "fontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { text-transform: {{fontTransform}}; }"
+      }
+    },
+    "fontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { text-decoration: {{fontDecoration}}; }"
+      }
+    },
+    "fontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { line-height: {{fontLineHeight}}px; }"
+      }
+    },
+    "fontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { letter-spacing: {{fontLetterSpacing}}px; }"
+      }
+    },
+    "iconSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button span { font-size: {{iconSize}}px; }"
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { padding: {{padding}}; }"
+      }
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { margin: {{margin}}; }"
+      }
+    },
+    "borderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { border-radius: {{borderRadius}}; }"
+      }
+    },
+    "borderRadiusHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover::before { border-radius: {{borderRadiusHover}}; } {{HTMEGA_WRAPPER}}.htmega-button:hover::after { border-radius: {{borderRadiusHover}}; }"
+      }
+    },
+    "shadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { box-shadow: {{shadow}}; }"
+      }
+    },
+    "shadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover { box-shadow: {{shadowHover}}; }"
+      }
+    },
+    "borderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { border-style: {{borderType}}; }"
+      }
+    },
+    "borderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "borderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { border-width: {{borderWidth}}; }"
+      }
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "borderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { border-color: {{borderColor}}; }"
+      }
+    },
+    "borderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover { border-style: {{borderTypeHover}}; }"
+      }
+    },
+    "borderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "borderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover { border-width: {{borderWidthHover}}; }"
+      }
+    },
+    "borderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "borderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover { border-color: {{borderColorHover}}; }"
+      }
+    },
+    "color": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { color: {{color}}; }"
+      }
+    },
+    "colorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover { color: {{colorHover}}; }"
+      }
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { background-color: {{bgColor}}; }"
+      }
+    },
+    "bgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover::before { background-color: {{bgColorHover}}; } {{HTMEGA_WRAPPER}}.htmega-button:hover::after { background-color: {{bgColorHover}}; }"
+      }
+    },
+    "bgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button { background-image: {{bgGradient}}; }"
+      }
+    },
+    "bgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-button:hover::before { background-image: {{bgGradientHover}}; } {{HTMEGA_WRAPPER}}.htmega-button:hover::after { background-image: {{bgGradientHover}}; }"
+      }
+    }
+  }
+}

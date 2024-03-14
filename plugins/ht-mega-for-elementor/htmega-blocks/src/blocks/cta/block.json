@@ -1,0 +1,947 @@
+{
+  "name": "htmega/cta",
+  "category": "htmega-blocks",
+  "title": "Call TO Action",
+  "example": {
+    "attributes": {
+      "preview": true
+    }
+  },
+  "attributes": {
+    "blockUniqId": {
+      "type": "string",
+      "default": ""
+    },
+    "preview": {
+      "type": "boolean",
+      "default": false
+    },
+    "style": {
+      "type": "string",
+      "default": "5"
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h2"
+    },
+    "showTitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "showSubTitle": {
+      "type": "boolean",
+      "default": false
+    },
+    "showDescription": {
+      "type": "boolean",
+      "default": true
+    },
+    "showPrimaryButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "showSecondaryButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "default": "Education Online Coaching Batch."
+    },
+    "subTitle": {
+      "type": "string",
+      "default": "Gutenberg call to action block"
+    },
+    "description": {
+      "type": "string",
+      "default": "Choose from our variety of buttons that suit any industry. We'll do the hard work for you by making sure your website is ready for conversion. Use multiple types of Call to Action section like double button, single button, and slide down."
+    },
+    "primaryButton": {
+      "type": "object",
+      "default": {
+        "label": "Book a Seat",
+        "link": "#",
+        "newTab": false,
+        "noFollow": false
+      }
+    },
+    "secondaryButton": {
+      "type": "object",
+      "default": {
+        "label": "Contact Us",
+        "link": "#",
+        "newTab": false,
+        "noFollow": false
+      }
+    },
+    "alignment": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { text-align: {{alignment}}; }"
+      }
+    },
+    "buttonAlignment": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group { justify-content: {{buttonAlignment}}; }"
+      }
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { background-color: {{bgColor}}; }"
+      }
+    },
+    "bgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { background-image: {{bgGradient}}; }"
+      }
+    },
+    "bgImageHandler": {
+      "type": "object",
+      "default": {
+        "id": "",
+        "url": "",
+        "width": "",
+        "height": ""
+      }
+    },
+    "bgImage": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { background-image: url({{bgImage}}); }"
+      }
+    },
+    "bgImageSize": {
+      "type": "string",
+      "default": "cover",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { background-size: {{bgImageSize}}; }"
+      }
+    },
+    "bgImageRepeat": {
+      "type": "string",
+      "default": "no-repeat",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { background-repeat: {{bgImageRepeat}}; }"
+      }
+    },
+    "bgImagePositionX": {
+      "type": "string",
+      "default": "center",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { background-position-x: {{bgImagePositionX}}; }"
+      }
+    },
+    "bgImagePositionY": {
+      "type": "string",
+      "default": "center",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { background-position-y: {{bgImagePositionY}}; }"
+      }
+    },
+    "gap": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { gap: {{gap}}px; }"
+      }
+    },
+    "borderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { border-radius: {{borderRadius}}; }"
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { padding: {{padding}}; }"
+      }
+    },
+    "borderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { border-style: {{borderType}}; }"
+      }
+    },
+    "borderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "borderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { border-width: {{borderWidth}}; }"
+      }
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "borderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta { border-color: {{borderColor}}; }"
+      }
+    },
+    "subTitleColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { color: {{subTitleColor}}; }"
+      }
+    },
+    "subTitleFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { font-size: {{subTitleFontSize}}px; }"
+      }
+    },
+    "subTitleFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { font-weight: {{subTitleFontWeight}}; }"
+      }
+    },
+    "subTitleFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { font-style: {{subTitleFontStyle}}; }"
+      }
+    },
+    "subTitleFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { text-transform: {{subTitleFontTransform}}; }"
+      }
+    },
+    "subTitleFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { text-decoration: {{subTitleFontDecoration}}; }"
+      }
+    },
+    "subTitleFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { line-height: {{subTitleFontLineHeight}}px; }"
+      }
+    },
+    "subTitleFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { letter-spacing: {{subTitleFontLetterSpacing}}px; }"
+      }
+    },
+    "subTitleMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-sub-title { margin: {{subTitleMargin}}; }"
+      }
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { color: {{titleColor}}; }"
+      }
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { font-size: {{titleFontSize}}px; }"
+      }
+    },
+    "titleFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { font-weight: {{titleFontWeight}}; }"
+      }
+    },
+    "titleFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { font-style: {{titleFontStyle}}; }"
+      }
+    },
+    "titleFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { text-transform: {{titleFontTransform}}; }"
+      }
+    },
+    "titleFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { text-decoration: {{titleFontDecoration}}; }"
+      }
+    },
+    "titleFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { line-height: {{titleFontLineHeight}}px; }"
+      }
+    },
+    "titleFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { letter-spacing: {{titleFontLetterSpacing}}px; }"
+      }
+    },
+    "titleMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-title { margin: {{titleMargin}}; }"
+      }
+    },
+    "descColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { color: {{descColor}}; }"
+      }
+    },
+    "descFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { font-size: {{descFontSize}}px; }"
+      }
+    },
+    "descFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { font-weight: {{descFontWeight}}; }"
+      }
+    },
+    "descFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { font-style: {{descFontStyle}}; }"
+      }
+    },
+    "descFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { text-transform: {{descFontTransform}}; }"
+      }
+    },
+    "descFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { text-decoration: {{descFontDecoration}}; }"
+      }
+    },
+    "descFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { line-height: {{descFontLineHeight}}px; }"
+      }
+    },
+    "descFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { letter-spacing: {{descFontLetterSpacing}}px; }"
+      }
+    },
+    "descMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-desc { margin: {{descMargin}}; }"
+      }
+    },
+    "primaryBtnFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { font-size: {{primaryBtnFontSize}}px; }"
+      }
+    },
+    "primaryBtnFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { font-weight: {{primaryBtnFontWeight}}; }"
+      }
+    },
+    "primaryBtnFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { font-style: {{primaryBtnFontStyle}}; }"
+      }
+    },
+    "primaryBtnFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { text-transform: {{primaryBtnFontTransform}}; }"
+      }
+    },
+    "primaryBtnFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { text-decoration: {{primaryBtnFontDecoration}}; }"
+      }
+    },
+    "primaryBtnFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { line-height: {{primaryBtnFontLineHeight}}px; }"
+      }
+    },
+    "primaryBtnFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { letter-spacing: {{primaryBtnFontLetterSpacing}}px; }"
+      }
+    },
+    "primaryBtnPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { margin: {{primaryBtnPadding}}; }"
+      }
+    },
+    "primaryBtnColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { color: {{primaryBtnColor}}; }"
+      }
+    },
+    "primaryBtnColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { color: {{primaryBtnColorHover}}; }"
+      }
+    },
+    "primaryBtnBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { background-color: {{primaryBtnBgColor}}; }"
+      }
+    },
+    "primaryBtnBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { background-color: {{primaryBtnBgColorHover}}; }"
+      }
+    },
+    "primaryBtnBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { background-image: {{primaryBtnBgGradient}}; }"
+      }
+    },
+    "primaryBtnBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { background-image: {{primaryBtnBgGradientHover}}; }"
+      }
+    },
+    "primaryBtnBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { border-radius: {{primaryBtnBorderRadius}}; }"
+      }
+    },
+    "primaryBtnBorderRadiusHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { border-radius: {{primaryBtnBorderRadiusHover}}; }"
+      }
+    },
+    "primaryBtnBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { border-style: {{primaryBtnBorderType}}; }"
+      }
+    },
+    "primaryBtnBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "primaryBtnBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { border-width: {{primaryBtnBorderWidth}}; }"
+      }
+    },
+    "primaryBtnBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "primaryBtnBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { border-color: {{primaryBtnBorderColor}}; }"
+      }
+    },
+    "primaryBtnBorderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { border-style: {{primaryBtnBorderTypeHover}}; }"
+      }
+    },
+    "primaryBtnBorderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "primaryBtnBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { border-width: {{primaryBtnBorderWidthHover}}; }"
+      }
+    },
+    "primaryBtnBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "primaryBtnBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { border-color: {{primaryBtnBorderColorHover}}; }"
+      }
+    },
+    "primaryBtnShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary { box-shadow: {{primaryBtnShadow}}; }"
+      }
+    },
+    "primaryBtnShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-primary:hover { box-shadow: {{primaryBtnShadowHover}}; }"
+      }
+    },
+    "secondaryBtnFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { font-size: {{secondaryBtnFontSize}}px; }"
+      }
+    },
+    "secondaryBtnFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { font-weight: {{secondaryBtnFontWeight}}; }"
+      }
+    },
+    "secondaryBtnFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { font-style: {{secondaryBtnFontStyle}}; }"
+      }
+    },
+    "secondaryBtnFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { text-transform: {{secondaryBtnFontTransform}}; }"
+      }
+    },
+    "secondaryBtnFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { text-decoration: {{secondaryBtnFontDecoration}}; }"
+      }
+    },
+    "secondaryBtnFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { line-height: {{secondaryBtnFontLineHeight}}px; }"
+      }
+    },
+    "secondaryBtnFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { letter-spacing: {{secondaryBtnFontLetterSpacing}}px; }"
+      }
+    },
+    "secondaryBtnPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { margin: {{secondaryBtnPadding}}; }"
+      }
+    },
+    "secondaryBtnColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { color: {{secondaryBtnColor}}; }"
+      }
+    },
+    "secondaryBtnColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { color: {{secondaryBtnColorHover}}; }"
+      }
+    },
+    "secondaryBtnBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { background-color: {{secondaryBtnBgColor}}; }"
+      }
+    },
+    "secondaryBtnBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { background-color: {{secondaryBtnBgColorHover}}; }"
+      }
+    },
+    "secondaryBtnBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { background-image: {{secondaryBtnBgGradient}}; }"
+      }
+    },
+    "secondaryBtnBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { background-image: {{secondaryBtnBgGradientHover}}; }"
+      }
+    },
+    "secondaryBtnBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { border-radius: {{secondaryBtnBorderRadius}}; }"
+      }
+    },
+    "secondaryBtnBorderRadiusHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { border-radius: {{secondaryBtnBorderRadiusHover}}; }"
+      }
+    },
+    "secondaryBtnBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { border-style: {{secondaryBtnBorderType}}; }"
+      }
+    },
+    "secondaryBtnBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "secondaryBtnBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { border-width: {{secondaryBtnBorderWidth}}; }"
+      }
+    },
+    "secondaryBtnBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "secondaryBtnBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { border-color: {{secondaryBtnBorderColor}}; }"
+      }
+    },
+    "secondaryBtnBorderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { border-style: {{secondaryBtnBorderTypeHover}}; }"
+      }
+    },
+    "secondaryBtnBorderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "secondaryBtnBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { border-width: {{secondaryBtnBorderWidthHover}}; }"
+      }
+    },
+    "secondaryBtnBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "secondaryBtnBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { border-color: {{secondaryBtnBorderColorHover}}; }"
+      }
+    },
+    "secondaryBtnShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary { box-shadow: {{secondaryBtnShadow}}; }"
+      }
+    },
+    "secondaryBtnShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-cta .htmega-cta-button-group .htmega-cta-button-secondary:hover { box-shadow: {{secondaryBtnShadowHover}}; }"
+      }
+    }
+  }
+}

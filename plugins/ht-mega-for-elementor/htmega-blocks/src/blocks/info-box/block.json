@@ -1,0 +1,1302 @@
+{
+  "name": "htmega/info-box",
+  "category": "htmega-blocks",
+  "title": "Info Box",
+  "example": {
+    "attributes": {
+      "preview": true
+    }
+  },
+  "attributes": {
+    "blockUniqId": {
+      "type": "string",
+      "default": ""
+    },
+    "preview": {
+      "type": "boolean",
+      "default": false
+    },
+    "infoBoxList": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Info Title",
+          "desc": "Create your website effortlessly with HTMEGA Gutenberg Blocks.",
+          "image": {
+            "id": "",
+            "url": "",
+            "width": "",
+            "height": ""
+          },
+          "link": "#",
+          "linkText": "Learn More",
+          "newTab": false,
+          "noFollow": false
+        },
+        {
+          "title": "Info Title",
+          "desc": "Create your website effortlessly with HTMEGA Gutenberg Blocks.",
+          "image": {
+            "id": "",
+            "url": "",
+            "width": "",
+            "height": ""
+          },
+          "link": "#",
+          "linkText": "Learn More",
+          "newTab": false,
+          "noFollow": false
+        },
+        {
+          "title": "Info Title",
+          "desc": "Create your website effortlessly with HTMEGA Gutenberg Blocks.",
+          "image": {
+            "id": "",
+            "url": "",
+            "width": "",
+            "height": ""
+          },
+          "link": "#",
+          "linkText": "Learn More",
+          "newTab": false,
+          "noFollow": false
+        }
+      ]
+    },
+    "boxStyle": {
+      "type": "string",
+      "default": "1"
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h3"
+    },
+    "hideButton": {
+      "type": "boolean",
+      "default": false
+    },
+    "columns": {
+      "type": "object",
+      "default": {
+        "desktop": 3,
+        "tablet": 2,
+        "mobile": 2
+      }
+    },
+    "boxGutter": {
+      "type": "number",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box.htmega-grid { gap: {{boxGutter}}px; }"
+      }
+    },
+    "boxDirection": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { flex-direction: {{boxDirection}}; }"
+      }
+    },
+    "boxBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { background-color: {{boxBgColor}}; }"
+      }
+    },
+    "boxBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover { background-color: {{boxBgColorHover}}; }"
+      }
+    },
+    "boxBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { background-image: {{boxBgGradient}}; }"
+      }
+    },
+    "boxBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover { background-image: {{boxBgGradientHover}}; }"
+      }
+    },
+    "boxBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { border-radius: {{boxBorderRadius}}; }"
+      }
+    },
+    "boxBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { border-style: {{boxBorderType}}; }"
+      }
+    },
+    "boxBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "boxBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { border-width: {{boxBorderWidth}}; }"
+      }
+    },
+    "boxBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "boxBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { border-color: {{boxBorderColor}}; }"
+      }
+    },
+    "boxBorderRadiusHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover { border-radius: {{boxBorderRadiusHover}}; }"
+      }
+    },
+    "boxBorderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover { border-style: {{boxBorderTypeHover}}; }"
+      }
+    },
+    "boxBorderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "boxBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover { border-width: {{boxBorderWidthHover}}; }"
+      }
+    },
+    "boxBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "boxBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover { border-color: {{boxBorderColorHover}}; }"
+      }
+    },
+    "boxShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { box-shadow: {{boxShadow}}; }"
+      }
+    },
+    "boxShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover { box-shadow: {{boxShadowHover}}; }"
+      }
+    },
+    "boxPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { padding: {{boxPadding}}; }"
+      }
+    },
+    "boxMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item { margin: {{boxMargin}}; }"
+      }
+    },
+    "boxHoverShapeColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover::before { background-color: {{boxHoverShapeColor}}; } {{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover::after { background-color: {{boxHoverShapeColor}}; }"
+      }
+    },
+    "boxHoverTitleColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-title { color: {{boxHoverTitleColor}}; }"
+      }
+    },
+    "boxHoverTitleShapeColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-title-shape { color: {{boxHoverTitleShapeColor}}; }"
+      }
+    },
+    "boxHoverDescColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-desc { color: {{boxHoverDescColor}}; }"
+      }
+    },
+    "boxHoverButtonColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-link a { color: {{boxHoverButtonColor}}; }"
+      }
+    },
+    "boxHoverButtonBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-link a { border-color: {{boxHoverButtonBorderColor}}; }"
+      }
+    },
+    "boxHoverButtonBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-link a { background-color: {{boxHoverButtonBgColor}}; }"
+      }
+    },
+    "boxHoverButtonColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-link a:hover { color: {{boxHoverButtonColorHover}}; }"
+      }
+    },
+    "boxHoverButtonBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-link a:hover { border-color: {{boxHoverButtonBorderColorHover}}; }"
+      }
+    },
+    "boxHoverButtonBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-link a:hover { background-color: {{boxHoverButtonBgColorHover}}; }"
+      }
+    },
+    "thumbnailAlignment": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { align-self: {{thumbnailAlignment}}; }"
+      }
+    },
+    "thumbnailBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { background-color: {{thumbnailBgColor}}; }"
+      }
+    },
+    "thumbnailBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail { background-color: {{thumbnailBgColorHover}}; }"
+      }
+    },
+    "thumbnailBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { background-image: {{thumbnailBgGradient}}; }"
+      }
+    },
+    "thumbnailBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail { background-image: {{thumbnailBgGradientHover}}; }"
+      }
+    },
+    "thumbnailWidth": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { width: {{thumbnailWidth}}px; flex: 1 0 {{thumbnailWidth}}px; }"
+      }
+    },
+    "thumbnailHeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { height: {{thumbnailHeight}}px; }"
+      }
+    },
+    "thumbnailBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { border-radius: {{thumbnailBorderRadius}}; } {{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail img { border-radius: {{thumbnailBorderRadius}}; }"
+      }
+    },
+    "thumbnailBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { border-style: {{thumbnailBorderType}}; }"
+      }
+    },
+    "thumbnailBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "thumbnailBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { border-width: {{thumbnailBorderWidth}}; }"
+      }
+    },
+    "thumbnailBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "thumbnailBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { border-color: {{thumbnailBorderColor}}; }"
+      }
+    },
+    "thumbnailBorderRadiusHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail { border-radius: {{thumbnailBorderRadiusHover}}; } {{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail img { border-radius: {{thumbnailBorderRadiusHover}}; }"
+      }
+    },
+    "thumbnailBorderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail { border-style: {{thumbnailBorderTypeHover}}; }"
+      }
+    },
+    "thumbnailBorderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "thumbnailBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail { border-width: {{thumbnailBorderWidthHover}}; }"
+      }
+    },
+    "thumbnailBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "thumbnailBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail { border-color: {{thumbnailBorderColorHover}}; }"
+      }
+    },
+    "thumbnailPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { padding: {{thumbnailPadding}}; }"
+      }
+    },
+    "thumbnailMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { margin: {{thumbnailMargin}}; }"
+      }
+    },
+    "thumbnailShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-thumbnail { box-shadow: {{thumbnailShadow}}; }"
+      }
+    },
+    "thumbnailShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item:hover .htmega-info-box-item-thumbnail { box-shadow: {{thumbnailShadowHover}}; }"
+      }
+    },
+    "contentAlignment": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-content { text-align: {{contentAlignment}}; }"
+      }
+    },
+    "contentPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-content { padding: {{contentPadding}}; }"
+      }
+    },
+    "contentMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-content { margin: {{contentMargin}}; }"
+      }
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { color: {{titleColor}}; }"
+      }
+    },
+    "titleShapeColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "boxStyle",
+              "condition": "===",
+              "value": "3"
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title-shape { color: {{titleShapeColor}}; }"
+      }
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { font-size: {{titleFontSize}}px; }"
+      }
+    },
+    "titleFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { font-weight: {{titleFontWeight}}; }"
+      }
+    },
+    "titleFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { font-style: {{titleFontStyle}}; }"
+      }
+    },
+    "titleFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { text-transform: {{titleFontTransform}}; }"
+      }
+    },
+    "titleFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { text-decoration: {{titleFontDecoration}}; }"
+      }
+    },
+    "titleFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { line-height: {{titleFontLineHeight}}px; }"
+      }
+    },
+    "titleFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { letter-spacing: {{titleFontLetterSpacing}}px; }"
+      }
+    },
+    "titlePadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { padding: {{titlePadding}}; }"
+      }
+    },
+    "titleMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-title { margin: {{titleMargin}}; }"
+      }
+    },
+    "descColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { color: {{descColor}}; }"
+      }
+    },
+    "descFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { font-size: {{descFontSize}}px; }"
+      }
+    },
+    "descFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { font-weight: {{descFontWeight}}; }"
+      }
+    },
+    "descFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { font-style: {{descFontStyle}}; }"
+      }
+    },
+    "descFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { text-transform: {{descFontTransform}}; }"
+      }
+    },
+    "descFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { text-decoration: {{descFontDecoration}}; }"
+      }
+    },
+    "descFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { line-height: {{descFontLineHeight}}px; }"
+      }
+    },
+    "descFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { letter-spacing: {{descFontLetterSpacing}}px; }"
+      }
+    },
+    "descPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { padding: {{descPadding}}; }"
+      }
+    },
+    "descMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-desc { margin: {{descMargin}}; }"
+      }
+    },
+    "buttonColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { color: {{buttonColor}}; }"
+      }
+    },
+    "buttonColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { color: {{buttonColorHover}}; }"
+      }
+    },
+    "buttonBgColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { background-color: {{buttonBgColor}}; }"
+      }
+    },
+    "buttonBgColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { background-color: {{buttonBgColorHover}}; }"
+      }
+    },
+    "buttonBgGradient": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { background-image: {{buttonBgGradient}}; }"
+      }
+    },
+    "buttonBgGradientHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { background-image: {{buttonBgGradientHover}}; }"
+      }
+    },
+    "buttonFontSize": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { font-size: {{buttonFontSize}}px; }"
+      }
+    },
+    "buttonFontWeight": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { font-weight: {{buttonFontWeight}}; }"
+      }
+    },
+    "buttonFontStyle": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { font-style: {{buttonFontStyle}}; }"
+      }
+    },
+    "buttonFontTransform": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { text-transform: {{buttonFontTransform}}; }"
+      }
+    },
+    "buttonFontDecoration": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { text-decoration: {{buttonFontDecoration}}; }"
+      }
+    },
+    "buttonFontLineHeight": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { line-height: {{buttonFontLineHeight}}px; }"
+      }
+    },
+    "buttonFontLetterSpacing": {
+      "type": "number",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { letter-spacing: {{buttonFontLetterSpacing}}px; }"
+      }
+    },
+    "buttonPadding": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { padding: {{buttonPadding}}; }"
+      }
+    },
+    "buttonMargin": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { margin: {{buttonMargin}}; }"
+      }
+    },
+    "buttonBorderRadius": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { border-radius: {{buttonBorderRadius}}; }"
+      }
+    },
+    "buttonBorderType": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { border-style: {{buttonBorderType}}; }"
+      }
+    },
+    "buttonBorderWidth": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "buttonBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ],
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { border-width: {{buttonBorderWidth}}; }"
+      }
+    },
+    "buttonBorderColor": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "buttonBorderType",
+              "condition": "!=",
+              "value": ""
+            }
+          ],
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { border-color: {{buttonBorderColor}}; }"
+      }
+    },
+    "buttonBorderRadiusHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { border-radius: {{buttonBorderRadiusHover}}; }"
+      }
+    },
+    "buttonBorderTypeHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { border-style: {{buttonBorderTypeHover}}; }"
+      }
+    },
+    "buttonBorderWidthHover": {
+      "type": "object",
+      "default": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "unit": "px",
+        "link": "yes"
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "buttonBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ],
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { border-width: {{buttonBorderWidthHover}}; }"
+      }
+    },
+    "buttonBorderColorHover": {
+      "type": "string",
+      "default": "",
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "buttonBorderTypeHover",
+              "condition": "!=",
+              "value": ""
+            }
+          ],
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { border-color: {{buttonBorderColorHover}}; }"
+      }
+    },
+    "buttonShadow": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a { box-shadow: {{buttonShadow}}; }"
+      }
+    },
+    "buttonShadowHover": {
+      "type": "object",
+      "default": {
+        "inset": false,
+        "horizontal": "",
+        "vertical": "",
+        "blur": "",
+        "spread": "",
+        "color": ""
+      },
+      "style": {
+        "dependency": [
+          [
+            {
+              "key": "hideButton",
+              "condition": "===",
+              "value": false
+            }
+          ]
+        ],
+        "selector": "{{HTMEGA_WRAPPER}}.htmega-info-box .htmega-info-box-item .htmega-info-box-item-link a:hover { box-shadow: {{buttonShadowHover}}; }"
+      }
+    }
+  }
+}
