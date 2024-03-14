@@ -1,0 +1,176 @@
+@keyframes falling {
+  25% {
+    transform: translateY(25vh) translateX(50px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(25vh) translateX(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(25vh) translateX(-50px) rotate(270deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+@keyframes sleigh{
+  0% {
+    opacity: 0;
+    transform:  translate(0,-0);
+  }
+  12.5% {
+    opacity: 1;
+    transform:  translate(-25vw,-50px);
+  }
+  25% {
+    opacity: 1;
+    transform:  translate(-50vw,0);
+  }
+  37.5% {
+    opacity: 1;
+    transform:  translate(-75vw,-50px);
+  }
+  50% {
+    transform:  translate(-102vw, 0px);
+    opacity: 0;
+  }
+  100% {
+    transform:  translate(-102vw, 0px);
+    opacity: 0;
+  }
+}
+
+#snowflakes {
+	position: fixed; 
+	top: -30px; 
+	left:0;
+ 	right: 0; 
+ 	bottom: 0; 
+ 	pointer-events: none; 
+ 	width:100%; 
+ 	text-align:center;
+ 	z-index: 4;
+	i {
+		display: inline-block;
+		height: 16px;
+		width: 16px;
+		border-radius: 50%;
+		animation: falling 3s linear 2s infinite;  
+	 	background-image: linear-gradient(180deg,rgba(255,255,255,0) 40%,#fff 40%,#fff 60%,rgba(255,255,255,0) 60%),linear-gradient(90deg,rgba(255,255,255,0) 40%,#fff 40%,#fff 60%,rgba(255,255,255,0) 60%),linear-gradient(45deg,rgba(255,255,255,0) 43%,#fff 43%,#fff 57%,rgba(255,255,255,0) 57%),linear-gradient(135deg,rgba(255,255,255,0) 43%,#fff 43%,#fff 57%,rgba(255,255,255,0) 57%);
+	}
+
+	/* different sizes, and default origins based on size */
+	i:nth-of-type(3n) {
+		height:30px;
+		width:30px;
+		transform-origin: right -30px;
+	}
+	i:nth-of-type(3n+1) {
+		height:24px;
+		width:24px;
+		transform-origin: left -30px;
+	}
+	i:nth-of-type(3n+2){
+		height:10px;
+		width:10px;
+		transform-origin: -30px 0;
+	}
+	
+	/* different speeds, with iteration counts to equal 3minutes approx. */
+	i:nth-of-type(4n) {
+		animation-duration: 6s; 
+		transform-origin: -10px -20px;
+	}
+	i:nth-of-type(4n+1){
+		animation-duration: 4.5s; 
+		transform-origin: 10px -20px;
+		}
+	i:nth-of-type(4n+2) {
+		animation-duration: 3s;
+		transform-origin: right -20px;
+	}
+	
+	/* different delays so they don't all start at the same time */
+	i:nth-of-type(3n) {
+		animation-delay: 2.3s;
+	}
+	i:nth-of-type(3n+1) {
+		animation-delay: 1.5s;
+	}
+	i:nth-of-type(3n+2) {
+		animation-delay: 3.4s;
+	}
+	
+	/* playing with timing functions to make it a teeny bit more random like */
+	i:nth-of-type(5n)   {animation-timing-function:ease-in-out;}
+	i:nth-of-type(5n+1) {animation-timing-function:ease-out;}
+	i:nth-of-type(5n+2) {animation-timing-function:ease;}
+	i:nth-of-type(5n+3) {animation-timing-function:ease-in;}
+	i:nth-of-type(5n+4) {animation-timing-function:linear;}
+	i:nth-of-type(11n) {animation-timing-function:cubic-bezier(0.2, 0.3, 0.8, 0.9);}
+	
+	/* playing with opacity to make it a teeny bit more random like */
+	i:nth-of-type(7n){opacity: 0.5}
+	i:nth-of-type(7n+2) {opacity: 0.3}
+	i:nth-of-type(7n+4) {opacity: 0.7}
+	i:nth-of-type(7n+6){
+		opacity: 0.6;
+		animation-timing-function:ease-in;
+		transform-origin: left 10px;
+	}
+	i:nth-of-type(7n+1){opacity: 0.8}
+}
+
+#santa{
+	animation: sleigh linear 24s; 
+  animation-iteration-count: infinite;
+  animation-delay: 5s;
+  transform-origin: 100% 50%;
+  transform:  translate(0);
+  background-size: 100% 100%;
+  background-size:contain;
+  position: fixed;
+  z-index: 5;
+  left: 100%;
+  bottom: 33.3%;
+  pointer-events: none;
+}
+#santa.sleigh-1{
+	background-image: url('../img/santa-sleigh-1.gif'); 
+	width: 175px; 
+	height: 60px; 
+	@media (min-width: 980px) {
+		width: 350px; 
+		height: 120px; 
+	}
+}
+#santa.sleigh-2{
+	background: url('../img/santa-sleigh-2.gif'); width: 134px; height: 58px; 
+}
+.christmas-frame {
+	position: relative;
+	display: inline-block;
+	&:after {
+		position: absolute;
+		content: '';
+		display: block;
+	  top: -9%;
+	  left: -6%;
+	  width: 33%;
+	  height: 33%;
+		background-image: url('../img/xmas-frame.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: top left;
+	}
+
+}
+
+#christmas-music{
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	width:100%;
+	z-index:5;
+}
