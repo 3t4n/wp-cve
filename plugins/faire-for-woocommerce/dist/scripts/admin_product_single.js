@@ -1,0 +1,1 @@
+!function(){"use strict";var o,c,n;o=window.jQuery,c="woocommerce_",n="faire_product",o(document).ready((function(){var e,r;o("#".concat(c).concat(n,"_allow_preorder")).length&&(e=o("#".concat(c).concat(n,"_allow_preorder")),r=function(){o("#".concat(c).concat(n,"_preorder_dates")).toggle("allow"===e.val())},e.on("change",(function(){r()})),r())}))}();
