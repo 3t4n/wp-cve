@@ -1,0 +1,158 @@
+@import "../../../../assets/css/lsow-lib";
+
+.lsow-hero-header {
+  position: relative;
+  }
+
+.lsow-hero-header {
+  padding: 200px 0;
+  margin: 0;
+  overflow: hidden;
+  @include respond-to-max(1100) {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    }
+  @include respond-to-max(767) {
+    padding: 60px 0;
+    }
+  .lsow-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    }
+  .lsow-parallax-bg, .lsow-image-bg, .lsow-html5-video-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    }
+  .lsow-html5-video-bg {
+      video {
+        width: 100%;
+        height: auto;
+        @include respond-to-max(767) {
+          width: auto;
+          height: 100%;
+        }
+      }
+  }
+  .lsow-parallax-bg, .lsow-image-bg {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    }
+  &.lsow-section-bg-youtube, &.lsow-section-bg-parallax, &.image-banner {
+    .lsow-hero-header-content {
+      position: relative;
+      }
+    }
+  /* Hide the image background when ytp video is playing */
+  &.lsow-section-bg-youtube {
+    .lsow-image-bg {
+      z-index: -1;
+      }
+    }
+  &.lsow-section-bg-parallax {
+    overflow: hidden;
+    .lsow-parallax-bg {
+      height: 200%;
+      transform: translate3d(0, -50%, 0);
+      .lsow-mobile-device & {
+        height: 100%;
+        transform: translate3d(0, 0, 0);
+        }
+      }
+
+    }
+  }
+
+.lsow-hero-header {
+  .lsow-header-content {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+    .lsow-subheading {
+      color: #aaa;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 10px;
+      font-weight: 400;
+      }
+    .lsow-heading {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 28px;
+      line-height: 40px;
+      font-weight: bold;
+      margin: 0;
+      color: #ebebeb;
+      }
+    .lsow-button {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 22px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      border: 1px solid #bbb;
+      padding: 10px 35px;
+      color: #eeeeee;
+      transition: all 0.4s ease-in-out 0s;
+      margin-top: 30px;
+      &:hover {
+        color: #fff;
+        border-color: #ffffff;
+      }
+      }
+    @include respond-to-max(600) {
+      .lsow-subheading {
+        font-size: 16px;
+        line-height: 24px;
+        }
+      .lsow-heading {
+        font-size: 20px;
+        line-height: 30px;
+        }
+      }
+    }
+  }
+
+.lsow-hero-header iframe,
+.lsow-hero-header object,
+.lsow-hero-header embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none; /* important */
+  }
+
+
+/* ------ Pointer down button ------ */
+
+.lsow-hero-header .lsow-pointer-down {
+  display: block;
+  left: 50%;
+  bottom: 10px;
+  margin-left: -26px;
+  position: absolute;
+  font-size: 32px;
+  z-index: 3;
+  padding: 10px 20px;
+  border-radius: 2px;
+  transition: all ease-in-out 0.3s 0s;
+  color: #fff;
+  @include respond-to-max(767) {
+    display: none;
+  }
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    }
+  }

@@ -1,0 +1,27 @@
+@import "../../../../../so-widgets-bundle/base/less/mixins";
+
+@icon_size: false;
+@icon_color: default;
+@hover_color: default;
+
+.lsow-services {
+
+  .lsow-service {
+
+    .lsow-image-wrapper img {
+      & when not (@icon_size = false) {
+        width: unit(@icon_size, px);
+        }
+      }
+    .lsow-icon-wrapper span {
+
+      & when not (@icon_size = false) {
+        font-size: unit(@icon_size, px);
+        }
+      color: @icon_color;
+      &:hover {
+        color: @hover_color;
+        }
+      }
+    }
+  }

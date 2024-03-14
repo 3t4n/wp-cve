@@ -1,0 +1,70 @@
+@import "../../../../assets/css/lsow-lib";
+
+.lsow-icon-list {
+  font-size: 0; /* Remove space between elements */
+  width: 100%;
+  &.lsow-alignleft {
+    text-align: left;
+  }
+  &.lsow-alignright {
+    text-align: right;
+  }
+  &.lsow-aligncenter {
+    text-align: center;
+  }
+  .lsow-icon-list-item {
+    display: inline-block;
+    padding: 0;
+    border: none;
+    outline: none;
+    margin: 0 0 0 15px;
+    &:first-child {
+      margin: 0;
+      }
+    .lsow-icon-wrapper span {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      color: #666;
+      transition: color 0.3s ease-in-out 0s;
+      }
+    .lsow-image-wrapper img {
+      display: block;
+      max-width: 100%;
+      width: 32px;
+      height: auto;
+      margin: 0 auto;
+      transition: all 0.4s ease-in-out 0s;
+      }
+    &:hover {
+      .lsow-image-wrapper img {
+        opacity: 0.8;
+        }
+      .lsow-icon-wrapper span {
+        color: #333;
+        }
+      }
+    }
+  }
+
+.lsow-circular-icon-list .lsow-icon-list {
+  .lsow-icon-list-item {
+    margin: 0 0 0 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    @include respond-to-max(479) {
+      margin: 0 0 20px 20px;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+    .lsow-dark-bg & {
+      background: #48484a;
+    }
+    .lsow-icon-wrapper span {
+      font-size: 22px; /* Override user choice */
+      padding: 14px 0;
+    }
+  }
+}
