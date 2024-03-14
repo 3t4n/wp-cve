@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Documentation &raquo; WordPress Access Control</title>
+
+	<link rel="stylesheet" href="assets/css/readme.css" type="text/css" />
+</head>
+
+<body>
+	<h1 id="logo">
+		<a href="http://wordpress.org/"><img alt="WordPress" src="wp-admin/images/wordpress-logo.png" width="250" height="68" /></a><br />
+		WordPress Access Control Documentation Version 3.1
+	</h1>
+
+	<p style="text-align: center">The complete guide this plugin</p>
+
+	<h1>First Things First</h1>
+
+	<p>
+		WordPress Access Control is an access control plugin for WordPress, and was
+		built by Brandon Wamboldt. If you have questions outside of the scope of this
+		help file, require assistance, want to report a bug, request a feature or
+		anything else, please <a href="mailto:brandon.wamboldt@gmail.com">email me</a> or
+		leave a comment on my blog, <a href="http://brandonwamboldt.ca/plugins/members-only-menu-plugin/">http://brandonwamboldt.ca/plugins/members-only-menu-plugin/</a>.
+	</p>
+
+	<h1>Table Of Contents</h1>
+
+	<ol class="alpha" id="toc">
+		<li><a href="#introduction">Introduction</a></li>
+		<li><a href="#requirements">Requirements</a></li>
+		<li><a href="#installation">Installation &amp; Configuration</a></li>
+		<li><a href="#settings">Settings</a>
+			<ol class="alpha">
+				<li><a href="#general_options">General Options</a></li>
+				<li><a href="#override_permissions">Override Permisisons</a></li>
+				<li><a href="#menu_options">Menu Options</a></li>
+				<li><a href="#postpage_default_options">Post/Page Default Options</a></li>
+				<li><a href="#search_options">Search/Archive Options</a></li>
+			</ol>
+		</li>
+		<li><a href="#shortcodes">Shortcodes</a></li>
+		<li><a href="#interface">Posts/Pages Interface</a></li>
+		<li><a href="#widgets_interface">Widgets Interface</a></li>
+		<li><a href="#menus_interface">Nav Menus Interface</a></li>
+		<li><a href="#changelog">Changelog</a></li>
+		<li><a href="#credits">Sources and Credits</a></li>
+	</ol>
+
+	<h1 id="introduction">A) Introduction - <a href="#toc">top</a></h1>
+
+	<p>
+		The purpose of WordPress Access Control is to provide an easy interface to users for
+		restricting access to content. It was designed for use on members sites where not all
+		content should be accessible by the public, such as with organizations or pay-sites.
+	</p>
+
+	<p>
+		WPAC gives you the ability to restrict content to members, specific roles, or even
+		non-members on a per-page/per-post basis, or using shortcodes. You can still add
+		restricted pages to the navigation, and by default they will only show up to users
+		with the required access. This is an option however.
+	</p>
+
+	<p>
+		WPAC also gives you the ability to customize search/archive pages, completing hiding
+		restricted posts/pages from search results if a user can't access them, showing just
+		the title with a customizable message where the excerpt would be, or showing the title
+		and excerpt.
+	</p>
+
+	<p>
+		WPAC now gives admins the ability to set the visibility of certain widgets to members only
+		or non-members only, as well as create member only versions of all WordPress nav menus.
+	</p>
+
+	<p>
+		This plugin supports custom post types via an easy to use admin option.
+	</p>
+
+	<h1 id="requirements">B) Requirements - <a href="#toc">top</a></h1>
+
+	<p>
+		WordPress Access Control has only been tested with WordPress 2.9 and greater. WordPress Access Control requires <strong>PHP4</strong> or higher, although <strong>PHP5</strong> is recommended.
+	</p>
+
+	<p style="color:red;">
+		WordPress Access Control may not work with all themes. If you find are using WPAC with a theme and it's not working well, please contact me with the name of the theme as well as a link to the theme, and your PHP version.
+	</p>
+
+	<h1 id="installation">C) Installation &amp; Configuration - <a href="#toc">top</a></h1>
+
+	<p>
+		Installation is simple, just follow these steps and you should have no problems.
+	</p>
+
+	<ol>
+		<li>Upload the wordpress-access-control/ folder included in the zip to your WordPress installation's plugin folder. The default location should be /wp-content/plugins/</li>
+		<li>Login to your WordPress administration panel, located by default at http://your-site-here.com/wp-admin/</li>
+		<li>Click on Plugins on the left menu</li>
+		<li>Scroll down to &ldquo;WordPress Access Control&rdquo; and click the "Activate" link</li>
+		<li>Scroll back down to &ldquo;WordPress Access Control&rdquo; and click "Visit options page". Alternatively, you can access this from Settings &gt; Members Only</li>
+		<li>Set your default settings. An explanation of the settings can be found below.</li>
+		<li>Finished!</li>
+	</ol>
+
+	<h1 id="settings">D) Settings - <a href="#toc">top</a></h1>
+
+	<p>
+		Using the settings screen, you can set many default options for the
+		plugin, which is useful for saving time if most of your pages/posts
+		will have similar access settings. Most of these settings can be
+		overwritten on a per-page/per-post basis.
+	</p>
+
+	<h2 id="general_options">A) General Options - <a href="#toc">top</a></h2>
+
+	<p>
+		<strong>Make Blog Members Only</strong><br />
+		This setting will make the blog page itself, as well as any archive
+		pages restricted to members. Regular pages will still be accessible
+		to non-members however. This setting uses the <a href="http://codex.wordpress.org/Function_Reference/is_home">is_home()</a> and
+		<a href="http://codex.wordpress.org/Function_Reference/is_archive">is_archive()</a> functions to determine blog/archive pages.<br /><br />
+
+		<strong>Members Blog Redirect</strong><br />
+		This setting is a website address to redirect users to if they try to
+		access the blog or archive pages with the "Make Blog Members Only"
+		setting active. By default, it will redirect to the login page.<br /><br />
+
+		<strong>Custom Post Types</strong><br />
+		This setting allows you to enable the Members Only controls for custom
+		post types. This setting only works if the custom post type uses the
+		standard WordPress interface. This option will not be displayed if there
+		are no custom post types.
+	</p>
+
+	<h2 id="override_permissions">B) Override Permisisons - <a href="#toc">top</a></h2>
+
+	<p>
+		<strong>Always Accessible By</strong><br />
+
+		This will override any per-page or per-post settings and allow the specified user
+		groups to always have access to members only content. This was to fix a scenario
+		in which a lesser user such as a Contributor could make content invisible to a
+		higher user such as an administrator.
+	</p>
+
+	<h2 id="menu_options">C) Menu Options - <a href="#toc">top</a></h2>
+
+	<p>
+		<strong>Display In Menus</strong><br />
+		This setting determines how menu items work when a restricted page/post is
+		added to the navigation and a user doesn't have access to it. You can
+		show the menu only if a user has access to it, or you can show it all
+		the time. If you decide to show it all the time, a user who clicks on a menu
+		item but does not have access to view it will be redirected.
+	</p>
+
+	<h2 id="postpage_default_options">D) Post/Page Default Options - <a href="#toc">top</a></h2>
+
+	<p>
+		<strong>Default Post State</strong><br />
+		This setting determines the default option when creating a new post. Public
+		is the default setting and means the post will be accessible to all. Members
+		Only restricts the post to authenticated users, and Non-Members restricts
+		the post to unauthenticated users.<br /><br />
+
+		<strong>Posts: Only Accessible By</strong><br />
+		This setting determines the default option when creating a new page for which
+		roles can access the post. This setting is only used if the post is set for
+		Members Only. Roles are managed using plugins.<br /><br />
+
+		<strong>Default Page State</strong><br />
+		This setting determines the default option when creating a new page. Public
+		is the default setting and means the page will be accessible to all. Members
+		Only restricts the page to authenticated users, and Non-Members restricts
+		the page to unauthenticated users.<br /><br />This setting also acts as
+		the default for custom post types.<br /><br />
+
+		<strong>Pages: Only Accessible By</strong><br />
+		This setting determines the default option when creating a new page for which
+		roles can access the page. This setting is only used if the page is set for
+		Members Only. Roles are managed using plugins.<br /><br />This setting also acts as
+		the default for custom post types.<br /><br />
+
+		<strong>Default Redirect For Members Only Pages</strong><br />
+		This is the default URL to redirect users to when they attempt to access
+		a restricted page/post.<br /><br />
+
+		The link provided here is automatically appended with a redirect_to query
+		argument, so that the page may redirect the user back if they wish.
+	</p>
+
+	<h2 id="search_options">E) Search/Archive Options - <a href="#toc">top</a></h2>
+
+	<p>
+		<strong>Search Options</strong><br />
+		This setting determines how restricted posts/pages will appear in
+		search or archive pages. This setting uses <a href="http://codex.wordpress.org/Function_Reference/is_search">is_search()</a>
+		and <a href="http://codex.wordpress.org/Function_Reference/is_archive">is_archive()</a>
+		to determine use.<br /><br />
+		If you do not check "Show restricted post excerpts in search results?" the excerpt
+		will be replaced with text from the below options.<br /><br />
+		The page settings for this setting determine defaults for custom post types.<br /><br />
+
+		<strong>Search Excerpt (Posts)/Search Excerpt (Pages)</strong><br />
+		This text is displayed instead of the post/page excerpt in archive/search pages to users
+		without the required access, but only if the post/page is set to now show it's
+		excerpt.
+	</p>
+
+	<h1 id="shortcodes">E) Shortcodes - <a href="#toc">top</a></h1>
+
+	<p>
+		There are two shortcodes available for use with this plugin.
+    </p>
+
+    <h2>A) members - <a href="#toc">top</a></h2>
+
+    <p>
+		[members][/members] will hide the content within them unless the user is
+		authenticated. Also works during searching, so that if a user searches for
+		a term found in the shortcodes, but is not logged in, the page/post will
+		not show up in the results.
+	</p>
+
+    <p>
+        <strong>role attribute</strong><br />
+        This shortcode also has an option to specify a specific role, using the following
+        syntax:
+    </p>
+
+    <pre>[members role="rolename"][/members]</pre>
+
+    <p>
+        If you want to specify a list of roles that are able to view the content, the syntax uses the or keyword:
+    </p>
+
+    <pre>[members role="or:author,contributor,editor"]</pre>
+
+    <p>
+        You can also specify a single role or multiple roles that cannot see it:
+    </p>
+
+    <pre>[members role="not:guest"]</pre>
+
+    <h2>A) nonmembers - <a href="#toc">top</a></h2>
+
+	<p>
+		[nonmembers][/nonmembers] will hide the content within them unless the user is
+		not authenticated. Also works during searching, so that if a user searches for
+		a term found in the shortcodes, but is logged in, the page/post will
+		not show up in the results.
+	</p>
+
+	<h1 id="interface">F) Posts/Pages Interface - <a href="#toc">top</a></h1>
+
+	<p>
+		By default, when you edit/add a new post/page, the control interface should be displayed on
+		the right, directly above the "Publish" box. If you do not see it, please ensure it is set to
+		display under the "Screen Options" panel.
+	</p>
+
+	<p style="text-align:center;">
+		<img src="assets/images/default_interface.png" alt="" /><br />
+		The default interface is very small, and lacks many options. More options will appear once
+		you've checked an option.
+	</p>
+
+	<p style="text-align:center;">
+		<img src="assets/images/members_interface.png" alt="" /><br />
+		If you select "Only accessible by members?", several new options appear. The default values
+		are governed by the options screen, and an explanation of the options are available above
+		as well.
+	</p>
+
+	<p style="text-align:center;">
+		<img src="assets/images/nonmembers_interface.png" alt="" /><br />
+		If you select "Only accessible by non-members?", one new option appears. This is the URL
+		to redirect a user to, such as the my profile page or even a logout page.
+	</p>
+
+	<h1 id="widgets_interface">G) Widgets Interface - <a href="#toc">top</a></h1>
+
+	<p>
+		Now, when you add certain supported widgets to a widget area, you have the option to select
+		the visibility of the widget as members only or non-members only. Currently, the only supported
+		widget is the Custom Menu widget. If you would like more widgets added, please contact the developer.
+	</p>
+
+	<p style="text-align:center;">
+		<img src="assets/images/widgets_interface.jpg" alt="" /><br />
+		The additional options are limited. You can select "Only visible by members" and the widget will
+		only be displayed to users who are logged in. If you select "Only visibile by non-members" the
+		widget will only be displayed to users who are NOT logged in.
+	</p>
+
+	<h1 id="menus_interface">H) Nav Menus Interface - <a href="#toc">top</a></h1>
+
+	<p>
+		Admins now have the ability of creating a second version of any menu that their theme supports,
+		which will only be visible to logged in users.
+	</p>
+
+	<p style="text-align:center;">
+		<img src="assets/images/menus_interface.jpg" alt="" /><br />
+		The second menu in the list, "Primary Menu - Members Only" is automatically generated by this plugin. If
+		you assign it a menu that is not empty, it will be displayed instead of it's regular version to any logged
+		in user.
+	</p>
+
+	<h1 id="changelog">I) Changelog - <a href="#toc">top</a></h1>
+
+    <p><strong>Version 3.1.4 - August 30, 2012</strong></p>
+
+    <ul>
+        <li>Added not/or keywords to the role option of the members shortcode, syntax: [members role="not:guest,banned"][/members] and [members role="or:editor,author,contributor"] (Thanks to <a href="https://twitter.com/damphlett">Dave Amphlett</a> for the idea)</li>
+    </ul>
+
+    <p><strong>Version 3.1.3 - August 30, 2012</strong></p>
+
+    <ul>
+        <li>Fixed a PHP warning about load_plugin_textdomain using a deprecated argument</li>
+        <li>Fixed a PHP error if no nav menu is set</li>
+        <li>Added a role option to the members shortcode (Use like [members role="administrator"][/members])</li>
+    </ul>
+
+	<p><strong>Version 3.1.2 - December 7, 2011</strong></p>
+
+	<ul>
+		<li>Fixed a PHP error when there are no nav menus</li>
+	</ul>
+
+	<p><strong>Version 3.1.1 - December 7, 2011</strong></p>
+
+	<ul>
+		<li>Fixed a bug that might cause memory issues</li>
+	</ul>
+
+	<p><strong>Version 3.1 - December 7, 2011</strong></p>
+
+	<ul>
+		<li>Custom Post Type section is no longer displayed on the options page if there are no custom post types</li>
+		<li>Members Only Blog now properly restricts the entire site</li>
+		<li>Admins now have the ability to override permissions to prevent lower level users from denying admins access to posts</li>
+		<li>Admins may now create menu widgets that are only visible to members or non-members from the Widgets screen</li>
+		<li>Admins may now create WordPress nav menus that are only visible to members</li>
+		<li>Updated the documentation</li>
+		<li>Added new screenshots</li>
+	</ul>
+
+	<p><strong>Version 3.0.5 - June 6, 2011</strong></p>
+
+	<ul>
+		<li>Fixed the PHP issue properly this time</li>
+	</ul>
+
+	<p><strong>Version 3.0.4 - June 6, 2011</strong></p>
+
+	<ul>
+		<li>Fixed a PHP issue if a second argument wasn't supplied to several functions</li>
+	</ul>
+
+	<p><strong>Version 3.0.3 - June 5, 2011</strong></p>
+
+	<ul>
+		<li>Added an option to apply members settings to all children of a page</li>
+		<li>Fixed a bug where the page navigation for posts/archives was broken</li>
+		<li>Fixed a bug where themes that used the_content on archive/search pages could show all the contents of a post instead of the no excerpt message</li>
+	</ul>
+
+	<p><strong>Version 3.0.2 - June 2, 2011</strong></p>
+
+	<ul>
+		<li>Added do_shortcode commands to allow nested shortcodes in the [members] and [nonmembers] shortcodes</li>
+	</ul>
+
+	<p><strong>Version 3.0.1 - June 1, 2011</strong></p>
+
+	<ul>
+		<li>Fixed an issue where a members only blog with no redirect link specified would cause an infinite loop</li>
+	</ul>
+
+	<p><strong>Version 3.0 - May 26, 2011</strong></p>
+
+	<ul>
+		<li>Added an admin options page</li>
+		<li>Added an option to allow pages to show up in menus even if a user cannot access them</li>
+		<li>Added support to make an entire blog members only</li>
+		<li>Added options to set the defaults of all options for pages and posts</li>
+		<li>Added support for posts</li>
+		<li>Added support for searching/archives</li>
+		<li>Added better support for custom post types</li>
+		<li>Added a redirect_to argument even when using custom redirect links</li>
+		<li>Added [member][/member] and [nonmember][/nonmember] shortcodes</li>
+	</ul>
+
+	<h1 id="credits">J) Sources and Credits - <a href="#toc">top</a></h1>
+
+	<p>
+		<ul>
+			<li>I'd like to thank the <a href="http://wordpress.org/">WordPress community</a> for making such an awesome development platform.</li>
+			<li>Made use of the WordPress codex extensively <a href="http://codex.wordpress.org/">http://codex.wordpress.org/</a></li>
+		</ul>
+	</p>
+</body>
+
+</html>
