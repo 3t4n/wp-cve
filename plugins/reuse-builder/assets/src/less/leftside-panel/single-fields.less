@@ -1,0 +1,168 @@
+/* #6 Form Fields */
+.scwpFormSingleFields{
+  width: 100%;
+  // height: 42px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  // align-items: center;
+  align-items: flex-start;
+  background-color: #ffffff;
+  border: 1px solid @scwp-var-border-color;
+  margin: 5px 0;
+  .scwp--border-radius(0);
+  overflow: hidden;
+  position: relative;
+
+  > div:first-child{
+    position: absolute;
+    z-index: 1;
+  }
+
+  &:first-of-type{
+    margin-top: 20px;
+  }
+
+  &:last-of-type{
+    margin-bottom: 0;
+  }
+
+  &.active{
+    border: 1px solid @scwp-var-color-deep-blue;
+  }
+
+  .scwpSwapBtn{
+    width: 40px;
+    height: 38px;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flex;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    .scwp--border-radius(0);
+
+    &:active{
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+    }
+
+    &:before{
+      content: "\f394";
+      font-family: 'ionicons';
+      font-size: @scwp-var-font-size + 2;
+      color: @scwp-var-dark-gray-color;
+    }
+  }
+
+  .scwpFormFieldsNameDel{
+    width: 100%;
+    // height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-wrap: wrap;
+
+    .scwpFormFieldsName{
+      font-size: @scwp-var-font-size;
+      color: @scwp-var-title-color;
+      font-weight: 700;
+      padding-right: 15px;
+      line-height: 38px;
+      padding-left: 40px;
+      width: calc(~"100% - 30px");
+    }
+
+    .scwpDeleteFieldsBtn{
+      margin-left: auto;
+      width: 30px;
+      height: 38px;
+      border: 0;
+      outline: 0;
+      padding: 0;
+      background-color: #ffffff;
+      cursor: pointer;
+      .scwp--border-radius(0 5px 5px 0);
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &:before{
+        content: '\f2d7';
+        font-family: 'ionicons';
+        font-size: @scwp-var-font-size;
+        color: @scwp-var-text-color;
+        .scwp--transition;
+      }
+
+      &:hover{
+        &:before{
+          color: @scwp-var-red-color;
+        }
+      }
+    }
+  }
+
+  .scwpFormAddFieldsBundle{
+    width: 100%;
+    display: flex;
+
+    > div{
+      width: 100%;
+
+      .scwpAddFieldsBundleWrapper{
+        padding: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+
+        &:after{
+          display: none;
+        }
+
+        .scwpAddBtn{
+          width: 100%;
+          height: 42px;
+          display: -webkit-inline-flex;
+          display: -ms-inline-flex;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          font-size: @scwp-var-font-size;
+          font-weight: 700;
+          color: #ffffff;
+          border: 0;
+          outline: 0;
+          background-color: @scwp-var-color-deep-blue;
+          margin-right: 1px;
+          cursor: pointer;
+          .scwp--transition;
+          .scwp--border-radius(5px);
+
+          &:hover{
+            background-color: darken(@scwp-var-color-deep-blue, 5%);
+          }
+        }
+      }
+
+      .scwpFormFieldsWrapper{
+        .scwpFormSingleFields{
+          &:first-of-type{
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+/* #6 End */

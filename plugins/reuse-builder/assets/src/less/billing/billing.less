@@ -1,0 +1,106 @@
+/*
+BILLING LESS
+*/
+.scwp_payment_details_wrapper{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 30px;
+
+  @media only screen and (max-width: 767px){
+    padding: 0 15px;
+  }
+
+  .scwp_payment_section{
+    width: 100%;
+    padding: 50px 0 70px;
+    border-bottom: 1px solid @scwp-var-border-color;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+
+    @media only screen and (max-width: 767px){
+      width: 100%;
+      flex-direction: column;
+    }
+
+    &:first-of-type{
+      padding-top: 0;
+    }
+
+    &:last-of-type{
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .scwp_payment_title_wrapper{
+      width: 500px;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-right: 150px;
+
+      @media only screen and (max-width: 767px){
+        width: 100%;
+        padding-right: 0;
+      }
+
+      @media only screen and (min-width: 768px) and (max-width: 991px){
+        width: 300px;
+        padding-right: 100px;
+      }
+
+      @media only screen and (min-width: 992px) and (max-width: 1199px){
+        width: 400px;
+        padding-right: 100px;
+      }
+
+      h3{
+        font-size: @scwp-var-font-size + 4;
+        font-weight: 700;
+        line-height: 1.2;
+        color: @scwp-var-purple-color;
+        margin: 0 0 15px;
+      }
+
+      p{
+        font-size: @scwp-var-font-size;
+        font-weight: 400;
+        color: @scwp-var-text-color;
+        margin: 0;
+      }
+    }
+
+    .scwp_payment_setting_wrapper{
+      width: calc(~"100% - 500px");
+      display: flex;
+      flex-direction: column;
+
+      @media only screen and (max-width: 767px){
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      @media only screen and (min-width: 768px) and (max-width: 991px){
+        width: calc(~"100% - 300px");
+      }
+
+      @media only screen and (min-width: 992px) and (max-width: 1199px){
+        width: calc(~"100% - 400px");
+      }
+    }
+  }
+
+  /* Billing Information */
+  @import './billing-information.less';
+
+  /* Billing Invoice */
+  @import './billing-invoice.less';
+}

@@ -1,0 +1,106 @@
+.scwpButton{
+  font-size: @scwp-var-font-size;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 40px;
+  background-color: @scwp-var-darker-color;
+  padding: 0 50px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flex;
+  display: inline-flex;
+  outline: 0;
+  border: 0;
+  position: relative;
+  .scwp--border-radius(5px);
+  .scwp--transition;
+
+  &.scwpLoadingbtn{
+    color: transparent !important;
+    height: 40px;
+
+    // svg{
+    //   path{
+    //     fill: #fff;
+    //     stroke-width: 1px;
+    //     stroke: #fff;
+    //     fill-opacity: 0;
+    //     stroke-opacity: 0;
+    //     -webkit-animation: svg-anim 1s linear;
+    //     animation: svg-anim 1s linear;
+    //     -webkit-animation-iteration-count: infinite;
+    //     animation-iteration-count: infinite;
+    //   }
+    // }
+
+    &:before{
+      position: absolute;
+     content: '';
+     top: 50%;
+     left: 50%;
+     margin: -9px 0 0 -9px;
+     width: 18px;
+     height: 18px;
+     border: 2.5px solid rgba(0,0,0,0.3);
+     .scwp--border-radius(50%);
+    }
+
+    &:after{
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 50%;
+      margin: -9px 0 0 -9px;
+      width: 18px;
+      height: 18px;
+      -webkit-animation: button-spin .6s linear;
+      animation: button-spin .6s linear;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      border-color: #ffffff transparent transparent;
+      border-style: solid;
+      border-width: 2.5px;
+      .scwp--border-radius(50%);
+    }
+  }
+
+  &:hover{
+    background-color: darken(@scwp-var-darker-color, 10%);
+  }
+}
+
+@-webkit-keyframes svg-anim {
+    to {
+      fill-opacity: 1;
+      stroke-opacity: 1;
+    }
+}
+
+@keyframes svg-anim {
+  to {
+    fill-opacity: 1;
+    stroke-opacity: 1;
+  }
+}
+
+
+@-webkit-keyframes button-spin {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes button-spin {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}

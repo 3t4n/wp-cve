@@ -1,0 +1,71 @@
+@import "../../../../../../less/base.less";
+
+.scwpConditionField{
+  width: calc(~"100% / 3 - 3.5px");
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid @scwp-var-border-color;
+  margin: 0 5px 5px 0;
+  .scwp--border-radius(0);
+  position: relative;
+
+  &:nth-child(3n){
+    margin-right: 0;
+  }
+
+  // &:first-of-type{
+  //   margin-top: 20px;
+  // }
+  //
+  // &:last-of-type{
+  //   margin-bottom: 0;
+  // }
+
+  h3{
+    font-size: @scwp-var-font-size;
+    color: @scwp-var-title-color;
+    margin: 0;
+    display: block;
+    padding-left: 20px;
+    line-height: 40px;
+    font-weight: 700;
+    cursor: pointer;
+    width: calc(~"100% - 30px");
+  }
+
+  &.active{
+    border: 1px solid @scwp-var-color-deep-blue;
+  }
+
+  .scwpDeleteCondition{
+    margin-left: auto;
+    width: 30px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    background-color: #ffffff;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &:before{
+      content: '\f2d7';
+      font-family: 'ionicons';
+      font-size: @scwp-var-font-size;
+      color: @scwp-var-text-color;
+      .scwp--transition;
+    }
+
+    &:hover{
+      &:before{
+        color: @scwp-var-red-color;
+      }
+    }
+  }
+}

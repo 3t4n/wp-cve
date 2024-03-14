@@ -1,0 +1,150 @@
+@import './variable.less';
+
+.reuseButton{
+    font-size: @_reuse--FontSize;
+    font-weight: @_reuse--FontWeight-Bold;
+    color: @_reuse--Color-Gray-FDFDFD;
+    display: inline-block;
+    background: none;
+    text-align: center;
+    background-color: @_reuse--Color-Secondary;
+    padding: 0 30px;
+    height: 42px;
+    line-height: 42px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    .reuse--BorderRadius(5px);
+    .reuse--DropShadow(none);
+    .reuse--Transition-BAZIAR(.4s);
+
+    i{
+        font-size: @_reuse--FontSize;
+        line-height: 42px;
+        margin-right: 10px;
+    }
+
+    &:hover{
+        background-color: darken(@_reuse--Color-Secondary, 10%);
+    }
+
+    &:focus{
+      background: none;
+      background-color: @_reuse--Color-Secondary;
+      outline: 0;
+      .reuse--DropShadow(none);
+      border: 0;
+    }
+
+    &:disabled{
+        border: 0;
+        color: @_reuse--TextColor-Light;
+        background-color: @_reuse--Color-Gray-F3F3F3;
+        line-height: 42px;
+
+        i{
+            color: @_reuse--TextColor-Light;
+        }
+
+        &:hover{
+            color: @_reuse--TextColor-Light;
+            background-color: @_reuse--Color-Gray-F3F3F3;
+
+            i{
+                color: @_reuse--TextColor-Light;
+            }
+        }
+    }
+
+    &.reuseOutlineButton{
+      color: @_reuse--Color-Secondary;
+      border: 1px solid @_reuse--Color-Secondary;
+      background-color: transparent;
+      line-height: 40px;
+
+      i{
+          color: @_reuse--Color-Secondary;
+      }
+
+      &:hover{
+          background-color: @_reuse--Color-Secondary;
+          border-color: transparent;
+          color: @_reuse--Color-Gray-FDFDFD;
+
+          i{
+              color: @_reuse--Color-Gray-FDFDFD;
+          }
+      }
+
+      &:disabled{
+          border: 1px solid @_reuse--Color-Gray-BFC4CA;
+          background-color: transparent;
+          color: @_reuse--TextColor-Light;
+
+          i{
+              color: @_reuse--TextColor-Light;
+          }
+
+          &:hover{
+              background-color: transparent;
+              border: 1px solid @_reuse--Color-Gray-BFC4CA;
+              color: @_reuse--TextColor-Light;
+
+              i{
+                  color: @_reuse--TextColor-Light;
+              }
+          }
+      }
+    }
+
+    &.reuseFluidButton{
+      width: 100%;
+    }
+
+    &.reuseFlatButton{
+        .reuse--BorderRadius(0);
+    }
+
+    &.reuseOutlineFlatButton{
+      color: @_reuse--Color-Secondary;
+      border: 1px solid @_reuse--Color-Secondary;
+      background-color: transparent;
+      line-height: 40px;
+      .reuse--BorderRadius(0);
+
+      i{
+          color: @_reuse--Color-Secondary;
+      }
+
+      &:hover{
+          background-color: @_reuse--Color-Secondary;
+          border-color: transparent;
+          color: @_reuse--Color-Gray-FDFDFD;
+
+          i{
+              color: @_reuse--Color-Gray-FDFDFD;
+          }
+      }
+
+      &:disabled{
+          border: 1px solid @_reuse--Color-Gray-BFC4CA;
+          background-color: transparent;
+          color: @_reuse--TextColor-Light;
+
+          i{
+              color: @_reuse--TextColor-Light;
+          }
+
+          &:hover{
+              background-color: transparent;
+              border: 1px solid @_reuse--Color-Gray-BFC4CA;
+              color: @_reuse--TextColor-Light;
+
+              i{
+                  color: @_reuse--TextColor-Light;
+              }
+          }
+      }
+    }
+}

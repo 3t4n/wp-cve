@@ -1,0 +1,61 @@
+@import "../../../../../../less/base.less";
+
+.scwpConditionArrayRelation{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin: 5px 0;
+
+  .scwpRealtionBtn{
+    width: 100px;
+    height: 40px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flex;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: @scwp-var-font-size;
+    font-weight: 700;
+    color: @scwp-var-color-sky-blue;
+    border: 1px solid @scwp-var-color-sky-blue;
+    margin-right: -1px;
+    .scwp--border-radius(5px);
+    position: relative;
+    cursor: pointer;
+
+    &:after{
+      content: 'Relation';
+      font-size: @scwp-var-font-size - 6;
+      line-height: 1;
+      position: absolute;
+      right: 5px;
+      top: 3px;
+    }
+
+    &:last-child{
+      margin-right: 0;
+    }
+
+    &.scwpOrRealtion{
+      // background-color: @scwp-var-color-sky-blue;
+      .scwp--border-radius(5px 0 0 5px);
+    }
+
+    &.scwpNoRealtion{
+      // background-color: @scwp-var-purple-color;
+      .scwp--border-radius(0);
+    }
+
+    &.scwpAndRealtion{
+      // background-color: @scwp-var-color-blue;
+      .scwp--border-radius(0 5px 5px 0);
+    }
+
+    &.active{
+      background-color: @scwp-var-color-sky-blue;
+      color: #ffffff;
+    }
+  }
+}

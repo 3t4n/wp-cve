@@ -1,0 +1,395 @@
+@import './base.less';
+@import './sweetalert.less';
+/*
+#1 Main Wrapper for builder
+*/
+.scwpFormBuilderMainWrapper{
+  width: 100%;
+  height: auto;
+  // height: 700px;
+  min-height: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 20px;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* #4 Panel Heading Wrapper */
+  .scwpPanelHeadingWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 100%;
+    padding: 0 30px 0 0;
+    flex-shrink: 0;
+    background-color: @scwp-var-darker-color;
+
+    > div{
+      height: 100%;
+    }
+
+    h1{
+      font-size: @scwp-var-font-size + 2;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1;
+      padding: 0;
+    }
+
+    a{
+      font-size: @scwp-var-font-size;
+      font-weight: 400;
+      height: 100%;
+      color: #fff;
+      text-decoration: none;
+      padding-right: 25px;
+      padding-left: 25px;
+      position: relative;
+      cursor: pointer;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flex;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      &:before{
+        content: '';
+        width: 1px;
+        height: 100%;
+        background-color: @scwp-var-color-deep-blue;
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      &:last-child{
+        margin-right: 0;
+
+        &:before{
+          display: none;
+        }
+      }
+
+      &.activePanel{
+        // font-weight: 700;
+        color: #fff;
+        position: relative;
+        background-color: @scwp-var-color-deep-blue;
+
+        // &:after{
+        //   content: '';
+        //   width: 6px;
+        //   height: 6px;
+        //   display: inline-block;
+        //   background-color: @scwp-var-yellow-color;
+        //   .scwp--border-radius(50%);
+        //   position: absolute;
+        //   top: 12px;
+        //   right: 16px;
+        // }
+      }
+
+      &:focus{
+        outline: 0;
+        .scwp--drop-shadow(none);
+      }
+    }
+  }
+  /* #4 End */
+
+  /* Left Side Panel */
+  @import './leftside-panel/form-fields-panel.less';
+
+  /* Right Side Panel */
+  @import './rightside-panel/form-settings-panel.less';
+
+  /* Default Plugin Styles Overwrite*/
+  .Select.Select--single.is-searchable{
+    margin-bottom: 0 !important;
+  }
+}
+/* #1 End */
+
+
+/* Input Field */
+.scwpInputField{
+    font-size: @scwp-var-font-size;
+    font-weight: 400;
+    color: #727c87 !important;
+    line-height: 40px;
+    width: 100%;
+    display: block;
+    padding: 0 15px;
+    border: 1px solid #e3e3e3 !important;
+    overflow: hidden;
+    background-color: #ffffff !important;
+    .scwp--drop-shadow(none) !important;
+    .scwp--border-radius(5px);
+    outline: 0 !important;
+    .scwp--transition;
+}
+
+.scholarSettingsBar {
+  width: calc(~"100% - 250px");
+  min-height: 600px;
+  height: auto;
+  background: #FFF;
+  padding: 30px;
+  margin: 100px auto;
+}
+
+
+.scwpNoFieldNotice{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:before{
+    content: '\f272';
+    font-family: 'ionicons';
+    font-size: 190px;
+    color: #f1f1f1;
+    position: absolute;
+  }
+
+  span{
+    font-size: @scwp-var-font-size * 2 + 1;
+    line-height: 1.3;
+    color: #c3c3c3;
+    background-color: @scwp-var-light-gray-color;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+
+
+/*
+CONDITION BUILDER
+*/
+.scwpConditionBuilder{
+  .scwpFormBuilderMainWrapper{
+    width: 100%;
+    height: auto;
+    // height: 700px;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 20px;
+    // background-color: @scwp-var-light-gray-color;
+
+    .scwpFormFieldsMainWrapper{
+      width: 100%;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-right: 0;
+      background-color: @scwp-var-light-gray-color;
+      .scwp--border-radius(0);
+      // border-bottom: 1px dashed #d3d3d3;
+
+      .scwpConditionFieldsWrapper{
+        width: 100%;
+        padding: 15px 15px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;;
+        align-items: flex-start;
+        overflow-y: scroll;
+        flex-wrap: wrap;
+      }
+
+      button.scwpAddFormFields{
+        width: 100%;
+        font-size: @scwp-var-font-size;
+        font-weight: 700;
+        color: #fff;
+        line-height: 42px;
+        background-color: @scwp-var-color-deep-blue;
+        border: 0;
+        outline: 0;
+        padding: 0;
+        .scwp--border-radius(5px);
+        .scwp--transition;
+
+        &:hover{
+          background-color: darken(@scwp-var-color-deep-blue, 5%);
+        }
+      }
+    }
+
+    .scwpFormSettingsMainWrapper{
+      width: 100%;
+      display: flex;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: flex-start;
+      background-color: #ffffff;
+      // margin-top: 20px;
+      .scwp--border-radius(0);
+
+      .scwpLogicPanelHeading{
+        justify-content: center;
+        padding: 0;
+        background-color: #ffffff;
+        .scwp--border-radius(0);
+
+        a{
+          font-weight: 700;
+          font-size: @scwp-var-font-size + 2;
+          font-weight: 700;
+          color: @scwp-var-color-deep-blue;
+          margin: 0;
+          line-height: 1;
+          padding: 0;
+          cursor: text;
+        }
+      }
+
+      .scwpFormSettingsWrapper{
+        padding: 0
+      }
+    }
+  }
+}
+
+.scholar__builder_output{
+  font-size: @scwp-var-font-size;
+  font-weight: 400;
+  color: @scwp-var-darker-color !important;
+  line-height: 40px;
+  width: 100%;
+  display: block;
+  padding: 0 15px;
+  margin-top: 25px;
+  border: 1px solid @scwp-var-border-color !important;
+  overflow: hidden;
+  background-color: @scwp-var-light-gray-color !important;
+  .scwp--drop-shadow(none) !important;
+  .scwp--border-radius(0);
+  outline: 0 !important;
+  .scwp--transition;
+}
+
+.scholar__builder_reuse_form > div{
+  margin-top: 20px;
+  padding: 20px 20px;
+  background-color: @scwp-var-light-gray-color;
+  border: 1px solid @scwp-var-border-color;
+}
+
+/*
+GOOGLE SUGGESTION
+*/
+.pac-container {
+  border-top: 0;
+  -webkit-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  -o-border-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px;
+
+  .pac-item {
+    padding: 5px 15px 5px 18px;
+    cursor: pointer;
+
+    .pac-item-query {
+      color: @scwp-var-title-color !important;
+    }
+
+    &:nth-child(odd) {
+      background-color: #f6f6f6;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    &:hover {
+      background-color: @scwp-var-color-deep-blue !important;
+      color: #ffffff;
+
+      .pac-item-query {
+        color: #ffffff !important;
+      }
+    }
+
+    .pac-icon-marker {
+      display: none;
+    }
+  }
+}
+
+/* Billing Less*/
+@import './billing/billing.less';
+// @import './me.css';
+
+
+
+.wpsl-loader-wrapper{
+  position: fixed;
+}
+
+.scwpSearchComponent{
+    width: 100%;
+    padding: 20px;
+
+    .scwpSearchBar{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: #ffffff;
+      border: 1px solid @scwp-var-border-color;
+
+      input{
+        width: 100%;
+        height: 42px;
+        padding: 0 15px;
+        line-height: 40px;
+        font-size: @scwp-var-font-size;
+        font-weight: 700;
+        color: @scwp-var-text-color;
+        font-weight: 400;
+        border: 0;
+        .scwp--drop-shadow(none);
+      }
+
+      button{
+        width: 40px;
+        height: 42px;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flex;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+
+        &:before{
+          content: '\f2d7';
+          font-family: 'ionicons';
+          font-size: @scwp-var-font-size;
+          color: @scwp-var-text-color;
+          .scwp--transition
+        }
+
+        &:hover{
+          &:before{
+            color: @scwp-var-color-deep-blue;
+          }
+        }
+      }
+    }
+  }

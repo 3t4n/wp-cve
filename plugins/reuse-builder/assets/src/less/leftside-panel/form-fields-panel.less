@@ -1,0 +1,143 @@
+/* #2 Main Wrapper for Forms Fields */
+.scwpFormFieldsMainWrapper{
+  width: 230px;
+  // overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 20px;
+  background-color: @scwp-var-light-gray-color;
+  .scwp--border-radius(0);
+
+  /* #4 Panel Heading Wrapper */
+  .scwpPanelHeadingWrapper{
+    .scwp--border-radius(0);
+  }
+  /* #4 End */
+
+  /* #5 Wrapper for Forms Fields */
+  .scwpFormFieldsWrapper{
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+
+    /* #7 Form Fields */
+    @import './single-fields.less';
+    /* #7 End */
+  }
+
+  .scwpConditionFieldsWrapper{
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+  }
+  /* #5 End */
+
+  /* #6 Add Form Fields Btn */
+  .scwpAddFieldsBundleWrapper{
+    padding: 15px 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+    &:after{
+      content: 'Add';
+      font-size: @scwp-var-font-size - 3;
+      font-weight: 700;
+      color: @scwp-var-light-deep-blue-color;
+      width: 32px;
+      height: 32px;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flex;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: @scwp-var-light-gray-color;
+      position: absolute;
+      left: calc(~"50% - 17px");
+      .scwp--border-radius(50%)
+    }
+
+    .scwpAddBtn{
+      width: calc(~"100% / 2 - 0.5px");
+      height: 42px;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flex;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-size: @scwp-var-font-size;
+      font-weight: 700;
+      color: #ffffff;
+      border: 0;
+      outline: 0;
+      background-color: @scwp-var-darker-color;
+      margin-right: 1px;
+      cursor: pointer;
+      .scwp--transition;
+
+      &:first-of-type{
+        .scwp--border-radius(5px 0 0 5px);
+      }
+
+      &:last-of-type{
+        margin-right: 0px;
+        .scwp--border-radius(0 5px 5px 0)
+      }
+
+
+      &.scwpAddFormFields{
+        background-color: @scwp-var-color-deep-blue;
+        &:hover{
+          background-color: darken(@scwp-var-color-deep-blue, 5%);
+        }
+      }
+
+      &.scwpAddFormBundle{
+        background-color: @scwp-var-light-deep-blue-color;
+        &:hover{
+          background-color: darken(@scwp-var-light-deep-blue-color, 5%);
+        }
+      }
+    }
+
+    // button.scwpAddBtn{
+    //   width: 100%;
+    //   font-size: @scwp-var-font-size;
+    //   font-weight: 700;
+    //   color: #fff;
+    //   line-height: 42px;
+    //   background-color: @scwp-var-color-deep-blue;
+    //   border: 0;
+    //   outline: 0;
+    //   padding: 0;
+    //   .scwp--border-radius(0);
+    //   .scwp--transition;
+    //
+    //   &:hover{
+    //     background-color: darken(@scwp-var-color-deep-blue, 5%);
+    //   }
+    // }
+  }
+
+  .scwpAddFieldsWrapper{
+    padding: 15px 15px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+  }
+  /* #6 End */
+}
+/* #2 End */

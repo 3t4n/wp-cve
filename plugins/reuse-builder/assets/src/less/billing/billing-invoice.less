@@ -1,0 +1,80 @@
+/*
+Billing Invoices
+*/
+.scwp_table_title{
+  font-size: @scwp-var-font-size + 4;
+  font-weight: 700;
+  line-height: 1.2;
+  color: @scwp-var-light-deep-blue-color;
+  margin: 0 0 30px;
+}
+
+.scwp_table{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .scwp_table_row{
+    display: flex;
+    padding: 10px 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid @scwp-var-border-color;
+
+    &:first-of-type{
+      padding-top: 0;
+    }
+
+    &:last-of-type{
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .scwp_table_heading{
+      font-size: @scwp-var-font-size + 2;
+      font-weight: 700;
+      line-height: 1.2;
+      color: @scwp-var-purple-color;
+      margin: 0px;
+      text-decoration: underline;
+      flex-basis: 33.333%;
+      .scwp--transition;
+
+      &:hover{
+        color: darken(@scwp-var-purple-color, 5%);
+      }
+    }
+
+    .scwp_table_data{
+      font-size: @scwp-var-font-size + 2;
+      font-weight: 400;
+      line-height: 1.2;
+      color: @scwp-var-text-color;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flex;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-basis: 33.333%;
+
+      &.scwp_billing_amount{
+        &:before{
+          content: '$';
+          font-size: inherit;
+          color: inherit;
+        }
+      }
+
+      &.scwp_payment_status{
+        justify-content: flex-end;
+        text-transform: uppercase;
+        color: @scwp-var-color-sky-blue;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+/*
+Variables For Form Builder
+*/
+
+@scwp-var-font-size: 14px; // Font size
+@scwp-var-text-color: #888; // Text color
+@scwp-var-title-color: #727c87; // Title Color
+@scwp-var-darker-color: #32373c; // Darken Color
+@scwp-var-darker-light-color: #3e444a; // Darken Color
+@scwp-var-gray-color: #eeeeee; // Gray Color
+@scwp-var-light-gray-color: #fafafa; // Light Gray Color
+@scwp-var-dark-gray-color: #cecece; // Dark Gray Color
+@scwp-var-ash-color: #dddddd; // Ash Dark Color
+@scwp-var-border-color: #e8e8e8; // Ash Dark Color
+@scwp-var-dark-deep-blue-color: #1D1D28; // Dark Deep Blue
+@scwp-var-light-deep-blue-color: #595E80; // Light Deep Blue
+@scwp-var-red-color: #fc4a52; //Red Color
+@scwp-var-yellow-color: #f9bf3b; //Red Color
+@scwp-var-purple-color: #7e57c2; //purple Color
+
+@scwp-var-color-1: #4A515F; //purple Color
+
+
+@scwp-var-color-sky-blue: #6491e6; //blue Color
+@scwp-var-color-deep-blue: #506DAD; //blue Color
+@scwp-var-color-blue: #183DA7; //blue Color
+@scwp-var-color-text: #847B86; //blue Color
+
+
+/*
+Mixins For Form Builder
+*/
+// TRANSITION
+.scwp--transition (@prop : all, @time : .35s){
+  -webkit-transition: @prop @time ease;
+     -moz-transition: @prop @time ease;
+      -ms-transition: @prop @time ease;
+       -o-transition: @prop @time ease;
+          transition: @prop @time ease;
+}
+
+.scwp--baziar-transition (@btime : .8s){
+  -webkit-transition: all @btime cubic-bezier(.28,.75,.25,1);
+     -moz-transition: all @btime cubic-bezier(.28,.75,.25,1);
+       -ms-transition: all @btime cubic-bezier(.28,.75,.25,1);
+          -o-transition: all @btime cubic-bezier(.28,.75,.25,1);
+              transition: all @btime cubic-bezier(.28,.75,.25,1);
+}
+
+// BORDER RADIUS
+.scwp--border-radius (@radius : 5px 5px 5px 5px){
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+       -o-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// DROP SHADOW
+.scwp--drop-shadow (@values){
+  -webkit-box-shadow: @values;
+     -moz-box-shadow: @values;
+          box-shadow: @values;
+}
+
+// TRANSFORM
+.scwp--transform (@transformValue){
+  -webkit-transform: @transformValue;
+     -moz-transform: @transformValue;
+      -ms-transform: @transformValue;
+       -o-transform: @transformValue;
+          transform: @transformValue;
+}
+
+// Responsive Utilities
+@smartphone_port : ~"only screen and (max-width: 767px)";
+@smartphone_land : ~"only screen and (min-width: 480px) and (max-width: 767px)";
+@tablet_port : ~"only screen and (min-width: 768px) and (max-width: 991px)";
+@tablet_land : ~"only screen and (min-width: 992px) and (max-width: 1199px)";
+@larger_res : ~"only screen and (min-width: 1600px) and (max-width: 2800px)";
