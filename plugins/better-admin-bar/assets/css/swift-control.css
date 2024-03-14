@@ -1,0 +1,332 @@
+@-webkit-keyframes slidingArrow {
+	from {
+		left: 62px;
+	}
+
+	to {
+		left: 70px;
+	}
+}
+
+@keyframes slidingArrow {
+	from {
+		left: 62px;
+	}
+
+	to {
+		left: 70px;
+	}
+}
+
+@-webkit-keyframes slidingArrowReversed {
+	from {
+		right: 62px;
+	}
+
+	to {
+		right: 70px;
+	}
+}
+
+@keyframes slidingArrowReversed {
+	from {
+		right: 62px;
+	}
+
+	to {
+		right: 70px;
+	}
+}
+
+@keyframes helperPanelOpacity {
+	0% {
+		opacity: 0.4;
+	}
+
+	100% {
+		opacity: 0.2;
+	}
+}
+
+body.has-swift-control {
+	height: auto;
+}
+
+.swift-control-widgets.is-pinned-right.is-hidden-mode {
+	left: 100%;
+}
+
+.swift-control-widgets.is-hidden-mode:not(.is-pinned-right) {
+	left: -55px;
+}
+
+.swift-control-widgets.is-adjusting {
+	transition-property: all;
+	transition-duration: 350;
+}
+
+.swift-control-widgets.is-hidden {
+	display: none;
+}
+
+.swift-control-widgets.is-invisible {
+	opacity: 0;
+}
+
+.swift-control-widgets {
+	position: fixed;
+	left: 0;
+	top: 50%;
+	list-style: none;
+	margin: -27.5px 0 0;
+	padding: 0;
+	width: 55px;
+	height: 55px;
+	opacity: 1;
+	touch-action: none;
+	user-select: none;
+	/* Must be on top of .wpbf-navigation (z-index: 555) and #wpadminbar (z-index: 99999) */
+	z-index: 100000;
+	transition: left 0.35s, opacity 0.25s;
+}
+
+.swift-control-widgets .swift-control-widget-setting .swift-control-widget-link {
+	background-color: #860ee6;
+}
+
+.swift-control-widgets .swift-control-widget-setting .swift-control-widget-link:hover {
+	background-color: #860ee6;
+}
+
+.swift-control-widgets .swift-control-widget-setting a {
+	color: #fff;
+}
+
+.swift-control-widgets.is-hidden-mode .swift-control-widget-setting::after,
+.swift-control-widgets.is-expanded .swift-control-widget-setting::after {
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.swift-control-widgets.is-dragged-right .swift-control-widget-setting::after,
+.swift-control-widgets.is-pinned-right .swift-control-widget-setting::after {
+	left: auto;
+	right: 62px;
+	content: "\f061";
+	-webkit-animation: slidingArrowReversed 1s ease-in-out infinite alternate;
+	animation: slidingArrowReversed 1s ease-in-out infinite alternate;
+}
+
+.swift-control-widgets.is-dragged-left .swift-control-widget-setting::after {
+	left: 62px;
+	right: auto;
+	content: "\f060";
+	-webkit-animation: slidingArrow 1s ease-in-out infinite alternate;
+	animation: slidingArrow 1s ease-in-out infinite alternate;
+}
+
+.swift-control-widgets.has-arrow .swift-control-widget-setting::after {
+	display: inline-block;
+}
+
+.swift-control-widgets .swift-control-widget-setting::after {
+	display: none;
+	position: absolute;
+	left: 62px;
+	content: "\f060";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	color: #860ee6;
+	-webkit-animation: slidingArrow 1s ease-in-out infinite alternate;
+	animation: slidingArrow 1s ease-in-out infinite alternate;
+	-webkit-transition: all 1s;
+	transition: all 1s;
+}
+
+.swift-control-widgets.is-pinned-right.is-expanded .swift-control-widget-item {
+	left: auto;
+	right: 0;
+}
+
+.swift-control-widgets.is-expanded .swift-control-widget-item {
+	left: 0;
+	opacity: 1;
+	visibility: visible;
+}
+
+.swift-control-widgets.is-pinned-right .swift-control-widget-item {
+	left: auto;
+	right: -55px;
+}
+
+.swift-control-widgets .swift-control-widget-item {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	position: relative;
+	left: -55px;
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.35s;
+}
+
+.swift-control-widgets.is-pinned-right .swift-control-widget-setting {
+	left: auto;
+	right: 0;
+}
+
+.swift-control-widgets .swift-control-widget-setting {
+	left: 0;
+	opacity: 1;
+	visibility: visible;
+}
+
+.swift-control-widgets .swift-control-widget-setting .swift-control-widget-link {
+	border-top-width: 0;
+}
+
+.swift-control-widgets .swift-control-widget-link {
+	display: inline-block;
+	width: 55px;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	color: #616666;
+	background-color: #f5f5f7;
+	border-top: 1px solid #e1e1e7;
+}
+
+.swift-control-widgets .swift-control-widget-link:hover {
+	background-color: #ededf0;
+}
+
+.swift-control-widgets .is-disabled .swift-control-widget-link i {
+	opacity: .4;
+}
+
+.swift-control-widgets .is-disabled .swift-control-widget-title {
+	background-color: #bbb;
+}
+
+.swift-control-widgets.is-pinned-right .swift-control-widget-title {
+	left: auto;
+	right: 55px;
+	margin-right: 0;
+}
+
+.swift-control-widgets .swift-control-widget-title {
+	position: absolute;
+	left: 55px;
+	margin-left: 0;
+	padding: 7px 10px;
+	width: max-content;
+	line-height: 1;
+	font-size: 12px !important;
+	font-weight: 400 !important;
+	color: #fff;
+	background-color: rgba(62, 67, 73, 0.8);
+	border-radius: 4px;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+
+.swift-control-widgets.is-pinned-right .swift-control-widget-link:hover + .swift-control-widget-title {
+	margin-left: auto;
+	margin-right: 9px;
+}
+
+.swift-control-widgets .swift-control-widget-link:hover + .swift-control-widget-title {
+	margin-left: 9px;
+	visibility: visible;
+	opacity: 1;
+}
+
+/* Draggable */
+.moveable-control-box {
+	overflow: hidden;
+}
+
+.swift-control-helper-panels {
+	z-index: 999; /* Should be under the swift control menu. */
+}
+
+.swift-control-helper-panels .helper-panel {
+	position: fixed;
+	background-color: #860ee6;
+	animation: helperPanelOpacity 1.5s ease-in-out infinite alternate;
+	opacity: 0.4;
+	z-index: 999; /* Should be on top of pbf topbar. */
+}
+
+.swift-control-helper-panels .vertical-panel {
+	top: 0;
+	width: 35px;
+	height: 100%;
+	transition: width 0.35s;
+}
+
+.swift-control-helper-panels .horizontal-panel {
+	top: 50%;
+	width: 100%;
+	height: 1px;
+	opacity: 0;
+	transition: height 0.35s;
+	animation: none;
+}
+
+.swift-control-helper-panels .left-panel {
+	left: 0;
+}
+
+.swift-control-helper-panels .center-panel {
+	width: 1px;
+	left: 50%;
+	margin-left: -0.5px;
+	opacity: 0;
+	animation: none;
+}
+
+/* for dev only */
+.developer-mode .swift-control-helper-panels .horizontal-panel,
+.developer-mode .swift-control-helper-panels .center-panel {
+	opacity: 0.4;
+	animation: helperPanelOpacity 1.5s ease-in-out infinite alternate;
+}
+
+.swift-control-helper-panels .right-panel {
+	right: 0;
+}
+
+.swift-control-helper-panels .top-panel {
+	top: 0;
+}
+
+.swift-control-helper-panels .bottom-panel {
+	bottom: 0;
+}
+
+.swift-control-helper-panels .top-middle-panel {
+	margin-top: -27px;
+}
+
+.swift-control-helper-panels .middle-panel.is-shown {
+	display: block;
+}
+
+.swift-control-helper-panels .middle-panel {
+	display: none;
+	height: 55px;
+	margin-top: -27px;
+}
+
+.swift-control-helper-panels .bottom-middle-panel {
+	margin-top: 27px;
+}
