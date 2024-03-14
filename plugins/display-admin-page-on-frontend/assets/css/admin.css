@@ -1,0 +1,51 @@
+/**
+Material theme
+*/
+body[class*="material"]:not(.wp-customizer):not(.vc_editor) #wpbody-content {
+	margin: 0;
+}
+@media only screen and (max-width: 1223px) and (min-width: 783px){
+	body[class*="material"]:not(.wp-customizer) #wpbody-content, 
+	body[class*="material"] #screen-meta-links {
+		width: 100%!important;
+	}
+}
+body[class*="material"] div#parallax-main-block {
+	display: none;
+}
+/*WPForms*/
+@media screen and (max-width: 782px){
+	.vgfa-page-wpforms-entries .wp-list-table tr:not(.inline-edit-row):not(.no-items) td[class*="wpforms_field"]:nth-child(-n+4) {
+		display: inline-block !important;
+
+	}
+	.vgfa-page-wpforms-entries .wp-list-table tr:not(.inline-edit-row):not(.no-items) td:not(.check-column) {
+		left: -43px;
+	}
+}
+/*GiveWP*/
+/*Remove logo*/
+.give_forms_page_give-subscriptions #give-subscription-details-h1:before, .give_forms_page_give-subscriptions #give-subscription-list-h1:before, .give_forms_page_give-subscriptions .wp-heading-inline:before, .post-type-give_forms #give-subscription-details-h1:before, .post-type-give_forms #give-subscription-list-h1:before, .post-type-give_forms .wp-heading-inline:before {
+    display: none;
+}
+#give-admin-donation-forms-root > article > div > svg {
+    display: none;
+}
+.give_forms_page_give-subscriptions #wpbody:after, 
+.post-type-give_forms #wpbody:after {
+    display: none;
+}
+/*FIX. TinyMCE editors show tooltips when hovering over some toolbar icons, but the tooltips make the page a little taller causing the iframe to flicker
+so we will hide the tooltips so the iframe won't change height and won't flicker anymore*/
+.mce-widget.mce-tooltip.mce-tooltip-n {
+	display: none !important;
+}
+
+/*FIX. The Gutenberg editor doesn't show the publish button in the prepublish sidebar on iPhone +7 because the top bar of Gutenberg is fixed on top*/
+body.mobile .edit-post-layout.is-sidebar-opened .interface-interface-skeleton__header {
+    display: none;
+}
+/*FIX. The plugin "AI Engine: ChatGPT, GPT3 Content & Image Generator, Playground" uses min-height: 100vh causing an ever-growing div"*/
+main.mantine-AppShell-main {
+    min-height: 800px !important;
+}
