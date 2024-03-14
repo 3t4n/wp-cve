@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+/**
+ * Stylesheet for admin settings
+ *
+ * @version 2018-04-07
+ */
+
+h1 {
+  padding: 50px 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+p {
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+main {
+  min-width: 320px;
+  max-width: 800px;
+  padding: 50px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+section {
+    display: none;
+    padding: 0px 0 0;
+    border: 2px solid #ffa500;
+}
+
+input#tab1 {
+    display: none;
+}
+
+input#tab2 {
+    display: none;
+}
+
+input#tab3 {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+label[for*='1']:before { content: '\f1d8'; }
+label[for*='2']:before { content: '\f09d'; }
+
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+    color: #ffa500;
+    border-top: 2px solid orange;
+    border-left: 3px solid orange;
+}
+
+#tab1:checked ~ #freever,
+#tab2:checked ~ #prover{
+  display: block;
+}
+
+#tgch_activer{
+    background-image: linear-gradient(to bottom, #460088 0px, #4600889e 100%);
+    color: white;
+    height: 27px;
+    border-color: #460088;
+}
+
+@media screen and (max-width: 650px) {
+  label {
+    font-size: 0;
+  }
+  label:before {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  label {
+    padding: 15px;
+  }
+}
