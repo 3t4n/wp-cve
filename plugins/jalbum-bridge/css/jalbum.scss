@@ -1,0 +1,1382 @@
+@charset "UTF-8";
+
+/****************************************
+ *
+ *	jalbum.scss - jalbum projector styles
+ *
+ ****************************************/
+
+	/* SCSS Constants */
+
+	// Gaps
+	$gap0: 			0.15625rem;
+	$gap1: 			0.3125rem;
+	$gap2: 			0.625rem;
+	$gap3: 			0.9375rem;
+	$gap4: 			1.25rem;
+	$gap5: 			1.5625rem;
+	$gap6: 			1.875rem;
+	$gap7: 			2.1875rem;
+	$gap8: 			2.5rem;
+	$gap9: 			2.8125rem;
+	$gap10: 		3.125rem;
+	$br: 			5px;
+	
+	// Shades
+	$darken10: 		rgba(0,0,0,0.1);
+	$darken20: 		rgba(0,0,0,0.2);
+	$darken30: 		rgba(0,0,0,0.3);
+	$darken40: 		rgba(0,0,0,0.4);
+	$darken50: 		rgba(0,0,0,0.5);
+	$darken60: 		rgba(0,0,0,0.6);
+	$darken70: 		rgba(0,0,0,0.7);
+	$darken80: 		rgba(0,0,0,0.8);
+	$darken90: 		rgba(0,0,0,0.9);
+	$lighten10: 	rgba(255,255,255,0.1);
+	$lighten20: 	rgba(255,255,255,0.2);
+	$lighten30: 	rgba(255,255,255,0.3);
+	$lighten40: 	rgba(255,255,255,0.4);
+	$lighten50: 	rgba(255,255,255,0.5);
+	$lighten60: 	rgba(255,255,255,0.6);
+	$lighten70: 	rgba(255,255,255,0.7);
+	$lighten80: 	rgba(255,255,255,0.8);
+	$lighten90: 	rgba(255,255,255,0.9);
+
+	// Font sizes
+	$fontXXS:		.6875em;
+	$fontXS:		.75em;
+	$fontS:			.875em;
+	$fontM:			1em;
+	$fontL:			1.143em;
+	$fontXL:		1.333em;
+	$fontXXL:		1.455em;
+	
+	// Transitions
+	$trQ:			300ms;
+	$trM:			600ms;
+	$trL:			1000ms;
+	
+	// Breakpoints: must be in sync with foundation breakpoints
+	$bp_small: 		30em;
+	$bp_medium: 	40em;
+	$bp_large: 		64em;
+	$bp_xlarge: 	75em;
+	$bp_xxlarge: 	90em;
+
+	//-------------------- Mixins
+	
+	@mixin touch-action ($value) {
+		-ms-touch-action: $value;
+		touch-action: $value;
+	}
+	
+	@mixin user-select ($on) {
+		-webkit-user-select: $on;
+		-moz-user-select: $on;
+		user-select: $on;
+	}
+	
+	@mixin transform ($transforms) {
+		-webkit-transform: $transforms;
+		transform: $transforms;
+	}
+	
+	@mixin transform-origin ($origin) {
+		-moz-transform-origin: $origin;
+		-webkit-transform-origin: $origin;
+		transform-origin: $origin;
+	}
+	
+	@mixin rotate ($deg) {
+		@include transform(rotate(#{$deg}deg));
+	}
+	
+	@mixin scale ($scale) {
+		@include transform(scale($scale));
+	} 
+	
+	@mixin translate ($x, $y) {
+		@include transform(translate($x, $y));
+	}
+	
+	@mixin translateX ($x) {
+		@include transform(translateX($x));
+	}
+	
+	@mixin translateY ($y) {
+		@include transform(translateY($y));
+	}
+	
+	@mixin rotate-and-translate-y ($deg, $y) {
+		-moz-transform: rotate(#{$deg}deg) translateY(#{$y}px);
+		-ms-transform: rotate(#{$deg}deg) translateY(#{$y}px);
+		-webkit-transform: rotate(#{$deg}deg) translateY(#{$y}px);
+		transform: rotate(#{$deg}deg) translateY(#{$y}px);
+	}
+	
+	@mixin skew ($x, $y) {
+		@include transform(skew(#{$x}deg, #{$y}deg));
+	}
+	
+	@mixin backface-visibility ($param) {
+		-moz-backface-visibility: $param;
+		-webkit-backface-visibility: $param;
+		backface-visibility: $param;
+	}
+	
+	@mixin animation ($param) {
+		-moz-animation: $param;
+		-webkit-animation: $param;
+		animation: $param;
+	}
+	
+	@mixin transition ($args...) {
+		transition: $args;
+	}
+	
+	@mixin transition-transform ($param) {
+		transition: transform $param;
+	}
+	
+	@mixin perspective ($param) {
+		-moz-perspective: $param;
+		-webkit-perspective: $param;
+		perspective: $param;
+	}
+	
+	@mixin transform-style ($param) {
+		-moz-transform-style: $param;
+		-webkit-transform-style: $param;
+		transform-style: $param;
+	}
+	
+	@function is-direction ($value) {
+		$is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+		$is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+		
+		@return $is-keyword or $is-angle;
+	}
+	
+	@mixin linear-gradient ($direction, $color-stops...) {
+		@if is-direction($direction) == false {
+			$color-stops: $direction, $color-stops;
+			$direction: 180deg;
+		}
+		
+		background: nth(nth($color-stops, 1), 1);
+		background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+		background: linear-gradient($direction, $color-stops);
+	}
+	
+/* Real SCSS starts here */
+
+/* This one is needed to fix headline spacing in the Editor */
+.editor-styles-wrapper .wp-block .jalbum .jtitle {
+	h1, h2, h3, h4, h5, h6 {
+		margin: 0;
+	}
+}
+
+/* Align types: center, wide and full */
+.jalbum-block.aligncenter {
+	.jalbum {
+		&.threedee {
+			@include perspective(44em);
+			&.book,
+			&.coverflow {
+				@include perspective(none);
+				.jcards {
+					@include perspective(44em);
+				}
+			}
+		}
+	}
+}
+
+.jalbum-block.alignwide {
+	.jalbum {
+		&.threedee {
+			@include perspective(88em);
+			&.book,
+			&.coverflow {
+				@include perspective(none);
+				.jcards {
+					@include perspective(88em);
+				}
+			}
+		}
+	}
+}
+
+.jalbum-block.alignfull {
+	.jalbum {
+		&.threedee {
+			@include perspective(100em);
+			&.book,
+			&.coverflow {
+				@include perspective(none);
+				.jcards {
+					@include perspective(100em);
+				}
+			}
+		}
+	}
+}
+
+/* The jAlbum projector styles */
+.jalbum {
+	box-sizing: border-box;
+	position: relative;
+	width: 100%;
+	height: 1px;
+	padding-bottom: 75%;
+	background-color: transparent;
+	z-index: 1;
+	&.jerror {
+		padding: 1rem 2rem !important;
+		height: auto;
+		background-color: #900;
+		h4, h5, h6 {
+			color: white;
+		}
+		p {
+			font-family: Courier, 'Courier New', monospaced;
+			font-weight: bold;
+			font-size: 1rem;
+			color: white;
+		}
+	}
+	&.threedee {
+		background-color: transparent;
+		.jcards {
+			@include transform-style(preserve-3d);
+			.jcard {
+				@include backface-visibility(hidden);
+			}
+		}
+		&.book {
+			@include perspective(none);
+			.jcards {
+				@include transform-style(flat);
+			}
+		}
+		&.flip {
+			.jcards {
+				.jcard {
+					@include backface-visibility(visible);
+				}
+			}
+		}
+		&.coverflow {
+			@include perspective(none);
+			.jcards {
+				@include transform-style(flat);
+			}
+		}
+	}
+	.jtitle {
+		display: block;
+		box-sizing: border-box;
+		position: absolute;
+		overflow: hidden;
+		z-index: 99;
+		transition: all 500ms ease;
+		> * {
+			margin: 0;
+			display: inline-block;
+			padding: 0.75rem 1rem;
+		}
+		&.linked {
+			h1, h2, h3, h4, h5, h6 {
+				cursor: pointer;
+				&.linkicon:after {
+					content: ' ';
+					display: inline-block;
+					vertical-align: middle;
+					width: .75em;
+					height: .75em;
+					margin-left: .15em;
+					background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='20px' height='20px' viewBox='0 0 20 20' enable-background='new 0 0 20 20' xml:space='preserve'%3E%3Cpath fill='%2399BBFF' d='M14,8.121V17H3V6h8.879l-1,1H4v9h9V9.121L14,8.121z M10.343,8.95l0.707,0.707L17,3.707l0,3.414l1,0L18,2l-5.121,0v1l3.414,0L10.343,8.95z'/%3E%3C/svg%3E");
+					background-position: center center;
+					background-repeat: no-repeat;
+				}
+			}
+		}
+		h1, h2, h3, h4, h5, h6, p {
+			margin: 0;
+		}
+		p {
+			font-size: $fontS;
+			clear: left;
+		}
+		.slidein {
+			display: block;
+			opacity: 0;
+			@include transition(all 500ms ease-out);
+		}
+		&:hover {
+			.slidein {
+				opacity: 1;
+				@include transform(translate(0,0) !important);
+			}
+		}
+		&.left {
+			left: 0;
+			.slidein {
+				@include transform(translateX(-100%));
+			}
+		}
+		&.center {
+			left: 50%;
+			text-align: center;
+			transform: translateX(-50%);
+			.slidein {
+				@include transform(translateY(-100%));
+			}
+		}
+		&.center.middle {
+			@include transform(translate(-50%, -50%));
+		}
+		&.right {
+			left: auto;
+			right: 0;
+			text-align: right;
+			> * {
+				float: right;
+			}
+			.slidein {
+				@include transform(translateX(100%));
+			}
+		}
+		&.middle {
+			top: 50%;
+			@include transform(translateY(-50%));
+		}
+		&.top {
+			top: 0;
+		}
+		&.bottom {
+			top: auto;
+			bottom: 0;
+		}
+		&.white {
+			> * {
+				background-color: white;
+				color: #222;
+			}
+		}
+		&.light {
+			> * {
+				background-color: rgba(255,255,255,0.8);
+				color: #111;
+			}
+			&:hover > * {
+				background-color: white;
+			}
+		}
+		&.transparent {
+			color: #eee;
+			&:hover > * {
+				background-color: rgba(0,0,0,0.3);
+			}
+		}
+		&.dark {
+			> * {
+				color: #ddd;
+				background-color: rgba(0,0,0,.85);
+			}
+			&:hover > * {
+				background-color: black;
+			}
+		}
+		&.black {
+			> * {
+				color: #ccc;
+				background-color: black;
+			}
+		}
+		&.small {
+			font-size: $fontS;
+		}
+	}
+	.jcards {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		.jcard {
+			overflow: hidden;
+			box-sizing: border-box;
+			img, audio, video {
+				max-width: none;
+				position: absolute;
+			}
+			.jcaption {
+				position: absolute;
+				padding: 0;
+				overflow: hidden;
+				font-size: 87.5%;
+				> * {
+					display: inline-block;
+					margin: 0;
+					padding: 0.5rem 0.75rem;
+				}
+				h1, h2, h3, h4, h5, h6 {
+					//font-weight: normal;
+					font-size: 87.5%;
+					margin: 0;
+				}
+				p {
+					margin: .2em 0 0 0;
+					font-size: $fontXS;
+				}
+				&.left {
+					text-align: left;
+					left: 0;
+				}
+				&.center {
+					left: 50%;
+					text-align: center;
+					@include transform(translateX(-50%));
+				}
+				&.right {
+					text-align: right;
+					right: 0;
+				}
+				&.top {
+					top: 0;
+				}
+				&.middle {
+					top: 50%;
+					@include transform(translateY(-50%));
+				}
+				&.center.middle {
+					@include transform(translate(-50%,-50%));
+				}
+				&.bottom {
+					bottom: 0;
+				}
+				&.white {
+					background-color: white;
+					> *,
+					h1, h2, h3, h4, h5, h6 {
+						color: #222;
+					}
+				}
+				&.light {
+					background-color: rgba(255,255,255,0.8);
+					&:hover {
+						background-color: white;
+					}
+					> *,
+					h1, h2, h3, h4, h5, h6 {
+						color: #111;
+					}
+				}
+				&.transparent {
+					&:hover {
+						background-color: rgba(0,0,0,0.3);
+					}
+					> *,
+					h1, h2, h3, h4, h5, h6 {
+						color: #eee;
+					}
+				}
+				&.dark {
+					background-color: rgba(0,0,0,.85);
+					&:hover {
+						background-color: black;
+					}
+					> *,
+					h1, h2, h3, h4, h5, h6 {
+						color: #ddd;
+					}
+				}
+				&.black {
+					background-color: black;
+					> *,
+					h1, h2, h3, h4, h5, h6 {
+						color: #ccc;
+					}
+				}
+			}
+			&.folder {
+				.jcaption {
+					padding-left: 20px;
+					background-image: url(../img/folder.svg);
+					background-position: 6px 6px;
+					background-repeat: no-repeat;
+					background-size: 20px 20px;
+					h1, h2, h3, h4, h5, h6 {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+	&.grid-like {
+		&.gap-thin {
+			.jtitle {
+				&.left {
+					left: 1px;
+				}
+				&.right {
+					right: 1px;
+				}
+				&.top {
+					top: 1px;
+				}
+				&.bottom {
+					bottom: 1px;
+				}
+			}
+			.jcard {
+				border: 1px solid transparent;
+			}
+		}
+		&.gap-small {
+			.jtitle {
+				&.left {
+					left: 2px;
+				}
+				&.right {
+					right: 2px;
+				}
+				&.top {
+					top: 2px;
+				}
+				&.bottom {
+					bottom: 2px;
+				}
+			}
+			.jcard {
+				border: 2px solid transparent;
+			}
+		}
+		&.gap-medium {
+			.jtitle {
+				&.left {
+					left: 4px;
+				}
+				&.right {
+					right: 4px;
+				}
+				&.top {
+					top: 4px;
+				}
+				&.bottom {
+					bottom: 4px;
+				}
+			}
+			.jcard {
+				border: 4px solid transparent;
+			}
+		}
+		&.gap-large {
+			.jtitle {
+				&.left {
+					left: 8px;
+				}
+				&.right {
+					right: 8px;
+				}
+				&.top {
+					top: 8px;
+				}
+				&.bottom {
+					bottom: 8px;
+				}
+			}
+			.jcard {
+				border: 8px solid transparent;
+			}
+		}
+		&.gap-xlarge {
+			.jtitle {
+				&.left {
+					left: 12px;
+				}
+				&.right {
+					right: 12px;
+				}
+				&.top {
+					top: 12px;
+				}
+				&.bottom {
+					bottom: 12px;
+				}
+			}
+			.jcard{
+				border: 12px solid transparent;
+			}
+		}
+		.jcards {
+			.jcard {
+				display: inline-block;
+				vertical-align: top;
+				.jcaption {
+					max-height: 60%;
+					background-position: 6px 4px;
+					> * {
+						font-size: 68.75%;
+					}
+				}
+				img {
+					@include transition(all $trL ease);
+				}
+				&:hover {
+					img {
+						@include transform(scale(1.05));
+					}
+				}
+			}
+		}
+	}
+	&.slider-like {
+		.jcards {
+			.jcard {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+		}
+	}
+	.jcards {
+		&.crossfade {
+			overflow: hidden;
+			img {
+				@include transition(transform 1s ease);
+			}
+			&:hover {
+				img {
+					@include transform(scale(1.05));
+				}
+			}
+		}
+		&.zoom {
+			.jcard {
+			}
+		}
+		&.stack {
+			.jcard {
+				@include transform(scale(0.92));
+			}
+		}
+		&.kenburns {
+			overflow: hidden;
+		}
+		&.slide {
+			overflow: hidden;
+		}
+		&.swap {
+		}
+		&.carousel {
+			.jcard {
+				position: absolute;
+				text-align: center;
+				opacity: .6;
+				left: 34%;
+				top: 0%;
+				width: 32%;
+				height: 100%;
+			}
+			&.max-3 .jcard,
+			&.max-4 .jcard {
+				left: 0;
+				width: 100%;
+			}
+			&.max-5 .jcard {
+				left: 2%;
+				width: 96%;
+			}
+			&.max-6 .jcard {
+				left: 12.5%;
+				width: 75%;
+			}
+			&.max-7 .jcard {
+				left: 20%;
+				width: 60%;
+			}
+			&.max-8 .jcard {
+				left: 23.5%;
+				width: 53%;
+			}
+			&.max-9 .jcard {
+				left: 25.5%;
+				width: 49%;
+			}
+			&.max-10 .jcard {
+				left: 27%;
+				width: 46%;
+			}
+			&.max-11 .jcard {
+				left: 30%;
+				width: 40%;
+			}
+			&.max-12 .jcard {
+				left: 32%;
+				width: 36%;
+			}
+			&.max-13 .jcard {
+				left: 33%;
+				width: 34%;
+			}
+			&.max-14 .jcard {
+				left: 34%;
+				width: 32%;
+			}
+			&.max-15 .jcard {
+				left: 35%;
+				width: 30%;
+			}
+			will-change: transform;
+		}
+		&.flip {
+			.jcard {
+				&:first-child {
+					z-index: 1;
+					@include transform(rotateY(0));
+				}
+				&:nth-child(2) {
+					z-index: 0;
+					@include transform(rotateY(-180deg));
+				}
+			}
+		}
+		&.book {
+			> * {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				overflow: hidden;
+				.jcard {
+					opacity: 1;
+					left: 0;
+					top: 0;
+					height: 100%;
+				}
+			}
+			&.fwd {
+				.jprevpg {
+					left: 0;
+					right: 50%;
+				}
+				.jnextpg {
+					left: 50%;
+					right: 0;
+					.jcard {
+						left: -100%;
+					}
+				}
+				.jpaging {
+					left: 50%;
+					right: 0;
+					@include transform-origin(0 50%);
+					@include transform(rotateY(0));
+					.jcard:first-child {
+						left: -100%;
+						.jshade {
+							opacity: 0;
+							background-color: #fff;
+						}
+					}
+					.jcard:nth-child(2)  {
+						@include transform(rotateY(-180deg));
+						@include backface-visibility(hidden);
+						.jshade {
+							opacity: 0.75;
+							background-color: #000;
+						}
+					}
+				}
+			}
+			&.bwd {
+				.jprevpg {
+					left: 50%;
+					right: 0;
+				}
+				.jnextpg {
+					left:  0;
+					right: 50%;
+				}
+				.jpaging {
+					left: 0;
+					right: 50%;
+					@include transform-origin(100% 50%);
+					@include transform(rotateY(0));
+					.jcard:first-child {
+						.jshade {
+							opacity: 0;
+							background-color: #000;
+						}
+					}
+					.jcard:nth-child(2) {
+						left: -100%;
+						@include transform(rotateY(180deg));
+						@include backface-visibility(hidden);
+						.jshade {
+							opacity: 0.5;
+							background-color: #fff;
+						}
+					}
+				}
+			}
+			.jpaging {
+				@include backface-visibility(visible);
+				z-index: 3;
+				transition-property: none;
+				.jcard {
+					top: 0;
+					bottom: 0;
+					.jshade {
+						position: absolute;
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						z-index: 9999;
+						will-change: opacity;
+					}
+					.jprevpg {
+						z-index: 1;
+					}
+					.jnextpg {
+						z-index: 2;
+					}
+				}
+			}
+			/*
+			.jcard {
+				z-index: 0;
+			}
+			.jprevpg {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 50%;
+				height: 100%;
+				overflow: hidden;
+				z-index: 1;
+				background-color: #000;
+			}
+			.jcurrpg {
+				position: absolute;
+				left: 50%;
+				top: 0;
+				width: 50%;
+				height: 100%;
+				overflow: hidden;
+				z-index: 1;
+				.jcard {
+					left: -100%;
+				}
+			}
+			.jpaging {
+				position: absolute;
+				left: 50%;
+				top: 0;
+				width: 50%;
+				height: 100%;
+				overflow: hidden;
+				@include transform-origin(0 50%);
+				@include backface-visibility(visible);
+				z-index: 3;
+				.jcard {
+					&:first-child {
+						left: -100%;
+						background-color: #fff;
+						@include transform(rotateY(0));
+						@include backface-visibility(hidden);
+					}
+					&:last-child {
+						left: 0;
+						background-color: #000;
+						@include transform(rotateY(180deg));
+						@include backface-visibility(visible);
+					}
+				}
+			}
+			*/
+		}
+		&.cube {
+			.jcard {
+				overflow: hidden;
+				&.empty {
+					background-color: #555;
+				}
+			}
+		}
+		&.coverflow {
+			//@include perspective(60em);
+			.jcard {
+				@include transform-style(preserve-3d);
+				@include backface-visibility(hidden);
+				position: absolute;
+				text-align: center;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				@include transform(scale(0.82));
+				will-change: transform, opacity;
+			}
+		}
+	}
+	
+	// Mosaic layout
+	&.mosaic {
+		.jcards {
+			.jcard {
+				position: absolute;
+				overflow: hidden;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				&:hover {
+					.jcaption {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	&.mosaic {
+		.jcards {
+			&.mos-1-5 {
+				.jcard {
+					&:nth-child(1) {
+						left: 0;
+						top: 0;
+						width: 66.667%;
+						height: 66.667%;
+					}
+					&:nth-child(n+2) {
+						width: 33.333%;
+						height: 33.333%;
+					}
+					&:nth-child(2),
+					&:nth-child(3) {
+						left: 66.667%;
+					}
+					&:nth-child(3) {
+						top: 33.333%
+					}
+					&:nth-child(n+4) {
+						top: 66.667%;
+					}
+					&:nth-child(5) {
+						left: 33.333%;
+					}
+					&:nth-child(6) {
+						left: 66.667%;
+					}
+				}
+			}
+		}
+		&.landscape {
+			.jcards {
+				&.mos-1-3 {
+					.jcard {
+						&:nth-child(1) {
+							width: 60%;
+							left: 0;
+							top: 0;
+							height: 100%;
+						}
+						&:nth-child(n+2) {
+							left: 60%;
+							width: 40%;
+						}
+						&:nth-child(2) {
+							top: 0%;
+							height: 33%;
+						}
+						&:nth-child(3) {
+							top: 33%;
+							height: 33%;
+						}
+						&:nth-child(4) {
+							top: 66%;
+							height: 34%;
+						}
+					}
+				}
+				&.mos-2-3 {
+					.jcard {
+						&:nth-child(1) {
+							width: 60%;
+							left: 0;
+							top: 0;
+							height: 54%;
+						}
+						&:nth-child(2) {
+							width: 60%;
+							left: 0;
+							top: 54%;
+							height: 46%;
+						}
+						&:nth-child(n+3) {
+							left: 60%;
+							width: 40%;
+						}
+						&:nth-child(3) {
+							top: 0%;
+							height: 33%;
+						}
+						&:nth-child(4) {
+							top: 33%;
+							height: 33%;
+						}
+						&:nth-child(5) {
+							top: 66%;
+							height: 34%;
+						}
+					}
+				}
+				&.mos-1-2-4 {
+					.jcard {
+						&:nth-child(1) {
+							left: 0;
+							top: 0;
+							width: 45%;
+							height: 100%;
+						}
+						&:nth-child(2),
+						&:nth-child(3) {
+							left: 45%;
+							width: 35%;
+							height: 50%;
+						}
+						&:nth-child(3) {
+							top: 50%;
+						}
+						&:nth-child(n+4) {
+							left: 80%;
+							width: 20%;
+							height: 25%;
+						}
+						&:nth-child(4) {
+							top: 0%;
+						}
+						&:nth-child(5) {
+							top: 25%;
+						}
+						&:nth-child(6) {
+							top: 50%;
+						}
+						&:nth-child(7) {
+							top: 75%;
+						}
+					}
+				}
+			}
+		}
+		&.portrait {
+			.jcards {
+				&.mos-1-3 {
+					.jcard {
+						&:nth-child(1) {
+							left: 0;
+							top: 0;
+							width: 100%;
+							height: 60%;
+						}
+						&:nth-child(n+2) {
+							top: 60%;
+							height: 40%;
+						}
+						&:nth-child(2) {
+							left: 0%;
+							width: 30%;
+						}
+						&:nth-child(3) {
+							left: 30%;
+							width: 40%;
+						}
+						&:nth-child(4) {
+							left: 70%;
+							width: 30%;
+						}
+					}
+				}
+				&.mos-2-3 {
+					.jcard {
+						&:nth-child(1) {
+							left: 0;
+							top: 0;
+							width: 54%;
+							height: 60%;
+						}
+						&:nth-child(2) {
+							left: 54%;
+							top: 0;
+							width: 46%;
+							height: 60%;
+						}
+						&:nth-child(n+3) {
+							top: 60%;
+							height: 40%;
+						}
+						&:nth-child(3) {
+							left: 0%;
+							width: 30%;
+						}
+						&:nth-child(4) {
+							left: 30%;
+							width: 40%;
+						}
+						&:nth-child(5) {
+							left: 70%;
+							width: 30%;
+						}
+					}
+				}
+				&.mos-1-2-4 {
+					.jcard {
+						&:nth-child(1) {
+							left: 0;
+							top: 0;
+							width: 100%;
+							height: 45%;
+						}
+						&:nth-child(2),
+						&:nth-child(3) {
+							top: 45%;
+							width: 50%;
+							height: 35%;
+						}
+						&:nth-child(3) {
+							left: 50%;
+						}
+						&:nth-child(n+4) {
+							top: 80%;
+							width: 25%;
+							height: 20%;
+						}
+						&:nth-child(4) {
+							left: 0%;
+						}
+						&:nth-child(5) {
+							left: 25%;
+						}
+						&:nth-child(6) {
+							left: 50%;
+						}
+						&:nth-child(7) {
+							left: 75%;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// Masonry layout
+	&.masonry {
+		.jcards {
+			.jcard {
+				overflow: hidden;
+			}
+		}
+	}
+	
+	// Grid layout
+	&.grid {
+		.jcards {
+			.jcard {
+				position: relative;
+				overflow: hidden;
+			}
+			&.grid-2-2 {
+				.jcard {
+					width: 50%;
+					height: 50%;
+				}
+			}
+			&.grid-3-3 {
+				.jcard {
+					width: 33.333%;
+					height: 33.334%;
+				}
+			}
+			&.grid-4-4 {
+				.jcard {
+					width: 25%;
+					height: 25%;
+				}
+			}
+			&.grid-5-5 {
+				.jcard {
+					width: 20%;
+					height: 20%;
+				}
+			}
+		}
+		&.landscape.grid {
+			.jcards {
+				&.grid-3-2 {
+					.jcard {
+						width: 33.333%;
+						height: 50%;
+					}
+				}
+				&.grid-4-2 {
+					.jcard {
+						width: 25%;
+						height: 50%;
+					}
+				}
+				&.grid-5-2 {
+					.jcard {
+						width: 20%;
+						height: 50%;
+					}
+				}
+				&.grid-4-3 {
+					.jcard {
+						width: 25%;
+						height: 33.334%;
+					}
+				}
+				&.grid-5-3 {
+					.jcard {
+						width: 20%;
+						height: 33.334%;
+					}
+				}
+				&.grid-5-4 {
+					.jcard {
+						width: 20%;
+						height: 25%;
+					}
+				}
+			}
+		}
+		&.portrait.grid {
+			.jcards {
+				&.grid-3-2 {
+					.jcard {
+						width: 50%;
+						height: 33.334%;
+					}
+				}
+				&.grid-4-2 {
+					.jcard {
+						width: 50%;
+						height: 25%;
+					}
+				}
+				&.grid-5-2 {
+					.jcard {
+						width: 50%;
+						height: 20%;
+					}
+				}
+				&.grid-4-3 {
+					.jcard {
+						width: 33.333%;
+						height: 25%;
+					}
+				}
+				&.grid-5-3 {
+					.jcard {
+						width: 33.333%;
+						height: 20%;
+					}
+				}
+				&.grid-5-4 {
+					.jcard {
+						width: 25%;
+						height: 20%;
+					}
+				}
+			}
+		}
+	}
+	
+	// Strip layout
+	&.strip {
+		.jcards {
+			&.max-12 .jcard {
+				width: 8.333333%;
+			}
+			&.max-11 .jcard {
+				width: 9.090909%;
+			}
+			&.max-10 .jcard {
+				width: 10%;
+			}
+			&.max-9 .jcard {
+				width: 11.111%;
+			}
+			&.max-8 .jcard {
+				width: 12.5%;
+			}
+			&.max-7 .jcard {
+				width: 14.2857%;
+			}
+			&.max-6 .jcard {
+				width: 16.6667%;
+			}
+			&.max-5 .jcard {
+				width: 20%;
+			}
+			&.max-4 .jcard {
+				width: 25%;
+			}
+			&.max-3 .jcard {
+				width: 33.33333%;
+			}
+			&.max-2 .jcard {
+				width: 50%;
+			}
+			.jcard {
+				position: relative;
+				display: inline-block;
+				vertical-align: top;
+				overflow: hidden;
+				height: 100%;
+				&.jhascaption {
+					.jcaption {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						padding: 0.5rem;
+						color: white;
+						text-align: center;
+						@include transform(translateY(100%));
+						@include transition(all $trL ease);
+						background-color: rgba(0,0,0,0.8);
+						> * {
+							font-size: $fontXXS;
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+						}
+						> h5, h6 {
+							font-weight: bold;
+						}
+					}
+					&:hover {
+						.jcaption {
+							@include transform(translateY(20%));
+						}
+						img {
+							@include transform(translateY(-80%) scale(1));
+						}
+					}
+				}
+			}
+		}
+	}
+}

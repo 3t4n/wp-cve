@@ -1,0 +1,840 @@
+/****************************************
+ *
+ *	jalbum.scss - jalbum projector styles
+ *
+ ****************************************/
+/* SCSS Constants */
+/* Real SCSS starts here */
+/* This one is needed to fix headline spacing in the Editor */
+.editor-styles-wrapper .wp-block .jalbum .jtitle h1, .editor-styles-wrapper .wp-block .jalbum .jtitle h2, .editor-styles-wrapper .wp-block .jalbum .jtitle h3, .editor-styles-wrapper .wp-block .jalbum .jtitle h4, .editor-styles-wrapper .wp-block .jalbum .jtitle h5, .editor-styles-wrapper .wp-block .jalbum .jtitle h6 {
+  margin: 0; }
+
+/* Align types: center, wide and full */
+.jalbum-block.aligncenter .jalbum.threedee {
+  -moz-perspective: 44em;
+  -webkit-perspective: 44em;
+  perspective: 44em; }
+  .jalbum-block.aligncenter .jalbum.threedee.book, .jalbum-block.aligncenter .jalbum.threedee.coverflow {
+    -moz-perspective: none;
+    -webkit-perspective: none;
+    perspective: none; }
+    .jalbum-block.aligncenter .jalbum.threedee.book .jcards, .jalbum-block.aligncenter .jalbum.threedee.coverflow .jcards {
+      -moz-perspective: 44em;
+      -webkit-perspective: 44em;
+      perspective: 44em; }
+
+.jalbum-block.alignwide .jalbum.threedee {
+  -moz-perspective: 88em;
+  -webkit-perspective: 88em;
+  perspective: 88em; }
+  .jalbum-block.alignwide .jalbum.threedee.book, .jalbum-block.alignwide .jalbum.threedee.coverflow {
+    -moz-perspective: none;
+    -webkit-perspective: none;
+    perspective: none; }
+    .jalbum-block.alignwide .jalbum.threedee.book .jcards, .jalbum-block.alignwide .jalbum.threedee.coverflow .jcards {
+      -moz-perspective: 88em;
+      -webkit-perspective: 88em;
+      perspective: 88em; }
+
+.jalbum-block.alignfull .jalbum.threedee {
+  -moz-perspective: 100em;
+  -webkit-perspective: 100em;
+  perspective: 100em; }
+  .jalbum-block.alignfull .jalbum.threedee.book, .jalbum-block.alignfull .jalbum.threedee.coverflow {
+    -moz-perspective: none;
+    -webkit-perspective: none;
+    perspective: none; }
+    .jalbum-block.alignfull .jalbum.threedee.book .jcards, .jalbum-block.alignfull .jalbum.threedee.coverflow .jcards {
+      -moz-perspective: 100em;
+      -webkit-perspective: 100em;
+      perspective: 100em; }
+
+/* The jAlbum projector styles */
+.jalbum {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 1px;
+  padding-bottom: 75%;
+  background-color: transparent;
+  z-index: 1; }
+  .jalbum.jerror {
+    padding: 1rem 2rem !important;
+    height: auto;
+    background-color: #900; }
+    .jalbum.jerror h4, .jalbum.jerror h5, .jalbum.jerror h6 {
+      color: white; }
+    .jalbum.jerror p {
+      font-family: Courier, 'Courier New', monospaced;
+      font-weight: bold;
+      font-size: 1rem;
+      color: white; }
+  .jalbum.threedee {
+    background-color: transparent; }
+    .jalbum.threedee .jcards {
+      -moz-transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d; }
+      .jalbum.threedee .jcards .jcard {
+        -moz-backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden; }
+    .jalbum.threedee.book {
+      -moz-perspective: none;
+      -webkit-perspective: none;
+      perspective: none; }
+      .jalbum.threedee.book .jcards {
+        -moz-transform-style: flat;
+        -webkit-transform-style: flat;
+        transform-style: flat; }
+    .jalbum.threedee.flip .jcards .jcard {
+      -moz-backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+      backface-visibility: visible; }
+    .jalbum.threedee.coverflow {
+      -moz-perspective: none;
+      -webkit-perspective: none;
+      perspective: none; }
+      .jalbum.threedee.coverflow .jcards {
+        -moz-transform-style: flat;
+        -webkit-transform-style: flat;
+        transform-style: flat; }
+  .jalbum .jtitle {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+    z-index: 99;
+    transition: all 500ms ease; }
+    .jalbum .jtitle > * {
+      margin: 0;
+      display: inline-block;
+      padding: 0.75rem 1rem; }
+    .jalbum .jtitle.linked h1, .jalbum .jtitle.linked h2, .jalbum .jtitle.linked h3, .jalbum .jtitle.linked h4, .jalbum .jtitle.linked h5, .jalbum .jtitle.linked h6 {
+      cursor: pointer; }
+      .jalbum .jtitle.linked h1.linkicon:after, .jalbum .jtitle.linked h2.linkicon:after, .jalbum .jtitle.linked h3.linkicon:after, .jalbum .jtitle.linked h4.linkicon:after, .jalbum .jtitle.linked h5.linkicon:after, .jalbum .jtitle.linked h6.linkicon:after {
+        content: ' ';
+        display: inline-block;
+        vertical-align: middle;
+        width: .75em;
+        height: .75em;
+        margin-left: .15em;
+        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='20px' height='20px' viewBox='0 0 20 20' enable-background='new 0 0 20 20' xml:space='preserve'%3E%3Cpath fill='%2399BBFF' d='M14,8.121V17H3V6h8.879l-1,1H4v9h9V9.121L14,8.121z M10.343,8.95l0.707,0.707L17,3.707l0,3.414l1,0L18,2l-5.121,0v1l3.414,0L10.343,8.95z'/%3E%3C/svg%3E");
+        background-position: center center;
+        background-repeat: no-repeat; }
+    .jalbum .jtitle h1, .jalbum .jtitle h2, .jalbum .jtitle h3, .jalbum .jtitle h4, .jalbum .jtitle h5, .jalbum .jtitle h6, .jalbum .jtitle p {
+      margin: 0; }
+    .jalbum .jtitle p {
+      font-size: 0.875em;
+      clear: left; }
+    .jalbum .jtitle .slidein {
+      display: block;
+      opacity: 0;
+      transition: all 500ms ease-out; }
+    .jalbum .jtitle:hover .slidein {
+      opacity: 1;
+      -webkit-transform: translate(0, 0) !important;
+      transform: translate(0, 0) !important; }
+    .jalbum .jtitle.left {
+      left: 0; }
+      .jalbum .jtitle.left .slidein {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%); }
+    .jalbum .jtitle.center {
+      left: 50%;
+      text-align: center;
+      transform: translateX(-50%); }
+      .jalbum .jtitle.center .slidein {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%); }
+    .jalbum .jtitle.center.middle {
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+    .jalbum .jtitle.right {
+      left: auto;
+      right: 0;
+      text-align: right; }
+      .jalbum .jtitle.right > * {
+        float: right; }
+      .jalbum .jtitle.right .slidein {
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%); }
+    .jalbum .jtitle.middle {
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%); }
+    .jalbum .jtitle.top {
+      top: 0; }
+    .jalbum .jtitle.bottom {
+      top: auto;
+      bottom: 0; }
+    .jalbum .jtitle.white > * {
+      background-color: white;
+      color: #222; }
+    .jalbum .jtitle.light > * {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #111; }
+    .jalbum .jtitle.light:hover > * {
+      background-color: white; }
+    .jalbum .jtitle.transparent {
+      color: #eee; }
+      .jalbum .jtitle.transparent:hover > * {
+        background-color: rgba(0, 0, 0, 0.3); }
+    .jalbum .jtitle.dark > * {
+      color: #ddd;
+      background-color: rgba(0, 0, 0, 0.85); }
+    .jalbum .jtitle.dark:hover > * {
+      background-color: black; }
+    .jalbum .jtitle.black > * {
+      color: #ccc;
+      background-color: black; }
+    .jalbum .jtitle.small {
+      font-size: 0.875em; }
+  .jalbum .jcards {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; }
+    .jalbum .jcards .jcard {
+      overflow: hidden;
+      box-sizing: border-box; }
+      .jalbum .jcards .jcard img, .jalbum .jcards .jcard audio, .jalbum .jcards .jcard video {
+        max-width: none;
+        position: absolute; }
+      .jalbum .jcards .jcard .jcaption {
+        position: absolute;
+        padding: 0;
+        overflow: hidden;
+        font-size: 87.5%; }
+        .jalbum .jcards .jcard .jcaption > * {
+          display: inline-block;
+          margin: 0;
+          padding: 0.5rem 0.75rem; }
+        .jalbum .jcards .jcard .jcaption h1, .jalbum .jcards .jcard .jcaption h2, .jalbum .jcards .jcard .jcaption h3, .jalbum .jcards .jcard .jcaption h4, .jalbum .jcards .jcard .jcaption h5, .jalbum .jcards .jcard .jcaption h6 {
+          font-size: 87.5%;
+          margin: 0; }
+        .jalbum .jcards .jcard .jcaption p {
+          margin: .2em 0 0 0;
+          font-size: 0.75em; }
+        .jalbum .jcards .jcard .jcaption.left {
+          text-align: left;
+          left: 0; }
+        .jalbum .jcards .jcard .jcaption.center {
+          left: 50%;
+          text-align: center;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+        .jalbum .jcards .jcard .jcaption.right {
+          text-align: right;
+          right: 0; }
+        .jalbum .jcards .jcard .jcaption.top {
+          top: 0; }
+        .jalbum .jcards .jcard .jcaption.middle {
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); }
+        .jalbum .jcards .jcard .jcaption.center.middle {
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+        .jalbum .jcards .jcard .jcaption.bottom {
+          bottom: 0; }
+        .jalbum .jcards .jcard .jcaption.white {
+          background-color: white; }
+          .jalbum .jcards .jcard .jcaption.white > *,
+          .jalbum .jcards .jcard .jcaption.white h1, .jalbum .jcards .jcard .jcaption.white h2, .jalbum .jcards .jcard .jcaption.white h3, .jalbum .jcards .jcard .jcaption.white h4, .jalbum .jcards .jcard .jcaption.white h5, .jalbum .jcards .jcard .jcaption.white h6 {
+            color: #222; }
+        .jalbum .jcards .jcard .jcaption.light {
+          background-color: rgba(255, 255, 255, 0.8); }
+          .jalbum .jcards .jcard .jcaption.light:hover {
+            background-color: white; }
+          .jalbum .jcards .jcard .jcaption.light > *,
+          .jalbum .jcards .jcard .jcaption.light h1, .jalbum .jcards .jcard .jcaption.light h2, .jalbum .jcards .jcard .jcaption.light h3, .jalbum .jcards .jcard .jcaption.light h4, .jalbum .jcards .jcard .jcaption.light h5, .jalbum .jcards .jcard .jcaption.light h6 {
+            color: #111; }
+        .jalbum .jcards .jcard .jcaption.transparent:hover {
+          background-color: rgba(0, 0, 0, 0.3); }
+        .jalbum .jcards .jcard .jcaption.transparent > *,
+        .jalbum .jcards .jcard .jcaption.transparent h1, .jalbum .jcards .jcard .jcaption.transparent h2, .jalbum .jcards .jcard .jcaption.transparent h3, .jalbum .jcards .jcard .jcaption.transparent h4, .jalbum .jcards .jcard .jcaption.transparent h5, .jalbum .jcards .jcard .jcaption.transparent h6 {
+          color: #eee; }
+        .jalbum .jcards .jcard .jcaption.dark {
+          background-color: rgba(0, 0, 0, 0.85); }
+          .jalbum .jcards .jcard .jcaption.dark:hover {
+            background-color: black; }
+          .jalbum .jcards .jcard .jcaption.dark > *,
+          .jalbum .jcards .jcard .jcaption.dark h1, .jalbum .jcards .jcard .jcaption.dark h2, .jalbum .jcards .jcard .jcaption.dark h3, .jalbum .jcards .jcard .jcaption.dark h4, .jalbum .jcards .jcard .jcaption.dark h5, .jalbum .jcards .jcard .jcaption.dark h6 {
+            color: #ddd; }
+        .jalbum .jcards .jcard .jcaption.black {
+          background-color: black; }
+          .jalbum .jcards .jcard .jcaption.black > *,
+          .jalbum .jcards .jcard .jcaption.black h1, .jalbum .jcards .jcard .jcaption.black h2, .jalbum .jcards .jcard .jcaption.black h3, .jalbum .jcards .jcard .jcaption.black h4, .jalbum .jcards .jcard .jcaption.black h5, .jalbum .jcards .jcard .jcaption.black h6 {
+            color: #ccc; }
+      .jalbum .jcards .jcard.folder .jcaption {
+        padding-left: 20px;
+        background-image: url(../img/folder.svg);
+        background-position: 6px 6px;
+        background-repeat: no-repeat;
+        background-size: 20px 20px; }
+        .jalbum .jcards .jcard.folder .jcaption h1, .jalbum .jcards .jcard.folder .jcaption h2, .jalbum .jcards .jcard.folder .jcaption h3, .jalbum .jcards .jcard.folder .jcaption h4, .jalbum .jcards .jcard.folder .jcaption h5, .jalbum .jcards .jcard.folder .jcaption h6 {
+          font-weight: bold; }
+  .jalbum.grid-like.gap-thin .jtitle.left {
+    left: 1px; }
+  .jalbum.grid-like.gap-thin .jtitle.right {
+    right: 1px; }
+  .jalbum.grid-like.gap-thin .jtitle.top {
+    top: 1px; }
+  .jalbum.grid-like.gap-thin .jtitle.bottom {
+    bottom: 1px; }
+  .jalbum.grid-like.gap-thin .jcard {
+    border: 1px solid transparent; }
+  .jalbum.grid-like.gap-small .jtitle.left {
+    left: 2px; }
+  .jalbum.grid-like.gap-small .jtitle.right {
+    right: 2px; }
+  .jalbum.grid-like.gap-small .jtitle.top {
+    top: 2px; }
+  .jalbum.grid-like.gap-small .jtitle.bottom {
+    bottom: 2px; }
+  .jalbum.grid-like.gap-small .jcard {
+    border: 2px solid transparent; }
+  .jalbum.grid-like.gap-medium .jtitle.left {
+    left: 4px; }
+  .jalbum.grid-like.gap-medium .jtitle.right {
+    right: 4px; }
+  .jalbum.grid-like.gap-medium .jtitle.top {
+    top: 4px; }
+  .jalbum.grid-like.gap-medium .jtitle.bottom {
+    bottom: 4px; }
+  .jalbum.grid-like.gap-medium .jcard {
+    border: 4px solid transparent; }
+  .jalbum.grid-like.gap-large .jtitle.left {
+    left: 8px; }
+  .jalbum.grid-like.gap-large .jtitle.right {
+    right: 8px; }
+  .jalbum.grid-like.gap-large .jtitle.top {
+    top: 8px; }
+  .jalbum.grid-like.gap-large .jtitle.bottom {
+    bottom: 8px; }
+  .jalbum.grid-like.gap-large .jcard {
+    border: 8px solid transparent; }
+  .jalbum.grid-like.gap-xlarge .jtitle.left {
+    left: 12px; }
+  .jalbum.grid-like.gap-xlarge .jtitle.right {
+    right: 12px; }
+  .jalbum.grid-like.gap-xlarge .jtitle.top {
+    top: 12px; }
+  .jalbum.grid-like.gap-xlarge .jtitle.bottom {
+    bottom: 12px; }
+  .jalbum.grid-like.gap-xlarge .jcard {
+    border: 12px solid transparent; }
+  .jalbum.grid-like .jcards .jcard {
+    display: inline-block;
+    vertical-align: top; }
+    .jalbum.grid-like .jcards .jcard .jcaption {
+      max-height: 60%;
+      background-position: 6px 4px; }
+      .jalbum.grid-like .jcards .jcard .jcaption > * {
+        font-size: 68.75%; }
+    .jalbum.grid-like .jcards .jcard img {
+      transition: all 1000ms ease; }
+    .jalbum.grid-like .jcards .jcard:hover img {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05); }
+  .jalbum.slider-like .jcards .jcard {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+  .jalbum .jcards.crossfade {
+    overflow: hidden; }
+    .jalbum .jcards.crossfade img {
+      transition: transform 1s ease; }
+    .jalbum .jcards.crossfade:hover img {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05); }
+  .jalbum .jcards.stack .jcard {
+    -webkit-transform: scale(0.92);
+    transform: scale(0.92); }
+  .jalbum .jcards.kenburns {
+    overflow: hidden; }
+  .jalbum .jcards.slide {
+    overflow: hidden; }
+  .jalbum .jcards.carousel {
+    will-change: transform; }
+    .jalbum .jcards.carousel .jcard {
+      position: absolute;
+      text-align: center;
+      opacity: .6;
+      left: 34%;
+      top: 0%;
+      width: 32%;
+      height: 100%; }
+    .jalbum .jcards.carousel.max-3 .jcard, .jalbum .jcards.carousel.max-4 .jcard {
+      left: 0;
+      width: 100%; }
+    .jalbum .jcards.carousel.max-5 .jcard {
+      left: 2%;
+      width: 96%; }
+    .jalbum .jcards.carousel.max-6 .jcard {
+      left: 12.5%;
+      width: 75%; }
+    .jalbum .jcards.carousel.max-7 .jcard {
+      left: 20%;
+      width: 60%; }
+    .jalbum .jcards.carousel.max-8 .jcard {
+      left: 23.5%;
+      width: 53%; }
+    .jalbum .jcards.carousel.max-9 .jcard {
+      left: 25.5%;
+      width: 49%; }
+    .jalbum .jcards.carousel.max-10 .jcard {
+      left: 27%;
+      width: 46%; }
+    .jalbum .jcards.carousel.max-11 .jcard {
+      left: 30%;
+      width: 40%; }
+    .jalbum .jcards.carousel.max-12 .jcard {
+      left: 32%;
+      width: 36%; }
+    .jalbum .jcards.carousel.max-13 .jcard {
+      left: 33%;
+      width: 34%; }
+    .jalbum .jcards.carousel.max-14 .jcard {
+      left: 34%;
+      width: 32%; }
+    .jalbum .jcards.carousel.max-15 .jcard {
+      left: 35%;
+      width: 30%; }
+  .jalbum .jcards.flip .jcard:first-child {
+    z-index: 1;
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0); }
+  .jalbum .jcards.flip .jcard:nth-child(2) {
+    z-index: 0;
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg); }
+  .jalbum .jcards.book {
+    /*
+    .jcard {
+    	z-index: 0;
+    }
+    .jprevpg {
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    	width: 50%;
+    	height: 100%;
+    	overflow: hidden;
+    	z-index: 1;
+    	background-color: #000;
+    }
+    .jcurrpg {
+    	position: absolute;
+    	left: 50%;
+    	top: 0;
+    	width: 50%;
+    	height: 100%;
+    	overflow: hidden;
+    	z-index: 1;
+    	.jcard {
+    		left: -100%;
+    	}
+    }
+    .jpaging {
+    	position: absolute;
+    	left: 50%;
+    	top: 0;
+    	width: 50%;
+    	height: 100%;
+    	overflow: hidden;
+    	@include transform-origin(0 50%);
+    	@include backface-visibility(visible);
+    	z-index: 3;
+    	.jcard {
+    		&:first-child {
+    			left: -100%;
+    			background-color: #fff;
+    			@include transform(rotateY(0));
+    			@include backface-visibility(hidden);
+    		}
+    		&:last-child {
+    			left: 0;
+    			background-color: #000;
+    			@include transform(rotateY(180deg));
+    			@include backface-visibility(visible);
+    		}
+    	}
+    }
+    */ }
+    .jalbum .jcards.book > * {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden; }
+      .jalbum .jcards.book > * .jcard {
+        opacity: 1;
+        left: 0;
+        top: 0;
+        height: 100%; }
+    .jalbum .jcards.book.fwd .jprevpg {
+      left: 0;
+      right: 50%; }
+    .jalbum .jcards.book.fwd .jnextpg {
+      left: 50%;
+      right: 0; }
+      .jalbum .jcards.book.fwd .jnextpg .jcard {
+        left: -100%; }
+    .jalbum .jcards.book.fwd .jpaging {
+      left: 50%;
+      right: 0;
+      -moz-transform-origin: 0 50%;
+      -webkit-transform-origin: 0 50%;
+      transform-origin: 0 50%;
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0); }
+      .jalbum .jcards.book.fwd .jpaging .jcard:first-child {
+        left: -100%; }
+        .jalbum .jcards.book.fwd .jpaging .jcard:first-child .jshade {
+          opacity: 0;
+          background-color: #fff; }
+      .jalbum .jcards.book.fwd .jpaging .jcard:nth-child(2) {
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+        -moz-backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden; }
+        .jalbum .jcards.book.fwd .jpaging .jcard:nth-child(2) .jshade {
+          opacity: 0.75;
+          background-color: #000; }
+    .jalbum .jcards.book.bwd .jprevpg {
+      left: 50%;
+      right: 0; }
+    .jalbum .jcards.book.bwd .jnextpg {
+      left: 0;
+      right: 50%; }
+    .jalbum .jcards.book.bwd .jpaging {
+      left: 0;
+      right: 50%;
+      -moz-transform-origin: 100% 50%;
+      -webkit-transform-origin: 100% 50%;
+      transform-origin: 100% 50%;
+      -webkit-transform: rotateY(0);
+      transform: rotateY(0); }
+      .jalbum .jcards.book.bwd .jpaging .jcard:first-child .jshade {
+        opacity: 0;
+        background-color: #000; }
+      .jalbum .jcards.book.bwd .jpaging .jcard:nth-child(2) {
+        left: -100%;
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        -moz-backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden; }
+        .jalbum .jcards.book.bwd .jpaging .jcard:nth-child(2) .jshade {
+          opacity: 0.5;
+          background-color: #fff; }
+    .jalbum .jcards.book .jpaging {
+      -moz-backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+      backface-visibility: visible;
+      z-index: 3;
+      transition-property: none; }
+      .jalbum .jcards.book .jpaging .jcard {
+        top: 0;
+        bottom: 0; }
+        .jalbum .jcards.book .jpaging .jcard .jshade {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+          will-change: opacity; }
+        .jalbum .jcards.book .jpaging .jcard .jprevpg {
+          z-index: 1; }
+        .jalbum .jcards.book .jpaging .jcard .jnextpg {
+          z-index: 2; }
+  .jalbum .jcards.cube .jcard {
+    overflow: hidden; }
+    .jalbum .jcards.cube .jcard.empty {
+      background-color: #555; }
+  .jalbum .jcards.coverflow .jcard {
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: scale(0.82);
+    transform: scale(0.82);
+    will-change: transform, opacity; }
+  .jalbum.mosaic .jcards .jcard {
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+    .jalbum.mosaic .jcards .jcard:hover .jcaption {
+      opacity: 1; }
+  .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(1) {
+    left: 0;
+    top: 0;
+    width: 66.667%;
+    height: 66.667%; }
+  .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(n+2) {
+    width: 33.333%;
+    height: 33.333%; }
+  .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(2), .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(3) {
+    left: 66.667%; }
+  .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(3) {
+    top: 33.333%; }
+  .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(n+4) {
+    top: 66.667%; }
+  .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(5) {
+    left: 33.333%; }
+  .jalbum.mosaic .jcards.mos-1-5 .jcard:nth-child(6) {
+    left: 66.667%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-3 .jcard:nth-child(1) {
+    width: 60%;
+    left: 0;
+    top: 0;
+    height: 100%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-3 .jcard:nth-child(n+2) {
+    left: 60%;
+    width: 40%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-3 .jcard:nth-child(2) {
+    top: 0%;
+    height: 33%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-3 .jcard:nth-child(3) {
+    top: 33%;
+    height: 33%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-3 .jcard:nth-child(4) {
+    top: 66%;
+    height: 34%; }
+  .jalbum.mosaic.landscape .jcards.mos-2-3 .jcard:nth-child(1) {
+    width: 60%;
+    left: 0;
+    top: 0;
+    height: 54%; }
+  .jalbum.mosaic.landscape .jcards.mos-2-3 .jcard:nth-child(2) {
+    width: 60%;
+    left: 0;
+    top: 54%;
+    height: 46%; }
+  .jalbum.mosaic.landscape .jcards.mos-2-3 .jcard:nth-child(n+3) {
+    left: 60%;
+    width: 40%; }
+  .jalbum.mosaic.landscape .jcards.mos-2-3 .jcard:nth-child(3) {
+    top: 0%;
+    height: 33%; }
+  .jalbum.mosaic.landscape .jcards.mos-2-3 .jcard:nth-child(4) {
+    top: 33%;
+    height: 33%; }
+  .jalbum.mosaic.landscape .jcards.mos-2-3 .jcard:nth-child(5) {
+    top: 66%;
+    height: 34%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(1) {
+    left: 0;
+    top: 0;
+    width: 45%;
+    height: 100%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(2), .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(3) {
+    left: 45%;
+    width: 35%;
+    height: 50%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(3) {
+    top: 50%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(n+4) {
+    left: 80%;
+    width: 20%;
+    height: 25%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(4) {
+    top: 0%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(5) {
+    top: 25%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(6) {
+    top: 50%; }
+  .jalbum.mosaic.landscape .jcards.mos-1-2-4 .jcard:nth-child(7) {
+    top: 75%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-3 .jcard:nth-child(1) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-3 .jcard:nth-child(n+2) {
+    top: 60%;
+    height: 40%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-3 .jcard:nth-child(2) {
+    left: 0%;
+    width: 30%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-3 .jcard:nth-child(3) {
+    left: 30%;
+    width: 40%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-3 .jcard:nth-child(4) {
+    left: 70%;
+    width: 30%; }
+  .jalbum.mosaic.portrait .jcards.mos-2-3 .jcard:nth-child(1) {
+    left: 0;
+    top: 0;
+    width: 54%;
+    height: 60%; }
+  .jalbum.mosaic.portrait .jcards.mos-2-3 .jcard:nth-child(2) {
+    left: 54%;
+    top: 0;
+    width: 46%;
+    height: 60%; }
+  .jalbum.mosaic.portrait .jcards.mos-2-3 .jcard:nth-child(n+3) {
+    top: 60%;
+    height: 40%; }
+  .jalbum.mosaic.portrait .jcards.mos-2-3 .jcard:nth-child(3) {
+    left: 0%;
+    width: 30%; }
+  .jalbum.mosaic.portrait .jcards.mos-2-3 .jcard:nth-child(4) {
+    left: 30%;
+    width: 40%; }
+  .jalbum.mosaic.portrait .jcards.mos-2-3 .jcard:nth-child(5) {
+    left: 70%;
+    width: 30%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(1) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 45%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(2), .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(3) {
+    top: 45%;
+    width: 50%;
+    height: 35%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(3) {
+    left: 50%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(n+4) {
+    top: 80%;
+    width: 25%;
+    height: 20%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(4) {
+    left: 0%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(5) {
+    left: 25%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(6) {
+    left: 50%; }
+  .jalbum.mosaic.portrait .jcards.mos-1-2-4 .jcard:nth-child(7) {
+    left: 75%; }
+  .jalbum.masonry .jcards .jcard {
+    overflow: hidden; }
+  .jalbum.grid .jcards .jcard {
+    position: relative;
+    overflow: hidden; }
+  .jalbum.grid .jcards.grid-2-2 .jcard {
+    width: 50%;
+    height: 50%; }
+  .jalbum.grid .jcards.grid-3-3 .jcard {
+    width: 33.333%;
+    height: 33.334%; }
+  .jalbum.grid .jcards.grid-4-4 .jcard {
+    width: 25%;
+    height: 25%; }
+  .jalbum.grid .jcards.grid-5-5 .jcard {
+    width: 20%;
+    height: 20%; }
+  .jalbum.grid.landscape.grid .jcards.grid-3-2 .jcard {
+    width: 33.333%;
+    height: 50%; }
+  .jalbum.grid.landscape.grid .jcards.grid-4-2 .jcard {
+    width: 25%;
+    height: 50%; }
+  .jalbum.grid.landscape.grid .jcards.grid-5-2 .jcard {
+    width: 20%;
+    height: 50%; }
+  .jalbum.grid.landscape.grid .jcards.grid-4-3 .jcard {
+    width: 25%;
+    height: 33.334%; }
+  .jalbum.grid.landscape.grid .jcards.grid-5-3 .jcard {
+    width: 20%;
+    height: 33.334%; }
+  .jalbum.grid.landscape.grid .jcards.grid-5-4 .jcard {
+    width: 20%;
+    height: 25%; }
+  .jalbum.grid.portrait.grid .jcards.grid-3-2 .jcard {
+    width: 50%;
+    height: 33.334%; }
+  .jalbum.grid.portrait.grid .jcards.grid-4-2 .jcard {
+    width: 50%;
+    height: 25%; }
+  .jalbum.grid.portrait.grid .jcards.grid-5-2 .jcard {
+    width: 50%;
+    height: 20%; }
+  .jalbum.grid.portrait.grid .jcards.grid-4-3 .jcard {
+    width: 33.333%;
+    height: 25%; }
+  .jalbum.grid.portrait.grid .jcards.grid-5-3 .jcard {
+    width: 33.333%;
+    height: 20%; }
+  .jalbum.grid.portrait.grid .jcards.grid-5-4 .jcard {
+    width: 25%;
+    height: 20%; }
+  .jalbum.strip .jcards.max-12 .jcard {
+    width: 8.333333%; }
+  .jalbum.strip .jcards.max-11 .jcard {
+    width: 9.090909%; }
+  .jalbum.strip .jcards.max-10 .jcard {
+    width: 10%; }
+  .jalbum.strip .jcards.max-9 .jcard {
+    width: 11.111%; }
+  .jalbum.strip .jcards.max-8 .jcard {
+    width: 12.5%; }
+  .jalbum.strip .jcards.max-7 .jcard {
+    width: 14.2857%; }
+  .jalbum.strip .jcards.max-6 .jcard {
+    width: 16.6667%; }
+  .jalbum.strip .jcards.max-5 .jcard {
+    width: 20%; }
+  .jalbum.strip .jcards.max-4 .jcard {
+    width: 25%; }
+  .jalbum.strip .jcards.max-3 .jcard {
+    width: 33.33333%; }
+  .jalbum.strip .jcards.max-2 .jcard {
+    width: 50%; }
+  .jalbum.strip .jcards .jcard {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    height: 100%; }
+    .jalbum.strip .jcards .jcard.jhascaption .jcaption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0.5rem;
+      color: white;
+      text-align: center;
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+      transition: all 1000ms ease;
+      background-color: rgba(0, 0, 0, 0.8); }
+      .jalbum.strip .jcards .jcard.jhascaption .jcaption > * {
+        font-size: 0.6875em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .jalbum.strip .jcards .jcard.jhascaption .jcaption > h5, .jalbum.strip .jcards .jcard.jhascaption .jcaption h6 {
+        font-weight: bold; }
+    .jalbum.strip .jcards .jcard.jhascaption:hover .jcaption {
+      -webkit-transform: translateY(20%);
+      transform: translateY(20%); }
+    .jalbum.strip .jcards .jcard.jhascaption:hover img {
+      -webkit-transform: translateY(-80%) scale(1);
+      transform: translateY(-80%) scale(1); }
+
+/*# sourceMappingURL=jalbum.css.map */
