@@ -1,0 +1,536 @@
+/* ----------------------------------------------
+ * Aarambha Demo Sites styles.
+ * ----------------------------------------------
+ * 
+ * Table of Contents:
+ * ----------------------------------------------
+ * 1. Helper Classes
+ * 2. Filter Bar
+ * 3. Demo Section
+ * 5. Popups
+ * -- 5.1. Demo Information 
+ * -- 5.2. Purchase Pro Theme 
+ * -- 5.3. Activate Pro Theme
+ * -- 5.4. Plugins List
+ * -- 5.5. Demo Import
+ * -- 5.6. Import Failed
+ * 6. Animation
+ */
+
+
+/*
+ * ----------------------------------------------
+ * Helper Classes
+ * ----------------------------------------------
+ */
+.d-flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.button-outline {
+    border: 2px solid rgb(46, 46, 46);
+    text-decoration: none;
+    color: rgb(46, 46, 46);
+}
+
+.button-outline:hover {
+    color: rgb(46, 46, 46);
+}
+
+.button-dark {
+    border: 2px solid rgb(46, 46, 46);
+    background: rgb(46, 46, 46);
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+}
+
+.button-dark:hover,
+.button-dark:focus {
+    color: #fff;
+    box-shadow: none;
+}
+
+.button-main {
+    border: 2px solid #2c87ff;
+    background: #2c87ff;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button-main:hover,
+.button-main:focus {
+    color: #fff;
+    box-shadow: none;
+}
+
+.button-rounded {
+    border-radius: 25px;
+}
+
+.button-medium {
+    padding: 10px 25px;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+}
+
+.button-large {
+    padding: 10px 50px;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+}
+
+.ocdi--loader {
+    display: none;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    animation: spin 1.2s ease-in-out infinite;
+}
+
+.loading .ocdi--loader {
+    display: inline-block;
+}
+
+.loading .ocdi--loader+span {
+    margin-left: 5px;
+}
+
+/*
+ * ----------------------------------------------
+ * Filter Bar
+ * ----------------------------------------------
+ */
+.aarambha-ds--filter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.aarambha-ds--filter__action,
+.aarambha-ds--filter__search {
+    width: 50%;
+}
+
+.aarambha-ds--filter__search {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.aarambha-ds--filter__search .search-form {
+    margin-left: 30px;
+}
+
+@media (max-width: 1100px) {
+    .aarambha-ds--filter {
+        display: block;
+    }
+
+    .aarambha-ds--filter__action,
+    .aarambha-ds--filter__search {
+        width: 100%;
+    }
+
+    .aarambha-ds--filter__search {
+        justify-content: space-between;
+    }
+}
+
+
+/*
+ * ----------------------------------------------
+ * Demo Section
+ * ----------------------------------------------
+ */
+.demo--hidden {
+    display: none;
+}
+
+.aarambha-ds--demo__ribbon {
+    background-color: #2c87ff;
+    color: #fff;
+    position: absolute;
+    z-index: 97;
+    width: 100px;
+    text-align: center;
+    font-weight: 500;
+    right: 0;
+    transform: rotate(45deg);
+    right: -28px;
+    top: 12px;
+    line-height: 1.6;
+}
+
+a.more-details--demo.more-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.theme-browser.rendered .theme:focus .more-details--demo,
+.theme-browser.rendered .theme:hover .more-details--demo,
+.theme-browser.rendered .theme.loading .more-details--demo {
+    opacity: 1;
+}
+.aarambha-ds--main__wrap .theme-browser .theme {
+    cursor: pointer;
+    float: left;
+    margin: 0 15px 4%;
+    position: relative;
+    width: 30.5%;
+    width: calc(33.3333% - 30px);
+    width: -webkit-calc(33.3333% - 30px);
+    border: 1px solid #dcdcde;
+    box-shadow: 0 1px 1px -1px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+}
+.aarambha-ds--main__wrap .theme-browser .themes {
+    margin: 0 -15px;
+}
+.aarambha-ds--main__wrap .theme-browser .theme:nth-child(3n) {
+    margin-right: 15px;
+}
+@media (max-width: 1920px) {
+
+    .aarambha-ds--demo__browser .theme:nth-child(4n),
+    .aarambha-ds--demo__browser .theme.demo--visible:nth-child(4n) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 1536px) {
+
+    /*.aarambha-ds--demo__browser .theme:nth-child(4n),*/
+    /*.aarambha-ds--demo__browser .theme.demo--visible:nth-child(4n) {*/
+    /*    margin-right: 3%;*/
+    /*}*/
+
+    /*.aarambha-ds--demo__browser .theme:nth-child(3n),*/
+    /*.aarambha-ds--demo__browser .theme.demo--visible:nth-child(3n) {*/
+    /*    margin-right: 0;*/
+    /*}*/
+}
+
+/*
+ * ----------------------------------------------
+ * Popups
+ * ----------------------------------------------
+ */
+
+/*
+ * 1. Demo Information
+ */
+
+.install-demo--body__screenshot {
+    width: 45%;
+    position: relative;
+    flex: 0 1 auto;
+    background-size: cover;
+}
+
+.install-demo--body__steps {
+    margin-left: 1%;
+    width: 54%;
+    min-height: 500px;
+    position: relative;
+}
+
+.install-demo--body__screenshot img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.aarambha-ds--item--name {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 3px;
+    bottom: 15px;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.aarambha-ds--item--name h3 {
+    color: #fff;
+    line-height: 1.9;
+    padding: 5px 25px;
+    margin: 0;
+    font-size: 16px;
+}
+
+.install-demo--body__progress {
+    padding: 70px 70px 0;
+}
+
+.install-demo--body__footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    text-align: right;
+}
+
+.install-demo--body__footer .button-large:hover {
+    color: #fff;
+}
+
+.install-demo--body__footer .button-outline+.button-main {
+    margin-left: 10px;
+}
+
+.install-demo--body__progress .swal2-actions.swal2-loading {
+    padding: 100px 0;
+}
+
+.install-demo--body__progress .swal2-actions.swal2-loading .swal2-styled.swal2-confirm,
+.install-demo--body__footer .swal2-actions.swal2-loading .swal2-styled.swal2-confirm {
+    display: inline-block;
+    border-left-color: rgb(48, 133, 214);
+    border-right-color: rgb(48, 133, 214);
+}
+
+/*
+ * 2. Purchase Pro Theme
+ */
+
+.purchase--theme .button-main {
+    margin: 20px 0 30px;
+}
+
+/*
+ * 3. Activate Theme
+ */
+
+.activate--theme .button-main {
+    margin: 20px 0 30px;
+}
+
+/*
+ * 4. Plugins List
+ */
+.aarambha-ds--plugins__list {
+    text-align: left;
+}
+
+.aarambha-ds--plugins__list h4 {
+    margin: 0.8em 0;
+}
+
+.aarambha-ds--plugins__list .sub-header {
+    font-size: 14px;
+}
+
+.aarambha-ds--plugins__list .plugins--list {
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.aarambha-ds--plugins__list .plugins--list li:nth-of-type(n+1) {
+    padding: 5px 10px;
+}
+
+.aarambha-ds--plugins__list .plugins--list li:nth-of-type(2n+1) {
+    background-color: #f7f7f7;
+    padding: 10px;
+}
+
+.aarambha-ds--plugins__list .plugin-action {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.aarambha-ds--plugins__list .dashicons {
+    font-size: 14px;
+}
+
+.active span.plugin-action,
+.active span.plugin-name {
+    color: #ccc;
+}
+
+/*
+ * 5. Demo Import
+ */
+.aarambha-ds--demo__choose {
+    text-align: left;
+}
+
+.aarambha-ds--demo__choose h5 {
+    margin: 1.3em 0;
+}
+
+.aarambha-ds--demo__choose .content-selector--note {
+    color: mediumorchid;
+}
+
+.aarambha-ds--demo__choose .content-block {
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.aarambha-ds--demo__choose .content-block sup {
+    font-size: 11px;
+    color: #ddd;
+}
+
+.aarambha-ds--demo__choose .content-block.chosen {
+    border: 2px solid #555;
+}
+
+.aarambha-ds--demo__choose .content-block.chosen sup {
+    color: #555;
+}
+
+.aarambha-ds--demo__choose .content-block.chosen input[type=radio]:checked::before {
+    background-color: #555;
+}
+
+.aarambha-ds--demo__choose .content-block.chosen input[type=radio]:focus,
+.aarambha-ds--demo__choose .content-block.chosen input[type=checkbox]:focus {
+    border-color: #555;
+    box-shadow: 0 0 0 1px #555;
+}
+
+
+.aarambha-ds--demo__choose .content-block.chosen.error {
+    border: 2px solid #bd0202;
+}
+
+
+
+.aarambha-ds--demo__choose .input-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+.input-group label {
+    flex: 0 50%;
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 13px;
+    color: #ddd;
+}
+
+.content-block label {
+    color: #ddd;
+}
+
+.content-block input[type=checkbox],
+.content-block input[type=radio] {
+    border: 1px solid #ddd;
+}
+
+.content-block.chosen label {
+    color: #555;
+}
+
+.content-block.chosen input[type=checkbox],
+.content-block.chosen input[type=radio] {
+    border: 1px solid #555;
+}
+
+.input-group label input[type=checkbox] {
+    margin: 0 5px 0 0;
+}
+
+.input-group input[type=checkbox]:checked::before {
+    margin: -.1875rem 0 0 -0.28rem;
+    height: 1.3125rem;
+    width: 1.3125rem;
+}
+
+.install-demo--body__progress .aarambha-ds--import__action .swal2-actions.swal2-loading {
+    padding: 10px 0;
+}
+
+.install-demo--body__footer .aarambha-ds--import__event {
+    text-align: center;
+    background-color: #2c87ff;
+    border-radius: .25rem;
+    font-size: 0.8em;
+    color: #fff;
+}
+
+.install-demo--body__footer .import-progress--bar {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-size: 1.5rem 1.5rem;
+    padding: 1rem 0;
+    animation: progress 1s linear infinite;
+}
+
+
+/*
+ * ----------------------------------------------
+ * Animation
+ * ----------------------------------------------
+ */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes progress {
+    0% {
+        background-position: 1.5rem 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
