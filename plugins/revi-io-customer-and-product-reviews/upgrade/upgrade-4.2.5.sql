@@ -1,0 +1,1 @@
+ALTER TABLE `revi_comments` MODIFY `id_product` VARCHAR(36) NOT NULL AFTER `id_shop`;

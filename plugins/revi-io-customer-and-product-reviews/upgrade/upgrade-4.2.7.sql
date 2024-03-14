@@ -1,0 +1,1 @@
+ALTER TABLE `revi_products` MODIFY `id_product` VARCHAR(36) NOT NULL;

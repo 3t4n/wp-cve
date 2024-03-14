@@ -1,0 +1,1 @@
+ALTER TABLE `revi_comments` ADD `anonymous` TINYINT(1) DEFAULT 0 NOT NULL AFTER `external`

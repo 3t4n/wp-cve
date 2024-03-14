@@ -1,0 +1,1 @@
+ALTER TABLE `revi_comments` DROP COLUMN `rating1`, DROP COLUMN `rating2`, DROP COLUMN `rating3`;
