@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){if($('footer').length){var element = $('footer *').filter(function(){return $(this).text().toLowerCase().indexOf('[wpsos_year]')!==-1&&$(this).children().length==0;});if(element){var originTxt=element.html();if(originTxt){element.html(originTxt.replace('[wpsos_year]',new Date().getFullYear()));}}}});
