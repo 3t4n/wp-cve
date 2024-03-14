@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit
+        colors="true"
+        convertWarningsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertErrorsToExceptions="true"
+        bootstrap="tests/bootstrap.php"
+>
+    <testsuites>
+        <testsuite name="Wiloke Test">
+            <directory suffix="Test.php">tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <file>bootstrap.php</file>
+            <file>cookies.txt</file>
+            <file>HTTP.php</file>
+            <file>CommonController.php</file>
+        </whitelist>
+    </filter>
+    <php>
+        <ini name="display_errors" value="ON"/>
+        <ini name="display_startup_errors" value="ON"/>
+        <env name="REST_BASE" value="REST_BASE_VALUE"/>
+        <env name="HOME_URL" value="HOME_URL_VALUE"/>
+        <env name="ADMIN_USERNAME" value="ADMIN_USERNAME_VALUE"/>
+        <env name="ADMIN_AUTH_PASS" value="ADMIN_AUTH_PASS_VALUE"/>
+        <env name="ADMIN_PASSWORD" value="ADMIN_PASSWORD_VALUE"/>
+    </php>
+</phpunit>

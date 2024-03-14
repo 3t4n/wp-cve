@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+ini_set('display_errors', 'ON');
+error_reporting(-1);
+
+require __DIR__ . '/vendor/autoload.php';
+use Symfony\Component\Console\Application;
+use \WilokeCommandLine\SetupPHPUNIT;
+use \WilokeCommandLine\SetupPostSkeleton;
+use \WilokeCommandLine\SetupMessageFactory;
+use WilokeCommandLine\SetupPrefix;
+use \WilokeCommandLine\SetupQuery;
+use \WilokeCommandLine\SetupGrumPHP;
+use \WilokeCommandLine\SetupShortcode;
+use \WilokeCommandLine\SetupElementor;
+use WilokeCommandLine\SetupSlackPostMessage;
+use WilokeCommandLine\SetupUpload;
+
+$application = new Application();
+
+# add our commands
+$application->add(new SetupPHPUNIT());
+$application->add(new SetupPostSkeleton());
+$application->add(new SetupMessageFactory());
+$application->add(new SetupQuery());
+$application->add(new SetupGrumPHP());
+$application->add(new SetupShortcode());
+$application->add(new SetupElementor());
+$application->add(new SetupSlackPostMessage());
+$application->add(new SetupUpload());
+$application->add(new SetupPrefix());
+$application->run();

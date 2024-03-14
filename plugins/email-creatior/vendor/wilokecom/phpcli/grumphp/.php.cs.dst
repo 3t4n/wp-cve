@@ -1,0 +1,42 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->exclude(['bootstrap', 'storage', 'vendor'])
+    ->name('*.php')
+    ->name('_ide_helper')
+    ->notName('*.blade.php')
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true);
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PSR2' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'ordered_imports' => ['sortAlgorithm' => 'alpha'],
+    	'indentation_type' => true,
+        'no_unused_imports' => true,
+    	'single_quote' => true,
+    	'binary_operator_spaces' => [
+    	    'default' => 'align_single_space_minimal'
+         ],
+    	'no_closing_tag' => true,
+    	'align_multiline_comment' => true,
+        'single_blank_line_before_namespace' => true,
+    	'braces' => [
+    	   'allow_single_line_closure' => true,	
+	],
+	'function_typehint_space' => true,
+        'no_mixed_echo_print' => [
+           'use' => 'echo'
+        ],
+        'psr4' => true,
+        'visibility_required' => [
+            'elements' => ['method', 'property']
+         ],
+         'whitespace_after_comma_in_array' => true,
+	'single_quote' => true
+
+    ])
+    ->setIndent("\t")	
+    ->setFinder($finder);
