@@ -1,0 +1,159 @@
+@-webkit-keyframes iubenda-compliance-spin {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes iubenda-compliance-spin {
+    from {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+#iubenda-compliance-status .circularBar {
+    --progress-bar-stroke-width: 2;
+    --progress-bar-size: 125px;
+    --progress-bar-color: #78bec7;
+    --progress-bar-stroke-dash: 85;
+    --progress-bar-font-size: 2rem;
+    display: inline-block;
+    font-family: sans-serif;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#iubenda-compliance-status .circularBar span {
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: var(--progress-bar-font-size);
+    font-weight: bold;
+    line-height: 0;
+}
+
+#iubenda-compliance-status .circularBar span b {
+    font-size: 0.65em;
+}
+
+#iubenda-compliance-status .circularBar svg {
+    height: var(--progress-bar-size);
+    width: var(--progress-bar-size);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+#iubenda-compliance-status .circularBar circle {
+    fill: none;
+    stroke-width: var(--progress-bar-stroke-width);
+}
+
+#iubenda-compliance-status .circularBar .circle1 {
+    stroke: #e2eff0;
+}
+
+#iubenda-compliance-status .circularBar .circle2 {
+    stroke: currentColor;
+    stroke-dasharray: var(--progress-bar-stroke-dash);
+    stroke-dashoffset: var(--progress-bar-stroke-dash);
+    stroke-linecap: round;
+    -webkit-transition: stroke-dashoffset 1s ease-in-out;
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+
+#iubenda-compliance-status .iubenda-compliance-widget-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#iubenda-compliance-status .iubenda-alert-container {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin: 0 auto .5rem auto;
+    padding: .4rem;
+    background-color: #fff4e6;
+    width: 95%;
+    border-radius: .5rem;
+    color: #804123;
+    font-weight: bold
+}
+
+#iubenda-compliance-status .iubenda-warning-icon {
+    width: 2rem;
+}
+
+#iubenda-compliance-status .iubenda-header-title {
+    font-weight: bold !important;
+    color: #1d2327;
+}
+
+#iubenda-compliance-status .iubenda-action-button {
+    width: 40%;
+    border: 2px solid;
+    padding: 16px 24px 16px 24px;
+    text-align: center;
+    border-radius: 3rem;
+    margin: 1rem 0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+#iubenda-compliance-status .button-gray {
+    color: #5A5A5A !important;
+    border-color: #5A5A5A;
+}
+
+#iubenda-compliance-status .button-gray:hover {
+    color: white !important;
+    border-color: #5A5A5A;
+    background-color: #5A5A5A;
+}
+
+#iubenda-compliance-status .iubenda-header-text {
+    color: #1d2327;
+}
+
+#iubenda-compliance-status .button-green {
+    background-color: #1cc691;
+    color: #fff;
+}
+
+#iubenda-compliance-status .button-green:hover {
+    background-color: #18ab7d;
+    color: #f0f0f0;
+}
+
+#iubenda-compliance-status .iubenda-compliance-spinner {
+    border: solid .4rem transparent;
+    border-top-color: currentColor;
+    border-left-color: currentColor;
+    -webkit-animation: iubenda-compliance-spin 0.8s linear infinite;
+    animation: iubenda-compliance-spin 0.8s linear infinite;
+    border-radius: 50%;
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    color: #CDCDCD;
+}
+
+#iubenda-compliance-status .iubenda-party-popper-container {
+    margin-bottom: 0.5rem;
+}
