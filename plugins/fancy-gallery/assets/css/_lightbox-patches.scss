@@ -1,0 +1,101 @@
+.blueimp-gallery {
+
+    &>.close,
+    &>.prev,
+    &>.next,
+    &>.play-pause {
+        border: 3px solid #fff;
+        border-radius: 50%;
+        height: 44px;
+        width: 44px;
+        line-height: 44px;
+        font-size: 24px;
+        color: #fff;
+        font-weight: normal;
+        text-align: center;
+        text-shadow: none;
+        text-decoration: none;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+    &>.prev,
+    &>.next {
+        margin-top: -22px;
+    }
+
+    &>.close {
+        top: 15px;
+        right: 15px;
+        margin: 0;
+        padding: 0;
+    }
+
+    &>.play-pause {
+        right: 15px;
+        bottom: 15px;
+        font-size: 20px;
+        background: none;
+    }
+
+    &>.prev:hover,
+    &>.next:hover,
+    &>.close:hover,
+    &>.title:hover,
+    &>.play-pause:hover {
+        color: #fff;
+        opacity: 1;
+    }
+
+    .title-description {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        margin: 0 40px 0 0;
+        line-height: 150%;
+        color: #fff;
+        display: none;
+        z-index: 10;
+        /* Moves the title+description over the Pro ad in the lightbox */
+
+        .title,
+        .description,
+        .gallery {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 5px;
+            margin: 5px 0;
+            display: inline-block;
+            border-radius: 3px;
+            color: inherit;
+        }
+
+        .title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        a.gallery:before {
+            content: "["
+        }
+
+        a.gallery:after {
+            content: "]"
+        }
+
+        :empty {
+            display: none;
+        }
+    }
+
+    &.blueimp-gallery-controls>.title-description {
+        display: block
+    }
+
+}
+
+body:last-child .blueimp-gallery>.play-pause {
+    width: 44px;
+    height: 44px;
+    background: none;
+}
