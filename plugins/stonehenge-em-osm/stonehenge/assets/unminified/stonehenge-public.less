@@ -1,0 +1,428 @@
+@wordpress: 	#007cba;
+@disabled: 		#777777;
+@base: 			#212121;
+@white: 		#ffffff;
+@black: 		#23282d;
+@lightgray:		#dddddd;
+@gray: 			#b3b3b3;
+@darkgray: 		#525252;
+@green: 		#007c35;
+@bg_green: 		#d4edda;
+@blue: 			#31708f;
+@bg_blue: 		#d9edf7;
+@red: 			Crimson;
+@bg_red: 		#f8e4e4;
+@code: 			#0071a1;
+
+
+// Flip (Checkbox).
+.flip {
+	overflow: hidden;
+	display: inline-block;
+	width: 100px;
+	height: 22px;
+	background: #dddddd;
+	padding: 0.125em;
+	cursor: pointer;
+
+}
+.flip input {
+	width: 100px !important;
+	position: absolute;
+	visibility: hidden;
+}
+.flip span {
+	font-weight: normal;
+	position: relative;
+	left: 0%;
+	display: block;
+	text-align: center;
+	-webkit-transition: left 200ms ease-out;
+	   -moz-transition: left 200ms ease-out;
+	     -o-transition: left 200ms ease-out;
+	        transition: left 200ms ease-out;
+}
+.flip :checked + span {
+	left: 50%;
+}
+.flip span:before {
+	content: attr(data-unchecked);
+	display: block;
+	width: 50%;
+	background-color: #525252;
+	border-radius: 0.15em;
+	color: #b3b3b3;
+	padding: 1px;
+}
+.flip :checked + span:before {
+	content: attr(data-checked);
+	background-color: @wordpress;
+	color: #fff;
+	padding: 1px;
+}
+
+
+// Toggle (Radio).
+.switch-toggle {
+	position: relative;
+	display: inline-block;
+	padding: 0;
+	margin-bottom: 3px;
+	vertical-align: middle;
+	width: 100px;
+	height: 1.4em;
+	a {
+		display: none;
+		display: block;
+		-webkit-transition: left 200ms ease-out;
+		-moz-transition: left 200ms ease-out;
+		-o-transition: left 200ms ease-out;
+		transition: left 200ms ease-out;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0;
+		z-index: 1;
+		width: 10px;
+		height: 100%;
+		background-color: @darkgray;
+		border-radius: 0.15em;
+		font-weight: normal;
+	}
+	&::after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+	* {
+		box-sizing: border-box;
+		outline: none;
+	}
+	&:before {
+		box-sizing: border-box;
+		outline: none;
+	}
+	&:after {
+		box-sizing: border-box;
+		outline: none;
+	}
+	label {
+		line-height: 1.0em;
+		color: @gray !important;
+		font-weight: normal;
+		&:nth-child(2) {
+			&:nth-last-child(4) {
+				width: 50%;
+				&~label {
+					width: 50%;
+				}
+				&~a {
+					width: 50%;
+				}
+				&~input {
+					&:checked {
+						&:nth-child(3) {
+							&+label {
+								&~a {
+									left: 50%;
+									background: @wordpress;
+									color: @white;
+								}
+							}
+						}
+					}
+				}
+			}
+			&+input {
+				&:checked {
+					&+label {
+						color: @white !important;
+						font-weight: normal !important;
+					}
+				}
+			}
+		}
+	}
+	>span {
+		line-height: 1.0em;
+		span {
+			opacity: 0;
+			transition: all .1s;
+			&:first-of-type {
+				opacity: 1;
+			}
+		}
+	}
+	input {
+		&:focus {
+			&~span {
+				a {
+					outline: none;
+					outline-width: 0;
+					outline-style: none;
+					outline-color: -webkit-focus-ring-color;
+					outline-style: auto;
+				}
+			}
+			&+label {
+				outline: none;
+				outline-width: 0;
+				outline-style: none;
+				outline-color: -webkit-focus-ring-color;
+				outline-style: auto;
+			}
+		}
+		position: absolute;
+		left: 0;
+		opacity: 0;
+		display: none;
+		&+label {
+			position: relative;
+			z-index: 2;
+			display: block;
+			float: left;
+			text-align: center;
+		}
+		&:checked {
+			&+label {
+				color: @gray;
+				font-weight: normal;
+			}
+			&~span {
+				a {
+					background-color: @wordpress;
+				}
+			}
+		}
+		&:disabled {
+			&:checked {
+				&+label {
+					color: @disabled;
+					cursor: not-allowed;
+					background-color: @lightgray;
+					box-shadow: 0 1px 0 @black;
+					text-shadow: none;
+					box-shadow: none;
+				}
+			}
+			&+label {
+				cursor: not-allowed;
+			}
+		}
+	}
+}
+.switch-light {
+	span {
+		span {
+			display: none;
+		}
+	}
+}
+.switch-toggle.switch-toggle {
+	background-color: @lightgray;
+	box-shadow: inset rgba(0, 0, 0, 0.24) 0 1px 2px;
+	padding-top: 3px;
+}
+.switch-light.switch-toggle {
+	>span {
+		background-color: @lightgray;
+		box-shadow: inset rgba(0, 0, 0, 0.24) 0 1px 2px;
+		padding-top: 3px;
+	}
+}
+.switch {
+	&:disabled {
+		&+span {
+			&:before {
+				background-color: @gray;
+				color: @lightgray;
+				cursor: not-allowed;
+			}
+			cursor: not-allowed;
+		}
+	}
+}
+
+
+// Parsley.
+.stonehenge-error, .parsley-error, .parsley-required, .parsley-type, .parsley-range {
+	color: @red !important;
+	background-color: @bg_red !important;
+	border: 1px solid @red;
+	border-radius: 4px;
+	padding: 3px 5px;
+	box-shadow: 1px 1px 2px @lightgray;
+	font-size: 14px !important;
+	line-height: 1.85em !important;
+}
+
+.stonehenge-success, .parsley-success, .stonehenge-table .valid {
+	color: @green !important;
+	background: @bg_green !important;
+	border: 1px solid @green;
+	border-radius: 4px;
+	padding: 3px 5px;
+	box-shadow: 1px 1px 2px @lightgray;
+	font-size: 14px !important;
+}
+
+.stonehenge-info {
+	color: @blue !important;
+	background-color: @bg_blue;
+	border: 1px solid @blue;
+	border-radius: 4px;
+	padding: 3px 5px;
+	box-shadow: 1px 1px 2px @lightgray;
+	font-size: 14px !important;
+}
+
+.stonehenge-table {
+	display: table;
+	text-align: left;
+	font-family: inherit;
+	font-size: 16px;
+	line-height: 1.25em;
+	color: @base;
+	width: 99%;
+
+	tr {
+		display: table-row;
+	}
+
+	th, td {
+		display: table-cell;
+	}
+
+	th {
+		top: 10px;
+		width: 190px;
+	}
+
+	td {
+
+	}
+
+	tr > td {
+		padding-bottom: 15px;
+	}
+
+	p {
+		font-size: inherit;
+		font-weight: normal;
+		line-height: 1.25em;
+		padding: 0 0 15px 0;
+		margin: 0;
+		max-width: 99%;
+		.description {
+			color: @gray;
+		}
+	}
+
+	input, textarea, .radios, .checkboxes {
+		margin-bottom: 8px !important;
+	}
+
+
+	input:not([type="button"]):not([type="submit"]), textarea:not(.wp-editor-area), .wp-editor-container, select {
+		color: @base;
+		border: 1px solid @gray;
+	}
+
+	input:not([type="checkbox"]):not([type="radio"]):not([type="number"]):not([type="button"]):not([type="submit"]):not([type="date"]):not([type="time"]) {
+		width: 250px;
+		max-width: 98%;
+		height: 30px;
+		max-height: 30px;
+		min-height: 30px;
+		padding: 0 8px;
+	}
+
+	input[type="number"], input[type="time"], input[type="date"] {
+		text-align: right;
+		min-width: 5em;
+	}
+
+	input[type="currency"] {
+		text-align: right;
+		width: 6.5em !important;
+		margin: 0 auto;
+		display: block;
+		border-radius: 4px;
+	}
+
+	textarea:not(.wp-editor-area), .wp-editor-container {
+		width: 98%;
+	}
+
+	textarea {
+		font-family: inherit;
+	}
+
+	select {
+		margin: 0 0 8px 0;
+		padding: 0;
+		color: inherit;
+		font-size: inherit;
+		font-weight: normal;
+	    text-shadow: none;
+		text-indent: 10px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		background: @white;
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAeCAYAAAAo5+5WAAAAdUlEQVRIx2MQllCs+P//vwcQM1ATM4waPGrwqMEjzmBSweAxGMgu+k8YFJHjYsvFixfvwWUiSA6khtygsFmxYsV+dENBYiA5SsPYfvXq1QdghoLYIDFqRZ7jxo0bD4MwiE3tVOECxYM0uVHd4NFCaNTgQW4wAKpugq+9Zk7QAAAAAElFTkSuQmCC');
+		background-position: 97% center;
+		background-repeat: no-repeat;
+		-webkit-appearance: none;
+		width: 270px;
+		max-width: 98%;
+		height: 30px;
+		max-height: 30px;
+		min-height: 30px;
+	}
+
+	label {
+		cursor: pointer;
+	}
+
+	.description {
+		font-size: inherit;
+	}
+
+	.red {
+		color: @red!important;
+	}
+
+	.big {
+		font-size: 1.15em;
+		padding: 7px !important;
+	}
+
+	small, .small {
+		font-size: 0.85em;
+	}
+
+	.indicator:after {
+		color: @red;
+		content: '\00a0\002A';
+	}
+
+	.hidden {
+		display: none !important;
+	}
+
+	input[type="radio"]:checked + label, input[type="checkbox"]:checked + label  {
+		font-weight: bold;
+		color: @green;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.stonehenge-table {
+		display: block;
+	}
+
+	th, td {
+		display: block !important;
+	}
+}

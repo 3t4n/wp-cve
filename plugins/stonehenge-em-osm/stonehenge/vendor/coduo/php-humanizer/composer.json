@@ -1,0 +1,56 @@
+{
+    "name": "coduo/php-humanizer",
+    "type": "library",
+    "description": "Humanize values that are readable only for developers",
+    "keywords": ["php", "humanize", "humanizer"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michał Dąbrowski",
+            "email": "dabrowski@brillante.pl"
+        },
+        {
+            "name": "Norbert Orzechowicz",
+            "email": "norbert@orzechowicz.pl"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "symfony/config": "^2.3|^3.0|^4",
+        "symfony/translation": "^2.3|^3.0|^4",
+        "symfony/yaml": "^2.3|^3.0|^4"
+    },
+    "require-dev": {
+        "thunderer/shortcode": "^0.7",
+        "phpspec/phpspec": "^2",
+        "phpunit/phpunit": "^4.5|^5.0",
+        "friendsofphp/php-cs-fixer": "^2.14"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src",
+            "Coduo\\PHPHumanizer\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0-dev"
+        }
+    },
+    "suggest": {
+        "ext-intl": "Required if you are going to use humanizer with locales different than en_EN"
+    },
+    "scripts": {
+        "cs:php:fix": [
+            "php-cs-fixer fix --using-cache=no"
+        ],
+        "test": [
+            "phpspec run --format=pretty",
+            "phpunit",
+            "php-cs-fixer fix -v --dry-run"
+        ]
+    }
+}
