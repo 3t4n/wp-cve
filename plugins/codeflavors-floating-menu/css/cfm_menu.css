@@ -1,0 +1,174 @@
+/**
+ * Menu container
+ */
+#cfn_floating_menu{
+	display:block;
+	position:fixed;
+	left:0px;
+	top:50px;
+	z-index:10000;
+}
+
+/**
+ * Do not change this. Used by menu settings to move menu from 
+ * left side to right side of WordPress
+ */
+#cfn_floating_menu.right{
+	left:auto;
+	right:0px;
+}
+/**
+ * Do not change this. Used by menu settings to animate the menu
+ * when scrolling the page instead of using fixed position.
+ */
+#cfn_floating_menu.animated,
+#cfn_floating_menu.static-menu{
+	position:absolute;
+}
+	
+	/**
+	 * Lists inside the menu
+	 */
+	#cfn_floating_menu ul{
+		display:block;
+		position:relative;
+		margin:0px;
+		padding:0px;
+		list-style-type:none;		
+	}
+		/**
+		 * List elements inside the menu
+		 */
+		#cfn_floating_menu ul li{
+			display:block;
+			position:relative;
+			margin:0px;
+			padding:0px;
+			float:none;
+			width:100%;
+			clear:both;
+			white-space:nowrap;
+		}
+			/**
+			 * Anchor design
+			 */
+			#cfn_floating_menu ul li a{
+				display:block;
+				position:relative;
+				padding:5px 10px 5px;
+			}
+		
+		/**
+		 * Submenus
+		 */
+		#cfn_floating_menu ul ul{
+			display:none;
+			position:absolute;
+			left:100%;
+			top:0px;			
+		}
+		/**
+		 * Do not change this. Used when menu is moved on the right side
+		 * of WordPress
+		 */
+		#cfn_floating_menu.right ul ul{
+			right:100%;
+			left:auto;
+		}
+		
+/**
+ * MENU DESIGN - do all design changes below
+ */	
+
+/**
+ * Menu container - left side
+ */		
+#cfn_floating_menu ul{
+	/*
+	-moz-box-shadow:2px 2px 2px #CCC;
+	-webkit-box-shadow:2px 2px 2px #CCC;
+	 box-shadow:2px -1px 4px #CCC;
+	 */
+}
+/**
+ * Menu container - right side
+ */	
+#cfn_floating_menu.right ul{
+	-moz-box-shadow:-2px 2px 2px #CCC;
+	-webkit-box-shadow:-2px 2px 2px #CCC;
+	 box-shadow:-2px -1px 4px #CCC;
+}
+	/**
+	 * Menu anchor container
+	 */
+	#cfn_floating_menu ul li{
+		font-size:12px;
+		border-bottom:1px #2B2B2B solid;
+		line-height:20px;
+	}
+		/**
+		 * Menu anchor
+		 */
+		#cfn_floating_menu ul li a{
+			background-color:#000000;
+			color:#FFF;
+			text-decoration:none;
+		}
+		/**
+		 * Hovered and active anchor design
+		 */
+		#cfn_floating_menu ul li a:HOVER,
+		#cfn_floating_menu ul li a.currentItem{
+			color:#FFF;
+			background-color:#999;					
+		}
+		/**
+		 * Item has children - left sided menu
+		 */
+		#cfn_floating_menu ul li.has-children > a{
+			background-image:url(../images/dots-arrow-right.png);
+			background-position: right center;
+			background-repeat: no-repeat;	
+			padding-right:20px;			
+		}
+		/**
+		 * Item has children - right sided menu
+		 */
+		#cfn_floating_menu.right ul li.has-children > a{
+			background-image:url(../images/dots-arrow-left.png);
+			background-position: left center;
+			padding-left:20px;	
+		}
+		
+#cfn_floating_menu ul li.cfm_menu_title_li{
+	line-height:30px;
+	background:none;
+	font-size:20px;	
+}
+#cfn_floating_menu ul li.cfm_menu_title_li a{
+	background:none;
+	color:#000;
+}		
+		
+#cfn_floating_menu ul li.cfm_menu_title_li.closed{
+	background:#000;
+	border:none;
+	box-shadow:1px 1px 3px #999;
+	border-top-right-radius:5px;	
+	border-bottom-right-radius:5px;	
+}
+		
+#cfn_floating_menu ul li.cfm_menu_title_li.closed a{
+	text-indent:-9999px;
+	background:url(../images/open-menu-ico.png) center center no-repeat transparent;
+	width:32px;
+	height:32px;
+}
+/*
+@media (max-width : 960px){
+	#cfn_floating_menu{
+		display:none!important;
+	}
+}
+*/
+*/
