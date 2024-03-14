@@ -1,0 +1,42 @@
+<div ng-controller='PresetsController' class="wpcfs" style="min-height: 500px; position: relative">
+<div ng-controller='PresetController' class="wpcfs-presets">
+    <div class='wpcfs-settings-page-wrapper'>
+        <h2>Presets</h2>
+        <div class='popup settings-popup' ng-if='preset' x-wpcfs-height-source='form'>
+            <div class='popup-header'>
+                <a class='close icon right top' ng-click='close_preset_popup()'><i18n>Close</i18n></a>
+            </div>
+            <div class='popup-content'>
+                <div ng-controller='WPCFSForm' ng-include="partials+'form.html'">
+                    
+                </div>
+                <button type='button' class='wpcfs-cta right' ng-click='save_preset(preset)'>Save</button>
+            </div>
+        </div>
+        <ul class='preset-catalogue row'>
+            <li ng-repeat='preset in presets' class='col-sm-4 col-md-2 preset-catalogue-wrapper'>
+                <div class='preset-catalogue-item'>
+                    <a class='delete icon left' ng-click='delete_preset(preset)'><i18n>Remove</i18n></a>
+                    <a class='edit icon right' ng-click='edit_preset(preset)'><i18n>Edit</i18n></a>
+                    <p class='preset-label'>{{ get_preset_title(preset) }}</p>
+			<ul class='preset-field-list'>
+				<li ng-repeat='input in preset.inputs'>{{input.label}}</li>
+			</ul>
+                    <div class='preset-blurb'>
+                            <p><i18n>Instantiate this preset in any post or page by entering the shortcode:</i18n><br/><code>[wpcfs-preset id="{{preset.id}}"]</code></p>
+                            <p><i18n>Or in your theme files with the PHP code:</i18n><br/><code>&lt;?php wpcfs_show_preset("{{preset.id}}"); ?&gt;</code></p>
+                    </div>
+                </div>
+            </li>
+            <li ng-click='add_preset()' class='col-sm-4 col-md-2 preset-catalogue-wrapper'>
+                <div class='preset-catalogue-item'><div class='add icon'></div><span class='new-preset-button'>New Preset</span></div></li>
+        </ul>
+        <!--
+        <h2>Import / Export</h2>
+        <ul>
+            <li><a download='settings.json' ng-click='warn_no_import()' href='{{export_settings_href}}'><i18n>Export Settings</i18n></a></li>
+        </ul>
+        -->
+    </div>
+</div>
+</div>

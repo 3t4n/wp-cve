@@ -1,0 +1,24 @@
+<div ng-controller='SelectController' style='width: 100%; clear: both;'>
+    <p><span><i18n>Matches If</i18n></span> <select ng-model='field.multi_match'>
+            <option value='Any'><i18n>Any</i18n></option>
+            <option value='All'><i18n>All</i18n></option>
+    </select> <span><i18n>Present</i18n></span></p>
+	<p><i18n>Data Source:</i18n> <select ng-model='field.source'>
+		<option value='Auto'><i18n>Auto</i18n></option>
+		<option value='Manual'><i18n>Manual</i18n></option>
+	</select></p>
+	<div ng-if='field.source=="Manual"'>
+		<table class='wpcfs-key-value-table'>
+			<thead><tr><td></td><th><i18n>Value</i18n></th><th><i18n>Label</i18n></th></tr></thead>
+			<tbody ng-model='field.options' ui-sortable>
+				<tr ng-repeat='option in field.options'>
+					<td><a class='drag icon'>DRAG</a></td>
+					<td><input ng-model='option.value'/></td>
+					<td><input ng-model='option.label'/></td>
+					<td><a ng-click='remove_option(option)' class='icon delete'>X</a></td>
+				</tr>
+			</tbody>
+			<tfoot><tr><td></td><td><a ng-click='add_option()'><div class='icon add'></div></a></td></tr></thead>
+		</table>
+	</div>
+</div>

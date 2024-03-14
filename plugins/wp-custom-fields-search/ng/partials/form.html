@@ -1,0 +1,88 @@
+<div ng-controller="WPCFSForm" class='wpcfs wpcfs-form'>
+<div style='min-height: {{min_height}}px;'>
+<div class='form_header'>
+    <input ng-model='settings.form_title' placeholder='Name This Form'/>
+    <a class='edit icon right' ng-click='show_settings_popup()'><i18n="Config Icon">Config</i18n></a>
+
+</div>
+<div class='popup settings-popup' ng-if='settings_visible' ng-controller='WPCFSSettings' wpcfs-height-source='settings'>
+    <div class='popup-header'>
+        <a class='close icon right top' ng-click='close_settings_popup()'><i18n>Close</i18n></a>
+    </div>
+    <div class='popup-content'>
+        <div ng-repeat='page in config.settings_pages'>
+            <h3 ng-click='expand(page)' class='wpcfs-settings-accordion-header' ng-class='{ "expanded": is_expanded(page), "collapsed": !is_expanded(page) }'>{{page.title}}</h3>
+            <div class='wpcfs-settings-accordion-content' ng-include='page.template' ng-show='is_expanded(page)'>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class='form_fields' ui-sortable ng-model='form_fields'>
+	<li ng-repeat='field in form_fields' class="form_field">
+        <a class='delete icon left' ng-click='remove_field(field)'><i18n>Remove</i18n></a>
+        <span class='title drag'>{{field.label}}</span>
+        <a class='edit icon right' ng-click='edit_field(field)'><i18n>Edit</i18n></a>
+	</li>
+</ul>
+<ul class='form_fields'>
+    <li class='form_field new_field'>
+        <a ng-click='add_field()' class='add icon left'><i18n>Add</i18n></a><a ng-click='add_field()' class='icon-text'><i18n>Add Field</i18n></a>
+    </li>
+</ul>
+
+
+
+<div class='popup' ng-if='popped_up_field' ng-controller='WPCFSField' wpcfs-height-source='field'>
+    <div class='popup-header'>
+        <a class='close icon right top' ng-click='close_edit_form(field)'><i18n>Close</i18n></a>
+    </div>
+    <div class='popup-content'>
+
+            <div class='config_row'>
+                <input ng-model='field.label' focus-me="true">
+                <div class='wpcfs-floating-prompt' ng-if='!field.label'><p><i18n>What should this field be called?</i18n></p></div>
+            </div>
+
+            <div class='config_row' ng-if='field.label'>
+                <select ng-model='field.input'
+                    ng-options='input.id as input.name for input in config.building_blocks.inputs'>
+                </select>
+
+                <a class='icon right edit' ng-if='field.input && inputs[field.input].options.extra_config_form' ng-click='show_config_form(inputs[field.input].options.extra_config_form,field)'><i18n>Edit</i18n></a>
+
+                <div class='wpcfs-floating-prompt' ng-if='!field.input'><p><i18n>How would you like this field to appear?</i18n></p></div>
+            </div>
+
+
+            <div class='config_row' ng-if='field.input'>
+                <select ng-model='field.datatype'
+                    ng-options='datatype.id as datatype.name for datatype in config.building_blocks.datatypes'>
+                </select>
+                <select ng-if='field.datatype' ng-model='field.datatype_field'
+                    ng-options='id as name for (id,name) in fields'>
+                </select>
+                <a class='icon right edit' ng-if='field.datatype && datatypes[field.datatype].options.extra_config_form' ng-click='show_config_form(datatypes[field.datatype].options.extra_config_form,field)'><i18n>Edit</i18n></a>
+
+                <div class='wpcfs-floating-prompt' ng-if='!field.datatype_field'><p><i18n>What do you want to search?</i18n></p></div>
+            </div>
+            <div class='config_row' ng-if='field.datatype_field'>
+                <select ng-model='field.comparison'
+                    ng-options='comparison.id as comparison.name for comparison in valid_comparisons'>
+                </select>
+                <a class='icon right edit' ng-if='field.comparison && comparisons[field.comparison].options.extra_config_form' ng-click='show_config_form(comparisons[field.comparison].options.extra_config_form,field)'><i18n>Edit</i18n></a>
+                <div class='wpcfs-floating-prompt' ng-if='!field.comparison'><p><i18n>How do you want to match the search to the data?</i18n></p></div>
+            </div>
+
+        <div class='popup' ng-if='config_popup' ng-controller='ConfigPopup' wpcfs-height-source='sub_config'>
+            <div class='popup-header'>
+                <a class='close icon right top' ng-click='close_config_popup(form,field)'><i18n>Close</i18n></a>
+            </div>
+            <div class='popup-content'>
+                <div ng-include='include_file'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>

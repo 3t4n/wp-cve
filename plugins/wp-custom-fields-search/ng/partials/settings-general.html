@@ -1,0 +1,18 @@
+<p>
+	<label for='wpcfs-show-title'>Show Title?</label>
+	<input type='checkbox' ng-model='settings.show_title' id='wpcfs-show-title'/>
+</p>
+
+<p>Post Types to show:</p>
+<p>
+	<label for='wpcfs-post-types'>Show default post types:</label>
+	<input type='checkbox' ng-model='settings.default_post_types' id='wpcfs-default-post-types'/>
+
+	<div ng-if='!settings.default_post_types'>
+		<label for='wpcfs-post-types'>Select post types:</label>
+		<select multiple='multiple'
+			ng-model='settings.selected_post_types'
+			ng-options='value as label for (value,label) in post_type_options'
+		></select>
+	</div>
+</p>
