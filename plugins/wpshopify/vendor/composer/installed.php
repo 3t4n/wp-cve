@@ -1,0 +1,53 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => '4.0.x-dev',
+        'version' => '4.0.9999999.9999999-dev',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '70ba51f0bf6c41ed480c8427687d2330b087c033',
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => '4.0.x-dev',
+            'version' => '4.0.9999999.9999999-dev',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '70ba51f0bf6c41ed480c8427687d2330b087c033',
+            'dev_requirement' => false,
+        ),
+        'myclabs/deep-copy' => array(
+            'pretty_version' => '1.10.2',
+            'version' => '1.10.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../myclabs/deep-copy',
+            'aliases' => array(),
+            'reference' => '776f831124e9c62e1a2c601ecc52e776d8bb7220',
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '1.10.2',
+            ),
+        ),
+        'typisttech/imposter' => array(
+            'pretty_version' => '0.6.1',
+            'version' => '0.6.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../typisttech/imposter',
+            'aliases' => array(),
+            'reference' => 'f52b1a2289d2ea9c660cf9595085d0b11469af83',
+            'dev_requirement' => false,
+        ),
+        'typisttech/imposter-plugin' => array(
+            'pretty_version' => '0.6.2',
+            'version' => '0.6.2.0',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/../typisttech/imposter-plugin',
+            'aliases' => array(),
+            'reference' => '15fa3c90aca3b79497f438b9e02a6176498de53c',
+            'dev_requirement' => false,
+        ),
+    ),
+);
