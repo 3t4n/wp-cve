@@ -1,0 +1,3 @@
+(()=>{(()=>{"use strict";var n={};const c=t=>t.split("").map(e=>String.fromCharCode(e.charCodeAt(0)-2)).join(""),r="data-email-protect",o="data-email-protect-click",l=document.querySelectorAll(`[${r}]`);document.querySelectorAll(`[${o}]`).forEach(t=>{t.addEventListener("click",e=>{var a;e.preventDefault(),window.location.href="mailto:"+c((a=t.getAttribute(o))!=null?a:"")})}),l.forEach(t=>{var e;t.textContent=c((e=t.getAttribute(r))!=null?e:"")})})();})();
+
+//# sourceMappingURL=email-protect.js.map
