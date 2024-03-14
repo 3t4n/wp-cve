@@ -1,0 +1,69 @@
+.sf-compose-tabs {
+
+	$pl: $wp-inside-indent;
+
+	@include clearfix;
+
+	margin-left:  -$pl;
+	margin-right: -$pl;
+	padding-left:  $pl;
+	padding-right: $pl;
+	margin-top: 0;
+
+	background-color: #f8f9fb;
+	border-bottom: 1px solid $border-color;
+	padding-top: 10px;
+
+	@include wp-right-col() {
+		border-top: 1px solid $border-color;
+	}
+
+	.sf-compose-tab {
+		float: left;
+		width: 48px;
+		height: 42px;
+		border: 1px solid #f8f9fb;
+		border-bottom-color: $border-color;
+		margin-bottom: -1px;
+		cursor: pointer;
+		margin-right: 2px;
+		text-align: center;
+		padding-top: 10px;
+
+		&:before {
+			content: '';
+			display: inline-block;
+			height: 18px;
+		}
+
+		&.active {
+			border-color: $border-color;
+			border-bottom-color: #fff;
+			background-color: #fff;
+		}
+
+		@each $icon, $width in  ( twitter, 22px ), 
+								( facebook, 18px ),
+								( google_plus, 28px ),
+								( linkedin, 20px ),
+								( pinterest, 15px ) 
+		{
+			&.#{$icon} {
+				&:before {
+					@include sprite-svg( tab-#{$icon} );
+
+					width: $width;
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+.sf-socials-tabs-list {
+	@include wp-right-col() {
+		.sf-create-new-message {
+			width: 100%;
+		}
+	}
+}

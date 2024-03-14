@@ -1,0 +1,86 @@
+<?php
+/**
+ * Template for displaying options page updated notice
+ *
+ * @package SocialFlow
+ */
+
+global $socialflow;
+
+if ( isset( $data['form_messages'] ) ) {
+	$form_messages = $data['form_messages'];
+}
+if ( isset( $data['last_sent'] ) ) {
+	$last_sent = $data['last_sent'];
+}
+
+if ( isset( $data['post_id'] ) ) {
+	$post_id = $data['post_id'];
+}
+
+$i = 0;
+if ( ! empty( $form_messages ) ) : ?>
+<table cellspacing="0" class="wp-list-table widefat fixed sf-statistics">
+	<tbody class="list:statistics">
+		<tr>
+			<th colspan="2">
+				<a href="#" class="sf-js-update-multiple-messages clickable"><?php esc_html_e( 'Refresh Stats', 'socialflow' ); ?></a>
+			</th>
+			<th class="refresh-column"></th>
+		</tr>
+		<?php $i = 0; ?>
+		<?php
+		foreach ( $form_messages as $date => $success ) :
+			$first = true;
+			$alt   = ( 0 === $i % 2 ) ? 'alternate' : '';
+			$i++;
+		?>
+			<?php
+			foreach ( $success as $user_id => $messages ) :
+				$account = $socialflow->accounts->get( $user_id );
+
+				foreach ( $messages as $key => $message ) :
+
+					// In queue status.
+					if ( isset( $message['is_published'] ) ) {
+						$queue_status = ( 0 === (int) $message['is_published'] ) ? esc_attr__( 'In Queue', 'socialflow' ) : esc_attr__( 'Published', 'socialflow' );
+					} else {
+						$queue_status = '';
+					}
+
+				?>
+				<?php if ( $first ) : ?>
+					<tr class="message <?php echo esc_attr( $alt ); ?>" >
+						<th class="massage-date" colspan="3" >
+							<?php echo esc_html( mysql2date( 'd F, Y h:i', $date ) ); ?>
+						</th>
+					</tr>
+				<?php endif; ?>
+					<tr class="message <?php echo esc_attr( $alt ); ?>" data-id="<?php echo esc_attr( $message['content_item_id'] ); ?>" data-date="<?php echo esc_attr( $date ); ?>" data-account-id="<?php echo esc_attr( $user_id ); ?>" data-post_id="<?php echo esc_attr( $post_id ); ?>" data-key="<?php echo esc_attr( $key ); ?>">
+						<td class="account column-account">
+							<?php echo esc_attr( $socialflow->accounts->get_display_name( $user_id, false ) ); ?>
+						</td>
+						<td class="column-status">
+							<span class="status">
+								<?php echo esc_html( $message['status'] ); ?>
+								<?php if ( $queue_status ) : ?>
+									&rarr; <span style="display:inline-block;"><?php echo wp_kses_post( $queue_status ); ?></span>
+								<?php endif ?>
+							</span>
+						</td>
+						<td class="refresh-column">
+							<img class="sf-message-loader" style="display:none;" src="<?php echo esc_url( plugins_url( 'assets/images/wpspin.gif', SF_FILE ) ); ?>" alt="">
+						</td>
+					</tr>
+				<?php
+				$first = false;
+endforeach;
+?>
+
+			<?php endforeach ?>
+
+		<?php endforeach ?>
+	</tbody>
+</table>
+<?php
+endif; // we have statuses !

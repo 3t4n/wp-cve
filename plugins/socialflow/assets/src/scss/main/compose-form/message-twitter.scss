@@ -1,0 +1,53 @@
+.sf-message-block.twitter {
+	position: relative;
+
+	.sf_message_postfix {
+		position: relative;
+		margin-top: 14px;
+
+		.status {
+			position: absolute;
+			right: 0;
+			top: 12px;
+			color: #00aced;
+		}
+	}
+
+	@include wp-central-col() {
+		@include screen( $wp-admin-mobile, 1080px ) {
+			input[type=text] {
+				width: 100%;
+			}
+			.sf_message_postfix {
+				padding-right: 40px;
+
+				.status {
+					span {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	@include wp-right-col() {
+		input[type=text] {
+			width: 100%;
+		}
+
+		.sf_message_postfix {
+			padding-right: 40px;
+
+			.status {
+				display: block;
+				width: 40px + $wp-inside-indent;
+				text-align: center;
+				right: -$wp-inside-indent;
+
+				span {
+					display: none;
+				}
+			}
+		}
+	}
+}

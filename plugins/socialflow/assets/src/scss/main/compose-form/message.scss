@@ -1,0 +1,99 @@
+.sf-message-block {
+	input[type=text] {
+		height: 40px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin: 0;
+	}
+
+	textarea {
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-bottom: 14px;
+	}
+
+	select {
+		@include sprite-svg( select-arrow );
+
+		background-size: 12px 7px;
+		background-position: top 16px right 14px;
+
+		height: 40px;
+		width: 118px;
+		padding-left: 10px;
+		padding-right: 30px;
+		margin: 0;
+
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-webkit-border-radius: none;
+	}
+
+	.sf-additional-fields {
+		position: relative;
+		overflow: hidden;
+		padding-left: 232px;
+
+		.widefat {
+			margin-bottom: 14px;
+		}
+	}
+
+	.sf-muted-title,
+	.sf-muted-description {
+		border: 1px solid #DDDDDD;
+		font-size: 14px;
+		line-height: 20px;
+		padding: 10px 10px 9px 10px;
+	}
+
+	.sf-muted-title,
+	.sf-muted-description,
+	.sf-muted-message {
+		margin-bottom: 14px;
+	}
+
+	.sf-muted-title {
+		min-height: 40px;
+	}
+
+	.sf-muted-description {
+		min-height: 92px;
+	}
+
+	@include wp-right-col {
+		.sf-additional-fields {
+			padding-left: 0;
+		}
+	}
+}
+
+@include wp-central-col() {
+	@include screen( $wp-admin-mobile, 1200px ) {
+		.sf-message-block {
+			.sf-additional-fields {
+				padding-left: 0;
+			}
+
+			.sf-attachments {
+				position: static;
+			}
+		}
+	}
+}
+
+.sf-message-wrapper {
+	@include clearfix;
+
+	.sf-remove-message {
+		float: right;
+		color: red;
+		cursor: pointer;
+		display: inline-block;
+		margin-bottom: 20px;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

@@ -1,0 +1,120 @@
+.sf-attachments {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 220px;
+	margin-bottom: 14px;
+
+	$h: 140px;
+
+	@include wp-right-col {
+		position: static;
+		width: 100%;
+		margin-bottom: 14px;
+		max-width: 220px;
+	}
+
+	.image-container {
+		overflow: hidden;
+		margin-bottom: 10px;
+		height: $h;
+
+		img {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	.sf-message-select-attachment {
+		height: 32px;
+		width: 120px;
+		box-shadow: none;
+	}
+
+	.sf-attachments-slider {
+		position: relative;
+
+		.sf-attachment-slider-nav {
+			position: absolute;
+			height: $h;
+			top: 0;
+			display: block;
+			overflow: hidden;
+			text-indent: -9999px;
+			cursor: pointer;
+
+			&:before {
+				content: '';
+				top: 64px;
+				width: 11px;
+				height: 18px;
+				display: block;
+				position: absolute;
+			}
+		}
+
+		.sf-attachment-slider-prev {
+			left: 0;
+			width: 40%;
+
+			&:before {
+				@include sprite-svg( slider-arrow-prev );
+
+				left: $wp-inside-indent;
+			}
+		}
+
+		.sf-attachment-slider-next {
+			right: 0;
+			width: 60%;
+
+			&:before {
+				@include sprite-svg( slider-arrow-next );
+
+				right: $wp-inside-indent;
+			}
+		}
+
+		.sf-attachment-slider-refresh {
+			position: relative;
+			display: inline-block;
+			margin-left: 33px;
+			margin-top: 5px;
+
+			&.loading {
+				&:before {
+					-o-animation: cssload-rotate-2 800ms linear infinite;
+	  				   animation: cssload-rotate-2 800ms linear infinite;
+				}
+			}
+
+			&:before {
+				@include sprite-svg( slider-refresh );
+
+				content: '';
+				display: inline-block;
+				position: absolute;
+				width: 20px;
+				height: 18px;
+				left: -26px;
+				top: 0;
+			}
+		}
+	}
+}
+
+@-o-keyframes cssload-rotate-2 {
+	100% {
+		-o-transform: rotate(-360deg);
+		   transform: rotate(-360deg)
+	}
+}
+
+@keyframes cssload-rotate-2 {
+	100% {
+		-o-transform: rotate(-360deg);
+		   transform: rotate(-360deg)
+	}
+}

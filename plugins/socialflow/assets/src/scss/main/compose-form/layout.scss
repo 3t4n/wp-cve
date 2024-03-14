@@ -1,0 +1,135 @@
+@include wp-central-col() {
+	$w: 254px;
+	$pl: $wp-inside-indent; // pl = padding-left
+	$pt: 226px;
+
+	@include screen( $wp-admin-mobile ) {
+		.sf-compose-form-inn {
+			@include clearfix;
+
+			position: relative;
+			margin-top: -12px;
+			margin-bottom: -12px;
+			margin-left: -$pl;
+			padding-left: $pl;
+
+			&:before,
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				background-color: $border-color;
+			}
+
+			&:before { 
+				width: 1px;
+				left: $w + $pl;
+				height: 100%;
+				top: 0;
+			}
+
+			&:after {
+				width: $w + $pl;
+				left: 0;
+				top: $pt;
+				height: 1px;
+			}
+
+			.sf-compose-form-sidebar {
+				position: absolute;
+				top: 0;
+				left: $pl;
+				height: 100%;
+				width: $w;
+			}
+
+			.sf-compose-form-main {
+				width: 100%;
+				padding-left: $w + $pl;
+				box-sizing: border-box;
+				padding-bottom: 20px;
+				padding-top: 1px;
+			}
+		}
+
+		.sf-compose-form-globa-settings,
+		.sf-compose-form-accounts {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+		}
+
+		.sf-compose-form-globa-settings {
+			height: $pt;
+			z-index: 10;
+		}
+
+		.sf-compose-form-accounts {
+			top: $pt;
+			bottom: 0;
+		}
+		.sf-compose-form-accounts-inn {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+		}
+		
+	}
+
+	@include screen( $wp-admin-mobile, 1270px ) {
+		$w: 210px;
+
+		.sf-compose-form-inn {
+			&:before {
+				left: $w + $pl;
+			}
+
+			&:after {
+				width: $w + $pl;
+			}
+
+			.sf-compose-form-sidebar {
+				width: $w;
+			}
+
+			.sf-compose-form-main {
+				padding-left: $w + $pl;
+			}
+		}
+	}
+}
+
+#sf-compose-form {
+	$pt: 124px;
+
+	.sf-compose-form-inn {
+		&:after {
+			top: $pt;
+		}
+	}
+	.sf-compose-form-globa-settings {
+		height: $pt;
+	}
+
+	.sf-compose-form-accounts {
+		top: $pt;
+	}
+}
+
+
+@include wp-right-col() {
+	$pl: $wp-inside-indent; // pl = padding-left
+
+	.sf-compose-form-globa-settings {
+		margin-left:  -$pl;
+		margin-right: -$pl;
+		padding-left:  $pl;
+		padding-right: $pl;
+		border-bottom: 1px solid $border-color;
+	}
+
+	.sf-compose-form-accounts-inn {
+		height: 245px;
+	}
+}

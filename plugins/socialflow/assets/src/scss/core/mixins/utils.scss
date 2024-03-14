@@ -1,0 +1,164 @@
+@function em-calc( $px ) {
+	@return #{$px/16}em;
+}
+
+
+@mixin no-lst {
+	margin-left: 0px;
+	margin-bottom: 0px;
+	list-style: none;
+}
+
+@mixin no-selection {
+	// disable text selection
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+}
+
+@mixin opacity($opacity) {
+	$opacity-ie: $opacity * 100;
+
+	opacity: $opacity;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin font-size($sizeValue){
+	font-size: $sizeValue + px; //fallback for old browsers
+	font-size: (0.0625 * $sizeValue) + rem;
+}
+
+@mixin line-height($heightValue){
+	line-height: $heightValue + px; //fallback for old browsers
+	line-height: (0.0625 * $heightValue) + rem;
+}
+
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin triangle( $direction, $color, $size ) {
+	border: $size outset transparent;
+	
+	@if $direction == "left" {
+		border-right: $size solid $color;
+	}
+
+	@else if $direction == "right" {
+		border-left: $size solid $color;
+	}
+
+	@else if $direction == "up" {
+		border-bottom: $size solid $color;
+	}
+
+	@else if $direction == "down" {
+		border-top: $size solid $color;
+	}
+
+	height: 0;
+	width: 0;
+	display: block;
+	content: '';
+	position: absolute;
+}
+
+@mixin screen( $min, $max: 0 ) {
+	@if phone == $min {
+		$min: 0;
+		$max: sm;
+	} 
+	@else if phone-up == $min {
+		$min: sm;
+		$max: 0;
+	}
+	@else if tablet == $min {
+		$min: sm;
+		$max: $tablet-max;
+	} 
+	@else if tablet-up == $min {
+		$min: $tablet-max;
+		$max: 0;
+	} 
+	@else if desktop == $min {
+		$min: $tablet-max;
+		$max: 0;
+	}
+
+	@if 0 != $min {
+		@if lg == $min {
+			$min: $screen-lg;
+			$max: 0;
+		} 
+		@else if md == $min {
+			$min: $screen-md;
+		} 
+		@else if sm == $min {
+			$min: $screen-sm;
+		} 
+		@else if xs == $min {
+			$min: $screen-xs;
+		} 
+		@else {
+			$min: $min + 0px;
+		}
+	}
+
+	@if 0 != $max {
+		@if lg == $max {
+			$max: ($screen-lg - 1);
+		} 
+		@else if md == $max {
+			$max: ($screen-md - 1);
+		} 
+		@else if sm == $max {
+			$max: ($screen-sm - 1);
+		} 
+		@else if xs == $max {
+			$max: ($screen-xs - 1);
+		} 
+		@else {
+			$max: $max + 0px;
+		}
+	}
+
+	$has-and: 0;
+	$and: '';
+	$min-w: '';
+	$max-w: '';
+
+	@if 0 != $min {
+		$min-w: '(min-width: #{$min})';
+		$has-and: $has-and + 1;
+	} 
+
+	@if 0 != $max {
+		$max-w: '(max-width: #{$max})';
+		$has-and: $has-and + 1;
+	}
+
+	@if 2 == $has-and {
+		$and: 'and';
+	} 	
+
+	$media: '#{$min-w} #{$and} #{$max-w}';
+
+	@media #{$media} {
+		@content;
+	}
+}
+
+@mixin rtl() {
+	body.rtl & {
+		@content;
+	}
+}

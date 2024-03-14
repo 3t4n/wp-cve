@@ -1,0 +1,144 @@
+.sf-advanced-setting {
+	&.sf-advanced-setting-0 {
+		.sf-advanced-item-actions {
+			display: none;
+		}
+	}
+
+	.sf-setting-item {
+		margin-right: 0px;
+		margin-bottom: 14px;
+		display: inline-block;
+		vertical-align: top;
+
+		input[type=text] {
+			width: 154px;
+		}
+	}
+
+	.sf-setting-title {
+		margin-right: 0px;
+	}
+
+	.sf-setting-must-send {
+		width: 66px;
+		display: inline-block;
+		text-align: center;
+		position: relative;
+		top: 3px;
+	}
+
+	@include wp-right-col() {
+		.sf-setting-item {
+			margin-right: 0;
+			width: 100%;
+			position: relative;
+			padding-left: 80px;
+
+			select {
+				width: 100%;
+			}
+
+			.sf-setting-title {
+				position: absolute;
+				left: 0;
+				top: 12px;
+				text-align: left;
+			}
+		}
+		.sf-setting-item-publish {
+			padding-left: 0;
+		}
+	}
+
+	@include wp-central-col() {
+		@include screen( 1240px ) {
+			&.sf-advanced-setting-0 {
+				padding-right: 0px;
+			}
+		}
+
+		@include screen( $wp-admin-mobile, 1240px ) {
+			$w: 240px; 
+
+			&.sf-advanced-setting-0 {
+				padding-right: 0;
+
+				.sf-setting-item-publish {
+					padding-right: 108px;
+					max-width: $w + 108;
+				}
+			}
+
+			.sf-setting-item {
+				margin-right: 0;
+				width: 100%;
+				max-width: $w;
+				position: relative;
+				padding-left: 80px;
+
+				select {
+					width: 100%;
+				}
+
+				.sf-setting-title {
+					position: absolute;
+					left: 0;
+					top: 12px;
+					text-align: left;
+				}
+			}
+			.sf-setting-item-publish {
+				padding-left: 0;
+			}
+		}
+
+		@include screen( $wp-admin-mobile, 994px ) {
+			&.sf-advanced-setting-0 {
+				.sf-setting-item-publish {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+
+}
+
+.advanced-settings {
+	margin-top: 14px;
+	border-bottom: 1px solid $border-color;
+
+	@include wp-central-col() {
+		position: relative;
+		margin-bottom: 20px;
+		padding-bottom: 6px;
+
+		@include screen( 994px ) {
+			.sf-button-gray {
+				top: 0px;
+				right: 0px;
+			}
+		}
+
+		@include screen( $wp-admin-mobile, 994px ) {
+			.sf-button-duplicate {
+				width: 100%;
+				margin-bottom: 14px;
+			}
+		}
+	}
+
+	@include wp-right-col() {
+		margin-bottom: 14px;
+		padding-bottom: 14px;
+
+		.sf-button-remove {
+			width: 100%;
+			margin-bottom: 14px;
+		}
+
+		.sf-button-duplicate {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,133 @@
+/*
+The provided mixins are intended to be used with variables directly
+
+.icon-home {
+	@include sprite-width($icon-home);
+}
+
+
+.icon-email {
+	@include sprite($icon-email);
+}
+*/
+
+@mixin sprite-width( $sprite ) {
+	width: map-get( $sprite, 'width' );
+}
+
+@mixin sprite-height( $sprite ) {
+	height: map-get( $sprite, 'height' );
+}
+
+@mixin sprite-position( $sprite ) {
+	background-position: map-get( $sprite, 'offset_x' ) map-get( $sprite, 'offset_y' );
+}
+
+@mixin sprite-image( $sprite ) {
+	background-image: url( map-get( $sprite, 'image' ) );
+}
+
+@mixin _sprite( $sprite, $is_retina: false ) {
+	$x: 1;	
+
+	@include sprite-image( $sprite );
+
+	@if $is_retina {
+		$x: 2;
+		$img-width: map-get( $icons-2x, 'width' );
+
+		background-size: round( $img-width / 2 ) auto;
+	} 
+
+	$width:    round( map-get($sprite, 'width') / $x );
+	$height:   round( map-get($sprite, 'height') / $x );
+	$offset_x: round( map-get($sprite, 'offset-x') / $x );
+	$offset_y: round( map-get($sprite, 'offset-y') / $x );
+
+	width: $width;
+	height: $height;
+	background-position: $offset_x $offset_y;
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+
+@mixin sprite($name) {
+	@include get_sprite($common, $name);
+}
+
+
+@mixin sprite-retina( $name ) {
+	@include get_sprite( $icons-1x, $name );
+
+	@media  (min--moz-device-pixel-ratio: 1.5),
+			(-webkit-min-device-pixel-ratio: 1.5),
+			(min-device-pixel-ratio: 1.5),
+			(min-resolution: 144dpi),
+			(min-resolution: 1.5dppx) {
+				@include get_sprite( $icons-2x, $name, $is_retina: true );
+	}
+}
+
+@mixin sprite-simple-retina( $image, $width, $height ) {
+	background: url( ../images/#{$image} ) 0 0 no-repeat;
+	display: inline-block;
+
+	width: $width;
+	height: $height;
+
+	@media  (min--moz-device-pixel-ratio: 1.5),
+			(-webkit-min-device-pixel-ratio: 1.5),
+			(min-device-pixel-ratio: 1.5),
+			(min-resolution: 144dpi),
+			(min-resolution: 1.5dppx) {
+				$len: str-length( $image );
+				$res-len: 4;
+
+				// detect "." in image url for .png, .jpg, .gif
+				$dot: str-slice( $image, (- $res-len), ( - $res-len ) );
+
+				// if is .jpeg
+				@if '.' != $dot {
+					$res-len: 5;
+				}
+
+				$name: str-slice( $image, 0, ( $len - $res-len ) );
+				$res: str-slice( $image, ( $len - $res-len + 1 ), $len );
+
+				background-image: url( ../images/#{$name}@2x#{$res} );
+				background-size: $width $height;
+	}
+}
+
+@mixin sprite-svg($name) {
+	background: url(map-get( map-get($svg-sprites-map, $name), 'datauri')) center center no-repeat;	
+	background-size: contain;
+}
+
+@mixin sprite-svg2png($name) {
+	@include get_sprite($svg-to-png, $name);
+}
+
+@mixin sprite-simple( $name ) {
+	background: url( ../images/#{$name} ) 0 0 no-repeat;
+}
+
+@mixin get_sprite( $sprites, $spr-name, $is_retina: false ) {
+	$sprites: map-get( $sprites, 'sprites' );
+	$postfix: '';
+
+	@if ( false == $is_retina ) {
+		$postfix: '@1x';
+	}
+
+	@each $sprite in $sprites {
+		$sprite-name: map-get( $sprite, 'name' );
+
+		$name: "#{$spr-name}#{$postfix}";
+
+		@if $sprite-name == $name {
+			@include _sprite( $sprite, $is_retina );
+		}
+	}
+
+}

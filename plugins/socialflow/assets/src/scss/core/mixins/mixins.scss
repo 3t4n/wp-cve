@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Mixins
+============================================================================ */
+
+@mixin wp-right-col() {
+	$id: '#postbox-container-1';
+
+	@if & {
+		#{$id} & {
+			@content;
+		}
+	} 
+	@else {
+		#{$id} {
+			@content;
+		}
+	}
+
+	@include wp-central-col() {
+		@include screen( 0, $wp-admin-mobile ) {
+			@content;
+		}
+	}
+}
+
+@mixin wp-central-col() {
+	$id: '#postbox-container-2';
+	$id2: '#sf-compose-form';
+
+	@if & {
+		#{$id} &,
+		#{$id2} & {
+			@content;
+		}
+	} 
+	@else {
+		#{$id},
+		#{$id2} {
+			@content;
+		}
+	}
+}
+
+/* =Other
+============================================================================ */
+
+@mixin safari() {
+	body.safari-browser & { @content; }
+}
+
+@mixin blur( $size ){
+	-webkit-filter: blur( $size );
+	-moz-filter: blur( $size );
+	-o-filter: blur( $size );
+	-ms-filter: blur( $size );
+	filter: blur( $size );		
+}
+
+@mixin flip-horizontal(){
+	-moz-transform: scale(-1, 1);
+	-webkit-transform: scale(-1, 1);
+	-o-transform: scale(-1, 1);
+	transform: scale(-1, 1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+@mixin flip-horizontal-1(){
+	-moz-transform: scale(1, -1);
+	-webkit-transform: scale(1, -1);
+	-o-transform: scale(1, -1);
+	transform: scale(1, -1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
