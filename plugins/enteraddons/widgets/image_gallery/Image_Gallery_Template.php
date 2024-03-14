@@ -1,0 +1,33 @@
+<?php
+namespace Enteraddons\Widgets\Image_Gallery;
+/**
+ * Enteraddons widget template class
+ *
+ * @package     Enteraddons
+ * @author      ThemeLooks
+ * @copyright   2022 ThemeLooks
+ * @license     GPL-2.0-or-later
+ *
+ *
+ */
+
+class Image_Gallery_Template {
+
+	use \Enteraddons\Widgets\Image_Gallery\Traits\Templates_Components;
+	use \Enteraddons\Widgets\Image_Gallery\Traits\Template_1;
+
+	private static $settingsData;
+	
+	public static function setDisplaySettings( $data ) {
+		self::$settingsData = $data;
+	}
+
+	private static function getDisplaySettings() {
+		return self::$settingsData;
+	}
+
+	public static function renderTemplate() {
+		self::markup_style_1();
+	}
+
+}
