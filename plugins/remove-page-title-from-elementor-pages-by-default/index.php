@@ -1,0 +1,1 @@
+<?php // Thank you for using this plugin.
