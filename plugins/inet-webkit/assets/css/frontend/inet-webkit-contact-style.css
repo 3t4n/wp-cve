@@ -1,0 +1,1124 @@
+.call-for-price {
+    padding: 10px 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.call-for-price .dashicons-smartphone {
+    color: #fd6e1d;
+}
+
+div#inet-webkit-contact {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 1000;
+    -webkit-animation: zoomInDown 1.5s;
+    animation: zoomInDown 1.5s;
+}
+
+.inet-webkit-contact-container {
+    background: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    min-width: 320px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 0;
+    bottom: 56px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 7px;
+    z-index: 1000000;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform-origin: 80% 105%;
+    -ms-transform-origin: 80% 105%;
+    transform-origin: 80% 105%;
+    -o-transition: ease-out 0.2s all;
+    transition: ease-out 0.2s all;
+    transform: translateY(20px);
+}
+
+.inet-webkit-call-container {
+    background: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 0;
+    bottom: 70px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 7px;
+    z-index: 1000001;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform-origin: 80% 105%;
+    -ms-transform-origin: 80% 105%;
+    transform-origin: 80% 105%;
+    -o-transition: ease-out 0.2s all;
+    transition: ease-out 0.2s all;
+    transform: translateY(20px);
+}
+
+.inet-webkit-contact-container::before {
+    position: absolute;
+    bottom: -7px;
+    right: 25px;
+    left: auto;
+    display: inline-block !important;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fff;
+    border-left: 8px solid transparent;
+    content: "";
+}
+
+.inet-webkit-contact-container.inet-webkit-container-left::before {
+    left: 25px;
+    right: auto;
+}
+
+.inet-webkit-contact-container.inet-webkit-container-right::before {
+    left: auto;
+    right: 25px;
+}
+
+.inet-webkit-call-container::before {
+    position: absolute;
+    bottom: -7px;
+    right: 25px;
+    left: auto;
+    display: inline-block !important;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fff;
+    border-left: 8px solid transparent;
+    content: "";
+}
+
+.inet-webkit-contact-button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: #f26364;
+    border-radius: 50px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.inet-webkit-button-border {
+    width: 64px;
+    height: 64px;
+}
+
+.inet-webkit-button-border {
+    width: 84px;
+    height: 84px;
+    background-color: #ff00005e;
+    border-radius: 50px;
+    position: absolute;
+    z-index: -1;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    -webkit-animation: inet-webkit-pulse 2s infinite;
+    animation: inet-webkit-pulse 2s infinite;
+}
+
+.inet-webkit-button-border:nth-of-type(2n) {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+.inet-webkit-button-icon {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    margin: 0 0 0 -2px;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+    -webkit-animation: inetwkRotate 1s;
+    animation: inetwkRotate 1s;
+}
+
+.inet-webkit-button-group-icon {
+    transition: 0.4s;
+}
+
+.inet-webkit-button-icon-animation {
+    opacity: 1;
+}
+
+.inet-webkit-close-button-icon {
+    color: #fff;
+    opacity: 0;
+    visibility: visible;
+    -webkit-transform: rotate(180deg) scale(0);
+    -ms-transform: rotate(180deg) scale(0);
+    transform: rotate(180deg) scale(0);
+    -webkit-transition: ease-in 0.12s all;
+    -o-transition: ease-in 0.12s all;
+    transition: ease-in 0.12s all;
+}
+
+.inet-webkit-close-button-icon.isShowCloseButton {
+    -webkit-transform: rotate(0) scale(1);
+    -ms-transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
+}
+
+.inet-webkit-call-main .inet-webkit-close-button-icon {
+    display: none;
+}
+
+.inet-webkit-call-button-close-icon {
+    color: #fff;
+    -webkit-transform: rotate(180deg) scale(0);
+    -ms-transform: rotate(180deg) scale(0);
+    transform: rotate(180deg) scale(0);
+    -webkit-transition: ease-in 0.12s all;
+    -o-transition: ease-in 0.12s all;
+    transition: ease-in 0.12s all;
+}
+
+.inet-webkit-call-button-close-icon.isShowCloseButton {
+    -webkit-transform: rotate(0) scale(1);
+    -ms-transform: rotate(0) scale(1);
+    transform: rotate(0) scale(1);
+}
+
+svg.inet-webkit-call-button-icon-child {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    margin: 0 0 0 -2px;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+    -webkit-animation: inetwkRotate 2s;
+    animation: inetwkRotate 2s;
+}
+
+.inet-webkit-call-for-price {
+    padding: 5px 0 0;
+}
+
+.inet-webkit-call-for-price-numner-phone {
+    font-weight: 500;
+    text-decoration: none !important;
+}
+
+.inet-webkit-contact-header {
+    padding: 17px 15px;
+    color: #fff;
+    background: #f26364;
+    border-radius: 7px 7px 0 0;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    margin-bottom: 10px;
+    font-size: 17px;
+    position: relative;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.inet-webkit-call-header {
+    padding: 17px 15px;
+    color: #fff;
+    background: #f26364;
+    border-radius: 7px 7px 0 0;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    margin-bottom: 10px;
+    font-size: 17px;
+    position: relative;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.inet-webkit-header-title {
+    width: 90%;
+    text-align: left;
+}
+
+.inet-webkit-contact-header-close,
+.inet-webkit-header-close {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+    line-height: 1;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.4s;
+}
+
+.inet-webkit-contact-header-close:hover,
+.inet-webkit-header-close:hover {
+    background: #f26364;
+    transition: 0.4s;
+    box-shadow: 0 0 40px rgb(0 0 0 / 27%);
+}
+
+.inet-webkit-contact-header-close img,
+.inet-webkit-header-close img {
+    height: 12px;
+    width: 12px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -6px 0 0 -6px;
+}
+
+.inet-webkit-contact-header-close span svg,
+.inet-webkit-header-close span svg {
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    display: block;
+    position: absolute;
+}
+
+.inet-webkit-btt svg#Capa_1 {
+    height: 20px;
+    width: 20px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -10px 0 0 -10px;
+}
+
+.inet-webkit-contact-container ul {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+.inet-webkit-contact-container ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inet-webkit-contact-container ul li:hover {
+    background: #33333312;
+}
+
+.inet-webkit-contact-container ul li a {
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.inet-webkit-call-item,
+.inet-webkit-contact-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+    padding: 8px 12px 8px 12px;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 54px;
+    text-decoration: none;
+}
+
+.inet-webkit-contact-icon {
+    width: 36px;
+}
+
+.inet-webkit-contact-item .inet-webkit-contact-child {
+    width: calc(100% - 36px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+
+.inet-webkit-contact-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.inet-webkit-contact-child {
+    padding: 0 10px;
+    text-align: left;
+}
+
+.inet-webkit-contact-child-desc,
+.inet-webkit-contact-child-title {
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    font-size: 16px;
+    color: #323232d9;
+}
+
+.inet-webkit-contact-child-desc {
+    font-size: 16px;
+    color: #787878b8;
+}
+
+.isButtonShow {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.4s;
+    -ms-transform: scale(1);
+    transform: translateY(0);
+}
+
+.contact-greeting {
+    display: inline;
+    background: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    border-radius: 7px;
+    z-index: 1000000;
+    transform: scale(1);
+    color: #787878;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    max-width: 250px;
+    width: 400px;
+    height: auto;
+    bottom: 0;
+    right: 80px;
+    padding: 14px 20px 14px;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.4s;
+}
+
+.contact-greeting::before {
+    position: absolute;
+    border-right: 8px solid transparent;
+    border-top: 8px solid transparent;
+    border-left: 8px solid #fff;
+    border-bottom: 8px solid transparent;
+    bottom: 16px;
+    right: -15px;
+    content: "";
+}
+
+.inet-webkit-contact-close-greeting {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s all;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+    line-height: 1;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    color: #fff;
+    background: #ed6162;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.4s;
+}
+
+.inet-webkit-contact-close-greeting span svg {
+    width: 12px;
+    height: 12px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: -6px 0 0 -6px;
+}
+
+.contact-greeting:hover .inet-webkit-contact-close-greeting {
+    opacity: 1;
+    visibility: visible;
+    transition: 0.4s;
+}
+
+.fb-customerchat > span > iframe {
+    right: 10px !important;
+    left: auto !important;
+}
+
+.fb-customerchat > span > iframe.fb_customer_chat_bounce_in_v2_mobile_chat_started {
+    right: 0 !important;
+}
+
+@media (max-width: 480px) {
+    .fb-customerchat > span > iframe {
+        left: 0 !important;
+        right: 0 !important;
+    }
+}
+
+.inet-webkit-fbc > #fb-root > .fb_dialog {
+    display: none !important;
+}
+
+.inet-webkit-fbc > #fb-root > .fb-customerchat > span > iframe {
+    z-index: 2147483647 !important;
+    bottom: 118px !important;
+    margin-right: 0 !important;
+    height: 550px !important;
+}
+
+.inet-webkit-fbc {
+    display: none;
+}
+
+.inet-webkit-fbc.isFbcShow {
+    display: block;
+}
+
+#tawkchat-maximized-wrapper {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+#tawkchat-minified-box {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.inet-webkit-call {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    z-index: 999999999;
+    -webkit-animation: zoomInDown 1.5s;
+    animation: zoomInDown 1.5s;
+}
+
+.inet-webkit-call ul {
+    margin: 0;
+    padding: 0 0 10px 0;
+    width: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 0;
+    bottom: 60px;
+    -webkit-transition: ease-out 0.12s all;
+    -o-transition: ease-out 0.12s all;
+    transition: ease-out 0.12s all;
+}
+
+.inet-webkit-call ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inet-webkit-call ul li a {
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.inet-webkit-call-container ul li:hover {
+    background: #33333312;
+}
+
+.inet-webkit-call-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+    width: 100%;
+    padding: 8px 12px 8px 12px;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 54px;
+    text-decoration: none;
+}
+
+.inet-webkit-call-item a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #787878;
+}
+
+.inet-webkit-call-number {
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.inet-webkit-call-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333333c9;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.inet-webkit-call-info {
+    padding: 6px 0;
+    width: 80%;
+    float: right;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    color: #979797;
+}
+
+img.cc-user-img-c {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid #f26364;
+}
+
+.inet-webkit-call-image {
+    width: 20%;
+    float: left;
+    box-sizing: border-box;
+    padding: 2px;
+}
+
+.inet-webkit-call-container-item {
+    background: #fff;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+.inet-webkit-call-main {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 99999999999999999999999;
+    border-radius: 50%;
+    background: #f26364;
+    box-sizing: border-box;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-animation: zoomInDown 1.5s;
+    animation: zoomInDown 1.5s;
+}
+
+.inet-webkit-pd-button-left {
+    left: 20px;
+}
+
+.inet-webkit-pd-button-right {
+    right: 20px;
+}
+
+.inet-webkit-btt {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    z-index: 99999999;
+    color: #777 !important;
+    background: #f26364;
+    border-radius: 50%;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.inet-webkit-btt .fa-chevron-up {
+    margin: 15px 17px;
+    color: #fff;
+    transition: 0.4s;
+}
+
+.inet-webkit-btt:hover .fa-chevron-up {
+    color: #fff;
+    transition: 0.4s;
+}
+
+.inet-webkit-btt.show {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.4s;
+}
+
+.isHideElement {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+}
+
+.isHideGreeting {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+}
+
+.isHideMWPContact {
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+}
+
+.isShowCallList {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: 0.4s !important;
+    transition: ease-out 0.2s all;
+    transform: translateY(0) !important;
+}
+
+.isShowCloseButton {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: 0.4s;
+}
+
+.isHideGroupIcon {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: 0.4s;
+}
+
+.inet-webkit-call-container.onLeft {
+    right: inherit;
+    left: 0;
+}
+
+.inet-webkit-call-container.onLeft::before {
+    left: 25px;
+    right: auto;
+}
+
+.inet-webkit-call-container.onRight::before {
+    left: auto;
+    right: 25px;
+}
+
+.inet-webkit-contact-container.onLeft::before {
+    left: 25px;
+    right: auto;
+}
+
+.inet-webkit-contact-container.onRight::before {
+    left: auto;
+    right: 25px;
+}
+
+.inet-webkit-call.onLeft {
+    left: 20px !important;
+}
+
+.inet-webkit-call.onRight {
+    right: 20px !important;
+}
+
+.inet-webkit-call-low {
+    bottom: 60px !important;
+}
+
+.inet-webkit-call-high {
+    bottom: 220px !important;
+}
+
+.inet-webkit-contact.onLeft {
+    left: 10px !important;
+}
+
+.inet-webkit-contact.onRight {
+    right: 10px !important;
+}
+
+.inet-webkit-contact-container.onLeft {
+    left: 0;
+    right: inherit;
+}
+
+.inet-webkit-contact-container.onRight {
+    left: inherit;
+    right: 0;
+}
+
+.inet-webkit-main-contact.onLeft {
+    left: 20px;
+    right: inherit;
+}
+
+.inet-webkit-main-contact.onRight {
+    left: inherit;
+    right: 20px;
+}
+
+.inet-webkit-btt.onLeft {
+    left: 20px !important;
+}
+
+.inet-webkit-btt.onRight {
+    right: 20px !important;
+}
+
+.inet-webkit-btt.inet-webkit-btt-high {
+    bottom: 220px !important;
+}
+
+.inet-webkit-btt.inet-webkit-btt-middle {
+    bottom: 130px !important;
+}
+
+.inet-webkit-btt.inet-webkit-btt-low {
+    bottom: 60px !important;
+}
+
+.contact-greeting.onLeft {
+    left: 80px;
+    right: auto;
+}
+
+.contact-greeting.onLeft::before {
+    left: -15px;
+    right: auto;
+    border-left: 8px solid transparent;
+    border-right: 8px solid #fff;
+}
+
+.inet-webkit-fbc.onRight .fb_reset .fb-customerchat > span > iframe {
+    right: 10px !important;
+    left: auto !important;
+}
+
+.inet-webkit-fbc.onLeft .fb_reset .fb-customerchat > span > iframe {
+    right: auto !important;
+    left: 10px !important;
+}
+
+.inet-webkit-fbc.onRight .fb_reset .fb_dialog > .fb_dialog_content > iframe {
+    right: 10px !important;
+    left: auto !important;
+}
+
+.inet-webkit-fbc.onLeft .fb_reset .fb_dialog > .fb_dialog_content > iframe {
+    right: auto !important;
+    left: 10px !important;
+}
+
+.woocommerce div.product form.cart .button {
+    float: right !important;
+}
+
+#buy_now_button {
+    display: block;
+    margin-top: 10px;
+    margin-left: 0;
+    padding: 15px 0;
+    border-radius: 4px;
+    border: none;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    width: 100%;
+    background: -webkit-linear-gradient(top, #f59000, #fd6e1d);
+}
+
+#buy_now_button:hover {
+    background: -webkit-linear-gradient(top, #ff6a00, #fd271d);
+}
+
+.clone-me.inet-webkit-clone-action {
+    text-decoration: none;
+    color: #ff3547;
+}
+
+span.duplicate a {
+    color: #ff3547;
+}
+
+#btn_duplicate_menu .dashicons {
+    vertical-align: middle;
+}
+
+#btn_duplicate_menu.button-danger {
+    border: 1px solid #00c851;
+    color: #fff;
+    background: #00c851;
+}
+
+#loginform div.g-recaptcha,
+#lostpasswordform div.g-recaptcha,
+#registerform div.g-recaptcha {
+    margin: 12px 0 24px -15px;
+}
+
+@media (max-width: 550px) {
+    #inet-webkit-contact {
+        width: 100% !important;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .inet-webkit-contact-container {
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .inet-webkit-contact-header-close,
+    .inet-webkit-header-close {
+        right: 15px;
+        top: 50%;
+        margin-top: -13px;
+    }
+
+    .inet-webkit-contact-header {
+        border-radius: 0;
+    }
+
+    .inet-webkit-header-title {
+        text-align: left;
+    }
+
+    .inet-webkit-contact-header {
+        border-radius: 0;
+    }
+
+    .inet-webkit-contact-button {
+        right: 20px;
+    }
+
+    .inet-webkit-call-main {
+        right: 0;
+    }
+
+    .inet-webkit-btt {
+        right: 20px;
+    }
+
+    .inet-webkit-btt:focus {
+        outline: 0 !important;
+    }
+
+    .inet-webkit-contact-close-greeting {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .inet-webkit-call {
+        width: 100%;
+        right: 0;
+        left: 0;
+    }
+
+    .inet-webkit-call-main {
+        right: 20px;
+    }
+
+    .inet-webkit-call-container {
+        width: 100%;
+    }
+
+    .inet-webkit-call-header,
+    .inet-webkit-contact-header {
+        border-radius: 0;
+    }
+
+    .inet-webkit-call ul {
+        width: 100%;
+    }
+
+    .inet-webkit-call.onLeft {
+        left: 0 !important;
+    }
+
+    .inet-webkit-call-main.onLeft {
+        left: 20px;
+    }
+
+    .inet-webkit-contact-button.onLeft {
+        left: 20px;
+    }
+
+    .inet-webkit-btt.onLeft {
+        left: 20px !important;
+    }
+
+    .inet-webkit-contact-button.onRight {
+        right: 20px;
+    }
+
+    .inet-webkit-call-main.onRight {
+        right: 20px;
+    }
+
+    .inet-webkit-btt.onRight {
+        right: 20px !important;
+    }
+
+    .inet-webkit-fbc > #fb-root > .fb-customerchat > span > iframe {
+        bottom: 0 !important;
+        height: 100% !important;
+        top: auto !important;
+    }
+}
+
+@-webkit-keyframes inet-webkit-pulse {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes inetwkRotate {
+    0% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+}
+
+@keyframes inetwkRotate {
+    0% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+}
+
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
+@-webkit-keyframes zoomInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -500px, 0);
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -500px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+}
+
+@keyframes zoomInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -500px, 0);
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -500px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+        -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+}
