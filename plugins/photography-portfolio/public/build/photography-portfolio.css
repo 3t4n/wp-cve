@@ -1,0 +1,318 @@
+.PP_Wrapper--default * {
+  box-sizing: border-box;
+}
+.PP_Wrapper--default figure {
+  margin: 0;
+  padding: 0;
+}
+.PP_Wrapper {
+  max-width: 1600px;
+  min-height: 75vh;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+/**
+		Some themes don't handle images properly
+	 */
+}
+@media screen and (max-width: 1599px) {
+  .PP_Wrapper {
+    max-width: calc(96vw - 20px);
+  }
+}
+.PP_Wrapper img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.PP_Masonry {
+  margin-left: -10px;
+  width: calc(100% + 20px);
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+.js .PP_Masonry:not(.PP_JS__loading_complete) {
+  opacity: 0;
+  visibility: hidden;
+}
+.PP_Masonry__sizer,
+.PP_Masonry__item {
+  outline: 0;
+  width: 33.333%;
+}
+@media screen and (max-width: 1024px) {
+  .PP_Masonry__sizer,
+  .PP_Masonry__item {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .PP_Masonry__sizer,
+  .PP_Masonry__item {
+    width: 100%;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.PP_Masonry__item {
+  border: 10px solid transparent;
+  margin: 0;
+  position: relative;
+}
+.PP_Masonry__item a,
+.PP_Masonry__item img {
+  display: block;
+}
+@media screen and (max-width: 640px) {
+  .PP_Masonry__item {
+    border-width: 0px;
+    margin-bottom: 10px;
+  }
+}
+.PP_Masonry__header {
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+.PP_Card .PP_Entry__thumbnail > img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.PP_Card .PP_Entry__header {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 1.4rem;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.35s ease-out, opacity 0.3s ease;
+}
+.PP_Card .PP_Entry__title,
+.PP_Card .PP_Entry__subtitle {
+  color: #fff;
+  padding: 0;
+}
+.PP_Card .PP_Entry__subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: none;
+  margin-bottom: 1rem;
+}
+.PP_Card .PP_Entry__view {
+  font-size: 1rem;
+  display: block;
+  position: absolute;
+  bottom: 1rem;
+  text-transform: uppercase;
+}
+/*
+	*  Hovercard Layout
+	*/
+.PP_Card .PP_Entry__more {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1.4rem;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  cursor: pointer;
+}
+.PP_Card .PP_Entry__inner {
+  width: 100%;
+  height: 100%;
+  transform: translateY(15px);
+  opacity: 0;
+  display: block;
+  transition: transform 0.35s ease-out, opacity 0.3s ease;
+}
+.PP_Card.PP_Entry--no-thumbnail {
+  height: 300px;
+}
+.PP_Card .PP_Entry__thumbnail--replacement {
+  background-color: #8c8c8c;
+  background: linear-gradient(to top, #8c8c8c, #b3b3b3);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.PP_Card {
+  cursor: pointer;
+  position: relative;
+}
+.PP_Card,
+.PP_Card a {
+  color: #fff;
+  text-shadow: 0px 0.03em 0.05em rgba(0,0,0,0.33);
+}
+.PP_Card a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+/*
+*   Hover State
+*/
+.PP_Card--hoverable:hover .PP_Entry__header {
+  z-index: 50;
+  transform: translateY(-3rem);
+}
+.PP_Card--hoverable:hover .PP_Entry__inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+.PP_Card--hoverable:hover .PP_Entry__more {
+  display: block;
+  opacity: 1;
+}
+.PP_Lazy_Image {
+  min-height: 100px;
+}
+.PP_Lazy_Image__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  height: calc(100% + 1px);
+  background-color: #f2f2f2;
+  border-radius: 1px;
+}
+.PP_Lazy_Image__placeholder:after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: block;
+  border: solid 2px transparent;
+  border-top-color: #000;
+  border-left-color: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  top: calc(50% - 12.5px);
+  left: calc(50% - 12.5px);
+  animation: PP_Spinner 400ms linear infinite;
+}
+@keyframes PP_Spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.PP_Description {
+  width: 75%;
+  max-width: 681px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.PP_Description__title,
+.PP_Description__subtitle {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+.PP_Description__subtitle {
+  display: block;
+  text-transform: none;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+.PP_Description__content {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.PP_Gallery__item {
+  position: relative;
+}
+.PP_Gallery__caption {
+  font-size: 1rem;
+  padding: 0.44rem;
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0.3rem;
+}
+.PP_Gallery:not(.PP_Gallery--show-captions) .PP_Gallery__caption {
+  display: none;
+}
+.PP_Gallery__item--video {
+  position: relative;
+}
+.PP_Gallery__item--video:before,
+.PP_Gallery__item--video:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  pionter-events: none;
+  cursor: pointer;
+}
+.PP_Gallery__item--video:before {
+  background-color: rgba(0,0,0,0.22);
+  width: 100%;
+  height: 100%;
+}
+.PP_Gallery__item--video:after {
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 0 30px 50px;
+  border-color: transparent transparent transparent rgba(255,255,255,0.94);
+  transform: translate(-50%, -50%);
+}
+.lg-sub-html .PP_Caption__title,
+.pswp .PP_Caption__title,
+.lg-sub-html .PP_Caption__desc,
+.pswp .PP_Caption__desc {
+  color: #fff;
+}
+.PP_Protected {
+  max-width: 681px;
+  margin: 2rem auto;
+}
+.PP_Protected__title {
+  margin-bottom: 1rem;
+}
+.PP_Single_Column {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.PP_Single_Column .PP_Single_Column__item {
+  margin-bottom: 2.4em;
+}
+.PP_Single_Column .PP_Single_Column__item,
+.PP_Single_Column .PP_Single_Column__item img {
+  margin-left: auto;
+  margin-right: auto;
+}
+.PP_Portfolio .lg-outer {
+  z-index: 900000;
+}
+.PP_Portfolio .lg-outer .lg-thumb-item {
+  border-radius: 0;
+  border-color: transparent;
+}
+.PP_Portfolio .lg-outer .lg-thumb-item.active,
+.PP_Portfolio .lg-outer .lg-thumb-item:hover {
+  border-color: #f9f9f9;
+}
+.PP_Portfolio .lg-outer .lg-thumb {
+  margin-left: auto;
+  margin-right: auto;
+}
+/**
+Hopefully a temporary fix for Twenty Seventeen Theme.
+Twenty Seventeen Version 1.0.0 force displays thumbnails on all post types in the header without any filters.
+The only option left is to hide thumbnail with CSS.
+*/
+.PP_Single .single-featured-image-header {
+  display: none;
+}
