@@ -1,0 +1,48 @@
+module.exports = {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './src/*.{js,jsx,ts,tsx}',
+    '../../common/ui/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        java: {
+          DEFAULT: '#19C8B4',
+          50: '#A5F4EB',
+          100: '#93F1E7',
+          200: '#6EEDDE',
+          300: '#4AE8D6',
+          400: '#26E4CE',
+          500: '#19C8B4',
+          600: '#139687',
+          700: '#0D645A',
+          800: '#06322D',
+          900: '#000100',
+        },
+        brand: {
+          primary: '#785afa',
+          'primary-hover': '#B9A9FC',
+          'primary-focus': '#D9D1FE',
+          danger: '#9c095d',
+          'danger-hover': '#da0790',
+          'danger-focus': '#c91444',
+          input: '#8c8f94',
+          50: '#FFFFFF',
+          100: '#FAF8FF',
+          200: '#D9D1FE',
+          300: '#B9A9FC',
+          400: '#9882FB',
+          500: '#785AFA',
+          600: '#4B24F8',
+          700: '#2F07DD',
+          800: '#2305A7',
+          900: '#180370',
+          inactive: '#4B24F8',
+          active: '#5a527e',
+        },
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/forms')],
+};

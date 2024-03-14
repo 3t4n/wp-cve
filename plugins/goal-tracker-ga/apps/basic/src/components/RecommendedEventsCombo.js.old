@@ -1,0 +1,40 @@
+import React, { useState, useEffect } from "react";
+import { Combobox } from '@headlessui/react'
+
+function RecommendedEventsCombobox() {
+
+    const recommendedEvents = [
+      'ad_impression',
+      'earn_virtual_currency',
+      'join_group',
+      'login',
+      'purchase',
+      'refund',
+    ]
+    
+    const [selectedEventName, setSelectedEventName] = useState(recommendedEvents[0])
+    const [query, setQuery] = useState('')
+    
+    const filteredRecommendedEvents =
+      query === ''
+          ? recommendedEvents
+          : recommendedEvents.filter((eventName) => {
+              return eventName.toLowerCase().includes(query.toLowerCase())
+          })  
+  
+    return (
+      <Combobox   value={selectedEventName} onChange={setSelectedEventName} >
+      <Combobox.Input onChange={(event) => setQuery(event.target.value)} />
+      <Combobox.Options>
+        {filteredRecommendedEvents.map((eventName) => (
+          <Combobox.Option key={eventName} value={eventName}>
+            {eventName}
+          </Combobox.Option>
+        ))}
+      </Combobox.Options>
+      </Combobox>
+    )
+  
+  }  
+
+  export default RecommendedEventsCombobox;
