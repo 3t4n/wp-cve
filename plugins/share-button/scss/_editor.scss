@@ -1,0 +1,541 @@
+
+/* Move main to 100% to allow for right-sided help */
+.main {
+	width: 100%;
+
+	// Fixing  label not on the same line.
+	.option .label { vertical-align: middle; }
+	// Fixing switch button align
+	.switch_button { min-height: 0; margin-top: 5px; }
+
+	.help-side.collection_switcher {
+		position: relative;
+
+		// flex the fucker
+		.item.heading, .item a
+		{
+			 display: flex;
+			 text-align: center;
+			 span:first-of-type{
+				 flex-basis: 20%;
+
+			 }
+			 span:nth-of-type(2){
+				  flex-basis: 30%;
+			 }
+			 span:last-child-of
+			 {
+				 flex-basis: 50%;
+			 }
+		}
+
+		.item {
+
+				display: inline-block;
+				width: 100%;
+				margin: 2px 0;
+				padding: 4px 0;
+				border-bottom: 1px solid #ccc;
+				font-size: 14px;
+				text-align: center;
+				span {
+
+
+				}
+				a {
+					color: #0073aa;
+					text-decoration: none;
+					padding: 6px 0;
+					min-width: 50px;
+					display: flex;
+				}
+				&.new {
+
+					background-color: #0073aa;
+					margin: 25px 0 0 0;
+					a {
+						box-sizing: border-box;
+
+						line-height: 30px;
+						color: #fff;
+						min-width: 0;
+						font-size: 14px;
+						text-transform:uppercase;
+						display: inline-block;
+						width: 100%;
+						vertical-align: middle;
+						padding: 0;
+						text-align: right;
+						padding-right: 15px;
+
+					}
+					.plus {
+						font-size: 28px;
+						font-weight: 700;
+						vertical-align: top;
+						margin: 0 6px;
+						line-height: 1;
+						width: auto;
+
+					}
+				}
+				&.active {
+						background: #fff;
+						a {
+							color: #000;
+						}
+				}
+
+		}
+
+	}
+
+	// delete button
+	.button.remove {
+			float: right;
+			//color: #eee;
+
+	}
+
+	.option-container, .mb-message, .form-actions, .collection_switcher {
+		width: 72%;
+		min-width: 700px;
+		box-sizing: border-box;
+		position: relative;
+
+		@include bp(1200)
+		{
+		//	min-width: 0;
+			width: 90%;
+		}
+		@include bp(800)
+		{
+			width: 95%;
+		}
+	}
+
+	.options .input.checkbox // bolds etc closer.
+	{
+		margin-right: 2px;
+	}
+
+	.mb-message.shortcode {
+			clear: left;
+	}
+
+	.help-side {
+		float: right;
+		margin: 0 0 5px 0;
+		padding: 0;
+		min-width: 250px;
+		width: 25%;
+		//right: 5px;
+		border: 1px solid #ccc;
+		background-color: #fff;
+		clear: right;
+		/*&:after {
+			clear: both;
+		} */
+
+		@include bp(1200)
+		{
+			//min-width: 0;
+		//	width: 23%
+		float: none;
+		width: 90%;
+		}
+		@include bp(800)
+		{
+			display: none;
+		}
+
+		h3 {
+			padding: 0;
+			margin: 0;
+			background-color: #008ec2;
+			color: #fff;
+			padding: 15px;
+			text-align: center;
+		}
+		p {
+			padding: 10px;
+			margin: 0;
+		}
+	}
+}
+
+.toggle {
+	.title {
+		cursor:pointer;
+	}
+	.toggle-target {
+		display: none;
+	}
+}
+
+// ### GeneralBlock ### /
+#generalBlock
+{
+	.input.general_notactive { line-height: 25px; height: 25px; padding-top: 5px; }
+	.red { color: #ff0000; }
+}
+
+
+// extra's for network block
+.option-container.networks {
+	.active_network {
+		margin-bottom: 25px;
+	}
+
+}
+
+// extra's for display block
+.option-container.display
+{
+	select {
+		width: auto;
+	}
+  .option.display_group {
+			margin-bottom: 15px;
+
+			button {
+					height: 30px;
+					vertical-align: middle;
+			}
+			span, div {
+				vertical-align: middle;
+			}
+			.control-group {
+				margin-bottom: 0;
+			}
+
+
+	}
+	.option > span > .label {
+		width: 170px;
+		padding: 0;
+		min-height: 0;
+		vertical-align: middle;
+	}
+	.check_button:checked + label {
+		border-color: #6fbeb5;
+		border-width: 1px;
+		border-radius: 4px;
+
+	}
+	.check_button.disabled + label {
+
+				background-color: #868686;
+				border: 0;
+				cursor: not-allowed;
+
+	}
+	.option .label.spacer_custom {
+		margin-left: 200px;
+		font-weight: 500;
+		border-bottom: 1px solid #ccc;
+		border-top: 1px solid #ccc;
+		padding: 4px 0;
+		display: inline-block;
+		text-align: center;
+		width: 200px;
+	}
+	.option .label.display_no_pro {
+		 width: 450px;
+		 margin-left: 100px;
+		 font-weight: 400;
+		 font-size: 12px;
+	}
+
+	.input.display_heading {
+		 margin-left: 170px;
+		 min-height: 0;
+
+		 span {
+			 	width: 36px;
+				margin-right: 15px;
+			  display: inline-block;
+				text-align: center;
+				font-size: 12px;
+				font-weight: 500;
+				text-transform: uppercase;
+
+				&:nth-child(2)
+				{
+						width: 150px;
+						border-left: 1px solid #ccc;
+						border-right: 1px solid #ccc;
+
+				}
+		 }
+	}
+	.input.display_rowhead {
+		 margin-left: 225px;
+		 min-height: 0;
+
+		 span {
+			 text-align: center;
+				display:inline-block;
+				width: 36px;
+				margin-right: 14px;
+				font-size: 11px;
+				font-weight: 500;
+				color: #333;
+				text-transform: uppercase;
+				position: relative;
+				//margin-right: 15px;
+				&:nth-child(3)
+				{
+					margin-left: 10px;
+				}
+		 }
+	}
+	.option.show_desktop, .option.show_mobile
+	{
+		label
+		{
+			min-width: 168px;
+		}
+	}
+} // option container display
+
+/** Preview Block **/
+#previewBlock {
+		.maxsocial {
+			clear: none !important;
+		}
+		.mb-item {
+				margin-bottom: 20px;
+		}
+
+		.button-save {
+				margin-left: 50px;
+				width: 75px;
+
+		}
+
+}
+
+/** Custom styles for style Block */
+#styleBlock {
+	.mbsocial-shape
+	{
+		margin: 6px 10px 3px;
+		display: inline-block;
+		position: relative;
+		width: 20px;
+		height: 20px;
+		border: 2px solid #000;
+		&.circle {
+				border-radius: 50% 50%;
+		}
+		&.square {
+
+		}
+		&.stretch {
+				width: 60px;
+				&:before {
+					border-left: 2px solid #ff0000;
+					content: '';
+					height: 100%;
+					position: absolute;
+					left: -8px;
+				}
+				&:after {
+					content: '';
+					height: 100%;
+					position: absolute;
+					right: -8px;
+					border-right: 2px solid #ff0000;
+				}
+		}
+	}
+	#open_presets {
+		width: 125px;
+		text-transform: uppercase;
+	}
+}
+
+/** Custom styles for displayBlock */
+#displayBlock, .display_modal
+{
+	// icons
+	$pos1 : 0;
+	$pos2 : -26px;
+	$pos3 : -52px;
+	$pos4 : -78px;
+
+	.display_icon {
+		background-image: url('../images/icons/display_icons.png');
+		background-repeat: no-repeat;
+		width: 26px;
+		height: 26px;
+		display: inline-block;
+
+		&.manual {
+		 // Background pos : X - Y
+			background-position: $pos1 $pos1;
+		}
+		&.before {
+			background-position: $pos2 $pos1;
+
+		}
+		&.after {
+			background-position: $pos3 $pos1;
+		}
+		&.after-before {
+			background-position: $pos4 $pos1;
+		}
+		&.static {
+			background-position:  $pos4 $pos4;
+		}
+		&.horizontal {
+			background-position: $pos1 $pos2;
+		}
+		&.vertical {
+			background-position: $pos2 $pos2;
+		}
+		&.topleft {
+			background-position: $pos3 $pos2;
+		}
+		&.topcenter {
+			background-position: $pos4 $pos2;
+
+		}
+		&.topright {
+			background-position: $pos1 $pos3;
+		}
+		&.centerleft {
+			background-position: $pos2 $pos3;
+		}
+		&.centercenter {
+			background-position: $pos3 $pos3;
+		}
+		&.centerright {
+			background-position: $pos4 $pos3;
+
+		}
+		&.bottomleft {
+			background-position: $pos1 $pos4;
+		}
+		&.bottomcenter {
+			background-position: $pos2 $pos4;
+
+		}
+		&.bottomright {
+			background-position: $pos3 $pos4;
+		}
+
+
+	}
+}
+
+#profileBlock
+{
+	.inside { padding-right: 10px; }
+	.inside > div.option  // row of networks
+	{
+		 	display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			&[data-has]:not(.condshow)
+			{
+	  		opacity: 0;
+	 			display: none;
+			}
+
+			>label // label
+			{
+					flex-basis: 100px;
+					//flex-grow: 1;
+				//	flex-shrink: 1;
+				&:nth-of-type(2)
+				{
+					 flex-basis: 120px;
+				}
+			}
+			>div // url + input box for profile
+			{
+			   //flex-basis: 25%;
+				 max-width: 400px;
+				 flex-shrink: 2;
+			}
+			.input.text {
+				flex-shrink: 0;
+				flex-basis: 45%;
+			}
+			>span // use profile switch
+			{
+					flex-basis: 180px;
+					min-width: 150px;
+					.switch_label
+					{
+						 width: 100px;
+
+					}
+					.switch_button
+					{
+						min-height: 0;
+						margin-top: 3px;
+					}
+
+			}
+
+			&.alternate_profile
+			{
+					span:nth-child(1)
+					{
+						 flex-basis: 100px;
+						 min-width: 0;
+						 padding-left: 3px;
+						 .label { flex-basis: 100px; width: auto; }
+					}
+					span:nth-child(2)
+					{
+							max-width: 400px;
+							width: 400px;
+							flex-shrink: 2;
+							flex-basis: 45%;
+							margin-right: 15px;
+					}
+					label { flex-basis: 120px; }
+
+			}
+
+	}
+	.input.text
+	{
+		line-height: 30px;
+	}
+	input[type="text"]
+	{
+		float: right;
+
+	}
+	#profile_rss { width: 100%; }
+}
+
+.forpro {
+	&.overlay {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			background: rgba(136, 197, 194, 0.8);
+			z-index: 1;
+			div {
+					color: #000;
+					top: 50%;
+					left: 50%;
+					transform: translate(-55%, -50% );
+					font-size: 16px;
+					line-height: 24px;
+					position: absolute;
+					a {
+						color: #000;
+					}
+			}
+	}
+}
