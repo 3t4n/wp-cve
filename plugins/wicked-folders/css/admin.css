@@ -1,0 +1,1184 @@
+/**
+ * Common
+ */
+.wicked-clearfix {
+	zoom: 1;
+}
+
+.wicked-clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.wicked-loading-mask {
+	position: relative;
+}
+
+.wicked-loading-mask:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba( 255, 255, 255, 0.6 );
+	content: "";
+	z-index: 10;
+}
+
+.wicked-loading-mask:after {
+	height: 50px;
+	width: 50px;
+	top: 50%;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+	position: absolute;
+	-webkit-animation: wicked-spinner-rotation 1s infinite linear;
+	-moz-animation: wicked-spinner-rotation 1s infinite linear;
+	-o-animation: wicked-spinner-rotation 1s infinite linear;
+	animation: wicked-spinner-rotation 1s infinite linear;
+	border-left: 6px solid rgba(0, 0, 0, 0.15);
+	border-right: 6px solid rgba(0, 0, 0, 0.15);
+	border-bottom: 6px solid rgba(0, 0, 0, 0.15);
+	border-top: 6px solid rgba(0, 0, 0, 0.6);
+	border-radius: 100%;
+	content: "";
+	display: block;
+	z-index: 20;
+}
+
+.notice.wicked-dismissable {
+	position: relative;
+	padding-right: 100px;
+}
+
+.notice.wicked-dismissable .wicked-dismiss {
+	position: absolute;
+	top: 10px;
+	right: 12px;
+	text-decoration: none;
+	line-height: 20px;
+}
+
+.notice.wicked-dismissable .wicked-dismiss:before {
+	font-family: 'dashicons';
+	content: "\f153";
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 3px;
+	font-size: 16px;
+}
+
+@-webkit-keyframes wicked-spinner-rotation {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+	}
+}
+
+@-moz-keyframes wicked-spinner-rotation {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(359deg);
+	}
+}
+
+@-o-keyframes wicked-spinner-rotation {
+	from {
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(359deg);
+	}
+}
+
+@keyframes wicked-spinner-rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+/**
+ * General
+ */
+body.wicked-folders-page #screen-meta #adv-settings fieldset:first-of-type label:first-of-type {
+	/**
+	 * Hide the move column toggle
+	 */
+	display: none;
+}
+
+#wicked-attachment-folder-filter,
+#wicked-folders-attachment-filter {
+	max-width: 200px;
+}
+
+/**
+ * Popup
+ */
+.wicked-popup-mask {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.8);
+	display: none;
+	z-index: 159900;
+}
+
+.wicked-popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	z-index: 1000;
+	-webkit-backface-visibility: hidden;
+	display: none;
+	z-index: 159900;
+}
+
+.wicked-popup > div {
+	position: absolute;;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 20px;
+}
+
+.wicked-popup > div:before {
+	display: inline-block;
+	vertical-align: middle;
+	content: '';
+	height: 100%;
+}
+
+.wicked-popup > div > div {
+	display: inline-block;
+	margin: 0 auto;
+	position: relative;
+	text-align: left;
+	vertical-align: middle;
+	z-index: 1010;
+	width: 100%;
+}
+
+.wicked-popup-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.wicked-popup-hide {
+	display: none;
+}
+
+.wicked-popup .wicked-popup-hide {
+	display: block;
+}
+
+/**
+ * Settings
+ */
+.wicked-settings {
+	position: relative;
+}
+
+.wicked-settings:before {
+	position: absolute;
+	content: "";
+	top: 20px;
+	left: 70%;
+	width: 1px;
+	bottom: 20px;
+	background: #ccc;
+}
+
+.wicked-settings > .wicked-left {
+	float: left;
+	width: 70%;
+	box-sizing: border-box;
+	padding: 0 30px 0 0;
+}
+
+.wicked-settings > .wicked-right {
+	float: left;
+	width: 30%;
+	box-sizing: border-box;
+	padding: 20px 30px 0 30px;
+}
+
+.wicked-settings > .wicked-right h4 {
+	font-size: 16px;
+}
+
+.wicked-settings > .wicked-right hr {
+	margin: 30px 0;
+}
+
+.wicked-settings > .wicked-right img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	height: auto;
+}
+
+.wicked-settings .wicked-pro-screenshot {
+	border: solid 1px #ccc;
+}
+
+.wicked-settings > .wicked-right .wicked-logo {
+	max-width: 180px;
+	margin: 0 auto;
+}
+
+.wicked-settings > .wicked-right .wicked-logo img {
+	display: block;
+	margin: 0 auto 20px auto;
+	max-width: 100%;
+	height: auto;
+}
+
+.wicked-settings > .wicked-right .wicked-rate {
+	text-align: center;
+}
+
+.wicked-settings > .wicked-right .wicked-rate a {
+	text-decoration: none;
+}
+
+.wicked-settings > .wicked-right .wicked-rate .stars {
+	font-size: 16px;
+}
+
+.wicked-settings #wicked-folders-pro-license-key {
+	width: 300px;
+}
+
+.wicked-folders-license-status {
+	margin: 5px 0 10px 0;
+}
+
+.wicked-folders-license-status > span:before {
+	display: inline-block;
+	content: "";
+	vertical-align: middle;
+	width: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background: #46b450;
+	margin-right: 5px;
+}
+
+.wicked-folders-license-status > .wicked-folders-not-okay:before {
+	background: #dc3232;
+}
+
+/**
+ * Folders taxonomy meta boxes
+ */
+/*
+div[id^="wf"][id$="foldersdiv"] .selectit {
+	position: relative;
+}
+
+div[id^="wf"][id$="foldersdiv"] .selectit > input {
+	margin-right: 20px;
+}
+
+div[id^="wf"][id$="foldersdiv"] .selectit:before {
+	font-family: 'WickedFontAwesome';
+	content: "\f07b";
+	position: absolute;
+	font-size: 16px;
+	top: -2px;
+	left: 20px;
+}
+*/
+div[id^="wf"][id$="foldersdiv"] div[id^="wf"][id$="all"] {
+	white-space: nowrap;
+}
+
+/**
+ * Dialogs
+ */
+.wicked-folder-dialog {
+	background: #fff;
+	max-width: 400px;
+	box-shadow: 0 5px 15px rgba(0,0,0,.7);
+	margin: 0 auto;
+}
+
+.wicked-folder-dialog .wicked-dialog-head {
+	background: #fcfcfc;
+	border-bottom: solid 1px #ddd;
+	padding: 10px 20px;
+	position: relative;
+	font-weight: bold;
+}
+
+.wicked-folder-dialog .wicked-popup-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #666;
+	text-decoration: none;
+}
+
+.wicked-folder-dialog .wicked-dialog-body {
+	padding: 20px;
+}
+
+.wicked-folder-dialog [type="text"],
+.wicked-folder-dialog select {
+	width: 100%;
+}
+
+.wicked-folder-dialog .wicked-dialog-foot {
+	position: relative;
+	padding: 10px 20px;
+	background: #fcfcfc;
+	border-top: solid 1px #ddd;
+	text-align: right;
+}
+
+.wicked-folder-dialog .wicked-dialog-foot .wicked-cancel {
+	float: left;
+}
+
+.wicked-folder-dialog .wicked-errors {
+	margin: 0 0 20px 0;
+	border-left: solid 4px #dc3232;
+	padding: 10px 15px;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	background: #fcfcfc;
+	display: none;
+}
+
+.wicked-splitter-handle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 11px;
+	background: #F5F5F5;
+	cursor: col-resize;
+}
+
+.wicked-splitter-handle > div {
+	position: absolute;
+	left: 5px;
+	background: #ddd;
+	top: 50%;
+	height: 50px;
+	width: 1px;
+	margin-top: -25px;
+
+}
+
+.wicked-splitter-handle > div:before,
+.wicked-splitter-handle > div:after {
+	position: absolute;
+	content: "";
+	left: -2px;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background: #ddd;
+}
+
+.wicked-splitter-handle > div:after {
+	left: 2px;
+}
+
+/**
+ * Folders page
+ */
+#wicked-folder-browser {
+	overflow: hidden;
+}
+
+#wicked-folder-browser .wicked-body {
+    border: solid 1px #ddd;
+    position: relative;
+    background: #fff;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+#wicked-folder-browser .wicked-left {
+	float: left;
+}
+
+#wicked-folder-browser .wicked-right {
+	float: right;
+}
+
+#wicked-folder-browser .wicked-body .tablenav {
+	display: none;
+}
+
+#wicked-folder-browser .wicked-folder-browser-actions label {
+	vertical-align: top;
+}
+
+#wicked-folder-browser .wicked-folder-browser-actions .wicked-clone-folder + .dashicons-editor-help {
+	position: relative;
+	top: 3px;
+}
+
+#wicked-folder-browser .wicked-folder-path-pane {
+    background: #F5F5F5;
+    border-bottom: solid 1px #ddd;
+    position: relative;
+    z-index: 20;
+    padding: 10px;
+}
+
+#wicked-folder-browser .wicked-panes {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	height: 600px;
+}
+
+#wicked-folder-browser .wicked-folder-tree-pane {
+    display: table-cell;
+	vertical-align: top;
+    width: 400px;
+    white-space: nowrap;
+	position: relative;
+	max-width: 80%;
+	height: 100%;
+}
+
+#wicked-folder-browser .wicked-folder-tree {
+	position: absolute;
+	top: 0;
+	right: 11px;
+	left: 0;
+	bottom: 0;
+	overflow: auto;
+}
+
+#wicked-folder-browser .wicked-folder-contents-pane {
+	display: table-cell;
+	vertical-align: top;
+    width: 100%;
+	position: relative;
+	min-height: 600px;
+}
+
+.wp-list-table th.column-wicked_move,
+.wp-list-table td.wicked_move {
+	width: 20px;
+	vertical-align: middle;
+	padding-right: 0;
+}
+
+.post-type-shop_order .wp-list-table th.column-wicked_move,
+.wp-list-table td.wicked_move {
+	width: 10px !important;
+	padding: 8px 0 8px 10px !important;
+}
+
+.wp-list-table .column-wicked_sort {
+	width: 70px;
+	vertical-align: middle;
+}
+
+.wp-list-table tbody tr.ui-sortable-helper {
+	background: #fff;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+.wp-list-table tbody tr.ui-sortable-helper .wicked-move-multiple {
+	display: none;
+}
+
+.wp-list-table tbody tr.sortable-placeholder {
+}
+
+.wp-list-table td.column-wicked_sort a {
+	cursor: move;
+}
+
+.wp-list-table th.column-wicked_move .wicked-move-file,
+.wp-list-table td.wicked_move .wicked-move-file {
+	font-size: 20px;
+	cursor: move;
+	visibility: hidden;
+}
+
+.wp-list-table tr:hover th.column-wicked_move .wicked-move-file,
+.wp-list-table tr:hover td.wicked_move .wicked-move-file {
+	visibility: visible;
+}
+
+.wp-list-table .wicked-move-multiple .wicked-items {
+	display: none;
+}
+
+.wp-list-table .wicked-move-multiple.ui-draggable-disabled .wicked-move-file {
+	cursor: default;
+}
+
+.wp-list-table .wicked-folders-taxonomy-breadcrumb-links:not(:first-child):before {
+	content: "\A";
+    white-space: pre;
+}
+
+.wp-list-table .wicked-folders-taxonomy-breadcrumb-links a:last-child {
+	font-weight: bold;
+}
+
+#wicked-folder-browser .wp-list-table {
+	border: none;
+}
+
+#wicked-folder-browser tr.ui-draggable-dragging {
+	opacity: 0.5;
+}
+
+#wicked-folder-browser tr.ui-draggable-dragging .row-actions,
+#wicked-folder-browser tr.ui-draggable-dragging .filename,
+#wicked-folder-browser tr.ui-draggable-dragging th,
+#wicked-folder-browser tr.ui-draggable-dragging td {
+	display: none;
+}
+
+#wicked-folder-browser tr.ui-draggable-dragging td.column-wicked_move {
+	border-radius: 5px 0 0 5px;
+}
+
+#wicked-folder-browser tr.ui-draggable-dragging td.title {
+	border-radius: 0 5px 5px 0;
+	white-space: nowrap;
+}
+
+#wicked-folder-browser tr.ui-draggable-dragging td.column-wicked_move,
+#wicked-folder-browser tr.ui-draggable-dragging td.title {
+	display: table-cell;
+	background: #0073AA;
+	color: #fff;
+}
+
+#wicked-folder-browser tr.ui-draggable-dragging td.column-wicked_move a,
+#wicked-folder-browser tr.ui-draggable-dragging td.title a {
+	color: #fff;
+}
+
+#wicked-folder-browser .wicked-move-multiple.ui-draggable-dragging {
+	background: #0073AA;
+	border-radius: 5px;
+	color: #fff;
+	width: auto;
+	opacity: 0.5;
+	padding: 8px 10px 8px 40px;
+	width: 200px;
+	cursor: move;
+}
+
+#wicked-folder-browser .wicked-move-multiple.ui-draggable-dragging .wicked-items {
+	display: block;
+}
+
+#wicked-folder-browser .wicked-move-multiple.ui-draggable-dragging .wicked-move-file {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	margin-top: -10px;
+}
+
+.wicked-folder-tree-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+/**
+ * Navigation
+ */
+
+
+.wicked-folder-search input[type="text"],
+.media-modal.wp-core-ui .wicked-folder-search input[type="text"] {
+	box-sizing: border-box;
+	width: 100%;
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+#wicked-folder-navigation-error {
+	text-align: center;
+	height: calc(100vh - 73px);
+	align-items: center;
+	display: flex;
+}
+
+#wicked-folder-navigation-error > div {
+	width: 100%;
+}
+
+#wicked-folder-navigation-error h1 {
+	font-size: 23px;
+	font-weight: 400;
+}
+
+#wicked-folder-navigation-error .dashicons {
+	font-size: 50px;
+	line-height: 50px;
+	width: 50px;
+	height: 50px;
+}
+
+/**
+ * Admin menu
+ */
+#adminmenu #toplevel_page_wicked_folders_toggle {
+	background-color: transparent;
+}
+
+#adminmenu #toplevel_page_wicked_folders_toggle a {
+	color: #aaa;
+}
+
+#adminmenu #toplevel_page_wicked_folders_toggle a:hover,
+#adminmenu #toplevel_page_wicked_folders_toggle a:focus {
+	color: #72aee6;
+}
+
+#adminmenu #toplevel_page_wicked_folders_toggle .wp-menu-name {
+	font-size: 13px;
+	background: none;
+}
+
+body.edit-php #adminmenu #toplevel_page_wicked_folders_toggle {
+	display: block;
+}
+
+/**
+ * Pro
+ */
+/*******************************************************************************
+
+Attachment browser
+
+*******************************************************************************/
+.attachments-browser .wicked-folder-pane {
+	display: none;
+	width: 18%;
+	float: left;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.attachments-browser .wicked-folder-tree {
+	white-space: nowrap;
+}
+
+.attachments-browser.wicked-folder-pane-enabled.wicked-folder-pane-expanded .wicked-folder-pane {
+	display: block;
+}
+
+.attachments-browser.wicked-folder-pane-enabled.wicked-folder-pane-expanded .attachment.ui-draggable-dragging {
+	opacity: 0.5;
+	z-index: 1000;
+}
+
+.attachments-browser .wicked-items-moved-feedback {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 200px;
+	margin: 0 0 0 -100px;
+	text-align: center;
+	background: #46b450;
+	color: #fff;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 10px;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+	display: none;
+	z-index: 100;
+}
+
+/* .attachments-wrapper was introduced in WP 5.8 */
+.attachments-browser .attachments.wicked-dragging-attachment,
+.attachments-browser .attachments-wrapper.wicked-dragging-attachment,
+.attachments-browser.has-load-more .attachments-wrapper.wicked-dragging-attachment {
+	overflow: visible;
+}
+
+/*******************************************************************************
+
+Media library grid view
+
+*******************************************************************************/
+body.wicked-folders-enabled .attachments-browser .wicked-folder-pane {
+	display: block;
+}
+
+body.wicked-folders-enabled .media-frame,
+body.wicked-folders-enabled .media-frame-content,
+body.wicked-folders-enabled .media-frame .attachments-browser,
+body.wicked-folders-enabled .attachments-browser .attachments,
+body.wicked-folders-enabled .attachments-browser .uploader-inline {
+	overflow: visible;
+}
+
+.mode-grid .attachments-browser.wicked-folder-pane-enabled.wicked-folder-pane-expanded .attachments:empty {
+	padding: 0;
+}
+
+/*
+.mode-grid .attachments-browser .wicked-folder-pane {
+	position: fixed;
+	top: 32px;
+	left: 160px;
+	bottom: 0;
+	width: 360px;
+	padding: 10px 15px 40px 20px;
+}
+
+.mode-grid .attachments-browser .wicked-folder-pane:before {
+	position: absolute;
+	top: 10px;
+	right: -4.5%;
+	height: 100000px;
+	width: 1px;
+	background: #ddd;
+	content: "";
+}
+
+.mode-grid .attachments-browser .wicked-folder-tree {
+	overflow-x: auto;
+	padding-bottom: 100px;
+}
+
+.mode-grid .attachments-browser .wicked-folder-pane-toolbar {
+	background: #fff;
+	margin: 0 0 15px 0;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	box-sizing: border-box;
+	border: solid 1px #e5e5e5;
+}
+
+.mode-grid .attachments-browser .wicked-folder-details {
+	background: #fff;
+	margin: 0 0 15px 0;
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	border: solid 1px #e5e5e5;
+}
+
+.mode-grid .attachments-browser .wicked-folders-toggle {
+	margin: 0 12px 0 -7px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 21px;
+	line-height: 28px;
+}
+
+.mode-grid .attachments-browser .wicked-folders-toggle:before {
+	font-size: 21px;
+	line-height: 28px;
+}
+
+.mode-grid .attachments-browser.wicked-folder-pane-expanded .wicked-folders-toggle {
+	display: inline-block;
+	color: #0073AA;
+}
+*/
+
+.mode-grid .attachments-browser .wicked-items-moved-feedback {
+	position: fixed;
+	top: 32px;
+}
+
+
+
+.wicked-attachment-folders .wicked-toggle,
+.wicked-attachment-folders .wicked-tree li:before,
+.wicked-attachment-folders .wicked-tree li:after {
+	display: none;
+}
+
+.wicked-attachment-folders .wicked-container {
+	max-height: 200px;
+	overflow: auto;
+	padding: 5px 0.9em;
+	background: #fdfdfd;
+	border: solid 1px #ddd;
+}
+
+.wicked-attachment-folders a,
+.wicked-attachment-folders a:hover,
+.wicked-attachment-folders a:focus,
+.wicked-attachment-folders a:active {
+	color: #444;
+}
+
+.wicked-attachment-folders ul.wicked-tree {
+	font-size: 13px;
+	line-height: 22px;
+	padding: 0;
+}
+
+.wicked-attachment-folders ul.wicked-tree .wicked-folder {
+	padding: 0;
+}
+
+.wicked-attachment-folders [data-folder-id="dynamic_root"],
+.wicked-attachment-folders [data-folder-id="unassigned_dynamic_folder"] {
+	display: none;
+}
+
+.wicked-attachment-folders ul.wicked-tree [data-folder-id="0"] > :not(ul) {
+	display: none;
+}
+
+.wicked-attachment-folders ul.wicked-tree [data-folder-id="0"] > ul {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.wicked-attachment-folders ul.wicked-tree .wicked-folder .wicked-icon {
+	width: 20px;
+}
+
+.wicked-attachment-folders ul.wicked-tree .wicked-folder .wicked-icon:before,
+.wicked-attachment-folders ul.wicked-tree li.wicked-expanded > .wicked-folder .wicked-icon:before {
+	content: "\f07b";
+	font-size: 16px;
+	width: 20px;
+}
+
+.wicked-attachment-folders ul.wicked-tree .wicked-selected > .wicked-folder {
+	background: none;
+	color: #444;
+}
+
+.wicked-attachment-folders ul.wicked-tree .wicked-checkbox {
+	position: relative;
+	top: -1px;
+}
+
+/* Adjustments for when attachment folders are displayed in attachment detail modal */
+.edit-attachment-frame .wicked-attachment-folders {
+	clear: both;
+	padding: 5px 0 0 0;
+}
+
+.edit-attachment-frame .wicked-attachment-folders h2 {
+	float: left;
+	text-align: right;
+	min-width: 30%;
+	margin: 0 4% 0 0;
+	padding: 8px 0 0 0;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: 400;
+	color: #666;
+}
+
+.edit-attachment-frame .wicked-attachment-folders .wicked-container {
+	float: right;
+	width: 65%;
+	box-sizing: border-box;
+	margin: 1px;
+}
+
+#wicked-folder-browser[data-folder="dynamic_root"] .wicked-folder-contents-pane {
+	vertical-align: middle;
+}
+
+.wicked-dynamic-folders-intro {
+	margin: 0 auto;
+	text-align: center;
+	max-width: 600px;
+}
+
+.wicked-dynamic-folders-intro .wicked-large {
+	font-size: 18px;
+	line-height: 24px;
+}
+
+.wicked-dynamic-folders-intro h1 {
+	font-size: 33px;
+	line-height: 43px;
+	margin: 0 0 20px 0;
+}
+
+.wicked-dynamic-folders-intro .wicked-icon {
+	margin: 0 0 30px 0;
+	font-size: 80px;
+	line-height: 80px;
+}
+
+/**
+ * Media add new page
+ */
+#file-form #wicked-upload-folder-ui {
+	margin: 20px 0;
+}
+
+#file-form #wicked-upload-folder-ui select {
+	width: 300px;
+	max-width: 100%;
+}
+
+/**
+ * Right-to-left
+ */
+body.rtl #wicked-folder-pane:not(.wicked-media-modal-folder-pane) .wicked-resizer {
+	left: auto;
+	right: 160px;
+}
+
+/* Hide resizer on RTL modal since resizing isn't currently supported */
+body.rtl #wicked-folder-pane.wicked-media-modal-folder-pane .wicked-resizer {
+	display: none;
+}
+
+body.rtl #wicked-folder-pane .wicked-resizer > div {
+	left: 0;
+	right: auto;
+}
+
+body.rtl #wicked-folder-pane .wicked-resizer:before {
+	left: 6px;
+	right: auto;
+}
+
+body.rtl .wicked-splitter-handle {
+	cursor: default;
+}
+
+body.rtl .wicked-splitter-handle,
+body.rtl #wicked-folder-pane .wicked-resizer > div {
+	cursor: default;
+}
+
+body.rtl #wicked-folder-pane:not(.wicked-media-modal-folder-pane) .wicked-content {
+	left: auto;
+	right: 160px;
+	padding: 10px 20px 40px 15px;
+}
+
+body.wp-admin.rtl.wicked-folders-enabled #wpcontent {
+	padding-left: 0;
+	padding-right: 303px;
+}
+
+body.rtl ul.wicked-tree ul {
+	margin: 0 25px 0 0;
+}
+
+body.rtl ul.wicked-tree li:before {
+	left: auto;
+	right: -11px;
+	border-left: none;
+	border-right: solid 1px #ddd;
+}
+
+body.rtl ul.wicked-tree li:after {
+	left: auto;
+	right: -11px;
+	border-left: none;
+	border-right: solid 1px #ddd;
+}
+
+body.rtl ul.wicked-tree a.wicked-toggle:before {
+	content: "\f0d9";
+}
+
+body.rtl ul.wicked-tree li.wicked-expanded > a.wicked-toggle:before {
+	content: "\f0d7";
+}
+
+body.rtl .wp-list-table th.column-wicked_move, .wp-list-table td.wicked_move {
+	padding-left: 0;
+	padding-right: 10px;
+}
+
+body.rtl .post-type-shop_order .wp-list-table th.column-wicked_move, .wp-list-table td.wicked_move {
+	padding: 8px 10px !important;
+}
+
+body.rtl .wicked-post-drag-details {
+	padding: 8px 40px 8px 10px;
+}
+
+body.rtl .wicked-post-drag-details:before {
+	position: absolute;
+	top: 50%;
+	left: auto;
+	right: 10px;
+}
+
+body.rtl .media-modal #wicked-folder-pane {
+	left: auto;
+	right: 0;
+	border-left: solid 1px #ddd;
+	border-right: none;
+}
+
+body.rtl .media-modal .attachments-browser.wicked-folder-pane-enabled.wicked-folder-pane-expanded .media-toolbar {
+	right: 300px;
+}
+
+body.rtl .media-modal .attachments-browser.wicked-folder-pane-enabled.wicked-folder-pane-expanded .attachments {
+	right: 300px;
+}
+
+body.rtl .edit-attachment-frame .wicked-attachment-folders h2 {
+	float: right;
+	text-align: left;
+	margin: 0 0 0 4%;
+}
+
+/**
+ * Tweaks to Plugins list table
+ */
+.wp-list-table.plugins .active td.wicked_move:not(.hidden) + th.check-column {
+	border-left: none;
+}
+
+.wp-list-table.plugins .active td.wicked_move {
+	border-left: solid 4px #00a0d2;
+}
+
+/*******************************************************************************
+
+Security Policies
+
+*******************************************************************************/
+body.post-type-wf_collection_policy #submitdiv #misc-publishing-actions a,
+body.post-type-wf_collection_policy #submitdiv .misc-pub-visibility,
+body.post-type-wf_collection_policy #delete-action a {
+	display: none;
+}
+
+.wicked-permissions-meta-box {
+	margin: -6px -12px -12px -12px;
+}
+
+table.wicked-permissions {
+	border-collapse: collapse;
+	width: 100%;
+
+}
+
+table.wicked-permissions th {
+	padding: 8px 12px;
+	width: 12%;
+	vertical-align: bottom;
+}
+
+table.wicked-permissions th div {
+	margin: 8px 0 0 0;
+}
+
+table.wicked-permissions td {
+	border-top: solid 1px #c3c4c7;
+	text-align: center;
+	padding: 8px 10px;
+	width: 12%;
+}
+
+table.wicked-permissions tbody > tr:nth-child(odd) {
+	background: #f6f7f7;
+}
+
+table.wicked-permissions th.all,
+table.wicked-permissions td.all {
+	text-align: left;
+	width: 20px;
+	padding-right: 0;
+}
+
+table.wicked-permissions th.name,
+table.wicked-permissions td.name {
+	text-align: left;
+	width: calc(40% - 20px);
+}
+
+table.wicked-permissions th.permission,
+table.wicked-permissions td.permission {
+	border-left: solid 1px #c3c4c7;
+}
+
+/*******************************************************************************
+
+Responsive
+
+*******************************************************************************/
+@media screen and (max-width: 900px) {
+
+	.edit-attachment-frame .wicked-attachment-folders {
+		padding: 0;
+	}
+
+	.edit-attachment-frame .wicked-attachment-folders h2 {
+		margin: 0;
+		text-align: inherit;
+		margin: 0;
+		padding: 8px 2px 2px 2px;
+	}
+
+	.edit-attachment-frame .wicked-attachment-folders .wicked-container {
+		float: none;
+		width: 98%;
+	}
+
+	body.rtl .edit-attachment-frame .wicked-attachment-folders h2 {
+		text-align: right;
+	}
+
+}
+
+/**
+ * WooCommerce tweaks
+ */
+.post-type-shop_order .wp-list-table tbody tr:hover:not(.status-trash):not(.no-link) td.column-wicked_move {
+	cursor: default;
+}
+
+/**
+ * Hide 'Toggle Folders' on Admin Menu Editor settings page (toggle folders is
+ * added to this page so that Admin Menu Editor is aware of the menu item).
+ */
+body.settings_page_menu_editor #toplevel_page_wicked_folders_toggle {
+	display: none;
+}
+
+#wicked-folders-select2-dropdown {
+	position: relative;
+	z-index: 100000000;
+}
+
+body[class*="et_pb_"] .select2-container {
+	z-index: 100000000;
+}
