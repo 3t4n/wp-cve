@@ -1,0 +1,116 @@
+<?php echo $this->render('template-page.phtml'); ?>
+<hr>
+<section class="header">
+    <img class="options" src="<?php echo plugins_url('/img/logo.png', CART2CART_PLUGIN_ROOT_DIR . 'dir'); ?>" alt="Logo">
+</section>
+<div id="main-content">
+    <section class="two-items-header">
+        <div class="container">
+            <div class="about-content">
+                <div class="like-heading-h2">How It <span class="bolder-text">Works?</span></div>
+                <p>
+                    Cart2Cart lets you perform your current store data migration to WooCommerce in a totally automated
+                    manner with your minimal involvement in the process. The migration setup does not require programming
+                    skills or database manipulations - all configurations can be done within the Cart2Cart plugin interface.
+                    Watch the video to discover how the Cart2Cart: Universal Migration app works:
+                </p>
+            </div>
+            <div class="about-img">
+                <a data-src="https://www.youtube.com/embed/0pEXs1wsDgw?autoplay=1" href="#" class="fancybox fancybox.iframe how-it-works" rel="noopener noreferrer">
+                    <span class="video-play-button"></span>
+                </a>
+                <iframe class="fancybox fancybox.iframe how-it-works" src="" allow="autoplay" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+    <section class="text-block">
+        <div class="container">
+            <div>Alternatively, check the info below to see how the Cart2Cart<br> plugin works in detail:</div>
+            <div class="like-heading-h2">How to install the Cart2Cart:<br> <span class="bolder-text">Universal Migration app?</span></div>
+            <p>
+                Download and install the Cart2Cart: Universal Migration app. When done, activate it by clicking the
+                corresponding button. Login to your Cart2Cart account if you’re registered. If not - create one, or use
+                your Facebook account. Once ready, click the Start Free Demo button to initiate the setup of your
+                automated migration via the app. If you want to delegate your migration to the Cart2Cart migration
+                experts, click the Get Service Package button and fill in the required forms.
+            </p>
+        </div>
+    </section>
+    <section class="four-items-block">
+        <div class="container">
+            <h2 class="like-heading-h2">Migration <span class="bolder-text">Setup</span></h2>
+            <div class="items-list reasons">
+                <div class="item">
+                    <div class="icon-circle">01</div>
+                    <h3 class="like-heading-h3">Connect the Source <br>& Target carts</h3>
+                    <p>
+                        Provide your current store access credentials and install the Cart2Cart: Universal Migration
+                        app to enable the connection between the stores.
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="icon-circle">02</div>
+                    <h3 class="like-heading-h3">Choose the entities <br>& extra options</h3>
+                    <p>
+                        Choose the entities you wish to migrate and additional options to customize your specific migration.
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="icon-circle">03</div>
+                    <h3 class="like-heading-h3">Run Demo migration</h3>
+                    <p>
+                        Launch free Demo migration and move a limited number of entities to your new WooCommerce
+                        store (it takes no more than 30 min).
+                    </p>
+                </div>
+                <div class="item">
+                    <div class="icon-circle">04</div>
+                    <h3 class="like-heading-h3">Launch Full migration</h3>
+                    <p>
+                        If you’re happy with the Demo outcome, launch Full migration by clicking the Start Migration button.
+                    </p>
+                </div>
+            </div>
+            <a class="main-green-button" href="https://app.shopping-cart-migration.com/" data-toggle="modal" target="_blank">
+                Start Migration
+                <div class="button-img">
+                    <img src="<?php echo plugins_url('/img/click.png', CART2CART_PLUGIN_ROOT_DIR . 'dir'); ?>" alt="click">
+                </div>
+            </a>
+        </div>
+    </section>
+</div>
+<section class="footer">
+    <img class="options" src="<?php echo plugins_url('/img/logo.png', CART2CART_PLUGIN_ROOT_DIR . 'dir'); ?>" alt="Logo">
+</section>
+<style>
+    .video-play-button:before {
+        display: block;
+        background-image: url(<?php echo plugins_url('/img/play.png', CART2CART_PLUGIN_ROOT_DIR . 'dir'); ?>);
+        position: absolute;
+        top: calc(50% - 25px);
+        left: calc(50% - 20px);
+        content: '';
+        width: 43px;
+        height: 51px;
+    }
+    .about-img a {
+        position: relative;
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-size: contain;
+        border-radius: 20px;
+        background: url(<?php echo plugins_url('/img/migration-setup.png', CART2CART_PLUGIN_ROOT_DIR . 'dir'); ?>);
+    }
+</style>
+<script>
+  jQuery(document).ready(function($) {
+    $('a.how-it-works').on('click', function(event) {
+      event.preventDefault();
+      var iframe_url = $(this).attr('data-src');
+      $(this).next().css('display', 'block').attr('src', iframe_url);
+      $(this).css('display', 'none');
+    });
+  });
+</script>
