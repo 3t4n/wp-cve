@@ -1,0 +1,541 @@
+/**
+ * Environment for all styles (variables, additions, etc).
+ */
+/* Icons */
+/* Basic Style */
+@font-face {
+	font-family: 'sight-portfolio-icons';
+	src: url("../icon-fonts/sight-portfolio-icons.eot?2kdktd");
+	src: url("../icon-fonts/sight-portfolio-icons.eot?2kdktd#iefix") format("embedded-opentype"), url("../icon-fonts/sight-portfolio-icons.ttf?2kdktd") format("truetype"), url("../icon-fonts/sight-portfolio-icons.woff?2kdktd") format("woff"), url("../icon-fonts/sight-portfolio-icons.svg?2kdktd#sight-portfolio") format("svg");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+[class^="sight-portfolio-icons-"],
+[class*=" sight-portfolio-icons-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'sight-portfolio-icons' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.sight-portfolio-icons-plus:before {
+	content: "\e912";
+}
+
+.sight-portfolio-icons-volume-full:before {
+	content: "\e909";
+}
+
+.sight-portfolio-icons-volume-mute:before {
+	content: "\e90a";
+}
+
+.sight-portfolio-icons-pause:before {
+	content: "\e900";
+}
+
+.sight-portfolio-icons-play:before {
+	content: "\e901";
+}
+
+.sight-portfolio-icons-youtube:before {
+	content: "\e910";
+}
+
+.sight-portfolio-icons-share-top:before {
+	content: "\e934";
+}
+
+.sight-portfolio-icons-arrow-down:before {
+	content: "\e902";
+}
+
+.sight-portfolio-icons-arrow-down-circle:before {
+	content: "\e903";
+}
+
+.sight-portfolio-icons-arrow-left:before {
+	content: "\e904";
+}
+
+.sight-portfolio-icons-arrow-left-circle:before {
+	content: "\e905";
+}
+
+.sight-portfolio-icons-arrow-right:before {
+	content: "\e906";
+}
+
+.sight-portfolio-icons-arrow-right-circle:before {
+	content: "\e907";
+}
+
+.sight-portfolio-icons-arrow-up-circle:before {
+	content: "\e908";
+}
+
+.sight-portfolio-icons-bookmark:before {
+	content: "\e90b";
+}
+
+.sight-portfolio-icons-chevron-down:before {
+	content: "\e90c";
+}
+
+.sight-portfolio-icons-chevron-left:before {
+	content: "\e90d";
+}
+
+.sight-portfolio-icons-chevron-right:before {
+	content: "\e90e";
+}
+
+.sight-portfolio-icons-chevron-up:before {
+	content: "\e90f";
+}
+
+.sight-portfolio-icons-eye:before {
+	content: "\e911";
+}
+
+.sight-portfolio-icons-film:before {
+	content: "\e914";
+}
+
+.sight-portfolio-icons-share:before {
+	content: "\e920";
+}
+
+.sight-portfolio-icons-watch:before {
+	content: "\e922";
+}
+
+.sight-portfolio-icons-x:before {
+	content: "\e923";
+}
+
+.sight-portfolio-icons-x-circle:before {
+	content: "\e924";
+}
+
+.sight-portfolio-icons-arrow-long-bottom:before {
+	content: "\e938";
+}
+
+.sight-portfolio-icons-arrow-long-top:before {
+	content: "\e939";
+}
+
+.sight-portfolio-icons-arrow-long-left:before {
+	content: "\e93a";
+}
+
+.sight-portfolio-icons-arrow-long-right:before {
+	content: "\e93b";
+}
+
+.sight-portfolio-entry__thumbnail img {
+	display: block;
+	width: 100%;
+	height: auto;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.sight-portfolio-entry__overlay {
+	position: relative;
+}
+
+.sight-portfolio-overlay-background {
+	display: flex;
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+
+.sight-portfolio-overlay-background:after, .sight-portfolio-overlay-background:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	transition: 0.25s;
+	opacity: 1;
+}
+
+.sight-portfolio-overlay-background:after {
+	background: var(--sight-color-overlay-background);
+}
+
+.sight-portfolio-overlay-background.sight-portfolio-overlay-transparent:after, .sight-portfolio-overlay-background.sight-portfolio-overlay-transparent:before {
+	opacity: 0 !important;
+}
+
+.sight-portfolio-overlay-link {
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+.sight-portfolio-overlay-content {
+	padding: 20px;
+}
+
+.sight-portfolio-overlay-content a {
+	position: relative;
+	z-index: 2;
+}
+
+.sight-portfolio-overlay-ratio {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.sight-portfolio-overlay-ratio:not(.sight-portfolio-ratio-original) .sight-portfolio-overlay-background {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.sight-portfolio-overlay-ratio:not(.sight-portfolio-ratio-original) .sight-portfolio-overlay-background img {
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+}
+
+.sight-portfolio-overlay-ratio:not(.sight-portfolio-ratio-original):before {
+	content: '';
+	display: table;
+	box-sizing: border-box;
+	width: 0;
+}
+
+.sight-portfolio-ratio-landscape:before,
+.sight-portfolio-ratio-landscape-4-3:before {
+	padding-bottom: 75%;
+}
+
+.sight-portfolio-ratio-landscape-3-2:before {
+	padding-bottom: 66.66667%;
+}
+
+.sight-portfolio-ratio-landscape-16-9:before {
+	padding-bottom: 56.25%;
+}
+
+.sight-portfolio-ratio-portrait:before,
+.sight-portfolio-ratio-portrait-3-4:before {
+	padding-bottom: 133.33333%;
+}
+
+.sight-portfolio-ratio-portrait-2-3:before {
+	padding-bottom: 150%;
+}
+
+.sight-portfolio-ratio-square:before {
+	padding-bottom: 100%;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-entry__overlay .sight-portfolio-overlay-background:after, .sight-portfolio-entry__inner.sight-portfolio-entry__overlay .sight-portfolio-overlay-background:before {
+	opacity: 0;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-entry__overlay .sight-portfolio-overlay-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: 0.25s;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-entry__overlay .sight-portfolio-overlay-content > * {
+	margin-top: auto;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-entry__overlay .sight-portfolio-overlay-content .sight-portfolio-entry__read-more {
+	margin-top: 0;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-entry__overlay .sight-portfolio-overlay-content .sight-portfolio-entry__read-more:not(:only-child) {
+	margin-top: auto;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-entry__overlay:hover .sight-portfolio-overlay-content {
+	opacity: 1;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-entry__overlay:hover .sight-portfolio-overlay-background:after {
+	opacity: 1;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-overlay-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.sight-portfolio-entry__inner.sight-portfolio-overlay-content:not(:first-child) {
+	margin-top: 0;
+}
+
+.sight-portfolio-video-bg-init .sight-portfolio-entry__thumbnail img {
+	opacity: 0;
+}
+
+.sight-portfolio-video-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.sight-portfolio-video-container .sight-portfolio-video-inner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: auto;
+	-o-object-fit: cover;
+	object-fit: cover;
+	opacity: 0;
+	transition: opacity .5s;
+	max-width: unset;
+	transform: translate(-50%, -50%);
+}
+
+.sight-portfolio-video-container .sight-portfolio-video-inner.active {
+	opacity: 1;
+}
+
+.sight-portfolio-video-container[data-video-type="hover"] .sight-portfolio-video-loader {
+	width: 40px;
+	height: 40px;
+	border: 4px solid rgba(255, 255, 255, 0.75);
+	border-right-color: transparent;
+	border-radius: 50%;
+	position: relative;
+	-webkit-animation: loader-rotate 1s linear infinite;
+	animation: loader-rotate 1s linear infinite;
+	top: 50%;
+	margin: -20px auto 0;
+	transition: opacity 0.25s;
+	opacity: 0;
+}
+
+.sight-portfolio-video-container[data-video-type="hover"] .sight-portfolio-video-loader:after {
+	content: '';
+	width: 4px;
+	height: 4px;
+	background: rgba(255, 255, 255, 0.75);
+	border-radius: 50%;
+	position: absolute;
+	top: 1px;
+	left: 27px;
+}
+
+@-webkit-keyframes loader-rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes loader-rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.sight-portfolio-overlay-background:hover .sight-portfolio-video-container[data-video-type="hover"] .sight-portfolio-video-loader {
+	opacity: 1;
+}
+
+.sight-portfolio-video-bg-init .sight-portfolio-overlay-background .sight-portfolio-video-container[data-video-type="hover"] .sight-portfolio-video-loader {
+	opacity: 0;
+}
+
+.sight-portfolio-video-container[data-video-type="always"] .sight-portfolio-video-loader {
+	width: 40px;
+	height: 40px;
+	border: 4px solid rgba(255, 255, 255, 0.75);
+	border-right-color: transparent;
+	border-radius: 50%;
+	position: relative;
+	-webkit-animation: loader-rotate 1s linear infinite;
+	animation: loader-rotate 1s linear infinite;
+	top: 50%;
+	margin: -20px auto 0;
+	transition: opacity 0.25s;
+	opacity: 1;
+}
+
+.sight-portfolio-video-container[data-video-type="always"] .sight-portfolio-video-loader:after {
+	content: '';
+	width: 4px;
+	height: 4px;
+	background: rgba(255, 255, 255, 0.75);
+	border-radius: 50%;
+	position: absolute;
+	top: 1px;
+	left: 27px;
+}
+
+@keyframes loader-rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.sight-portfolio-video-bg-init .sight-portfolio-video-container[data-video-type="always"] .sight-portfolio-video-loader {
+	opacity: 0;
+}
+
+.sight-portfolio-video-controls {
+	display: flex;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	opacity: 0;
+	z-index: 4;
+	transform: translateX(-9999px);
+	transition: opacity 0.25s;
+}
+
+.sight-portfolio-video-bg-init .sight-portfolio-video-controls {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-control {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	color: white;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-control:after {
+	position: relative;
+	font-family: "sight-portfolio-icons";
+	font-style: normal;
+	opacity: 1;
+	width: auto;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-control .sight-portfolio-tooltip {
+	position: absolute;
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+	display: -ms-grid;
+	-ms-grid-columns: max-content;
+	top: 100%;
+	left: -9999px;
+	padding-left: 50%;
+	padding-bottom: 8px;
+	transform: translateY(-30%);
+	transition: transform 0.5s;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-control .sight-portfolio-tooltip span {
+	background: white;
+	display: block;
+	position: relative;
+	padding: 4px 16px;
+	margin: 0;
+	opacity: 0;
+	color: black;
+	transform: translate(-50%, 0);
+	transition: opacity 0.5s;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-control .sight-portfolio-tooltip span:after {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: transparent;
+	border-bottom-color: white;
+	border-width: 7px;
+	margin-left: -7px;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-control:hover .sight-portfolio-tooltip {
+	transform: translateY(0);
+	left: 0;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-control:hover .sight-portfolio-tooltip span {
+	opacity: 1;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-link:after {
+	content: "\e910";
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-play:after {
+	content: "\e900";
+	font-size: 1.5em;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-pause:after {
+	content: "\e901";
+	font-size: 1.5em;
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-unmute:after {
+	content: "\e909";
+}
+
+.sight-portfolio-video-controls .sight-portfolio-player-mute:after {
+	content: "\e90a";
+}

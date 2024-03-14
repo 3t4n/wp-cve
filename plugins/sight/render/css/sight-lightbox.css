@@ -1,0 +1,38 @@
+/**
+ * Environment for all styles (variables, additions, etc).
+ */
+/* Icons */
+/* Vars */
+.sight-portfolio-area-lightbox {
+	--sight-zoom-icon-popup-color: white;
+	--sight-zoom-icon-popup-background: rgba(0, 0, 0, 0.6);
+	--sight-zoom-icon-popup-font-size: 16px;
+}
+
+/* Common Style */
+.sight-portfolio-area-lightbox .sight-zoom-icon-popup {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	width: 2rem;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	opacity: 0;
+	color: var(--sight-zoom-icon-popup-color);
+	background: var(--sight-zoom-icon-popup-background);
+	transition: all 0.2s ease;
+}
+
+.sight-portfolio-area-lightbox .sight-zoom-icon-popup:before {
+	font-family: 'sight-portfolio-icons';
+	font-size: var(--sight-zoom-icon-popup-font-size);
+	content: "\e912";
+}
+
+.sight-portfolio-area-lightbox .sight-image-popup:hover ~ .sight-zoom-icon-popup {
+	opacity: 1;
+}
