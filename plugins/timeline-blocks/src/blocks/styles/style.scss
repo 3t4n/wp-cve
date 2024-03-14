@@ -1,0 +1,459 @@
+/**
+ * Timeline Blocks styles
+ * Loads on front end and back end
+ */
+/**
+ * Editor styles for the admin
+ */
+
+@import "https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700";
+
+// Variables
+$bg-body: #f9f9f9;
+
+$red: #ee4d4d;
+$blue: #2b2e48;
+$primary-color: $red;
+$secondary-color: $blue;
+
+
+// Typography
+$base-font: helvetica,
+arial,
+tahoma,
+verdana;
+$base-font-title: "Dosis",
+arial,
+tahoma,
+verdana;
+
+$base-font-color: #726f77;
+
+// Timeline
+$timeline-color: $primary-color;
+
+.tb-clearfix {
+    clear: both;
+}
+
+.tb-blogpost-excerpt {
+    .tb-button-view {
+        margin-bottom: 20px;
+    }
+}
+
+%clearfix {
+
+    &:after,
+    &:before {
+        content: '';
+        display: block;
+        width: 100%;
+        clear: both;
+    }
+}
+
+@mixin prefix($prop, $val) {
+
+    @each $prefix in '-webkit-',
+    '-moz-',
+    '-ms-',
+    '' {
+        #{$prefix}#{$prop}: $val;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.tb-timeline-template1 {
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+    padding: 0 10px;
+    @include prefix(transition, all .4s ease);
+
+    &:before {
+        content: "";
+        width: 3px;
+        height: 100%;
+        background: $timeline-color;
+        left: 50%;
+        top: 0;
+        position: absolute;
+    }
+
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none !important;
+        border-bottom: 0px !important;
+        transition: none !important;
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none !important;
+            border-bottom: 0px !important;
+            transition: none !important;
+        }
+    }
+
+    .tb-timeline-item {
+        margin-bottom: 50px;
+        position: relative;
+        @extend %clearfix;
+
+        .timeline-icon {
+            background: $timeline-color;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            overflow: hidden;
+            margin-left: -23px;
+            @include prefix(border-radius, 50%);
+
+            svg {
+                position: relative;
+                top: 14px;
+                left: 14px;
+            }
+        }
+
+        .tb-timeline-content {
+            width: 45%;
+            background: #fff;
+            @include prefix(box-shadow, 0 3px 0 rgba(0, 0, 0, 0.1));
+            @include prefix(border-radius, 5px);
+            @include prefix(transition, all .3s ease);
+
+            .tb-title {
+                margin: 0px;
+            }
+
+            .tb-timeline-title {
+                display: block;
+                padding: 15px;
+                margin-bottom: 10px;
+                background: $timeline-color;
+                color: #fff;
+                font-weight: 300;
+                @include prefix(border-radius, 3px 3px 0 0);
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                left: 45%;
+                top: 4%;
+                width: 0;
+                height: 0;
+                border-top: 7px solid transparent;
+                border-bottom: 7px solid transparent;
+                border-left: 7px solid $timeline-color;
+            }
+
+            .tb-timeline-second-content-wrap {
+
+                .tb-timeline-byline {
+                    .tb-timeline-bototm-wrap {
+                        .tb-timeline-post-tags {
+                            float: left;
+                            text-align: left;
+
+                            a {
+                                font-size: 12px;
+                                color: #666;
+                                font-weight: 500;
+                                box-shadow: none;
+                                display: inline-block;
+                                vertical-align: top;
+                                font-family: 'Lato', sans-serif;
+                            }
+                        }
+
+                        .tb-timeline-social-wrap,
+                        .tb-social-wrap {
+                            float: right;
+
+                            .social-share-data {
+                                a {
+                                    color: #797979;
+                                    font-size: 14px;
+                                    width: 30px;
+                                    display: inline-block;
+                                    vertical-align: middle;
+                                    text-align: center;
+                                }
+                            }
+                        }
+                    }
+
+                    .tb-timeline-metadatabox {
+                        margin: 0 0 15px 0;
+
+                        div {
+                            display: inline-block;
+                            padding: 0 16px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(even) {
+            .tb-timeline-content {
+                float: right;
+
+                &:before {
+                    content: '';
+                    right: 45%;
+                    left: inherit;
+                    border-left: 0;
+                    border-right: 7px solid $timeline-color;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+
+        &:not(:last-child):before {
+            background: pink !important;
+        }
+
+        .tb-timeline-social-wrap,
+        .tb-social-wrap {
+            float: none !important;
+            text-align: center;
+        }
+
+        .tb-timeline {
+            padding: 0px;
+            width: 100%;
+
+            &:before {
+                left: 0;
+            }
+
+            .tb-timeline-item {
+                .tb-timeline-content {
+                    width: 100%;
+                    float: none;
+
+                    &:before,
+                    &.right:before {
+                        left: 0%;
+                        margin-left: -6px;
+                        border-left: 0;
+                        border-right: 7px solid $timeline-color;
+                    }
+                }
+
+                .tb-timeline-icon {
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+
+.tb-timeline-template2 {
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+    padding: 0 10px;
+    @include prefix(transition, all .4s ease);
+
+    &:before {
+        content: "";
+        width: 3px;
+        height: 100%;
+        background: $timeline-color;
+        left: 50%;
+        top: 0;
+        position: absolute;
+    }
+
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none !important;
+        border-bottom: 0px !important;
+        transition: none !important;
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none !important;
+            border-bottom: 0px !important;
+            transition: none !important;
+        }
+    }
+
+    .tb-timeline-item {
+        margin-bottom: 50px;
+        position: relative;
+        @extend %clearfix;
+
+        .timeline-icon {
+            background: $timeline-color;
+            width: 50px;
+            height: 50px;
+            position: relative;
+            top: 0;
+            left: 50%;
+            overflow: hidden;
+            margin-left: -23px;
+            @include prefix(border-radius, 50%);
+
+            svg {
+                position: absolute;
+                top: 14px;
+                left: 14px;
+            }
+        }
+
+        .tb-timeline-content {
+            width: 45%;
+            background: #fff;
+            /*padding: 20px;*/
+            @include prefix(box-shadow, 0px 2px 8px 2px rgba(0, 0, 0, 0.1));
+            @include prefix(border-radius, 5px);
+            @include prefix(transition, all .3s ease);
+
+            .tb-inline {
+                display: inline-block;
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .tb-blogpost-title-wrap {
+                a {
+                    color: #333;
+                    text-align: left;
+                }
+
+                a,
+                div {
+                    display: inline-block;
+                }
+
+                .mdate {
+                    text-align: right;
+                    padding-left: 15px;
+
+                }
+            }
+
+            .tb-timeline-bototm-wrap {
+                .tb-timeline-post-tags {
+                    float: left;
+                    text-align: left;
+
+                    a {
+                        font-size: 12px;
+                        color: #666;
+                        font-weight: 500;
+                        box-shadow: none;
+                        display: inline-block;
+                        vertical-align: top;
+                        font-family: 'Lato', sans-serif;
+                    }
+                }
+
+                .tb-timeline-social-wrap {
+                    float: right;
+
+                    .social-share-data {
+                        a {
+                            color: #797979;
+                            font-size: 14px;
+                            width: 30px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+
+            .tb-timeline-second-content-wrap {
+                .tb-timeline-metadatabox {
+                    display: inline-block;
+                    padding: 0 16px;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        &:nth-child(even) {
+            .tb-timeline-content {
+                float: right;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .tb-timeline-template1:not(:last-child):before {
+            content: "";
+            width: 3px;
+            height: 100%;
+            background: #ee4d4d;
+            left: 50%;
+            top: 0;
+            position: absolute;
+        }
+
+        .tb-timeline {
+            // margin: 30px;
+            padding: 0px;
+            width: 100%;
+
+            &:before {
+                left: 0;
+            }
+
+            .tb-timeline-item {
+                .tb-timeline-content {
+                    width: 100%;
+                    float: right;
+
+                    &:before,
+                    &.right:before {
+                        left: 10%;
+                        margin-left: -6px;
+                        border-left: 0;
+                        border-right: 7px solid $timeline-color;
+                    }
+                }
+
+                .timeline-icon {
+                    display: none;
+                }
+            }
+        }
+    }
+}
