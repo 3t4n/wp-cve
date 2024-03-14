@@ -1,0 +1,1 @@
+<div class="paypal-alert-message">This payment is only available in the Pro version. To upgrade please subscribe <a href="https://kanev.com/products/taxi-booking-for-wordpress" target="_blank">here</a>.</div>
