@@ -1,0 +1,75 @@
+﻿<krpano>
+
+	<include url="core.xml" keep="true" />	<!-- DO NOT REMOVE THIS LINE -->
+
+	<style name="hs_photo" scale_wanted="0.6" scale="0.01" scale_to="0.65" edge="leftbottom"
+		onloaded="set(visible, true); div(val, random, 2); if(ismobile, mul(scale, 2); mul(scale_from, 2); mul(scale_to, 2); mul(scale_wanted, 2); ); delayedcall(get(val), tween(scale, get(scale_to), 1, default, tween(scale, get(scale_wanted)))); "
+		url="hs_photo.png"
+		onHover="showtext(get(post_title), wppano_textstyle);"
+	/>
+	
+	<style name="hs_gallery" scale_wanted="0.6" scale="0.01" scale_to="0.65" edge="leftbottom"
+		onloaded="set(visible, true); div(val, random, 2); if(ismobile, mul(scale, 2); mul(scale_from, 2); mul(scale_to, 2); mul(scale_wanted, 2); ); delayedcall(get(val), tween(scale, get(scale_to), 1, default, tween(scale, get(scale_wanted)))); "
+		url="hs_gallery.png"
+		onHover="showtext(get(post_title), wppano_textstyle);"
+	/>	
+	
+	<style name="hs_video" scale_wanted="0.6" scale="0.01" scale_to="0.65" edge="leftbottom"
+		onloaded="set(visible, true); div(val, random, 2); if(ismobile, mul(scale, 2); mul(scale_from, 2); mul(scale_to, 2); mul(scale_wanted, 2); ); delayedcall(get(val), tween(scale, get(scale_to), 1, default, tween(scale, get(scale_wanted)))); "
+		url="hs_video.png"
+		onHover="showtext(get(post_title), wppano_textstyle);"
+	/>
+	
+	<style name="hs_audio" scale_wanted="0.6" scale="0.01" scale_to="0.65" edge="leftbottom"
+		onloaded="set(visible, true); div(val, random, 2); if(ismobile, mul(scale, 2); mul(scale_from, 2); mul(scale_to, 2); mul(scale_wanted, 2); ); delayedcall(get(val), tween(scale, get(scale_to), 1, default, tween(scale, get(scale_wanted)))); "
+		url="hs_audio.png"
+		onHover="showtext(get(post_title), wppano_textstyle);"
+	/>	
+	
+	<style 	name="hs_note" edge="leftbottom" alpha="0" 
+		url="hs_info_title.png"
+		onloaded="hs_info_title(get(post_title)); tween(alpha, 1); if(ismobile, mul(scale, 2); mul(scale_from, 2); mul(scale_to, 2); mul(scale_wanted, 2); ); "
+	/>
+	
+	<style name="hs_info" scale_wanted="0.6" scale="0.01" scale_to="0.65" edge="leftbottom"
+		onloaded="set(visible, true); div(val, random, 2); if(ismobile, mul(scale, 2); mul(scale_from, 2); mul(scale_to, 2); mul(scale_wanted, 2); ); delayedcall(get(val), tween(scale, get(scale_to), 1, default, tween(scale, get(scale_wanted)))); "
+		url="hs_info.png"
+		onHover="showtext(get(post_title), wppano_textstyle);"
+	/>		
+	
+	<textstyle name="wppano_textstyle" font="Arial" fontsize="13" bold="true"
+	           textcolor="0xffffff" background="true" border="false"
+	           blendmode="layer" backgroundcolor="0x000000" backgroundalpha="0.7" padding="5"
+	           origin="cursor" edge="left" xoffset="5" yoffset="-14" showtime="0.1" fadeintime="0.1" fadetime="0.1"
+	           />
+	
+	<action name="hs_info_title">
+		txtadd(hs_name, get(name), '_title');
+		set(hotspot[get(name)].hs_clicked_children, get(hs_name));
+		addlayer(get(hs_name));
+		txtadd(layer[get(hs_name)].parent, 'hotspot[', get(name), ']');
+		set(layer[get(hs_name)].background, false);
+		set(layer[get(hs_name)].backgroundcolor, '0x000000');
+		set(layer[get(hs_name)].backgroundalpha, '0.7');
+		set(layer[get(hs_name)].autoheight, true);
+		set(layer[get(hs_name)].autowidth, true);
+		set(layer[get(hs_name)].textshadow, 2);
+		set(layer[get(hs_name)].textshadowalpha, 0.8);
+		set(layer[get(hs_name)].bordercolor, 0x000000);
+        set(layer[get(hs_name)].borderalpha, 0.7);
+        set(layer[get(hs_name)].borderwidth, 0.0);
+		set(layer[get(hs_name)].align, lefttop);
+		set(layer[get(hs_name)].edge, leftbottom);	
+		set(layer[get(hs_name)].x, 0);	
+		set(layer[get(hs_name)].url, '%FIRSTXML%/plugins/textfield.swf');
+		if(ismobile, 
+			set(layer[get(hs_name)].css, 'color: #ffffff; font-size: 24px; font-family:Arial; text-align: left; margin: 0 0 2px 0; line-height: 1em;');
+			,
+			set(layer[get(hs_name)].css, 'color: #ffffff; font-size: 14px; font-family:Arial; text-align: left; margin: 0 0 2px 0; line-height: 1em;');
+			);
+		copy(layer[get(hs_name)].html, post_title);
+		copy(layer[get(hs_name)].title, title);
+		set(layer[get(hs_name)].onclick, get(onclick));
+	</action>
+		
+</krpano>
