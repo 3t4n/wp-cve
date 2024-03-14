@@ -1,0 +1,509 @@
+.ewd-ulb-paired-image-select,.ewd-ulb-remove-paired-image{
+  border: 1px solid darkgrey;
+  width: 120px;
+  text-align: center;
+  background: lightgray;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.ewd-ulb-image-selector{
+  position:fixed;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  z-index: 170000;
+  border: 2px solid dimgray;
+  background: whitesmoke;
+  overflow: scroll;
+}
+
+.ewd-ulb-hidden {
+  display: none;
+}
+.ewd-ulb-clear {
+  clear: both;
+}
+
+
+
+/******************************************************
+* FONTS
+******************************************************/
+
+.ulb-slide_counter {
+  color: #FFFFFF;
+}
+
+.ulb-slide_counter.ewd-ulb-selected-control {
+  color: #000000;
+}
+
+.ulb-slide_counter:after {
+    content: "1/1";
+    color: #000000;
+    margin-left: -8px;
+}
+
+.ulb-slide_counter.ewd-ulb-selected-control:after {
+  color: #FFFFFF;
+}
+
+/******************************************************
+* PS Changes
+******************************************************/
+
+.ulb-option-one-line input[type=radio]{
+vertical-align: top;
+margin-top: 1px;
+}
+.ulb-option-one-line.ewd-ulb-control-icons {
+display: flex;
+}
+
+
+@font-face { /* declare fonts */
+  font-family: 'untitled-font-7';
+  src: url("../fonts/ewd-lightbox-arrow/untitled-font-7.eot");
+    src: url('../fonts/ewd-lightbox-arrow/untitled-font-7.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-arrow/untitled-font-7.woff') format('woff'),
+         url("../fonts/ewd-lightbox-arrow/untitled-font-7.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-arrow/untitled-font-7.svg#untitled-font-7") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-arrow {
+  font-family: 'untitled-font-7';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-autoplay';
+  src: url("../fonts/ewd-lightbox-autoplay/ewd-lightbox-autoplay.eot");
+    src: url('../fonts/ewd-lightbox-autoplay/ewd-lightbox-autoplay.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-autoplay/ewd-lightbox-autoplay.woff') format('woff'),
+         url("../fonts/ewd-lightbox-autoplay/ewd-lightbox-autoplay.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-autoplay/ewd-lightbox-autoplay.svg#ewd-lightbox-autoplay") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-autoplay {
+  font-family: 'ewd-lightbox-autoplay';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-close';
+  src: url("../fonts/ewd-lightbox-close/ewd-lightbox-close.eot");
+    src: url('../fonts/ewd-lightbox-close/ewd-lightbox-close.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-close/ewd-lightbox-close.woff') format('woff'),
+         url("../fonts/ewd-lightbox-close/ewd-lightbox-close.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-close/ewd-lightbox-close.svg#ewd-lightbox-close") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-exit {
+  font-family: 'ewd-lightbox-close';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-download';
+  src: url("../fonts/ewd-lightbox-download/ewd-lightbox-download.eot");
+    src: url('../fonts/ewd-lightbox-download/ewd-lightbox-download.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-download/ewd-lightbox-download.woff') format('woff'),
+         url("../fonts/ewd-lightbox-download/ewd-lightbox-download.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-download/ewd-lightbox-download.svg#ewd-lightbox-download") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-download {
+  font-family: 'ewd-lightbox-download';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-exit-fullscreen';
+  src: url("../fonts/ewd-lightbox-exit-fullscreen/ewd-lightbox-exit-fullscreen.eot");
+    src: url('../fonts/ewd-lightbox-exit-fullscreen/ewd-lightbox-exit-fullscreen.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-exit-fullscreen/ewd-lightbox-exit-fullscreen.woff') format('woff'),
+         url("../fonts/ewd-lightbox-exit-fullscreen/ewd-lightbox-exit-fullscreen.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-exit-fullscreen/ewd-lightbox-exit-fullscreen.svg#ewd-lightbox-exit-fullscreen") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-fullscreen {
+  font-family: 'ewd-lightbox-fullscreen';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-original';
+  src: url("../fonts/ewd-lightbox-original/ewd-lightbox-original.eot");
+    src: url('../fonts/ewd-lightbox-original/ewd-lightbox-original.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-original/ewd-lightbox-original.woff') format('woff'),
+         url("../fonts/ewd-lightbox-original/ewd-lightbox-original.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-original/ewd-lightbox-original.svg#ewd-lightbox-original") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-regular_screen {
+  font-family: 'ewd-lightbox-exit-fullscreen';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-fullscreen';
+  src: url("../fonts/ewd-lightbox-fullscreen/ewd-lightbox-fullscreen.eot");
+    src: url('../fonts/ewd-lightbox-fullscreen/ewd-lightbox-fullscreen.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-fullscreen/ewd-lightbox-fullscreen.woff') format('woff'),
+         url("../fonts/ewd-lightbox-fullscreen/ewd-lightbox-fullscreen.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-fullscreen/ewd-lightbox-fullscreen.svg#ewd-lightbox-fullscreen") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-fullsize {
+  font-family: 'ewd-lightbox-original';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-share';
+  src: url("../fonts/ewd-lightbox-share/ewd-lightbox-share.eot");
+    src: url('../fonts/ewd-lightbox-share/ewd-lightbox-share.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-share/ewd-lightbox-share.woff') format('woff'),
+         url("../fonts/ewd-lightbox-share/ewd-lightbox-share.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-share/ewd-lightbox-share.svg#ewd-lightbox-share") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-share {
+  font-family: 'ewd-lightbox-share';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-thumbnail';
+  src: url("../fonts/ewd-lightbox-thumbnail/ewd-lightbox-thumbnail.eot");
+    src: url('../fonts/ewd-lightbox-thumbnail/ewd-lightbox-thumbnail.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-thumbnail/ewd-lightbox-thumbnail.woff') format('woff'),
+         url("../fonts/ewd-lightbox-thumbnail/ewd-lightbox-thumbnail.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-thumbnail/ewd-lightbox-thumbnail.svg#ewd-lightbox-thumbnail") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-thumbnail {
+  font-family: 'ewd-lightbox-thumbnail';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-unzoom';
+  src: url("../fonts/ewd-lightbox-unzoom/ewd-lightbox-unzoom.eot");
+    src: url('../fonts/ewd-lightbox-unzoom/ewd-lightbox-unzoom.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-unzoom/ewd-lightbox-unzoom.woff') format('woff'),
+         url("../fonts/ewd-lightbox-unzoom/ewd-lightbox-unzoom.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-unzoom/ewd-lightbox-unzoom.svg#ewd-lightbox-unzoom") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-zoom_out {
+  font-family: 'ewd-lightbox-unzoom';
+}
+
+@font-face { /* declare fonts */
+  font-family: 'ewd-lightbox-zoom';
+  src: url("../fonts/ewd-lightbox-zoom/ewd-lightbox-zoom.eot");
+    src: url('../fonts/ewd-lightbox-zoom/ewd-lightbox-zoom.woff2') format('woff2'),
+         url('../fonts/ewd-lightbox-zoom/ewd-lightbox-zoom.woff') format('woff'),
+         url("../fonts/ewd-lightbox-zoom/ewd-lightbox-zoom.ttf") format("truetype"),
+    url("../fonts/ewd-lightbox-zoom/ewd-lightbox-zoom.svg#ewd-lightbox-zoom") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.ulb-zoom {
+  font-family: 'ewd-lightbox-zoom';
+}
+
+.ewd-ulb-image-selector img {
+  border: none;
+  padding: 8px;
+  width: 15%;
+  height: 35%;
+}
+
+
+/**************************
+* WP Dashboard Review Ask
+***************************/
+.ewd-ulb-clear {
+  clear: both;
+}
+.ewd-ulb-main-dashboard-review-ask {
+  border-left-color: #6026b4;
+}
+.ewd-ulb-review-ask-plugin-icon {
+  height: 100px;
+  width: 100px;
+  float: left;
+  margin: 12px 24px 16px 10px;
+  background-image: url(../img/ewd-ulb-icon.png);
+  background-size: contain;
+}
+.ewd-ulb-review-ask-text p {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.ewd-ulb-review-ask-action {
+  width: 90px;
+  padding: 6px;
+  margin-right: 18px;
+  text-align: center;
+  float: left;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ewd-ulb-review-ask-white {
+  color: #999999;
+  border: 1px solid #bbbbbb;
+}
+.ewd-ulb-review-ask-green {
+  color: #ffffff;
+  background: #22C9A3;
+  border: 1px solid #22C9A3;
+  font-weight: 600;
+}
+.ewd-ulb-review-ask-green a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.ewd-ulb-review-ask-feedback-form {
+  position: relative;
+  float: left;
+}.ewd-ulb-review-ask-feedback-explanation textarea {
+  height: 70px;
+  width: 480px;
+}
+.ewd-ulb-review-ask-send-feedback {
+  margin: 10px 0px;
+}
+
+.ewd-ulb-review-ask-review-text span {
+  font-size: .8em;
+  font-weight: normal;
+}
+
+.sap-settings-page h1 {
+  width: 100%;
+}
+
+
+/*
+==============================================
+About Us page
+==============================================
+*/
+
+.lightbox_page_ewd-ulb-about-us .ewd-ulb-admin-header-menu {
+  margin-left: -20px;
+  width: calc(100% + 20px);
+}
+
+.lightbox_page_ewd-ulb-about-us #wpcontent {
+  background: #fff;
+}
+
+.ewd-ulb-about-us-logo {
+  display: flex;
+  width: 100%;
+  padding: 24px 0 0 32px;
+}
+.ewd-ulb-about-us-logo img {
+  width: 300px;
+  height: auto;
+}
+
+#ewd-ulb-about-us-tabs-menu,
+#ewd-ulb-about-us-tabs-menu *,
+.ewd-ulb-about-us-tab,
+.ewd-ulb-about-us-tab * {
+  box-sizing: border-box;
+}
+
+.ewd-ulb-about-us-tabs {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 20px);
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+#ewd-ulb-about-us-tabs-menu {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.ewd-ulb-about-us-tab-menu-item {
+  width: calc(100% / 3);
+  background: #f3f3f3;
+  color: #000;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 32px;
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .35s;
+}
+.ewd-ulb-about-us-tab-menu-item:hover {
+  background: #fff;
+  color: #000;
+}
+.ewd-ulb-about-us-tab-menu-item.ewd-ulb-tab-selected {
+  background: #fff;
+  color: #000;
+  border-bottom: none;
+}
+.ewd-ulb-about-us-tab-menu-item:first-of-type {
+  border-left: none;
+}
+
+.ewd-ulb-about-us-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 32px;
+  width: 100%;
+}
+.ewd-ulb-about-us-tab p {
+  color: #555;
+}
+.ewd-ulb-about-us-feature-suggestion input,
+.ewd-ulb-about-us-feature-suggestion textarea {
+  width: 100%;
+  max-width: 400px;
+  margin: 12px 0;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 12px 16px;
+	color: #000;
+	font-size: 13px;
+	font-weight: normal;
+}
+.ewd-ulb-about-us-feature-suggestion textarea {
+  min-height: 160px;
+}
+
+.ewd-ulb-about-us-tab-button {
+  display: flex;
+  margin-top: 12px;
+	padding: 12px 16px;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background .35s;
+}
+.ewd-ulb-about-us-tab-button-purchase {
+	background: #6026B4;
+	color:  #fff;
+  margin-top: 24px;
+}
+.ewd-ulb-about-us-tab-button-purchase:hover {
+	background: #7a40cb;
+	color:  #fff;
+}
+.ewd-ulb-about-us-tab-button-walkthrough {
+	background: #6026B4;
+	color:  #fff;
+  margin-bottom: 24px;
+}
+.ewd-ulb-about-us-tab-button-walkthrough:hover {
+	background: #7a40cb;
+	color:  #fff;
+}
+.ewd-ulb-about-us-tab-button-youtube {
+	background: #f00;
+	color:  #fff;
+}
+.ewd-ulb-about-us-tab-button-youtube:hover {
+	background: #fe4c4c;
+	color:  #fff;
+}
+.ewd-ulb-about-us-send-feature-suggestion {
+	background: #6026B4;
+	color:  #fff;
+}
+.ewd-ulb-about-us-send-feature-suggestion:hover {
+	background: #7a40cb;
+	color:  #fff;
+}
+
+.ewd-ulb-about-us-premium-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 24px;
+  border: 1px solid #ddd;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.ewd-ulb-about-us-premium-table-head,
+.ewd-ulb-about-us-premium-table-body {
+  display: flex;
+  justify-content: space-between;
+}
+.ewd-ulb-about-us-premium-table-cell {
+  display: flex;
+  align-items: center;
+  width: calc(100% / 3);
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  padding: 8px 16px;
+}
+.ewd-ulb-about-us-premium-table-cell:first-of-type {
+  border-left: none;
+}
+.ewd-ulb-about-us-premium-table-cell:last-of-type {
+  background: #f8f1ff;
+}
+
+.ewd-ulb-about-us-premium-table-head .ewd-ulb-about-us-premium-table-cell {
+  font-weight: bold;
+  border-top: none;
+}
+.ewd-ulb-about-us-premium-table-cell img {
+  width: 16px;
+  height: auto;
+}
+
+@media screen and (max-width: 668px) {
+  #ewd-ulb-about-us-tabs-menu {
+    flex-wrap: wrap;
+  }
+    .ewd-ulb-about-us-tab-menu-item {
+    width: 100%;
+    border-left: none;
+  }
+  .ewd-ulb-about-us-tab-menu-item.ewd-ulb-tab-selected {
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.ewd-ulb-hidden {
+  display: none;
+}
