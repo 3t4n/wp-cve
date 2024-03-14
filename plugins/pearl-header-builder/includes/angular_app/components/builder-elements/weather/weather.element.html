@@ -1,0 +1,45 @@
+<div ng-class="'stm_to_builder-element__popup stm_to_builder-element_' + vm.element.type + '__popup'">
+    <h4 ng-bind="vm.element.label"></h4>
+    <md-tabs>
+        <md-tab label="main">
+            <div class="input-group">
+                <span class="input-group-addon">{{'City' | translate }}</span>
+                <input
+                        type="text"
+                        class="form-control"
+                        ng-model="vm.city"
+                        placeholder="{{'Enter city' | translate }}">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    {{'Units' | translate }}
+                </span>
+                <select ng-model="vm.unit" class="form-control">
+                    <option value="{{unit.name}}" ng-repeat="unit in vm.units track by unit.name">{{unit.symbol}}</option>
+                </select>
+            </div>
+
+            <md-button class="md-raised" ng-click="vm.getWeather()">
+                {{'Check Weather' | translate }}
+            </md-button>
+
+            <input type="text" disabled ng-model="vm.weather">
+
+        </md-tab>
+        <!--Responsive-->
+        <md-tab label="responsive">
+            <element-margins model="vm.element.margins"></element-margins>
+        </md-tab>
+    </md-tabs>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.cancel()">
+            {{'Cancel' | translate }}
+        </md-button>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.saveElement(vm.element)">
+            {{'Save' | translate }}
+        </md-button>
+    </md-dialog-actions>
+</div>

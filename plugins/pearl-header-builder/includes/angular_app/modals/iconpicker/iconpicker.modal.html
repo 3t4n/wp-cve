@@ -1,0 +1,29 @@
+<div class="stm_font_nav">
+    <div ng-repeat="set_name in iconsSetsNames track by set_name">
+        <a href="#{{set_name}}" ng-class="set_name === setName ? 'active' : ''" ng-click="setCurrentIconSet(set_name, iconSearch)">
+            {{set_name}}
+        </a>
+    </div>
+    <div class="stm_to_icon_search">
+        <input type="text" placeholder="Search icons" ng-model="iconSearch" ng-model-options="{debounce:100}" ng-change="getFilteredIcons(iconSearch)">
+    </div>
+</div>
+<div class="stm_to_listing_icons">
+    <div class="inner">
+        <div class="scrollable-content" id="#icons-list">
+            <!--Content-->
+            <div class="form-table stm_to-icons-set"
+                 infinite-scroll-listen-for-event="iconsList:opened"
+                 infinite-scroll-immediate-check="false"
+                 infinite-scroll-parent="#icons-list"
+                 infinite-scroll="updateLimit()">
+
+                <div class="stm-listings-pick-icon" ng-repeat="(icon_key, icon_name) in filteredIcons | limitTo : limit track by icon_key" ng-click="selectIcon(icon_name)">
+                    <i ng-class="icon_name"></i>
+                    <i ng-class="icon_name" class="big_icon"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

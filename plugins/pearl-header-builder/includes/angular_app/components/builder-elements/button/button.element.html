@@ -1,0 +1,71 @@
+<div ng-class="'stm_to_builder-element__popup stm_to_builder-element_' + vm.element.type + '__popup'">
+    <h4 ng-bind="vm.element.label"></h4>
+    <md-tabs>
+        <md-tab label="main">
+
+            <div class="input-group">
+                <span class="input-group-addon">{{"Button style" | translate}}</span>
+                <div class="stm_admin__select">
+                    <select ng-model="vm.element.data.style" class="form-control">
+                        <option value="">{{"Outline" | translate}}</option>
+                        <option value="btn_solid">{{"Solid" | translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div uib-dropdown auto-close="outsideClick" is-open="vm.isopen">
+
+                <div class="stm_to-builder__icon_picker">
+                    <i class="fa fa-close" ng-click="vm.element.data.icon = ''"></i>
+                    <div class="stm_to-builder__open-icons" icons-list icon="vm.element.data.icon">
+                        <i ng-class="(vm.element.data.icon) ? vm.element.data.icon : 'fa fa-plus'"
+                           class="select-icon"></i>
+                        {{"Button Icon" | translate}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{"Icon position" | translate}}</span>
+                <div class="stm_admin__select">
+                    <select ng-model="vm.element.data.icon_position" class="form-control">
+                        <option value="">{{"Left" | translate}}</option>
+                        <option value="btn_icon-right">{{"Right" | translate}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{"Button text" | translate}}</span>
+                <input
+                        type="text"
+                        class="form-control"
+                        ng-model="vm.element.data.text"
+                        placeholder="{{'Enter text' | translate}}">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">{{"Button URL" | translate}}</span>
+                <input
+                        type="text"
+                        class="form-control"
+                        ng-model="vm.element.data.url"
+                        placeholder="{{'Enter URL' | translate}}">
+            </div>
+        </md-tab>
+        <!--Responsive-->
+        <md-tab label="responsive">
+            <element-margins model="vm.element.margins"></element-margins>
+        </md-tab>
+    </md-tabs>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.cancel()">
+            {{"Cancel" | translate}}
+        </md-button>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.saveElement(vm.element)">
+            {{"Save" | translate}}
+        </md-button>
+    </md-dialog-actions>
+
+</div>

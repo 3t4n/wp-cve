@@ -1,0 +1,43 @@
+<div ng-class="'stm_to_builder-element__popup stm_to_builder-element_' + vm.element.type + '__popup'">
+    <h4 ng-bind="vm.element.label"></h4>
+    <md-tabs>
+        <md-tab label="main">
+            <!--<div class="input-group">-->
+                <!--<span class="input-group-addon">{{'Select style' | translate }}</span>-->
+                <!--<div class="stm_admin__select">-->
+                    <!--<select ng-model="vm.element.data.style" class="form-control">-->
+                        <!--<option value="">{{'Round' | translate }}</option>-->
+                        <!--<option value="square">{{'Square' | translate }}</option>-->
+                        <!--<option value="icon_only">{{'Icon only' | translate }}</option>-->
+                        <!--<option value="icon_hidden">{{'Icon hidden' | translate }}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="input-group">
+                <span class="input-group-addon">{{'Select size' | translate }}</span>
+                <div class="stm_admin__select">
+                    <select ng-model="vm.element.data.size" class="form-control">
+                        <option value="">{{'Default' | translate }}</option>
+                        <option value="icon_11px">{{'Small' | translate }}</option>
+                        <option value="icon_24px">{{'Large' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+        </md-tab>
+        <!--Responsive-->
+        <md-tab label="responsive">
+            <element-margins model="vm.element.margins"></element-margins>
+        </md-tab>
+    </md-tabs>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.cancel()">
+            {{'Cancel' | translate }}
+        </md-button>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.saveElement(vm.element)">
+            {{'Save' | translate }}
+        </md-button>
+    </md-dialog-actions>
+
+</div>

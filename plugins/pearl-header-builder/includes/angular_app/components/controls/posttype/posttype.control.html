@@ -1,0 +1,42 @@
+<md-switch ng-model="vm.data.value.enabled" aria-label="vm.data.title" hider
+           on-change="vm.data.value.enabled"></md-switch>
+{{vm.data.i18n.enable}} {{vm.data.title}}
+
+<div class="stm_to-single_control-posttype__inner">
+    <div class="input-group">
+        <span class="input-group-addon" ng-bind="vm.data.i18n.name"></span>
+        <input type="text"
+               class="stm_to_form-control"
+               ng-model="vm.data.value.name"
+               placeholder="{{vm.data.title}} {{vm.data.i18n.name}}"
+               ng-model-options="{ debounce: 1000 }">
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon" ng-bind="vm.data.i18n.plural"></span>
+        <input type="text"
+               class="stm_to_form-control"
+               ng-model="vm.data.value.plural"
+               placeholder="{{vm.data.title}} {{vm.data.i18n.plural}}"
+               ng-model-options="{ debounce: 1000 }">
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon" ng-bind="vm.data.i18n.slug"></span>
+        <input type="text"
+               class="stm_to_form-control"
+               ng-model="vm.data.value.slug"
+               placeholder="{{vm.data.title}} {{vm.data.i18n.slug}}"
+               ng-model-options="{ debounce: 1000 }">
+    </div>
+
+    <div ng-if="vm.data.i18n.archive">
+        <md-switch ng-model="vm.data.value.has_archive" aria-label="vm.data.i18n.archive"></md-switch>
+        {{vm.data.i18n.archive}}
+    </div>
+
+    <div ng-if="vm.data.i18n.single">
+        <md-switch ng-model="vm.data.value.public" aria-label="vm.data.i18n.single"></md-switch>
+        {{vm.data.i18n.single}}
+    </div>
+</div>

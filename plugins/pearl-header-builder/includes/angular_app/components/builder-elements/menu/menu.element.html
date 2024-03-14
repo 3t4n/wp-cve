@@ -1,0 +1,107 @@
+<div ng-class="'stm_to_builder-element__popup stm_to_builder-element_' + vm.element.type + '__popup'">
+    <h4 ng-bind="vm.element.label"></h4>
+    <md-tabs>
+        <md-tab label="main">
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Menu' | translate }}</span>
+                <div class="stm_admin__select">
+                    <select ng-model="vm.element.data.id" class="form-control">
+                        <option ng-repeat="(value, name) in vm.menus" value="{{value}}">{{name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Top menu levels hover text color' | translate }}</span>
+                <input colorpicker="hex" ng-model="vm.element.data.hoverColor" class="form-control">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Inner menu levels text color' | translate }}</span>
+                <input colorpicker="hex" ng-model="vm.element.data.innerColor" class="form-control">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Inner menu levels hover text color' | translate }}</span>
+                <input colorpicker="hex" ng-model="vm.element.data.innerHoverColor" class="form-control">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Line height (px)' | translate }}</span>
+                <input type="text" ng-model="vm.element.data.lineHeight" class="form-control">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Style' | translate }}</span>
+                <div class="stm_admin__select">
+                    <select ng-model="vm.element.data.style" class="form-control">
+                        <option value="default">{{'Default' | translate }}</option>
+                        <!--<option value="fullwidth_simple">Fullwidth</option>-->
+                        <option value="fullwidth">{{'Fullwidth with iconbox' | translate }}</option>
+                        <!--<option value="vertical_left">Vertical left</option>-->
+                    </select>
+                </div>
+            </div>
+
+            <!--Show iconpicker and text for fullwidth style-->
+            <div ng-show="vm.element.data.style=='fullwidth'">
+                <h5 class="simplified-margins">{{'Menu iconbox' | translate }}</h5>
+                <div class="form-group">
+
+                    <div class="stm_to-builder__icon_picker">
+                        <i class="fa fa-close" ng-click="vm.element.data.icon = ''"></i>
+                        <div class="stm_to-builder__open-icons" icons-list icon="vm.element.data.icon">
+                            <i ng-class="(vm.element.data.icon) ? vm.element.data.icon : 'fa fa-plus'"
+                               class="select-icon"></i>
+                            {{'Select Icon' | translate }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">{{'Title' | translate }}</span>
+                    <input
+                            type="text"
+                            class="form-control"
+                            ng-model="vm.element.data.title"
+                            placeholder="{{'Enter Icon box title' | translate }}">
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">{{'Description' | translate }}</span>
+                    <input
+                            type="text"
+                            class="form-control"
+                            ng-model="vm.element.data.description"
+                            placeholder="{{'Enter Icon box description' | translate }}">
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">{{'Hover line color' | translate }}</span>
+                    <input colorpicker="hex" ng-model="vm.element.data.iconBoxColor" class="form-control">
+                </div>
+
+
+            </div>
+
+        </md-tab>
+        <!--Responsive-->
+        <md-tab label="responsive">
+            <element-margins model="vm.element.margins"></element-margins>
+        </md-tab>
+    </md-tabs>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.cancel()">
+            {{'Cancel' | translate }}
+        </md-button>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.saveElement(vm.element)">
+            {{'Save' | translate }}
+        </md-button>
+    </md-dialog-actions>
+
+</div>

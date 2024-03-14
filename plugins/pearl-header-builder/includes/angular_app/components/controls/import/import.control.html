@@ -1,0 +1,44 @@
+<a ng-href="{{vm.adminUrl}}"
+   ng-click="vm.export_hb()"
+   target="_blank"
+   style="margin-right: 15px"
+   class="md-raised md-primary md-button md-ink-ripple stm_export_hb">
+    {{'Export header' | translate}}
+</a>
+
+<div class="hb_import_header">
+    <input type="file" id="file" ng-model="file" />
+    <a href="#"
+       ng-click="vm.import_hb(); $event.preventDefault();"
+       class="md-raised md-primary md-button md-ink-ripple stm_export_hb">
+        {{'Import header' | translate}}
+    </a>
+</div>
+
+<h4 ng-bind="vm.data.title"></h4>
+<div class="stm_import_images">
+    <div class="stm_import_single_image image-{{key}}"
+         data-header="{{key}}"
+         ng-click="vm.activeLayout = key; vm.currentSrc = vm.imageUrl(key)"
+         ng-repeat="(key, value) in vm.nghbs">
+        <div class="inner">
+            <img ng-src="{{vm.imageUrl(key)}}"/>
+        </div>
+    </div>
+</div>
+
+<div class="stm_import_images_overlay"
+     ng-click="vm.activeLayout = ''; vm.message = ''"
+     ng-class="{active: vm.activeLayout.length > 0}"></div>
+<div class="stm_import_images_second"
+     ng-class="{active: vm.activeLayout.length > 0}">
+    <img ng-src="{{vm.currentSrc}}"/>
+    <div class="response response-{{vm.status}}" ng-if="vm.message">
+        {{vm.message}}
+    </div>
+    <button class="md-raised md-primary md-button md-ink-ripple"
+            ng-click="vm.importHeader(vm.activeLayout)"
+            data-layout="vm.activeLayout">
+        {{'Import header' | translate}}
+    </button>
+</div>

@@ -1,0 +1,81 @@
+<div ng-class="'stm_to_builder-element__popup stm_to_builder-element_' + vm.element.type + '__popup'">
+    <h4 ng-bind="vm.element.label"></h4>
+    <md-tabs>
+        <md-tab label="main">
+            <!--<div class="input-group">-->
+                <!--<span class="input-group-addon">Dropdown style</span>-->
+                <!--<div class="stm_admin__select">-->
+                    <!--<select class="form-control" ng-model="vm.element.style">-->
+                        <!--<option ng-repeat="(value, name) in ::vm.styles" ng-value="value">{{name}}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="stm_admin__select">
+                <label>{{'Dropdown type' | translate}}</label>
+                <select class="form-control" ng-model="vm.element.value">
+                    <option ng-repeat="(key, value) in vm.element.choices" value="{{key}}">{{value}}</option>
+                </select>
+            </div>
+
+            <div class="stm_to-builder__dropdown-custom" ng-show="vm.element.value == 'custom'">
+                <!--Add new-->
+                <div layout>
+                    <div flex>
+                        <h5>{{'Enter Dropdown label' | translate}}</h5>
+                        <input type="text" ng-model="vm.label" class="form-control" placeholder="{{'Enter Dropdown Label' | translate}}" />
+                    </div>
+                    <span flex="5"></span>
+                    <div flex>
+                        <h5>{{'Enter Dropdown URL' | translate}}</h5>
+                        <input type="text" ng-model="vm.url" class="form-control" placeholder="{{'Enter Dropdown URL' | translate}}"/>
+                    </div>
+                    <span flex="5"></span>
+                    <md-button class="md-fab md-mini md-primary" ng-click="vm.addCustomDropdowns()">
+                        <i class="fa fa-plus"></i>
+                    </md-button>
+                </div>
+                <!--Show saved-->
+                <div layout ng-repeat="(key, value) in vm.element.dropdown track by $index">
+                    <div flex>
+                        <h5>{{key + 1}}. {{'Dropdown label' | translate}}</h5>
+                        <input type="text" ng-model="value.label" class="form-control" placeholder="{{'Enter Dropdown Label' | translate}}" />
+                    </div>
+                    <span flex="5"></span>
+                    <div flex>
+                        <h5>{{key + 1}}. {{'Dropdown URL' | translate}}</h5>
+                        <input type="text" ng-model="value.url" class="form-control" placeholder="{{'Enter Dropdown URL' | translate}}"/>
+                    </div>
+                    <span flex="5"></span>
+                    <md-button class="md-fab md-mini" ng-click="vm.removeCustomDropdown(key)">
+                        <i class="fa fa-close"></i>
+                    </md-button>
+                </div>
+            </div>
+
+            <div class="input-group"></div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Custom text color' | translate}}</span>
+                <input colorpicker="hex" ng-model="vm.element.textColor" class="form-control">
+            </div>
+
+        </md-tab>
+
+        <!--Responsive-->
+        <md-tab label="responsive">
+            <element-margins model="vm.element.margins"></element-margins>
+        </md-tab>
+    </md-tabs>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.cancel()">
+            {{'Cancel' | translate}}
+        </md-button>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.saveElement(vm.element)">
+            {{'Save' | translate}}
+        </md-button>
+    </md-dialog-actions>
+
+</div>

@@ -1,0 +1,129 @@
+<style>
+
+    .stm_to__control-preview > * > * {
+
+    font-family: {
+
+    {
+        $ root . getOption('body_font') . name
+    }
+    }
+    ;
+    }
+    .mbc {
+
+    background-color: {
+
+    {
+        $ root . getOption('main_color')
+    }
+    }
+    ;
+    }
+
+    .stm_blockquote_style_4 blockquote {
+
+    border-color:
+
+    rgba
+    (
+    {
+    {
+        vm . hexToRgb($ root . getOption('secondary_color'))
+    }
+    }
+    ,
+    .3
+    )
+    !important
+    }
+
+    .stm_blockquote_style_4 blockquote:before, .stm_blockquote_style_4 blockquote:after {
+
+    color:
+
+    rgba
+    (
+    {
+    {
+        vm . hexToRgb($ root . getOption('secondary_color'))
+    }
+    }
+    ,
+    .3
+    )
+    !important
+    }
+
+    .stm_errorpage {
+        background-image: url({{ vm.errorBageBg }});
+    }
+
+</style>
+
+
+<uib-tabset active="vm.activeTab">
+    <uib-tab ng-repeat="(main_tab_key, main_tab) in ::$root.theme_options track by main_tab_key" index="$index"
+             ng-click="vm.activateSubTab($index, 'parent')" heading="{{main_tab.title}}">
+        <div class="stm_to-tabs_inner">
+            <uib-tabset vertical="true" type="pills">
+                <uib-tab
+                        active="vm.activeSubTab === $index"
+                        ng-if="$parent.$index === vm.activeTab"
+                        ng-click="vm.activateSubTab($index, '')"
+                        ng-repeat="(secondary_tab_key, secondary_tab) in ::main_tab.options track by secondary_tab_key"
+                        heading="{{secondary_tab.title}}"
+                        index="$index">
+
+
+                    <div class="stm_to-controls-wrapper" layout>
+                        <h3 class="stm_to-controls-wrapper_title">{{secondary_tab.title}}</h3>
+                        <div ng-if="$parent.$index === vm.activeSubTab"
+                             ng-repeat="(name, control) in secondary_tab.options track by name"
+                             ng-class="control.colon ? 'flex-' + control.colon : 'fullwidth'">
+                            <div
+                                    ng-hide="vm.hideControl(control.show, control.show_value, main_tab_key, secondary_tab_key, control.equal)"
+                                    class="stm_to-single_control
+                                stm_to-single_control-{{control.type}}
+
+                                stm_buttons_{{vm.getOption('buttons_global_style')}}
+
+                                stm_to-single_control-{{name}}">
+                                <control-generator
+                                        ng-if="!control.data.dev"
+                                        tab="main_tab_key"
+                                        subtab="secondary_tab_key"
+                                        type="control.type"
+                                        data="control.data"
+                                        theme-option="name"></control-generator>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </uib-tab>
+</uib-tabset>
+
+
+<div class="stm_hb_delete" ng-if="vm.deleteUrl">
+    <div id="nav-menu-footer">
+        <div class="major-publishing-actions wp-clearfix">
+            <span class="delete-action">
+                <a class="submitdelete deletion menu-delete" ng-href="{{vm.deleteUrl}}">
+                    {{vm.deleteHb}}
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="stm_to-actions">
+    <div class="inner">
+        <md-button class="md-raised md-primary" ng-click="vm.saveSettings()">Submit</md-button>
+        <md-button ng-if="1 === 2" class="md-raised md-primary" ng-click="vm.$history.undo()"
+                   ng-show="vm.$history.backups.length">{{vm.$history.backups.length}} Undo
+        </md-button><!--TODO fix undo-->
+    </div>
+</div>
+

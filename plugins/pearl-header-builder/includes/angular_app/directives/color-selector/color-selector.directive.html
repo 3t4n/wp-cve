@@ -1,0 +1,14 @@
+<div class="input-group">
+    <span class="input-group-addon" ng-bind="text">
+    </span>
+    <div class="stm_admin__select">
+        <select class="form-control" ng-model="for" ng-options="color as color.name for color in colors track by color.name" ng-change="selectCallback()"></select>
+    </div>
+</div>
+
+<div class="input-group" ng-if="isCustom()">
+        <span class="input-group-addon">
+            Select color
+        </span>
+    <input class="form-control" type="text" colorpicker="hex" ng-model="for.value">
+</div>

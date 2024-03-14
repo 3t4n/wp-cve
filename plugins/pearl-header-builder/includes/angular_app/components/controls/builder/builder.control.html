@@ -1,0 +1,111 @@
+<uib-tabset active="active" class="stm_to-builder-tabs">
+
+    <uib-tab index="1" heading="Desktop">
+        <div class="stm_to-builder">
+
+            <div ng-repeat="(row, name) in vm.rowsSort"
+                 class="stm_to-builder-row"
+                 ng-class="vm.rowClass(row)">
+
+                <div ng-repeat="(column, name) in vm.columnsSort"
+                     dnd-list="vm.data.value[row][column]"
+                     ng-class="'stm_to-builder__cell stm_to-builder__' + column">
+
+                    <div ng-repeat="(key, value) in vm.data.value[row][column]"
+                         ng-class="'stm_element_' + value.disabled.default"
+                         class="stm_to_builder-element stm_to_builder-element_{{value.type}}"
+                    >
+                        <div dnd-draggable="value"
+                             class="stm_to_dnd_draggable"
+                             dnd-effect-allowed="move"
+                             dnd-moved="vm.data.value[row][column].splice($index, 1)">
+                            <i ng-class="vm.elementsBuilder[value.type].icon"></i> {{value.label}}
+                            <div class="stm_to-builder__element-actions">
+                                <div class="stm_to-builder__element-actions__edit"
+                                     ng-click="vm.openElement(row, column, key, value)">
+                                    <i class="fa fa-pencil"></i>
+                                </div>
+                                <div class="stm_to-builder__element-actions__duplicate"
+                                     ng-click="vm.duplicateElement(row, column, key)">
+                                    <i class="fa fa-clipboard"></i>
+                                </div>
+                                <div class="stm_to-builder__element-actions__disable"
+                                     ng-click="vm.toggleElementState(row, column, key, 'default', value.disabled.default)">
+                                    <i ng-class="!value.disabled.default ? 'fa-eye-slash' : 'fa-eye'" class="fa"></i>
+                                </div>
+                                <div class="stm_to-builder__element-actions__delete"
+                                     ng-click="vm.deleteElement(row, column, key)">
+                                    <i class="fa fa-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dndPlaceholder"></div>
+
+                    <span class="stm_to-builder__add-new" ng-click="vm.openBuilderElements(row, column)">
+                        <i class="fa fa-plus"></i>
+                    </span>
+
+                </div> <!--end column-->
+
+            </div> <!--end row-->
+
+        </div> <!--end builder-->
+    </uib-tab>
+
+    <uib-tab index="2" heading="Tablet" select="vm.setCurrentBreakpoint('tablet')">
+        <div class="stm_to-builder stm_to-builder-tablet" ng-if="vm.elementsList.tablet">
+            <div class="stm_to-builder-row">
+                <div class="stm_to-builder__cell"
+                     dnd-list="vm.elementsList.tablet"
+                     dnd-drop="vm.elementInserted(index)">
+                    <div ng-repeat="(key, value) in vm.elementsList.tablet track by key"
+                         ng-class="'stm_element_' + value.disabled.tablet"
+                         class="stm_to_builder-element stm_to_builder-element_{{value.type}}">
+                         <div class="no_drag tablet_mobile_builder">
+                            {{value.label}}
+                            <div class="stm_to-builder__element-actions">
+                                <div class="stm_to-builder__element-actions__disable"
+                                     ng-click="vm.toggleElementState(value.position[0], value.position[1], value.position[2], 'tablet', value.disabled.tablet)">
+                                    <i ng-class="!value.disabled.tablet ? 'fa-eye-slash' : 'fa-eye'" class="fa"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dndPlaceholder"></div>
+                </div>
+            </div>
+
+
+        </div> <!--end builder-->
+    </uib-tab>
+
+    <uib-tab index="3" heading="Mobile" select="vm.setCurrentBreakpoint('mobile')">
+        <div class="stm_to-builder stm_to-builder-tablet">
+            <div class="stm_to-builder-row">
+                <div class="stm_to-builder__cell"
+                     dnd-list="vm.elementsList.mobile"
+                     dnd-drop="vm.elementInserted(index)">
+                    <div ng-repeat="(key, value) in vm.elementsList.mobile track by key"
+                         ng-class="'stm_element_' + value.disabled.mobile"
+                         class="stm_to_builder-element stm_to_builder-element_{{value.type}}">
+                        <div class="no_drag tablet_mobile_builder">
+                            {{value.label}}
+                            <div class="stm_to-builder__element-actions">
+                                <div class="stm_to-builder__element-actions__disable"
+                                     ng-click="vm.toggleElementState(value.position[0], value.position[1], value.position[2], 'mobile', value.disabled.mobile)">
+                                    <i ng-class="!value.disabled.mobile ? 'fa-eye-slash' : 'fa-eye'" class="fa"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dndPlaceholder"></div>
+                </div>
+            </div>
+
+
+        </div> <!--end builder-->
+    </uib-tab>
+
+</uib-tabset>

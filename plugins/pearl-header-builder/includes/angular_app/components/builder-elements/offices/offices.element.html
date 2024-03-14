@@ -1,0 +1,143 @@
+<div ng-class="'stm_to_builder-element__popup stm_to_builder-element_' + vm.element.type + '__popup'">
+    <h4 ng-bind="vm.element.label"></h4>
+    <md-tabs>
+        <md-tab label="main">
+
+
+            <div class="stm_to-builder__icon_picker">
+                <i class="fa fa-close" ng-click="icon = ''"></i>
+
+                <div icons-list icon="vm.element.data.icon">
+                    <div class="stm_to-builder__open-icons">
+                        <i ng-class="(vm.element.data.icon) ? vm.element.data.icon : 'fa fa-plus'"
+                           class="select-icon"></i>
+                        {{'Select Icon' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <!--Add office-->
+            <form ng-submit="vm.addNewOffice()">
+                <div layout class="stm_to-builder__add-new-office">
+                    <div flex>
+                        <h5>{{'Enter new office' | translate }}</h5>
+                        <input type="text" ng-model="vm.office" class="form-control"
+                               placeholder="{{'Enter new office name' | translate }}"/>
+                    </div>
+                    <span flex="5"></span>
+                    <md-button class="md-fab md-mini md-primary" ng-click="vm.addNewOffice()">
+                        <i class="fa fa-plus"></i>
+                    </md-button>
+                </div>
+            </form>
+
+
+
+            <div ui-sortable="vm.sortableOptions" ng-model="vm.element.data.offices">
+
+                <uib-accordion close-others="true">
+
+                    <div uib-accordion-group
+                         class="panel-default stm_to-builder__office"
+                         ng-repeat="(key, office) in vm.element.data.offices track by $index"
+                         heading="{{office.name}}">
+
+                        <div class="input-group">
+                            <span class="input-group-addon">{{'Change office name' | translate }}</span>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    ng-model="vm.element.data.offices[key].name"
+                                    placeholder="{{'Office name' | translate }}">
+                        </div>
+
+                        <!--Add new info about office-->
+                        <div layout class="stm_to-add-office-info">
+                            <div flex="15">
+                                <h5 class="simplified-margins">{{'Add icon' | translate }}</h5>
+                                <md-button class="md-fab md-mini" icons-list icon="vm.officeIcon[key]">
+                                    <i ng-class="(vm.officeIcon[key]) ? vm.officeIcon[key] : 'fa fa-plus'"
+                                       class="select-icon"></i>
+                                </md-button>
+                            </div>
+                            <div flex>
+                                <h5 class="simplified-margins">{{'Add Text' | translate }}</h5>
+                                <input type="text" ng-model="vm.officeLabel[key]" class="form-control"
+                                       placeholder="{{'Enter text' | translate }}"/>
+                            </div>
+                            <span flex="5"></span>
+                            <div flex>
+                                <h5 class="simplified-margins">{{'Add Url' | translate }}</h5>
+                                <input type="text" ng-model="vm.officeUrl[key]" class="form-control"
+                                       placeholder="{{'Enter URL' | translate }}"/>
+                            </div>
+                            <span flex="5"></span>
+                            <md-button class="md-fab md-mini md-primary" ng-click="vm.addOfficeItem(key)">
+                                <i class="fa fa-plus"></i>
+                            </md-button>
+                        </div>
+
+                        <!--Display all already stored office info-->
+                        <div layout
+                             class="stm_to-add-office-info stm_to-add-office-info__added"
+                             ng-repeat="(info_key, info) in office.info">
+                            <div flex="15">
+                                <div>
+                                    <h5 class="simplified-margins">{{info_key + 1}}. Icon</h5>
+                                    <md-button class="md-fab md-mini" icons-list icon="info.icon">
+                                        <i ng-class="(info.icon) ? info.icon : 'fa fa-plus'" class="select-icon"></i>
+                                    </md-button>
+
+                                </div>
+                            </div>
+                            <div flex>
+                                <h5 class="simplified-margins">{{info_key + 1}}. Text</h5>
+                                <input type="text"
+                                       ng-model="vm.element.data.offices[key].info[info_key].label"
+                                       class="form-control"
+                                       placeholder="{{'Enter text' | translate }}"/>
+                            </div>
+                            <span flex="5"></span>
+                            <div flex>
+                                <h5 class="simplified-margins">{{info_key + 1}}. Url</h5>
+                                <input type="text"
+                                       ng-model="vm.element.data.offices[key].info[info_key].url"
+                                       class="form-control"
+                                       placeholder="{{'Enter URL' | translate }}"/>
+                            </div>
+                            <span flex="5"></span>
+                            <md-button class="md-fab md-mini" ng-click="vm.deleteOfficeItem(key, infokey)">
+                                <i class="fa fa-close"></i>
+                            </md-button>
+                        </div>
+
+                    </div>
+
+                    <div class="dndPlaceholder"></div>
+
+                </uib-accordion>
+            </div>
+
+
+            <color-selector for="vm.element.data.iconColor" name="icon"></color-selector>
+            <color-selector for="vm.element.data.textColor" name="text"></color-selector>
+
+
+        </md-tab>
+        <!--Responsive-->
+        <md-tab label="responsive">
+            <element-margins model="vm.element.margins"></element-margins>
+        </md-tab>
+    </md-tabs>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.cancel()">
+            {{'Cancel' | translate }}
+        </md-button>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.saveElement(vm.element)">
+            {{'Save' | translate }}
+        </md-button>
+    </md-dialog-actions>
+
+</div>

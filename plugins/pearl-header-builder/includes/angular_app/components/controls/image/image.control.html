@@ -1,0 +1,26 @@
+<md-card>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{vm.data.title}}</span>
+            <span class="md-subhead">{{vm.data.description}}</span>
+            <div class="stm_image__controls">
+                <md-button class="md-primary" ng-show="!vm.image" ng-click="vm.selectImage()">
+                    {{vm.data.i18n.add}}
+                </md-button>
+
+                <md-button class="md-primary" ng-show="vm.image" ng-click="vm.selectImage()">
+                    {{vm.data.i18n.replace}}
+                </md-button>
+
+                <md-button class="md-primary md-warn" ng-show="vm.image" ng-click="vm.removeImage()">
+                    {{vm.data.i18n.remove}}
+                </md-button>
+            </div>
+        </md-card-title-text>
+        <md-card-title-media>
+            <div ng-class="!vm.image ? 'card-media-empty' : ''" class="md-media-sm card-media" ng-click="vm.selectImage()" ng-class="">
+                <img ng-src="{{vm.image}}" ng-show="vm.image" />
+            </div>
+        </md-card-title-media>
+    </md-card-title>
+</md-card>

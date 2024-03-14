@@ -1,0 +1,63 @@
+<div ng-class="'stm_to_builder-element__popup stm_to_builder-element_' + vm.element.type + '__popup'">
+    <h4 ng-bind="vm.element.label"></h4>
+    <md-tabs>
+        <md-tab label="main">
+
+            <md-switch ng-model="vm.element.data.uselogo" aria-label="Switch 1">
+                {{'Use Logo' | translate }}
+            </md-switch>
+            <div class="media media-img-upload" ng-show="!vm.element.data.uselogo">
+                <div class="media-left" ng-click="vm.selectImage()">
+                    <div ng-show="!vm.image_url"></div>
+                    <img ng-src="{{vm.image_url}}" ng-show="vm.image_url" />
+                </div>
+                <div class="media-body">
+                    <md-button class="md-primary md-raised" ng-show="!vm.image_url" ng-click="vm.selectImage()">
+                        {{'Add Image' | translate }}
+                    </md-button>
+
+                    <md-button class="md-primary md-raised" ng-show="vm.image_url" ng-click="vm.selectImage()">
+                        {{'Replace Image' | translate }}
+                    </md-button>
+
+                    <md-button class="md-primary md-raised md-warn" ng-show="vm.image_url" ng-click="vm.removeImage()">
+                        {{'Remove Image' | translate }}
+                    </md-button>
+                </div>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">{{'Url' | translate }}</span>
+                <input
+                        type="text"
+                        class="form-control"
+                        ng-model="vm.element.data.url"
+                        placeholder="{{'Enter Url' | translate }}">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">{{'Image width' | translate }}</span>
+                <input
+                        type="text"
+                        class="form-control"
+                        ng-model="vm.element.data.width"
+                        placeholder="{{'Enter image width' | translate }}">
+            </div>
+
+        </md-tab>
+        <!--Responsive-->
+        <md-tab label="responsive">
+            <element-margins model="vm.element.margins"></element-margins>
+        </md-tab>
+    </md-tabs>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.cancel()">
+            {{'Cancel' | translate }}
+        </md-button>
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="vm.saveElement(vm.element)">
+            {{'Save' | translate }}
+        </md-button>
+    </md-dialog-actions>
+
+</div>

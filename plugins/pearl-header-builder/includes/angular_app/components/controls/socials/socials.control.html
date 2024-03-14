@@ -1,0 +1,31 @@
+<div layout>
+    <div flex="40" layout layout-align="left center">
+        <span class="md-body-1" ng-bind="vm.data.i18n.social"></span>
+    </div>
+
+    <div class="stm_admin__select">
+        <select class="form-control" flex ng-model="vm.social" aria-label="vm.data.title">
+            <option
+                    ng-repeat="(social, social_name) in vm.data.choices"
+                    ng-value="social">{{social_name}}</option>
+        </select>
+    </div>
+</div>
+
+<div layout>
+
+    <input class="stm_to_form-control" type="text" ng-model="vm.url" placeholder="{{vm.data.i18n.url}}">
+
+</div>
+
+<md-button class="md-raised md-primary" ng-click="vm.addSocial()">{{vm.data.i18n.new}}</md-button>
+
+<div class="stm_to-socials">
+    <div class="stm_to-socials__single" ng-repeat="(key,social) in vm.data.value track by $index" ng-click="null">
+        <i ng-class="social.social" ng-show="social.social"></i>
+        <span class="md-body-1">
+            <input type="stm_to-active__focus" class="stm_to_form-control" value="{{social.url}}" ng-model="vm.data.value[key].url">
+        </span>
+        <span class="fa fa-close" ng-click="vm.removeSocial(key)"></span>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+
+<style ng-if="preview.css">
+    @import url({{preview.css + $root.getOption(themeOption) + '.css'}});
+</style>
+
+
+
+
+<div class="stm_to__control_generator" ng-if="preview.html" material-form form-style="$root.getOption('forms_global_style')">
+    <div class="stm_to__control-preview-wrapper">
+        <div class="stm_to__control-preview
+    stm_accordions_{{$root.getOption('accordions_style')}}
+    stm_tabs_{{$root.getOption('tabs_style')}}
+    stm_tour_{{$root.getOption('tour_style')}}
+    stm_buttons_{{$root.getOption('buttons_global_style')}}
+    stm_pagination_{{$root.getOption('pagination_style')}}
+    stm_blockquote_{{$root.getOption('blockquote_style')}}
+    stm_lists_{{$root.getOption('list_style')}}
+    stm_form_{{$root.getOption('forms_global_style')}}" ng-repeat="preview in preview.html track by $index">
+            <div class="preview" ng-bind-html="preview | trustHtml"></div>
+        </div>
+    </div>
+</div>

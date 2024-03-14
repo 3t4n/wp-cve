@@ -1,0 +1,53 @@
+<h4 ng-bind="::vm.data.title"></h4>
+
+<div layout>
+    <div class="stm_admin__select" flex="20">
+        <label>{{vm.data.i18n.ff}} </label>
+        <select class="form-control"
+                ng-options="item.value as item.label for item in ::vm.choices"
+                ng-model="vm.data.value.name"
+                ng-change="vm.loadGfonts(vm.data.value.name)">
+        </select>
+    </div>
+
+
+    <div class="stm_admin__select" flex="20">
+        <label>{{vm.data.i18n.fw}}</label>
+        <select class="form-control" ng-model="vm.data.value.fw" aria-label="vm.data.title">
+            <option ng-repeat="(key, option) in ::vm.data.fw" ng-value="::key">{{::option}}</option>
+        </select>
+    </div>
+
+    <div flex="20">
+        <label ng-bind="::vm.data.i18n.size"></label>
+        <input type="text" ng-model="vm.data.value.size" class="stm_to_form-control" ng-change="vm.preventLineHeight(vm.data.value.size, vm.data.value.ln)">
+    </div>
+
+    <div flex="20">
+        <label ng-bind="::vm.data.i18n.ln"></label>
+        <input class="stm_to_form-control" type="text" ng-model="vm.data.value.ln">
+    </div>
+
+    <div flex="20">
+        <label ng-bind="::vm.data.i18n.ls"></label>
+        <input class="stm_to_form-control" type="text" ng-model="vm.data.value.ls">
+    </div>
+
+    <div flex="20" ng-if="vm.data.i18n.mgb">
+        <label ng-bind="::vm.data.i18n.mgb"></label>
+        <input class="stm_to_form-control" type="text" ng-model="vm.data.value.mgb">
+    </div>
+
+    <div flex="20">
+        <label>{{vm.data.i18n.color}}</label>
+        <div md-color-picker="vm.options" ng-model="vm.data.value.color"></div>
+    </div>
+
+</div>
+
+
+<div class="stm-font-preview"
+     ng-class="{'no-color' : vm.data.value.color === '', 'no-font' : vm.data.value.name == ''}"
+     style="font-family:{{vm.data.value.name}}; font-weight: {{vm.data.value.fw}}; font-size: {{vm.data.value.size}}px; line-height: {{vm.data.value.ln}}px; letter-spacing: {{vm.data.value.ls}}px;color: {{vm.data.value.color}};">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, assumenda blanditiis cum delectus doloremque ea excepturi exercitationem fugiat mollitia nam natus necessitatibus non praesentium rerum ut vero vitae voluptatibus voluptatum.
+</div>
