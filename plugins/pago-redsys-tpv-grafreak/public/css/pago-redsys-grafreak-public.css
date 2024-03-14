@@ -1,0 +1,41 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.form_tpv {  }
+table.table-form-tpv { width:48%; display:inline-block; margin-left:1%; transition:all ease 0.5; }
+table.table-form-tpv.loading { opacity: 0.5;}
+table.table-form-tpv td { position:relative; overflow: visible;}
+table.table-form-tpv td + td { padding-left: 10px; }
+table.table-form-tpv input#amountTPV.warning, table.table-form-tpv input#orderNumber.warning { border-color: red }
+
+input#amountTPV { width:90%; font-size: 2em; border:0; text-align: right; border-bottom: 1px solid #666; margin: 5px 0;  padding: 0 4px; }
+input#orderNumber,input#orderDesc { width:90%; font-size: 2em; border:0; text-align: right; color:#666; border-bottom: 1px solid #666;margin: 5px 0; padding: 0 4px;  }
+
+input#amountTPV + span { font-size: 2em; }
+
+table.table-form-tpv span.error { position: absolute;z-index:-99; top:50%; background-color: red; color: white; width:auto; white-space: nowrap; left: 50%; font-size: 0.8em; transform: translate(-50%,-50%); padding: 4px; translate: opacity ease 0.5s; opacity:0; }
+table.table-form-tpv span.error.show { display:block; top:50%; z-index:20; opacity:1; }
+
+.section-right-form-tpv { display:inline-block; vertical-align: top; width:48%; margin-left: 2%; }
+
+.img-formaspago { text-align: center; margin: 10px; }
+.img-formaspago img { width:40%; }
+
+a#form_tpv_submit { display:block; text-align:center; font-size: 2em; color: #444; border:1px solid #444; }
+a#form_tpv_submit:before { content:''; width:40px; height:40px; background-image: url("../img/ico-payment.png"); background-size: contain; display: inline-block; vertical-align: middle; margin-right: 12px; }
+a#form_tpv_submit:after { content:'>'; display: inline-block; vertical-align: middle; margin-left: 12px; }
+
+table.table-result-tpv { margin: auto; min-width:50%;}
+table.table-result-tpv tr td { padding: 5px; }
+table.table-result-tpv tr td:first-of-type { text-align: right; }
+table.table-result-tpv tr td:last-of-type { text-align: left; font-weight: bold;}
+
+@media all and (max-width: 760px){
+  table.table-form-tpv{ width:100%; display:inline-block; margin-left:0%; }
+  .section-right-form-tpv{ width:100%; margin-left:0%; }
+  .img-formaspago img{ width:80%; margin:1em; }
+  table.table-form-tpv td + td{ width:50%; }
+  input#amountTPV{ width:80%; }
+}
