@@ -1,0 +1,722 @@
+@charset "UTF-8";
+/*!
+ * WP Custom Cursors | WordPress Cursor Plugin
+ * Author: Hamid Reza Sepehr
+ * License: GPLv2 or later (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ *
+ * "Open your hands if you want to be held." -Rumi
+ *
+ */
+/*------------------------------------------------------------------
+[Table of contents]
+
+1.0 Variables
+2.0 General Styles
+3.0 Cursor Styles 
+4.0 Animations
+4.0 Media Queries
+-------------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.0 Variables
+--------------------------------------------------------------*/
+body.iframe-hover .wpcc-cursor {
+  display: none;
+}
+
+/*--------------------------------------------------------------
+2.0 General Styles
+--------------------------------------------------------------*/
+.no-transition .cursor-el1, .no-transition .cursor-el2 {
+  transition: none !important;
+}
+
+.no-cursor {
+  cursor: none;
+}
+.no-cursor a {
+  cursor: none;
+}
+
+.default-cursor {
+  cursor: default;
+}
+
+.wpcc-cursor {
+  --top: 0;
+  --left: 0;
+  --img-width: 30px;
+  --default-cursor-normal: "initial";
+  --default-cursor-link: "pointer";
+  --fe-width: 30px;
+  --fe-height: 30px;
+  --fe-color: #000000;
+  --fe-border-radius: 100px;
+  --fe-border-width: 0px;
+  --fe-border-color: #252525;
+  --fe-transition-duration: 100ms;
+  --fe-transition-timing: "ease-out";
+  --fe-blending-mode: normal;
+  --fe-zindex: 100;
+  --fe-backdrop: "none";
+  --se-width: 30px;
+  --se-height: 30px;
+  --se-color: #000000;
+  --se-border-radius: 100px;
+  --se-border-width: 0px;
+  --se-border-color: #252525;
+  --se-transition-duration: 100ms;
+  --se-transition-timing: "ease-out";
+  --se-blending-mode: normal;
+  --se-zindex: 99;
+  --se-backdrop: "none";
+}
+.wpcc-cursor:not(.active) {
+  display: none;
+}
+.wpcc-cursor div {
+  position: fixed !important;
+  pointer-events: none;
+  z-index: 99999999999;
+  box-sizing: border-box;
+  mix-blend-mode: var(--fe-blending-mode);
+}
+
+/*--------------------------------------------------------------
+3.0 Cusror Styles
+--------------------------------------------------------------*/
+/*Image Cursor*/
+.cursor-image {
+  --width:100px;
+  --color: transparent;
+  --radius: 0;
+  --padding: 0;
+  --blending: "normal";
+}
+.cursor-image .cursor-el1 {
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  background-color: var(--color);
+  border-radius: var(--radius);
+  padding: var(--padding);
+  mix-blend-mode: var(--blending);
+}
+.cursor-image .cursor-el1 img {
+  display: block;
+  width: var(--width);
+  top: 0;
+  left: 0;
+  height: auto !important;
+  object-fit: contain !important;
+}
+.cursor-image .cursor-el2 {
+  display: none;
+}
+
+/*Text Cursor*/
+.cursor-text {
+  --duration: 0;
+  --timing: ease-out;
+}
+.cursor-text .cursor-el1 {
+  transition-property: all;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing);
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  --animation-duration: 10s;
+  --animation-name: spinright;
+  --text-width: 150px;
+  --text-transform: uppercase;
+  --font-size: 55px;
+  --font-weight: bold;
+  --word-spacing: 30px;
+  --text-color: #252525;
+  --dot-fill: #252500;
+  --dot-display: block;
+  --dot-width: 10px;
+}
+.cursor-text .cursor-el1 svg {
+  margin-top: -50%;
+  margin-left: -50%;
+}
+.cursor-text .cursor-el2 {
+  display: none;
+}
+.cursor-text svg {
+  width: var(--text-width);
+  animation-name: var(--animation-name);
+  animation-duration: var(--animation-duration);
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+  animation-timing-function: linear;
+}
+.cursor-text text {
+  text-transform: var(--text-transform);
+  font-size: var(--font-size);
+  word-spacing: var(--word-spacing);
+  font-weight: var(--font-weight);
+  fill: var(--text-color);
+}
+.cursor-text circle {
+  fill: var(--dot-fill);
+  display: var(--dot-display);
+  r: var(--dot-width);
+}
+
+.cursor-horizontal {
+  --hr-width: 150px;
+  --hr-transform: capitalize;
+  --hr-size: 35px;
+  --hr-weight: bold;
+  --hr-spacing: 5px;
+  --hr-color: #252525;
+  --bg-color: #f3f6f4;
+  --hr-radius: 0;
+  --hr-padding: 0;
+  --hr-backdrop: none;
+  --duration: 0;
+  --timing: none;
+}
+.cursor-horizontal .cursor-el1 {
+  transition-property: all;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing);
+  top: 0;
+  left: 0;
+}
+.cursor-horizontal .cursor-el1 > div {
+  width: var(--hr-width);
+  height: var(--hr-width);
+  background-color: var(--bg-color);
+  color: var(--hr-color);
+  font-size: var(--hr-size);
+  font-weight: var(--hr-weight);
+  word-spacing: var(--hr-spacing);
+  border-radius: var(--hr-radius);
+  text-transform: var(--hr-transform);
+  padding: var(--hr-padding);
+  backdrop-filter: var(--hr-backdrop);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+/*	Snap Cursor*/
+.cursor-snap {
+  --blending: normal;
+  --bgcolor: transparent;
+  --border-color: #252525;
+  --border-width: 1px;
+  --radius: 0;
+  --width: auto;
+  --height: auto;
+}
+.cursor-snap .cursor-el1 {
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--bgcolor);
+  mix-blend-mode: var(--blending);
+  width: var(--width);
+  height: var(--height);
+}
+.cursor-snap .cursor-el2 {
+  display: none;
+}
+
+[class*=cursor-created]:not(.cursor-image):not(.cursor-text):not(.cursor-horizontal):not(.cursor-snap) .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  background-color: var(--fe-color);
+  border-width: var(--fe-border-width);
+  border-radius: var(--fe-border-radius);
+  border-color: var(--fe-border-color);
+  transition-duration: var(--fe-transition-duration);
+  transition-timing-function: var(--fe-transition-timing);
+  mix-blend-mode: var(--fe-blending-mode);
+  z-index: var(--fe-zindex);
+  border-style: solid;
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  backdrop-filter: var(--fe-backdrop);
+}
+[class*=cursor-created]:not(.cursor-image):not(.cursor-text):not(.cursor-horizontal):not(.cursor-snap) .cursor-el2 {
+  width: var(--se-width);
+  height: var(--se-height);
+  background-color: var(--se-color);
+  border-width: var(--se-border-width);
+  border-radius: var(--se-border-radius);
+  border-color: var(--se-border-color);
+  transition-duration: var(--se-transition-duration);
+  transition-timing-function: var(--se-transition-timing);
+  mix-blend-mode: var(--se-blending-mode);
+  z-index: var(--se-zindex);
+  border-style: solid;
+  top: calc(var(--se-height) / -2);
+  left: calc(var(--se-width) / -2);
+  backdrop-filter: var(--se-backdrop);
+}
+
+/*Cursor 1*/
+.cursor-1 .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  border: calc(var(--fe-width) / 25) solid var(--fe-color);
+  border-radius: var(--fe-border-radius);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  transition: all 200ms ease-out;
+}
+.cursor-1 .cursor-el2 {
+  width: calc(var(--se-width) / 5);
+  height: calc(var(--se-height) / 5);
+  border-radius: 50%;
+  background-color: var(--se-color);
+  top: calc(var(--se-height) / -10);
+  left: calc(var(--se-width) / -10);
+  mix-blend-mode: var(--se-blending);
+  animation: c1-anim-reverse 200ms ease-out;
+}
+.cursor-1.link-hover .cursor-el1 {
+  width: calc(var(--fe-width) / 1.5);
+  height: calc(var(--fe-height) / 1.5);
+  top: calc(var(--fe-height) / -3);
+  left: calc(var(--fe-width) / -3);
+  opacity: 0;
+}
+.cursor-1.link-hover .cursor-el2 {
+  animation: c1-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-1.input-hover {
+  display: none;
+}
+
+/*Cursor 2*/
+.cursor-2 .cursor-el1 {
+  width: calc(var(--fe-width));
+  height: calc(var(--fe-height));
+  border-radius: var(--fe-border-radius);
+  background-color: var(--fe-color);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  animation: c2-anim-reverse 200ms ease-out;
+}
+.cursor-2.link-hover .cursor-el1 {
+  animation: c2-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-2.input-hover {
+  display: none;
+}
+
+/*Cursor 3*/
+.cursor-3 .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  background-color: var(--fe-color);
+  opacity: 0.5;
+  border-radius: var(--fe-border-radius);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  transition: all 200ms ease-out;
+}
+.cursor-3 .cursor-el2 {
+  width: calc(var(--se-width) / 5);
+  height: calc(var(--se-height) / 5);
+  border-radius: 50%;
+  background-color: var(--se-color);
+  top: calc(var(--se-height) / -10);
+  left: calc(var(--se-width) / -10);
+  mix-blend-mode: var(--se-blending);
+  animation: c1-anim-reverse 200ms ease-out;
+}
+.cursor-3.link-hover .cursor-el1 {
+  width: calc(var(--fe-width) / 1.5);
+  height: calc(var(--fe-height) / 1.5);
+  top: calc(var(--fe-height) / -3);
+  left: calc(var(--fe-width) / -3);
+  opacity: 0;
+}
+.cursor-3.link-hover .cursor-el2 {
+  animation: c1-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-3.input-hover {
+  display: none;
+}
+
+/*Cursor 4*/
+.cursor-4 .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  border-radius: var(--fe-border-radius);
+  opacity: 0.7;
+  background-color: var(--fe-color);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  transition: all 200ms ease-out;
+}
+.cursor-4 .cursor-el2 {
+  width: var(--se-width);
+  height: var(--se-height);
+  border-radius: 50%;
+  background-color: var(--se-color);
+  top: calc(var(--se-height) / -2);
+  left: calc(var(--se-width) / -2);
+  mix-blend-mode: var(--se-blending);
+  animation: c2-anim-reverse 200ms ease-out;
+}
+.cursor-4.link-hover .cursor-el2 {
+  animation: c2-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-4.input-hover {
+  display: none;
+}
+
+/*Cursor 5*/
+.cursor-5 .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  border: calc(var(--fe-width) / 15) solid var(--fe-color);
+  border-radius: var(--fe-border-radius);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  animation: c5-anim-reverse 200ms ease-out;
+}
+.cursor-5.link-hover .cursor-el1 {
+  animation: c5-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-5.input-hover {
+  display: none;
+}
+
+/*Cursor 6*/
+.cursor-6 .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  border: calc(var(--fe-width) / 10) solid var(--fe-color);
+  border-radius: var(--fe-border-radius);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  transition: all 100ms ease-out;
+  animation: c6-anim-reverse 200ms ease-out;
+}
+.cursor-6 .cursor-el2 {
+  width: calc(var(--se-width) / 2);
+  height: calc(var(--se-height) / 2);
+  border-radius: 50%;
+  background-color: var(--se-color);
+  top: calc(var(--se-height) / -4);
+  left: calc(var(--se-width) / -4);
+  mix-blend-mode: var(--se-blending);
+}
+.cursor-6.link-hover .cursor-el1 {
+  animation: c6-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-6.input-hover {
+  display: none;
+}
+
+/*Cursor 7*/
+.cursor-7 .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  border: calc(var(--fe-width) / 15) solid var(--fe-color);
+  border-radius: var(--fe-border-radius);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  opacity: 0.5;
+  transition: all 200ms ease-out;
+}
+.cursor-7 .cursor-el2 {
+  width: var(--se-width);
+  height: var(--se-height);
+  border: calc(var(--se-width) / 15) solid var(--se-color);
+  border-radius: 50%;
+  top: calc(var(--se-height) / -2);
+  left: calc(var(--se-width) / -2);
+  mix-blend-mode: var(--se-blending);
+  animation: c5-anim-reverse 200ms ease-out;
+}
+.cursor-7.link-hover .cursor-el2 {
+  animation: c5-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-7.link-hover .cursor-el1 {
+  opacity: 0;
+}
+.cursor-7.input-hover {
+  display: none;
+}
+
+/*Cursor 8*/
+.cursor-8 .cursor-el1 {
+  width: var(--fe-width);
+  height: var(--fe-height);
+  background-color: var(--fe-color);
+  border-radius: var(--fe-border-radius);
+  top: calc(var(--fe-height) / -2);
+  left: calc(var(--fe-width) / -2);
+  mix-blend-mode: var(--fe-blending);
+  opacity: 0.5;
+  transition: all 200ms ease-out;
+}
+.cursor-8 .cursor-el2 {
+  width: var(--se-width);
+  height: var(--se-height);
+  border: calc(var(--se-width) / 15) solid var(--se-color);
+  border-radius: 50%;
+  top: calc(var(--se-height) / -2);
+  left: calc(var(--se-width) / -2);
+  mix-blend-mode: var(--se-blending);
+  animation: c5-anim-reverse 200ms ease-out;
+}
+.cursor-8.link-hover .cursor-el2 {
+  animation: c5-anim 200ms ease-out;
+  animation-fill-mode: forwards;
+}
+.cursor-8.link-hover .cursor-el1 {
+  opacity: 0;
+}
+.cursor-8.input-hover {
+  display: none;
+}
+
+/*--------------------------------------------------------------
+4.0 Animations
+--------------------------------------------------------------*/
+@keyframes c1-anim {
+  to {
+    width: var(--fe-width);
+    height: var(--fe-height);
+    top: calc(var(--fe-height) / -2);
+    left: calc(var(--fe-width) / -2);
+    opacity: 0.3;
+  }
+}
+@keyframes c1-anim-reverse {
+  from {
+    width: var(--fe-width);
+    height: var(--fe-height);
+    top: calc(var(--fe-height) / -2);
+    left: calc(var(--fe-width) / -2);
+    opacity: 0.3;
+  }
+  to {
+    width: calc(var(--fe-width) / 5);
+    height: calc(var(--fe-height) / 5);
+    top: calc(var(--fe-height) / -10);
+    left: calc(var(--fe-width) / -10);
+  }
+}
+@keyframes c2-anim {
+  to {
+    width: calc(var(--fe-width) / 0.5);
+    height: calc(var(--fe-height) / 0.5);
+    top: calc(var(--fe-height) / -1);
+    left: calc(var(--fe-width) / -1);
+    border-width: calc(var(--fe-width) / 15);
+    opacity: 0.3;
+  }
+}
+@keyframes c2-anim-reverse {
+  from {
+    width: calc(var(--fe-width) / 5);
+    height: calc(var(--fe-height) / 5);
+    top: calc(var(--fe-height) / -10);
+    left: calc(var(--fe-width) / -10);
+    border-width: calc(var(--fe-width) / 15);
+    opacity: 0.3;
+  }
+  to {
+    width: var(--fe-width);
+    height: var(--fe-height);
+    border: calc(var(--fe-width) / 25) solid var(--fe-color);
+    border-radius: 50%;
+    top: calc(var(--fe-height) / -2);
+    left: calc(var(--fe-width) / -2);
+  }
+}
+@keyframes c4-anim {
+  to {
+    width: calc(var(--fe-width) / 1.5);
+    height: calc(var(--fe-height) / 1.5);
+    top: calc(var(--fe-height) / -3);
+    left: calc(var(--fe-width) / -3);
+    background-color: var(--fe-color);
+    opacity: 0.3;
+  }
+}
+@keyframes c4-anim-reverse {
+  from {
+    width: calc(var(--fe-width) / 1.5);
+    height: calc(var(--fe-height) / 1.5);
+    top: calc(var(--fe-height) / -3);
+    left: calc(var(--fe-width) / -3);
+    background-color: var(--fe-color);
+    opacity: 0.3;
+  }
+  to {
+    width: var(--fe-width);
+    height: var(--fe-height);
+    top: calc(var(--fe-height) / -2);
+    left: calc(var(--fe-width) / -2);
+    background-color: transparent;
+    opacity: 1;
+  }
+}
+@keyframes c5-anim {
+  50% {
+    width: calc(var(--fe-width) / 2.5);
+    height: calc(var(--fe-height) / 2.5);
+    top: calc(var(--fe-height) / -5);
+    left: calc(var(--fe-width) / -5);
+    background-color: var(--fe-color);
+    opacity: 0.3;
+  }
+  100% {
+    width: calc(var(--fe-width) / 0.5);
+    height: calc(var(--fe-height) / 0.5);
+    top: calc(var(--fe-height) / -1);
+    left: calc(var(--fe-width) / -1);
+    background-color: var(--fe-color);
+    opacity: 0.3;
+  }
+}
+@keyframes c5-anim-reverse {
+  from {
+    width: calc(var(--fe-width) / 0.5);
+    height: calc(var(--fe-height) / 0.5);
+    top: calc(var(--fe-height) / -1);
+    left: calc(var(--fe-width) / -1);
+    background-color: var(--fe-color);
+    opacity: 0.3;
+  }
+  to {
+    width: var(--fe-width);
+    height: var(--fe-height);
+    top: calc(var(--fe-height) / -2);
+    left: calc(var(--fe-width) / -2);
+  }
+}
+@keyframes c6-anim {
+  to {
+    width: calc(var(--fe-width) / 0.5);
+    height: calc(var(--fe-height) / 0.5);
+    top: calc(var(--fe-height) / -1);
+    left: calc(var(--fe-width) / -1);
+    background-color: var(--fe-color);
+    opacity: 0.3;
+  }
+}
+@keyframes c6-anim-reverse {
+  from {
+    width: calc(var(--fe-width) / 0.5);
+    height: calc(var(--fe-height) / 0.5);
+    top: calc(var(--fe-height) / -1);
+    left: calc(var(--fe-width) / -1);
+    background-color: var(--fe-color);
+    opacity: 0.3;
+  }
+  to {
+    width: var(--fe-width);
+    height: var(--fe-height);
+    top: calc(var(--fe-height) / -2);
+    left: calc(var(--fe-width) / -2);
+  }
+}
+@keyframes c-scale {
+  to {
+    width: calc(var(--fe-width) * 3);
+    height: calc(var(--fe-width) * 3);
+    top: calc(var(--fe-width) * -1.5);
+    left: calc(var(--fe-width) * -1.5);
+    opacity: 1;
+  }
+}
+@keyframes c-scale-reverse {
+  from {
+    width: calc(var(--fe-width) * 3);
+    height: calc(var(--fe-width) * 3);
+    top: calc(var(--fe-width) * -1.5);
+    left: calc(var(--fe-width) * -1.5);
+    opacity: 1;
+  }
+  to {
+    width: calc(var(--fe-width) / 5);
+    height: calc(var(--fe-width) / 5);
+    top: calc(var(--fe-width) / -10);
+    left: calc(var(--fe-width) / -10);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@keyframes spinleft {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+@keyframes spinright {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*--------------------------------------------------------------
+5.0 Media Queries
+--------------------------------------------------------------*/
+/* Mobile ---------- */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .wpcc-cursor.hide-mobile {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .wpcc-cursor.hide-tablet {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* :) Let's meke internet BEAUTIFUL*/
+/*
+ _       __     __       ______                    __
+| |     / /__  / /_     /_  __/_______  ____  ____/ /_  __
+| | /| / / _ \/ __ \     / / / ___/ _ \/ __ \/ __  / / / /
+| |/ |/ /  __/ /_/ /    / / / /  /  __/ / / / /_/ / /_/ /
+|__/|__/\___/_.___/    /_/ /_/   \___/_/ /_/\__,_/\__, /
+                                                 /____/
+*/
+
+/*# sourceMappingURL=wp_custom_cursors_main_style.css.map */
