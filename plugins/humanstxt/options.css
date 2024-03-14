@@ -1,0 +1,122 @@
+
+#humanstxt-metabox, #revision-preview { width: auto; border-color: #dfdfdf; background-color: #f9f9f9; background-image: none; }
+
+#humanstxt-metabox { float: right; min-width: 0; max-width: 210px; padding: 10px 20px; text-align: center; }
+	#humanstxt .text-rateit { margin-top: 0; }
+	#humanstxt .star-holder { margin: 0 auto; }
+	@media (max-width: 1100px) { #humanstxt-metabox { display: none; } }
+
+#humanstxt .form-table { clear: left; float: left; width: auto; margin-top: 0; }
+#humanstxt-editor-wrap { float: left; padding-right: 10px; }
+	#humanstxt-editor-wrap .form-table { float: none; }
+		#humanstxt-editor-wrap .form-table td { padding: 0; }
+			#humanstxt-editor-wrap .form-table fieldset { max-width: 570px; }
+				#humanstxt_content { resize: none; }
+	#humanstxt-editor-wrap .submit { margin-top: 0; padding-top: 1em; clear: both; }
+
+#humanstxt-vars { clear: left; padding: 15px 0 1em 0; }
+	@media (min-width: 1200px) { #humanstxt-vars { max-width: 400px; clear: none; float: left; } }
+	@media (min-width: 1500px) { #humanstxt-vars { max-width: 700px; } }
+	@media (min-width: 1800px) { #humanstxt-vars { max-width: 1000px; } }
+	#humanstxt-vars h4 { font-size: 16px; font-weight: bold; margin: 0 0 1em 0; }
+	#humanstxt-vars .submit { padding-top: .7em; }
+	#humanstxt-vars ul { padding-left: 10px; }
+		#humanstxt-vars h5 { font-size: 14px; font-weight: bold; margin: 0 0 1em 0; cursor: pointer; display: inline-block; }
+		#humanstxt-vars ul ul { margin-bottom: 1em; }
+			#humanstxt-vars li:first-child ul, .no-js #humanstxt-vars ul ul { display: block; }
+			#humanstxt-vars li code { font-size: 13px; }
+			@media (max-width: 782px) { #humanstxt-vars ul ul { display: block !important; } }
+
+#humanstxt-revisions tr.displayed-revision { font-weight: bold; }
+#revision-preview { float: left; margin: 0 0 0 10px; padding: 10px; line-height: inherit; }
+#humanstxt-revisions .submit { clear: both; }
+
+#humansTooltip {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	width: auto;
+	max-width: 250px;
+	overflow: hidden;
+	word-wrap: break-word;
+	padding: 5px 8px 4px 8px;
+	border: 1px solid #888;
+	background-color: #f1f1f1;
+	background-image: -ms-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: -moz-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: -o-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#ececec));
+	background-image: -webkit-linear-gradient(top, #f9f9f9, #ececec);
+	background-image: linear-gradient(top, #f9f9f9, #ececec);
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;	Plugin
+	-moz-box-shadow: 0 0 2px #555;
+	-khtml-box-shadow: 0 0 2px #555;
+	-webkit-box-shadow: 0 0 2px #555;
+	box-shadow: 0 0 2px #555;
+	pointer-events: none;
+}
+
+
+/* right-to-left? */
+.rtl #humanstxt-metabox { float: left; }
+.rtl #humanstxt .form-table { clear: right; float: right; }
+.rtl #humanstxt-editor-wrap { float: right; padding-right: 0; padding-left: 10px; }
+.rtl #humanstxt-vars { float: right; }
+.rtl #humanstxt-vars ul, .rtl #humanstxt-vars p { padding-left: 0; padding-right: 10px; }
+.rtl #revision-preview { float: right; margin-left: 0; margin-right: 10px; }
+
+
+/* taken from /wp-admin/css/theme-install.dev.css */
+.not-wp34 div.star-holder {
+	position: relative;
+	height: 19px;
+	width: 100px;
+	font-size: 19px;
+}
+
+.not-wp34 div.star {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	letter-spacing: 1ex;
+	border: none;
+}
+
+.not-wp34 .star1 { width: 20%; }
+.not-wp34 .star2 { width: 40%; }
+.not-wp34 .star3 { width: 60%; }
+.not-wp34 .star4 { width: 80%; }
+.not-wp34 .star5 { width: 100%; }
+
+.not-wp34 .star img, .not-wp34 div.star a, .not-wp34 div.star a:hover, .not-wp34 div.star a:visited {
+	display: block;
+	position: absolute;
+	right: 0;
+	border: none;
+	text-decoration: none;
+}
+
+.not-wp34 div.star img {
+	width: 19px;
+	height: 19px;
+	border-left: 1px solid #f9f9f9;
+	border-right: 1px solid #f9f9f9;
+}
+
+
+/* WordPress < 3.2 */
+.not-wp32 #humanstxt-metabox, .not-wp32 #revision-preview { background-color: #fff; }
+.not-wp32 div.star img { border-color: #fff; }
+
+
+/* rough IE 6-7 fixes */
+* html #humanstxt-metabox { display: none !important; }
+*+html #humanstxt-metabox { display: none !important; }
+* html #humanstxt-editor-wrap fieldset { width: 570px; }
+*+html #humanstxt-editor-wrap fieldset { width: 570px; }
+* html .submit { padding-top: 0; }
+*+html .submit { padding-top: 0; }
