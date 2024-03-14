@@ -1,0 +1,221 @@
+/*===================================
+Plugin Name: Skyboot Portfolio Gallery
+Plugin URI:   http://skybootstrap.com/portfolio-gallery
+Description:  Portfolio Gallery add ons for elementor page builder.
+Version:      1.0
+Author:       skybootstrap
+Author URI:   http://skybootstrap.com
+
+	******================******
+	INDEX Table of content
+		1.0 default css
+		2.0 section title css
+		3.0 filter menu css
+		4.0 gallery css
+		5.0 content css
+		6.0 hover effect css
+
+===================================*/
+
+/*--------------- 
+1.0 default css
+-----------------*/
+.skb-gellery-area{
+	overflow: hidden;
+}
+.skb-container {
+    max-width: 1200px
+}
+.admin-bar .vbox-close {
+	top: 25px;
+}
+.vbox-close {
+    font-size: 46px;
+    line-height: 26px;
+}
+.vbox-title p {
+    margin: 0;
+    font-size: 16px;
+    color: #fff;
+}
+/*--------------- 
+2.0 section title css
+-----------------*/
+.skb-section-title {
+	padding-bottom: 15px;
+	margin-bottom: 70px;
+	position: relative;
+	text-align: center;
+}
+.skb-section-title-separator::before {
+	content: "";
+	position: absolute;
+	height: 2px;
+	width: 100px;
+	background: #dbd9da;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.skb-section-title-separator::after {
+	content: "";
+	position: absolute;
+	height: 4px;
+	width: 30px;
+	background: #FF5500;
+	bottom: -1px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.skb-section-title h2 {
+	font-size: 36px;
+	text-transform: uppercase;
+	font-weight: 700;
+	line-height: 35px;
+	margin: 0 0 15px;
+	color: #FF5500;
+}
+.skb-section-title h2:before,
+.skb-section-title h2:after{
+	content:none;
+}
+.skb-section-title p {
+	margin: 0px auto 10px;
+	color: #7a7a7a;
+	font-size: 16px;
+	line-height: 24px;
+	max-width: 600px;
+}
+/*--------------- 
+3.0 filter menu css
+-----------------*/
+.skb-gellery-area .skb-button-group {
+	margin-bottom: 70px;
+}
+.skb-button-group button {
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+	color: #39434a;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	font-family: "Poppins", sans-serif;
+	padding: 3px 8px;
+}
+.skb-button-group button:focus,
+.skb-button-group button:hover{
+	background-color: transparent;
+	color: #FF5500;
+	outline:none;
+}
+
+/*--------------- 
+4.0 gallery css
+-----------------*/
+.skb-gallery-item {
+	margin-bottom: 30px;
+	overflow: hidden;
+	position: relative;	
+}
+.skb-gallery-item img{
+	max-width: 100%;
+	height:auto;
+	transition: 0.3s;
+}
+.skb-gallery-image{
+	line-height: 0;
+	text-align: center;
+}
+.image-mouse-hover:hover img{
+	transform: scale(1.2);
+}
+/*-------------
+5.0 content css
+---------------*/
+.gallery-text {
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;
+	text-align: center;
+	margin: auto;
+	z-index: 2;
+}
+.skb-gallery-inner-content h4 {
+	color: #fff;
+	text-transform: uppercase;
+	margin: 0;
+	font-size: 18px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+.skb-gallery-inner-content span {
+	font-size: 16px;
+}
+.skb-gallery-inner-content p{
+	margin-bottom: 0;
+}
+.skb-gallery-icon i {
+	color: #fff;
+	font-size: 25px;
+	padding-bottom: 50px;
+	transition:.3s;
+	opacity:0;
+}
+.skb-gallery-item:hover .skb-gallery-icon i {
+	padding-bottom:10px;
+	opacity:1;
+}
+.skb-gallery-inner-content{
+	padding:15px 15px 0 15px;
+	transition:.3s;
+	opacity:0;
+}
+.skb-gallery-item:hover .skb-gallery-inner-content{
+	opacity:1;
+}
+.skb-gallery-item:hover.skb-gallery-item::before {
+	transform:scale(1);
+	opacity:.6;
+}
+.skb-button-group button{
+	transition: 0.3S;
+}
+.skb-button-group button:hover,
+.skb-button-group button.is-checked {
+	color:#FF5500;
+}
+.skb-gallery-item .skb-gallery-icon a:focus{
+	outline:none;
+}
+/*-------------
+6.0 hover effect css
+---------------*/
+.normal-effect{
+	transition: 0.3s;
+}
+.hover-effect-bg{
+	background-color: rgba(255,85,0,0.7);
+}
+.normal-effect,
+.skb-direction-hover-effect{
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.6)";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin:auto;
+    z-index: 1;
+}
+.skb-gallery-item:hover .normal-effect,
+.skb-gallery-item:hover .skb-direction-hover-effect{
+	visibility: visible;
+	opacity:1;
+}
