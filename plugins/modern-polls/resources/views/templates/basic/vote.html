@@ -1,0 +1,74 @@
+<div class="mpp-basic_container" id="mpp_{{hash}}">
+
+    {{idField}}
+    {{nonceField}}
+
+    <div class="mpp-basic_question">
+        <div class="mpp-basic_question_text">
+            {{question}}
+        </div>
+    </div>
+    <form>
+        <div class="mpp-basic_answers">
+
+            {{answerTemplate_single}}
+                <div class="mpp-basic_answer">
+                    <input class="mpp-radio_input"
+                           type="radio"
+                           id="{{answerTagID}}"
+                           {{answerTag}}
+                           value="{{answerID}}">
+                    <label for="{{answerTagID}}">{{answerText}}</label>
+                </div>
+            {{/answerTemplate_single}}
+
+            {{answerTemplate_multi}}
+                <div class="mpp-basic_answer mpp-checkbox">
+                    <input class="mpp-checkbox_input"
+                           type="checkbox"
+                           id="{{answerTagID}}"
+                           {{answerTag}}
+                           value="{{answerID}}">
+                    <label for="{{answerTagID}}">{{answerText}}</label>
+                </div>
+            {{/answerTemplate_multi}}
+
+        </div>
+    </form>
+    <div class="mpp-basic_actions">
+
+        {{voteButton}}
+        {{resultButton}}
+
+    </div>
+</div>
+<script>
+    var checkCount_{{hash}} = 0;
+    var maxChecks_{{hash}} = {{maxChecked}};
+    jQuery(document).ready(function () {
+        jQuery('#mpp_{{hash}} :checkbox').change(function () {
+
+            //update checkCount
+            checkCount_{{hash}} = jQuery('#mpp_{{hash}} :checked').length;
+
+            if (checkCount_{{hash}} >= maxChecks_{{hash}}) {
+                jQuery('#mpp_{{hash}} :checkbox').not(':checked').each(function () {
+                    jQuery(this).attr('disabled', true);
+                    jQuery(this).parent('.mpp-checkbox').addClass('mpp-checkbox_disabled');
+                });
+            } else {
+                jQuery('#mpp_{{hash}} :checkbox:disabled').each(function () {
+                    jQuery(this).attr('disabled', false);
+                    jQuery(this).parent('.mpp-checkbox').removeClass('mpp-checkbox_disabled');
+                });
+            }
+
+            if (this.checked) {
+                jQuery("td.label").append('<label>' + this.value + ' </label>');
+            } else {
+                jQuery("td.label").find(':contains(' + this.value + ')').remove();
+            }
+            jQuery('input[name="result"]').val(jQuery("td.label").text());
+        });
+    });
+</script>

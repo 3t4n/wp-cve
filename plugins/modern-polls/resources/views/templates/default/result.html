@@ -1,0 +1,53 @@
+<div class="mpp-default_container" id="mpp_{{hash}}_result">
+
+    <div class="mpp-default_question">
+        <div class="mpp-default_question_text">
+            {{question}}
+        </div>
+    </div>
+
+    <div class="mpp-default_answerResults">
+        <ul id="mpp-default_nav_{{hash}}" class="mpp-default_nav mpp-default_nav_tabs">
+            <li class="mpp-default_nav_item">
+                <a class="mpp-default_nav_link mpp-default_active" data-href="bar_chart">Bar Chart</a>
+            </li>
+            <li class="mpp-default_nav_item">
+                <a class="mpp-default_nav_link" data-href="pie_chart">Pie Chart</a>
+            </li>
+        </ul>
+        <div id="mpp-default_tab_{{hash}}" class="mpp-default_tab_content">
+            <div class="mpp-default_tab_pane mpp-default_tab_pane_fade mpp-default_tab_pane_show mpp-default_active" id="mpp-{{hash}}-bar_chart">
+                <canvas id="mpp_{{hash}}_resultBarChart"></canvas>
+            </div>
+            <div class="mpp-default_tab_pane mpp-default_tab_pane_fade" id="mpp-{{hash}}-pie_chart">
+                <canvas id="mpp_{{hash}}_resultPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="mpp-default_actions">
+        {{backButton}}
+    </div>
+
+</div>
+
+<script>
+    jQuery(document).ready(function() {
+        mppCreateBarChart('{{hash}}', [{{answerNames}}], [{{answerData}}]);
+    })
+    jQuery(document).on('click', '#mpp-default_nav_{{hash}} .mpp-default_nav_item .mpp-default_nav_link', function (event) {
+        jQuery('#mpp-default_nav_{{hash}} .mpp-default_nav_item .mpp-default_active').each(function () {
+            jQuery(this).removeClass('mpp-default_active');
+        });
+        jQuery('#mpp-default_tab_{{hash}} .mpp-default_tab_pane_fade.mpp-default_tab_pane_show').removeClass('mpp-default_active mpp-default_tab_pane_show');
+        jQuery(this).addClass('mpp-default_active');
+        jQuery('#mpp-{{hash}}-' + jQuery(this).data('href')).addClass('mpp-default_active mpp-default_tab_pane_show');
+        if (jQuery(this).data('href') == 'pie_chart') {
+            mppCreatePieChart('{{hash}}', [{{answerNames}}], [{{answerData}}]);
+        } else {
+            mppCreateBarChart('{{hash}}', [{{answerNames}}], [{{answerData}}]);
+        }
+    });
+
+
+</script>

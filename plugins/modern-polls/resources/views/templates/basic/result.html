@@ -1,0 +1,47 @@
+<div class="mpp-basic_container" id="mpp_{{hash}}_result">
+
+    <div class="mpp-basic_question">
+
+        <div class="mpp-basic_question_text">
+            {{question}}
+        </div>
+
+    </div>
+
+    <div class="mpp-basic_answerResults">
+
+        <canvas id="mpp_{{hash}}_resultBarChart"></canvas>
+
+    </div>
+
+    <div class="mpp-basic_actions">
+
+        {{backButton}}
+
+    </div>
+
+</div>
+
+
+<script>
+    var ctx = document.getElementById("mpp_{{hash}}_resultBarChart").getContext('2d');
+    var mpp_{{hash}}_resultChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: [{{answerNames}}],
+            datasets: [{
+                data: [{{answerData}}],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+                borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {display: false,},
+            title: {display: false,},
+            scales: {xAxes: [{ticks: {beginAtZero: true}}]}
+        }
+    });
+</script>
