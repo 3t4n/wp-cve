@@ -1,0 +1,43 @@
+{
+    "title": "WP Meteor Wordpress Plugin",
+    "name": "wp-meteor",
+    "version": "0.0.3",
+    "scripts": {
+        "watch:admin": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production DEBUG=1 node_modules/.bin/webpack --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js --env.mixfile=webpack.mix.admin",
+        "watch:public": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production DEBUG=1 node_modules/.bin/webpack --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js --env.mixfile=webpack.mix.public-debug",
+        "prod:admin": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production node_modules/.bin/webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --env.mixfile=webpack.mix.admin",
+        "prod:public": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production node_modules/.bin/webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --env.mixfile=webpack.mix.public-prod",
+        "prod:admin-debug": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production DEBUG=1 node_modules/.bin/webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --env.mixfile=webpack.mix.admin-debug",
+        "prod:public-debug": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production DEBUG=1 node_modules/.bin/webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --env.mixfile=webpack.mix.public-debug",
+        "build": "node build.mjs"
+    },
+    "description": "WP Meteor Wordpress",
+    "keywords": [],
+    "license": "GPLv3.0",
+    "author": "Aleksandr Guidrevitch",
+    "contributors": [
+        "Aleksandr Guidrevitch (https://wp-meteor.com/)"
+    ],
+    "devDependencies": {
+        "autoprefixer": "^10.4.13",
+        "postcss": "^8.4.21"
+    },
+    "dependencies": {
+        "@aguidrevitch/fpo-inpage-events": "^0.1.10",
+        "@aguidrevitch/fpo-inpage-wp-meteor": "^0.1",
+        "core-js": "^3.8.1",
+        "esbuild": "^0.19.4",
+        "esbuild-sass-plugin": "^2.15.0",
+        "fast-csv": "^4.3.6",
+        "geoip-lite": "^1.4.7",
+        "intersection-observer": "^0.11.0",
+        "react": "^16.14.0",
+        "react-contenteditable": "^3.3.5",
+        "react-dom": "^16.14.0",
+        "react-slider": "^1.1.2",
+        "react-tooltip": "^4.2.15",
+        "styled-components": "^5.2.1",
+        "url-polyfill": "^1.1.12"
+    },
+    "browserslist": "> 0.25%, not dead, ie >= 11"
+}

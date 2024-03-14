@@ -1,0 +1,37 @@
+# Codeception Test Suite Configuration
+#
+# Suite for integration tests.
+
+bootstrap: bootstrap.php
+
+modules:
+    enabled:
+        - WPDb
+        - WPLoader
+    config:
+        WPDb:
+            dsn: 'mysql:host=%TEST_SITE_DB_HOST%;dbname=%TEST_SITE_DB_NAME%'
+            user: '%TEST_SITE_DB_USER%'
+            password: '%TEST_SITE_DB_PASSWORD%'
+            dump: 'tests/codeception/tests/_data/db.sql'
+            #import the dump before the tests; this means the test site database will be repopulated before the tests.
+            populate: false
+            # re-import the dump between tests; this means the test site database will be repopulated between the tests.
+            cleanup: false
+            waitlock: 10
+            url: '%TEST_SITE_WP_URL%'
+            originalUrl: '%TEST_SITE_WP_URL%'
+            urlReplacement: true #replace the hardcoded dump URL with the one above
+            tablePrefix: '%TEST_SITE_TABLE_PREFIX%'
+        WPLoader:
+            multisite: false
+            wpRootFolder: '%WP_ROOT_FOLDER%'
+            dbName: "%TEST_SITE_DB_NAME%"
+            dbHost: "%TEST_SITE_DB_HOST%"
+            dbUser: "%TEST_SITE_DB_USER%"
+            dbPassword: "%TEST_SITE_DB_PASSWORD%"
+            isolatedInstall: false
+            loadOnly: false
+            tablePrefix: "%TEST_SITE_TABLE_PREFIX%"
+            plugins: []
+            activatePlugins: []

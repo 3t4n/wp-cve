@@ -1,0 +1,2 @@
+(()=>{try{new MutationObserver(function(){}),new PerformanceObserver(function(){}),Object.assign({},{}),document.fonts.ready.then(function(){})}catch{t="wpmeteordisable=1",i=document.location.href,i.match(/[?&]wpmeteordisable/)||(o="",i.indexOf("?")==-1?i.indexOf("#")==-1?o=i+"?"+t:o=i.replace("#","?"+t+"#"):i.indexOf("#")==-1?o=i+"&"+t:o=i.replace("#","&"+t+"#"),document.location.href=o)}var t,i,o;})();
+//# sourceMappingURL=ie-redirect.js.map
