@@ -1,0 +1,168 @@
+$green: green;
+$red: #a11717;
+.bbp-voting {
+    margin: 8px 30px 0 0;
+    min-width: 35px;
+    position: relative;
+    &.bbp-voting-float {
+        float: left;
+        // margin: 0 35px 15px 0;
+    }
+    .score {
+        font-size: 25px;
+        font-weight: bold;
+        text-align: center;
+        color: #858c93;
+        padding: 2px 0 3px 0;
+        line-height: 1;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0px 0px 6px #FFFFFF, 0px 0px 4px #FFFFFF, 0px 0px 2px #FFFFFF;
+    }
+    a.vote {
+        display: block !important;
+        position: relative;
+        overflow: visible;
+        text-indent: -9999em;
+        font-weight: normal;
+        font-size: 1rem;
+        width: 0; 
+        height: 0; 
+        margin: 3px auto !important;
+        border: inherit !important;
+        border-left: 15px solid transparent !important;
+        border-right: 15px solid transparent !important;
+        cursor: pointer;
+        &.up {
+            border-bottom: 15px solid #858c93 !important;
+            &:hover {
+                border-bottom: 15px solid #444 !important;
+            }
+        }
+        &.down {
+            border-top: 15px solid #858c93 !important;
+            &:hover {
+                border-top: 15px solid #444 !important;
+            }
+        }
+        &:not(.num-hide):after {
+            content: attr(data-votes);
+            display: block;
+            position: absolute;
+            top: -0.5em;
+            line-height: 1;
+            // width: 55px;
+            text-align: left;
+            margin-left: 17px;
+            text-indent: 0;
+            color: #aaa;
+            opacity: 0;
+            transition: opacity 500ms ease;
+        }
+        &.num-hover:hover:after {
+            opacity: 1;
+            transition: opacity 200ms ease;
+        }
+        &.num-always-show:after {
+            opacity: 1;
+        }
+    }
+    .bbp-voting-label {
+        font-size: 0.75rem;
+        font-weight: normal;
+        padding: 5px 0;
+        text-align: center;
+        &.helpful {
+            color: #1e851e; // Darker for text
+        }
+        &.not-helpful {
+            color: #992121; // Darker for text
+        }
+    }
+    // &.voted-up, &.voted-down {
+    //     a.vote {
+    //         cursor: not-allowed;
+    //     }
+    // }
+    &.voted-up:not(.admin-bypass) a.vote.up {
+        border-bottom-color: $green !important;
+        // cursor: not-allowed;
+    }
+    &.voted-down:not(.admin-bypass) a.vote.down {
+        border-top-color: $red !important;
+        // cursor: not-allowed;
+    }
+    &.view-only:not(.admin-bypass) a.vote {
+        cursor: not-allowed;
+    }
+    // AMP
+    .upvote-amp {
+        color: transparent;  
+        text-shadow: 0 0 0 $green;
+    }
+    .downvote-amp {
+        color: transparent;  
+        text-shadow: 0 0 0 $red;
+    }
+}
+ul.bbp-topics {
+    .bbp-voting {
+        float: left;
+    }
+}
+// Pro
+.bbp-voting-avatars {
+    display: inline-block;
+    padding: 15px 0 0 15px;
+    .bbp-voting-avatar {
+        display: inline-block;
+        margin: -15px 0 0 -15px;
+        img {
+            border-radius: 100px;
+            border: 3px solid black !important;
+            box-shadow: -2px 2px 5px rgba(0,0,0,0.2) !important;
+        }
+        &.up img {
+            border-color: $green !important;
+        }
+        &.down img {
+            border-color: $red !important;
+        }
+    }
+}
+.bbp-voting-jump-to-answer {
+    display: table;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: desaturate(lighten($green, 65%), 65%);
+    a {
+        font-size: 1.25em;
+    }
+}
+.bbp-voting-accepted-checkmark {
+    margin-top: 15px;
+    > path {
+        fill: $green;
+    }
+}
+#bbpress-forums div.bbp-reply-content a.bbp-voting-accept-answer-button {
+    display: inline-block;
+    background-color: $green;
+    padding: 6px 12px;
+    color: white;
+    text-decoration: none;
+    &:hover {
+        background-color: darken($green, 8%);
+    }
+}
+.bbp-voting-sort {
+    display: block;
+    clear: both;
+    margin: 0.75em 0;
+}
+.bbp-voting-score-graph {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
