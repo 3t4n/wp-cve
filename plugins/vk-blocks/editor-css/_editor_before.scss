@@ -1,0 +1,361 @@
+@import "_variables";
+@import "../lib/bootstrap/scss/bootstrap-sidepanel.scss";
+
+/* Pro版ブロック表示 */
+.vk_block_icon_pro {
+	fill: #c00;
+}
+
+.block-editor-inserter__block-list {
+	.editor-block-list-item-vk-blocks-taxonomy:after,
+	.editor-block-list-item-vk-blocks-select-post-list:after,
+	.editor-block-list-item-vk-blocks-accordion:after,
+	.editor-block-list-item-vk-blocks-animation:after,
+	.editor-block-list-item-vk-blocks-archive-list:after,
+	.editor-block-list-item-vk-blocks-blog-card:after,
+	.editor-block-list-item-vk-blocks-blog-card-excerpt:after,
+	.editor-block-list-item-vk-blocks-blog-card-site-logo:after,
+	.editor-block-list-item-vk-blocks-blog-card-featured-image:after,
+	.editor-block-list-item-vk-blocks-blog-card-site-title:after,
+	.editor-block-list-item-vk-blocks-blog-card-title:after,
+	.editor-block-list-item-vk-blocks-breadcrumb:after,
+	.editor-block-list-item-vk-blocks-button-outer:after,
+	.editor-block-list-item-vk-blocks-card:after,
+	.editor-block-list-item-vk-blocks-child-page:after,
+	.editor-block-list-item-vk-blocks-dynamic-text:after,
+	.editor-block-list-item-vk-blocks-timeline:after,
+	.editor-block-list-item-vk-blocks-step:after,
+	.editor-block-list-item-vk-blocks-outer:after,
+	.editor-block-list-item-vk-blocks-post-list:after,
+	.editor-block-list-item-vk-blocks-post-new-badge\/new-badge:after,
+	.editor-block-list-item-vk-blocks-table-of-contents:after,
+	.editor-block-list-item-vk-blocks-table-of-contents-new:after,
+	.editor-block-list-item-vk-blocks-simple-table:after,
+	.editor-block-list-item-vk-blocks-grid-column:after,
+	.editor-block-list-item-vk-blocks-gridcolcard:after,
+	.editor-block-list-item-vk-blocks-icon-card:after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		content: "Pro";
+		display: inline-block;
+		font-size: 10px;
+		line-height: 1;
+		color: #fff;
+		background-color: #cd3034;
+		border-radius: 2px;
+		padding: 3px 4px;
+	}
+}
+
+// ラベル名と説明の文字の太さも大きさも同じでわからないので太字に
+.block-prop-title {
+	font-weight: bold;
+}
+
+// パネルの文字サイズがテーマなどの影響を受けるので上書き
+.components-panel {
+	h4 {
+		font-size:14px;
+	}
+}
+
+// カードなどで文字位置のalignのツールバーが文字の右に回り込んでしまうため指定
+.components-panel__body .components-base-control__label {
+	display:block;
+}
+
+/* ブロックの種類入れ替えトグルについて、この指定がないと見えてしまう */
+.components-button.block-editor-block-switcher__toggle {
+	overflow: hidden;
+}
+
+/* スライダーを表示 : デフォルトだとbootstrapに非表示にされてしまう */
+input[type="range"] {
+	margin: 1px;
+}
+
+// これがないとスタッフブロックや各種画像の外側のbuttonが高さを検出できない
+button.image-button:not(.button-delete) {
+	height: 100%;
+}
+
+.components-base-control {
+	// サイトエディタ で スライドアイテム などの設定パネルで画像がはみ出る不具合を修正
+	img {
+		max-width: 100%;
+	}
+	// 独自に追加
+	&__title {
+		padding-bottom: 3px;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 1em;
+		display: block;
+	}
+	&__label {
+	}
+	&__help {
+		margin-top: 0;
+	}
+}
+
+.components-radio-control__option label {
+	margin-bottom: 0;
+}
+.components-checkbox-control__label {
+	margin-bottom: 0;
+}
+.components-color-palette {
+	display: block;
+	overflow: hidden;
+}
+
+.editor-url-input input[type="text"] {
+	width: 100%;
+}
+
+// カラムなどのインサーター
+@import "./editor_before_appender";
+
+// ブロックテンプレートのサイドバー調整
+@import "./editor_before_template_inserter";
+// アイコンリスト
+@import "./editor_before_icon_list";
+// 吹き出し画像読み込み
+@import "./editor_before_balloon";
+// VKボタン
+@import "./editor_before_button";
+// テーブル
+@import "./editor_before_table";
+// 枠線ボックス
+@import "./editor_before_border-box";
+// アイコン
+@import "./editor_before_icon";
+// アイコン横並び
+@import "./editor_before_icons";
+// ボタン横並び
+@import "./editor_before_button-outer";
+// VK見出し
+@import "./editor_before_vk-heading";
+// faq
+@import "./editor_before_faq";
+// breadcrumb
+@import "./editor_before_breadcrumb";
+// slider
+@import "./editor_before_slider";
+// グリッドカラムカード
+@import "./editor_before_gridcolcard";
+// edit custom css extension
+@import "./editor_before_custom-css-extension";
+// edit custom block variation
+@import "./editor_before_custom-block-variation";
+// archive-list
+@import "./editor_before_archive-list";
+
+// VK Outer 編集パネル
+$color-danger: #dd3333;
+.vk_outer_sidebar_bgImage {
+	position: relative;
+	.components-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		transition: all 1s;
+	}
+	.button-delete {
+		opacity: 0;
+		border: 1px solid $color-danger;
+		color: $color-danger;
+		transition: all 1s;
+		&:hover {
+			background-color: $color-danger;
+			border: 1px solid #b72a2a;
+			color: #fff;
+		}
+	}
+	&:hover .button-delete {
+		transition: all 1s;
+		opacity: 1;
+	}
+}
+
+.vk_slider_item_sidebar_bgImage_button_container img {
+    min-width: 248px;
+}
+
+.mb-2+div.components-toolbar{
+	margin-top: 0!important;
+}
+
+
+/* editor area *********************************************/
+.editor-styles-wrapper, //サイトエディター用に追加
+// .edit-post-visual-editor,
+.components-tab-panel__tab-content{
+
+	.vk_width-full div[data-type="vk-blocks/slider-item"]{
+		max-width:100%;
+		.vk_slider_item-paddingLR-use,
+		.vk_slider_item-paddingLR-zero{
+			// コンテンツエリアをはみ出させる
+			.wp-block { max-width:100%; }
+		}
+	}
+
+	.is-sidebar-opened & .swiper-container.vk_slider.vk_width-full{
+		// サイドバー表示時に全幅要素がはみ出してサイドバーの下などに入り込むのを防止
+		margin-left: calc( 50% - 50vw + 140px );
+		margin-right: calc( 50% - 50vw + 140px );
+		padding-right:0;
+		padding-left:0;
+		width: calc( 100vw - 280px );
+	}
+
+
+// 編集画面での識別用枠
+.vk_spacer,
+.vk_slider,
+.vk_slider_item,
+.vk_animation {
+	border:1px dotted #ccc;
+}
+
+.vk_slider_item{
+	min-height:3em;
+	.block-editor-inner-blocks{
+		width: 100%;
+	}
+}
+
+// 固定ページ本文ブロック
+div[data-type="vk-blocks/page-content"].is-selected{
+	.vk_pageContent {
+		border:1px dotted #ccc;
+		opacity: 0.5;
+	}
+	.vk_pageContent_editBtn {
+		position: absolute;
+		z-index: 9999;
+		top:-3em;
+		right:0;
+	}
+}
+
+// Outer編集用CSS
+@import "./_editor_before_outer";
+
+// 選択投稿リスト編集用CSS
+@import "./_editor_before_select-post";
+
+// アニメーションブロックの識別用枠線
+@import "./editor_before_animation";
+
+// アイコンカードの見出しがテーマの見出し指定機能に負けるので上書き
+@import "./editor_before_icon-card";
+
+/* これがないとGutenberg標準のエディタCSSに負ける */
+h1:first-child.vk_prBlocks_item_title {
+	margin-top: 0.9em;
+}
+.vk_prContent_colTxt_title {
+	border: none;
+	&::after {
+		display: none;
+	}
+}
+
+/* Bootstrap Adjuster */
+$border_primary: 1px solid #e5e5e5;
+$color_font_default: #464646;
+
+$xs-max: 575.98px;
+$sm-max: 767.98px;
+$md-max: 991.98px;
+$lg-max: 1199.98px;
+$xl-max: 1399.98px;
+
+$sm-min: 576px;
+$md-min: 768px;
+$lg-min: 992px;
+$xl-min: 1200px;
+$xxl-min: 1200px;
+
+$color-danger: #b52727;
+
+/*-------------------------------------------*/
+/* card
+/*-------------------------------------------*/
+
+// Card ボタンリンクの説明
+.postList_itemCard_button-option {
+	margin-bottom: 5px;
+}
+
+.vk_post_imgOuter {
+	position: relative;
+	.components-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		transition: all 1s;
+	}
+	.button-delete {
+		opacity: 0;
+		border: 1px solid $color-danger;
+		color: $color-danger;
+		transition: all 1s;
+		&:hover {
+			background-color: $color-danger;
+			color: #fff;
+		}
+	}
+}
+.vk_post_imgOuter:hover .button-delete {
+	transition: all 1s;
+	opacity: 1;
+}
+
+/*-------------------------------------------*/
+/* .vk_posts
+/*-------------------------------------------*/
+@import "./editor_before_vk-posts";
+
+/*-------------------------------------------*/
+/* .vk_grid-column Layout
+/*-------------------------------------------*/
+@import "./editor_before_grid-column";
+
+/*-------------------------------------------*/
+/* edit hidden block class
+/*-------------------------------------------*/
+.vk_edit_hidden_warning {
+	// border:1px dotted #666;
+	opacity: 0.4;
+}
+.vk_edit_hidden_all {
+	opacity: 0.2;
+}
+
+.vk_icon-card_item_title {//Added not to decorate
+	background-color: transparent;
+	margin-top: 0.9em;
+	margin-bottom: 0.6em;
+	font-size: 21px;
+	line-height: 1.4em;
+	border: none;
+	border-radius:unset;
+	padding: 0;
+	outline: unset;
+	outline-offset: unset;
+	box-shadow: unset;
+	color: inherit;
+	display: block;
+	&::before {
+		content: none;
+	}
+	&::after {
+		border: none;
+	}
+}
