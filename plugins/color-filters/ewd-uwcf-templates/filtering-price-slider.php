@@ -1,0 +1,4 @@
+<div class='ewd-uwcf-price-slider-title'><?php _e( 'Price', 'color-filters' ); ?></div>
+<div id='ewd-uwcf-price-slider' data-min_price='<?php echo ( isset( $_GET['min_price'] ) ? esc_attr( sanitize_text_field( $_GET['min_price'] ) ) : 0 ); ?>' data-max_price='<?php echo ( isset( $_GET['max_price'] ) ? esc_html( sanitize_text_field( $_GET['max_price'] ) ) : esc_attr( $this->get_max_wc_price() ) ); ?>' data-wc_max_price='<?php echo esc_attr( $this->get_max_wc_price() ); ?>'></div>
+<div class='ewd-uwcf-price-slider-min'><?php echo ( isset( $_GET['min_price'] ) ? esc_attr( sanitize_text_field( $_GET['min_price'] ) ) : 0 ); ?></div>
+<div class='ewd-uwcf-price-slider-max'><?php echo ( isset( $_GET['max_price'] ) ? esc_attr( sanitize_text_field( $_GET['max_price'] ) ) : $this->get_max_wc_price() ); ?></div>
