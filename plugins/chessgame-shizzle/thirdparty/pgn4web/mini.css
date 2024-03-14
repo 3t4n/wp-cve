@@ -1,0 +1,436 @@
+/*
+ *  pgn4web javascript chessboard
+ *  copyright (C) 2009-2014 Paolo Casaschi
+ *  see README file and http://pgn4web.casaschi.net
+ *  for credits, license and more details
+ */
+
+
+.boardTable {
+	border-style: double;
+	border-color: black;
+	border-width: 3px;
+	/*box-shadow: 0px 0px 15px #AAAAAA;*/
+	width: 500px;
+}
+
+#GameBoard .boardTable img.pieceImage {
+	width: 50px;
+	height: 50px;
+	max-width: none;
+	max-height: none;
+}
+
+.whiteSquare,
+.blackSquare,
+.highlightWhiteSquare,
+.highlightBlackSquare {
+	width: 28px;
+	height: 28px;
+}
+
+
+/* Board Themes */
+
+/* 365chess */
+.cs-boardtheme-365chess .whiteSquare {
+	background-color: #EEEEEE;;
+}
+.cs-boardtheme-365chess .blackSquare {
+	background-color: #7186B8;
+}
+
+/* Bamboo */
+.cs-boardtheme-bamboo #GameBoard .boardTable {
+	background-image: url("../boardthemes/bamboo.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-bamboo .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-bamboo .blackSquare {
+	background-color: transparent;
+}
+
+/* Beyer */
+.cs-boardtheme-beyer .whiteSquare {
+	background-color: #f4f4f4;;
+}
+.cs-boardtheme-beyer .blackSquare {
+	background-color: #aaaaaa;
+	background-image: url("../boardthemes/beyer.png");
+	background-size: contain;
+}
+
+/* Blogger */
+.cs-boardtheme-blogger .whiteSquare {
+	background-color: #ede8d5;;
+}
+.cs-boardtheme-blogger .blackSquare {
+	background-color: #cfcbb3;
+}
+
+/* Blue */
+.cs-boardtheme-blue .whiteSquare {
+	background-color: #dee3e6;;
+}
+.cs-boardtheme-blue .blackSquare {
+	background-color: #8ca2ad;
+}
+
+/* Burl */
+.cs-boardtheme-burl #GameBoard .boardTable {
+	background-image: url("../boardthemes/burl.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-burl .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-burl .blackSquare {
+	background-color: transparent;
+}
+
+/* Chess.com blue */
+.cs-boardtheme-chesscom_blue .whiteSquare {
+	background-color: #ededd9;
+}
+.cs-boardtheme-chesscom_blue .blackSquare {
+	background-color: #4c6d92;
+}
+
+/* Chess.com green */
+.cs-boardtheme-chesscom_green .whiteSquare {
+	background-color: #eeeed2;
+}
+.cs-boardtheme-chesscom_green .blackSquare {
+	background-color: #769656;
+}
+
+/* Chessonline */
+.cs-boardtheme-chessonline .whiteSquare {
+	background-color: #ffffff;
+}
+.cs-boardtheme-chessonline .blackSquare {
+	background-color: #deb887;
+}
+
+/* Chesstempo.com grey */
+.cs-boardtheme-chesstempo_grey .whiteSquare {
+	background-color: #cdcdcd;
+}
+.cs-boardtheme-chesstempo_grey .blackSquare {
+	background-color: #aaaaaa;
+}
+
+/* Coffee_bean */
+.cs-boardtheme-coffee_bean #GameBoard .boardTable {
+	background-image: url("../boardthemes/coffee_bean.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-coffee_bean .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-coffee_bean .blackSquare {
+	background-color: transparent;
+}
+
+/* Ebony_pine */
+.cs-boardtheme-ebony_pine #GameBoard .boardTable {
+	background-image: url("../boardthemes/ebony_pine.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-ebony_pine .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-ebony_pine .blackSquare {
+	background-color: transparent;
+}
+
+/* Executive */
+.cs-boardtheme-executive #GameBoard .boardTable {
+	background-image: url("../boardthemes/executive.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-executive .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-executive .blackSquare {
+	background-color: transparent;
+}
+
+
+/* Falken */
+.cs-boardtheme-falken .whiteSquare {
+	background-color: #f4f4f4;
+}
+.cs-boardtheme-falken .blackSquare {
+	background-color: #636b6a;
+}
+
+/* Informator */
+.cs-boardtheme-informator .whiteSquare {
+	background-color: #eeeeee;
+}
+.cs-boardtheme-informator .blackSquare {
+	background-color: #aaaaaa;
+}
+
+/* Joomla extension white-grey */
+.cs-boardtheme-joomla .whiteSquare {
+	background-color: #f6f6f6;
+}
+.cs-boardtheme-joomla .blackSquare {
+	background-color: #e0e0e0;
+}
+
+/* Lichess.org brown */
+.cs-boardtheme-lichess .whiteSquare {
+	background-color: #f0d9b5;
+}
+.cs-boardtheme-lichess .blackSquare {
+	background-color: #b58863;
+}
+
+/* Magazine */
+.cs-boardtheme-magazine .whiteSquare {
+	background-color: #ffffff;
+}
+.cs-boardtheme-magazine .blackSquare {
+	background-color: #aaaaaa;
+	background-image: url("../boardthemes/magazine.png");
+	background-size: contain;
+}
+
+/* Marble */
+.cs-boardtheme-marble #GameBoard .boardTable {
+	background-image: url("../boardthemes/marble.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-marble .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-marble .blackSquare {
+	background-color: transparent;
+}
+
+/* Marble_blue */
+.cs-boardtheme-marble_blue .whiteSquare {
+	background-color: #fff;
+	background-image: url("../boardthemes/marble_blue_white.png");
+	background-size: contain;
+}
+.cs-boardtheme-marble_blue .blackSquare {
+	background-color: #aaaaaa;
+	background-image: url("../boardthemes/marble_blue_black.png");
+	background-size: contain;
+}
+
+/* Marble_green */
+.cs-boardtheme-marble_green #GameBoard .boardTable {
+	background-image: url("../boardthemes/marble_green.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-marble_green .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-marble_green .blackSquare {
+	background-color: transparent;
+}
+
+/* New in Chess */
+.cs-boardtheme-newinchess .whiteSquare {
+	background-color: #ffffff;
+}
+.cs-boardtheme-newinchess .blackSquare {
+	background-color: #ddd2bc;
+}
+
+/* pgn4web */
+.cs-boardtheme-pgn4web .whiteSquare {
+	background-color: #eff4ec;
+}
+.cs-boardtheme-pgn4web .blackSquare {
+	background-color: #c6cec3;
+}
+
+/* PGNviewer_YUI */
+.cs-boardtheme-pgnviewer_yui .whiteSquare {
+	background-color: #ffffff;
+}
+.cs-boardtheme-pgnviewer_yui .blackSquare {
+	background-color: #edd6c2;
+}
+
+/* Shredderchess */
+.cs-boardtheme-shredderchess .whiteSquare {
+	background-color: #e9ecf0;
+}
+.cs-boardtheme-shredderchess .blackSquare {
+	background-color: #b5bdce;
+}
+
+/* Tornelo */
+.cs-boardtheme-tornelo .whiteSquare {
+	background-color: #dcecf2;
+}
+.cs-boardtheme-tornelo .blackSquare {
+	background-color: #85c9e2;
+}
+
+/* Wenge */
+.cs-boardtheme-wenge #GameBoard .boardTable {
+	background-image: url("../boardthemes/wenge.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-wenge .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-wenge .blackSquare {
+	background-color: transparent;
+}
+
+/* Wikipedia */
+.cs-boardtheme-wikipedia .whiteSquare {
+	background-color: #ffce9e;
+}
+.cs-boardtheme-wikipedia .blackSquare {
+	background-color: #d18b47;
+}
+
+/* Wood */
+.cs-boardtheme-wood #GameBoard .boardTable {
+	background-image: url("../boardthemes/wood.jpg");
+	background-size: contain;
+}
+.cs-boardtheme-wood .whiteSquare {
+	background-color: transparent;
+}
+.cs-boardtheme-wood .blackSquare {
+	background-color: transparent;
+}
+
+/* Zeit */
+.cs-boardtheme-zeit .whiteSquare {
+	background-color: #cccccc;
+}
+.cs-boardtheme-zeit .blackSquare {
+	background-color: #6494b1;
+}
+
+
+.highlightWhiteSquare,
+.highlightBlackSquare {
+	background-color: #ffb; /* #DAF4D7 */;
+	box-shadow: inset 0px 0px 0px 2px #929AAB;
+}
+
+#GameBoard .boardTable tr {
+	border: none;
+}
+#GameBoard .boardTable tr td {
+	border: none;
+	padding: 5px;
+}
+
+/* GameButtons, make sure it works with all themes and table.css */
+#GameButtons table {
+	width: 500px;
+	border: 1px solid #d1d1d1;
+	margin: 0;
+	text-align: left;
+}
+#GameButtons table tr th,
+#GameButtons table thead th {
+	color: #111;
+	font-weight: bold;
+	line-height: 18px;
+	padding: 5px 5px;
+}
+#GameButtons table tr th,
+#GameButtons table tr td {
+	border: none;
+	padding: 5px 5px;
+}
+#GameButtons table tr.odd td {
+	background: #f2f7fc;
+}
+#GameButtons table tr td input {
+	width: 80px !important;
+	max-width: 80px !important;
+	/* The color/background should be set by the theme... */
+	box-shadow: none;
+}
+
+.selectControl {
+	/* a "width" attribute here must use the !important flag to override default settings */
+}
+
+.optionSelectControl {
+
+}
+
+.buttonControlPlay,
+.buttonControlStop,
+.buttonControl {
+	/* a "width" attribute here must use the !important flag to override default settings */
+}
+
+.buttonControlSpace {
+	/* a "width" attribute here must use the !important flag to override default settings */
+}
+
+.searchPgnButton {
+	/* a "width" attribute here must use the !important flag to override default settings */
+}
+
+.searchPgnExpression {
+	/* a "width" attribute here must use the !important flag to override default settings */
+}
+
+.move,
+.variation {
+	font-weight: normal;
+	text-decoration: none;
+}
+
+a.move,
+a.variation,
+.commentMove {
+	white-space: nowrap;
+	box-shadow: none;
+	text-decoration: none;
+}
+
+.move {
+	color: black;
+}
+
+.comment,
+.variation {
+	color: gray;
+}
+
+.moveOn,
+.variationOn {
+	background: #DAF4D7;
+}
+
+
+/* Styles for mobile phones */
+@media only screen and (max-width: 650px) {
+
+	#GameButtons table tr td input {
+		width: 47px !important;
+		max-width: 47px !important;
+	}
+
+}
+
+@media only screen and (max-width: 550px) {
+
+	#GameButtons table tr td input {
+		width: 38px !important;
+		max-width: 38px !important;
+	}
+
+}
