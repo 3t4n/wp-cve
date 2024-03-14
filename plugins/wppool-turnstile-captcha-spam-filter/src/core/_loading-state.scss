@@ -1,0 +1,157 @@
+.loading_parent {
+	max-width: 100%;
+	width: 100%;
+	border-radius: 10px;
+	.section_parent {
+		margin-bottom: 40px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+	}
+    .loading_theme{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        .loading_title {
+            position: relative;
+            width: 30%;
+            margin-bottom: 15px;
+            height: 30px;
+            background: rgba(217, 217, 217, 0.6);
+            border-radius: 25px;
+            overflow: hidden;
+            
+        }
+        .loading_content{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            .radio_options{
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                margin-bottom: 15px;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                .radio_button_sc{
+                    position: relative;
+                    height: 30px;
+                    width: 30px;
+                    margin-right: 15px;
+                    background: rgba(217, 217, 217, 0.6);
+                    border-radius: 50px;
+                    overflow: hidden;
+                }
+                .theme_options{
+                    position: relative;
+                    width: 100px;
+                    height: 30px;
+                    background: rgba(217, 217, 217, 0.6);
+                    border-radius: 25px;
+                    overflow: hidden;
+                }
+            }
+            
+        }
+    }
+    .loading_submit{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        .loading_submit_inner{
+            position: relative;
+            width: 100%;
+            height: 30px;
+            background: rgba(217, 217, 217, 0.6);
+            border-radius: 25px;
+            overflow: hidden;
+            
+        }
+        .loading_title{
+            max-width: 220px;
+            margin-bottom: 15px;
+        }
+        .loading_content{
+            max-width: 350px;
+        }
+    }
+
+    .loading_custom_message{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        .loading_custom_message_inner{
+            position: relative;
+            width: 100%;
+            height: 30px;
+            background: rgba(217, 217, 217, 0.6);
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .loading_title{
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+        .loading_content{
+            max-width: 100%;
+        }
+    }
+
+
+    .loading_save_changes_btn{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        .loading_btn{
+            position: relative;
+            max-width: 150px;
+            width: 100%;
+            height: 30px;
+            background: rgba(217, 217, 217, 0.6);
+            border-radius: 25px;
+            overflow: hidden;
+            margin-top: 35px;
+        }
+    }
+    .radio_options .theme_options::before,
+    .radio_button_sc::before,
+    .loading_theme .loading_title::before,
+    .loading_submit_inner::before,
+    .loading_custom_message_inner::before,
+    .loading_save_changes_btn_inner::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background: #f6f7f8;
+        background-image: -webkit-gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #edeef1), color-stop(.4, #f6f7f8), to(#f6f7f8));
+        background-image: -webkit-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+        background-repeat: no-repeat;
+        background-size: 450px 400px;
+        animation: shimmer 1s linear infinite;
+    }
+    .theme_options::before,
+    .loading_save_changes_btn_inner::before {
+        animation-delay: 0.29s;
+    }
+    
+}
+
+@keyframes shimmer {
+    0%{
+      background-position: -450px 0;
+    }
+    100%{
+      background-position: 450px 0;
+    }
+  }

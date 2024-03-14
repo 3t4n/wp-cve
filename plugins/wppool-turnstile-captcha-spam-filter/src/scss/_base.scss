@@ -1,0 +1,266 @@
+/************************************
+//General Switch Button Styles
+*************************************/
+
+.switch {
+	position: relative;
+    display: block;
+    width: 48.21px;
+    height: 25px;
+	input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc;
+		-webkit-transition: .4s;
+		transition: .4s;
+		&:before {
+			position: absolute;
+			content: "";
+			height: 20.43px;
+			width: 20.43px;
+			left: 3px;
+			top: 48%;
+			transform: translateY(-48%);
+			background-color: white;
+			transition: 0.4s;
+		}
+		&.round {
+			border-radius: 12.5px;
+			&:before {
+				border-radius: 50%;
+			}
+		}
+	}
+	input {
+		&:checked {
+			& + .slider {
+				background-color: #3A89FF;
+				&:before {
+					-webkit-transform: translate(22px, -48%);
+					-ms-transform: translate(22px, -48%);
+					transform: translate(22px, -48%);
+				}
+			}
+		}
+		&:focus {
+			& + .slider {
+				box-shadow: 0 0 1px #3A89FF;
+			}
+		}
+	}
+}
+
+
+// Input Style
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=password],
+input[type=url]{
+    width: 100%;
+    padding: 15px;
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    border-radius: 4px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.357142857142857;
+	color: #3E4042;
+	box-shadow: none;
+	outline: none;
+	&:focus{
+		border: 1px solid #E4E4E4;
+		box-shadow: none;
+		outline: none;
+	}
+}
+
+/************************************
+//button style
+*************************************/
+
+button,
+input[type=submit]{
+	background: #E2E5EC;
+	border-radius: 5px;
+	padding: 15px 20px;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1.3125;
+	text-align: center;
+	color: #7A828E;
+	outline: none;
+	border: none;
+	box-shadow: none;
+	cursor: pointer;
+	&.bg_blue{
+		background: #3A89FF;
+		color: white;
+	}
+	&:focus{
+		border: none;
+		box-shadow: none;
+		outline: none;
+	}
+
+}
+
+
+/************************************
+//Toggle Switch
+*************************************/
+
+.access-toggle-switch {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 160px;
+    background: #EFF0F4;
+    border-radius: 19px;
+    padding: 4px 6px;
+
+    .label {
+		position: absolute;
+		display: inline-block;
+		width: 48%;
+		height: 80%;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 0;
+		border-radius: 4px;
+		transition: all 0.3s ease;
+
+        &.left {
+			transform: translateY(-50%) translateX(7%);
+			background: #FFFFFF;
+			border-radius: 30px;
+        }
+
+        &.right {
+			transform: translateY(-50%) translateX(100%);
+			background-color: #FFFFFF;
+			border-radius: 30px;
+        }
+    }
+
+    .btn-item {
+		z-index: 2;
+		transition: all 0.3s ease;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+
+        input {
+            display: none;
+        }
+
+        label {
+			font-size: 14px;
+			line-height: 1.4;
+			font-weight: 400;
+			padding: 7px 10px;
+			display: inline-block;
+			width: inherit;
+			text-align: center;
+			transition: all 0.3s ease;
+
+            &.active_disable {
+                color:  #D78674;
+				font-weight: 700;
+            }
+            &.active_enable {
+                color: #00A74D;
+				font-weight: 700;
+            }
+        }
+    }
+}
+
+
+/************************************
+//Radio Button Styles
+*************************************/
+.radio_container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	cursor: pointer;
+	font-size: 16px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		&:checked {
+			& ~ .radio_checkmark {
+				background-color: #2196F3;
+				&:after {
+					display: block;
+				}
+			}
+		}
+	}
+	.radio_checkmark {
+		&:after {
+			top: 50%;
+			left: 50%;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: white;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.radio_checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 18px;
+		width: 18px;
+		border: 1px solid #eee;
+		border-radius: 50%;
+		&:after {
+			content: "";
+			position: absolute;
+			display: none;
+		}
+	}
+}
+
+
+/************************************
+//Tool Tip Style
+*************************************/
+.customECTClass{
+	display: inline-flex!important;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+	max-width: 360px;
+	border-radius: 3px!important;
+	span{
+		text-align: left!important;
+	}
+	@media (max-width: 767.98px) { 
+		max-width: 215px;
+		padding: 8px 10px!important;
+	}
+}
+

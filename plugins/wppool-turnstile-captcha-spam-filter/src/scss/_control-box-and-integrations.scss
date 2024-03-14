@@ -1,0 +1,450 @@
+//animations
+@keyframes checked-box {
+    0% {
+        width: 0;
+        height: 0;
+        border-color: #212121;
+        transform: translate(0, 0) rotate(45deg);
+    }
+
+    33% {
+        width: 4px;
+        height: 0;
+        border-color: #212121;
+        transform: translate(0, 0) rotate(45deg);
+    }
+
+    100% {
+        width: 4px;
+        height: 8px;
+        border-color: #212121;
+        transform: translate(0, -8px) rotate(45deg);
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+
+    33% {
+        transform: scale(.7);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+//control-box-wrap
+.control-box-wrap {
+    &.not-validated {
+        opacity: .4;
+        pointer-events: none;
+    }
+
+    //control-box-header
+    .control-box-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .control-tabs {
+            @media (max-width: 575.98px) {
+                display: flex;
+            }
+
+            .control-tab {
+                border-radius: 5px 5px 0 0;
+                margin-right: 25px;
+
+                @media (max-width: 575.98px) {
+                    font-size: 14px;
+                    padding: 16px 10px;
+                    margin-right: 14px;
+                }
+
+                &.active {
+                    background-color: white;
+                    color: #3A89FF;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .rest_btn {
+            background-color: transparent;
+
+            @media (max-width: 575.98px) {
+                font-size: 14px;
+                padding: 16px 10px;
+            }
+        }
+    }
+
+    //control-box-body
+    .control-box-body {
+        .tab_content_container {
+            border: none;
+            padding: 25px;
+        }
+
+        .ect-integrations {
+            .integrations-body {
+                .colored-bg {
+                    max-width: 600px;
+                    margin-bottom: 15px !important;
+                    padding: 30px 25px 20px 25px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                }
+
+                .single-integration {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-wrap: nowrap;
+                    width: 100%;
+
+                    .ect-list-items {
+                        list-style: disc;
+                        margin: 0;
+                        padding: 0 0 15px 16px;
+                    }
+
+                    .integration_media {
+                        max-width: 62px;
+                        width: 100%;
+                        height: 62px;
+                        margin-right: 20px;
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+
+                    .integration_content {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        width: 100%;
+                        flex-wrap: nowrap;
+                        position: relative;
+
+                        .left_content {
+                            width: 100%;
+
+                            .widget-placement {
+                                padding: 8px 0px;
+
+                                select {
+                                    margin: 0;
+                                }
+                            }
+
+                            .disabled-id-input {
+                                max-width: 200px;
+                                padding: 8px 3px;
+                                margin: 0px 0 10px;
+                            }
+                        }
+
+                        .right_content {
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+
+                            .gravity-right {
+                                float: right;
+                                right: 0;
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-25%);
+
+                                label {
+                                    margin: 0 0 10px;
+                                    position: absolute;
+                                    display: block;
+                                    right: 0;
+                                    top: 0%;
+                                    transform: translateY(-220%)
+                                }
+
+                                input {
+                                    margin: 0 0 10px;
+                                }
+
+                                select {
+                                    margin: 0 0 10px;
+                                }
+
+                            }
+                        }
+
+                        .swptls-title {
+                            h3 {
+                                margin: 0 0 10px 0;
+                            }
+
+                            span {
+                                background-color: #1084ED;
+                                background-image: linear-gradient(hsla(0, 0%, 100%, 0.6), hsla(0, 0%, 100%, 0) 50%,
+                                        hsla(0, 0%, 0%, 0.3) 50%, hsla(0, 0%, 100%, 0.2));
+                                color: white;
+                                display: inline-block;
+                                margin-left: 10px;
+                                padding: 1px 7px;
+                                font-size: 12px;
+                                border-radius: 1.25rem;
+
+                                :hover {
+                                    transform: scale(1.05);
+                                }
+                            }
+                        }
+
+                        .active_install_wrapper {
+                            display: flex;
+                            align-items: flex-start;
+                            justify-content: space-between;
+                            width: 100%;
+                            margin-bottom: 10px;
+
+                            .info_message {
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-start;
+
+                                span {
+                                    margin-right: 5px;
+
+                                    svg {
+                                        width: 10px;
+                                        height: 10px;
+                                    }
+
+                                    &:last-child {
+                                        font-weight: 400;
+                                        font-size: 12px;
+                                        line-height: 1.333333333333333;
+                                        color: #F25725;
+                                    }
+                                }
+                            }
+
+                            .info_btn {
+                                &.install {
+                                    p {
+                                        margin: 0;
+                                    }
+                                }
+
+                            }
+                        }
+
+                        .status {
+                            font-weight: 600;
+                            font-size: 12px;
+                            line-height: 1.333333333333333;
+                            color: #525252;
+                            margin: 0 0 10px 0;
+                        }
+
+                        .feature-status {
+                            font-weight: 600;
+                            font-size: 13px;
+                            line-height: 1.00;
+                            color: #525252;
+                            margin: 10px 0 5px;
+                            position: relative;
+
+                            .tooltip_icon {
+                                svg {
+                                    position: absolute;
+                                    top: 1px;
+                                    margin-left: 2px;
+                                }
+
+                                .__react_component_tooltip.type-dark {
+                                    margin-left: 20px;
+                                }
+
+                            }
+                        }
+
+                        .integration-item {
+                            margin-bottom: 12px;
+                            transition: all 0.3s ease;
+
+                            &:last-child {
+                                margin-bottom: 16px;
+                            }
+
+                            &.disable_item {
+
+                                opacity: 0.6;
+                            }
+
+                            label {
+                                position: relative;
+
+                                input[type='checkbox'] {
+                                    position: absolute;
+                                    opacity: 0;
+                                    cursor: pointer;
+                                    height: 0;
+                                    width: 0;
+                                }
+
+                                /* Create a custom checkbox */
+                                .checkbox_checkmark {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    height: 18px;
+                                    width: 18px;
+                                    background: #FFFFFF;
+                                    border: 1px solid #BBBDCA;
+                                    border-radius: 3px;
+                                }
+
+                                /* When the checkbox is checked, add a blue background */
+                                input[type='checkbox']:checked~.checkbox_checkmark {
+                                    background-color: #2196F3;
+                                }
+
+                                /* Create the checkbox_checkmark/indicator (hidden when not checked) */
+                                .checkbox_checkmark:after {
+                                    content: "";
+                                    position: absolute;
+                                    display: none;
+                                }
+
+                                /* Show the checkbox_checkmark when checked */
+                                input[type='checkbox']:checked~.checkbox_checkmark:after {
+                                    display: block;
+                                }
+
+                                /* Style the checkbox_checkmark/indicator */
+                                .checkbox_checkmark:after {
+                                    left: 5.5px;
+                                    top: 2px;
+                                    width: 3.8px;
+                                    height: 7.5px;
+                                    border: solid white;
+                                    border-width: 0px 3px 3px 0;
+                                    transform: rotate(45deg);
+                                }
+
+                                .checkbox_label {
+                                    margin-left: 25px;
+                                }
+
+                            }
+
+
+
+                        }
+
+                        button {
+                            padding: 0;
+                            background-color: transparent;
+                            color: #4D7EFF;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            &.btn_arrow_down {
+                                svg {
+                                    height: 10px;
+                                    width: 10px;
+                                    margin-left: 4px;
+                                    margin-top: 4px;
+                                }
+                            }
+
+                            &.btn_arrow_up {
+                                svg {
+                                    height: 10px;
+                                    width: 10px;
+                                    margin-left: 4px;
+                                    margin-top: 4px;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ect-install-button,
+.ect-active-button {
+    background: #FFEDDF;
+    border: 1px solid #FFD5B5;
+    border-radius: 12.5px;
+    padding: 4px 16px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.333333333333333;
+    outline: none;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    font-size: 15px;
+
+    &.ect-active-button {
+        color: #0758D1;
+        background: #EBF5FF;
+        border: 1px solid #D2E4FF;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+        border: 1px solid #FFD5B5;
+    }
+
+    &:hover {
+        background: darken($color: #FFEDDF, $amount: 5%);
+    }
+}
+
+.ect-install-button {
+    padding: 4px 15px !important;
+    color: #ff764a !important;
+    background: #ffeddf !important;
+    border: 1px solid #ffd5b5;
+    border-radius: 23px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: darken($color: #ffeddf, $amount: 5%);
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    }
+}
+
+.ect-active-button {
+    padding: 4px 15px !important;
+    color: #0758D1 !important;
+    background: #EBF5FF !important;
+    border: 1px solid #D2E4FF;
+    border-radius: 23px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: darken($color: #EBF5FF, $amount: 5%);
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    }
+}
