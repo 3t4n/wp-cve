@@ -1,0 +1,84 @@
+{
+	"name": "wpdesk/gateway-wp-pay",
+	"authors": [
+		{
+			"name": "Krzysiek",
+			"email": "krzysiek@wpdesk.pl"
+		}
+	],
+	"config": {
+		"sort-packages": true,
+		"platform": {
+			"php": "7.4"
+		},
+		"allow-plugins": {
+			"wpdesk/wp-wpdesk-activation-reminder": true,
+			"cweagans/composer-patches": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"wpdesk/wp-codeception": true,
+			"wpdesk/wp-wpdesk-composer": true
+		}
+	},
+	"prefer-stable": true,
+	"minimum-stability": "stable",
+	"require": {
+		"php": ">=7.4",
+		"psr/http-message": "^1",
+		"psr/container": "^1",
+		"psr/log": "^1",
+		"wpdesk/wp-wpdesk-helper-override": "^1.1.0",
+		"ext-json": "*",
+		"ext-simplexml": "*",
+		"doctrine/annotations": "2.0.1"
+	},
+	"require-dev": {
+		"10up/wp_mock": "*",
+		"php-stubs/woocommerce-stubs": "^5.2",
+		"phpunit/phpunit": "<7",
+		"wpdesk/wp-plugin-flow-free": "^1",
+		"wpdesk/wp-wpdesk-composer": "^2",
+		"wpdesk/wp-codeception": "^2",
+		"wpdesk/ltv-dashboard-widget": "^1.5",
+		"wpdesk/bm-sdk": "3.2.1",
+		"wpdesk/wp-logs": "^1"
+	},
+	"autoload": {
+		"classmap": [
+			"vendor_prefixed"
+		],
+		"psr-4": {
+			"WPDesk\\GatewayWPPay\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests"
+		],
+		"exclude-from-classmap": [
+			"tests/unit/stubs"
+		]
+	},
+	"extra": {
+		"prefix_psr": true,
+		"text-domain": "pay-wp",
+		"translations-folder": "lang",
+		"translation-file-headers": {
+			"Project-Id-Version": "Gateway Autopay",
+			"Last-Translator": "Krzysztof Dyszczyk <krzysiek@wpdesk.pl>",
+			"X-Poedit-WPHeader": "pay-wp.php"
+		},
+		"po-files": {
+			"pl_PL": "pl_PL.po"
+		}
+	},
+	"scripts": {
+		"test": "echo composer is alive",
+		"phpcs": "phpcs",
+		"phpunit-unit": "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never",
+		"phpunit-integration": "phpunit --configuration phpunit-integration.xml --coverage-text --colors=never",
+		"docs": "apigen generate",
+		"post-install-cmd": [
+			"rm -f vendor_prefixed/jms/serializer/src/Annotation/ReadOnly.php"
+		]
+	}
+}
