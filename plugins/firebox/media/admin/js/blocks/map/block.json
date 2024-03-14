@@ -1,0 +1,191 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "firebox/map",
+  "version": "1.0.0",
+  "title": "Map",
+  "description": "Display an OpenStreetMap on your website.",
+  "category": "firebox",
+  "keywords": [
+    "map",
+    "osm",
+    "openstreetmap",
+    "location"
+  ],
+  "attributes": {
+    "uniqueId": {
+      "type": "string",
+      "default": ""
+    },
+    "provider": {
+      "type": "string",
+      "default": "osm"
+    },
+    "latitude": {
+      "type": "string",
+      "default": ""
+    },
+    "longitude": {
+      "type": "string",
+      "default": ""
+    },
+    "scale": {
+      "type": "string",
+      "default": ""
+    },
+    "width": {
+      "type": "object",
+      "default": {
+        "desktop": "100%",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "height": {
+      "type": "object",
+      "default": {
+        "desktop": "350px",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "zoomControl": {
+      "type": "boolean",
+      "default": true
+    },
+    "zoom": {
+      "type": "number",
+      "default": 5
+    },
+    "markers": {
+      "type": "array",
+      "default": []
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "borderColor": {
+      "type": "string",
+      "default": ""
+    },
+    "borderWidth": {
+      "type": "number",
+      "default": 0
+    },
+    "borderStyle": {
+      "type": "string",
+      "default": "none"
+    },
+    "borderRadius": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "tablet": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "mobile": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "linked": true
+      }
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "boxShadow": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "type": "none",
+          "top": 0,
+          "left": 0,
+          "color": "",
+          "spread": 7,
+          "width": 0
+        },
+        "tablet": {
+          "type": "none",
+          "top": 0,
+          "left": 0,
+          "color": "",
+          "spread": 7,
+          "width": 0
+        },
+        "mobile": {
+          "type": "none",
+          "top": 0,
+          "left": 0,
+          "color": "",
+          "spread": 7,
+          "width": 0
+        }
+      }
+    }
+  },
+  "editorScript": [
+    "firebox-store",
+    "fpframework-leaflet",
+    "file:./index.js"
+  ],
+  "editorStyle": [
+    "fpframework-map-widget",
+    "fpframework-leaflet"
+  ]
+}

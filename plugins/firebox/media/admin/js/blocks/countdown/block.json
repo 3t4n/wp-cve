@@ -1,0 +1,382 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "firebox/countdown",
+  "version": "1.0.0",
+  "title": "Countdown",
+  "description": "Add an advanced countdown timer.",
+  "category": "firebox",
+  "keywords": [
+    "count",
+    "countdown",
+    "timer",
+    "countdown timer"
+  ],
+  "attributes": {
+    "uniqueId": {
+      "type": "string",
+      "default": ""
+    },
+    "countdownType": {
+      "type": "string",
+      "default": "static"
+    },
+    "value": {
+      "type": "string",
+      "default": ""
+    },
+    "timezone": {
+      "type": "string",
+      "default": "server"
+    },
+    "dynamicDays": {
+      "type": "number",
+      "default": 0
+    },
+    "dynamicHours": {
+      "type": "number",
+      "default": 0
+    },
+    "dynamicMinutes": {
+      "type": "number",
+      "default": 0
+    },
+    "dynamicSeconds": {
+      "type": "number",
+      "default": 0
+    },
+    "finishText": {
+      "type": "string",
+      "default": "Countdown finished."
+    },
+    "redirectURL": {
+      "type": "string",
+      "default": ""
+    },
+    "format": {
+      "type": "string",
+      "default": ""
+    },
+    "theme": {
+      "type": "string",
+      "default": "default"
+    },
+    "countdownAction": {
+      "type": "string",
+      "default": "keep"
+    },
+    "align": {
+      "type": "string",
+      "default": ""
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "days": {
+      "type": "boolean",
+      "default": true
+    },
+    "daysLabel": {
+      "type": "string",
+      "default": "Days"
+    },
+    "hours": {
+      "type": "boolean",
+      "default": true
+    },
+    "hoursLabel": {
+      "type": "string",
+      "default": "Hrs"
+    },
+    "minutes": {
+      "type": "boolean",
+      "default": true
+    },
+    "minutesLabel": {
+      "type": "string",
+      "default": "Mins"
+    },
+    "seconds": {
+      "type": "boolean",
+      "default": true
+    },
+    "secondsLabel": {
+      "type": "string",
+      "default": "Secs"
+    },
+    "separator": {
+      "type": "boolean",
+      "default": false
+    },
+    "doubleZeroesFormat": {
+      "type": "boolean",
+      "default": true
+    },
+    "itemSize": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "gap": {
+      "type": "object",
+      "default": {
+        "desktop": 20,
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "itemBorderColor": {
+      "type": "string",
+      "default": ""
+    },
+    "itemBorderWidth": {
+      "type": "number",
+      "default": 0
+    },
+    "itemBorderStyle": {
+      "type": "string",
+      "default": "none"
+    },
+    "itemBorderRadius": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "tablet": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "mobile": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "linked": true
+      }
+    },
+    "itemBackgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "digitsWrapperMinWidth": {
+      "type": "number",
+      "default": 0
+    },
+    "digitsWrapperPadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "digitsWrapperBackgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "digitsWrapperBorderRadius": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "tablet": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "mobile": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "linked": true
+      }
+    },
+    "digitMinWidth": {
+      "type": "number",
+      "default": 0
+    },
+    "digitsFontSize": {
+      "type": "object",
+      "default": {
+        "desktop": 25,
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "digitsFontWeight": {
+      "type": "string",
+      "default": 400
+    },
+    "digitsPadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "digitsGap": {
+      "type": "object",
+      "default": {
+        "desktop": 0,
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "digitBackgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "digitBorderRadius": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "tablet": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "mobile": {
+          "top_left": "",
+          "top_right": "",
+          "bottom_right": "",
+          "bottom_left": ""
+        },
+        "linked": true
+      }
+    },
+    "digitTextColor": {
+      "type": "string",
+      "default": ""
+    },
+    "labelFontSize": {
+      "type": "object",
+      "default": {
+        "desktop": 13,
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "labelFontWeight": {
+      "type": "string",
+      "default": 400
+    },
+    "unitLabelMarginTop": {
+      "type": "number",
+      "default": 5
+    },
+    "unitLabelTextColor": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": [
+    "firebox-store",
+    "file:./index.js"
+  ],
+  "editorStyle": "fpframework-countdown-widget"
+}

@@ -1,0 +1,2 @@
+document.addEventListener("DOMContentLoaded",function(e){document.addEventListener("click",function(e){if(e.target.closest(".fpf-notification-close")){var t=e.target.closest(".fpf-notification");if(e.preventDefault(),!t.classList.contains("readonly")){var o=t.dataset.cookieId;if(o){!function(e,t,o){var i="";if(o){var n=new Date;n.setTime(n.getTime()+24*o*60*60*1e3),i="; expires="+n.toUTCString()}document.cookie=e+"="+(t||"")+i+"; path=/; secure"}(o,1,t.dataset.closeCookieDays)}t.remove()}}})});
+

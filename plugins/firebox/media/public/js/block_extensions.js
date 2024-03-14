@@ -1,0 +1,2 @@
+document.addEventListener("DOMContentLoaded",function(){document.addEventListener("click",function(e){var t,o,a;e.target.closest("[data-fbox-copy-clipboard]")&&(e.preventDefault(),""!==(o=(t=e.target.closest("[data-fbox-copy-clipboard]")).getAttribute("data-fbox-copy-clipboard"))&&(navigator.clipboard.writeText(o),(a=t.closest(".fb-inst"))&&a.querySelector(".fb-dialog").classList.add("fbox-copied"),t.classList.add("fbox-copied"),setTimeout(function(){t.classList.remove("fbox-copied"),a&&a.querySelector(".fb-dialog").classList.remove("fbox-copied")},1e3)))})});
+

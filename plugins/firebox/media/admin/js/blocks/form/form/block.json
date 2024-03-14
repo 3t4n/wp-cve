@@ -1,0 +1,362 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "firebox/form",
+  "version": "1.0.0",
+  "title": "Form",
+  "description": "Create an interactive newsletter, marketing, suggestion or contact form.",
+  "category": "firebox",
+  "keywords": [
+    "form",
+    "forms",
+    "contact form"
+  ],
+  "attributes": {
+    "uniqueId": {
+      "type": "string",
+      "default": ""
+    },
+    "formName": {
+      "type": "string",
+      "default": "Untitled Form"
+    },
+    "maxWidth": {
+      "type": "string",
+      "default": ""
+    },
+    "gap": {
+      "type": "object",
+      "default": {
+        "desktop": "24px",
+        "tablet": "",
+        "mobile": ""
+      }
+    },
+    "labelTextColor": {
+      "type": "string",
+      "default": "#888"
+    },
+    "labelFontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "labelPosition": {
+      "type": "string",
+      "default": "top"
+    },
+    "labelRequiredFieldIndication": {
+      "type": "boolean",
+      "default": true
+    },
+    "inputTextColor": {
+      "type": "string",
+      "default": "#888"
+    },
+    "inputPlaceholderTextColor": {
+      "type": "string",
+      "default": "#999"
+    },
+    "inputBackgroundColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "inputFontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "10",
+        "right": "10",
+        "bottom": "10",
+        "left": "10",
+        "linked": true
+      }
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#ccc"
+    },
+    "borderWidth": {
+      "type": "number",
+      "default": 1
+    },
+    "borderStyle": {
+      "type": "string",
+      "default": "solid"
+    },
+    "borderHoverColor": {
+      "type": "string",
+      "default": ""
+    },
+    "borderFocusColor": {
+      "type": "string",
+      "default": ""
+    },
+    "inputBorderRadius": {
+      "type": "object",
+      "default": {
+        "top_left": 3,
+        "top_right": 3,
+        "bottom_right": 3,
+        "bottom_left": 3,
+        "linked": true
+      }
+    },
+    "actions": {
+      "type": "object",
+      "default": {}
+    },
+    "integrations": {
+      "type": "array",
+      "default": [
+        {
+          "label": "Send Email Notification",
+          "value": "Email"
+        },
+        {
+          "label": "MailChimp",
+          "value": "MailChimp"
+        },
+        {
+          "label": "Brevo",
+          "value": "Brevo"
+        }
+      ]
+    },
+    "emailSendToEmailAddress": {
+      "type": "string",
+      "default": "{fpf field.email}"
+    },
+    "emailSubject": {
+      "type": "string",
+      "default": "New Submission #{fpf submission.id}: Contact Form"
+    },
+    "emailFromName": {
+      "type": "string",
+      "default": "{fpf site.name}"
+    },
+    "emailFromEmail": {
+      "type": "string",
+      "default": "{fpf site.email}"
+    },
+    "emailReplyToName": {
+      "type": "string",
+      "default": ""
+    },
+    "emailReplyToEmail": {
+      "type": "string",
+      "default": ""
+    },
+    "emailCC": {
+      "type": "string",
+      "default": ""
+    },
+    "emailBCC": {
+      "type": "string",
+      "default": ""
+    },
+    "emailMessage": {
+      "type": "string",
+      "default": "{fpf all_fields}"
+    },
+    "mailchimpAPIKey": {
+      "type": "string",
+      "default": ""
+    },
+    "mailchimpListID": {
+      "type": "string",
+      "default": ""
+    },
+    "mailchimpDoubleOptin": {
+      "type": "boolean",
+      "default": false
+    },
+    "mailchimpUpdateExisting": {
+      "type": "boolean",
+      "default": true
+    },
+    "mailchimpTags": {
+      "type": "string",
+      "default": ""
+    },
+    "mailchimpTagsReplace": {
+      "type": "boolean",
+      "default": false
+    },
+    "mailchimpInterests": {
+      "type": "string",
+      "default": ""
+    },
+    "mailchimpInterestsReplace": {
+      "type": "boolean",
+      "default": false
+    },
+    "brevoAPIKey": {
+      "type": "string",
+      "default": ""
+    },
+    "brevoListID": {
+      "type": "string",
+      "default": ""
+    },
+    "brevoUpdateExisting": {
+      "type": "boolean",
+      "default": true
+    },
+    "brevoDoubleOptin": {
+      "type": "boolean",
+      "default": false
+    },
+    "brevoDOIRedirectURL": {
+      "type": "string",
+      "default": ""
+    },
+    "brevoDOITemplateID": {
+      "type": "string",
+      "default": ""
+    },
+    "honeypot": {
+      "type": "boolean",
+      "default": true
+    },
+    "submissionAction": {
+      "type": "string",
+      "default": "message"
+    },
+    "messageAfterSuccess": {
+      "type": "string",
+      "default": "Thanks for contacting us! We will get in touch with you shortly."
+    },
+    "redirectURL": {
+      "type": "string",
+      "default": ""
+    },
+    "storeSubmissions": {
+      "type": "boolean",
+      "default": true
+    },
+    "submissionDefaultState": {
+      "type": "string",
+      "default": 1
+    },
+    "resetForm": {
+      "type": "boolean",
+      "default": true
+    },
+    "hideForm": {
+      "type": "boolean",
+      "default": true
+    },
+    "errorFontSize": {
+      "type": "number",
+      "default": 14
+    },
+    "errorTextColor": {
+      "type": "string",
+      "default": "#ff0000"
+    },
+    "requiredFieldMessage": {
+      "type": "string",
+      "default": "This is a required field."
+    },
+    "invalidEmailMessage": {
+      "type": "string",
+      "default": "Please enter a valid email address!"
+    },
+    "honeypotFieldTriggeredMessage": {
+      "type": "string",
+      "default": "Honeypot field triggered."
+    },
+    "responseFontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "responseFontType": {
+      "type": "string",
+      "default": "default"
+    },
+    "responseFontFamily": {
+      "type": "object",
+      "default": "default"
+    },
+    "responseFontWeight": {
+      "type": "string",
+      "default": 400
+    },
+    "responseFontStyle": {
+      "type": "string",
+      "default": "normal"
+    },
+    "responseTextColor": {
+      "type": "string",
+      "default": ""
+    },
+    "responseBackgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "responsePadding": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "responseMargin": {
+      "type": "object",
+      "default": {
+        "desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "linked": true
+      }
+    },
+    "responseTextAlign": {
+      "type": "object",
+      "default": {
+        "desktop": "",
+        "tablet": "",
+        "mobile": ""
+      }
+    }
+  },
+  "editorScript": [
+    "firebox-store",
+    "file:./index.js"
+  ],
+  "editorStyle": "fb-block-form"
+}
