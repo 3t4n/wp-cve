@@ -1,0 +1,1 @@
+export const sliderProIcon = <svg viewBox="0 0 24 24" height="24" width="24"><path stroke="#000" stroke-width="1" fill="none" d="M1 20 L1 9 L16 9 L16 20 L1 20 Z M4 9 L4 6 L19 6 L19 17 L16 17 M7 6 L7 3 L22 3 L22 14 L19 14"/></svg>
