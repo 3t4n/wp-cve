@@ -1,0 +1,59 @@
+{
+	"name": "pronamic/pronamic-client",
+	"description": "WordPress plugin for Pronamic clients.",
+	"type": "wordpress-plugin",
+	"autoload": {
+		"psr-4": {
+			"Pronamic\\WordPress\\PronamicClient\\": "classes/"
+		},
+		"files": [
+			"includes/credits.php",
+			"includes/functions.php",
+			"includes/version.php"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"roots/wordpress-core-installer": true,
+			"automattic/jetpack-autoloader": true
+		},
+		"platform": {
+			"php": "8.0"
+		},
+		"platform-check": false,
+		"sort-packages": true,
+		"wp-slug": "pronamic-client"
+	},
+	"require": {
+		"php": ">=8.0",
+		"automattic/jetpack-autoloader": "^2.12",
+		"pronamic/pronamic-mollie-user-agent": "^1.0",
+		"pronamic/pronamic-wp-updater": "^1.0"
+	},
+	"require-dev": {
+		"overtrue/phplint": "^9.0",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"pronamic/pronamic-cli": "^1.1",
+		"pronamic/wp-coding-standards": "^2.0",
+		"roots/wordpress": "^6.3",
+		"vrana/adminer": "^4.8"
+	},
+	"scripts": {
+		"build": "vendor/bin/pronamic wp-build",
+		"translate": [
+			"@build",
+			"rsync --recursive --delete --verbose ./build/project/languages/ ./languages/"
+		],
+		"phpcbf": "XDEBUG_MODE=off vendor/bin/phpcbf",
+		"phpcs": "XDEBUG_MODE=off vendor/bin/phpcs -s -v --ignore=packages,build",
+		"phplint": "vendor/bin/phplint",
+		"release": [
+			"@build",
+			"vendor/bin/pronamic release-to-github",
+			"vendor/bin/pronamic release-to-pronamic",
+			"vendor/bin/pronamic release-to-wp-org"
+		]
+	}
+}
