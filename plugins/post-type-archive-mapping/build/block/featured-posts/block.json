@@ -1,0 +1,249 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "title": "Featured Posts by Term",
+  "apiVersion": 1,
+  "name": "ptam/featured-posts",
+  "category": "ptam-custom-query-blocks",
+  "icon": "<svg aria-hidden='true' focusable='false' data-prefix='fad' data-icon='tag' class='svg-inline--fa fa-tag fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><g class='fa-group'><path class='fa-secondary' fill='#585aa8' d='M497.94 225.94L286.06 14.06A48 48 0 0 0 252.12 0H48A48 48 0 0 0 0 48v204.12a48 48 0 0 0 14.06 33.94l211.88 211.88a48 48 0 0 0 67.88 0l204.12-204.12a48 48 0 0 0 0-67.88zM112 160a48 48 0 1 1 48-48 48 48 0 0 1-48 48z' opacity='0.7'></path><path class='fa-primary' fill='currentColor' d=''></path></g></svg>",
+  "description": "Highlight a term (category) and show the items within it. Perfect for term archives.",
+  "keywords": [
+    "featured",
+    "featured post",
+    "post",
+    "posts",
+    "category",
+    "term"
+  ],
+  "supports": {
+    "align": [
+      "wide",
+      "full",
+      "center"
+    ],
+    "anchor": true,
+    "html": false
+  },
+  "version": "5.1.4",
+  "textdomain": "post-type-archive-mapping",
+  "attributes": {
+    "taxonomy": {
+      "type": "string",
+      "default": "category"
+    },
+    "postType": {
+      "type": "string",
+      "default": "post"
+    },
+    "postLayout": {
+      "type": "string",
+      "default": "excerpt"
+    },
+    "displayPostContent": {
+      "type": "boolean",
+      "default": false
+    },
+    "term": {
+      "type": "string",
+      "default": "0"
+    },
+    "postsInclude": {
+      "type": "array",
+      "default": []
+    },
+    "postsExclude": {
+      "type": "array",
+      "default": []
+    },
+    "order": {
+      "type": "string",
+      "default": "DESC"
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "date"
+    },
+    "align": {
+      "type": "string",
+      "default": "wide"
+    },
+    "avatarSize": {
+      "type": "integer",
+      "default": 500
+    },
+    "imageType": {
+      "type": "string",
+      "default": "regular"
+    },
+    "imageTypeSize": {
+      "type": "string",
+      "default": "thumbnail"
+    },
+    "imageCrop": {
+      "type": "string",
+      "default": "landscape"
+    },
+    "fallbackImg": {
+      "type": "object",
+      "default": ""
+    },
+    "postsToShow": {
+      "type": "integer",
+      "default": 2
+    },
+    "termDisplayPaddingLeft": {
+      "type": "integer",
+      "default": 20
+    },
+    "termDisplayPaddingRight": {
+      "type": "integer",
+      "default": 20
+    },
+    "termDisplayPaddingTop": {
+      "type": "integer",
+      "default": 10
+    },
+    "termDisplayPaddingBottom": {
+      "type": "integer",
+      "default": 10
+    },
+    "termBackgroundColor": {
+      "type": "string",
+      "default": "#128c20"
+    },
+    "termTextColor": {
+      "type": "string",
+      "default": "#FFFFFF"
+    },
+    "termFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "termFontSize": {
+      "type": "integer",
+      "default": 20
+    },
+    "termTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "titleFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "titleFontSize": {
+      "type": "integer",
+      "default": 24
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "titleColorHover": {
+      "type": "string",
+      "default": "#128c20"
+    },
+    "containerId": {
+      "type": "string",
+      "default": "ptam-featured-post-list"
+    },
+    "disableStyles": {
+      "type": "boolean",
+      "default": false
+    },
+    "showMeta": {
+      "type": "boolean",
+      "default": true
+    },
+    "showMetaAuthor": {
+      "type": "boolean",
+      "default": true
+    },
+    "showMetaDate": {
+      "type": "boolean",
+      "default": true
+    },
+    "showMetaComments": {
+      "type": "boolean",
+      "default": false
+    },
+    "showFeaturedImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "showReadMore": {
+      "type": "boolean",
+      "default": true
+    },
+    "showExcerpt": {
+      "type": "boolean",
+      "default": true
+    },
+    "excerptLength": {
+      "type": "integer",
+      "default": 55
+    },
+    "excerptFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "excerptFontSize": {
+      "type": "integer",
+      "default": 18
+    },
+    "excerptTextColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "readMoreButtonText": {
+      "type": "string",
+      "default": "Read More"
+    },
+    "readMoreButtonFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "readMoreButtonTextColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "readMoreButtonTextHoverColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "readMoreButtonBackgroundColor": {
+      "type": "string",
+      "default": "#CCCCCC"
+    },
+    "readMoreButtonBackgroundHoverColor": {
+      "type": "string",
+      "default": "#adadad"
+    },
+    "readMoreButtonBorder": {
+      "type": "integer",
+      "default": 0
+    },
+    "readMoreButtonBorderColor": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "readMoreButtonBorderRadius": {
+      "type": "integer",
+      "default": 10
+    },
+    "preview": {
+      "type": "boolean",
+      "default": false
+    },
+    "showPagination": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "example": {
+    "attributes": {
+      "preview": true
+    }
+  },
+  "editorScript": "ptam-custom-posts-gutenberg",
+  "editorStyle": "ptam-style-editor-css"
+}

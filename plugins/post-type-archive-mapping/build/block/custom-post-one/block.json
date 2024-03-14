@@ -1,0 +1,263 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "title": "Custom Posts",
+  "apiVersion": 1,
+  "name": "ptam/custom-posts",
+  "category": "ptam-custom-query-blocks",
+  "icon": "<svg aria-hidden='true' focusable='false' data-prefix='fad' data-icon='th-list' class='svg-inline--fa fa-th-list fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><g class='fa-group'><path class='fa-secondary' fill='#585aa8' d='M488 352H205.33a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24H488a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24zm0-320H205.33a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24H488a24 24 0 0 0 24-24V56a24 24 0 0 0-24-24zm0 160H205.33a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24H488a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24z' opacity='0.4'></path><path class='fa-primary' fill='#585aa8' d='M125.33 192H24a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24h101.33a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24zm0-160H24A24 24 0 0 0 0 56v80a24 24 0 0 0 24 24h101.33a24 24 0 0 0 24-24V56a24 24 0 0 0-24-24zm0 320H24a24 24 0 0 0-24 24v80a24 24 0 0 0 24 24h101.33a24 24 0 0 0 24-24v-80a24 24 0 0 0-24-24z'></path></g></svg>",
+  "description": "Show a grid or list layout of custom post type archives that you can narrow down by post type, taxonomy, and term.",
+  "keywords": [
+    "custom post",
+    "post type"
+  ],
+  "version": "5.1.4",
+  "textdomain": "post-type-archive-mapping",
+  "attributes": {
+    "postType": {
+      "type": "string",
+      "default": "post"
+    },
+    "imageLocation": {
+      "type": "string",
+      "default": "regular"
+    },
+    "changeCapitilization": {
+      "type": "boolean",
+      "value": false
+    },
+    "imageSize": {
+      "type": "string",
+      "default": "ptam-block-post-grid-landscape"
+    },
+    "imageTypeSize": {
+      "type": "string",
+      "default": "thumbnail"
+    },
+    "imageType": {
+      "type": "string",
+      "default": "regular"
+    },
+    "avatarSize": {
+      "type": "integer",
+      "default": 500
+    },
+    "taxonomy": {
+      "type": "string",
+      "default": "category"
+    },
+    "displayTaxonomies": {
+      "type": "boolean",
+      "default": true
+    },
+    "taxonomyLocation": {
+      "type": "string",
+      "default": "regular"
+    },
+    "term": {
+      "type": "string",
+      "default": 0
+    },
+    "terms": {
+      "type": "string",
+      "default": "all"
+    },
+    "context": {
+      "type": "string",
+      "default": "view"
+    },
+    "className": {
+      "type": "string"
+    },
+    "postsToShow": {
+      "type": "number",
+      "default": 6
+    },
+    "pagination": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayTitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayTitleLink": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayCustomFields": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayPostDate": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayPostContent": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayPostExcerpt": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayPostAuthor": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayPostImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayPostLink": {
+      "type": "boolean",
+      "default": true
+    },
+    "postLayout": {
+      "type": "string",
+      "default": "grid"
+    },
+    "columns": {
+      "type": "integer",
+      "default": 2
+    },
+    "align": {
+      "type": "string",
+      "default": "center"
+    },
+    "width": {
+      "type": "string",
+      "default": "wide"
+    },
+    "order": {
+      "type": "string",
+      "default": "desc"
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "date"
+    },
+    "imageCrop": {
+      "type": "string",
+      "default": "landscape"
+    },
+    "readMoreText": {
+      "type": "string",
+      "default": "Continue Reading"
+    },
+    "trimWords": {
+      "type": "integer",
+      "default": 55
+    },
+    "titleAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "customFieldAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "imageAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "metaAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "contentAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "padding": {
+      "type": "integer",
+      "default": 0
+    },
+    "border": {
+      "type": "integer",
+      "default": 0
+    },
+    "borderRounded": {
+      "type": "number",
+      "default": 0
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "customFieldsColor": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "linkColor": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "contentColor": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "continueReadingColor": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "titleFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "customFieldsFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "metaFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "contentFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "continueReadingFont": {
+      "type": "string",
+      "default": "inherit"
+    },
+    "customFields": {
+      "type": "string",
+      "default": ""
+    },
+    "removeStyles": {
+      "type": "boolean",
+      "default": false
+    },
+    "titleHeadingTag": {
+      "type": "string",
+      "default": "h2"
+    },
+    "fallbackImg": {
+      "type": "object",
+      "default": ""
+    },
+    "preview": {
+      "type": "boolean",
+      "default": false
+    },
+    "wpmlLanguage": {
+      "type": "string",
+      "default": "en"
+    }
+  },
+  "example": {
+    "attributes": {
+      "preview": true
+    }
+  },
+  "editorScript": "ptam-custom-posts-gutenberg",
+  "editorStyle": "ptam-style-editor-css"
+}
