@@ -1,0 +1,367 @@
+/**
+* Plugin Name: PE Panels
+* Author: artur.kaczmarek@pixelemu.com
+* Version: 1.02
+*/
+
+/* ******************************* */
+/*  global styles                  */
+/* ******************************* */
+
+.pe-panels .pn-clearfix:before,
+.pe-panels .pn-clearfix::after {
+	content: ' ';
+	display: table;
+}
+.pe-panels .pn-clearfix::after {
+	clear: both;
+}
+
+.pe-panels .pn-readmore {
+	display: block;
+}
+
+.pe-panels .pn-thumbnail a {
+	display: block;
+}
+
+.pe-panels .pn-thumbnail.center {
+	margin: 0 0 15px;
+	text-align: center;
+}
+
+.pe-panels .pn-thumbnail.left {
+	margin: 0 15px 15px 0;
+	float: left;
+}
+
+.pe-panels .pn-thumbnail.right {
+	margin: 0 0 15px 15px;
+	float: right;
+}
+
+.pe-panels .pn-date {
+	opacity: 0.6;
+}
+
+.pe-panels .pn-list .pn-date,
+.pe-panels .pn-heading .pn-date {
+	margin: 0 10px 0 0;
+}
+
+.pe-panels .pn-date.above {
+	display: block;
+	margin: 0 0 5px;
+}
+
+.pe-panels .pn-date.below {
+	display: block;
+	margin: 5px 0 0;
+}
+
+.pe-panels .pn-subtitle {
+	display: block;
+	font-size: 0.75em;
+}
+
+/* ******************************* */
+/*  tabs                           */
+/* ******************************* */
+
+.pe-panels.tabs .pn-list {
+	margin: 0 -2px;
+	padding: 0;
+	outline: none;
+}
+
+.pe-panels.tabs .pn-list li {
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* for faster rendering purpose */
+.pe-panels.tabs.full.items-1 .pn-list li  { width: 100%;   }
+.pe-panels.tabs.full.items-2 .pn-list li  { width: 50%;    }
+.pe-panels.tabs.full.items-3 .pn-list li  { width: 33.33%; }
+.pe-panels.tabs.full.items-4 .pn-list li  { width: 25%;    }
+.pe-panels.tabs.full.items-5 .pn-list li  { width: 20%;    }
+.pe-panels.tabs.full.items-6 .pn-list li  { width: 16.66%; }
+.pe-panels.tabs.full.items-7 .pn-list li  { width: 14.28%; }
+.pe-panels.tabs.full.items-8 .pn-list li  { width: 12.50%; }
+.pe-panels.tabs.full.items-9 .pn-list li  { width: 11.11%; }
+.pe-panels.tabs.full.items-10 .pn-list li { width: 10%;    }
+
+.pe-panels.tabs .pn-list li a {
+	display: block;
+	padding: 10px 15px;
+	background: #ededed;
+	color: #444444;
+	text-decoration: none;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+	margin: 0 2px;
+	outline: none;
+}
+
+.pe-panels.tabs .pn-list li.active a,
+.pe-panels.tabs .pn-list li a:hover {
+	background: #dddddd;
+	color: #444444;
+}
+
+.pe-panels.tabs .pn-list li.active a {
+	cursor: default;
+}
+
+.pe-panels.tabs .pn-content {
+	border: 1px solid #dddddd;
+	padding: 30px;
+	display: none;
+}
+
+.pe-panels.tabs .pn-content.active {
+	display: block;
+}
+
+.pe-panels.tabs .pn-readmore {
+	margin: 30px 0 0;
+}
+
+/* positions */
+
+.pe-panels.tabs.desktop.left .pn-headings,
+.pe-panels.tabs.desktop.right .pn-headings {
+	width: 30%;
+}
+
+.pe-panels.tabs.desktop.left .pn-list,
+.pe-panels.tabs.desktop.right .pn-list {
+	margin: 0;
+}
+
+.pe-panels.tabs.desktop.left .pn-list li,
+.pe-panels.tabs.desktop.right .pn-list li {
+	width: 100%;
+}
+
+.pe-panels.tabs.desktop.left .pn-list li a,
+.pe-panels.tabs.desktop.right .pn-list li a {
+	margin: 0;
+}
+
+.pe-panels.tabs.desktop.left .pn-contents,
+.pe-panels.tabs.desktop.right .pn-contents {
+	width: 70%;
+}
+
+.pe-panels.tabs.desktop.left .pn-headings {
+	float: left;
+}
+
+.pe-panels.tabs.desktop.left .pn-contents {
+	float: left
+}
+
+.pe-panels.tabs.desktop.right .pn-headings {
+	float: right;
+}
+
+.pe-panels.tabs.desktop.right .pn-contents {
+	float: right;
+}
+
+/* cut text */
+
+.pe-panels.tabs.responsive .pn-list li.long a,
+.pe-panels.tabs.full .pn-list li a {
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* responsive */
+
+.pe-panels.tabs.responsive {
+	position: relative;
+}
+
+.pe-panels.tabs.responsive .pn-headings {
+	overflow: hidden;
+	margin: 0 20px;
+}
+
+.pe-panels.tabs.responsive .pn-subtitle {
+	display: none;
+}
+
+.pe-panels.tabs .pn-navi {
+	display: none;
+}
+
+.pe-panels.tabs.responsive .pn-navi {
+	display: block;
+}
+
+.pe-panels.tabs.responsive .pn-prev,
+.pe-panels.tabs.responsive .pn-next {
+	display: block;
+	position: absolute;
+	top: 0;
+	padding: 10px 0;
+	text-align: center;
+	width: 20px;
+	color: #444444;
+	background: #eeeeee;
+	z-index: 1;
+	text-decoration: none;
+}
+
+.pe-panels.tabs.responsive .pn-prev:hover,
+.pe-panels.tabs.responsive .pn-next:hover {
+	background: #cccccc;
+}
+
+.pe-panels.tabs.responsive .pn-prev.inactive,
+.pe-panels.tabs.responsive .pn-next.inactive,
+.pe-panels.tabs.responsive .pn-prev.inactive:hover,
+.pe-panels.tabs.responsive .pn-next.inactive:hover {
+	color: #cccccc;
+	cursor: default;
+	background: #eeeeee;
+}
+
+.pe-panels.tabs.responsive .pn-prev {
+	left: 0;
+	right: auto;
+}
+
+.pe-panels.tabs.responsive .pn-next {
+	right: 0;
+	left: auto;
+}
+
+.pe-panels.tabs.responsive .pn-prev:before {
+	content: '\2039';
+}
+
+.pe-panels.tabs.responsive .pn-next:before {
+	content: '\203A';
+}
+
+.pe-panels.tabs.responsive .pn-list {
+	position: relative;
+	white-space: nowrap;
+	-webkit-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+
+.pe-panels.tabs.responsive .pn-list,
+.pe-panels.tabs.responsive .pn-list li a {
+	margin: 0;
+}
+
+/* ******************************* */
+/*  accordion                      */
+/* ******************************* */
+
+.pe-panels.acco .pn-panel {
+	border-bottom: 1px solid #dddddd;
+}
+
+.pe-panels.acco .pn-panel:first-child {
+	border-top: 1px solid #dddddd;
+}
+
+.pe-panels.acco .pn-content {
+	display: none;
+}
+
+.pe-panels.acco .active .pn-content {
+	display: block;
+}
+
+.pe-panels.acco .pn-heading {
+	padding: 15px 30px 15px 0;
+	position: relative;
+}
+
+.pe-panels.acco .pn-heading a:after {
+	display: inline-block;
+	content: '\2193';
+	position: absolute;
+	top: 50%;
+	margin-top: -0.5em;
+	right: 0;
+	left: auto;
+	padding: 0 5px;
+	line-height: 1em;
+}
+
+.pe-panels.acco .active .pn-heading a:after {
+	content: '\2191';
+}
+
+.pe-panels.acco .pn-content {
+	padding: 0 0 15px;
+}
+
+.pe-panels.acco .pn-readmore {
+	margin: 15px 0 0;
+}
+
+/* ******************************* */
+/*  rtl                            */
+/* ******************************* */
+
+html[dir='rtl'] .pe-panels.tabs {
+	direction: ltr;
+}
+
+html[dir='rtl'] .pe-panels .pn-thumbnail.left {
+	margin: 0 0 15px 15px;
+	float: right;
+}
+
+html[dir='rtl'] .pe-panels .pn-thumbnail.right {
+	margin: 0 15px 15px 0;
+	float: left;
+}
+
+html[dir='rtl'] .pe-panels .pn-list .pn-date,
+html[dir='rtl'] .pe-panels .pn-heading .pn-date {
+	margin: 0 0 0 10px;
+}
+
+html[dir='rtl'] .pe-panels.tabs .pn-list li {
+	float: right;
+}
+
+html[dir='rtl'] .pe-panels.tabs.responsive .pn-prev {
+	right: 0;
+	left: auto;
+}
+
+html[dir='rtl'] .pe-panels.tabs.responsive .pn-next {
+	left: 0;
+	right: auto;
+}
+
+html[dir='rtl'] .pe-panels.tabs.responsive .pn-prev:before {
+	content: '\203A';
+}
+
+html[dir='rtl'] .pe-panels.tabs.responsive .pn-next:before {
+	content: '\2039';
+}
+
+html[dir='rtl'] .pe-panels.acco .pn-heading {
+	padding: 15px 0 15px 30px;
+}
+
+html[dir='rtl'] .pe-panels.acco .pn-heading a:after {
+	right: auto;
+	left: 0;
+}
