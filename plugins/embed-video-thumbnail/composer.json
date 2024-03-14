@@ -1,0 +1,33 @@
+{
+    "name": "ikanaweb/amazon-affiliate",
+    "type": "plugin",
+    "autoload": {
+        "psr-4": {
+            "Ikana\\EmbedVideoThumbnail\\": "src/",
+            "Tests\\Ikana\\EmbedVideoThumbnail\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "php": ">=5.6",
+        "bamarni/composer-bin-plugin": "^1.4",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpunit/phpunit": "^5.7"
+    },
+    "scripts": {
+        "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
+        "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+    },
+    "authors": [
+        {
+            "name": "ikanaweb",
+            "email": "contact@ikanaweb.com"
+        }
+    ]
+}
