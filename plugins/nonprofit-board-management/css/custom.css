@@ -1,0 +1,197 @@
+/********************************
+* General Board Mgmt
+********************************/
+.wrap #icon-nonprofit-board,
+.wrap #icon-board-mgmt,
+.wrap #icon-edit.icon32-posts-board_events,
+.wrap #icon-edit.icon32-posts-board_committees {
+  background: url('images/nonprofit-board-gavel.png') no-repeat 0 0;
+}
+/* menu icon for pre-3.8 WP installs */
+li.toplevel_page_nonprofit-board .wp-menu-image {
+  overflow: hidden;
+}
+#adminmenu li.toplevel_page_nonprofit-board img {
+  margin-top: -35px;
+  padding: 7px 0 0 2px;
+}
+#adminmenu li.toplevel_page_nonprofit-board:hover img,
+#adminmenu li.wp-has-current-submenu.toplevel_page_nonprofit-board img {
+  padding-top: 0;
+  margin-top: 0;
+}
+/* 3.8+ menu icon styles */
+/* set fallback dashicon, if browser does _not_ support SVG */
+.no-svg #toplevel_page_nonprofit-board div.wp-menu-image:before {
+  content: "\f307";
+}
+/* hide fallback dashicon, if browser does supports SVG and JavaScript */
+.svg.js #toplevel_page_nonprofit-board .wp-menu-image:before {
+  display: none;
+}
+.svg.js #toplevel_page_nonprofit-board .wp-menu-image {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIyMHB4IiBoZWlnaHQ9IjE4LjRweCIgdmlld0JveD0iMCAwIDIwIDE4LjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDIwIDE4LjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDpub25lO3N0cm9rZTojMDBGRjAwO3N0cm9rZS13aWR0aDowLjI1O3N0cm9rZS1taXRlcmxpbWl0OjEwO30KCS5zdDF7ZmlsbDojOTk5OTk5O30KCS5zdDJ7ZmlsbDojMkVBMkNDO30KCS5zdDN7ZmlsbDojRkZGRkZGO30KCS5zdDR7ZmlsbDojRkY3QkFDO30KCS5zdDV7ZmlsbDojRkY5MzFFO30KCS5zdDZ7ZmlsbDojN0FDOTQzO30KPC9zdHlsZT4KPHBhdGggY2xhc3M9InN0MSIgZD0iTTE3LjksMTcuOWMtMSwwLjYtMS4xLTAuNi0xLjEtMC42cy01LTMuOC01LjQtNC4xYy0xLjMsMC40LTEuMS0wLjktMS4xLTAuOVMxMC4yLDEyLjIsMTAsMTIKCWMwLDAtMS4yLDAuNi0xLjItMC43bDIuNi0yLjhsMC40LDBjMC45LDAuMiwwLjQsMS4zLDAuNCwxLjNzMC4yLDAuMiwwLjMsMC4zYzEuMy0wLjIsMS4xLDEsMS4xLDFzNS4zLDQsNS40LDQuMQoJYzEuMS0wLjMsMSwwLjYsMC45LDAuOUwxNy45LDE3Ljl6Ii8+CjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0xMS4zLDYuNGMwLDAtMC42LDEuNi0xLjcsM2MtMC44LDEuMS0yLjgsMi41LTIuOCwyLjVMMi4xLDguMWMwLDAsMC42LTEuOCwxLjgtMy4zQzUuNiwzLDYuNiwyLjYsNi42LDIuNgoJTDExLjMsNi40eiIvPgo8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNi4zLDEzLjhjLTAuMiwwLjMtMC42LDAuNC0wLjgsMC4yTDAuMyw5LjdDMC4xLDkuNSwwLjEsOS4yLDAuNCw4LjlsMC4yLTAuMmMwLjItMC4zLDAuNi0wLjQsMC44LTAuMmw1LjIsNC4zCgljMC4yLDAuMiwwLjIsMC41LTAuMSwwLjhMNi4zLDEzLjh6Ii8+CjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0xMy4xLDUuOGMtMC4yLDAuMy0wLjYsMC40LTAuOCwwLjJMNy4xLDEuOEM2LjksMS42LDYuOSwxLjMsNy4xLDFsMC4yLTAuMmMwLjItMC4zLDAuNi0wLjQsMC44LTAuMmw1LjMsNC4zCgljMC4yLDAuMiwwLjIsMC41LTAuMSwwLjhMMTMuMSw1Ljh6Ii8+Cjwvc3ZnPg==') !important;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/********************************
+* Board Events
+********************************/
+/* Event Meta Fields */
+.board-event-meta #event-description {
+  width: 25em;
+}
+.board-event-meta .error{
+  color: #f00;
+}
+
+/* Datepicker styles */
+body .ui-datepicker-calendar .ui-state-highlight {
+  border: 1px solid #fff;
+  background: #fff;
+}
+body .ui-datepicker-calendar .ui-state-active {
+  background: #21759b;
+  color: #fff;
+}
+
+/* Timepicker jQuery Add-On */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+/* Board Events List */
+#the-list #attending {
+  margin: 0 5px 5px 0;
+}
+#the-list .button-primary.active {
+  cursor: default;
+}
+
+/*RSVP Meta Box*/
+#board_event_rsvps h4 {
+  margin-bottom: .25em;
+}
+#board_event_rsvps .rsvp-link {
+  font-style: italic;
+}
+
+/********************************
+* Board Committees
+********************************/
+.committee-description-meta textarea {
+  width: 25em;
+}
+
+/********************************
+* Board Members List & Attendance Table
+********************************/
+#board-attendance-table {
+  margin-top: 20px;
+}
+#board-members-table .column-username,
+#board-attendance-table .column-username {
+  padding-bottom: 4px;
+}
+.member-attendance {
+  font-weight: normal;
+}
+
+/********************************
+* Attendance Tracking
+********************************/
+#board-attendance-table .row-actions {
+  visibility: visible;
+}
+#board_event_attendance tr input {
+  margin-left: 8px;
+}
+#board_event_attendance p {
+  font-style: italic;
+}
+
+/********************************
+* General Board Styles
+********************************/
+#icon-nonprofit-board {
+  background-image: url('../../../../wp-admin/images/icons32.png?ver=20121105');
+  background-position: -492px -5px;  
+}
+
+/********************************
+* Dashboard Widgets
+********************************/
+#board_members_db_widget table th {
+  padding: 3px 7px 2px;
+}
+#board_committees_db_widget p {
+  margin-top: 0;
+}
+#board_events_db_widget span.title {
+  font-size: 13px;
+  line-height: 1.7em;
+  font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+}
+#board_events_db_widget span.start-time {
+  color: #999;
+  font-size: 12px;
+  margin-left: 3px;
+}
+#board_events_db_widget div.location {
+  margin-bottom: 1em;
+}
+
+/********************************
+* Board Resources
+********************************/
+.winbm-resources-wrap {
+  width: 600px;
+}
+.board-resources h3 a {
+  font-weight: normal;
+}
+.custom-board-resources ul {
+  list-style: disc outside;
+  margin-left: 2em;
+}
+.edit-board-resources {
+  min-width: 763px;
+  margin-right: 300px;
+  padding-right: 20px;
+}
+#edit-resources-editor {
+  float: left;
+  min-width: 300px;
+  width: 100%;
+}
+.edit-board-resources #poststuff {
+  float: right;
+  width: 280px;
+  min-width: 280px;
+  margin-right: -300px;
+}
+.edit-board-resources .postbox .hndle {
+  cursor: default;
+  color: #000;
+}
+
+/********************************
+* Support
+********************************/
+.winbm-support-wrap {
+  width: 600px;
+}
+.support-heading span {
+  font-weight: bold;
+}
+.support-content.hide {
+  display: none;
+}
