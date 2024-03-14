@@ -1,0 +1,264 @@
+<?php // (C) Copyright 2011-2023 Bobbing Wide
+/**
+ * Functions for a system which is NOT WordPress
+ *
+ * It could be Drupal or some other PHP based CMS, perhaps not even a CMS
+ */
+ 
+
+/**
+ * Get the value for an option field
+ *  
+ * I need to decide if I should prefix each field with bw_
+ * Decision: I didn't prefix the fields in Drupal settings
+ * 
+ */
+if ( !function_exists( "bw_get_option" ) ) {
+function bw_get_option( $field ) {
+  if ( function_exists( "variable_get" ) ) {
+    $value = variable_get( $field, "" );
+  } else {
+    $value = bw_array_get( $GLOBALS, $field, null );
+  }
+  return( $value );
+}
+}
+ 
+/** 
+ * Dummy implementation of add_filter() so that shortcodes.php can be copied unchanged from WordPress.
+ */
+if ( !function_exists( "add_filter" ) ) {
+function add_filter() {
+ // Dummy implementation of add_filter() so that shortcodes.php can be copied unchanged from WordPress.
+} 
+}
+
+/**
+ * Dummy implementation of add_action for non WordPress sites
+ */
+if ( !function_exists( "add_action" ) ) {
+function add_action( $tag, $function_to_add, $priority=NULL, $accepted_args=NULL ) {
+// e.g. add_action( admin_init', array($this, 'bw_pp_admin_init'));
+}
+}
+
+/**
+ * Dummy implementation of apply_filters() so that shortcodes.php can be copied unchanged from WordPress.
+ */
+if ( !function_exists( "apply_filters" ) ) {
+function apply_filters( $filter, $value ) {
+  return $value;
+}
+}
+
+/**
+ * Dummy implementation of get_translations_for_domain for non WordPress sites
+ */
+if ( !function_exists( "get_translations_for_domain" ) ) {
+  function get_translations_for_domain( $domain ) {
+  return( new NOOP_Translations );
+}
+
+if ( !class_exists( 'NOOP_Translations' ) ):
+/**
+ * Provides the same interface as Translations, but doesn't do anything
+ */
+class NOOP_Translations {
+	var $entries = array();
+	var $headers = array();
+
+	function add_entry($entry) {
+		return true;
+	}
+
+	function set_header($header, $value) {
+	}
+
+	function set_headers($headers) {
+	}
+
+	function get_header($header) {
+		return false;
+	}
+
+	function translate_entry(&$entry) {
+		return false;
+	}
+
+	function translate($singular, $context=null) {
+		return $singular;
+	}
+
+	function select_plural_form($count) {
+		return 1 == $count? 0 : 1;
+	}
+
+	function get_plural_forms_count() {
+		return 2;
+	}
+
+	function translate_plural($singular, $plural, $count, $context = null) {
+			return 1 == $count? $singular : $plural;
+	}
+
+	function merge_with(&$other) {
+	}
+}
+endif;
+}
+
+if ( !function_exists( "wp_strip_all_tags" ) ) {
+function wp_strip_all_tags( $text ) { return( $text ); } 
+}
+
+if ( !function_exists( "esc_attr" ) ) {
+function esc_attr( $text ) { return( $text ); } 
+}
+
+if ( !function_exists( "esc_url" ) ) {
+function esc_url( $url ) { return $url; }
+}
+
+/** 
+ * Drupal implementation of site_url using the 'domain' variable 
+ * This is to allow for local implementations e.g. qw/contacts
+ */
+function site_url( $path=NULL, $scheme='http:' ) {
+  $url  = $scheme; 
+  $url .= '//';
+  $url .= bw_get_option( 'domain' );
+  $url .= $path;
+  return( $url );
+} 
+
+//echo "here" . PHP_EOL; 
+
+if ( bw_is_drupal() ) {    
+  require_once( "shortcodes.php" );  // This is a copy of the WordPress include specifically for the Drupal version of oik.
+}
+
+if ( !function_exists( "_doing_it_wrong" ) ) {
+	function _doing_it_wrong( $function, $message, $version ){
+		trigger_error( sprintf( '%1$s was called <strong>incorrectly</strong>. %2$s %3$s', $function, $message, $version ) );
+	}
+}
+
+if ( !function_exists( "_deprecated_function" ) ) {
+	function _deprecated_function( $function, $version, $replacement=null ) {
+		print_r( debug_backtrace() );
+		trigger_error( sprintf( '%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead.', $function, $version, $replacement ) );
+		die();
+	}
+}
+
+if ( !function_exists( "__" ) ) {
+	function __( $text, $textdomain=null ) {
+		return $text;
+	}
+}
+
+if ( !function_exists( "is_textdomain_loaded" ) ) {
+	function is_textdomain_loaded( $domain ) {
+		return false;
+	}
+}
+
+/**
+ * Recursive directory creation based on full path.
+ *
+ * Will attempt to set permissions on folders.
+ *
+ * @since 2.0.1
+ *
+ * @param string $target Full path to attempt to create.
+ * @return bool Whether the path was created. True if path already exists.
+ */
+function wp_mkdir_p( $target ) {
+	$wrapper = null;
+
+	// Strip the protocol.
+	if ( wp_is_stream( $target ) ) {
+		list( $wrapper, $target ) = explode( '://', $target, 2 );
+	}
+
+	// From php.net/mkdir user contributed notes.
+	$target = str_replace( '//', '/', $target );
+
+	// Put the wrapper back on the target.
+	if ( null !== $wrapper ) {
+		$target = $wrapper . '://' . $target;
+	}
+
+	/*
+	 * Safe mode fails with a trailing slash under certain PHP versions.
+	 * Use rtrim() instead of untrailingslashit to avoid formatting.php dependency.
+	 */
+	$target = rtrim( $target, '/' );
+	if ( empty( $target ) ) {
+		$target = '/';
+	}
+
+	if ( file_exists( $target ) ) {
+		return @is_dir( $target );
+	}
+
+	// Do not allow path traversals.
+	if ( false !== strpos( $target, '../' ) || false !== strpos( $target, '..' . DIRECTORY_SEPARATOR ) ) {
+		return false;
+	}
+
+	// We need to find the permissions of the parent folder that exists and inherit that.
+	$target_parent = dirname( $target );
+	while ( '.' !== $target_parent && ! is_dir( $target_parent ) && dirname( $target_parent ) !== $target_parent ) {
+		$target_parent = dirname( $target_parent );
+	}
+
+	// Get the permission bits.
+	$stat = @stat( $target_parent );
+	if ( $stat ) {
+		$dir_perms = $stat['mode'] & 0007777;
+	} else {
+		$dir_perms = 0777;
+	}
+
+	if ( @mkdir( $target, $dir_perms, true ) ) {
+
+		/*
+		 * If a umask is set that modifies $dir_perms, we'll have to re-set
+		 * the $dir_perms correctly with chmod()
+		 */
+		if ( ( $dir_perms & ~umask() ) != $dir_perms ) {
+			$folder_parts = explode( '/', substr( $target, strlen( $target_parent ) + 1 ) );
+			for ( $i = 1, $c = count( $folder_parts ); $i <= $c; $i++ ) {
+				chmod( $target_parent . '/' . implode( '/', array_slice( $folder_parts, 0, $i ) ), $dir_perms );
+			}
+		}
+
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * Tests if a given path is a stream URL
+ *
+ * @since 3.5.0
+ *
+ * @param string $path The resource path or URL.
+ * @return bool True if the path is a stream URL.
+ */
+function wp_is_stream( $path ) {
+	$scheme_separator = strpos( $path, '://' );
+
+	if ( false === $scheme_separator ) {
+		// $path isn't a stream.
+		return false;
+	}
+
+	$stream = substr( $path, 0, $scheme_separator );
+
+	return in_array( $stream, stream_get_wrappers(), true );
+}
+
+
