@@ -1,0 +1,260 @@
+/* -------------------------------------------------------------------
+// markItUp! Universal MarkUp Engine, JQuery plugin
+// By Jay Salvat - http://markitup.jaysalvat.com/
+//
+// Modified (heavily) by Robert Chen
+// ------------------------------------------------------------------*/
+.markItUp {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.markItUp .faux-signature {
+  margin-top: 0;
+}
+
+
+.markItUpHeader {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #f0f0f0;
+  background: rgba(237, 243, 245, 0.4);
+  -moz-box-shadow: 0px 1px 1px white inset;
+  -webkit-box-shadow: 0px 1px 1px white inset;
+  box-shadow: 0px 1px 1px white inset;
+}
+
+.markItUpHeader ul {
+  margin: 0;
+}
+
+.markItUpHeader a {
+  display: block;
+  padding: 3px;
+  margin: 0px;
+  width: 36px;
+  height: 36px;
+  color: transparent;
+  background-color: transparent;
+  overflow: hidden;
+  font-weight: 100;
+  font-size: 14px;
+  text-align: center;
+  text-indent: -1000px;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width: 480px) {
+
+  .markItUpHeader a {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.markItUpHeader a:hover {
+  background-color: #edf3f5;
+  text-decoration: none;
+  color: transparent;
+}
+
+.markItUpHeader a:hover:before {
+  color: #61778b;
+  text-shadow: 0px 0px 5px rgba(97, 119, 139, 0.5);
+}
+
+.markItUpHeader a:before {
+  display: block;
+  color: #9fafb8;
+  text-indent: 0;
+}
+
+.markItUpHeader .fa a:before {
+  font-family: FontAwesome;
+  font-size: 12px;
+}
+
+.markItUpHeader .ul a:before {
+  content: "\f0ca";
+}
+
+.markItUpHeader .ol a:before {
+  content: "\f0cb";
+}
+
+.markItUpHeader .link a:before {
+  content: "\f0c1";
+}
+
+.markItUpHeader .quote a:before {
+  content: "\f10d";
+}
+
+.markItUpHeader .heading a:before {
+  content: 'H';
+  text-decoration: underline;
+}
+
+.markItUpHeader .bold a:before {
+  content: 'B';
+  font-weight: bold;
+}
+
+.markItUpHeader .italic a:before {
+  content: 'I';
+  font-style: italic;
+}
+
+.markItUpHeader .preview {
+  float: right;
+  border: 0;
+}
+
+.markItUpHeader .preview a:before {
+  content: "\f06e";
+}
+
+.markItUpHeader .preview.ajax a {
+  background: url("/assets/app/loader.gif") no-repeat center center;
+}
+
+.markItUpHeader .preview.ajax a:before {
+  content: '';
+}
+
+
+.internal-note .markitup-preview {
+  background-color: #fff8e0;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwcHgiIHN0b3AtY29sb3I9IiNmZmZlZTgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZjZDgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0px, #fffee8), color-stop(100%, #fffcd8));
+  background-image: -moz-linear-gradient(top, #fffee8 0px, #fffcd8 100%);
+  background-image: -webkit-linear-gradient(top, #fffee8 0px, #fffcd8 100%);
+  background-image: linear-gradient(to bottom, #fffee8 0px, #fffcd8 100%);
+  -moz-transform: none;
+  -ms-transform: none;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.internal-note .markItUpHeader a:hover {
+  background-color: #fffee0;
+}
+
+.internal-note .markItUpHeader a:hover:before {
+  text-shadow: 0px 0px 5px rgba(207, 195, 143, 0.5);
+}
+
+.internal-note textarea {
+  background: transparent;
+}
+
+
+.markItUpButton, .markItUpButton.fa {
+  list-style: none;
+  float: left;
+  line-height: 38px;
+  vertical-align: middle;
+  border-right: 1px solid #f0f0f0;
+  margin-bottom: 0;
+}
+
+
+
+
+.miu-wrap {
+  margin-bottom: 20px;
+  position: relative;
+  min-height: 150px;
+  z-index: 1;
+}
+
+.miu-wrap .input-frame {
+  position: relative;
+  z-index: 1;
+  background: white;
+  padding-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.miu-wrap .input-frame textarea.frameless {
+  height: 100px;
+  resize: none;
+  border: 0;
+  box-shadow: none;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.miu-wrap .markitup-preview {
+  display: none;
+  position: relative;
+  z-index: 0;
+  padding: 40px 10px 11px;
+  margin: 0 1px 0;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  box-shadow: inset 0px 7px 5px -5px rgba(0, 0, 0, 0.15);
+}
+
+.miu-wrap .markitup-preview.show {
+  display: block;
+  margin-top: 0;
+  -moz-transition: margin 0.2s ease-in-out;
+  -o-transition: margin 0.2s ease-in-out;
+  -webkit-transition: margin 0.2s ease-in-out;
+  transition: margin 0.2s ease-in-out;
+}
+
+.miu-wrap .markitup-preview:after {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  content: 'Preview';
+  text-transform: uppercase;
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.miu-wrap .markitup-preview .preview:empty:before {
+  display: block;
+  content: 'Content is blank';
+  color: #bbb;
+  font-style: italic;
+  text-align: center;
+}
+
+.miu-wrap .markitup-preview .status {
+  position: absolute;
+  top: 11px;
+  right: 5px;
+  right: 10px;
+  font-size: 12px;
+}
+
+.miu-wrap .markitup-preview .status.loading {
+  background: url("/assets/app/loader.gif") no-repeat top left;
+  padding-left: 21px;
+}
+
+.miu-wrap .markitup-preview .preview ul {
+  list-style: disc;
+  margin-bottom: 10px;
+}
+
+.miu-wrap .markitup-preview .preview ol {
+  list-style: decimal;
+  margin-bottom: 10px;
+}
+
+.miu-wrap .markitup-preview .preview a {
+  word-wrap: break-word;
+}
