@@ -1,0 +1,196 @@
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
+ * Class adbutler_header_bidding_widget. Widget used for configuring and displaying adbutler header bidding zones.
+ */
+class adbutler_header_bidding_widget extends WP_Widget
+{
+    /**
+     * Base constructor for the class
+     */
+    function __construct()
+    {
+        parent::__construct('adbutler_hb', 'AdButler Header Bidding Widget', array('description' => 'Displays AdButler header bidding ad tags'));
+    }
+
+    /**
+     * @param array $new_instance New saved widget state
+     * @param array $old_instance Pre-existing widget state
+     *
+     * @return array The processed widget state ready to be saved to the db
+     */
+    function update($new_instance, $old_instance)
+    {
+        $instance = $old_instance;
+        if (is_numeric($new_instance['zone'])) {
+            $instance['zone'] = strip_tags($new_instance['zone']);
+        }
+
+        $instance['secure'] = true;
+        if (preg_match('^\d+x\d+$^', $new_instance['size'])) {
+            $instance['size'] = $new_instance['size'];
+        }
+
+        $instance['name'] = sanitize_text_field($new_instance['name']);
+        $instance['title'] = sanitize_text_field($new_instance['title']);
+
+        if ($instance['zone'] !== 0) {
+            $instance['tag_id'] = str_replace('-', '_', "{$this->id}_widget");
+        }
+
+        $instance['additional_sizes'] = sanitize_text_field($new_instance['additional_sizes']);
+
+        return $instance;
+    }
+
+    /**
+     * Our AdButler administration widget configuration form
+     *
+     * @param array $instance Widget state variables
+     *
+     * @return string|void
+     */
+    function form($instance)
+    {
+        $zone = 0;
+        $name_hidden = '';
+        $size_hidden = '';
+        $title = '';
+        $additional_sizes = '';
+
+        if ($instance) {
+            $zone = esc_attr($instance['zone']);
+            $size_hidden = esc_attr($instance['size']);
+            $name_hidden = esc_attr($instance['name']);
+            $title = esc_attr($instance['title']);
+            $additional_sizes = esc_attr($instance['additional_sizes']);
+        }
+
+        ?>
+        <div class="adbutler_widget">
+            <div class="adbutler-widget-config-section">
+                <label>
+                    <?php _e('Internal Title (only in Appearance->Widgets)'); ?>
+                    <input class="widefat"
+                           id="<?php echo $this->get_field_id('title'); ?>"
+                           name="<?php echo $this->get_field_name('title'); ?>"
+                           type="text"
+                           value="<?php echo esc_attr($title); ?>" />
+                </label>
+            </div>
+
+            <div class="adbutler-widget-config-section"
+                 title="Please select from one of the available zones to configure your advertisement placement.">
+                <label for="<?php echo $this->get_field_id('zone'); ?>">
+                    <?php _e('Zone', 'spark_domain'); ?>
+                </label>
+                <div id="adbutler_refresh_button">
+                    <input class="button button-secondary button-small"
+                           value="Refresh zones"
+                           onclick="adbutler.populate_zone_lists(true)">
+                </div>
+                <select class="adbutler_zone_select widefat"
+                        id="<?php echo $this->get_field_id('zone'); ?>"
+                        name="<?php echo $this->get_field_name('zone'); ?>"
+                        onchange="adbutler.handle_zone_select(this);"
+                        data-default-zone="<?php echo $zone ?>">
+
+                    <option value="0">-- Select a zone --</option>
+                    <?php if ($zone) { ?>
+                        <option value="<?php echo $zone ?>">
+                            <?php echo $name_hidden ?> (<?php echo $size_hidden ?>)
+                        </option>
+                    <?php } ?>
+                </select>
+            </div>
+
+            <div class="adbutler-widget-config-section adbutler-optional"
+                 title="Enter any additional sizes to use.">
+                <label for="<?php echo $this->get_field_id('additional_sizes'); ?>">
+                    Additional Sizes
+                </label>
+                <input class="widefat"
+                       id="<?php echo $this->get_field_id('additional_sizes'); ?>"
+                       name="<?php echo $this->get_field_name('additional_sizes'); ?>"
+                       type="text"
+                       value="<?php echo esc_attr($additional_sizes); ?>" />
+                <p class="adbutler-input-help-text">(Comma separated WxH values (ex: 300x600,160x600))</p>
+            </div>
+
+            <?php if (isset($instance['tag_id'])): ?>
+                <div title="An ad has been properly configured for this widget.">Ad properly configured</div>
+            <?php else: ?>
+                <div>
+                    <p title="Currently no ad has been properly configured for this widget and nothing will display.">
+                        No ad configured
+                    </p>
+                </div>
+            <?php endif; ?>
+
+            <input class="size_hidden"
+                   id="<?php echo $this->get_field_id('size'); ?>"
+                   type="hidden"
+                   name="<?php echo $this->get_field_name('size'); ?>"
+                   value="<?php echo $size_hidden ?>"
+                   readonly />
+            <input class="name_hidden"
+                   id="<?php echo $this->get_field_id('name'); ?>"
+                   type="hidden"
+                   name="<?php echo $this->get_field_name('name'); ?>"
+                   value="<?php echo $name_hidden ?>"
+                   readonly />
+        </div>
+
+        <?php if ($instance): ?>
+            <script type="text/javascript">
+                jQuery(function () {
+                    adbutler.update_all_lists();
+                });
+            </script>
+        <?php endif;
+    }
+
+    private function sizes_string_to_array($str)
+    {
+        $sizes = [];
+        $sizeStrings = explode(',', $str);
+
+        foreach ($sizeStrings as $size) {
+            $sizeParts = explode('x', $size);
+            if (count($sizeParts) === 2) {
+                $sizes[] = [intval($sizeParts[0]), intval($sizeParts[1])];
+            }
+        }
+
+        return $sizes;
+    }
+
+    /**
+     * Public Pacing widget --Ad tag if configured, otherwise nothing
+     *
+     * @param array $args Core widget variables
+     * @param array $instance current state widget to display
+     */
+    function widget($args, $instance)
+    {
+        global $abinst;
+        $atts = [
+            'tag_id' => $instance['tag_id'],
+            'zone_id' => $instance['zone'],
+            'secure' => $instance['secure'],
+            'size' => $this->sizes_string_to_array($instance['size'])[0],
+            'additional_sizes' => $this->sizes_string_to_array($instance['additional_sizes']),
+        ];
+
+        if (array_key_exists('tag_id', $instance)) {
+            $abinst::register_header_bidding_ad($atts);
+
+            echo "<div id='{$instance['tag_id']}'></div>";
+        }
+    }
+}
+	

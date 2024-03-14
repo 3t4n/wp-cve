@@ -1,0 +1,264 @@
+<?php
+
+
+/**
+ * Class adbutler_tag_builder
+ * Static functions for generating tags
+ */
+class adbutler_tag_builder
+{
+    protected static function getReferrer()
+    {
+        $protocol = 'https://';
+        return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    }
+
+    /**
+     * @param $def Array of variables required to build Async tags
+     *
+     * @return string
+     */
+    static function buildAsyncTags($def)
+    {
+        $size = explode('x', $def['size']);
+        $zone_id = $def['zone_id'];
+        $MID = $def['adbutler_id'];
+        $protocol = "https://" . $def['ssl_host_name'];
+
+        if (isset($def['extra_data']) && !empty($def['extra_data'])) {
+            $extra = ",extraData:'" . $def['extra_data'] . "'";
+        }
+        ob_start();
+        ?>
+        <script type="text/javascript">if (!window.AdButler) {
+                (function () {
+                    var s = document.createElement("script");
+                    s.async = true;
+                    s.type = "text/javascript";
+                    s.src = '<?php echo $protocol?>/app.js';
+                    var n = document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(s, n);
+                }());
+            }</script>
+        <script type="text/javascript">
+            var AdButler = AdButler || {};
+            AdButler.ads = AdButler.ads || [];
+            var abkw = window.abkw || '';
+            var plc<?php echo $zone_id?> = window.plc<?php echo $zone_id?> || 0;
+            document.write('<' + 'div id="placement_<?php echo $zone_id?>_' + plc<?php echo $zone_id?>+ '"></' + 'div>');
+            AdButler.ads.push({
+                handler: function (opt) {
+                    AdButler.register(<?php echo $MID?>,<?php echo $zone_id?>, [<?php echo $size[0]?>,<?php echo $size[1]?>], 'placement_<?php echo $zone_id?>_' + opt.place, opt);
+                },
+                opt: {
+                    place: plc<?php echo $zone_id?>++,
+                    keywords: abkw <?php echo empty($extra) ? '' : $extra?>,
+                    domain: '<?php echo $def['ssl_host_name'] ?>'
+                }
+            });
+        </script>
+        <?php
+        return ob_get_clean();
+    }
+
+    static function buildAsyncBetaTags($def)
+    {
+        $size = explode('x', $def['size']);
+        $zone_id = $def['zone_id'];
+        $MID = $def['adbutler_id'];
+        $protocol = "https://" . $def['ssl_host_name'];
+        if (isset($def['extra_data']) && !empty($def['extra_data'])) {
+            $extra = ",extraData:'" . $def['extra_data'] . "'";
+        }
+        ob_start();
+        ?>
+        <script type="text/javascript">
+            if (!window.AdButler) {
+                (function () {
+                    var s = document.createElement("script");
+                    s.async = true;
+                    s.type = "text/javascript";
+                    s.src = '<?php echo $protocol?>/app.js';
+                    var n = document.getElementsByTagName("script")[0];
+                    n.parentNode.insertBefore(s, n);
+                }());
+            }
+        </script>
+        <div class="plc<?=$zone_id?>"></div>
+        <script type="text/javascript">
+            var AdButler = AdButler || {};
+            AdButler.ads = AdButler.ads || [];
+            var abkw = window.abkw || '';
+            var plc<?php echo $zone_id?> = window.plc<?=$zone_id?> || 0;
+            (function(){
+                var divs = document.querySelectorAll(".plc<?=$zone_id?>:not([id])");
+                var div = divs[divs.length-1];
+                div.id = "placement_<?=$zone_id?>_"+plc<?=$zone_id?>;
+                AdButler.ads.push({
+                    handler: function (opt) {
+                        AdButler.register(<?php echo $MID?>,<?php echo $zone_id?>, [<?php echo $size[0]?>,<?php echo $size[1]?>], 'placement_<?php echo $zone_id?>_' + opt.place, opt);
+                    },
+                    opt: {
+                        place: plc<?php echo $zone_id?>++,
+                        keywords: abkw <?php echo empty($extra) ? '' : $extra?>,
+                        domain: '<?php echo $def['ssl_host_name'] ?>'
+                    }
+                });
+            })()
+        </script>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * @param $def Array of variables required to build HTML/Iframe tags
+     *
+     * @return string
+     */
+    static function buildJavascriptTags($def)
+    {
+        $zone_id = $def['zone_id'];
+        $protocol = "https://" . $def['ssl_host_name'];
+        $URL = $protocol . "/adserve/;ID=" . $def['adbutler_id'] . ";size=" . $def['size'] . ";setID=" . $zone_id;
+        if (isset($def['extra_data']) && !empty($def['extra_data'])) {
+            $extra = '?' . $def['extra_data'];
+        }
+        ob_start();
+
+        ?>
+        <script type="text/javascript">
+            var rnd = window.rnd || Math.floor(Math.random() * 10e6);
+            var pid<?php echo $zone_id?> = window.pid<?php echo $zone_id?> || rnd;
+            var plc<?php echo $zone_id?> = window.plc<?php echo $zone_id?> || 0;
+            var abkw = window.abkw || '';
+            var referrer = '<?=urlencode(self::getReferrer())?>';
+            var absrc = '<?php echo $URL?>;type=js;sw=' + screen.width + ';sh=' + screen.height + ';spr=' + window.devicePixelRatio + ';kw=' + abkw + ';pid=' + pid<?php echo $zone_id?>+ ';place=' + (plc<?php echo $zone_id?>++) + ';rnd=' + rnd + ';referrer=' + referrer;
+
+            document.write('<scr' + 'ipt src="' + absrc + '<?php echo empty($extra) ? '' : $extra?>" type="text/javascript"></scr' + 'ipt>');
+        </script>
+        <?php
+        return ob_get_clean();
+    }
+
+    /**
+     * @param $def Array of variables required to build HTML/Iframe tags
+     *
+     * @return string HTML/Iframe ad tag
+     */
+    static function buildHTMLIframeTags($def)
+    {
+        $size = explode('x', $def['size']);
+        $params = "/;ID=" . $def['adbutler_id'] . ";size=" . $def['size'] . ";setID=" . $def['zone_id'] . ";referrer=" . urlencode(self::getReferrer());
+        $output = array();
+        $output[] = "<iframe src=\"";
+        $output[] = "https://" . $def['ssl_host_name'];
+        $output[] = "/adserve$params;type=iframe\"";
+        if (isset($def['extra_data']) && !empty($def['extra_data'])) {
+            $output[] = '?';
+            $output[] = $def['extra_data'];
+        }
+        $output[] = " width=\"$size[0]\" height=\"$size[1]\" marginwidth=\"0\" marginheight=\"0\" hspace=\"0\" vspace=\"0\" frameborder=\"0\" scrolling=\"no\">";
+        $output[] = "\n";
+        $output[] = "</ifr'+'ame>";
+
+        return implode($output);
+    }
+
+    /**
+     * @param $def Array of variables required to build Iframe tags
+     *
+     * @return string IFrame ad tag
+     */
+    static function buildIframeTags($def)
+    {
+        $zone_id = $def['zone_id'];
+        $output = array();
+        $size = explode('x', $def['size']);
+        $params = "/;ID=" . $def['adbutler_id'] . ";size=" . $def['size'] . ";setID=" . $zone_id . ";referrer=" . urlencode(self::getReferrer());
+        $output[] = "<script type=\"text/javascript\">\n";
+        $output[] = "var rnd = window.rnd || Math.floor(Math.random()*10e6);\n";
+        $output[] = "var pid$zone_id = window.pid$zone_id || rnd;\n";
+        $output[] = "var plc$zone_id = window.plc$zone_id || 0;\n";
+        $output[] = "var abkw = window.abkw || '';\n";
+        $output[] = "var absrc = '";
+        $output[] = "https://" . $def['ssl_host_name'];
+        $output[] = "/adserve$params;type=iframe;sw='+screen.width+';sh='+screen.height+';spr='+window.devicePixelRatio+';kw='+abkw+';pid='+pid$zone_id+';place='+(plc$zone_id++)+';rnd='+rnd+'';";
+        $output[] = "\n";
+        $output[] = "document.write('<ifr'+'ame src=\"'+absrc+'";
+        // append custom keywords (future)
+        if (isset($def['extra_data']) && !empty($def['extra_data'])) {
+            $output[] = '?';
+            $output[] = $def['extra_data'];
+        }
+        $output[] = "\" width=\"$size[0]\" height=\"$size[1]\" marginwidth=\"0\" marginheight=\"0\" hspace=\"0\" vspace=\"0\" frameborder=\"0\" scrolling=\"no\"></ifr'+'ame>');";
+        $output[] = "\n";
+        $output[] = "</script>";
+        return implode($output);
+    }
+
+    /**
+     * @param $def Array of variables required to build basic image tags
+     *
+     * @return string Image ad tags
+     */
+    static function buildImageTags($def)
+    {
+        $size = explode('x', $def['size']);
+
+        $params = "/;ID=" . $def['adbutler_id'] . ";size=" . $def['size'] . ";setID=" . $def['zone_id'] . ";referrer=" . urlencode(self::getReferrer());
+        $output[] = '<a href="';
+        $output[] = "https://" . $def['ssl_host_name'];
+        $output[] = "/go2$params\" target=\"_blank\">";
+        $output[] = "<img src=\"";
+        $output[] = "https://" . $def['ssl_host_name'];
+        $output[] = "/adserve$params;type=img";
+        if (isset($def['extra_data']) && !empty($def['extra_data'])) {
+            $output[] = '?';
+            $output[] = $def['extra_data'];
+        }
+        $output[] = '" ';
+
+        if ($def['responsive'] == 'FIXED') {
+            $output[] = "width=\"$size[0]\" height=\"$size[1]\"";
+        } elseif ($def['responsive'] == 'AUTO') {
+            $output[] = "style=\"width:100%; max-width: $size[0]px\"";
+        }
+        $output[] = ">";
+        $output[] = "</a>";
+        return implode($output);
+    }
+
+    /**
+     * @param $def Array of variables required to build Pop up tags
+     *
+     * @return string Pop up tag
+     */
+    static function buildPopupTags($def)
+    {
+        $zone_id = $def['zone_id'];
+        $size = explode('x', $def['size']);
+        $output = array();
+        $params = "/;ID=" . $def['adbutler_id'] . ";size=" . $def['size'] . ";setID=" . $zone_id . ";referrer=" . urlencode(self::getReferrer());;
+        $output[] = "<script type=\"text/javascript\">\n";
+        $output[] = "var rnd = window.rnd || Math.floor(Math.random()*10e6);\n";
+        $output[] = "var pid$zone_id = window.pid$zone_id || rnd;\n";
+        $output[] = "var plc$zone_id = window.plc$zone_id || 0;\n";
+        $output[] = "var abkw = window.abkw || '';\n";
+        $output[] = "var absrc = '";
+        $output[] = "https://" . $def['ssl_host_name'];
+        $output[] = "/adserve$params;type=iframe;kw='+abkw+';pid='+pid$zone_id+';place='+(plc$zone_id++)+';rnd='+rnd+'';";
+        $output[] = "\n";
+        $output[] = "document.write('<ifr'+'ame src=\"'+absrc+'";
+        // append custom keywords (future)
+        if (isset($def['extra_data']) && !empty($def['extra_data'])) {
+            $output[] = '?';
+            $output[] = $def['extra_data'];
+        }
+        $output[] = " width=\"$size[0]\" height=\"$size[1]\" marginwidth=\"0\" marginheight=\"0\" hspace=\"0\" vspace=\"0\" frameborder=\"0\" scrolling=\"no\">";
+        $output[] = "\n";
+        $output[] = "</script>";
+        return implode($output);
+    }
+
+
+}

@@ -1,0 +1,163 @@
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+class adbutler_interval_ads
+{
+    const OPTION_ENABLE = "adbutler_interval_ads_enable";
+    const OPTION_NTH_POST = "adbutler_interval_ads_nth_post";
+    const OPTION_START_NTH_POST = "adbutler_interval_ads_start_nth_post";
+    const OPTION_RESTRICT_TO_PAGES = "adbutler_interval_ads_restrict_to_pages";
+    const OPTION_RESTRICT_TO_CATEGORY_IDS = "adbutler_interval_ads_restrict_to_cat_ids";
+    const OPTION_RESTRICT_TO_HOME = "adbutler_interval_ads_restrict_to_home";
+    const OPTION_RESTRICT_TO_FRONT_PAGE = "adbutler_interval_ads_restrict_to_front_page";
+    const OPTION_CSS_CLASSES = "adbutler_interval_ads_css_classes";
+    const OPTION_ZONE_ID = "adbutler_interval_ads_zone";
+    const OPTION_TYPE = "adbutler_interval_ads_type";
+    const OPTION_SECURE = "adbutler_interval_ads_secure";
+    const OPTION_EXTRA_DATA = "adbutler_interval_ads_extra_data";
+    const OPTION_SIZE = "adbutler_interval_ads_size";
+    const OPTION_NAME = 'adbutler_interval_ads_name';
+    const OPTION_RESPONSIVE = 'adbutler_interval_ads_responsive';
+
+    /**
+     * Action for 'the_post' hook to inject an ad between every nth post.
+     *
+     * @param WP_Post $post the current post
+     * @param WP_Query $wp_query the current query
+     */
+    public static function adbutler_interval_ad($post, $wp_query = null)
+    {
+        if (!empty($wp_query)) {
+            $index = $wp_query->current_post;
+
+            // in_the_loop ensures that we only do actions when the theme is looping through posts to render
+            if (self::should_inject_ad($index, $wp_query)) {
+                self::inject_post_ad();
+            }
+        }
+    }
+
+    /**
+     * Action for 'loop_end' hook to inject an ad (if it's the correct index) at the end of the loop.
+     *
+     * @param WP_Query $wp_query
+     */
+    public static function adbutler_interval_ad_last($wp_query = null)
+    {
+        if (!empty($wp_query)) {
+            // current_post will be the index of the last post, so we want the next index
+            $index = $wp_query->current_post + 1;
+
+            if (self::should_inject_ad($index, $wp_query)) {
+                self::inject_post_ad();
+            }
+        }
+    }
+
+    /**
+     * Checks if an ad should be injected using the adbutler_interval_ads_nth setting.
+     * Also checks if WordPress is in the loop and on the posts page.
+     *
+     * @param $index the index of the current post in the loop.
+     * @param WP_Query $wp_query the current query
+     */
+    private static function should_inject_ad($index, $wp_query)
+    {
+        // in_the_loop ensures that we only do actions when the theme is looping through posts to render
+        if (self::is_interval_ad_enabled() && in_the_loop() && is_main_query() && self::should_show_on_page($wp_query)) {
+            $nth_post = get_option(self::OPTION_NTH_POST); // configurable nth posts for how often an ad is served
+            $start_nth_post = get_option(self::OPTION_START_NTH_POST) ?: 0; // starting after n posts
+
+            if ($index >= $start_nth_post && ($index - $start_nth_post) % $nth_post === 0) {
+                self::inject_post_ad();
+            }
+        }
+    }
+
+    private static function is_interval_ad_enabled()
+    {
+        return esc_attr(get_option(self::OPTION_ENABLE)) === 'on';
+    }
+
+    private static function should_show_on_page($wp_query)
+    {
+        if ($wp_query->is_home() && self::should_show_on_home_page()) return true;
+        if ($wp_query->is_front_page() && self::should_show_on_front_page()) return true;
+        if ($wp_query->is_category() && self::should_show_on_category_page($wp_query)) return true;
+
+        return false;
+    }
+
+    public static function set_defaults()
+    {
+        add_option(self::OPTION_RESTRICT_TO_PAGES, 'on');
+        add_option(self::OPTION_RESTRICT_TO_HOME, 'on');
+        add_option(self::OPTION_START_NTH_POST, get_option(self::OPTION_NTH_POST));
+    }
+
+    private static function is_restricted()
+    {
+        $option = get_option(self::OPTION_RESTRICT_TO_PAGES);
+
+        if ($option === false) {
+            // option has *never* been set, adds defaults for old behaviour (only on home page)
+            self::set_defaults();
+
+            return true;
+        }
+
+        return esc_attr($option) === 'on';
+    }
+
+    private static function should_show_on_category_page($wp_query)
+    {
+        if (!self::is_restricted()) return true;
+
+        $queried_object = $wp_query->get_queried_object();
+
+        if (!empty($queried_object) && isset($queried_object->cat_ID)) {
+            $category_id = $queried_object->cat_ID;
+            $restrict_to_cat_ids = get_option(self::OPTION_RESTRICT_TO_CATEGORY_IDS) ?: [];
+
+            return in_array($category_id, $restrict_to_cat_ids);
+        };
+
+        return false;
+    }
+
+    private static function should_show_on_home_page()
+    {
+        return !self::is_restricted() || esc_attr(get_option(self::OPTION_RESTRICT_TO_HOME)) === 'on';
+    }
+
+    private static function should_show_on_front_page()
+    {
+        return !self::is_restricted() || esc_attr(get_option(self::OPTION_RESTRICT_TO_FRONT_PAGE)) === 'on';
+    }
+
+    /**
+     * Echoes an ad based on AdButler post feed settings
+     */
+    private static function inject_post_ad()
+    {
+        $css_classes = get_option(self::OPTION_CSS_CLASSES);
+        $ad_tag_settings = array(
+            'zone_id' => get_option(self::OPTION_ZONE_ID),
+            'type' => get_option(self::OPTION_TYPE),
+            'secure' => get_option(self::OPTION_SECURE),
+            'extra_data' => get_option(self::OPTION_EXTRA_DATA),
+            'size' => get_option(self::OPTION_SIZE)
+        );
+
+        if (is_numeric($ad_tag_settings['zone_id']) && $ad_tag_settings['zone_id'] != 0) {
+            $ad_tag = adbutler_plugin::build_ad_tag($ad_tag_settings);
+
+            ?>
+            <div class="<?php echo $css_classes; ?>"><?php echo $ad_tag; ?></div>
+            <?php
+        }
+    }
+}

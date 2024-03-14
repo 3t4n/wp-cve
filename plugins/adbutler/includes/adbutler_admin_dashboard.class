@@ -1,0 +1,37 @@
+<?php
+
+if ( !defined( 'ABSPATH' ) ) exit;
+require_once(plugin_dir_path(__FILE__) . 'adbutler_admin_settings.class');
+/**
+ * Class adbutler_admin_dashboard
+ * Admin dashboard base widget.
+ */
+class adbutler_admin_dashboard
+{
+
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+
+	}
+
+	/**
+	 * Main render function with dashboard wrappers. Ad other view calls as needed
+	 */
+	public function render()
+	{
+		?>
+		<div id="adbutler-dashboard-wrapper">
+			<div id="adbutler-dashboard-header">
+				<div id="adbutler-dashboard-content">
+					<div id="adbutler-dashboard-config" class="adbutler-dashboard-widget">
+						<?php adbutler_admin_settings::render_api_dashboard_widget(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php
+	}
+}

@@ -1,0 +1,551 @@
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+require_once(plugin_dir_path(__FILE__) . 'adbutler_admin.class');
+require_once(plugin_dir_path(__FILE__) . 'adbutler_interval_ads.class');
+
+/**
+ * Class adbutler_admin_settings Admin Page for AdButler adminstration
+ */
+class adbutler_admin_settings extends adbutler_admin
+{
+    /**
+     * Page Logic
+     */
+    public function build_page()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            self::update_interval_ad_settings();
+
+            self::update_header_bidding_settings();
+        }
+    }
+
+    /**
+     * Page Content, called by base class
+     */
+    public function render_content()
+    {
+        $enabled = esc_attr(get_option(adbutler_interval_ads::OPTION_ENABLE)) === 'on';
+
+        ?>
+        <header id="adbutler-header">
+            <div id="adbutler-logo"></div>
+            <div id="adbutler-heading">
+                <h1>Settings</h1>
+            </div>
+        </header>
+
+        <div class="adbutler-setup adbutler-help-box"> <!-- padding ~ 10px -->
+            <div class="adbutler-setup-left">
+                <h3>Before you begin:</h3>
+                <p>Login to your AdButler.com account and locate the "Settings" page.<br>
+                    Find the field labeled "Wordpress Key" and copy/paste the code here.</p>
+
+                <?php self::render_api_dashboard_widget(); ?>
+            </div>
+            <div class="adbutler-setup-right">
+                <h3>Don't have an account?</h3>
+                <p>You need an active AdButler.com subscription to be able to serve ads with our plugin.</p>
+
+                <button class="button adbutler-button adbutler-button-black"
+                        onclick="window.open('https://www.adbutler.com?ref=wpabpl1_0','_blank');">
+                    Visit AdButler.com
+                </button>
+            </div>
+        </div>
+
+        <form method="post" target="_self" id="adbutler_interval_ads_form" class="adbutler_settings">
+
+            <?php self::render_header_bidding_settings(); ?>
+
+            <hr>
+
+            <?php self::render_interval_ad_settings($enabled); ?>
+
+            <button class="button button-primary"
+                    type=submit
+                <?php disabled(get_option('adbutler_id'), false); ?>>
+                Save Changes
+            </button>
+        </form>
+        <?php
+    }
+
+    private static function render_interval_ad_settings($enabled)
+    {
+        adbutler_interval_ads::set_defaults();
+
+        $zone = esc_attr(get_option(adbutler_interval_ads::OPTION_ZONE_ID)) ?: 0;
+        $type = esc_attr(get_option(adbutler_interval_ads::OPTION_TYPE)) ?: 'asyncjs';
+        $extra_data = esc_attr(get_option(adbutler_interval_ads::OPTION_EXTRA_DATA)) ?: '';
+        $nth_post = esc_attr(get_option(adbutler_interval_ads::OPTION_NTH_POST)) ?: 1;
+        $css_classes = esc_attr(get_option(adbutler_interval_ads::OPTION_CSS_CLASSES)) ?: '';
+        $size_hidden = esc_attr(get_option(adbutler_interval_ads::OPTION_SIZE));
+        $name_hidden = esc_attr(get_option(adbutler_interval_ads::OPTION_NAME));
+        $responsive_hidden = esc_attr(get_option(adbutler_interval_ads::OPTION_RESPONSIVE));
+        $start_nth_post = esc_attr(get_option(adbutler_interval_ads::OPTION_START_NTH_POST)) ?: 0;
+        $category_restrict_ids = get_option(adbutler_interval_ads::OPTION_RESTRICT_TO_CATEGORY_IDS) ?: [];
+        $restrict_to_pages = get_option(adbutler_interval_ads::OPTION_RESTRICT_TO_PAGES) === 'on';
+        $show_on_home_page = get_option(adbutler_interval_ads::OPTION_RESTRICT_TO_HOME) === 'on';
+        $show_on_front_page = get_option(adbutler_interval_ads::OPTION_RESTRICT_TO_FRONT_PAGE) === 'on';
+
+        $fixed_type_list = array(
+            'asyncjs' => 'Asynchronous JavaScript (Recommended)',
+            'asyncbeta' => 'Asynchronous JavaScript (1.1 Beta)',
+            'js' => 'JavaScript',
+            'iframe' => 'Iframe',
+            'if_html' => 'Iframe (HTML Only)',
+            'img' => 'Image (Basic)'
+        );
+
+        $responsive_type_list = array(
+            'asyncjs' => 'Asynchronous JavaScript (Recommended)',
+            'asyncbeta' => 'Asynchronous JavaScript (1.1 Beta)',
+            'js' => 'JavaScript',
+            'img' => 'Image (Basic)',
+        );
+
+        ?>
+        <h2>Interval Ads</h2>
+        <div class="adbutler-interval-ad-settings">
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            <label>Display Settings</label>
+                        </th>
+                        <td>
+                            <input class="checkbox"
+                                   type="checkbox"
+                                <?php checked($enabled); ?>
+                                   id="adbutler_interval_ads_enable"
+                                   name="adbutler_interval_ads_enable"
+                                   onchange="adbutler.handle_post_feed_enable(this)"
+                                <?php disabled(get_option('adbutler_id'), false); ?>
+                            />
+                            <label for="adbutler_interval_ads_enable">
+                                Display an ad every
+                                <input type="number"
+                                       id="adbutler_nth_post"
+                                       name="adbutler_nth_post"
+                                       class="small-text"
+                                       min="1"
+                                       max="99"
+                                       value="<?php echo $nth_post ?>"
+                                    <?php disabled(!$enabled); ?>
+                                /> posts, starting after
+                                <input type="number"
+                                       id="adbutler_start_nth_post"
+                                       name="adbutler_start_nth_post"
+                                       class="small-text"
+                                       min="0"
+                                       max="99"
+                                       value="<?php echo $start_nth_post ?>"
+                                    <?php disabled(!$enabled); ?>
+                                />
+                            </label>
+                            <div id="adbutler-category-restrict-settings">
+                                <label id="adbutler-categories-restrict-label">
+                                    <input class="checkbox"
+                                           type="checkbox"
+                                        <?php checked($restrict_to_pages); ?>
+                                           id="adbutler_restrict_to_pages"
+                                           name="adbutler_restrict_to_pages"
+                                           onchange="adbutler.handle_category_restrict(this)"
+                                        <?php disabled(!$enabled); ?>
+                                    />
+
+                                    Restrict interval ads to specific pages
+                                </label>
+                                <div id="adbutler-category-container">
+                                    <div id="adbutler-category-content">
+                                        <div class="adbutler-restrict-section">
+                                            <div class="adbutler-restrict-section">
+                                                <label for="adbutler-category-list" class="adbutler-input-label">Default pages</label>
+                                                <fieldset id="adbutler-category-list" class="adbutler-restrict-list">
+                                                    <label class="category">
+                                                        <input class="checkbox"
+                                                               type="checkbox"
+                                                               id="adbutler_display_on_front_page"
+                                                               name="adbutler_display_on_front_page"
+                                                            <?php checked($show_on_front_page); ?>
+                                                            <?php disabled(!$enabled); ?>
+                                                        />
+                                                        Front page
+                                                    </label>
+
+                                                    <label class="category">
+                                                        <input class="checkbox"
+                                                               type="checkbox"
+                                                               id="adbutler_display_on_home"
+                                                               name="adbutler_display_on_home"
+                                                            <?php checked($show_on_home_page); ?>
+                                                            <?php disabled(!$enabled); ?>
+                                                        />
+                                                        Blog posts page
+                                                    </label>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+
+                                        <div class="adbutler-restrict-section">
+                                            <label for="adbutler-category-list" class="adbutler-input-label">Category pages</label>
+                                            <fieldset id="adbutler-category-list" class="adbutler-restrict-list">
+                                                <div class="ab-col-50 left">
+                                                    <?php
+                                                    $categories = array_values(get_categories());
+
+                                                    if (!empty($categories)) {
+                                                        foreach ($categories as $i => $category) { ?>
+                                                            <label class="category">
+                                                                <input type="checkbox"
+                                                                       value="<?php echo $category->term_id; ?>"
+                                                                       name="adbutler_restrict_to_category_ids[]"
+                                                                    <?php checked(in_array($category->term_id, $category_restrict_ids)) ?>
+                                                                    <?php disabled(!$enabled); ?>
+                                                                />
+
+                                                                <?php echo $category->name; ?>
+                                                            </label>
+                                                            <?php
+                                                            if ($i == floor(count($categories) / 2) - 1) { ?>
+                                                                </div>
+                                                                <div class="ab-col-50 right">
+                                                            <?php }
+                                                        }
+                                                    } ?>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr title="Please select from one of the available zones to configure your advertisement placement."
+                        class="adbutler-interval-config">
+                        <th>
+                            <label class="adbutler-input-label" for="adbutler_zone_select">
+                                <?php _e('AdButler Zone', 'spark_domain'); ?>
+                            </label>
+                        </th>
+
+                        <td>
+                            <div class="adbutler-zone-select">
+                                <select class="adbutler_zone_select"
+                                        id="adbutler_zone_select"
+                                        name="adbutler_zone_select"
+                                        onchange="adbutler.handle_zone_select(this);"
+                                        data-default-zone="<?php echo $zone ?>"
+                                    <?php disabled(!$enabled); ?>>
+                                    <option value="0">-- Select a zone --</option>
+                                    <?php if ($zone) { ?>
+                                        <option value="<?php echo $zone ?>"
+                                                selected="selected">
+                                            <?php echo $name_hidden ?> (<?php echo $size_hidden ?>)
+                                        </option>
+                                    <?php } ?>
+                                </select>
+
+                                <button id="adbutler_refresh_button"
+                                        class="button adbutler-refresh-button"
+                                        onclick="adbutler.populate_zone_lists(true)"
+                                        type="button"
+                                    <?php disabled(!$enabled); ?>>
+                                    Refresh zones
+                                </button>
+
+                                <input class="size_hidden"
+                                       id="adbutler_size_hidden"
+                                       name="adbutler_size_hidden"
+                                       type="hidden"
+                                       value="<?php echo $size_hidden ?>"
+                                       readonly
+                                />
+
+                                <input class="name_hidden"
+                                       id="adbutler_name_hidden"
+                                       name="adbutler_name_hidden"
+                                       type="hidden"
+                                       value="<?php echo $name_hidden ?>"
+                                       readonly
+                                />
+
+                                <input class="responsive_hidden"
+                                       id="adbutler_responsive_hidden"
+                                       name="adbutler_responsive_hidden"
+                                       type="hidden"
+                                       value="<?php echo $responsive_hidden ?>"
+                                       readonly
+                                />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr title="Please select the type of advertisement tags you would like to generate. Asynchronous Javascript is recommended."
+                        class="adbutler_type_wrap adbutler_type_fixed adbutler-interval-config adbutler-type-select"
+                        <?php if (adbutler_plugin::is_responsive($responsive_hidden)) echo 'style="display: none;"' ?>>
+
+                        <th>
+                            <label class="adbutler-input-label" for="adbutler_type_select_fixed">
+                                <?php _e('Delivery Method', 'spark_domain'); ?>
+                            </label>
+                        </th>
+
+                        <td>
+                            <fieldset>
+                                <label>
+                                    <select class="adbutler_type_select"
+                                            id="adbutler_type_select_fixed"
+                                            name="adbutler_type_select_fixed"
+                                        <?php disabled(!$enabled); ?>>
+                                        <?php foreach ($fixed_type_list as $k => $v) {
+                                            $selectedStr = $k === $type ? ' selected' : ''; ?>
+                                            <option value="<?php echo $k ?>"<?php echo $selectedStr ?>><?php echo $v ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </label>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr title="Please select the type of advertisement tags you would like to generate. Asynchronous Javascript is recommended."
+                        class="adbutler_type_wrap adbutler_type_responsive adbutler-interval-config adbutler-type-select"
+                        <?php if (!adbutler_plugin::is_responsive($responsive_hidden)) echo 'style="display: none;"' ?>>
+
+                        <th>
+                            <label class="adbutler-input-label"
+                                   for="adbutler_type_select_responsive">
+                                <?php _e('Delivery Method', 'spark_domain'); ?>
+                            </label>
+                        </th>
+
+                        <td>
+                            <fieldset>
+                                <label>
+                                    <select class="adbutler_type_select"
+                                        id="adbutler_type_select_responsive"
+                                        name="adbutler_type_select_responsive"
+                                        disabled>
+                                    <?php foreach ($responsive_type_list as $k => $v) {
+                                        $selectedStr = $k === $type ? ' selected' : ''; ?>
+                                        <option value="<?php echo $k ?>"<?php echo $selectedStr ?>><?php echo $v ?></option>
+                                    <?php } ?>
+                                </select>
+                                </label>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr class="adbutler-optional adbutler-interval-config adbutler-extra-data"
+                        title="Enter extra data to be passed along in your request. This requires configuration of your zones through AdButler.">
+                        <th>
+                            <label class="adbutler-input-label" for="adbutler_extra_data">
+                                <?php _e('Extra Data', 'spark_domain'); ?>
+                            </label>
+                        </th>
+
+                        <td>
+                            <input id="adbutler_extra_data"
+                                   name="adbutler_extra_data"
+                                   class="regular-text"
+                                   value="<?php echo $extra_data ?>"
+                                   type="text"
+                                <?php disabled(!$enabled); ?>
+                            />
+                        </td>
+                    </tr>
+                    <tr title="Enter a space-separated list of CSS classes to be added to the ad HTML tag."
+                        class="adbutler-interval-config">
+                        <th>
+                            <label class="adbutler-input-label" for="adbutler_css_classes">
+                                <?php _e('CSS Classes', 'spark_domain'); ?>
+                            </label>
+                        </th>
+                        <td>
+                            <input id="adbutler_css_classes"
+                                   name="adbutler_css_classes"
+                                   class="regular-text"
+                                   value="<?php echo $css_classes; ?>"
+                                   type="text"
+                                <?php disabled(!$enabled); ?>
+                            />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <?php
+    }
+
+    private static function render_header_bidding_settings()
+    {
+        $timeout_opt = get_option('adbutler_hb_timeout');
+        $has_saved_val = $timeout_opt !== false;
+        $hb_timeout = esc_attr($timeout_opt);
+
+        ?>
+        <div class="adbutler-header-bidding-settings">
+            <h2>Header Bidding</h2>
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            <label for="adbutler_hb_timeout">
+                                Bidding Timeout
+                            </label>
+                        </th>
+
+                        <td>
+                            <input id="adbutler_hb_timeout"
+                                   name="adbutler_hb_timeout"
+                                   type="number"
+                                   min="1"
+                                   step="1"
+                                   placeholder="700"
+                                   <?php if ($has_saved_val) echo "value={$hb_timeout}"; ?>
+                            > ms
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <?php
+    }
+
+    /**
+     * Static function used to display the api key dashboard widget
+     */
+    public static function render_api_dashboard_widget()
+    {
+        $error = '';
+
+        if (isset($_POST['adbutler_key'])) {
+            $error = self::update_ab_key();
+        }
+
+        if (isset($_POST['clear'])) {
+            check_admin_referer('spark_permission_check', 'nonce_check');
+            adbutler_plugin::clear_api_key();
+        }
+
+        $adbutler_key = get_option('adbutler_key');
+
+        ?>
+        <div class="adbutler-key-form">
+            <form method="post" target="_self">
+                <?php
+                wp_nonce_field('spark_permission_check', 'nonce_check');
+
+                if ($adbutler_key) {
+                    self::clear_key_form();
+                } else {
+                    self::enter_new_key($error);
+                }
+                ?>
+            </form>
+        </div>
+        <?php
+    }
+
+    private static function update_interval_ad_settings()
+    {
+        update_option(adbutler_interval_ads::OPTION_ENABLE, $_POST['adbutler_interval_ads_enable']);
+
+        // Only update settings when the post feed is enabled. This prevents losing your config on disable.
+        if ($_POST['adbutler_interval_ads_enable'] === 'on') {
+            update_option(adbutler_interval_ads::OPTION_ZONE_ID, $_POST['adbutler_zone_select']);
+            update_option(adbutler_interval_ads::OPTION_EXTRA_DATA, $_POST['adbutler_extra_data']);
+            update_option(adbutler_interval_ads::OPTION_CSS_CLASSES, $_POST['adbutler_css_classes']);
+            update_option(adbutler_interval_ads::OPTION_SIZE, $_POST['adbutler_size_hidden']);
+            update_option(adbutler_interval_ads::OPTION_NAME, $_POST['adbutler_name_hidden']);
+
+            $responsive = $_POST['adbutler_responsive_hidden'];
+            update_option(adbutler_interval_ads::OPTION_RESPONSIVE, $responsive);
+
+            if ($responsive === 'FIXED') {
+                update_option(adbutler_interval_ads::OPTION_SECURE, $_POST['adbutler_secure_fixed']);
+                update_option(adbutler_interval_ads::OPTION_TYPE, $_POST['adbutler_type_select_fixed']);
+            } else {
+                update_option(adbutler_interval_ads::OPTION_SECURE, $_POST['adbutler_secure_responsive']);
+                update_option(adbutler_interval_ads::OPTION_TYPE, $_POST['adbutler_type_select_responsive']);
+            }
+
+            $nth_post = $_POST['adbutler_nth_post'] >= 1 ? $_POST['adbutler_nth_post'] : 1;
+            update_option(adbutler_interval_ads::OPTION_NTH_POST, $nth_post);
+
+            $start_nth_post = $_POST['adbutler_start_nth_post'] >= 0 ? $_POST['adbutler_start_nth_post'] : 0;
+            update_option(adbutler_interval_ads::OPTION_START_NTH_POST, $start_nth_post);
+
+            update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_PAGES, $_POST['adbutler_restrict_to_pages']);
+            if ($_POST['adbutler_restrict_to_pages'] === 'on') {
+                update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_CATEGORY_IDS, $_POST['adbutler_restrict_to_category_ids']);
+                update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_HOME, $_POST['adbutler_display_on_home']);
+                update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_FRONT_PAGE, $_POST['adbutler_display_on_front_page']);
+            } else {
+                update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_CATEGORY_IDS, []);
+                update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_HOME, false);
+                update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_FRONT_PAGE, false);
+            }
+        } else {
+            update_option(adbutler_interval_ads::OPTION_RESTRICT_TO_PAGES, false);
+        }
+    }
+
+    private static function update_header_bidding_settings()
+    {
+        update_option('adbutler_hb_timeout', $_POST['adbutler_hb_timeout']);
+    }
+
+    private static function update_ab_key()
+    {
+        check_admin_referer('spark_permission_check', 'nonce_check');
+        $new_key = $_POST['adbutler_key'];
+        $error = '';
+
+        if (adbutler_plugin::validate_adbutler_key($new_key)) {
+            update_option('adbutler_key', $new_key);
+        } else {
+            $error = "The key you entered was invalid.";
+        }
+
+        return $error;
+    }
+
+    /**
+     * Displays the form required to enter a new API key
+     */
+    private static function enter_new_key($error)
+    {
+        ?>
+        <label class="adbutler-key-label" for="adbutler-key-input">
+            Enter your AdButler key here:
+        </label>
+        <span class="adbutler-error-text"><?php echo $error; ?></span>
+        <input type="text"
+               name="adbutler_key"
+               id="adbutler-key-input"
+               size="50"
+               class="adbutler-key"
+        />
+        <button class="button adbutler-button adbutler-button-blue" type=submit>Save Key</button>
+        <?php
+    }
+
+    /**
+     * Displays the form used to clear the current API key
+     */
+    private static function clear_key_form()
+    {
+        ?>
+        <div class="adbutler-key-submitted">
+            <div class="adbutler-key-checkmark adbutler-green-check"></div>Your AdButler key has been registered!
+        </div>
+        <button class="button adbutler-button adbutler-button-blue adbutler-clear-button" name="clear" type=submit>
+            <div class="adbutler-x-mark adbutler-clear-button-x"></div>Clear Key
+        </button>
+        <?php
+    }
+}

@@ -1,0 +1,242 @@
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
+ * Class adbutler_widget. Widget used for configuring and displaying adbutler ad tags.
+ */
+class adbutler_widget extends WP_Widget
+{
+    /**
+     * Base constructor for the class
+     */
+    function __construct()
+    {
+        parent::__construct('adbutler', 'AdButler Widget', array('description' => 'Displays AdButler Ad Tags'));
+    }
+
+    /**
+     * @param array $new_instance New saved widget state
+     * @param array $old_instance Pre-existing widget state
+     *
+     * @return array The processed widget state ready to be saved to the db
+     */
+    function update($new_instance, $old_instance)
+    {
+        $instance = $old_instance;
+
+        // Remove field that is no longer used
+        // Ads now are built at render time
+        if (isset($instance['adtag'])) {
+            unset($instance['adtag']);
+        }
+
+        if (is_numeric($new_instance['zone'])) {
+            $instance['zone'] = strip_tags($new_instance['zone']);
+        }
+
+        switch ($new_instance['type']) {
+            case 'asyncbeta':
+            case 'asyncjs':
+            case 'js':
+            case 'iframe':
+            case 'if_html':
+            case 'img':
+                $instance['type'] = $new_instance['type'];
+                break;
+        }
+
+        $instance['secure'] = true;
+
+        if (preg_match('^\d+x\d+$^', $new_instance['size'])) {
+            $instance['size'] = $new_instance['size'];
+        }
+
+        $instance['name'] = sanitize_text_field($new_instance['name']);
+
+        switch ($new_instance['responsive']) {
+            case 'FIXED':
+            case 'AUTO':
+            case 'INHERIT':
+                $instance['responsive'] = $new_instance['responsive'];
+                break;
+        }
+
+        $instance['extra_data'] = sanitize_text_field($new_instance['extra_data']);
+
+        $instance['title'] = sanitize_text_field($new_instance['title']);
+
+        return $instance;
+    }
+
+    /**
+     * Our AdButler administration widget configuration form
+     *
+     * @param array $instance Widget state variables
+     *
+     * @return string|void
+     */
+    function form($instance)
+    {
+        $zone = 0;
+        $type = 'js';
+        $size_hidden = '0x0';
+        $name_hidden = '';
+        $responsive_hidden = 'FIXED';
+        $extra_data = '';
+        $title = '';
+
+        if ($instance) {
+            $zone = esc_attr($instance['zone']);
+            $type = esc_attr($instance['type']);
+            $size_hidden = esc_attr($instance['size']);
+            $name_hidden = esc_attr($instance['name']);
+            $responsive_hidden = esc_attr($instance['responsive']);
+            $extra_data = esc_attr($instance['extra_data']);
+            $title = esc_attr($instance['title']);
+        }
+
+        $responsive_type_list = array(
+            'asyncjs' => 'Asynchronous JavaScript (Recommended)',
+            'asyncbeta' => 'Asynchronous JavaScript (1.1 Beta)',
+            'js' => 'JavaScript',
+            'iframe' => 'Iframe',
+            'if_html' => 'Iframe (HTML Only)',
+            'img' => 'Image (Basic)',
+        );
+
+        $fixed_type_list = array(
+            'asyncjs' => 'Asynchronous JavaScript (Recommended)',
+            'asyncbeta' => 'Asynchronous JavaScript (1.1 Beta)',
+            'js' => 'JavaScript',
+            'img' => 'Image (Basic)',
+        );
+
+
+        ?>
+        <div class="adbutler_widget">
+            <p>
+                <label for="<?php echo $this->get_field_id('title'); ?>">
+                    <?php _e('Internal Title (only in Appearance->Widgets)'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+                </label>
+            </p>
+            <p title="Please select from one of the available zones to configure your advertisement placement.">
+                <label
+                        for="<?php echo $this->get_field_id('zone'); ?>"><?php _e('Zone', 'spark_domain'); ?></label>
+            <div id="adbutler_refresh_button"><input class="button button-secondary button-small" value="Refresh zones"
+                                                     onclick="adbutler.populate_zone_lists(true)"></div>
+            <select class="adbutler_zone_select widefat" id="<?php echo $this->get_field_id('zone'); ?>"
+                    name="<?php echo $this->get_field_name('zone'); ?>"
+                    onchange="adbutler.handle_zone_select(this);"
+                    data-default-zone="<?php echo $zone ?>"
+            >
+                <option value="0">-- Select a zone --</option>
+                <?php if ($zone) { ?>
+                    <option value="<?php echo $zone ?>" selected><?php echo $name_hidden ?> (<?php echo $size_hidden ?>)
+                    </option>
+                <?php } ?>
+            </select></p>
+
+            <p title="Please select the type of advertisement tags you would like to generate. Asynchronous Javascript is recommended."
+               class="adbutler_type_wrap adbutler_type_fixed">
+                <label
+                        for="<?php echo $this->get_field_id('type_fixed'); ?>"><?php _e('Type', 'spark_domain'); ?></label>
+                <select class="adbutler_type_select widefat"
+                        id="<?php echo $this->get_field_id('type_fixed'); ?>"
+                        name="<?php echo $this->get_field_name('type'); ?>"
+                >
+                    <?php foreach ($responsive_type_list as $k => $v) {
+                        $selectedStr = $k === $type ? ' selected' : ''; ?>
+                        <option value="<?php echo $k ?>"<?php echo $selectedStr ?>><?php echo $v ?></option>
+                    <?php } ?>
+                </select></p>
+
+            <p title="Please select the type of advertisement tags you would like to generate. Asynchronous Javascript is recommended."
+               class="adbutler_type_wrap adbutler_type_responsive" style="display:none;">
+                <label
+                        for="<?php echo $this->get_field_id('type_responsive'); ?>"><?php _e('Type', 'spark_domain'); ?></label>
+                <select class="adbutler_type_select widefat"
+                        id="<?php echo $this->get_field_id('type_responsive'); ?>"
+                        name="<?php echo $this->get_field_name('type'); ?>" disabled>
+                    <?php foreach ($fixed_type_list as $k => $v) {
+                        $selectedStr = $k === $type ? ' selected' : ''; ?>
+                        <option value="<?php echo $k ?>"<?php echo $selectedStr ?>><?php echo $v ?></option>
+                    <?php } ?>
+                </select></p>
+            </p>
+
+            <p class="adbutler-optional"
+               title="Enter extra data to be passed along in your request. This requires configuration of your zones through AdButler.">
+                <label
+                        for="<?php echo $this->get_field_id('extra_data'); ?>"><?php _e('Extra Data', 'spark_domain'); ?></label>
+                <input id="<?php echo $this->get_field_id('extra_data'); ?>"
+                       name="<?php echo $this->get_field_name('extra_data'); ?>" class="widefat"
+                       value="<?php echo $extra_data ?>"
+                /></p>
+            <?php if (!empty($instance['zone']) && !empty($instance['type'])): ?>
+                <div title="An ad has been properly configured for this widget.">Ad properly configured</div>
+            <?php else: ?>
+                <div><p title="Currently no ad has been properly configured for this widget and nothing will display.">No
+                        ad configured</p></div>
+            <?php endif; ?>
+
+            <input class="size_hidden" id="<?php echo $this->get_field_id('size'); ?>" type="hidden"
+                   name="<?php echo $this->get_field_name('size'); ?>" value="<?php echo $size_hidden ?>" readonly/>
+            <input class="name_hidden" id="<?php echo $this->get_field_id('name'); ?>" type="hidden"
+                   name="<?php echo $this->get_field_name('name'); ?>" value="<?php echo $name_hidden ?>" readonly/>
+            <input class="responsive_hidden" id="<?php echo $this->get_field_id('responsive'); ?>" type="hidden"
+                   name="<?php echo $this->get_field_name('responsive'); ?>" value="<?php echo $responsive_hidden ?>"
+                   readonly/>
+        </div>
+
+        <script type="text/javascript">
+            jQuery(function () {
+                adbutler.populate_zone_lists();
+                adbutler.update_all_lists();
+            });
+        </script>
+        <?php
+    }
+
+    /**
+     * Public Facing widget --Ad tag if configured, otherwise nothing
+     *
+     * @param array $args Core widget variables
+     * @param array $instance current state widget to display
+     */
+    function widget($args, $instance)
+    {
+        global $abinst;
+
+        /**
+         * @var string $name
+         * @var string $before_widget
+         * @var string $after_widget
+         * @var string $before_title
+         * @var string $after_title
+         */
+        extract($args);
+
+        echo $before_widget;
+
+        if ($instance['zone'] != 0) {
+            echo $abinst->build_ad_tag(array(
+                'adbutler_id' => get_option('adbutler_id'),
+                'ssl_host_name' => get_option('adbutler_ssl_host_name'),
+
+                'zone_id' => $instance['zone'],
+                'type' => $instance['type'],
+                'secure' => $instance['secure'],
+                'extra_data' => $instance['extra_data'],
+
+                'size' => $instance['size'],
+                'name' => $instance['name'],
+                'responsive' => $instance['responsive'],
+            ));
+        }
+
+        echo $after_widget;
+    }
+}
