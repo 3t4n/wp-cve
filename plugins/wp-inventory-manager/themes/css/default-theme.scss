@@ -1,0 +1,343 @@
+// scss-lint:disable Comment
+/*!
+IMPORTANT: styles are transpiled from the default-theme.scss file.  Make changes to the .scss file only.
+ */
+
+$color: #333;
+$border-color: #eee;
+$background-color: #fff;
+$black: #000;
+$white: #fff;
+$success: #008000;
+$error: #f00;
+
+.wpinventory_item {
+  img {
+    max-width: 100%;
+  }
+
+  div {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 0 0 15px;
+    padding: 0;
+  }
+
+  .wpinventory-default-left-column .inventory_image span.wpinventory_label {
+    display: none;
+  }
+
+  .bxslideshow_sizer {
+    max-width: 100%;
+    div {
+      margin-bottom: 0;
+    }
+  }
+
+  .bx-wrapper {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+
+  .bx-wrapper .bx-viewport {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    width: calc(100% - 2px) !important;
+    left: 0;
+    background: transparent;
+  }
+
+  .bx-wrapper .bx-pager {
+    bottom: -50px;
+  }
+}
+
+.wpinventory_filter,
+.wpinventory_pagination {
+  width: 96%;
+  margin: 0 2% 15px;
+}
+
+.wpinventory_filter {
+  span {
+    display: inline-block;
+    text-align: left;
+    vertical-align: bottom;
+
+    + span {
+      margin-left: 12px;
+    }
+  }
+
+  input,
+  select {
+    max-width: 200px;
+    margin-left: 5px;
+    padding: 5px;
+    border: 1px solid $border-color;
+    border-radius: 2px;
+    background: $background-color;
+    color: $color;
+  }
+
+  select {
+    border: none;
+  }
+}
+
+.wpinventory_loop_all_div {
+  width: 96%;
+  margin: 0 2% 15px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  .wpinventory_item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 28%;
+    min-width: 200px;
+    max-width: 400px;
+    margin: 0 2% 30px;
+    padding: 0;
+    border: 1px solid $border-color;
+    text-align: left;
+    vertical-align: top;
+
+    p {
+      z-index: 1;
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+  }
+
+  .inventory_price {
+    a {
+      font-weight: 700;
+      text-decoration: none;
+
+      &:hover {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .image {
+    max-height: 200px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  img {
+    max-width: 99.5%;
+    height: auto;
+    max-height: 200px;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+.inventory_images {
+  overflow: hidden;
+}
+
+.wpinventory-column {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 40%;
+  max-width: 40%;
+  margin: 0;
+  padding: 0 10px 0 0;
+  vertical-align: top;
+
+  + .wpinventory-column {
+    width: 59%;
+    max-width: 59%;
+    padding: 0 0 0 10px;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 0 40px;
+  }
+
+  li {
+    margin: 0 0 15px;
+  }
+
+  .inventory_name,
+  .inventory_price {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .inventory_make,
+  .inventory_model {
+    display: inline-block;
+    max-width: 48%;
+    font-size: .8rem;
+  }
+
+  .inventory_make:not(:empty) + .inventory_model:not(:empty)::before {
+    content: ' - ';
+  }
+}
+
+.inventory_image .label,
+.inventory_images .label {
+  display: none;
+}
+
+.wpinventory_pagination a {
+  display: inline-block;
+  margin: 0 0 8px 8px;
+  line-height: 24px;
+  text-decoration: none;
+
+  &:hover,
+  &.page_current {
+    text-decoration: none;
+  }
+}
+
+.wpinventory_loop_all_table {
+  margin-bottom: 15px;
+  text-align: left;
+
+  .wpinventory_item td,
+  thead th {
+    padding: 8px;
+    vertical-align: top;
+  }
+}
+
+.wpinventory_reserve {
+  padding-top: 15px;
+  border-top: 1px solid $border-color;
+
+  div {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: inline-block;
+    width: 150px;
+  }
+
+  // no !important styles - let this pick up theme styles if exist
+  input:not([type="submit"]),
+  textarea {
+    display: inline-block;
+    padding: 15px 8px;
+    border: 1px solid $border-color;
+    border-radius: 2px;
+    box-shadow: none;
+    // this is necessary for textareas to use non-monospace fonts
+    font-family: inherit;
+  }
+
+  .submit .button,
+  input[type="submit"] {
+    width: auto;
+  }
+}
+
+.wpinventory_back {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.wpinventory_message, // scss-lint:disable IdSelector
+.wpinventory_error,
+#wpim_reserve .error {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid $black;
+  border-left: 5px solid $success;
+  background: $white;
+  color: $black;
+}
+
+.wpinventory_error, // scss-lint:disable IdSelector
+#wpim_reserve .error {
+  border-left-color: $error;
+}
+
+.wpim_warning {
+  padding: 12px 15px;
+  border: 2px solid $error;
+}
+
+@media only screen and (max-width: 600px) {
+  .wpinventory_item .wpinventory-column {
+    display: block;
+    max-width: none;
+    padding: 0 0 30px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .wpinventory_reserve {
+    input,
+    textarea {
+      display: block;
+      max-width: none;
+    }
+  }
+}
+
+.dashicons-spin {
+  display: inline-block;
+  -webkit-animation: spinner-loader 2s infinite linear; /* Safari 4+ */
+  -moz-animation: spinner-loader 2s infinite linear; /* Fx 5+ */
+  -o-animation: spinner-loader 2s infinite linear; /* Opera 12+ */
+  animation: spinner-loader 2s infinite linear;
+}
+
+@-moz-keyframes spinner-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spinner-loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-loader {
+  0% {
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
