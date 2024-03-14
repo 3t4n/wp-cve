@@ -1,0 +1,43 @@
+<?php
+
+declare (strict_types=1);
+namespace WpifyWooDeps\h4kuna\Ares\Http;
+
+use WpifyWooDeps\GuzzleHttp\Psr7\Request;
+use WpifyWooDeps\GuzzleHttp\Psr7\Utils;
+use WpifyWooDeps\Psr\Http\Message\RequestFactoryInterface;
+use WpifyWooDeps\Psr\Http\Message\RequestInterface;
+use WpifyWooDeps\Psr\Http\Message\StreamFactoryInterface;
+use WpifyWooDeps\Psr\Http\Message\StreamInterface;
+/**
+ * @deprecated only for guzzle/psr7 < 2.0
+ * Copy from see
+ * @see https://github.com/guzzle/psr7/blob/2.6/src/HttpFactory.php
+ */
+final class HttpFactory implements RequestFactoryInterface, StreamFactoryInterface
+{
+    public function createStream(string $content = '') : StreamInterface
+    {
+        return Utils::streamFor($content);
+    }
+    public function createStreamFromFile(string $file, string $mode = 'r') : StreamInterface
+    {
+        try {
+            $resource = Utils::tryFopen($file, $mode);
+        } catch (\RuntimeException $e) {
+            if ('' === $mode || \false === \in_array($mode[0], ['r', 'w', 'a', 'x', 'c'], \true)) {
+                throw new \InvalidArgumentException(\sprintf('Invalid file opening mode "%s"', $mode), 0, $e);
+            }
+            throw $e;
+        }
+        return Utils::streamFor($resource);
+    }
+    public function createStreamFromResource($resource) : StreamInterface
+    {
+        return Utils::streamFor($resource);
+    }
+    public function createRequest(string $method, $uri) : RequestInterface
+    {
+        return new Request($method, $uri);
+    }
+}

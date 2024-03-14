@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Continuous Integration" default="build">
+
+    <property name="passthru" value="false"/>
+
+    <target name="phpunit" description="Run unit tests">
+        <exec
+            command="./vendor/bin/phpunit"
+            dir="${project.basedir}"
+            passthru="${passthru}"/>
+    </target>
+
+    <target name="phploc" description="Run php loc">
+        <exec
+            command="./vendor/bin/phploc --count-tests --progress --log-xml=./build/logs/phploc.xml src/Vies"
+            dir="${project.basedir}"
+            passthru="${passthru}"/>
+    </target>
+
+    <target name="phpcpd" description="Run PHP copy-paste detection">
+        <exec
+            command="./vendor/bin/phpcpd --progress --log-pmd=./build/logs/pmd-cpd.xml src/Vies"
+            dir="${project.basedir}"
+            passthru="${passthru}"/>
+    </target>
+
+    <target name="phpcs" description="Run PHP code sniffer">
+        <exec
+            command="./vendor/bin/phpcs --standard=PSR2 --report-checkstyle=./build/logs/checkstyle.xml src/Vies"
+            dir="${project.basedir}"
+            passthru="${passthru}"/>
+    </target>
+
+    <target name="pdepend" description="Run PHP Depend">
+        <exec
+            command="./vendor/bin/pdepend --jdepend-xml=./build/logs/jdepend.xml --coverage-report=./build/logs/clover.xml src/Vies"
+            dir="${project.basedir}"
+            passthru="${passthru}"/>
+    </target>
+
+    <target name="build" description="Run all automated procedures">
+        <phingcall target="phpunit"/>
+        <phingcall target="phploc"/>
+        <phingcall target="phpcpd"/>
+        <phingcall target="phpcs"/>
+        <phingcall target="pdepend"/>
+    </target>
+
+</project>

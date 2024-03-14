@@ -1,0 +1,58 @@
+{
+    "name": "h4kuna\/ares",
+    "type": "library",
+    "description": "Provides information about subjects by their identification number from the ARES database (in Czech Republic).",
+    "homepage": "https:\/\/github.com\/h4kuna\/ares",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Milan Mat\u011bj\u010dek",
+            "email": "milan.matejcek@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WpifyWooDeps\\h4kuna\\Ares\\": "src\/"
+        },
+        "files": [
+            "src\/aliases.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WpifyWooDeps\\h4kuna\\Ares\\Tests\\": "tests\/src"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "h4kuna\/memoize": "^0.1.4",
+        "nette\/utils": "^2.0 || ^3.0 || ^4.0",
+        "psr\/http-factory": "^1.0",
+        "psr\/http-message": "^1.0.1 || ^2.0"
+    },
+    "require-dev": {
+        "guzzlehttp\/guzzle": "^7.5",
+        "nette\/tester": "^2.4",
+        "phpstan\/phpstan": "^1.8",
+        "phpstan\/phpstan-strict-rules": "^1.4",
+        "tracy\/tracy": "^2.9"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http\/discovery": true
+        }
+    },
+    "scripts": {
+        "phpstan": "vendor\/bin\/phpstan analyse",
+        "tests": "vendor\/bin\/tester -s --colors 1 -s -C tests\/src",
+        "coverage": "vendor\/bin\/tester --coverage coverage.html --coverage-src src\/ --colors 1 -s -C tests\/src"
+    },
+    "suggest": {
+        "guzzlehttp\/guzzle": "As default implementation for PSR-7, PSR-17 and PSR-18 standards."
+    }
+}

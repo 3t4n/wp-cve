@@ -1,0 +1,283 @@
+.wpify-woo-settings {
+  padding-top: 25px;
+  clear: both;
+
+  .form-table {
+	table-layout: fixed;
+	width: 100%;
+	max-width: 1000px;
+  }
+
+  .form-table th {
+	width: 200px;
+  }
+
+  &__full-width-row,
+  &__column-width-fixer td,
+  &__column-width-fixer th {
+	padding: 0 !important;
+  }
+
+  & &__save-button {
+	&--saved {
+	  background-color: #46B450 !important;
+	  border-color: #46B450 !important;
+	}
+
+	&--saved::before {
+	  content: '✓';
+	  margin-right: 10px;
+	}
+
+	@keyframes rotation-animation {
+	  0% {
+		transform: rotate(0deg);
+	  }
+	  100% {
+		transform: rotate(360deg);
+	  }
+	}
+
+	&--saving {
+	  display: flex;
+	  align-items: center;
+	  padding-left: 0;
+	}
+
+	&--saving::before {
+	  content: '';
+	  width: 16px;
+	  height: 16px;
+	  margin: 10px;
+	  border-radius: 50%;
+	  border-width: 2px;
+	  border-style: solid;
+	  border-color: #fff transparent #fff transparent;
+	  animation: rotation-animation 1.2s linear infinite;
+	  display: inline-block;
+	}
+  }
+
+  .components-popover__content {
+	min-width: 200px !important;
+  }
+
+  .sketch-picker {
+	width: 260px !important;
+  }
+
+  .components-input-control__container {
+	max-width: 400px;
+  }
+
+  .components-toggle-control__label {
+	margin-left: 15px;
+	line-height: 1.6 !important;
+  }
+
+  .components-base-control__help {
+	margin-bottom: 5px;
+  }
+
+  .components-form-toggle__off,
+  .components-form-toggle__on {
+	display: none;
+  }
+
+  .components-popover {
+	opacity: 1 !important;
+
+	&::before,
+	&::after {
+	  content: none !important;
+	}
+  }
+
+  &__group {
+	border: 1px solid #A0A5AA;
+	margin-bottom: 10px;
+	border-radius: 3px;
+  }
+
+  & &__group-description {
+	margin-bottom: 10px;
+	margin-top: 0;
+  }
+
+  &__group-heading {
+	border-bottom: 1px solid #A0A5AA;
+	background-color: rgba(0, 0, 0, 0.05);
+	display: flex;
+	padding: 2px 6px;
+	cursor: move;
+	min-height: 22px;
+  }
+
+  &__group-heading--not-sortable {
+	cursor: auto;
+	display: none;
+  }
+
+  &__group-button {
+	appearance: none;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	margin-right: 5px;
+	font-size: 12px;
+	padding: 0 4px;
+	cursor: pointer;
+  }
+
+  &__group-button--delete {
+	margin-right: 0;
+	margin-left: auto;
+	padding: 0;
+	border: 0;
+	width: 20px;
+	height: 20px;
+	line-height: 1;
+	text-align: center;
+	background-color: transparent;
+  }
+
+  &__group-content {
+	padding: 10px 10px 0 10px;
+  }
+
+  &__group-item-ghost {
+	border: 1px dashed #A0A5AA;
+  }
+
+  &__group-item-ghost &__group-heading,
+  &__group-item-ghost &__group-content {
+	visibility: hidden;
+  }
+
+  &__group-item-drag {
+	background-color: #f1f1f1;
+  }
+
+  &__group-item-field {
+	display: block;
+	margin-bottom: 10px;
+	cursor: auto;
+
+	& > strong {
+	  display: block;
+	  margin-bottom: 5px;
+	  font-weight: bold;
+	}
+  }
+
+  &__disabled-checkbox {
+	pointer-events: none;
+
+	.components-form-toggle {
+	  opacity: 0.25;
+	}
+
+	a,
+	button {
+	  pointer-events: auto;
+	}
+  }
+
+  &__premium {
+	border: 1px solid #1074A9;
+	padding: 3px 6px;
+	border-radius: 3px;
+	margin-left: 10px;
+	white-space: nowrap;
+
+	&:hover {
+	  background: #159adf;
+
+	  a {
+		color: white;
+	  }
+	}
+
+	a {
+	  color: #1074A9;
+	  text-decoration: none;
+	}
+  }
+}
+
+.wpify-woo-settings__wrapper {
+  .wpify-woo-settings__upsells-inner {
+	max-height: 300px;
+	overflow: auto;
+  }
+
+  @media screen and (min-width: 783px) {
+	display: flex;
+
+	.wpify-woo-settings {
+	  width: 70%;
+	}
+
+	.wpify-woo-settings__upsells-wrapper {
+	  width: 30%;
+	  position: relative;
+	}
+
+	.wpify-woo-settings__upsells-inner {
+	  max-height: 100%;
+	  box-sizing: border-box;
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	}
+  }
+
+  @media screen and (min-width: 1400px) {
+	.wpify-woo-settings {
+	  width: auto;
+	}
+
+	.wpify-woo-settings__upsells-wrapper {
+	  width: 450px;
+	}
+
+	.wpify-woo-settings__upsells {
+	  display: flex;
+	  flex-flow: row wrap;
+	}
+
+	.wpify-woo-settings__upsell {
+	  width: calc(50% - 40px);
+	}
+  }
+}
+
+.wpify-woo-settings__upsells-wrapper {
+  margin-top: 25px;
+}
+
+.wpify-woo-settings__upsells-inner {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.wpify-woo-settings__upsells {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.wpify-woo-settings__upsell {
+  padding: 15px;
+  box-shadow: 0 0 10px 0 rgba(181, 181, 181, 0.25);
+  width: 100%;
+  border-radius: 3px;
+}
+
+.wpify-woo-settings__upsell:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.wpify-woo-settings__upsell h3 {
+  margin: 0;
+}
+
