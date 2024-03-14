@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards">
+	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/blob/develop/WordPress-Core/ruleset.xml -->
+
+	<!-- Only check PHP files. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Show progress, show the error codes for each message (source). -->
+	<arg value="spv"/>
+
+	<!-- Strip the filepaths down to the relevant bit. -->
+	<arg name="basepath" value="."/>
+
+	<file>.</file>
+
+	<!-- Set a description for this ruleset. -->
+	<description>A custom set of code standard rules to check for WordPress themes and plugins.</description>
+
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<rule ref="VariableAnalysis">
+		<exclude name="VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable" />
+		<exclude name="VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable" />
+		<exclude name="VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration" />
+	</rule>
+
+	<!-- Include the WordPress ruleset, with exclusions. -->
+	<rule ref="WordPress">
+
+		<exclude name="WordPress.WP.GlobalVariablesOverride" />
+		<exclude name="WordPress.PHP.DontExtract.extract_extract" />
+		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents" />
+
+		<exclude name="Squiz.PHP.DisallowMultipleAssignments.Found" />
+
+		<!-- <exclude name="Squiz.PHP.CommentedOutCode.Found" /> -->
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode" />
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode" />
+		<exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited" />
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+		<exclude name="WordPress.DateTime.RestrictedFunctions.date_date" />
+		<exclude name="WordPress.DateTime.CurrentTimeTimestamp.Requested" />
+	</rule>
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+	</rule>
+	<rule ref="WordPress.DB.SlowDBQuery.slow_db_query_tax_query">
+	</rule>
+	<rule ref="WordPress.DB.SlowDBQuery.slow_db_query_meta_query">
+	</rule>
+	<rule ref="Generic.Files.OneObjectStructurePerFile.MultipleFound">
+	</rule>
+	<rule ref="WordPress.DB.SlowDBQuery.slow_db_query_meta_key">
+	</rule>
+	<rule ref="WordPress.DB.SlowDBQuery.slow_db_query_meta_value">
+	</rule>
+	<rule ref="WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize">
+	</rule>
+	<rule ref="WordPress.WP.DiscouragedFunctions.wp_reset_query_wp_reset_query">
+	</rule>
+
+	<rule ref="Generic.Arrays.DisallowLongArraySyntax.Found">
+	</rule>
+
+	<rule ref="WordPress.Arrays.CommaAfterArrayItem.NoComma">
+	</rule>
+</ruleset>
