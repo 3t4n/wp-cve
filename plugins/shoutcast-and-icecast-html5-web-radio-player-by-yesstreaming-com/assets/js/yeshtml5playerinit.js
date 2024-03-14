@@ -1,0 +1,1 @@
+function update(t){jQuery(".p3-player").css("background-color",t.toRGBString())}function update2(t){jQuery(".p3-title").css("color",t.toRGBString())}function update3(t){jQuery(".p3-artist").css("color",t.toRGBString())}function update4(t){jQuery("#ppBtn, .p3-volIcon:hover, .p3-historyIcon:hover").css("color",t.toRGBString())}
