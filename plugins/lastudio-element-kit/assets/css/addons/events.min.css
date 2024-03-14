@@ -1,0 +1,92 @@
+.preset-evt-1 .lakit-posts__inner-box{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.preset-evt-1 .lakit-posts__thumbnail{
+  margin: 0;
+  overflow: hidden;
+  width: var(--lakit-posts-thumbnail-width);
+}
+.preset-evt-1 .lakit-posts__inner-content {
+  flex: 1
+}
+.lakit-keep-mbl-yes .preset-evt-1 .lakit-posts__inner-box{
+  flex-wrap: nowrap;
+}
+
+.preset-evt-2 .lakit-posts__inner-box{
+  --e-overlay-position: calc(var(--padding-inline-start, var(--padding-left)) * -1);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  overflow: inherit;
+}
+.preset-evt-2 .lakit-posts__inner-box:after{
+  transition: none;
+  margin-left: max(var(--e-overlay-position), -40px);
+  margin-right: max(var(--e-overlay-position), -40px)
+}
+.preset-evt-2 .lakit-posts__thumbnail{
+  margin: 0;
+  overflow: hidden;
+  width: var(--lakit-posts-thumbnail-width);
+}
+.preset-evt-2 .lakit-posts__inner-content {
+  flex: 1
+}
+.preset-evt-2 .lakit-posts__inner-content-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preset-evt-2 .lakit-posts__meta {
+  flex-direction: column;
+}
+.lakit-posts__wrap-title {
+  width: 70%;
+  padding-right: 7%;
+  position: relative;
+}
+.lakit-posts__wrap-title:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  height: 2.5em;
+  width: 3px;
+  background: currentColor;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.preset-evt-2 .lakit-posts__meta__item:before {
+  font-size: .75em;
+}
+@media(min-width: 768px){
+  .preset-evt-2 .lakit-posts__meta__item:before {
+    display: none
+  }
+}
+@media(max-width: 1280px){
+  .lakit-posts__wrap-title:before{
+    height: 2em;
+    width: 2px;
+  }
+}
+@media(max-width: 767px){
+  .preset-evt-2 .lakit-posts__inner-content-inner,
+  .preset-evt-2 .lakit-posts__inner-box {
+    flex-direction: column;
+  }
+  .lakit-posts__wrap-title:before{
+    display: none;
+  }
+  .lakit-posts__wrap-title{
+    width: 100%;
+    padding: 0;
+  }
+  .preset-evt-2 .lakit-posts__meta {
+    flex-direction: row;
+    width: 100%;
+  }
+}

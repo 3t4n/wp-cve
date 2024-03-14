@@ -1,0 +1,502 @@
+@keyframes lakitbtn_left{
+  from{
+    opacity:0;
+    transform:translate3d(-50%,0,0)
+  }
+  to{
+    opacity:1;
+    transform: none;
+  }
+}
+
+@keyframes lakitbtn_top{
+  from{
+    opacity:0;
+    transform:translate3d(0,-50%,0)
+  }
+  to{
+    opacity:1;
+    transform: none;
+  }
+}
+@keyframes lakitbtn_right{
+  from{
+    opacity:0;
+    transform:translate3d(50%,0,0)
+  }
+  to{
+    opacity:1;
+    transform: none;
+  }
+}
+@keyframes lakitbtn_bottom{
+  from{
+    opacity:0;
+    transform:translate3d(0,50%,0)
+  }
+  to{
+    opacity:1;
+    transform: none;
+  }
+}
+
+@keyframes lakitbtn_none{
+  to{
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+$zones: a,b,c,d;
+
+@each $zone in $zones {
+  .actionzone-#{$zone}-toggle-yes{
+    .lakitp-zone-#{$zone}{
+      background: none !important;
+      &:before{
+        content: '';
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        left: 0;
+        top: 0;
+        transition: all 550ms ease 50ms;
+        background: var(--lakit-zone-bg);
+        border-radius: inherit;
+        z-index: -1;
+        max-width: 100%;
+        max-height: 100%;
+      }
+      &:hover{
+        &:before{
+          width: 100%;
+          height: 100%;
+        }
+        .lakit-btn.btn-toggle{
+          animation-name: lakitbtn_none!important;
+        }
+      }
+      .lakit-btn{
+        animation-duration: 500ms;
+        animation-fill-mode: both;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        + .lakit-btn {
+          animation-delay: 50ms;
+          + .lakit-btn {
+            animation-delay: 100ms;
+            + .lakit-btn {
+              animation-delay: 150ms;
+              + .lakit-btn {
+                animation-delay: 200ms;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.actionzone-#{$zone}-pos-top-right{
+      .lakitp-zone-#{$zone}{
+        &:before{
+          right: 0;
+          left: auto;
+        }
+      }
+    }
+    &.actionzone-#{$zone}-pos-bottom-left{
+      .lakitp-zone-#{$zone}{
+        &:before{
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+    &.actionzone-#{$zone}-pos-center-right,
+    &.actionzone-#{$zone}-pos-bottom-right{
+      .lakitp-zone-#{$zone}{
+        &:before{
+          left: auto;
+          right: 0;
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+
+    &.actionzone-#{$zone}-direction-row{
+      $pos1: top,center,bottom;
+      @each $pos in $pos1 {
+        &.actionzone-#{$zone}-pos-#{$pos}-center,
+        &.actionzone-#{$zone}-pos-#{$pos}-left{
+          .lakitp-zone-#{$zone}:hover .lakit-btn{
+            animation-name: lakitbtn_left;
+          }
+        }
+        &.actionzone-#{$zone}-pos-#{$pos}-right{
+          .lakitp-zone-#{$zone}:hover{
+            flex-direction: row-reverse;
+            .lakit-btn{
+              animation-name: lakitbtn_right;
+            }
+          }
+        }
+      }
+    }
+    &.actionzone-#{$zone}-direction-column{
+      $pos1: left,center,right;
+      @each $pos in $pos1 {
+        &.actionzone-#{$zone}-pos-center-#{$pos},
+        &.actionzone-#{$zone}-pos-top-#{$pos}{
+          .lakitp-zone-#{$zone}:hover .lakit-btn{
+            animation-name: lakitbtn_top;
+          }
+        }
+        &.actionzone-#{$zone}-pos-bottom-#{$pos}{
+          .lakitp-zone-#{$zone}:hover{
+            flex-direction: column-reverse;
+            .lakit-btn{
+              animation-name: lakitbtn_bottom;
+            }
+          }
+        }
+      }
+    }
+  }
+  .actionzone-#{$zone}-hover-yes{
+    .lakitp-zone-#{$zone}{
+      background: none !important;
+      &:before{
+        content: '';
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        left: 0;
+        top: 0;
+        transition: all 550ms ease 50ms;
+        background: var(--lakit-zone-bg);
+        border-radius: inherit;
+        z-index: -1;
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .lakit-btn{
+        animation-duration: 500ms;
+        animation-fill-mode: both;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        + .lakit-btn {
+          animation-delay: 50ms;
+          + .lakit-btn {
+            animation-delay: 100ms;
+            + .lakit-btn {
+              animation-delay: 150ms;
+              + .lakit-btn {
+                animation-delay: 200ms;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.actionzone-#{$zone}-pos-top-right{
+      .lakitp-zone-#{$zone}{
+        &:before{
+          right: 0;
+          left: auto;
+        }
+      }
+    }
+    &.actionzone-#{$zone}-pos-bottom-left{
+      .lakitp-zone-#{$zone}{
+        &:before{
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+    &.actionzone-#{$zone}-pos-center-right,
+    &.actionzone-#{$zone}-pos-bottom-right{
+      .lakitp-zone-#{$zone}{
+        &:before{
+          left: auto;
+          right: 0;
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+    .product_item--inner{
+      &:hover{
+        .lakitp-zone-#{$zone}{
+          &:before{
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    &.actionzone-#{$zone}-direction-row{
+      .product_item--inner:hover{
+        .lakitp-zone-#{$zone}{
+          .lakit-btn{
+            animation-name: lakitbtn_bottom;
+          }
+        }
+      }
+      $pos1: top,center,bottom;
+      @each $pos in $pos1 {
+        &.actionzone-#{$zone}-pos-#{$pos}-right{
+          .lakitp-zone-#{$zone}{
+            flex-direction: row-reverse;
+          }
+        }
+      }
+    }
+    &.actionzone-#{$zone}-direction-column{
+      .product_item--inner:hover{
+        .lakitp-zone-#{$zone}{
+          .lakit-btn{
+            animation-name: lakitbtn_bottom;
+          }
+        }
+      }
+      $pos1: left,center,right;
+      @each $pos in $pos1 {
+        &.actionzone-#{$zone}-pos-bottom-#{$pos}{
+          .lakitp-zone-#{$zone}{
+            flex-direction: column-reverse;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+$zones: a,b,c;
+
+.actionzone-a-hover-yes .lakitp-zone-a,
+.actionzone-b-hover-yes .lakitp-zone-b,
+.actionzone-c-hover-yes .lakitp-zone-c,
+.actionzone-a-toggle-yes .lakitp-zone-a,
+.actionzone-b-toggle-yes .lakitp-zone-b,
+.actionzone-c-toggle-yes .lakitp-zone-c{
+  background: none !important;
+  &:before{
+    content: '';
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    left: 0;
+    top: 0;
+    transition: all 550ms ease 50ms;
+    background: var(--lakit-zone-bg);
+    border-radius: inherit;
+    z-index: -1;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  &:hover{
+    &:before{
+      width: 100%;
+      height: 100%;
+    }
+    .lakit-btn.btn-toggle{
+      animation-name: lakitbtn_none!important;
+    }
+  }
+  .lakit-btn{
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    + .lakit-btn {
+      animation-delay: 50ms;
+      + .lakit-btn {
+        animation-delay: 100ms;
+        + .lakit-btn {
+          animation-delay: 150ms;
+          + .lakit-btn {
+            animation-delay: 200ms;
+          }
+        }
+      }
+    }
+  }
+}
+
+.actionzone-a-toggle-yes.actionzone-a-pos-top-right .lakitp-zone-a:before,
+.actionzone-b-toggle-yes.actionzone-b-pos-top-right .lakitp-zone-b:before,
+.actionzone-c-toggle-yes.actionzone-c-pos-top-right .lakitp-zone-c:before{
+  right: 0;
+  left: auto;
+}
+.actionzone-a-toggle-yes.actionzone-a-pos-bottom-left.lakitp-zone-a:before,
+.actionzone-b-toggle-yes.actionzone-b-pos-bottom-left.lakitp-zone-b:before,
+.actionzone-c-toggle-yes.actionzone-c-pos-bottom-left.lakitp-zone-c:before{
+  top: auto;
+  bottom: 0;
+}
+.actionzone-a-toggle-yes.actionzone-a-pos-center-right .lakitp-zone-a:before,
+.actionzone-a-toggle-yes.actionzone-a-pos-bottom-right .lakitp-zone-a:before,
+.actionzone-b-toggle-yes.actionzone-b-pos-center-right .lakitp-zone-b:before,
+.actionzone-b-toggle-yes.actionzone-b-pos-bottom-right .lakitp-zone-b:before,
+.actionzone-c-toggle-yes.actionzone-c-pos-center-right .lakitp-zone-c:before,
+.actionzone-c-toggle-yes.actionzone-c-pos-bottom-right .lakitp-zone-c:before{
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+}
+
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-top-center .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-top-left .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-center-center .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-center-left .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-bottom-center .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-bottom-left .lakitp-zone-a:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-top-center .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-top-left .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-center-center .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-center-left .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-bottom-center .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-bottom-left .lakitp-zone-b:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-top-center .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-top-left .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-center-center .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-center-left .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-bottom-center .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-bottom-left .lakitp-zone-c:hover .lakit-btn{
+  animation-name: lakitbtn_left;
+}
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-top-right .lakitp-zone-a:hover,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-center-right .lakitp-zone-a:hover,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-bottom-right .lakitp-zone-a:hover,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-top-right .lakitp-zone-b:hover,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-center-right .lakitp-zone-b:hover,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-bottom-right .lakitp-zone-b:hover,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-top-right .lakitp-zone-c:hover,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-center-right .lakitp-zone-c:hover,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-bottom-right .lakitp-zone-c:hover{
+  flex-direction: row-reverse;
+}
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-top-right .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-center-right .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-row.actionzone-a-pos-bottom-right .lakitp-zone-a:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-top-right .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-center-right .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-row.actionzone-b-pos-bottom-right .lakitp-zone-b:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-top-right .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-center-right .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-row.actionzone-c-pos-bottom-right .lakitp-zone-c:hover .lakit-btn{
+  animation-name: lakitbtn_right;
+}
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-center-left .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-top-left .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-center-center .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-top-center .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-center-right .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-top-right .lakitp-zone-a:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-center-left .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-top-left .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-center-center .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-top-center .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-center-right .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-top-right .lakitp-zone-b:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-center-left .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-top-left .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-center-center .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-top-center .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-center-right .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-top-right .lakitp-zone-c:hover .lakit-btn{
+  animation-name: lakitbtn_top;
+}
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-top .lakitp-zone-a:hover,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-center .lakitp-zone-a:hover,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-right .lakitp-zone-a:hover,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-top .lakitp-zone-b:hover,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-center .lakitp-zone-b:hover,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-right .lakitp-zone-b:hover,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-top .lakitp-zone-c:hover,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-center .lakitp-zone-c:hover,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-right .lakitp-zone-c:hover{
+  flex-direction: column-reverse;
+}
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-left .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-center .lakitp-zone-a:hover .lakit-btn,
+.actionzone-a-toggle-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-right .lakitp-zone-a:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-left .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-center .lakitp-zone-b:hover .lakit-btn,
+.actionzone-b-toggle-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-right .lakitp-zone-b:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-left .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-center .lakitp-zone-c:hover .lakit-btn,
+.actionzone-c-toggle-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-right .lakitp-zone-c:hover .lakit-btn{
+  animation-name: lakitbtn_bottom;
+}
+
+.actionzone-a-hover-yes.actionzone-a-pos-top-right .lakitp-zone-a:before,
+.actionzone-b-hover-yes.actionzone-b-pos-top-right .lakitp-zone-b:before,
+.actionzone-c-hover-yes.actionzone-c-pos-top-right .lakitp-zone-c:before{
+  right: 0;
+  left: auto;
+}
+.actionzone-a-hover-yes.actionzone-a-pos-bottom-left .lakitp-zone-a:before,
+.actionzone-b-hover-yes.actionzone-b-pos-bottom-left .lakitp-zone-b:before,
+.actionzone-c-hover-yes.actionzone-c-pos-bottom-left .lakitp-zone-c:before{
+  top: auto;
+  bottom: 0;
+}
+.actionzone-a-hover-yes.actionzone-a-pos-bottom-right .lakitp-zone-a:before,
+.actionzone-b-hover-yes.actionzone-b-pos-bottom-right .lakitp-zone-b:before,
+.actionzone-c-hover-yes.actionzone-c-pos-bottom-right .lakitp-zone-c:before,
+.actionzone-a-hover-yes.actionzone-a-pos-center-right .lakitp-zone-a:before,
+.actionzone-b-hover-yes.actionzone-b-pos-center-right .lakitp-zone-b:before,
+.actionzone-c-hover-yes.actionzone-c-pos-center-right .lakitp-zone-c:before{
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+}
+.actionzone-a-hover-yes .product_item--inner:hover .lakitp-zone-a:before,
+.actionzone-b-hover-yes .product_item--inner:hover .lakitp-zone-b:before,
+.actionzone-c-hover-yes .product_item--inner:hover .lakitp-zone-c:before{
+  width: 100%;
+  height: 100%;
+}
+
+.actionzone-a-hover-yes.actionzone-a-direction-row .product_item--inner:hover .lakitp-zone-a .lakit-btn,
+.actionzone-b-hover-yes.actionzone-b-direction-row .product_item--inner:hover .lakitp-zone-b .lakit-btn,
+.actionzone-c-hover-yes.actionzone-c-direction-row .product_item--inner:hover .lakitp-zone-c .lakit-btn{
+  animation-name: lakitbtn_bottom;
+}
+.actionzone-a-hover-yes.actionzone-a-direction-row.actionzone-a-pos-top-right .lakitp-zone-a,
+.actionzone-a-hover-yes.actionzone-a-direction-row.actionzone-a-pos-center-right .lakitp-zone-a,
+.actionzone-a-hover-yes.actionzone-a-direction-row.actionzone-a-pos-bottom-right .lakitp-zone-a,
+.actionzone-b-hover-yes.actionzone-b-direction-row.actionzone-b-pos-top-right .lakitp-zone-b,
+.actionzone-b-hover-yes.actionzone-b-direction-row.actionzone-b-pos-center-right .lakitp-zone-b,
+.actionzone-b-hover-yes.actionzone-b-direction-row.actionzone-b-pos-bottom-right .lakitp-zone-b,
+.actionzone-c-hover-yes.actionzone-c-direction-row.actionzone-c-pos-top-right .lakitp-zone-c,
+.actionzone-c-hover-yes.actionzone-c-direction-row.actionzone-c-pos-center-right .lakitp-zone-c,
+.actionzone-c-hover-yes.actionzone-c-direction-row.actionzone-c-pos-bottom-right .lakitp-zone-c{
+  flex-direction: row-reverse;
+}
+.actionzone-a-hover-yes.actionzone-a-direction-column .product_item--inner:hover .lakitp-zone-a .lakit-btn,
+.actionzone-b-hover-yes.actionzone-b-direction-column .product_item--inner:hover .lakitp-zone-b .lakit-btn,
+.actionzone-c-hover-yes.actionzone-c-direction-column .product_item--inner:hover .lakitp-zone-c .lakit-btn{
+  animation-name: lakitbtn_bottom;
+}
+.actionzone-a-hover-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-left .lakitp-zone-a,
+.actionzone-a-hover-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-center .lakitp-zone-a,
+.actionzone-a-hover-yes.actionzone-a-direction-column.actionzone-a-pos-bottom-right .lakitp-zone-a,
+.actionzone-b-hover-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-left .lakitp-zone-b,
+.actionzone-b-hover-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-center .lakitp-zone-b,
+.actionzone-b-hover-yes.actionzone-b-direction-column.actionzone-b-pos-bottom-right .lakitp-zone-b,
+.actionzone-c-hover-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-left .lakitp-zone-c,
+.actionzone-c-hover-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-center .lakitp-zone-c,
+.actionzone-c-hover-yes.actionzone-c-direction-column.actionzone-c-pos-bottom-right .lakitp-zone-c{
+  flex-direction: column-reverse;
+}
