@@ -1,0 +1,284 @@
+$font_default: 18px;
+$font_heading: 30px;
+
+$bg-main: #f1f1f1;
+$color-default: #000000;
+$color-heading: #000000;
+$color-secondary: #787878;
+$color-link: #2780da;
+
+$color-button: #ffffff;
+
+$color_background: #ffffff;
+$color_secondary: #787878;
+
+// themes
+$themes: (
+	(
+		name: 'theme-red',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-red-600,
+		color-secondary: $color-secondary,
+		color-link: $color-red-600,
+		
+		bg-button: $color-red-600,
+		color-button: $color-button
+	),
+
+	(
+		name: 'theme-blue',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-blue-600,
+		color-secondary: $color-secondary,
+		color-link: $color-blue-600,
+		
+		bg-button: $color-blue-600,
+		color-button: $color-button
+	),
+
+	(
+		name: 'theme-indigo',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-indigo-600,
+		color-secondary: $color-secondary,
+		color-link: $color-indigo-600,
+		
+		bg-button: $color-indigo-600,
+		color-button: $color-button
+	),
+
+	(
+		name: 'theme-green',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-green-600,
+		color-secondary: $color-secondary,
+		color-link: $color-green-600,
+		
+		bg-button: $color-green-600,
+		color-button: $color-button
+	),
+
+	(
+		name: 'theme-purple',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-purple-600,
+		color-secondary: $color-secondary,
+		color-link: $color-purple-600,
+		
+		bg-button: $color-purple-600,
+		color-button: $color-button
+	),
+
+	(
+		name: 'theme-pink',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-pink-600,
+		color-secondary: $color-secondary,
+		color-link: $color-pink-600,
+		
+		bg-button: $color-pink-600,
+		color-button: $color-button
+	),
+
+	(
+		name: 'theme-orange',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-orange-600,
+		color-secondary: $color-secondary,
+		color-link: $color-orange-600,
+		
+		bg-button: $color-orange-600,
+		color-button: $color-button
+	),
+
+	(
+		name: 'theme-gray',
+		bg-main: $bg-main, 
+		
+		color-default: $color-default,
+		color-heading: $color-gray-600,
+		color-secondary: $color-secondary,
+		color-link: $color-gray-600,
+		
+		bg-button: $color-gray-600,
+		color-button: $color-button
+	),
+);
+
+@each $theme in $themes {
+	@include wfea-theme($theme);
+ 	@include card-theme($theme);
+	/* <fs_premium_only> */
+	@include short-date-theme($theme);
+	@include accordion-theme($theme);
+	/* </fs_premium_only> */
+}
+
+
+
+/* <fs_premium_only> */
+
+// qtip
+$qtip-themes: (
+	(
+		name: 'theme-red',
+		bg-main: $color-red-50, // 50
+		bg-title: $color-red-200, // 200
+		color-border: $color-red-400, // 400
+		color-default: $color-red-900, // 900
+	),
+
+	(
+		name: 'theme-blue',
+		bg-main: $color-blue-50, // 50
+		bg-title: $color-blue-200, // 200
+		color-border: $color-blue-400, // 400
+		color-default: $color-blue-900, // 900
+	),
+
+	(
+		name: 'theme-indigo',
+		bg-main: $color-indigo-50, // 50
+		bg-title: $color-indigo-200, // 200
+		color-border: $color-indigo-400, // 400
+		color-default: $color-indigo-900, // 900
+	),
+
+	(
+		name: 'theme-green',
+		bg-main: $color-green-50, // 50
+		bg-title: $color-green-200, // 200
+		color-border: $color-green-400, // 400
+		color-default: $color-green-900, // 900
+	),
+
+	(
+		name: 'theme-purple',
+		bg-main: $color-purple-50, // 50
+		bg-title: $color-purple-200, // 200
+		color-border: $color-purple-400, // 400
+		color-default: $color-purple-900, // 900
+	),
+
+	(
+		name: 'theme-pink',
+		bg-main: $color-pink-50, // 50
+		bg-title: $color-pink-200, // 200
+		color-border: $color-pink-400, // 400
+		color-default: $color-pink-900, // 900
+	),
+
+	(
+		name: 'theme-orange',
+		bg-main: #fff3eb, // 50
+		bg-title: #fdc68a, // 200
+		color-border: #fba024, // 400
+		color-default: #78350f, // 900
+	),
+
+	(
+		name: 'theme-gray',
+		bg-main: $color-gray-50, // 50
+		bg-title: $color-gray-200, // 200
+		color-border: $color-gray-400, // 400
+		color-default: $color-gray-900, // 900
+	),
+);
+
+@each $theme in $qtip-themes {
+ 	@include qtip-theme($theme);
+}
+
+// cal
+$cal-themes: (
+	(
+		name: 'theme-red',
+		bg-main: $color-red-50, // 50
+		bg-button: $color-red-700, // 700
+		color-button-border: $color-red-800, // 800
+		color-button-text: $color-red-200, // 200
+		color-default: $color-red-100, // 100
+	),
+
+	(
+		name: 'theme-blue',
+		bg-main: $color-blue-50, // 50
+		bg-button: $color-blue-700, // 700
+		color-button-border: $color-blue-800, // 800
+		color-button-text: $color-blue-200, // 200
+		color-default: $color-blue-100, // 100
+	),
+
+	(
+		name: 'theme-indigo',
+		bg-main: $color-indigo-50, // 50
+		bg-button: $color-indigo-700, // 700
+		color-button-border: $color-indigo-800, // 800
+		color-button-text: $color-indigo-200, // 200
+		color-default: $color-indigo-100, // 100
+	),
+
+	(
+		name: 'theme-green',
+		bg-main: $color-green-50, // 50
+		bg-button: $color-green-700, // 700
+		color-button-border: $color-green-800, // 800
+		color-button-text: $color-green-200, // 200
+		color-default: $color-green-100, // 100
+	),
+
+	(
+		name: 'theme-purple',
+		bg-main: $color-purple-50, // 50
+		bg-button: $color-purple-700, // 700
+		color-button-border: $color-purple-800, // 800
+		color-button-text: $color-purple-200, // 200
+		color-default: $color-purple-100, // 100
+	),
+
+	(
+		name: 'theme-pink',
+		bg-main: $color-pink-50, // 50
+		bg-button: $color-pink-700, // 700
+		color-button-border: $color-pink-800, // 800
+		color-button-text: $color-pink-200, // 200
+		color-default: $color-pink-100, // 100
+	),
+
+	(
+		name: 'theme-orange',
+		bg-main: $color-orange-50, // 50
+		bg-button: $color-orange-700, // 700
+		color-button-border: $color-orange-800, // 800
+		color-button-text: $color-orange-200, // 200
+		color-default: $color-orange-100, // 100
+	),
+
+	(
+		name: 'theme-gray',
+		bg-main: $color-gray-50, // 50
+		bg-button: $color-gray-700, // 700
+		color-button-border: $color-gray-800, // 800
+		color-button-text: $color-gray-200, // 200
+		color-default: $color-gray-100, // 100
+	),
+);
+
+@each $theme in $cal-themes {
+ 	@include cal-theme($theme);
+}
+/* </fs_premium_only> */

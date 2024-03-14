@@ -1,0 +1,113 @@
+/**
+*
+* default Widget css.
+*/
+
+@mixin widget_layout {
+  .eaw-li__wrap {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+
+  .eaw-li__flex {
+    display: flex;
+    gap: 1em;
+
+
+    .eaw-content-wrap {
+      flex-grow: 1;
+      line-height: 100%;
+    }
+
+    .eaw-thumb-wrap {
+      flex-shrink: 1;
+    }
+
+    &.eaw-alignright {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+
+    &.eaw-aligncenter {
+      flex-direction: column;
+    }
+
+    &.eaw-alignleft {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+
+
+  a {
+    display: inline;
+    text-decoration: none;
+
+    &.eaw-img {
+      display: block;
+
+      &.eaw-aligncenter {
+        text-align: center;
+      }
+    }
+  }
+
+  h3 {
+    background: none;
+    clear: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .eaw-booknow {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .eaw-thumb {
+    border: 1px solid #EEE;
+    box-shadow: none;
+    margin: 2px 10px 2px 0;
+    padding: 3px;
+
+    &.eaw-aligncenter {
+      margin: 2px auto 2px auto;
+    }
+  }
+
+  .eaw-summary {
+    font-size: 12px;
+  }
+
+  .eaw-time {
+    color: #bbb;
+    font-size: 11px;
+  }
+
+  .eaw-comment {
+    color: #bbb;
+    font-size: 11px;
+    padding-left: 5px;
+  }
+}
+
+.widget .eaw-block {
+  @include widget_layout;
+}
+
+.elementor-widget-container .eaw-block {
+  @include widget_layout;
+}
+
+/* <fs_premium_only> */
+
+
+.entry-content .eaw-block {
+  @include widget_layout;
+}
+
+/* </fs_premium_only> */

@@ -1,0 +1,228 @@
+@use "sass:map";
+
+@mixin wfea-reset {
+	a {
+		border: 0;
+		box-shadow: none;
+		&:hover {
+			border: 0;
+			box-shadow: none;
+		}
+	}
+
+
+	.wfea-header__title {
+		&:before, &:after {
+			content:none;
+		}
+	}
+	h1, h2, h3, h4, h5, h6 {
+		line-height: 1.25;
+		margin:0;
+		padding: 0;
+	}
+}
+
+@mixin wfea-theme ($colors)
+{	
+	// generic
+	section.wfea.#{map.get($colors, "name")} article {
+		color: map.get($colors, "color-default");
+
+        @include wfea-reset;
+
+		.wfea-1__info {
+			background: map.get($colors, "bg-main");
+		}
+
+		.wfea-header__title a {
+			color: map.get($colors, "color-heading") !important;
+		}
+
+		.eaw-time {
+			color: map.get($colors, "color-secondary");
+		}
+
+		.booknow {
+			a {
+				background: map.get($colors, "bg-button");
+				color: map.get($colors, "color-button");
+			}
+			button {
+				background: map.get($colors, "bg-button");
+				color: map.get($colors, "color-button");
+			}
+		}
+
+		.more-link {
+			color: map.get($colors, "color-link");
+		}
+	}
+
+	// widget
+	.eaw-block.#{map.get($colors, "name")} .eaw-ulx .eaw-li__wrap {
+		color: map.get($colors, "color-default");
+		@include wfea-reset;
+		.eaw-title a {
+			color: map.get($colors, "color-heading");
+		}
+
+		.eaw-time {
+			color: map.get($colors, "color-secondary");
+		}
+
+		.booknow {
+			a {
+				background: map.get($colors, "bg-button");
+				color: map.get($colors, "color-button");
+			}
+			button {
+				background: map.get($colors, "bg-button");
+				color: map.get($colors, "color-button");
+			}
+		}
+
+		.more-link {
+			color: map.get($colors, "color-link");
+		}
+	}
+	/* <fs_premium_only> */
+	// slideshow
+	.wfea-slideshow-wrap section.wfea-slider.#{map.get($colors, "name")} .text-block {
+		a.book-now__link.button {
+			background: map.get($colors, "bg-button");
+			color: map.get($colors, "color-button");
+		}
+	}
+	/* </fs_premium_only> */
+}
+/* <fs_premium_only> */
+@mixin qtip-theme ($colors)
+{
+	.wfea.wfea-cal.#{map.get($colors, "name")} .help-tip,
+	.qtip.#{map.get($colors, "name")} {
+		background: map.get($colors, "bg-main");
+		border-color: map.get($colors, "color-border");
+		color: map.get($colors, "color-default");
+
+		.qtip-titlebar {
+			background: map.get($colors, "bg-title");
+		}
+
+		.qtip-tip:before {
+		    border-color: map.get($colors, "color-border") transparent transparent;
+		}
+		.qtip-tip:after {
+    		border-color: map.get($colors, "bg-main") transparent transparent transparent;
+		}
+	}
+}
+
+@mixin accordion-theme ($colors)
+{
+	.wfea.wfea-accordion.#{map.get($colors, "name")} {
+		.wfea-accordion__head-date {
+			color: map.get($colors, "color-heading");
+		}
+
+		.wfea-accordion__series_summary {
+			color: map.get($colors, "color-default");
+		}
+
+		.wfea-accordion__date-time {
+			color: map.get($colors, "color-secondary");
+		}
+
+		.wfea-accordion__organizer_name {
+			color: map.get($colors, "color-secondary");
+		}
+
+		.wfea-accordion__venue_name {
+			color: map.get($colors, "color-secondary");
+			font-weight: 700;
+		}
+
+		.wfea-accordion__booknow {
+				background: map.get($colors, "bg-button");
+				color: map.get($colors, "color-button");
+		}
+		.tab.closed .tab__label {
+			background: map.get($colors, "bg-button");
+			color: map.get($colors, "color-button");
+		}
+	}
+}
+
+@mixin cal-theme ($colors)
+{
+	.wfea.wfea-cal.#{map.get($colors, "name")} {
+		.fc-unthemed td.fc-today {
+			background: map.get($colors, "bg-main");
+		}
+		.fc-event, .fc-event-dot {
+			background-color: map.get($colors, "bg-button");
+			color: map.get($colors, "color-default");
+			border-color: map.get($colors, "color-border") transparent transparent;
+		}
+		.fc-toolbar.fc-header-toolbar {
+			background: map.get($colors, "bg-button");
+
+			h2 {
+				color: map.get($colors, "color-default");
+			}
+
+			.fc-button-group button {
+				background: map.get($colors, "bg-button");
+				border-color: map.get($colors, "color-button-border");
+				color: map.get($colors, "color-button-text");
+				text-shadow: none;
+			}
+		}
+	}
+}
+
+@mixin short-date-theme ($colors)
+{	
+	// generic
+	section.wfea.wfea-short-date.#{map.get($colors, "name")} article {
+
+		.eaw-title a{
+			color: map.get($colors, "color-link") !important;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+
+		.wfea-short-date-item-date-month {
+			color: map.get($colors, "color-link") !important;
+		}
+
+		.wfea-short-date-item-content .wfea-short-date-item-meta .wfea-short-date-item-buttons {
+			.book-now__link {
+				background: map.get($colors, "color-link") !important;	
+			}
+
+			button.wfea-modal-view-details {
+				color: map.get($colors, "color-link") !important;		
+			}
+		}
+	}
+
+	.wfea-modal-container.#{map.get($colors, "name")} {
+		.wfea-modal-checkout-button {
+			background: map.get($colors, "color-link") !important;	
+		}
+	}
+}
+/* </fs_premium_only> */
+
+@mixin card-theme ($colors)
+{	
+	// generic
+	.wfea-card.#{map.get($colors, "name")} article {
+
+		.wfea-card-item .eaw-content-wrap .eaw-content-block .eaw-buttons .eaw-booknow a {
+			background: map.get($colors, "color-link") !important;	
+		}
+	}
+}
