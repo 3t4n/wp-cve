@@ -1,0 +1,68 @@
+// main: ../main.scss
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.dm-code-snippet {
+  .dm-buttons {
+    .dm-buttons-right {
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.dm-buttons {
+  @include flexbox;
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 10px;
+
+  .dm-buttons-left {
+    @include flexbox;
+    align-items: center;
+  }
+
+  .dm-buttons-right {
+    @include flexbox;
+    align-items: center;
+
+    a {
+      opacity: 0.5;
+      float: left;
+      color: $white;
+      box-shadow: none;
+      background: $bg-copy;
+      padding: 3px 10px 2px 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      letter-spacing: 1px;
+      border-radius: 3px;
+
+      &:hover {
+        opacity: 1;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .dm-button-snippet {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    margin-right: 10px;
+
+    &.red-button {
+      background: $red;
+    }
+    &.green-button {
+      background: $green;
+    }
+    &.orange-button {
+      background: $orange;
+    }
+  }
+}
