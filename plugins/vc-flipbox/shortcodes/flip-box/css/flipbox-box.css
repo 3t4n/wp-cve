@@ -1,0 +1,203 @@
+.asvc-flip-box .flip-content {
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.full-size, .asvc-flip-box .object, .asvc-flip-box .front, .asvc-flip-box .back {
+    width: 100%;
+    height: 100%;
+}
+
+.slice, .asvc-flip-box .front, .asvc-flip-box .back, .asvc-flip-box .flank {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+}
+
+.asvc-flip-box {
+    float: left;
+    display: block;
+    position: relative;
+    z-index: 2;
+    width: 300px;
+    height: 200px;
+    -webkit-perspective: 400px;
+    -moz-perspective: 400px;
+    -ms-perspective: 400px;
+    -o-perspective: 400px;
+    perspective: 400px;
+}
+.asvc-flip-box .object {
+    position: absolute;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(-75px);
+    -moz-transform: translateZ(-75px);
+    -ms-transform: translateZ(-75px);
+    -o-transform: translateZ(-75px);
+    transform: translateZ(-75px);
+}
+.asvc-flip-box .object:hover, .asvc-flip-box .object:focus {
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transform: translateZ(-75px) rotateY(180deg);
+    -moz-transform: translateZ(-75px) rotateY(180deg);
+    -ms-transform: translateZ(-75px) rotateY(180deg);
+    -o-transform: translateZ(-75px) rotateY(180deg);
+    transform: translateZ(-75px) rotateY(180deg);
+}
+.asvc-flip-box .front {
+    z-index: 1;
+    background-color: #789e13;
+    -webkit-transform: rotateY(0deg) translateZ(75px);
+    -moz-transform: rotateY(0deg) translateZ(75px);
+    -ms-transform: rotateY(0deg) translateZ(75px);
+    -o-transform: rotateY(0deg) translateZ(75px);
+    transform: rotateY(0deg) translateZ(75px);
+}
+.asvc-flip-box .back {
+    z-index: 0;
+    background-color: #9bcc18;
+    -webkit-transform: rotateY(180deg) translateZ(75px);
+    -moz-transform: rotateY(180deg) translateZ(75px);
+    -ms-transform: rotateY(180deg) translateZ(75px);
+    -o-transform: rotateY(180deg) translateZ(75px);
+    transform: rotateY(180deg) translateZ(75px);
+}
+.asvc-flip-box .flank {
+    width: 150px;
+    height: 200px;
+    left: 75px;
+    background-color: #55700e;
+    -webkit-transform: rotateY(-90deg) translateZ(150px);
+    -moz-transform: rotateY(-90deg) translateZ(150px);
+    -ms-transform: rotateY(-90deg) translateZ(150px);
+    -o-transform: rotateY(-90deg) translateZ(150px);
+    transform: rotateY(-90deg) translateZ(150px);
+}
+.asvc-flip-box.flip-up .object:hover, .asvc-flip-box.flip-up .object:focus {
+    -webkit-transform: translateZ(-75px) rotateX(180deg);
+    -moz-transform: translateZ(-75px) rotateX(180deg);
+    -ms-transform: translateZ(-75px) rotateX(180deg);
+    -o-transform: translateZ(-75px) rotateX(180deg);
+    transform: translateZ(-75px) rotateX(180deg);
+}
+.asvc-flip-box.flip-up .back {
+    -webkit-transform: rotateX(180deg) translateZ(75px);
+    -moz-transform: rotateX(180deg) translateZ(75px);
+    -ms-transform: rotateX(180deg) translateZ(75px);
+    -o-transform: rotateX(180deg) translateZ(75px);
+    transform: rotateX(180deg) translateZ(75px);
+}
+.asvc-flip-box.flip-up .flank {
+    width: 300px;
+    height: 150px;
+    left: 0;
+    top: 25px;
+    -webkit-transform: rotateX(-90deg) translateZ(100px);
+    -moz-transform: rotateX(-90deg) translateZ(100px);
+    -ms-transform: rotateX(-90deg) translateZ(100px);
+    -o-transform: rotateX(-90deg) translateZ(100px);
+    transform: rotateX(-90deg) translateZ(100px);
+}
+.asvc-flip-box.alternative .front {
+    background-color: #931e83;
+}
+.asvc-flip-box.alternative .back {
+    background-color: #bd27a9;
+}
+.asvc-flip-box.alternative .flank {
+    background-color: #69155d;
+}
+
+.no-csstransforms3d .asvc-flip-box .object {
+    position: relative;
+    overflow: hidden;
+    -webkit-transform-style: none;
+    -moz-transform-style: none;
+    -ms-transform-style: none;
+    -o-transform-style: none;
+    transform-style: none;
+}
+.no-csstransforms3d .asvc-flip-box .object .back {
+    top: 300px;
+    z-index: 0;
+    -webkit-transition-property: top;
+    -moz-transition-property: top;
+    -o-transition-property: top;
+    transition-property: top;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+}
+.no-csstransforms3d .asvc-flip-box .object:hover .back {
+    top: 0;
+    z-index: 1;
+}
+.no-csstransforms3d .asvc-flip-box .flank {
+    display: none;
+}
+
+/* Internet Explorer 10 only */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .object {
+        position: relative;
+        overflow: hidden;
+        transform: none !important;
+    }
+    .object .back {
+        top: 300px;
+        z-index: 0;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        -o-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -moz-transition-duration: 0.3s;
+        -o-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-in-out;
+        -moz-transition-timing-function: ease-in-out;
+        -o-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out;
+    }
+    .object:hover .back {
+        top: 0;
+        z-index: 1;
+        transform: rotateY(0deg) translateZ(0);
+    }
+}
+.asvc-flip-box .flip-content h3 {
+    line-height: 20px;
+    margin: 0;
+}

@@ -1,0 +1,147 @@
+.mgt-flipbox {
+    margin: 0 auto;
+    position: relative;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    height: 200px;
+    position: relative;
+    z-index: 10;
+}
+.mgt-flipbox .mgt-flipbox-front,
+.mgt-flipbox .mgt-flipbox-back {
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+}
+.mgt-flipbox .mgt-flipbox-front {
+    height: inherit;
+    position: absolute;
+    top: 0;
+    z-index: 900;
+    text-align: center;
+    
+    transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+       -moz-transform: rotateX(0deg) rotateY(0deg);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+       -moz-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;
+         -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+}
+.mgt-flipbox .mgt-flipbox-back {
+    height: inherit;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    
+    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+       -moz-transform: rotateY(-180deg);
+       transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+       backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+    -webkit-transition: all 1s ease-in-out;
+       -moz-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;
+         -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+}
+.mgt-flipbox:hover .mgt-flipbox-front {
+    z-index: 900;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+.mgt-flipbox:hover .mgt-flipbox-back {
+    z-index: 1000;
+    transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+}
+.mgt-flipbox .mgt-flipbox-front-inner {
+    background-color: #F4F4F4;
+}
+.mgt-flipbox .mgt-flipbox-back-inner {
+    background-color: #F9F9F9;
+}
+.mgt-flipbox .mgt-flipbox-front-inner,
+.mgt-flipbox .mgt-flipbox-back-inner {
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px;
+}
+.mgt-flipbox .mgt-flipbox-content-wrapper {
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    position: relative;
+}
+.mgt-flipbox h4.mgt-flipbox-header {
+    font-size: 24px;
+    margin-top: 0;
+}
+.mgt-flipbox .mgt-flipbox-description {
+    font-size: 14px;
+    color: #68686D;
+}
+.mgt-flipbox .mgt-flipbox-front .mgt-flipbox-icon i {
+    font-size: 45px;
+    color: #2A2F35;
+    margin-bottom: 35px;
+}
+.mgt-flipbox .mgt-flipbox-back .mgt-button-wrapper {
+    margin-top: 35px;
+}
+.mgt-flipbox.mgt-flipbox-round-edges-small > div {
+    border-radius: 5px;
+}
+.mgt-flipbox.mgt-flipbox-round-edges-medium > div {
+    border-radius: 10px;
+}
+.mgt-flipbox.mgt-flipbox-round-edges-large > div {
+    border-radius: 15px;
+}
+.mgt-flipbox.mgt-flipbox-round-edges-full > div {
+    border-radius: 50px;
+}
+.mgt-flipbox.mgt-flipbox-animation-vertical .mgt-flipbox-front {
+    transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+       -moz-transform: rotateX(0deg) rotateY(0deg);
+}
+.mgt-flipbox.mgt-flipbox-animation-vertical .mgt-flipbox-back {
+    transform: rotateX(-180deg);
+    -webkit-transform: rotateX(-180deg);
+       -moz-transform: rotateX(-180deg);
+}
+.mgt-flipbox.mgt-flipbox-animation-vertical:hover .mgt-flipbox-front {
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+}
+.mgt-flipbox.mgt-flipbox-animation-vertical:hover .mgt-flipbox-back {
+    transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+}
+.mgt-flipbox-front-inner {
+    background-color: rgba(0,0,0,0.50);
+}
