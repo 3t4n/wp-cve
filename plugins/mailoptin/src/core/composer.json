@@ -1,0 +1,42 @@
+{
+  "name": "mailoptin/core",
+  "description": "Core lib for MailOptin",
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "~1.0",
+    "soundasleep/html2text": "~0.5",
+    "pelago/emogrifier": "^6.0.0",
+    "league/csv": "^9.0",
+    "collizo4sky/persist-admin-notices-dismissal": "^1.3",
+    "nesbot/carbon": "^2.57"
+  },
+  "autoload": {
+    "psr-4": {
+      "MailOptin\\Core\\": "src/"
+    },
+    "files": [
+      "src/Functions/custom-settings-api.php",
+      "src/Functions/functions.php",
+      "src/Functions/php-html-css-js-minifier.php",
+      "src/Functions/FuseWPAdminNotice.php",
+      "src/Functions/MoBFnote.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MailOptin\\Tests\\Core\\": "tests/"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "7.3"
+    },
+    "allow-plugins": {
+      "composer/installers": true,
+      "kylekatarnls/update-helper": true
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}
