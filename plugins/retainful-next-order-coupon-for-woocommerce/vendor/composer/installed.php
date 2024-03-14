@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'retainful/woocommerce',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '11533dfe30c9fb0fbacf9e1b0889faeeecb0a8f6',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'jaybizzle/crawler-detect' => array(
+            'pretty_version' => 'v1.2.116',
+            'version' => '1.2.116.0',
+            'reference' => '97e9fe30219e60092e107651abb379a38b342921',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jaybizzle/crawler-detect',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'retainful/woocommerce' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '11533dfe30c9fb0fbacf9e1b0889faeeecb0a8f6',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'vlucas/valitron' => array(
+            'pretty_version' => 'v1.4.11',
+            'version' => '1.4.11.0',
+            'reference' => 'fadce39f5f235755bb9794b2573af2d5bfcba85f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../vlucas/valitron',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
