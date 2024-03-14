@@ -1,0 +1,10 @@
+build:
+  environment:
+    php:
+      version: 7.3
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php ./vendor/bin/phpunit --configuration phpunit.scrutinizer.xml
+          - php-scrutinizer-run

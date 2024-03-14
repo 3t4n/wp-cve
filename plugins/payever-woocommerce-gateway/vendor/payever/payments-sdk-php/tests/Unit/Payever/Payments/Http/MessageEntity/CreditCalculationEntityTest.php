@@ -1,0 +1,43 @@
+<?php
+
+namespace Payever\Tests\Unit\Payever\Payments\Http\MessageEntity;
+
+use Payever\Sdk\Payments\Http\MessageEntity\CreditCalculationEntity;
+use Payever\Tests\Unit\Payever\Core\Http\AbstractMessageEntityTest;
+
+/**
+ * Class CreditCalculationEntityTest
+ *
+ * @see \Payever\Sdk\Payments\Http\MessageEntity\CreditCalculationEntity
+ *
+ * @package Payever\Tests\Unit\Payever\Payments\Http\MessageEntity
+ */
+class CreditCalculationEntityTest extends AbstractMessageEntityTest
+{
+    protected static $scheme = array(
+        'product_type' => 'stub',
+        'campaign_code' => 'string',
+        'credit_duration' => 10,
+        'kid' => 'string',
+        'status_code' => 200,
+        'status_description' => 'OK',
+        'approved' => true,
+        'decision_made' => true,
+        'final' => true,
+        'paid' => false,
+        'flow_status_code' => 'finished',
+        'bank_interest' => 100.5,
+        'cpi_amount' => 200,
+        'duration' => 10,
+        'interest_rate' => 0.3,
+        'monthly_rate' => 0.1,
+        'price' => 200,
+        'rate_pa' => 2.5,
+        'total_amount' => 200,
+    );
+
+    public function getEntity()
+    {
+        return new CreditCalculationEntity();
+    }
+}
