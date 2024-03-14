@@ -1,0 +1,1 @@
+jQuery(document).ready((function(i){i(document).on("submit","#ypop-mailchimp_ypop",(function(){var e=i(this);return i.ajax({cache:!1,complete:function(i,e){},data:e.serialize(),error:function(i,o,a){e.siblings(".message-box").html(mailchimp_localization.error_message)},success:function(i,o,a){e.siblings(".message-box").html(i)},url:mailchimp_localization.url}),!1}))}));
