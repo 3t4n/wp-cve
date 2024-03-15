@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'premmerce/premmerce-users-roles',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'd0380dbda22abf4ccde3a805106f572f8d8b7810',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => false,
+    ),
+    'versions' => array(
+        'behat/transliterator' => array(
+            'pretty_version' => 'v1.2.0',
+            'version' => '1.2.0.0',
+            'reference' => '826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../behat/transliterator',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'premmerce/premmerce-users-roles' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'd0380dbda22abf4ccde3a805106f572f8d8b7810',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'premmerce/wordpress-sdk' => array(
+            'pretty_version' => 'v2.1',
+            'version' => '2.1.0.0',
+            'reference' => '147f577c088e1dc2ff01e560b2a9b0a10fbef7d5',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../premmerce/wordpress-sdk',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
